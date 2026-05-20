@@ -1,0 +1,6 @@
+[submodule "submodules/open-simulation-interface"]
+	path = submodules/open-simulation-interface
+	url = https://github.com/OpenSimulationInterface/open-simulation-interface.git
+[submodule "submodules/OpenCRG"]
+	path = submodules/OpenCRG
+	url = https://github.com/ASAM-ev/OpenCRG.git

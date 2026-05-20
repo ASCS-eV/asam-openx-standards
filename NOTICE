@@ -1,0 +1,21 @@
+ASAM OpenX® Standards — Redistribution Notice
+================================================
+
+This repository contains specification texts of ASAM OpenX® standards,
+redistributed under the "unrestricted distribution" clause that ASAM e.V.
+applies to its publicly published simulation standards.
+
+Original source URLs:
+- OpenDRIVE: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/
+- OpenSCENARIO DSL: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/
+- OpenODD: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/
+- OpenLABEL: https://openlabel.asam.net/V1-0-0/schema/openlabel_json_schema.json
+- OpenMATERIAL 3D: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/
+- OSI: https://github.com/OpenSimulationInterface/open-simulation-interface (MPL-2.0)
+- OpenCRG: https://github.com/ASAM-ev/OpenCRG (Apache-2.0)
+
+All specification texts are © ASAM e.V. All rights not explicitly granted
+by the unrestricted distribution clause are reserved.
+
+The format conversion (HTML → Markdown) and organizational structure of this
+repository are provided by ASCS e.V. for use in ontology development workflows.

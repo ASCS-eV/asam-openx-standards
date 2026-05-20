@@ -1,0 +1,48 @@
+# Licensing Notice
+
+This repository redistributes ASAM OpenX® standard specifications under
+the terms granted by ASAM e.V. in each standard's published disclaimer.
+
+## ASAM Unrestricted Distribution Clause
+
+Each ASAM OpenX standard published on publications.pages.asam.net contains
+the following disclaimer (standard name varies):
+
+> "This document is the copyrighted property of ASAM e.V. In alteration to
+> the regular license terms (https://www.asam.net/license), ASAM allows
+> unrestricted distribution of this standard. §2 (1) of ASAM's regular
+> license terms is therefore substituted by the following clause:
+> 'The licensor grants everyone a basic, non-exclusive and unlimited
+> license to use the standard ASAM [StandardName]'."
+
+This clause applies to the following standards in this repository:
+
+- ASAM OpenDRIVE® v1.9.0
+- ASAM OpenSCENARIO® DSL v2.2.0
+- ASAM OpenODD® v1.0.0
+- ASAM OpenLABEL® v1.0.0
+- ASAM OpenMATERIAL® 3D BS 1.0.0
+
+## Other Licenses
+
+| Component | License | Location |
+|-----------|---------|----------|
+| ASAM OSI (submodule) | Mozilla Public License 2.0 | `submodules/open-simulation-interface/LICENSE` |
+| ASAM OpenCRG (submodule) | Apache License 2.0 | `submodules/OpenCRG/LICENSE` |
+
+## Copyright
+
+All ASAM standards remain the copyrighted property of ASAM e.V.
+This repository redistributes them under the unrestricted distribution
+clause quoted above. Copyright is NOT transferred by redistribution.
+
+ASAM e.V.
+Altlaufstr. 40
+85635 Höhenkirchen, Germany
+https://www.asam.net
+
+## Trademarks
+
+ASAM®, ASAM OpenDRIVE®, ASAM OpenSCENARIO®, ASAM OpenODD®,
+ASAM OpenLABEL®, ASAM OpenCRG®, and ASAM OpenMATERIAL® are
+registered trademarks of ASAM e.V.

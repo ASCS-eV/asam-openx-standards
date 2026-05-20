@@ -1,0 +1,646 @@
+# ASAM Openmaterial 3D latest — 7.5 Asset schema
+
+> **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/07_geometry/asset-schema.html
+> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **License**: Unrestricted distribution (ASAM e.V.)
+> **Downloaded**: 2026-05-19
+
+---
+
+# 7.5 Asset schema
+
+## 7.5.1 metadata
+
+The key meta information about the asset, including its identity, authorship, technical specifications, and legal details.
+
+**Type:** `object`  
+**Required:** Yes
+
+### 7.5.1.1 name
+
+The display name of the asset, such as 'Car Model A' or 'Urban Scene 1'.
+
+**Type:** `string`  
+**Required:** Yes
+
+### 7.5.1.2 description
+
+A concise summary of the asset’s purpose or features in 2 - 3 sentences.
+
+**Type:** `string`  
+**Required:** No
+
+### 7.5.1.3 uuid
+
+Universally unique identifier for the asset in 8-4-4-4-12 format, see [[12](../bibliography.html#bib-uui)]. The uuid stays the same, even if version is updated.
+
+**Type:** `string`  
+**Pattern:** `\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\b$`  
+**Required:** Yes
+
+### 7.5.1.4 assetVersion
+
+The version number of the asset, following semantic versioning (for example, '1.0.0').
+
+**Type:** `string`  
+**Pattern:** `^\\d+\\.\\d+\\.\\d+$`  
+**Required:** Yes
+
+### 7.5.1.5 openMaterial3dVersion
+
+The version of the ASAM OpenMATERIAL 3D specification used, adhering to semantic versioning (for example, '1.0.0').
+
+**Type:** `string`  
+**Pattern:** `^\\d+\\.\\d+\\.\\d+$`  
+**Required:** Yes
+
+### 7.5.1.6 copyrights
+
+Indicates copyright details, including the year and copyright holder (for example, '© 2024 ACME Inc.').
+
+**Type:** `array`  
+**Required:** Yes
+
+### 7.5.1.7 license
+
+Describes the license for asset distribution. Use an SPDX identifier for open-source licenses (for example, 'MIT'), or provide a URL or filename for proprietary licenses.
+
+**Type:** `string`  
+**Required:** Yes
+
+### 7.5.1.8 authors
+
+Lists the author(s) of the asset as a name, email, or company.
+
+**Type:** `array`  
+**Required:** Yes
+
+### 7.5.1.9 modelCreationTool
+
+Specifies the software or tool (and version) used to create the 3D model (for example, 'Blender 3.5').
+
+**Type:** `string`  
+**Required:** No
+
+### 7.5.1.10 creationDate
+
+The date and time of asset creation, formatted as YYYYMMDDTHHMMSSZ according to ISO 8601 (for example, '20240703T101728Z').
+
+**Type:** `string`  
+**Pattern:** `^\\d{8}T\\d{6}Z$`  
+**Required:** No
+
+### 7.5.1.11 modelingMethod
+
+Indicates how the model was created, for example, '3D scan', 'photo-based modeling', or 'freehand design'.
+
+**Type:** `string`  
+**Required:** No
+
+### 7.5.1.12 validationDescription
+
+Details the validation process used to compare the model geometry with real-world objects.
+
+**Type:** `string`  
+**Required:** No
+
+### 7.5.1.13 assetType
+
+Specifies whether the asset represents an individual object ('object') or a collection of objects ('scene'). With the introduction of a concept for referencing external assets, 'scene' is deprecated.
+
+**Type:** `string`  
+**Enum:** `['object', 'scene']`  
+**Required:** No
+
+### 7.5.1.14 objectClass
+
+Classifies the object type when 'assetType' is 'object', meaning, 'vehicle', 'human', 'environment', 'other'.
+
+**Type:** `string`  
+**Enum:** `['vehicle', 'human', 'environment', 'other']`  
+**Required:** Yes
+
+### 7.5.1.15 vehicleClassData
+
+Vehicle specific data. This shall be filled if 'objectClass' is 'vehicle' based on the [OpenSCENARIO XML vehicle definition](https://releases.asam.net/OpenSCENARIO/1.0.0/Model-Documentation/content/Vehicle.html).
+
+**Type:** `object`  
+**Required:** No
+
+#### 7.5.1.15.1 vehicleCategory
+
+Type of the vehicle.
+
+**Type:** `string`  
+**Enum:** `['car', 'van', 'truck', 'trailer', 'semitrailer', 'bus', 'motorbike', 'bicycle', 'train', 'tram']`  
+**Required:** Yes
+
+#### 7.5.1.15.2 performance
+
+Performance values of a vehicle.
+
+**Type:** `object`  
+**Required:** Yes
+
+##### maxSpeed
+
+Maximum speed of the vehicle. Unit: meter/second.
+
+**Type:** `number`  
+**Required:** Yes
+
+##### maxAcceleration
+
+Maximum acceleration of the vehicle. Unit: meter/second^2. Range: [0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+##### maxDeceleration
+
+Maximum deceleration of the vehicle. Unit: meter/second^2. Range: [0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+#### 7.5.1.15.3 axles
+
+A set of the axles of a vehicle. A vehicle must have a front axle and a rear axle. It might have additional axles. The information about the rear axle is needed to transform the origin of the model to coordinate systems of other ASAM standards, for example the ASAM OpenSCENARIO XML vehicle coordinate system or the ASAM OSI host vehicle coordinate system.
+
+**Type:** `object`  
+**Required:** Yes
+
+##### frontAxle
+
+The definition of vehicle axle based on the [OpenSCENARIO XML vehicle axle definition](https://releases.asam.net/OpenSCENARIO/1.0.0/Model-Documentation/content/Axle.html).
+
+**Type:** `object`  
+**Required:** Yes
+
+###### maxSteering
+
+Maximum steering angle which can be performed by the wheels on this axle. Unit: rad; Range: [0, \(\pi\)], symmetrical.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Maximum value:** `3.14159`  
+**Required:** Yes
+
+###### wheelDiameter
+
+Diameter of the wheels on this axle. Unit: meter; Range: ]0, inf[.
+
+**Type:** `number`  
+**Required:** Yes
+
+###### trackWidth
+
+Distance of the wheels center lines at zero steering. Unit: meter; Range: [0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+###### positionX
+
+Longitudinal position of the axle with respect to the vehicles center of the bounding box projected to the ground. Unit: meter.
+
+**Type:** `number`  
+**Required:** Yes
+
+###### positionZ
+
+The z-position of the axle with respect to the vehicles center of the bounding box projected to the ground. Usually this is half of wheel diameter. Unit:meter; Range:[0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+##### rearAxle
+
+The definition of vehicle axle based on the [OpenSCENARIO XML vehicle axle definition](https://releases.asam.net/OpenSCENARIO/1.0.0/Model-Documentation/content/Axle.html).
+
+**Type:** `object`  
+**Required:** Yes
+
+###### maxSteering
+
+Maximum steering angle which can be performed by the wheels on this axle. Unit: rad; Range: [0, \(\pi\)], symmetrical.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Maximum value:** `3.14159`  
+**Required:** Yes
+
+###### wheelDiameter
+
+Diameter of the wheels on this axle. Unit: meter; Range: ]0, inf[.
+
+**Type:** `number`  
+**Required:** Yes
+
+###### trackWidth
+
+Distance of the wheels center lines at zero steering. Unit: meter; Range: [0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+###### positionX
+
+Longitudinal position of the axle with respect to the vehicles center of the bounding box projected to the ground. Unit: meter.
+
+**Type:** `number`  
+**Required:** Yes
+
+###### positionZ
+
+The z-position of the axle with respect to the vehicles center of the bounding box projected to the ground. Usually this is half of wheel diameter. Unit:meter; Range:[0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+##### additionalAxles
+
+An optional array of additional axles with the same properties as 'frontAxle' and 'rearAxle'.
+
+**Type:** `array`  
+**Required:** No
+
+###### maxSteering
+
+Maximum steering angle which can be performed by the wheels on this axle. Unit: rad; Range: [0, \(\pi\)], symmetrical.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Maximum value:** `3.14159`  
+**Required:** Yes
+
+###### wheelDiameter
+
+Diameter of the wheels on this axle. Unit: meter; Range: ]0, inf[.
+
+**Type:** `number`  
+**Required:** Yes
+
+###### trackWidth
+
+Distance of the wheels center lines at zero steering. Unit: meter; Range: [0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+###### positionX
+
+Longitudinal position of the axle with respect to the vehicles center of the bounding box projected to the ground. Unit: meter.
+
+**Type:** `number`  
+**Required:** Yes
+
+###### positionZ
+
+The z-position of the axle with respect to the vehicles center of the bounding box projected to the ground. Usually this is half of wheel diameter. Unit:meter; Range:[0, inf[.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+### 7.5.1.16 humanClassData
+
+Human-specific data. This shall be filled if 'objectClass' is 'human' based on the [OpenSCENARIO XML pedestrian definition](https://releases.asam.net/OpenSCENARIO/1.0.0/Model-Documentation/content/Pedestrian.html).
+
+**Type:** `object`  
+**Required:** No
+
+#### 7.5.1.16.1 mass
+
+The mass of a human. Unit: kg.
+
+**Type:** `number`  
+**Required:** Yes
+
+### 7.5.1.17 animated
+
+Indicates whether the 3D model contains keyframe animations.
+
+**Type:** `boolean`  
+**Required:** Yes
+
+### 7.5.1.18 pbrMaterialWorkflow
+
+Indicates the usage of a Physically Based Rendering (PBR) material workflow as 'metallic', 'specular' or 'none'. This only applies to the internal materials of the 3D model file, not to mapped ASAM OpenMATERIAL 3D property files.
+
+**Type:** `string`  
+**Enum:** `['metallic', 'specular', 'none']`  
+**Required:** Yes
+
+### 7.5.1.19 triangleCount
+
+The total number of triangles in the model. A quad polygon counts as two triangles.
+
+**Type:** `integer`  
+**Minimum value:** `1`  
+**Required:** Yes
+
+### 7.5.1.20 meshCount
+
+The total number of meshes in the 3D model file. A model geometry typically consists of several sub-meshes.
+
+**Type:** `integer`  
+**Minimum value:** `1`  
+**Required:** Yes
+
+### 7.5.1.21 textureResolutions
+
+Lists all the used texture resolutions in the 3D model, meaning 'albedo', 'normal', or 'displacement' textures. Possible values are '1K', '2K', '4K'. If no textures are used in the model, add empty element ' '.
+
+**Type:** `array`  
+**Required:** Yes
+
+**Items enum:** `['1K', '2K', '4K', '']`
+
+### 7.5.1.22 normalMapFormat
+
+Specifies whether the 3D model utilizes normal maps as textures. If so, their format should be either 'DirectX' or 'OpenGL'.
+
+**Type:** `string`  
+**Enum:** `['DirectX', 'OpenGL', 'none']`  
+**Required:** Yes
+
+### 7.5.1.23 boundingBox
+
+Defines the Axis-Aligned Bounding Box (AABB), which defines the spatial boundaries of an asset in a 3D space. Example: "boundingBox": { "x": [-2.5, 2.5], "y": [-1.1, 1.1],"z": [0, 1.8]}
+
+**Type:** `object`  
+**Required:** Yes
+
+#### 7.5.1.23.1 x
+
+Minimum and maximum values in meters along the x-axis.
+
+**Type:** `array`  
+**Required:** Yes
+
+#### 7.5.1.23.2 y
+
+Minimum and maximum values in meters along the y-axis.
+
+**Type:** `array`  
+**Required:** Yes
+
+#### 7.5.1.23.3 z
+
+Minimum and maximum values in meters along the z-axis.
+
+**Type:** `array`  
+**Required:** Yes
+
+## 7.5.2 materialMappingUri
+
+Relative path to a material mapping file (.xomm). In this file, material names from the 3D model file or texture color codes from textures assigned in 'materialTextureAssignment' are linked to ASAM OpenMATERIAL 3D property files.
+
+**Type:** `string`  
+**Pattern:** `.*\\.xomm$`  
+**Required:** No
+
+## 7.5.3 materialTextureAssignment
+
+Optional array containing material texture assignments. It links material names contained in the 3D model file to ASAM OpenMATERIAL 3D assignment textures. In a separate material mapping file, the 'color' values in this texture are linked to ASAM OpenMATERIAL 3D property files.
+
+**Type:** `array`  
+**Required:** No
+
+Columns of the table:
+
+* Column 1: Name of the material in the 3D model file.
+* Column 2: File path to the ASAM OpenMATERIAL 3D assignment texture.
+
+## 7.5.4 externalAssetReferences
+
+Optional array containing references to external 3D assets. It links parenting nodes in the 3D model file to external ASAM OpenMATERIAL 3D asset files (.xoma).
+
+**Type:** `array`  
+**Required:** No
+
+### 7.5.4.1 reference\_node
+
+Name of the parent node in the 3D model file.
+
+**Type:** `string`  
+**Required:** Yes
+
+### 7.5.4.2 external\_asset
+
+File path to the ASAM OpenMATERIAL 3D external ASAM OpenMATERIAL 3D asset files (.xoma).
+
+**Type:** `string`  
+**Pattern:** `^(\\./|/)?([a-zA-Z0-9_\\-./]+)\\.(xoma)$`  
+**Required:** Yes
+
+## 7.5.5 lightDefinitions
+
+A list of discrete light sources linked to the 3D asset hierarchy.
+
+**Type:** `array`  
+**Required:** No
+
+### 7.5.5.1 node
+
+Identifier of the node in the 3D model hierarchy defining the light origin. This determines the function the light is mapped to. E.g. a light associated with the node Grp\_Light\_Low\_Beam\_Left\_0 of a vehicle asset shall be turned on in a simulation when the low beam is activated. If a generic node name is used, for example Grp\_Light\_0, the simulator can decide which lighting function to map it to. In this case the behavior is not standardized.
+
+**Type:** `string`  
+**Required:** Yes
+
+### 7.5.5.2 photometric\_profile\_uri
+
+File path to an IES or ELUMDAT file defining the light profile.
+
+**Type:** `string`  
+**Pattern:** `\\.(ies|ldt|IES|LDT)$`  
+**Required:** No
+
+### 7.5.5.3 radiometric\_profile\_uri
+
+File path to a mapping table providing radiance per wavelength. (Format to be defined.)
+
+**Type:** `string`  
+**Required:** No
+
+### 7.5.5.4 inner\_cone\_angle
+
+The 1/2 opening angle in degree, measured from the center of the conical spotlight to the angle where the light falloff begins. If not set, the default is 0. This will be overwritten, if a photometric profile is set.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Maximum value:** `360`  
+**Required:** No
+
+### 7.5.5.5 outer\_cone\_angle
+
+The 1/2 opening angle in degree, measured from the center of the conical spotlight to the angle where the falloff ends. Set to 360° for point lights. If a photometric profile is set, this will be overwritten but serves as a fallback if a renderer cannot load the profile.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Maximum value:** `360`  
+**Required:** Yes
+
+### 7.5.5.6 luminous\_intensity
+
+Luminous intensity defined in Candela (cd). If a photometric profile is set, this will be overwritten but serves as a fallback if a renderer cannot load the profile.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+### 7.5.5.7 color
+
+RGB color of the light.
+
+**Type:** `object`  
+**Required:** No
+
+#### 7.5.5.7.1 r
+
+Red channel.
+
+**Type:** `integer`  
+**Minimum value:** `0`  
+**Maximum value:** `255`  
+**Required:** Yes
+
+#### 7.5.5.7.2 g
+
+Green channel.
+
+**Type:** `integer`  
+**Minimum value:** `0`  
+**Maximum value:** `255`  
+**Required:** Yes
+
+#### 7.5.5.7.3 b
+
+Blue channel.
+
+**Type:** `integer`  
+**Minimum value:** `0`  
+**Maximum value:** `255`  
+**Required:** Yes
+
+### 7.5.5.8 temperature
+
+Correlated Color Temperature (CCT) in Kelvin.
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** No
+
+## 7.5.6 emissiveLightMapping
+
+Mapping of emissive properties to a specific material and an associated Grp node in the 3D model file. This concept can be used in ny type of object.
+
+**Type:** `array`  
+**Required:** No
+
+### 7.5.6.1 assoc\_node
+
+The node in the 3D hierarchy associated with this emissive light. This determines the lighting function the emissive material is mapped to. E.g. an emissive material associated with the node Grp\_Light\_Indicator\_Left\_0 of a vehicle asset shall be turned on in a simulation when the left indicator is activated. If a generic node name is used, for example Grp\_Light\_0, the simulator can decide which lighting function to map it to. In this case the behavior is not standardized.
+
+**Type:** `string`  
+**Required:** Yes
+
+### 7.5.6.2 material\_name
+
+The name of the material within the 3D model file to which this mapping applies.
+
+**Type:** `string`  
+**Required:** Yes
+
+### 7.5.6.3 luminance
+
+Luminance defined in Candela per square meter (cd/m²).
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** Yes
+
+### 7.5.6.4 emissive\_texture
+
+File path to an emissive texture.
+
+**Type:** `string`  
+**Required:** No
+
+### 7.5.6.5 masking\_texture
+
+File path to the masking texture to mask a defined part in an emissive atlas texture. Only allowed if emissive\_texture is present.
+
+**Type:** `string`  
+**Required:** No
+
+### 7.5.6.6 color
+
+Emissive color or RGB multiplier when used in combination with an emissive texture. The final color in the renderer is calculated as color = base\_color + emissive\_color \* emissive\_texture\_color \* emissive\_strength. The emissive\_strength needs to be set by the simulator in a way that the final luminance of the emissive material matches the defined 'luminance' value.
+
+**Type:** `object`  
+**Required:** Yes
+
+#### 7.5.6.6.1 r
+
+Red channel.
+
+**Type:** `integer`  
+**Minimum value:** `0`  
+**Maximum value:** `255`  
+**Required:** Yes
+
+#### 7.5.6.6.2 g
+
+Green channel.
+
+**Type:** `integer`  
+**Minimum value:** `0`  
+**Maximum value:** `255`  
+**Required:** Yes
+
+#### 7.5.6.6.3 b
+
+Blue channel.
+
+**Type:** `integer`  
+**Minimum value:** `0`  
+**Maximum value:** `255`  
+**Required:** Yes
+
+## 7.5.7 geometryProperties
+
+Array of per-node geometry properties such as physical thickness.
+
+**Type:** `array`  
+**Required:** No
+
+### 7.5.7.1 node
+
+Identifier of the node in the 3D model hierarchy the properties apply to.
+
+**Type:** `string`  
+**Required:** Yes
+
+### 7.5.7.2 thickness
+
+Extrusion in meters along the surface normal (applied on the side opposite the viewer, regardless of whether the surface is single- or double-sided).
+
+**Type:** `number`  
+**Minimum value:** `0`  
+**Required:** No
+
+## 7.5.8 customProperties
+
+Non-standardized asset properties for custom tools or tool chains.
+
+**Type:** `object`  
+**Required:** No
