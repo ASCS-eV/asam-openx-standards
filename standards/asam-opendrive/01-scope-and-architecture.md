@@ -1,7 +1,7 @@
-# ASAM OpenDRIVE v1.9.0 — §1 Scope & §6 General Architecture
+# ASAM OpenDRIVE® v1.9.0 — §1 Scope & §6 General Architecture
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/
-> **Standard**: ASAM OpenDRIVE BS 1.9.0 Specification, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® BS 1.9.0 Specification, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2025-05-19
 
@@ -9,20 +9,20 @@
 
 ## §1 Scope
 
-ASAM OpenDRIVE specifies the modeling approach of how to describe static road networks for driving simulation applications using the Extensible Markup Language (XML).
+ASAM OpenDRIVE® specifies the modeling approach of how to describe static road networks for driving simulation applications using the Extensible Markup Language (XML).
 
-The ASAM OpenDRIVE standard has the following scope:
+The ASAM OpenDRIVE® standard has the following scope:
 
-- Specify the schema for ASAM OpenDRIVE in a UML model and XSD schemas. The UML model and the XSD schemas define the structure, sequence, elements, and values of ASAM OpenDRIVE. The XSD schemas are derived from the UML model.
-- Provide the XSD schemas to which valid ASAM OpenDRIVE files shall conform.
-- Explain how the ASAM OpenDRIVE elements are used and relationships between elements in the ASAM OpenDRIVE UML model and XSD schemas, for example, roads, lanes, junctions, objects, signals, and railroads.
-- Give additional guidelines and rules, that cannot be represented in the UML model and XSD schemas for using ASAM OpenDRIVE.
+- Specify the schema for ASAM OpenDRIVE® in a UML model and XSD schemas. The UML model and the XSD schemas define the structure, sequence, elements, and values of ASAM OpenDRIVE®. The XSD schemas are derived from the UML model.
+- Provide the XSD schemas to which valid ASAM OpenDRIVE® files shall conform.
+- Explain how the ASAM OpenDRIVE® elements are used and relationships between elements in the ASAM OpenDRIVE® UML model and XSD schemas, for example, roads, lanes, junctions, objects, signals, and railroads.
+- Give additional guidelines and rules, that cannot be represented in the UML model and XSD schemas for using ASAM OpenDRIVE®.
 
 ## §6 General Architecture
 
 ### 6.1 Introduction
 
-ASAM OpenDRIVE data is stored in XML files with the extension `.xodr`. Compressed files have the extension `.xodrz` (compression format: `gzip`).
+ASAM OpenDRIVE® data is stored in XML files with the extension `.xodr`. Compressed files have the extension `.xodrz` (compression format: `gzip`).
 
 Elements are organized into levels. Elements with a level greater than zero (0) are children of the preceding level. Elements with a level of one (1) are called primary elements.
 
@@ -30,7 +30,7 @@ All floating-point numbers are IEEE 754 double precision.
 
 ### 6.5 Overview of Elements
 
-The ASAM OpenDRIVE element hierarchy (primary elements under `<OpenDRIVE>` root):
+The ASAM OpenDRIVE® element hierarchy (primary elements under `<OpenDRIVE>` root):
 
 ```
 <OpenDRIVE>
@@ -78,7 +78,7 @@ The ASAM OpenDRIVE element hierarchy (primary elements under `<OpenDRIVE>` root)
 
 ## Relationship to ENVITED-X `hdmap` Domain
 
-The ENVITED-X `hdmap` domain ontology describes **credentials** for HD map data assets. ASAM OpenDRIVE defines the **data format** those assets contain. Key alignment:
+The ENVITED-X `hdmap` domain ontology describes **credentials** for HD map data assets. ASAM OpenDRIVE® defines the **data format** those assets contain. Key alignment:
 
 | OpenDRIVE Concept | hdmap Ontology Mapping |
 |-------------------|-----------------------|

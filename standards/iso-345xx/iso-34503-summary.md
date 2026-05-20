@@ -10,12 +10,12 @@
 ## Purpose
 
 ISO 34503 provides a taxonomy (hierarchical classification) of attributes and concepts for describing an Operational Design Domain (ODD) for automated driving systems. It provides the vocabulary backbone used by both:
-- **ASAM OpenODD** (which formalizes it into a rule-based model)
+- **ASAM OpenODD®** (which formalizes it into a rule-based model)
 - **ASAM OpenLABEL / openlabel-v2** (which uses it for scenario annotation)
 
-## Relationship to ASAM OpenODD
+## Relationship to ASAM OpenODD®
 
-ASAM OpenODD Annex B provides the complete ISO 34503 taxonomy in machine-readable CSV format. See: [`../asam-openodd/annex-b-iso34503-taxonomy.md`](../asam-openodd/annex-b-iso34503-taxonomy.md)
+ASAM OpenODD® Annex B provides the complete ISO 34503 taxonomy in machine-readable CSV format. See: [`../asam-openodd/annex-b-iso34503-taxonomy.md`](../asam-openodd/annex-b-iso34503-taxonomy.md)
 
 ## Taxonomy Structure (Clauses 8–11)
 

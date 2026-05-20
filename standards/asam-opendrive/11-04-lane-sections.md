@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.4 Lane sections
+# ASAM OpenDRIVE® v1.9.0 — 11.4 Lane sections
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_04_lane_sections.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -32,7 +32,7 @@ Figure 64. Lane sections defined separately for both sides of the road
 
 **`<laneSection>` element**
 
-In ASAM OpenDRIVE, lane sections are represented by `<laneSection>` elements within the `<lanes>` element.
+In ASAM OpenDRIVE®, lane sections are represented by `<laneSection>` elements within the `<lanes>` element.
 
 ```
 UML class: t_road_lanes_laneSection
@@ -43,7 +43,7 @@ A lane section splits a road into multiple parts whenever the number of lanes or
 
 The distance between two succeeding lane sections shall not be zero.
 
-For easier navigation through an ASAM OpenDRIVE road description, the lanes within a lane section are grouped into left, center, and right lanes.
+For easier navigation through an ASAM OpenDRIVE® road description, the lanes within a lane section are grouped into left, center, and right lanes.
 Each lane section shall contain one `<center>` element and at least one `<right>` or `<left>` element.
 
 Table 37. Attributes of the <laneSection> element

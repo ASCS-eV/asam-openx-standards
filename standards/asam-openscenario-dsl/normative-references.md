@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 2 Normative references
+# ASAM OpenSCENARIO® DSL v2.2.0 — 2 Normative references
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/normative_references.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -14,21 +14,21 @@ For dated references, only the edition cited applies.
 For undated references, the latest edition of the referenced document (including any amendments) applies.
 
 ASAM OpenSCENARIO is part of the ASAM simulation standards that focus on simulation data for the automotive environment.
-The standard can be used together with road network descriptions that are defined according to the standard ASAM OpenDRIVE and the description of the road surface described by ASAM OpenCRG.
+The standard can be used together with road network descriptions that are defined according to the standard ASAM OpenDRIVE® and the description of the road surface described by ASAM OpenCRG.
 The three standards complement each other.
 Together they define the content that is required to describe the simulated world.
 
 When combined, all three standards provide a scenario-based description of traffic simulation that contains both static and dynamic content.
-Other ASAM standards referenced here are aimed at supplying operational design domain (ODD) information (ASAM OpenODD concept), or scenario labeling (ASAM OpenLABEL).
+Other ASAM standards referenced here are aimed at supplying operational design domain (ODD) information (ASAM OpenODD® concept), or scenario labeling (ASAM OpenLABEL).
 
 In future revisions, the domain model will be synchronized with ASAM OpenXOntology.
 
 Members of the OpenX-family of standards and their current version:
 
 * ASAM OpenCRG 1.2.0 [[1](bibliography.html#bib-ocr)]
-* ASAM OpenDRIVE 1.8.0 [[2](bibliography.html#bib-odr)]
+* ASAM OpenDRIVE® 1.8.0 [[2](bibliography.html#bib-odr)]
 * ASAM OpenLABEL 1.0.0 [[3](bibliography.html#bib-ola)]
-* ASAM OpenODD concept paper [[4](bibliography.html#bib-ood)]
+* ASAM OpenODD® concept paper [[4](bibliography.html#bib-ood)]
 * ASAM OpenSCENARIO XML 1.3.1 [[5](bibliography.html#bib-osc1)]
 * ASAM OpenXOntology concept paper [[6](bibliography.html#bib-oxo)]
 

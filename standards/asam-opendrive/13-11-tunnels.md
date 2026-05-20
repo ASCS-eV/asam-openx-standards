@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.11 Tunnels
+# ASAM OpenDRIVE® v1.9.0 — 13.11 Tunnels
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_11_tunnels.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 13.11 Tunnels
 
-Tunnels are modeled as objects in ASAM OpenDRIVE.
+Tunnels are modeled as objects in ASAM OpenDRIVE®.
 The road with the tunnel object defines the part of the road that is the tunnel or the underpass.
 By definition, tunnels are valid for the complete cross section of a road.
 Tunnels are described by a starting point, a length and a type, for example, if the tunnel represents an underpass and is open to daylight.
@@ -25,14 +25,14 @@ Figure 125. Tunnel
 
 **`<tunnel>` element**
 
-In ASAM OpenDRIVE, tunnels are represented by the `<tunnel>` element within the `<objects>` element.
+In ASAM OpenDRIVE®, tunnels are represented by the `<tunnel>` element within the `<objects>` element.
 
 ```
 UML class: t_road_objects_tunnel
 XML tag:   <tunnel> (Multiplicity: 0..*)
 ```
 
-Tunnels are modeled as objects in ASAM OpenDRIVE.
+Tunnels are modeled as objects in ASAM OpenDRIVE®.
 The road with the tunnel object defines the part of the road that is the tunnel or the underpass.
 
 Tunnels are valid for the complete cross section of a road unless a lane validity element with further restrictions is provided as child element
@@ -52,7 +52,7 @@ Table 104. Attributes of the <tunnel> element
 
 **`<validity>` element**
 
-In ASAM OpenDRIVE, lane validity is represented by the `<validity>` element within the `<object>` element.
+In ASAM OpenDRIVE®, lane validity is represented by the `<validity>` element within the `<object>` element.
 
 ```
 UML class: t_road_objects_object_laneValidity

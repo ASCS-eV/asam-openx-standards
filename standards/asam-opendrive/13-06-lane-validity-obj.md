@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.6 Lane validity for objects
+# ASAM OpenDRIVE® v1.9.0 — 13.6 Lane validity for objects
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_06_lane_validity_obj.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -13,7 +13,7 @@ By default, objects are valid for all lanes of a road.
 Lane validity offers the possibility to restrict the validity of an object to specific lanes only.
 If the road has multiple lane layers, the layer can also be defined explicitly.
 
-In ASAM OpenDRIVE, lane validity is represented by the `<validity>` element within the `<object>` element.
+In ASAM OpenDRIVE®, lane validity is represented by the `<validity>` element within the `<object>` element.
 
 |  |  |
 | --- | --- |

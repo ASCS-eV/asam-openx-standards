@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.9 Lane road markings
+# ASAM OpenDRIVE® v1.9.0 — 11.9 Lane road markings
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_09_lane_road_markings.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -10,7 +10,7 @@
 # 11.9 Lane road markings
 
 Lanes on roads can have different lane markings, for example lines of different colors and styles.
-ASAM OpenDRIVE provides the `<roadMark>` element for these road markings.  
+ASAM OpenDRIVE® provides the `<roadMark>` element for these road markings.  
 The road marking information defines the style of the line at the lane’s outer border.
 For left lanes, this is the left border, for right lanes the right one.
 The style of the center line that separates left and right lanes is determined by the `<roadMark>` element for the center lane.  
@@ -22,7 +22,7 @@ There are two ways to specify the type of lane road marking:
 * The @type attribute within the `<roadMark>` element makes it possible to enter keywords that are stored in the application. They are used to describe simplified road marking types like solid, broken, or grass.
 * The `<type>` element contains further `<line>` elements making it possible to describe the road marking in a more detailed way.
 
-In addition to the road markings defined in this section, ASAM OpenDRIVE also supports the following use cases:
+In addition to the road markings defined in this section, ASAM OpenDRIVE® also supports the following use cases:
 
 * Road markings that do not represent the line at the outer border of a lane but guide driver and traffic models are defined as signals.
   These may optionally be accompanied by objects, for example in the case of stop lines related to a traffic light.
@@ -34,7 +34,7 @@ In addition to the road markings defined in this section, ASAM OpenDRIVE also su
 
 **`<roadMark>` element**
 
-In ASAM OpenDRIVE, road markings are represented by `<roadMark>` elements within `<lane>` elements.
+In ASAM OpenDRIVE®, road markings are represented by `<roadMark>` elements within `<lane>` elements.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_roadMark
@@ -62,7 +62,7 @@ Table 48. Attributes of the <roadMark> element
 
 Figure 83. UML class diagram of the RoadMark class
 
-[Figure 83](#fig-2640be87-3139-4601-8202-18b81bfd5607) shows the UML class diagram of the ASAM OpenDRIVE RoadMark class.
+[Figure 83](#fig-2640be87-3139-4601-8202-18b81bfd5607) shows the UML class diagram of the ASAM OpenDRIVE® RoadMark class.
 
 **Rules**
 
@@ -104,7 +104,7 @@ The optional @rule attribute for lines defines the traffic rule for passing the 
 
 **`<type>` element**
 
-In ASAM OpenDRIVE, road marking types are represented by `<type>` elements within `<roadMark>` elements.
+In ASAM OpenDRIVE®, road marking types are represented by `<type>` elements within `<roadMark>` elements.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_roadMark_type
@@ -123,7 +123,7 @@ Table 49. Attributes of the <type> element
 
 **`<line>` element**
 
-In ASAM OpenDRIVE, road marking lines are represented by `<line>` elements within `<type>` elements.
+In ASAM OpenDRIVE®, road marking lines are represented by `<line>` elements within `<type>` elements.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_roadMark_type_line
@@ -158,7 +158,7 @@ Table 50. Attributes of the <line> element
 
 **`<explicit>` element**
 
-In ASAM OpenDRIVE, irregular road marking types are represented by `<explicit>` elements within `<roadMark>` elements.
+In ASAM OpenDRIVE®, irregular road marking types are represented by `<explicit>` elements within `<roadMark>` elements.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_roadMark_explicit
@@ -167,14 +167,14 @@ XML tag:   <explicit> (Multiplicity: 0..1)
 
 Irregular road markings that cannot be described by repetitive line patterns may be described by individual road marking elements.
 These explicit definitions also contain `<line>` elements for the line definition, however, these lines will not be repeated automatically as in repetitive road marking types.
-In ASAM OpenDRIVE, irregular road marking types and lines are represented by `<explicit>` elements within elements.
+In ASAM OpenDRIVE®, irregular road marking types and lines are represented by `<explicit>` elements within elements.
 The line definitions are contained in `<line>` elements within the `<explicit>` element.
 
 The `<explicit>` element should specifically be used for measurement data.
 
 **`<line>` element**
 
-In ASAM OpenDRIVE, irregular road marking lines are represented by `<line>` elements within `<explicit>` elements.
+In ASAM OpenDRIVE®, irregular road marking lines are represented by `<line>` elements within `<explicit>` elements.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_roadMark_explicit_line
@@ -211,7 +211,7 @@ Offsets from the lateral reference position are defined by `<sway>` elements wit
 
 **`<sway>` element**
 
-In ASAM OpenDRIVE, offsets are represented by `<sway>` elements within `<roadMark>` elements.
+In ASAM OpenDRIVE®, offsets are represented by `<sway>` elements within `<roadMark>` elements.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_roadMark_sway

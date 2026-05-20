@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — Annex A (normative): Enumerations
+# ASAM OpenDRIVE® v1.9.0 — Annex A (normative): Enumerations
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/16_annexes/enumerations/map_uml_enumerations.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -128,8 +128,8 @@ Table 164. Enumeration literals of the road surface CRG mode attribute
 | Name | Type | Description |
 | --- | --- | --- |
 | `attached0` | string | ASAM OpenCRG reference line: is discarded. Total height: OpenCRG height only |
-| `attached` | string | ASAM OpenCRG reference line: is discarded. Total height: ASAM OpenDRIVE height + OpenCRG height |
-| `genuine` | string | ASAM OpenCRG reference line: shifted and rotated so beginning of reference line matches position given in ASAM OpenDRIVE. Total height: OpenCRG height only |
+| `attached` | string | ASAM OpenCRG reference line: is discarded. Total height: ASAM OpenDRIVE® height + OpenCRG height |
+| `genuine` | string | ASAM OpenCRG reference line: shifted and rotated so beginning of reference line matches position given in ASAM OpenDRIVE®. Total height: OpenCRG height only |
 | `global` | string | ASAM OpenCRG reference line: shifted and rotated by xOffset, yOffset, zOffset and hOffset. Total height: OpenCRG height only |
 
 ### A.2.4 e\_junction\_segment\_type
@@ -291,7 +291,7 @@ Table 176. Enumeration literals of the laneType attribute
 | `median` | string |  |  | Lane that sits between driving lanes that lead in opposite directions. It is typically used to separate traffic in towns on large roads. |
 | `mwyEntry` | string |  | 1.5.0 | deprecated, use entry instead |
 | `mwyExit` | string |  | 1.5.0 | deprecated, use exit instead |
-| `none` | string |  |  | Space on the outermost edge of the road. A none lane does not have actual content. Its only purpose is for applications to register that ASAM OpenDRIVE is still present in case the (human) driver leaves the road. |
+| `none` | string |  |  | Space on the outermost edge of the road. A none lane does not have actual content. Its only purpose is for applications to register that ASAM OpenDRIVE® is still present in case the (human) driver leaves the road. |
 | `offRamp` | string |  |  | Ramp leading away from a motorway and onto rural urban roads. |
 | `onRamp` | string |  |  | Ramp leading to a motorway from rural or urban roads. |
 | `parking` | string |  |  | Lane with parking spaces. |
@@ -688,7 +688,7 @@ Table 204. Enumeration literals of the signals semantics lane attribute
 | `noOvertakeCars` | 1.8.0 |  |
 | `noOvertakeTrucksEnd` | 1.8.0 |  |
 | `noOvertakeTrucks` | 1.8.0 |  |
-| `other` | 1.9.0 | Actual semantics shall be inferred through other ASAM OpenDRIVE definitions. Use when none of the other enum values fit. |
+| `other` | 1.9.0 | Actual semantics shall be inferred through other ASAM OpenDRIVE® definitions. Use when none of the other enum values fit. |
 | `priorityOverOncoming` | 1.8.0 |  |
 | `roundabout` | 1.8.0 |  |
 | `yieldForOncoming` | 1.8.0 |  |

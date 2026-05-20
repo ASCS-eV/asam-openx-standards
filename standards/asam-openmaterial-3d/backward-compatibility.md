@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 4 Backward compatibility
+# ASAM OpenMATERIAL® 3D latest — 4 Backward compatibility
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/04_backward_compatibility/backward-compatibility.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

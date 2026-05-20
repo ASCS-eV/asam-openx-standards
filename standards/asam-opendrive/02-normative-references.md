@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 2 Normative references
+# ASAM OpenDRIVE® v1.9.0 — 2 Normative references
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/02_normative_references/02_normative_references.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

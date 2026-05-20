@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 8.1 Introduction to coordinate systems
+# ASAM OpenDRIVE® v1.9.0 — 8.1 Introduction to coordinate systems
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/08_coordinate_systems/08_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 8.1 Introduction to coordinate systems
 
-ASAM OpenDRIVE uses three types of coordinate systems:
+ASAM OpenDRIVE® uses three types of coordinate systems:
 
 * The inertial x/y/z coordinate system
 * The road reference line s/t/h coordinate system
@@ -17,7 +17,7 @@ ASAM OpenDRIVE uses three types of coordinate systems:
 
 ![img](../_images/08_coordinate_systems/coo_sys_overview.png)
 
-Figure 7. Available coordinate systems in ASAM OpenDRIVE
+Figure 7. Available coordinate systems in ASAM OpenDRIVE®
 
 [Figure 7](#fig-67a7a638-8746-44f4-a574-e05908306350) shows the three coordinate systems.
 
@@ -25,7 +25,7 @@ These coordinate systems may interact with each other, if present.
 
 ![img](../_images/08_coordinate_systems/coo_sys_interact.png)
 
-Figure 8. Coordinate systems in ASAM OpenDRIVE interacting with another
+Figure 8. Coordinate systems in ASAM OpenDRIVE® interacting with another
 
 [Figure 8](#fig-ecaff823-8bfa-4c03-b660-f7cc5873e843) shows how the three coordinate systems interact with each other and with respect to the road reference line.
 If not indicated otherwise, the local coordinate system is located and oriented relative to the road reference line coordinate system.
@@ -33,7 +33,7 @@ The road reference line coordinate system is located and oriented relative to th
 
 ![img](../_images/08_coordinate_systems/coo_sys_all_2.png)
 
-Figure 9. Summary of coordinate system in ASAM OpenDRIVE
+Figure 9. Summary of coordinate system in ASAM OpenDRIVE®
 
 [Figure 9](#fig-9e277ae1-6e3d-4c60-b06e-839d1a0b2d75) shows an example for positioning and orientation of the different coordinate systems relative to each other from another perspective.
 

@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.12 Bridges
+# ASAM OpenDRIVE® v1.9.0 — 13.12 Bridges
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_12_bridges.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 13.12 Bridges
 
-Bridges are modeled as objects in ASAM OpenDRIVE.
+Bridges are modeled as objects in ASAM OpenDRIVE®.
 The road with the bridge object leads over a bridge.
 By definition, bridges are valid for the complete cross section of a road.
 Bridges are described by a starting point, a length, and a type, such as concrete, steel, wood, or brick.
@@ -24,14 +24,14 @@ Figure 126. Bridge
 
 **`<bridge>` element**
 
-In ASAM OpenDRIVE, bridges are represented by the `<bridge>` element within the `<objects>` element.
+In ASAM OpenDRIVE®, bridges are represented by the `<bridge>` element within the `<objects>` element.
 
 ```
 UML class: t_road_objects_bridge
 XML tag:   <bridge> (Multiplicity: 0..*)
 ```
 
-Bridges are modeled as objects in ASAM OpenDRIVE.
+Bridges are modeled as objects in ASAM OpenDRIVE®.
 The road with the bridge object leads over a bridge.
 Bridges are valid for a road’s complete cross section unless a lane validity record with further restrictions is provided as child element.
 
@@ -48,7 +48,7 @@ Table 106. Attributes of the <bridge> element
 
 **`<validity>` element**
 
-In ASAM OpenDRIVE, lane validity is represented by the `<validity>` element within the `<object>` element.
+In ASAM OpenDRIVE®, lane validity is represented by the `<validity>` element within the `<object>` element.
 
 ```
 UML class: t_road_objects_object_laneValidity

@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 6 Use cases
+# ASAM OpenMATERIAL® 3D latest — 6 Use cases
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/06_use_cases/use-cases.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -10,9 +10,9 @@
 # 6 Use cases
 
 This section provides a comprehensive list of use cases.
-These use cases are structured to demonstrate how various aspects of ASAM OpenMATERIAL 3D are applied.
+These use cases are structured to demonstrate how various aspects of ASAM OpenMATERIAL® 3D are applied.
 They include the impact of technologies like 3D modeling tools and 3D engines, as well as specific *3D model* formats such as glTF and FBX.
-This clear organization helps users understand the practical applications of ASAM OpenMATERIAL 3D and how it integrates into their workflows.
+This clear organization helps users understand the practical applications of ASAM OpenMATERIAL® 3D and how it integrates into their workflows.
 
 Table 5. Use case 1: Creating *3D assets*
 
@@ -65,7 +65,7 @@ Table 9. Use case 5: Importing *3D assets* linked to *material properties* into 
 | --- | --- |
 | **Description** | As a sensor model developer, I want to import *3D assets* that are packaged as FMUs into sensor models. |
 | **Relevant OpenMATERIAL 3D segments** | Geometry and Material |
-| **Influencing standards** | FMI [[6](../bibliography.html#bib-fmi)], ASAM OSI (OSMP) [[5](../bibliography.html#bib-osi)], ASAM OpenLABEL [[3](../bibliography.html#bib-ola)], ASAM OpenDRIVE [[4](../bibliography.html#bib-odr)], ASAM OpenSCENARIO [[2](../bibliography.html#bib-osc)] |
+| **Influencing standards** | FMI [[6](../bibliography.html#bib-fmi)], ASAM OSI (OSMP) [[5](../bibliography.html#bib-osi)], ASAM OpenLABEL [[3](../bibliography.html#bib-ola)], ASAM OpenDRIVE® [[4](../bibliography.html#bib-odr)], ASAM OpenSCENARIO [[2](../bibliography.html#bib-osc)] |
 | **Influencing technologies** | Unreal Engine, Unity, OptiX, CUDA |
 | **Relevant user** | Sensor model developer |
 
@@ -120,6 +120,6 @@ Table 14. Use case 10: Using sensor simulation to train perception algorithms
 | --- | --- |
 | **Description** | As a perception algorithm developer, I want to use simulated environments for model training and testing, as real-world information collection is too expensive and inconvenient. |
 | **Relevant OpenMATERIAL 3D segments** | Geometry and Material |
-| **Influencing standards** | ASAM OSI [[5](../bibliography.html#bib-osi)], ASAM OpenSCENARIO [[2](../bibliography.html#bib-osc)], ASAM OpenDRIVE [[4](../bibliography.html#bib-odr)] |
+| **Influencing standards** | ASAM OSI [[5](../bibliography.html#bib-osi)], ASAM OpenSCENARIO [[2](../bibliography.html#bib-osc)], ASAM OpenDRIVE® [[4](../bibliography.html#bib-odr)] |
 | **Influencing technologies** | Unity, OptiX, Regeneration AI |
 | **Relevant user** | End user |

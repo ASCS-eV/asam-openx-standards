@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 10.4 ODD module mapping
+# ASAM OpenODD® v1.0.0 — 10.4 ODD module mapping
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/10_yaml/10_04_openodd_export_modules_yaml.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -13,7 +13,7 @@
 
 ### 10.4.1.1 Module condition semantics
 
-The expression specified within a YAML condition shall follow the methods of [Section 6.4.8.3, "Condition and expression structure"](../06_model_concept/06_04_openodd_modules.html#sec-condition-and-expression-structure) in ASAM OpenODD model.
+The expression specified within a YAML condition shall follow the methods of [Section 6.4.8.3, "Condition and expression structure"](../06_model_concept/06_04_openodd_modules.html#sec-condition-and-expression-structure) in ASAM OpenODD® model.
 The following examples illustrate these semantics.
 
 In [Section 6.4.3.3, "INCLUDE and EXCLUDE semantics"](../06_model_concept/06_04_openodd_modules.html#sec-include-and-exclude-semantics), the free-form notation in [Code 65](../06_model_concept/06_04_openodd_modules.html#code-example-module1-include-and) is mapped to YAML, as illustrated in [Code 180](#code-example-1).
@@ -173,7 +173,7 @@ MODULES:
 
 ### 10.4.2.1 Module instance details
 
-For the specification of class `Module` in ASAM OpenODD model see [Section 6.4.4, "Module details"](../06_model_concept/06_04_openodd_modules.html#sec-concept-modules-module-details).
+For the specification of class `Module` in ASAM OpenODD® model see [Section 6.4.4, "Module details"](../06_model_concept/06_04_openodd_modules.html#sec-concept-modules-module-details).
 See following how a `Module` instance shall be represented in YAML:
 
 * `id` field:  
@@ -210,7 +210,7 @@ Each `Module` comprises zero or more `Tag` instances, each specifying a `name` s
 
 To map the examples from [Section 6.4.4.3, "Basic modular ODD specifications"](../06_model_concept/06_04_openodd_modules.html#sec-basic-modular-ODD-specifications) to YAML, consider the YAML examples [Code 189](#code-file2-yml-data-mode-and-semantics) and [Code 190](#code-file1-yml-data-mode-and-semantics):
 
-Code 189. Example file file2.yml for ASAM OpenODD model and semantics
+Code 189. Example file file2.yml for ASAM OpenODD® model and semantics
 
 ```
 IMPORT:
@@ -251,7 +251,7 @@ ODD:
 | --- | --- |
 |  | The quotes are added to ensure the validity of the YAML. A simple pre-processor can be used to add them in to avoid the need to specify them manually. |
 
-Code 190. Example file file1.yml for ASAM OpenODD model and semantics
+Code 190. Example file file1.yml for ASAM OpenODD® model and semantics
 
 ```
 IMPORT:
@@ -284,7 +284,7 @@ The YAML export in [Code 189](#code-file2-yml-data-mode-and-semantics) and [Code
 To address this limitation, for example, CSV export can be used.
 See  [Section 8, "Model to tabular format mapping reference"](../08_tabular/08_00_tabular.html#top-model-tabular-mapping-reference) for the full export specifications.
 
-See the export specification of each format (YAML, ASAM OpenSCENARIO DSL, CSV, and XML) for the detailed specification of each export format and implied import requirements.
+See the export specification of each format (YAML, ASAM OpenSCENARIO® DSL, CSV, and XML) for the detailed specification of each export format and implied import requirements.
 
 ### 10.4.2.3 Leveraging user defined types in conditions
 
@@ -512,7 +512,7 @@ The following is an explanation:
 
 ### 10.4.4.2 Module MetaData
 
-See [Section 6.4.6.3, "Module MetaData"](../06_model_concept/06_04_openodd_modules.html#sec-concept-modules-module-metadata) how MetaData is defined in ASAM OpenODD model.
+See [Section 6.4.6.3, "Module MetaData"](../06_model_concept/06_04_openodd_modules.html#sec-concept-modules-module-metadata) how MetaData is defined in ASAM OpenODD® model.
 When using YAML notation, a `MetaData` instance can be added within comments by using the `#/` characters at the end of every line.
 
 `MetaData` instances can be attached to `Module` instances and `Section` instances.
@@ -559,7 +559,7 @@ Measurements have uncertainty of two types:
   As an example, the detection of cyclists is uncertain.
   Such uncertainty can be represented either by using multiple values, for example `vru: [cyclist, motorcycle]`, or using a confidence measure, for example `cyclist.confidence: 0.73`.
 
-To illustrate how ASAM OpenODD supports both types of uncertainty, consider the example module in [Code 197](#code-uncertainty):
+To illustrate how ASAM OpenODD® supports both types of uncertainty, consider the example module in [Code 197](#code-uncertainty):
 
 Code 197. Example for uncertainty
 
@@ -678,7 +678,7 @@ lane_width: [1.25*ego_width .. 2.25*ego_width]
 
 ### 10.4.5.4 Parameterized expressions
 
-The ASAM OpenODD model supports parametrization of expressions using taxonomy concepts.
+The ASAM OpenODD® model supports parametrization of expressions using taxonomy concepts.
 Consider defining, for example like in [Code 205](#code-parameterized-expressions), the region as a parameter, and the minim speed as a second parameter:
 
 Code 205. Example for parameterized expressions

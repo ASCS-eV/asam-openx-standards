@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 9.1 Introduction to geometries
+# ASAM OpenDRIVE® v1.9.0 — 9.1 Introduction to geometries
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/09_geometries/09_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,7 +11,7 @@
 
 Road courses can have many different shapes.
 There are long, straight roads on open ground, elongated curves on motorways, or narrow turns in the mountains.
-In order to model all these road courses in a mathematically correct way, ASAM OpenDRIVE provides a variety of geometry elements:
+In order to model all these road courses in a mathematically correct way, ASAM OpenDRIVE® provides a variety of geometry elements:
 
 * Straight lines
 * Spirals or clothoids with a linearly changing curvature
@@ -21,11 +21,11 @@ In order to model all these road courses in a mathematically correct way, ASAM O
 
 ![img](../_images/09_geometry/geom_overview.png)
 
-Figure 22. Geometry elements in ASAM OpenDRIVE
+Figure 22. Geometry elements in ASAM OpenDRIVE®
 
 [Figure 22](#fig-c2164748-80cf-4567-8d85-0c0b39f57429) shows the five possible ways to define the geometry of a road reference line.
 
-The combination of all geometry elements available in ASAM OpenDRIVE allows for the creation of a great variety of road courses.
+The combination of all geometry elements available in ASAM OpenDRIVE® allows for the creation of a great variety of road courses.
 
 **XML example**
 

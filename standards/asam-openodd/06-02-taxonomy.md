@@ -1,7 +1,7 @@
-# ASAM OpenODD v1.0.0 — §6.2 Taxonomy
+# ASAM OpenODD® v1.0.0 — §6.2 Taxonomy
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/06_model_concept/06_02_openodd_taxonomy.html
-> **Standard**: ASAM OpenODD Base Standard 1.0.0 Specification, 2025-04-03
+> **Standard**: ASAM OpenODD® Base Standard 1.0.0 Specification, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2025-05-19
 
@@ -9,7 +9,7 @@
 
 ## 6.2.4.1 Overview
 
-The type-related classes of the ASAM OpenODD model define how taxonomy concepts are structured.
+The type-related classes of the ASAM OpenODD® model define how taxonomy concepts are structured.
 
 A `TaxonomyConcept` is either one of two specializations:
 
@@ -149,4 +149,4 @@ Specifies a possible value of a `Categorical` attribute, for example `road_type`
 
 | Parameter | Type | Mandatory | Description |
 |-----------|------|-----------|-------------|
-| name | LangString | yes | An array of multi-language translation of the literal (at least English must be provided). The name must be unique within an ASAM OpenODD file transmission. |
+| name | LangString | yes | An array of multi-language translation of the literal (at least English must be provided). The name must be unique within an ASAM OpenODD® file transmission. |

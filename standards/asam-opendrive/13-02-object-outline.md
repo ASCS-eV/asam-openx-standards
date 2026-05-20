@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.2 Object outline
+# ASAM OpenDRIVE® v1.9.0 — 13.2 Object outline
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_02_object_outline.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -53,7 +53,7 @@ Figure 114. Traffic island as object
 
 **`<outlines>` element**
 
-In ASAM OpenDRIVE, the outlines of objects are represented by the `<outlines>` element within the `<object>` element.
+In ASAM OpenDRIVE®, the outlines of objects are represented by the `<outlines>` element within the `<object>` element.
 
 The `<outlines>` element serves as a wrapper for the `<outline>` element, which itself contains further elements to describe, for example, corner roads, bridges, and borders.
 
@@ -67,7 +67,7 @@ If `<outlines>` is not used, an object can have only a single `<outline>` entry.
 
 **`<outline>` element**
 
-In ASAM OpenDRIVE, a single outline is represented by the `<outline>` element within the `<outlines>` element.
+In ASAM OpenDRIVE®, a single outline is represented by the `<outline>` element within the `<outlines>` element.
 
 |  |  |
 | --- | --- |
@@ -84,7 +84,7 @@ The inner area of the described outline may be filled with a filling type, such 
 
 An element shall be followed by two or more `<cornerRoad>` elements, by two or more `<cornerLocal>` elements, or by one or more `<curveLocal>` elements.
 
-ASAM OpenDRIVE 1.4 outline definitions (without `<outlines>` parent element) shall still be supported.
+ASAM OpenDRIVE® 1.4 outline definitions (without `<outlines>` parent element) shall still be supported.
 
 Table 86. Attributes of the <outline> element
 
@@ -153,7 +153,7 @@ Corner points are connected using linear interpolation.
 
 **`<cornerRoad>` element**
 
-In ASAM OpenDRIVE, corner points of an object that use s- and t-coordinates are represented by the `<cornerRoad>` element within the `<outline>` element.
+In ASAM OpenDRIVE®, corner points of an object that use s- and t-coordinates are represented by the `<cornerRoad>` element within the `<outline>` element.
 
 ```
 UML class: t_road_objects_object_outlines_outline_cornerRoad
@@ -242,7 +242,7 @@ The corner local helps to position objects beyond a road and relative to a singl
 
 **`<cornerLocal>` element**
 
-In ASAM OpenDRIVE, corner points of an object that use local u- and v-coordinates are represented by the `<cornerLocal>` element within the `<outline>` element.
+In ASAM OpenDRIVE®, corner points of an object that use local u- and v-coordinates are represented by the `<cornerLocal>` element within the `<outline>` element.
 
 ```
 UML class: t_road_objects_object_outlines_outline_cornerLocal
@@ -327,7 +327,7 @@ Corner local curve helps to model objects with a smooth geometry such as traffic
 
 **`<curveLocal>` element**
 
-In ASAM OpenDRIVE, object outlines that use local u- and v-coordinates can be defined using `<curveLocal>` elements.
+In ASAM OpenDRIVE®, object outlines that use local u- and v-coordinates can be defined using `<curveLocal>` elements.
 The following shapes are available:
 
 * Straight lines
@@ -359,7 +359,7 @@ Table 89. Attributes of the <curveLocal> element
 
 **`<line>` element**
 
-In ASAM OpenDRIVE, a straight line is represented by the `<line>` element within the `<curveLocal>` element.
+In ASAM OpenDRIVE®, a straight line is represented by the `<line>` element within the `<curveLocal>` element.
 
 A straight line is the simplest corner local curve element.
 
@@ -374,7 +374,7 @@ It contains no further attributes.
 
 **`<arc>` element**
 
-In ASAM OpenDRIVE, an arc is represented by the `<arc>` element within the `<curveLocal>` element.
+In ASAM OpenDRIVE®, an arc is represented by the `<arc>` element within the `<curveLocal>` element.
 
 An arc describes an object outline with constant curvature.
 
@@ -395,7 +395,7 @@ Table 90. Attributes of the <arc> element
 
 **`<paramPoly3> element`**
 
-In ASAM OpenDRIVE, parametric cubic curves are represented by `<paramPoly3>` elements within the `<curveLocal>` element.
+In ASAM OpenDRIVE®, parametric cubic curves are represented by `<paramPoly3>` elements within the `<curveLocal>` element.
 
 Parametric cubic curves are typically used to represent measurement data.
 

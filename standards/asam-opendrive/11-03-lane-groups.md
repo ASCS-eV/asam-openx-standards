@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.3 Lane groups
+# ASAM OpenDRIVE® v1.9.0 — 11.3 Lane groups
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_03_lane_groups.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 11.3 Lane groups
 
-For easier navigation through an ASAM OpenDRIVE road description, the lanes within a lane section are grouped into left, center, and right lanes.
+For easier navigation through an ASAM OpenDRIVE® road description, the lanes within a lane section are grouped into left, center, and right lanes.
 
 ![img](../_images/11_lanes/lanes_group.png)
 
@@ -23,7 +23,7 @@ Because lane numbers descend in a negative t-direction and ascend in a positive 
 
 **`<left>` element**
 
-In ASAM OpenDRIVE, left lane groups are represented by the `<left>` element within the `<laneSection>` element.
+In ASAM OpenDRIVE®, left lane groups are represented by the `<left>` element within the `<laneSection>` element.
 
 ```
 UML class: t_road_lanes_laneSection_left
@@ -34,7 +34,7 @@ Contains all lanes left to the center lane.
 
 **`<lane>` element**
 
-In ASAM OpenDRIVE, lanes in the left lane group are represented by `<lane>` elements within the `<left>` element.
+In ASAM OpenDRIVE®, lanes in the left lane group are represented by `<lane>` elements within the `<left>` element.
 
 ```
 UML class: t_road_lanes_laneSection_left_lane
@@ -59,7 +59,7 @@ Table 34. Attributes of the <lane> element
 
 **`<center>` element**
 
-In ASAM OpenDRIVE, center lane groups are represented by the `<center>` element within the `<laneSection>` element.
+In ASAM OpenDRIVE®, center lane groups are represented by the `<center>` element within the `<laneSection>` element.
 
 ```
 UML class: t_road_lanes_laneSection_center
@@ -70,7 +70,7 @@ Contains the center lane, which must be defined for all roads.
 
 **`<lane>` element**
 
-In ASAM OpenDRIVE, lanes in the center lane group are represented by `<lane>` elements within the `<center>` element.
+In ASAM OpenDRIVE®, lanes in the center lane group are represented by `<lane>` elements within the `<center>` element.
 
 ```
 UML class: t_road_lanes_laneSection_center_lane
@@ -92,7 +92,7 @@ Table 35. Attributes of the <lane> element
 
 **`<right>` element**
 
-In ASAM OpenDRIVE, right lane groups are represented by the `<right>` element within the `<laneSection>` element.
+In ASAM OpenDRIVE®, right lane groups are represented by the `<right>` element within the `<laneSection>` element.
 
 ```
 UML class: t_road_lanes_laneSection_right
@@ -103,7 +103,7 @@ Contains all lanes right to the center lane.
 
 **`<lane>` element**
 
-In ASAM OpenDRIVE, lanes in the right lane group are represented by `<lane>` elements within the `<right>` element.
+In ASAM OpenDRIVE®, lanes in the right lane group are represented by `<lane>` elements within the `<right>` element.
 
 ```
 UML class: t_road_lanes_laneSection_right_lane
@@ -147,7 +147,7 @@ The following rules apply to lane grouping:
 
 ## 11.3.1 Driving direction
 
-In ASAM OpenDRIVE, the driving direction is specified by a combination of different elements and attributes.
+In ASAM OpenDRIVE®, the driving direction is specified by a combination of different elements and attributes.
 For a road with the @rule="RHT" attribute, the default driving direction would be in positive direction of the road reference line for all `<right>` element lanes with negative @id attribute and against the road reference line for lanes in the `<left>` element with positive @id attribute.
 If the road has the @rule="LHT" attribute, the default driving direction would be in positive direction of the road reference line for all `<left>` element lanes with positive @id attribute and against the road reference line for all `<right>` element lanes with negative @id attribute.
 This can be influenced with the @direction attribute individually for each lane.

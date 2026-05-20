@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — C.4 (informative) Motor vehicles in different countries example
+# ASAM OpenODD® v1.0.0 — C.4 (informative) Motor vehicles in different countries example
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_c_case_studies_04_mvdc.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,7 +15,7 @@ This case study shows in tabular format a vehicle passing the border between Gre
 
 The case study is about describing the COD, understanding which logical expressions could be used for the ODD definition, how do taxonomy types work for the tabular schema (such as ranges at `CategoricalLiteral` instances), and how to compare ODD and COD.
 
-The goal was to verify that the ASAM OpenODD supports these use cases successfully.
+The goal was to verify that the ASAM OpenODD® supports these use cases successfully.
 This was achieved through creating a taxonomy, an ODD, and validating an COD against that OOD.
 
 ## C.4.2 Taxonomy

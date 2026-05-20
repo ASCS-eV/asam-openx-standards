@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.2 Common junctions
+# ASAM OpenDRIVE® v1.9.0 — 12.2 Common junctions
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_02_common_junctions.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -20,7 +20,7 @@ Figure 85. Types of roads in a junction (right-hand traffic)
 * Incoming roads: These roads contain lanes that lead into a junction.
 * Connecting roads: These roads represent the paths through a junction.
 
-Outgoing roads are not specifically defined as an element or attribute in ASAM OpenDRIVE.
+Outgoing roads are not specifically defined as an element or attribute in ASAM OpenDRIVE®.
 Incoming roads serve as outgoing roads.
 These roads are implicitly defined as outgoing by the connecting roads that lead into them.
 
@@ -30,14 +30,14 @@ For elements in the UML model see [Figure 84](12_01_introduction.html#fig-8b7e26
 
 **`<junction>` element**
 
-In ASAM OpenDRIVE, junctions are represented by `<junction>` elements within the `<OpenDRIVE>` element.
+In ASAM OpenDRIVE®, junctions are represented by `<junction>` elements within the `<OpenDRIVE>` element.
 
 ```
 UML class: t_junction_common
 XML tag:   <junction type="default"> (Multiplicity: 0..*)
 ```
 
-Common junctions are the default type of junction in ASAM OpenDRIVE and specify areas where drivable lanes may overlap and traffic may cross.
+Common junctions are the default type of junction in ASAM OpenDRIVE® and specify areas where drivable lanes may overlap and traffic may cross.
 
 Table 55. Attributes of the <junction type="default"> element
 
@@ -50,7 +50,7 @@ Table 55. Attributes of the <junction type="default"> element
 
 **`<connection>` element**
 
-In ASAM OpenDRIVE, connections in a junction are represented by `<connection>` elements within the `<junction>` element.
+In ASAM OpenDRIVE®, connections in a junction are represented by `<connection>` elements within the `<junction>` element.
 
 ```
 UML class: t_junction_connection_common

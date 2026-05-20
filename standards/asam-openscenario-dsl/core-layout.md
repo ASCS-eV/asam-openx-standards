@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 8.2 Domain model core layout
+# ASAM OpenSCENARIO® DSL v2.2.0 — 8.2 Domain model core layout
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/domain-model/core_layout.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

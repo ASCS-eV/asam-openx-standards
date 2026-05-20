@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 10.1 Overview
+# ASAM OpenODD® v1.0.0 — 10.1 Overview
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/10_yaml/10_01_yaml_overview.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

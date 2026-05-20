@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.3 Signal dependency
+# ASAM OpenDRIVE® v1.9.0 — 14.3 Signal dependency
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_03_signal_dependency.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,7 +15,7 @@ Signal dependency means that one signal controls the output of another signal.
 
 **`<dependency>` element**
 
-In ASAM OpenDRIVE, signal dependency is represented by the `<dependency>` element within the `<signal>` element.
+In ASAM OpenDRIVE®, signal dependency is represented by the `<dependency>` element within the `<signal>` element.
 
 ```
 UML class: t_road_signals_signal_dependency
@@ -90,9 +90,9 @@ The following rules apply to dependency elements:
 
 * [asam.net:xodr:1.7.0:road.signal.dependency.multiple\_dependency](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-signal-dependency-multiple-dependency): A signal may have multiple dependencies.
 
-* The type of dependency is not specifically defined in ASAM OpenDRIVE and may be set in the application.
+* The type of dependency is not specifically defined in ASAM OpenDRIVE® and may be set in the application.
 
-Rules regarding the type of dependency are defined in the application and are not stored in ASAM OpenDRIVE.
+Rules regarding the type of dependency are defined in the application and are not stored in ASAM OpenDRIVE®.
 
 **Related topics**
 

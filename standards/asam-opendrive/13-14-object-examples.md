@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.14 Combinations of elements and attributes for object types
+# ASAM OpenDRIVE® v1.9.0 — 13.14 Combinations of elements and attributes for object types
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_14_object_examples.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

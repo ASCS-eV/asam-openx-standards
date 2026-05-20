@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — Bibliography
+# ASAM OpenSCENARIO® DSL v2.2.0 — Bibliography
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/bibliography.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,11 +11,11 @@
 
 [1] ASAM OpenCRG 1.2.0. 2020
 
-[2] ASAM OpenDRIVE 1.8.0. 2023
+[2] ASAM OpenDRIVE® 1.8.0. 2023
 
 [3] ASAM OpenLABEL 1.0.0. 2021
 
-[4] ASAM OpenODD 1.0.0 Concept paper. 2020
+[4] ASAM OpenODD® 1.0.0 Concept paper. 2020
 
 [5] ASAM OpenSCENARIO XML 1.3.0. 2024
 

@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 3 Terms and definitions
+# ASAM OpenDRIVE® v1.9.0 — 3 Terms and definitions
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/03_terms_and_definitions/03_terms_and_definitions.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -10,12 +10,12 @@
 # 3 Terms and definitions
 
 Bridge
-:   Bridges are modeled as objects in ASAM OpenDRIVE.
+:   Bridges are modeled as objects in ASAM OpenDRIVE®.
     The road with the bridge object leads over a bridge.
     Bridges are valid for a road’s complete cross section unless a lane validity record with further restrictions is provided as child element.
 
 Common junction
-:   Common junctions are the default type of junction in ASAM OpenDRIVE and specify areas where drivable lanes may overlap and traffic may cross.
+:   Common junctions are the default type of junction in ASAM OpenDRIVE® and specify areas where drivable lanes may overlap and traffic may cross.
 
 Connecting road
 :   Connecting roads are part of a junction and link the roads going in and out.
@@ -85,19 +85,19 @@ Origin
     When rotation is applied to the element, it pivots around its origin.
 
 Outgoing road
-:   Outgoing roads are not specifically defined as an element or attribute in ASAM OpenDRIVE.
+:   Outgoing roads are not specifically defined as an element or attribute in ASAM OpenDRIVE®.
     Incoming roads serve as outgoing roads.
     These roads are implicitly defined as outgoing by the connecting roads that lead into them.
 
 Road
-:   Roads are the core elements for any road network in ASAM OpenDRIVE.
+:   Roads are the core elements for any road network in ASAM OpenDRIVE®.
     Each road runs along one road reference line.
 
 Road elevation
 :   Road elevation specifies the elevation along the road reference line, that is in s direction.
 
 Road marking
-:   Road markings in ASAM OpenDRIVE are defined as lane markings, object markings, for example parking boxes, or signals, for example stop lines.
+:   Road markings in ASAM OpenDRIVE® are defined as lane markings, object markings, for example parking boxes, or signals, for example stop lines.
 
 Road reference line
 :   A road reference line defines the horizontal alignment of a road and consists of one or more geometry elements.
@@ -146,7 +146,7 @@ Signal state
 
 Signal synchronization group
 :   Multiple signal groups (see [signal group](#sec-5dffe4c1-df1e-4cf7-b9a4-b8eac9a3683e)) which should be kept synchronized and whose signal cycles (see [signal cycle](#sec-fe178b76-4fb3-48c9-b19c-981b8b9a787f)) have the same finite duration can, but are not required to be mapped to a synchronization group.
-    This mapping can be used to indicate that whenever the phase of one signal group is set - by an ASAM OpenSCENARIO XML `TrafficSignalControllerAction`, an ASAM OpenSCENARIO DSL `set_group_semantic_state` , or otherwise - the other signal groups in that synchronization group should be set to the corresponding position in their signal cycles.
+    This mapping can be used to indicate that whenever the phase of one signal group is set - by an ASAM OpenSCENARIO XML `TrafficSignalControllerAction`, an ASAM OpenSCENARIO® DSL `set_group_semantic_state` , or otherwise - the other signal groups in that synchronization group should be set to the corresponding position in their signal cycles.
 
 Slip lane
 :   On a slip lane a driver can change roads without driving into the main intersection.
@@ -170,7 +170,7 @@ Touching point
     A touching point has a position in x, y, z and a heading, pitch and roll.
 
 Tunnel
-:   Tunnels are modeled as objects in ASAM OpenDRIVE.
+:   Tunnels are modeled as objects in ASAM OpenDRIVE®.
     The road with the tunnel object defines the part of the road that is the tunnel or the underpass.
 
 Virtual junction

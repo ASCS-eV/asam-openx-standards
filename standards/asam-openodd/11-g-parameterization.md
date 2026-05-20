@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — Annex F: (informative) Parameters
+# ASAM OpenODD® v1.0.0 — Annex F: (informative) Parameters
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_g_parameterization.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -12,11 +12,11 @@
 ## F.1 Overview
 
 In the following parameterized expressions are presented.
-In future versions of ASAM OpenODD parameterized expressions can be developed further and be declared as normative.
+In future versions of ASAM OpenODD® parameterized expressions can be developed further and be declared as normative.
 
 ## F.2 Parameterized expressions
 
-The ASAM OpenODD model supports the parameterization of expressions that allow defining parameters for later use.
+The ASAM OpenODD® model supports the parameterization of expressions that allow defining parameters for later use.
 To parameterize expressions, we can use the class `TaxonomyConcept` (see [Section 6.2.4, "Specializations of `TaxonomyConcept`"](../06_model_concept/06_02_openodd_taxonomy.html#sec-specializations-of-taxonomyconcepts)), which can either be a `Container` aggregating multiple `TaxonomyConcept` instances or a `Type` including `Record`, `PrimitiveType`, `CategoricalLiteral`, and `Categorical`.
 
 It is recommended to use the `$ as prefix` for parameterized expressions to distinguish them from other `TaxonomyConcept` instances.
@@ -95,10 +95,10 @@ Going back to what parameters **are**:
 
 ## F.3 Assigning Parameter Values
 
-The ASAM OpenODD model allows combining COD files, see [Section 6.3.5, "Combining COD files"](../06_model_concept/06_03_openodd_od.html#sec-combining-cod-files).
+The ASAM OpenODD® model allows combining COD files, see [Section 6.3.5, "Combining COD files"](../06_model_concept/06_03_openodd_od.html#sec-combining-cod-files).
 This capability can be used to assign parameter values as follows:
 
-Code 233. Example ASAM OpenODD "config COD" used to instantiate parameters (free-form notation)
+Code 233. Example ASAM OpenODD® "config COD" used to instantiate parameters (free-form notation)
 
 ```
  Num        TEMPORAL_EXTENT        SPATIAL_EXTENT     $REGION_COUNTRY  $SERVICE_AREA      $MAX_ALLOWED_SPEED_BUMP_HEIGHT;cm    $MIN_REQUIRED_CLEARANCE;cm
@@ -154,7 +154,7 @@ The parameterization of TaxonomyConcept instances within a `Module` or ODD speci
 `TaxonomyConcept` `Attribute` instances can remain undefined during initial specification and be assigned values during usage.
 This is typically indicated by the use of the `$ as prefix` for a `TaxonomyConcept` instance, which is a recommendation as outlined in [Section F.2, “Parameterized expressions”](#sec-parameterized-expressions).
 
-The ASAM OpenODD model supports parameterization of a `TaxonomyConcept`, enabling the use of placeholders in module, ODD, and COD specifications.
+The ASAM OpenODD® model supports parameterization of a `TaxonomyConcept`, enabling the use of placeholders in module, ODD, and COD specifications.
 [Table 168](#tab-taxonomy-params) provides a tabular representation of a parameterized `Module` based on user-defined parameter `TaxonomyConcept` instances.
 
 Table 168. Parameterized taxonomy - param\_taxonomy.csv

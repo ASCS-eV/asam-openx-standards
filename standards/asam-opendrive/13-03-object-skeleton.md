@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.3 Object skeleton
+# ASAM OpenDRIVE® v1.9.0 — 13.3 Object skeleton
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_03_object_skeleton.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -23,7 +23,7 @@ The `<skeleton>` element serves as a wrapper for the `<polyline>` element that c
 
 **`<skeleton>` element**
 
-In ASAM OpenDRIVE, the skeleton of objects is represented by the `<skeleton>` element within the `<object>` element.
+In ASAM OpenDRIVE®, the skeleton of objects is represented by the `<skeleton>` element within the `<object>` element.
 
 ```
 UML class:  t_road_objects_object_skeleton
@@ -35,7 +35,7 @@ Wrapper for the object polylines, that can be used to describe the actual shape 
 
 **`<polyline>` element**
 
-In ASAM OpenDRIVE, the polyline of a skeleton is represented by the `<polyline>` element within the `<skeleton>` element.
+In ASAM OpenDRIVE®, the polyline of a skeleton is represented by the `<polyline>` element within the `<skeleton>` element.
 
 ```
 UML class:  t_road_objects_object_skeleton_polyline
@@ -94,7 +94,7 @@ The shape of a polyline may be described by the object’s local width and lengt
 
 **`<vertexRoad>` element**
 
-In ASAM OpenDRIVE, polyline points that use s- and t-coordinates are represented by the `<vertexRoad>` element within the `<polyline>` element.
+In ASAM OpenDRIVE®, polyline points that use s- and t-coordinates are represented by the `<vertexRoad>` element within the `<polyline>` element.
 
 ```
 UML class:  t_road_objects_object_skeleton_polyline_vertexRoad
@@ -187,7 +187,7 @@ The polyline shape of an object may be described by the object’s local width a
 
 **`<vertexLocal>` element**
 
-In ASAM OpenDRIVE, polyline points that use local u- and v-coordinates are represented by the `<vertexLocal>` element within the `<polyline>` element.
+In ASAM OpenDRIVE®, polyline points that use local u- and v-coordinates are represented by the `<vertexLocal>` element within the `<polyline>` element.
 
 ```
 UML class:  t_road_objects_object_skeleton_polyline_vertexLocal

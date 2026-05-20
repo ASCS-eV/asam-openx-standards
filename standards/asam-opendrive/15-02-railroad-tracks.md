@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 15.2 Railroad tracks
+# ASAM OpenDRIVE® v1.9.0 — 15.2 Railroad tracks
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/15_railroads/15_02_railroad_tracks.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 15.2 Railroad tracks
 
-In ASAM OpenDRIVE, railroad tracks are always described in connection with the roads on which one pair of railroad track run.
+In ASAM OpenDRIVE®, railroad tracks are always described in connection with the roads on which one pair of railroad track run.
 It is not possible to define railroad tracks outside of roads.
 Railroad tracks always need an own road.
 They cannot share a road with other traffic elements.
@@ -24,7 +24,7 @@ Figure 144. Road reference lines for roads and railroads
 
 [Figure 144](#fig-b291ed3c-985a-4760-b514-46afde41fe9f) shows the difference between the use of the road reference line for roads and railroads.
 
-In ASAM OpenDRIVE, railroad tracks are represented by the @type attribute within the `<lane>` element.
+In ASAM OpenDRIVE®, railroad tracks are represented by the @type attribute within the `<lane>` element.
 The values for railroad tracks are `tram` and `rail`.
 
 **Rules**

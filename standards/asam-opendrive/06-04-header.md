@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 6.4 Header
+# ASAM OpenDRIVE® v1.9.0 — 6.4 Header
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/06_general_architecture/06_04_header.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -12,22 +12,22 @@
 ## 6.4.1. `<header>` element
 
 The header is the very first element within the `<OpenDRIVE>` element.
-It is a mandatory element and contains general information about the ASAM OpenDRIVE file, for example version of the ASAM OpenDRIVE or default regulations.
+It is a mandatory element and contains general information about the ASAM OpenDRIVE® file, for example version of the ASAM OpenDRIVE® or default regulations.
 
 ![img](../_images/uml_class_diagrams/EAID_8ED3471B_7252_4771_ADDB_FFD1ACE9AA18.png)
 
 Figure 5. UML class diagram of the Header class
 
-[Figure 5](#fig-b002bcdd-898e-4534-9268-19b7c8ace791) shows the UML class diagram of the ASAM OpenDRIVE Header class.
+[Figure 5](#fig-b002bcdd-898e-4534-9268-19b7c8ace791) shows the UML class diagram of the ASAM OpenDRIVE® Header class.
 
-In ASAM OpenDRIVE, the general information is represented by the `<header>` element.
+In ASAM OpenDRIVE®, the general information is represented by the `<header>` element.
 
 ```
 UML class: t_header
 XML tag:   <header>
 ```
 
-Contains general information about the ASAM OpenDRIVE file
+Contains general information about the ASAM OpenDRIVE® file
 
 Table 8. Attributes of the <header> element
 
@@ -82,7 +82,7 @@ In each country there are different speed limits to a rural road.
 For example a rural road has a speed limit of 100km/h in Germany and 80km/h in the Netherlands.
 
 In some countries, one is allowed to turn right at a red traffic light; in others, one is not.
-Instead of writing this for each road or each signal, the default regulations can be specified once in the header for the entire ASAM OpenDRIVE file.
+Instead of writing this for each road or each signal, the default regulations can be specified once in the header for the entire ASAM OpenDRIVE® file.
 The default driving regulations can be overwritten with road, lane, or signal definitions.
 
 ### 6.4.3.1. `<roadRegulations>` element

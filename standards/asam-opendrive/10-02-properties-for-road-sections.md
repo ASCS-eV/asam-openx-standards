@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 10.2 Properties for road sections and cross section
+# ASAM OpenDRIVE® v1.9.0 — 10.2 Properties for road sections and cross section
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/10_roads/10_02_properties_for_road_sections.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — C.2 (informative) Car-to-car front turn across path example
+# ASAM OpenODD® v1.0.0 — C.2 (informative) Car-to-car front turn across path example
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_c_case_studies_02_ccftap.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

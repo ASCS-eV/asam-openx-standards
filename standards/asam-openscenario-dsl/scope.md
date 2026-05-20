@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 1 Scope
+# ASAM OpenSCENARIO® DSL v2.2.0 — 1 Scope
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/scope.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -38,7 +38,7 @@ ASAM OpenSCENARIO is also suitable for the following applications:
 * Testing in a mixed environment (HiL)
 * Decoding real-word driving data
 
-ASAM OpenSCENARIO may be used in conjunction with ASAM OpenDRIVE and ASAM OpenCRG.
+ASAM OpenSCENARIO may be used in conjunction with ASAM OpenDRIVE® and ASAM OpenCRG.
 These standards describe detailed information of the road network and surface in driving simulations.
 
 ASAM OpenSCENARIO introduces the concept of a *domain-specific language* into scenario description.

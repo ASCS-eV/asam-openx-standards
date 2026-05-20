@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.8 Signal semantics
+# ASAM OpenDRIVE® v1.9.0 — 14.8 Signal semantics
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_08_signal_semantics.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -22,8 +22,8 @@ Functionality for signal semantics cannot be used for visualization.
 This means, the signal semantics and its visual representation need not be identical.
 As an example, a street sign may depict a car on white background within a red circle but apply to all motorized vehicles, not just cars.
 
-As traffic behavior is very complex and also depending on other ASAM OpenDRIVE definitions, for example, the lane width, junctions, and road marking, signal semantics are reduced to a very limited scope.
-The scope of signal semantics in ASAM OpenDRIVE is limited to traffic behavior that is specified just by signals in ASAM OpenDRIVE.
+As traffic behavior is very complex and also depending on other ASAM OpenDRIVE® definitions, for example, the lane width, junctions, and road marking, signal semantics are reduced to a very limited scope.
+The scope of signal semantics in ASAM OpenDRIVE® is limited to traffic behavior that is specified just by signals in ASAM OpenDRIVE®.
 Each traffic behavior is specified by a specific element, for example, by the `<priority>` element that specifies priority regulations.
 
 Table 135. Possible Semantics
@@ -57,14 +57,14 @@ XML tag:    <semantics> (Multiplicity: 0..1)
 Introduced: 1.8.0
 ```
 
-Semantics are limited to traffic behavior that is specified just by signals in ASAM OpenDRIVE.
+Semantics are limited to traffic behavior that is specified just by signals in ASAM OpenDRIVE®.
 Each traffic behavior is specified by a specific element.
 
 ![img](../_images/uml_class_diagrams/EAID_CA805EC8_2A9C_434e_91E8_E81321F9441F.png)
 
 Figure 140. UML class diagram of the Semantics class
 
-[Figure 140](#fig-2be31cc7-2652-4e1d-8530-a27baaeb2513) shows the UML class diagram of the ASAM OpenDRIVE Semantics class.
+[Figure 140](#fig-2be31cc7-2652-4e1d-8530-a27baaeb2513) shows the UML class diagram of the ASAM OpenDRIVE® Semantics class.
 
 **`<lane>` element**
 

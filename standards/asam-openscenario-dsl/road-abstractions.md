@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 8.12 Road abstraction classes
+# ASAM OpenSCENARIO® DSL v2.2.0 — 8.12 Road abstraction classes
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/domain-model/road_abstractions.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -41,7 +41,7 @@ Parameters
 
 #### 8.12.2.1.1 Method odr\_to\_route\_point()
 
-Takes a position in ASAM OpenDRIVE coordinates and returns the corresponding ASAM OpenSCENARIO route-coordinates for the point.
+Takes a position in ASAM OpenDRIVE® coordinates and returns the corresponding ASAM OpenSCENARIO route-coordinates for the point.
 The method returns an error if the point is not on a route.
 
 Prototype
@@ -59,10 +59,10 @@ Parameters
 
     | Parameter | Type | Description |
     | --- | --- | --- |
-    | road\_id | string | ASAM OpenDRIVE roadId |
-    | lane\_id | string | Optional. ASAM OpenDRIVE laneId.  If omitted, the t-coordinate is measured from the ASAM OpenDRIVE road reference line.  If included, the t-coordinate is measured from the ASAM OpenDRIVE lane centerline of the lane. |
-    | s | [length](physical_types.html#sec-physical_types-class-length) | The s-coordinate in ASAM OpenDRIVE coordinates |
-    | t | [length](physical_types.html#sec-physical_types-class-length) | The t-coordinate in ASAM OpenDRIVE coordinates |
+    | road\_id | string | ASAM OpenDRIVE® roadId |
+    | lane\_id | string | Optional. ASAM OpenDRIVE® laneId.  If omitted, the t-coordinate is measured from the ASAM OpenDRIVE® road reference line.  If included, the t-coordinate is measured from the ASAM OpenDRIVE® lane centerline of the lane. |
+    | s | [length](physical_types.html#sec-physical_types-class-length) | The s-coordinate in ASAM OpenDRIVE® coordinates |
+    | t | [length](physical_types.html#sec-physical_types-class-length) | The t-coordinate in ASAM OpenDRIVE® coordinates |
 
 #### 8.12.2.1.2 Method xyz\_to\_route\_point()
 
@@ -275,10 +275,10 @@ Parameters
 
     | Parameter | Type | Description |
     | --- | --- | --- |
-    | road\_id | string | ASAM OpenDRIVE roadId |
-    | lane\_id | string | Optional. ASAM OpenDRIVE laneId.  If omitted, the t-coordinate is measured from the ASAM OpenDRIVE road reference line.  If included, the t-coordinate is measured from the respective ASAM OpenDRIVE lane centerline. |
-    | s | [length](physical_types.html#sec-physical_types-class-length) | s-coordinate in ASAM OpenDRIVE coordinates |
-    | t | [length](physical_types.html#sec-physical_types-class-length) | t-coordinate in ASAM OpenDRIVE coordinates |
+    | road\_id | string | ASAM OpenDRIVE® roadId |
+    | lane\_id | string | Optional. ASAM OpenDRIVE® laneId.  If omitted, the t-coordinate is measured from the ASAM OpenDRIVE® road reference line.  If included, the t-coordinate is measured from the respective ASAM OpenDRIVE® lane centerline. |
+    | s | [length](physical_types.html#sec-physical_types-class-length) | s-coordinate in ASAM OpenDRIVE® coordinates |
+    | t | [length](physical_types.html#sec-physical_types-class-length) | t-coordinate in ASAM OpenDRIVE® coordinates |
 
 #### 8.12.2.1.10 Method create\_path()
 
@@ -1032,7 +1032,7 @@ Lane sections are useful for these purposes:
 * Change the *use* of lanes within a single road.
 * Change the *directionality* of lanes within a single road.
 
-The representation of `lane_section` is similar to the implementation in ASAM OpenDRIVE.
+The representation of `lane_section` is similar to the implementation in ASAM OpenDRIVE®.
 
 * The number of lanes is constant in the whole lane section.
 * Lanes cannot change `lane_type` or `lane_use` or `directionality` within the lane section.
@@ -1471,7 +1471,7 @@ Inherited parameters and variables
 
 ## 8.12.27 Struct odr\_point
 
-A point expressed in ASAM OpenDRIVE coordinates.
+A point expressed in ASAM OpenDRIVE® coordinates.
 
 Basic information
 :   Table 264. Basic information of struct odr\_point
@@ -1488,10 +1488,10 @@ Parameters
 
     | Parameter | Type | Mandatory | Description |
     | --- | --- | --- | --- |
-    | road\_id | string | Yes | ASAM OpenDRIVE identifier for the [road](#sec-roads-class-road) |
-    | lane\_id | string | No | ASAM OpenDRIVE identifier for the lane. If specified, the t-coordinate is measured from the [lane](#sec-roads-class-lane) centerline. If not specified, the t-coordinate is measured from the ASAM OpenDRIVE reference line |
-    | s | [length](physical_types.html#sec-physical_types-class-length) | No | Coordinate along the ASAM OpenDRIVE s-axis |
-    | t | [length](physical_types.html#sec-physical_types-class-length) | No | Coordinate along the ASAM OpenDRIVE t-axis |
+    | road\_id | string | Yes | ASAM OpenDRIVE® identifier for the [road](#sec-roads-class-road) |
+    | lane\_id | string | No | ASAM OpenDRIVE® identifier for the lane. If specified, the t-coordinate is measured from the [lane](#sec-roads-class-lane) centerline. If not specified, the t-coordinate is measured from the ASAM OpenDRIVE® reference line |
+    | s | [length](physical_types.html#sec-physical_types-class-length) | No | Coordinate along the ASAM OpenDRIVE® s-axis |
+    | t | [length](physical_types.html#sec-physical_types-class-length) | No | Coordinate along the ASAM OpenDRIVE® t-axis |
 
 Inherited parameters and variables
 :   Table 266. Inherited parameters and variables of struct odr\_point
@@ -1578,7 +1578,7 @@ Inherited parameters and variables
 
 ## 8.12.31 Struct relative\_path
 
-A relative path is a sequence of points measured with respect to a reference entity. These points can be expressed in Cartesian x-y-z-coordinates, route s-t-coordinates or ASAM OpenDRIVE coordinates.
+A relative path is a sequence of points measured with respect to a reference entity. These points can be expressed in Cartesian x-y-z-coordinates, route s-t-coordinates or ASAM OpenDRIVE® coordinates.
 
 Basic information
 :   Table 274. Basic information of struct relative\_path
@@ -1654,7 +1654,7 @@ Inherited parameters and variables
 
 ## 8.12.34 Struct relative\_path\_odr
 
-A relative path expressed in ASAM OpenDRIVE coordinates, measured with respect to a reference entity.
+A relative path expressed in ASAM OpenDRIVE® coordinates, measured with respect to a reference entity.
 
 Basic information
 :   Table 282. Basic information of struct relative\_path\_odr
@@ -1740,7 +1740,7 @@ Parameters
 
 ## 8.12.38 Struct relative\_trajectory
 
-A relative trajectory is a sequence of points measured with respect to a reference entity, where the points must be traversed at specific moments in time. These points can be expressed in Cartesian x-y-z-coordinates, route s-t-coordinates or ASAM OpenDRIVE coordinates.
+A relative trajectory is a sequence of points measured with respect to a reference entity, where the points must be traversed at specific moments in time. These points can be expressed in Cartesian x-y-z-coordinates, route s-t-coordinates or ASAM OpenDRIVE® coordinates.
 
 Basic information
 :   Table 290. Basic information of struct relative\_trajectory
@@ -1817,7 +1817,7 @@ Inherited parameters and variables
 
 ## 8.12.41 Struct relative\_trajectory\_odr
 
-A relative trajectory expressed in ASAM OpenDRIVE coordinates, measured with respect to a reference entity.
+A relative trajectory expressed in ASAM OpenDRIVE® coordinates, measured with respect to a reference entity.
 
 Basic information
 :   Table 298. Basic information of struct relative\_trajectory\_odr

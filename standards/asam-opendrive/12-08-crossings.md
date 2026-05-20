@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.8 Crossings
+# ASAM OpenDRIVE® v1.9.0 — 12.8 Crossings
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_08_crossings.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -24,7 +24,7 @@ Elevation definitions via CRG or elevation grid are possible.
 
 **`<junction type="crossing">` element**
 
-In ASAM OpenDRIVE, crossings are represented by `<junction>` elements with the value `crossing` in the @type attribute within the `<OpenDRIVE>` element.
+In ASAM OpenDRIVE®, crossings are represented by `<junction>` elements with the value `crossing` in the @type attribute within the `<OpenDRIVE>` element.
 
 ```
 UML class:  t_junction_crossing
@@ -47,7 +47,7 @@ Table 74. Attributes of the <junction type="crossing"> element
 
 **`<roadSection>` element**
 
-In ASAM OpenDRIVE, the ranges with possible crossing traffic at crossings are represented by `<roadSection>` elements within the `<junction>` element.
+In ASAM OpenDRIVE®, the ranges with possible crossing traffic at crossings are represented by `<roadSection>` elements within the `<junction>` element.
 
 ```
 UML class:  t_junction_roadSection

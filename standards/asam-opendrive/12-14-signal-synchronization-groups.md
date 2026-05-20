@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.14 Signal synchronization groups in junctions
+# ASAM OpenDRIVE® v1.9.0 — 12.14 Signal synchronization groups in junctions
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_14_signal_synchronization_groups.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -25,13 +25,13 @@ For example signals controlled by controller ID `44` should be switched to seman
 Junction controllers are used to map signal groups respectively the controllers controlling the signal groups into a synchronization group within one junction.
 A junction controller is described by `<controller>` elements within the `<junction>` element.
 
-The @type attribute of control depends on the application and is not specified in ASAM OpenDRIVE.
+The @type attribute of control depends on the application and is not specified in ASAM OpenDRIVE®.
 
 **Elements in UML model**
 
 **`<controller>` element**
 
-In ASAM OpenDRIVE, controllers are represented by the `<controller>` element within the `<junction>` element.
+In ASAM OpenDRIVE®, controllers are represented by the `<controller>` element within the `<junction>` element.
 
 ```
 UML class: t_junction_controller

@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — D.3 Tabular Format weather COD
+# ASAM OpenODD® v1.0.0 — D.3 Tabular Format weather COD
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_d_further_examples_03_weather_cod.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

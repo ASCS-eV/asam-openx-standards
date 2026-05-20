@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.10 Junction boundary
+# ASAM OpenDRIVE® v1.9.0 — 12.10 Junction boundary
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_10_junction_boundary.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -20,7 +20,7 @@ For more information on `<elevationGrid>`, see  [Section 12.11, "Junction elevat
 
 **`<boundary>` element**
 
-In ASAM OpenDRIVE, junction boundaries are represented by the `<boundary>` element within the `<junction>` element.
+In ASAM OpenDRIVE®, junction boundaries are represented by the `<boundary>` element within the `<junction>` element.
 
 ```
 UML class:  t_junction_boundary
@@ -35,11 +35,11 @@ This also includes the sidewalks for pedestrians.
 
 Figure 98. UML class diagram of the JunctionBoundary class
 
-[Figure 98](#fig-b10e5b4c-ec68-4b44-b4e7-dd5ccce00aca) shows the UML class diagram of the ASAM OpenDRIVE JunctionBoundary class.
+[Figure 98](#fig-b10e5b4c-ec68-4b44-b4e7-dd5ccce00aca) shows the UML class diagram of the ASAM OpenDRIVE® JunctionBoundary class.
 
 **`<segment type="lane">` element**
 
-In ASAM OpenDRIVE, segments along lanes are represented by `<segment>` elements with the value `lane` in the @type attribute within the `<boundary>` element.
+In ASAM OpenDRIVE®, segments along lanes are represented by `<segment>` elements with the value `lane` in the @type attribute within the `<boundary>` element.
 The order of the `<segment>` elements represent the segments in counterclockwise order around the junction.
 
 ```
@@ -64,7 +64,7 @@ Table 77. Attributes of the <segment type="lane"> element
 
 **`<segment type="joint">` element**
 
-In ASAM OpenDRIVE, segments perpendicular to lanes are represented by `<segment>` elements with the value `joint` in the @type attribute within the `<boundary>` element.
+In ASAM OpenDRIVE®, segments perpendicular to lanes are represented by `<segment>` elements with the value `joint` in the @type attribute within the `<boundary>` element.
 The order of the `<segment>` elements represent the segments in counterclockwise order around the junction.
 
 ```

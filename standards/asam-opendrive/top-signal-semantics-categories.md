@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — Annex E: Categories for signal semantics (informative)
+# ASAM OpenDRIVE® v1.9.0 — Annex E: Categories for signal semantics (informative)
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/16_annexes/signal_semantics_categories/top_signal_semantics_categories.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

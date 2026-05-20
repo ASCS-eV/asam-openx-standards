@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — Annex A (normative): Checker rules
+# ASAM OpenMATERIAL® 3D latest — Annex A (normative): Checker rules
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/09_annexes/checker-rules.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,8 +11,8 @@
 
 ## Concept
 
-Checker rules are semantic and syntactic requirements that shall be applied to both parts of ASAM OpenMATERIAL 3D (material and geometry).
-ASAM OpenMATERIAL 3D defines a basic set of rules that apply to the entire standard, as well as specific rules for the two parts of ASAM OpenMATERIAL 3D.
+Checker rules are semantic and syntactic requirements that shall be applied to both parts of ASAM OpenMATERIAL® 3D (material and geometry).
+ASAM OpenMATERIAL® 3D defines a basic set of rules that apply to the entire standard, as well as specific rules for the two parts of ASAM OpenMATERIAL® 3D.
 Rules consist of a name, a UID (a unique identifier of the rule), and a description that specifies the requirements.
 
 The UID is a string that encapsulates a sequence of concepts that identify a rule across different domains.
@@ -20,12 +20,12 @@ The concepts are ordered and separated by the separation character `:`.
 
 The concepts for a rule UID are:
 
-* **Emanating entity**: A domain name for the entity (organization or company) that declares the rule UID. For ASAM OpenMATERIAL 3D, it is `asam.net`.
-* **Standard**: A short string that represents the standard or the domain to which the rule is applied. For ASAM OpenMATERIAL 3D, there are three different standard strings:
+* **Emanating entity**: A domain name for the entity (organization or company) that declares the rule UID. For ASAM OpenMATERIAL® 3D, it is `asam.net`.
+* **Standard**: A short string that represents the standard or the domain to which the rule is applied. For ASAM OpenMATERIAL® 3D, there are three different standard strings:
 
   + `xom`: General rules applicable for both parts or not categorizable because they are in-between.
-  + `xom-geo`: Rules that only apply to the geometry part of ASAM OpenMATERIAL 3D.
-  + `xom-mat`: Rules that only apply to the material part of ASAM OpenMATERIAL 3D.
+  + `xom-geo`: Rules that only apply to the geometry part of ASAM OpenMATERIAL® 3D.
+  + `xom-mat`: Rules that only apply to the material part of ASAM OpenMATERIAL® 3D.
 * **Definition setting**: The version of the standard or the domain to which the rule appears or is applied for the first time, for example, `1.0.0`.
 * **Rule full name**: The full name of the rule, as dot-separated, snake\_lower\_case string. The full name of a rule is composed of the rule set and the rule name, a unique string inside the categorization. The rule set can be nested, meaning that it can be defined as an arbitrary sequence of dot-separated names. The name is the snake\_case string after the last dot of the full name.
 
@@ -55,7 +55,7 @@ UID
 :   asam.net:xom:1.0.0:general.valid\_json\_document
 
 Description
-:   ASAM OpenMATERIAL 3D files with the file extensions .xoma, .xomm, .xomp, or .xompt shall be valid JSON documents.
+:   ASAM OpenMATERIAL® 3D files with the file extensions .xoma, .xomm, .xomp, or .xompt shall be valid JSON documents.
 
 #### schema\_references
 
@@ -63,7 +63,7 @@ UID
 :   asam.net:xom:1.0.0:general.schema\_references
 
 Description
-:   ASAM OpenMATERIAL 3D files with the file extensions .xoma, .xomm, .xomp, or .xompt shall contain a reference url to the corresponding schema in the second line of the file as "$schema": "https://raw.githubusercontent.com/asam-ev/OpenMATERIAL-3D/refs/tags/v<VERSION>/schemas/<CORRESPONDING\_SCHEMA>.json".
+:   ASAM OpenMATERIAL® 3D files with the file extensions .xoma, .xomm, .xomp, or .xompt shall contain a reference url to the corresponding schema in the second line of the file as "$schema": "https://raw.githubusercontent.com/asam-ev/OpenMATERIAL-3D/refs/tags/v<VERSION>/schemas/<CORRESPONDING\_SCHEMA>.json".
 
 #### valid\_schema
 
@@ -71,7 +71,7 @@ UID
 :   asam.net:xom:1.0.0:general.valid\_schema
 
 Description
-:   ASAM OpenMATERIAL 3D files with the file extensions .xoma, .xomm, .xomp, or .xompt shall be valid according to their corresponding JSON schema.
+:   ASAM OpenMATERIAL® 3D files with the file extensions .xoma, .xomm, .xomp, or .xompt shall be valid according to their corresponding JSON schema.
 
 #### uris\_exist
 

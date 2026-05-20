@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.7 Access rules to parking spaces
+# ASAM OpenDRIVE® v1.9.0 — 13.7 Access rules to parking spaces
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_07_access_rules_parking.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -23,7 +23,7 @@ Further restrictions depend on the application and are user defined text.
 
 **`<parkingSpace>` element**
 
-In ASAM OpenDRIVE, access rules for parking spaces are represented by the `<parkingSpace>` element within the `<object>` element.
+In ASAM OpenDRIVE®, access rules for parking spaces are represented by the `<parkingSpace>` element within the `<object>` element.
 
 ```
 UML class: t_road_objects_object_parkingSpace
@@ -50,7 +50,7 @@ Table 98. Attributes of the <parkingSpace> element
 The following rules apply to parkingSpace elements:
 
 * The access to a specified parking space may be limited to a specified group of people or vehicles.
-* Further access restrictions may be defined, but are not part of ASAM OpenDRIVE.
+* Further access restrictions may be defined, but are not part of ASAM OpenDRIVE®.
 
 **Related topics**
 

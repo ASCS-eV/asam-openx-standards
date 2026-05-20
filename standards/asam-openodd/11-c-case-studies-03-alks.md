@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — C.3 (informative) Automated lane keeping system example
+# ASAM OpenODD® v1.0.0 — C.3 (informative) Automated lane keeping system example
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_c_case_studies_03_alks.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

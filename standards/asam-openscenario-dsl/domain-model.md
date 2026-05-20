@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 8 Domain model reference
+# ASAM OpenSCENARIO® DSL v2.2.0 — 8 Domain model reference
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/domain-model/domain-model.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

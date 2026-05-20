@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — Introduction
+# ASAM OpenODD® v1.0.0 — Introduction
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/00_preface/00_introduction.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,22 +11,22 @@
 
 ## Overview
 
-The focus of ASAM OpenODD is on an abstract model to define ODD as well as operational domains (OD), current operational domains (COD), and target operational domains (TOD) and implement these models in various formats.
+The focus of ASAM OpenODD® is on an abstract model to define ODD as well as operational domains (OD), current operational domains (COD), and target operational domains (TOD) and implement these models in various formats.
 
-The ASAM OpenODD model enables the definition of ODD conditions (environmental and other conditions) as well as if and when these conditions are included or excluded from the ODD specification.
+The ASAM OpenODD® model enables the definition of ODD conditions (environmental and other conditions) as well as if and when these conditions are included or excluded from the ODD specification.
 
-The main part of ASAM OpenODD consists of multiple sections:
+The main part of ASAM OpenODD® consists of multiple sections:
 
-* [Section 6, "Model concept"](../06_model_concept/06_00_openodd_model_concept.html#top-model-concept) introduces the overall concept of ASAM OpenODD and focuses on the ASAM OpenODD model, the technology independent core of ASAM OpenODD.
+* [Section 6, "Model concept"](../06_model_concept/06_00_openodd_model_concept.html#top-model-concept) introduces the overall concept of ASAM OpenODD® and focuses on the ASAM OpenODD® model, the technology independent core of ASAM OpenODD®.
 * [Section 7, "Model reference"](../07_model_reference/07_00_model_reference.html#top-model-reference) presents a collection of all relevant class tables and the class diagram.
 * [Section 8, "Model to tabular format mapping reference"](../08_tabular/08_00_tabular.html#top-model-tabular-mapping-reference),  [Section 9, "Model to ASAM OpenSCENARIO® DSL mapping reference"](../09_openscenario_dsl/09_00_openscenario_dsl.html#top-model-asam-openscenario-dsl-mapping-reference), and  [Section 10, "Model to YAML mapping reference"](../10_yaml/10_00_yaml.html#top-model-yaml-mapping-reference) are focusing on mapping references.
-  The mapping references explain how to map from the ASAM OpenODD model, to a specific format/technology.
+  The mapping references explain how to map from the ASAM OpenODD® model, to a specific format/technology.
 
 ## Conventions and notations
 
 ### Modal verbs
 
-To ensure compliance with the ASAM OpenODD specification, users need to be able to distinguish between requirements, recommendations, permissions, possibilities and capabilities, and external constraints.
+To ensure compliance with the ASAM OpenODD® specification, users need to be able to distinguish between requirements, recommendations, permissions, possibilities and capabilities, and external constraints.
 
 Table 1. Verbal forms for expressions of provisions
 
@@ -60,7 +60,7 @@ Table 2. Normative and informative sections
 | Model concept | Normative |
 | Model reference | Normative |
 | Model to tabular format mapping reference | Normative |
-| Model to ASAM OpenSCENARIO DSL mapping reference | Normative, except for the Usage Guide which is informative (the heading contains the indication "(informative)") |
+| Model to ASAM OpenSCENARIO® DSL mapping reference | Normative, except for the Usage Guide which is informative (the heading contains the indication "(informative)") |
 | Model to YAML mapping reference | Normative |
 | Annex | Annexes can be normative or informative. The annex heading contains the indication "(normative)" or "(informative)". |
 | Bibliography | Informative |
@@ -92,10 +92,10 @@ Table 4. Typographical conventions
 | *Terms* | This format is used to introduce glossary terms, new terms and to emphasize terms. |
 | `Mathematical elements` | This format is used for calculations and mathematical elements. |
 | `<element>` | This describes a tag for an element within the XML specification. |
-| @attribute | The "@" identifies an attribute of any ASAM OpenODD element. |
+| @attribute | The "@" identifies an attribute of any ASAM OpenODD® element. |
 
 ## Deliverables
 
-The following deliverables are provided for ASAM OpenODD:
+The following deliverables are provided for ASAM OpenODD®:
 
-* ASAM OpenODD Base Standard 1.0.0 Specification, 2025-04-03 (this document, contained in this site)
+* ASAM OpenODD® Base Standard 1.0.0 Specification, 2025-04-03 (this document, contained in this site)

@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.1 Introduction to signals
+# ASAM OpenDRIVE® v1.9.0 — 14.1 Introduction to signals
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,9 +15,9 @@ For more on objects, see  [Section 13.1, "Introduction to objects"](../13_object
 
 ![img](../_images/14_signals/Signals_1.png)
 
-Figure 128. Signals in ASAM OpenDRIVE
+Figure 128. Signals in ASAM OpenDRIVE®
 
-[Figure 128](#fig-6c4bd93c-5103-4335-9005-24153acfb62d) shows exemplary signal definitions for ASAM OpenDRIVE.
+[Figure 128](#fig-6c4bd93c-5103-4335-9005-24153acfb62d) shows exemplary signal definitions for ASAM OpenDRIVE®.
 
 Signals have different functions and properties:
 
@@ -40,14 +40,14 @@ Ambiguity about their interpretation shall be avoided.
 
 Traffic rules are different for each country.
 The country of the signal is specified in the @country attribute.
-When placing signals in ASAM OpenDRIVE, country-specific legislation and traffic rules should be considered.
+When placing signals in ASAM OpenDRIVE®, country-specific legislation and traffic rules should be considered.
 Legislative changes are indicated by the year when the rules come into force.
-Traffic rules for the entire ASAM OpenDRIVE file can be defined in the `<defaultRegulations>` element in the `<header>` element.
+Traffic rules for the entire ASAM OpenDRIVE® file can be defined in the `<defaultRegulations>` element in the `<header>` element.
 
 The @height and @width attributes of a signal are not required but are recommended for proper representation of the signal.
 The @length attribute can be used to specify a thickness of the signal.
 
-In addition to the road markings defined in this section, ASAM OpenDRIVE also supports the following use cases:
+In addition to the road markings defined in this section, ASAM OpenDRIVE® also supports the following use cases:
 
 * For the outer marking lines of a lane, use lane road markings.
   See  [Section 11.9, "Lane road markings"](../11_lanes/11_09_lane_road_markings.html#top-fc59db56-70c8-4320-a8c7-213379f8c037).
@@ -55,7 +55,7 @@ In addition to the road markings defined in this section, ASAM OpenDRIVE also su
   See  [Section 13.2, "Object outline"](../13_objects/13_02_object_outline.html#top-67295042-9707-4ad5-9671-b80cde49bb3a) and  [Section 13.8, "Object markings"](../13_objects/13_08_object_markings.html#top-c25542c0-f80d-4da9-a430-020474b58301).
 
 A signal with the @type and @subtype attributes is only unique in combination with the @country and @countryRevision attributes.
-Since some elements that are considered signals in ASAM OpenDRIVE, for example traffic lights, do not have any official
+Since some elements that are considered signals in ASAM OpenDRIVE®, for example traffic lights, do not have any official
 @type and @subtype representation, these are specified in the
  [Signal reference 1.0.0](../../../../ASAM_OpenDRIVE_Signal_reference/latest/signal-catalog/index.html) .
 They can be used with the appropriate @type, @subtype and the @country="OpenDRIVE".
@@ -64,7 +64,7 @@ They can be used with the appropriate @type, @subtype and the @country="OpenDRIV
 
 Figure 129. Width and height for signal
 
-[Figure 129](#fig-b5c4caf3-1266-41c7-bb3b-ff746fb8295e) shows the attributes ASAM OpenDRIVE provides for a speed regulation signal.
+[Figure 129](#fig-b5c4caf3-1266-41c7-bb3b-ff746fb8295e) shows the attributes ASAM OpenDRIVE® provides for a speed regulation signal.
 It is pointed out how height and width are measured.
 
 A signal with an @orientation of `+` applies to traffic traveling in the positive road reference line direction.
@@ -87,7 +87,7 @@ To the @orientation attribute the `+` value is assigned and to the @hOffset attr
 
 **`<signals>` element**
 
-In ASAM OpenDRIVE, signals are represented by the `<signals>` element within the `<road>` element.
+In ASAM OpenDRIVE®, signals are represented by the `<signals>` element within the `<road>` element.
 
 ```
 UML class: t_road_signals
@@ -102,11 +102,11 @@ The `<signals>` element is the container for all signals along a road.
 
 Figure 131. UML class diagram of the Signals class
 
-[Figure 131](#fig-d8de1313-7b9a-4fac-b76f-4a60c8194997) shows the UML class diagram of the ASAM OpenDRIVE Signals class.
+[Figure 131](#fig-d8de1313-7b9a-4fac-b76f-4a60c8194997) shows the UML class diagram of the ASAM OpenDRIVE® Signals class.
 
 **`<signal>` element**
 
-In ASAM OpenDRIVE, a signal is represented by the `<signal>` element within the `<signals>` element.
+In ASAM OpenDRIVE®, a signal is represented by the `<signal>` element within the `<signals>` element.
 
 ```
 UML class: t_road_signals_signal_road

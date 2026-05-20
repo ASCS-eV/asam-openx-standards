@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.9 Signal positioning (deprecated)
+# ASAM OpenDRIVE® v1.9.0 — 14.9 Signal positioning (deprecated)
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_09_signal_positioning.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,11 +9,11 @@
 
 # 14.9 Signal positioning (deprecated)
 
-The current ASAM OpenDRIVE only places signals at their physical location and uses signal `<reference>` and/or `<dependency>` elements to model, for example the concept of the interaction between stop lines and stop signs or traffic lights.
+The current ASAM OpenDRIVE® only places signals at their physical location and uses signal `<reference>` and/or `<dependency>` elements to model, for example the concept of the interaction between stop lines and stop signs or traffic lights.
 
-The ASAM OpenDRIVE Junction guideline describes interactivity between traffic lights and stop lines.
+The ASAM OpenDRIVE® Junction guideline describes interactivity between traffic lights and stop lines.
 
-In previous versions of ASAM OpenDRIVE, a signal’s position was identical with its validity and, therefore, should have been placed next to the road which it is valid for, enabling the application to identify the signals validity.
+In previous versions of ASAM OpenDRIVE®, a signal’s position was identical with its validity and, therefore, should have been placed next to the road which it is valid for, enabling the application to identify the signals validity.
 This was called the logical position of a signal.
 The s-position of the signal described the position on the road where the signal takes effect.
 
@@ -22,7 +22,7 @@ The s-position of the signal described the position on the road where the signal
 Figure 141. Junction with signals at physical and logical positions
 
 [Figure 141](#fig-32d49d5d-4112-45a4-ba51-c62373663edc) shows how the physical and logical position of a signal could have differed in certain situations.
-ASAM OpenDRIVE offered two possibilities to describe the physical deviation of a signal.
+ASAM OpenDRIVE® offered two possibilities to describe the physical deviation of a signal.
 The possibilities were mutually exclusive.
 The positioning of the signal had no influence on its content.
 
@@ -40,11 +40,11 @@ The positioning of the signal had no influence on its content.
 
 Figure 142. UML class diagram of the t\_physicalPosition element in the Signals class
 
-[Figure 142](#fig-a3fe59ba-6cb0-490d-a9d7-37f0a64b892c) shows the UML class diagram of the t\_physicalPosition element in the ASAM OpenDRIVE Signals class.
+[Figure 142](#fig-a3fe59ba-6cb0-490d-a9d7-37f0a64b892c) shows the UML class diagram of the t\_physicalPosition element in the ASAM OpenDRIVE® Signals class.
 
 **`<positionRoad>` element**
 
-In ASAM OpenDRIVE, a signal position using a referenced road is represented by the `<positionRoad>` element within the `<signal>` element.
+In ASAM OpenDRIVE®, a signal position using a referenced road is represented by the `<positionRoad>` element within the `<signal>` element.
 
 ```
 UML class:  t_road_signals_signal_positionRoad
@@ -70,7 +70,7 @@ Table 145. Attributes of the <positionRoad> element
 
 **`<positionInertial>` element**
 
-In ASAM OpenDRIVE, a signal position using inertial coordinates is represented by the `<positionInertial>` element within the `<signal>` element.
+In ASAM OpenDRIVE®, a signal position using inertial coordinates is represented by the `<positionInertial>` element within the `<signal>` element.
 
 ```
 UML class: t_road_signals_signal_positionInertial

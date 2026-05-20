@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.6 Signal Controllers
+# ASAM OpenDRIVE® v1.9.0 — 14.6 Signal Controllers
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_06_controllers.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -34,7 +34,7 @@ Figure 136. Example of a signal program that defines the signal cycles for the s
 
 **`<controller>` element**
 
-In ASAM OpenDRIVE, controllers are represented by the `<controller>` element within the `<OpenDRIVE>` element.
+In ASAM OpenDRIVE®, controllers are represented by the `<controller>` element within the `<OpenDRIVE>` element.
 
 ```
 UML class: t_controller
@@ -59,11 +59,11 @@ Table 128. Attributes of the <controller> element
 
 Figure 137. UML class diagram of the Controller class
 
-[Figure 137](#fig-c538a48d-acd0-4012-8d59-47108f27b8b4) shows the UML class diagram of the ASAM OpenDRIVE Controller class.
+[Figure 137](#fig-c538a48d-acd0-4012-8d59-47108f27b8b4) shows the UML class diagram of the ASAM OpenDRIVE® Controller class.
 
 **`<control>` element**
 
-In ASAM OpenDRIVE, controlled signals are represented by the `<control>` element within the `<controller>` element.
+In ASAM OpenDRIVE®, controlled signals are represented by the `<control>` element within the `<controller>` element.
 
 ```
 UML class: t_controller_control

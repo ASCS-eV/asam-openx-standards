@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 10.4 Road type
+# ASAM OpenDRIVE® v1.9.0 — 10.4 Road type
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/10_roads/10_04_road_type.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -21,7 +21,7 @@ One road type remains valid until another road type is defined.
 
 **`<type>` element**
 
-In ASAM OpenDRIVE, the road type is represented by the `<type>` element within the `<road>` element.
+In ASAM OpenDRIVE®, the road type is represented by the `<type>` element within the `<road>` element.
 
 ```
 UML class: t_road_type
@@ -47,7 +47,7 @@ The following rules apply to road types:
 * [asam.net:xodr:1.4.0:road.type.create\_new\_type\_in\_parent](../16_annexes/map_rules.html#asam-net-xodr-1-4-0-road-type-create-new-type-in-parent): When the type of road changes, a new `<type>` element shall be created within the parent `<road>` element.
 
 * Country code and state identifier may be added to the `<type>` element to specify which national traffic rules apply to this road type.
-  The according data is stored in the application and not in ASAM OpenDRIVE.
+  The according data is stored in the application and not in ASAM OpenDRIVE®.
 
 * [asam.net:xodr:1.7.0:road.type.only\_alpha\_2\_country\_codes](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-type-only-alpha-2-country-codes): There shall only be ALPHA-2 country codes in use, no ALPHA-3 country codes, because only ALPHA-2 country codes support state identifiers.
 
@@ -70,7 +70,7 @@ The speed limit shall be defined for each `<type>` element of a road separately.
 
 **`<speed>` element**
 
-In ASAM OpenDRIVE, the speed limit is represented by the `<speed>` element within the `<type>` element.
+In ASAM OpenDRIVE®, the speed limit is represented by the `<speed>` element within the `<type>` element.
 
 ```
 UML class: t_road_type_speed

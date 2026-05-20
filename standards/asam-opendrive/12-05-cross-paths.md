@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.5 Cross paths
+# ASAM OpenDRIVE® v1.9.0 — 12.5 Cross paths
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_05_cross_paths.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -25,7 +25,7 @@ A `<crossPath>` element defines the crossing road with the value of the @crossin
 
 **`<crossPath>` element**
 
-In ASAM OpenDRIVE, cross paths are represented by `<crossPath>` elements within the `<junction>` element.
+In ASAM OpenDRIVE®, cross paths are represented by `<crossPath>` elements within the `<junction>` element.
 
 ```
 UML class:  t_junction_crossPath
@@ -48,7 +48,7 @@ Table 64. Attributes of the <crossPath> element
 
 **`<startLaneLink>` and `<endLaneLink>` elements**
 
-In ASAM OpenDRIVE, lane links of cross paths are represented by `<startLaneLink>` and `<endLaneLink>` elements within the `<crossPath>` element.
+In ASAM OpenDRIVE®, lane links of cross paths are represented by `<startLaneLink>` and `<endLaneLink>` elements within the `<crossPath>` element.
 
 ```
 UML class:  t_junction_crossPath_laneLink

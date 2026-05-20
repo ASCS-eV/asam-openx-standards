@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 9.2 Road reference line
+# ASAM OpenDRIVE® v1.9.0 — 9.2 Road reference line
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/09_geometries/09_02_road_reference_line.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 9.2 Road reference line
 
-The basic element of every road in ASAM OpenDRIVE is the road reference line.
+The basic element of every road in ASAM OpenDRIVE® is the road reference line.
 All geometry elements that describe the road shape and further properties of the road are defined along the road reference line.
 These properties include lanes and signals.
 
@@ -20,7 +20,7 @@ The direction of the road reference line does not indicate the driving direction
 
 Figure 24. Individual parts of a road
 
-[Figure 24](#fig-848bb044-6489-46f2-b236-009368db449a) shows the different parts of a road in ASAM OpenDRIVE.
+[Figure 24](#fig-848bb044-6489-46f2-b236-009368db449a) shows the different parts of a road in ASAM OpenDRIVE®.
 
 * The road reference line
 * Individual lanes of a road
@@ -32,11 +32,11 @@ Figure 24. Individual parts of a road
 
 Figure 25. UML class diagram of the RoadGeometry class, including the road reference line elements
 
-[Figure 25](#fig-e050d43d-eba2-49d7-a75e-29ba31d301e8) shows the UML class diagram of the ASAM OpenDRIVE RoadGeometry class.
+[Figure 25](#fig-e050d43d-eba2-49d7-a75e-29ba31d301e8) shows the UML class diagram of the ASAM OpenDRIVE® RoadGeometry class.
 
 **`<planView>` element**
 
-In ASAM OpenDRIVE, the plan view is represented by the `<planView>` element within the `<road>` element.
+In ASAM OpenDRIVE®, the plan view is represented by the `<planView>` element within the `<road>` element.
 The `<planView>` element is a mandatory element in every `<road>` element.
 
 ```
@@ -48,7 +48,7 @@ Contains geometry elements that define the layout of the road reference line in 
 
 **`<geometry>` element**
 
-In ASAM OpenDRIVE, the geometry of a road reference line is represented by the `<geometry>` element within the `<planView>` element.
+In ASAM OpenDRIVE®, the geometry of a road reference line is represented by the `<geometry>` element within the `<planView>` element.
 
 ```
 UML class: t_road_planView_geometry

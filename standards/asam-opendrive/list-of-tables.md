@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — List of tables
+# ASAM OpenDRIVE® v1.9.0 — List of tables
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/loft/list_of_tables.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -17,12 +17,12 @@
 | [Table 4](../00_preface/00_introduction.html#tab-modal-verbs) | Verbal forms for expressions of provisions |
 | [Table 5](../00_preface/00_introduction.html#tab-e2c84ca6-7486-4056-8260-0ba2cac76da3) | Typographical conventions |
 | [Table 6](../00_preface/00_introduction.html#tab-b3638a3f-32e3-48e4-9e86-bb82299ead22) | Color conventions for lane types in images |
-| [Table 7](../06_general_architecture/06_03_root_element.html#tab-a1937f94-964e-406e-85f3-bf1049883150) | Attributes of the ASAM OpenDRIVE element |
+| [Table 7](../06_general_architecture/06_03_root_element.html#tab-a1937f94-964e-406e-85f3-bf1049883150) | Attributes of the ASAM OpenDRIVE® element |
 | [Table 8](../06_general_architecture/06_04_header.html#tab-EAID_E1EEA271_0CC1_44c5_B294_7295E4C5783F) | Attributes of the <header> element |
 | [Table 9](../06_general_architecture/06_04_header.html#tab-EAID_82DE0C51_12D1_410e_9C2C_ABC2C2D0BEC2) | Attributes of the <license> element |
 | [Table 10](../06_general_architecture/06_04_header.html#tab-EAID_0581038B_9EB4_4556_8BE0_69DCA8F58ED1) | Attributes of the <roadRegulations> element |
 | [Table 11](../06_general_architecture/06_04_header.html#tab-EAID_34752BF7_56FD_4fb4_8ADC_AA8B7D26942F) | Attributes of the <signalRegulations> element |
-| [Table 12](../06_general_architecture/06_05_overview_elements.html#tab-a944f58f-b543-4a10-81d1-259e8de346c2) | Overview of ASAM OpenDRIVE elements |
+| [Table 12](../06_general_architecture/06_05_overview_elements.html#tab-a944f58f-b543-4a10-81d1-259e8de346c2) | Overview of ASAM OpenDRIVE® elements |
 | [Table 13](../07_additional_data/07_00_additional_data.html#tab-EAID_19ECC5DF_79E1_47af_91B4_DD2BD461B4DA) | Attributes of the <userData> element |
 | [Table 14](../07_additional_data/07_00_additional_data.html#tab-EAID_EBDB6D4E_6647_40fe_AD98_F5201902EE7D) | Attributes of the <include> element |
 | [Table 15](../07_additional_data/07_00_additional_data.html#tab-EAID_030F9EF4_9F3F_4b8a_A813_61A20BCDBDA0) | Attributes of the <error> element |
@@ -42,7 +42,7 @@
 | [Table 29](../10_roads/10_05_elevation.html#tab-EAID_F9EF10E9_3AF0_443c_BCA5_BEC4AF43AB61) | Attributes of the <shape> element |
 | [Table 30](../10_roads/10_05_elevation.html#tab-EAID_F33168C3_14E9_458f_B290_F6B6638B8A37) | Attributes of the <strip> element |
 | [Table 31](../10_roads/10_05_elevation.html#tab-EAID_694767CF_FF86_45c9_BF0D_846596C53DA0) | Attributes of the <coefficients> element |
-| [Table 32](../10_roads/10_06_road_surface.html#tab-8dd4bfa6-b06a-48be-8044-07887e2e811a) | Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE |
+| [Table 32](../10_roads/10_06_road_surface.html#tab-8dd4bfa6-b06a-48be-8044-07887e2e811a) | Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE® |
 | [Table 33](../10_roads/10_06_road_surface.html#tab-EAID_B47DD743_6B99_49c9_A696_5688C475AD49) | Attributes of the <CRG> element |
 | [Table 34](../11_lanes/11_01_introduction.html#tab-EAID_3225A72D_2F4C_4185_B9FA_C5E71EB10213) | Attributes of the <lanes> element |
 | [Table 35](../11_lanes/11_03_lane_groups.html#tab-EAID_A1839BDA_A43F_4701_B4D9_EF7055726F1E) | Attributes of the <lane> element |

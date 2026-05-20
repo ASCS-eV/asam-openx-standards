@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 7.2 Taxonomy
+# ASAM OpenODD® v1.0.0 — 7.2 Taxonomy
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/07_model_reference/07_02_taxonomy.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,9 +15,9 @@
 
 The taxonomy related classes of {THIS\_STANDARD} model
 
-Figure 16. The taxonomy related classes of ASAM OpenODD model
+Figure 16. The taxonomy related classes of ASAM OpenODD® model
 
-[Figure 16](#fig-reference-taxonomy-taxonomy-classes) shows most of the classes related to class `Taxonomy`, so [Figure 16](#fig-reference-taxonomy-taxonomy-classes) is a subset of the ASAM OpenODD model.
+[Figure 16](#fig-reference-taxonomy-taxonomy-classes) shows most of the classes related to class `Taxonomy`, so [Figure 16](#fig-reference-taxonomy-taxonomy-classes) is a subset of the ASAM OpenODD® model.
 
 ### 7.2.1.2 Class Taxonomy
 
@@ -37,7 +37,7 @@ Parameters
 
     | Parameter | Type | Mandatory | Description |
     | --- | --- | --- | --- |
-    | id | String | yes | Unique identifier of a `Taxonomy` instance. It needs to be unique within an ASAM OpenODD transmission |
+    | id | String | yes | Unique identifier of a `Taxonomy` instance. It needs to be unique within an ASAM OpenODD® transmission |
     | name | LangString | yes | This represents the name of the `Taxonomy`. It can be translated into other languages. At least an English name must be provided. |
     | affiliation | String | no | The source of a specific taxonomy. It can be used to distinguish `TaxonomyConcept` instances with the same name stemming from different sources. |
 
@@ -145,9 +145,9 @@ Parameters
 
 The type-related classes of {THIS\_STANDARD} model
 
-Figure 17. The type-related classes of ASAM OpenODD model
+Figure 17. The type-related classes of ASAM OpenODD® model
 
-[Figure 17](#fig-reference-taxonomy-type-classes) shows most of the classes related to class `Type`, so [Figure 17](#fig-reference-taxonomy-type-classes) is a subset of the ASAM OpenODD model.
+[Figure 17](#fig-reference-taxonomy-type-classes) shows most of the classes related to class `Type`, so [Figure 17](#fig-reference-taxonomy-type-classes) is a subset of the ASAM OpenODD® model.
 
 ### 7.2.2.2 Class Type
 
@@ -241,7 +241,7 @@ Parameters
 
     | Parameter | Type | Mandatory | Description |
     | --- | --- | --- | --- |
-    | name | LangString | yes | An array of multi-language translation of the literal (at least English must be provided). The name must be unique within an ASAM OpenODD file transmission. |
+    | name | LangString | yes | An array of multi-language translation of the literal (at least English must be provided). The name must be unique within an ASAM OpenODD® file transmission. |
 
 ### 7.2.2.8 Class UnitType
 

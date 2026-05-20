@@ -30,6 +30,19 @@ This clause applies to the following standards in this repository:
 | ASAM OSI (submodule) | Mozilla Public License 2.0 | `submodules/open-simulation-interface/LICENSE` |
 | ASAM OpenCRG (submodule) | Apache License 2.0 | `submodules/OpenCRG/LICENSE` |
 
+## Non-Redistributable Content (Summaries Only)
+
+The following content is NOT redistributed under the above clauses:
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| ISO 34503:2023 | Paraphrased summary only | ISO standards are copyright-protected; only a high-level structural summary is included. No verbatim ISO text is reproduced. |
+| ASAM TrafficParticipants v1.0.2 | Public overview only | The full specification is not publicly accessible; only information from public ASAM documentation is included. |
+
+Users requiring the full ISO 34503 standard must purchase it from ISO
+(https://www.iso.org/standard/78952.html). Users requiring the full
+TrafficParticipants specification must register at https://www.asam.net.
+
 ## Copyright
 
 All ASAM standards remain the copyrighted property of ASAM e.V.

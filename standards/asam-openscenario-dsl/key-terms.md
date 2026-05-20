@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 6.2 Key terminology
+# ASAM OpenSCENARIO® DSL v2.2.0 — 6.2 Key terminology
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/conceptual-overview/key_terms.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

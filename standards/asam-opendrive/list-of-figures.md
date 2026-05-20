@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — List of figures
+# ASAM OpenDRIVE® v1.9.0 — List of figures
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/loft/list_of_figures.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,15 +11,15 @@
 
 | Figure | Description |
 | --- | --- |
-| [Figure 1](../00_preface/00_introduction.html#fig-60c22aa8-d229-456a-b39d-645b894d4cad) | Relationship between ASAM OpenDRIVE, ASAM OpenCRG, and ASAM OpenSCENARIO |
+| [Figure 1](../00_preface/00_introduction.html#fig-60c22aa8-d229-456a-b39d-645b894d4cad) | Relationship between ASAM OpenDRIVE®, ASAM OpenCRG, and ASAM OpenSCENARIO |
 | [Figure 2](../00_preface/00_introduction.html#fig-ac4e473f-7a60-447f-8394-b7f71f6e2c06) | UML notation |
 | [Figure 3](../00_preface/00_introduction.html#fig-0f4b4875-530c-4144-986f-d5bf64a1f1b9) | UML attribute notation |
 | [Figure 4](../06_general_architecture/06_03_root_element.html#fig-03ea7852-377b-428a-b01e-3ee78ffa2740) | UML class diagram of the Core class |
 | [Figure 5](../06_general_architecture/06_04_header.html#fig-b002bcdd-898e-4534-9268-19b7c8ace791) | UML class diagram of the Header class |
 | [Figure 6](../07_additional_data/07_00_additional_data.html#fig-1c28bcdd-95d5-4d29-aa5e-75e3192e2eb1) | UML class diagram of the Core class |
-| [Figure 7](../08_coordinate_systems/08_01_introduction.html#fig-67a7a638-8746-44f4-a574-e05908306350) | Available coordinate systems in ASAM OpenDRIVE |
-| [Figure 8](../08_coordinate_systems/08_01_introduction.html#fig-ecaff823-8bfa-4c03-b660-f7cc5873e843) | Coordinate systems in ASAM OpenDRIVE interacting with another |
-| [Figure 9](../08_coordinate_systems/08_01_introduction.html#fig-9e277ae1-6e3d-4c60-b06e-839d1a0b2d75) | Summary of coordinate system in ASAM OpenDRIVE |
+| [Figure 7](../08_coordinate_systems/08_01_introduction.html#fig-67a7a638-8746-44f4-a574-e05908306350) | Available coordinate systems in ASAM OpenDRIVE® |
+| [Figure 8](../08_coordinate_systems/08_01_introduction.html#fig-ecaff823-8bfa-4c03-b660-f7cc5873e843) | Coordinate systems in ASAM OpenDRIVE® interacting with another |
+| [Figure 9](../08_coordinate_systems/08_01_introduction.html#fig-9e277ae1-6e3d-4c60-b06e-839d1a0b2d75) | Summary of coordinate system in ASAM OpenDRIVE® |
 | [Figure 10](../08_coordinate_systems/08_01_introduction.html#fig-c28e3855-aebe-46c3-92df-f9e40a4bf616) | Reference-line-based s/t-coordinate system with origin at the beginning of the road |
 | [Figure 11](../08_coordinate_systems/08_02_inertial_coordinate_system.html#fig-6f953b3f-be4e-41cc-b7c0-6cf0f8937967) | Inertial coordinate system with defined rotations |
 | [Figure 12](../08_coordinate_systems/08_02_inertial_coordinate_system.html#fig-5d482d32-897e-4755-9439-f4740961192a) | Inertial coordinate system with defined rotations |
@@ -32,7 +32,7 @@
 | [Figure 19](../08_coordinate_systems/08_04_local_coordinate_system.html#fig-70e4801c-e784-460a-87f6-4633bca1efd8) | Local coordinate systems with heading, pitch, roll |
 | [Figure 20](../08_coordinate_systems/08_04_local_coordinate_system.html#fig-fa173c34-aff9-4df6-944a-16cfdfa5a567) | Local coordinate system with respect to road reference line coordinate system |
 | [Figure 21](../08_coordinate_systems/08_05_geo_referencing.html#fig-575a3505-1d2b-4cbc-b940-c42454b4ff8e) | geoReference and offset |
-| [Figure 22](../09_geometries/09_01_introduction.html#fig-c2164748-80cf-4567-8d85-0c0b39f57429) | Geometry elements in ASAM OpenDRIVE |
+| [Figure 22](../09_geometries/09_01_introduction.html#fig-c2164748-80cf-4567-8d85-0c0b39f57429) | Geometry elements in ASAM OpenDRIVE® |
 | [Figure 23](../09_geometries/09_01_introduction.html#fig-1cc37e26-9f90-48c9-9081-fcddc9395512) | Example for creating a road reference line from geometry elements |
 | [Figure 24](../09_geometries/09_02_road_reference_line.html#fig-848bb044-6489-46f2-b236-009368db449a) | Individual parts of a road |
 | [Figure 25](../09_geometries/09_02_road_reference_line.html#fig-e050d43d-eba2-49d7-a75e-29ba31d301e8) | UML class diagram of the RoadGeometry class, including the road reference line elements |
@@ -134,11 +134,11 @@
 | [Figure 121](../13_objects/13_04_repeating_objects.html#fig-270402d4-f2f1-41e8-835b-e4bde027137d) | Repeated small angular objects with changing shape using a single `<repeat>` element |
 | [Figure 122](../13_objects/13_04_repeating_objects.html#fig-7c98e28c-5c09-4993-ad91-62c41d509c64) | Repeated small circular objects with changing shape using a single `<repeat>` element |
 | [Figure 123](../13_objects/13_07_access_rules_parking.html#fig-45a862d8-0673-4c69-bf01-bc2dff99b38d) | Parking spaces rectangular (left figure) and rhomboid (right figure) |
-| [Figure 124](../13_objects/13_08_object_markings.html#fig-3df4f0dc-d06a-4a7e-80e6-d4c1e0028349) | Crosswalk in ASAM OpenDRIVE |
+| [Figure 124](../13_objects/13_08_object_markings.html#fig-3df4f0dc-d06a-4a7e-80e6-d4c1e0028349) | Crosswalk in ASAM OpenDRIVE® |
 | [Figure 125](../13_objects/13_11_tunnels.html#fig-28dd5e95-118e-4567-b8e9-f8ad898fd79b) | Tunnel |
 | [Figure 126](../13_objects/13_12_bridges.html#fig-b1cce70a-c3fd-4b87-be73-4d60ba0f997d) | Bridge |
 | [Figure 127](../13_objects/13_13_object_surface.html#fig-bfdad4a4-9b91-4142-9e3f-1693c7512443) | CRG for objects |
-| [Figure 128](../14_signals/14_01_introduction.html#fig-6c4bd93c-5103-4335-9005-24153acfb62d) | Signals in ASAM OpenDRIVE |
+| [Figure 128](../14_signals/14_01_introduction.html#fig-6c4bd93c-5103-4335-9005-24153acfb62d) | Signals in ASAM OpenDRIVE® |
 | [Figure 129](../14_signals/14_01_introduction.html#fig-b5c4caf3-1266-41c7-bb3b-ff746fb8295e) | Width and height for signal |
 | [Figure 130](../14_signals/14_01_introduction.html#fig-27a17ba9-f404-41e1-975b-bd7116d277c7) | Orientation and hOffset for signal |
 | [Figure 131](../14_signals/14_01_introduction.html#fig-d8de1313-7b9a-4fac-b76f-4a60c8194997) | UML class diagram of the Signals class |

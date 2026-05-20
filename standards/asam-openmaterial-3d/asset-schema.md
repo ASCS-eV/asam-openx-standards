@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 7.5 Asset schema
+# ASAM OpenMATERIAL® 3D latest — 7.5 Asset schema
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/07_geometry/asset-schema.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -48,7 +48,7 @@ The version number of the asset, following semantic versioning (for example, '1.
 
 ### 7.5.1.5 openMaterial3dVersion
 
-The version of the ASAM OpenMATERIAL 3D specification used, adhering to semantic versioning (for example, '1.0.0').
+The version of the ASAM OpenMATERIAL® 3D specification used, adhering to semantic versioning (for example, '1.0.0').
 
 **Type:** `string`  
 **Pattern:** `^\\d+\\.\\d+\\.\\d+$`  
@@ -333,7 +333,7 @@ Indicates whether the 3D model contains keyframe animations.
 
 ### 7.5.1.18 pbrMaterialWorkflow
 
-Indicates the usage of a Physically Based Rendering (PBR) material workflow as 'metallic', 'specular' or 'none'. This only applies to the internal materials of the 3D model file, not to mapped ASAM OpenMATERIAL 3D property files.
+Indicates the usage of a Physically Based Rendering (PBR) material workflow as 'metallic', 'specular' or 'none'. This only applies to the internal materials of the 3D model file, not to mapped ASAM OpenMATERIAL® 3D property files.
 
 **Type:** `string`  
 **Enum:** `['metallic', 'specular', 'none']`  
@@ -402,7 +402,7 @@ Minimum and maximum values in meters along the z-axis.
 
 ## 7.5.2 materialMappingUri
 
-Relative path to a material mapping file (.xomm). In this file, material names from the 3D model file or texture color codes from textures assigned in 'materialTextureAssignment' are linked to ASAM OpenMATERIAL 3D property files.
+Relative path to a material mapping file (.xomm). In this file, material names from the 3D model file or texture color codes from textures assigned in 'materialTextureAssignment' are linked to ASAM OpenMATERIAL® 3D property files.
 
 **Type:** `string`  
 **Pattern:** `.*\\.xomm$`  
@@ -410,7 +410,7 @@ Relative path to a material mapping file (.xomm). In this file, material names f
 
 ## 7.5.3 materialTextureAssignment
 
-Optional array containing material texture assignments. It links material names contained in the 3D model file to ASAM OpenMATERIAL 3D assignment textures. In a separate material mapping file, the 'color' values in this texture are linked to ASAM OpenMATERIAL 3D property files.
+Optional array containing material texture assignments. It links material names contained in the 3D model file to ASAM OpenMATERIAL® 3D assignment textures. In a separate material mapping file, the 'color' values in this texture are linked to ASAM OpenMATERIAL® 3D property files.
 
 **Type:** `array`  
 **Required:** No
@@ -418,11 +418,11 @@ Optional array containing material texture assignments. It links material names 
 Columns of the table:
 
 * Column 1: Name of the material in the 3D model file.
-* Column 2: File path to the ASAM OpenMATERIAL 3D assignment texture.
+* Column 2: File path to the ASAM OpenMATERIAL® 3D assignment texture.
 
 ## 7.5.4 externalAssetReferences
 
-Optional array containing references to external 3D assets. It links parenting nodes in the 3D model file to external ASAM OpenMATERIAL 3D asset files (.xoma).
+Optional array containing references to external 3D assets. It links parenting nodes in the 3D model file to external ASAM OpenMATERIAL® 3D asset files (.xoma).
 
 **Type:** `array`  
 **Required:** No
@@ -436,7 +436,7 @@ Name of the parent node in the 3D model file.
 
 ### 7.5.4.2 external\_asset
 
-File path to the ASAM OpenMATERIAL 3D external ASAM OpenMATERIAL 3D asset files (.xoma).
+File path to the ASAM OpenMATERIAL® 3D external ASAM OpenMATERIAL® 3D asset files (.xoma).
 
 **Type:** `string`  
 **Pattern:** `^(\\./|/)?([a-zA-Z0-9_\\-./]+)\\.(xoma)$`  

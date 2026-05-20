@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 8.7 Physical object actors
+# ASAM OpenSCENARIO® DSL v2.2.0 — 8.7 Physical object actors
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/domain-model/entity.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -1129,14 +1129,14 @@ Values
 
     | Value | Comment |
     | --- | --- |
-    | driving | Taken from ASAM OpenDRIVE: "Normal" drivable [road](road_abstractions.html#sec-roads-class-road) that is not one of the other types |
-    | sidewalk | Taken from ASAM OpenDRIVE: Lane reserved for pedestrians |
-    | biking | Taken from ASAM OpenDRIVE: Lane reserved for cyclists |
-    | rail | Taken from ASAM OpenDRIVE: Lane reserved for trains |
-    | tram | Taken from ASAM OpenDRIVE: Lane reserved for trams |
-    | bus | Taken from ASAM OpenDRIVE: Lane reserved for buses |
-    | taxi | Taken from ASAM OpenDRIVE: Lane reserved for taxis |
-    | hov | Taken from ASAM OpenDRIVE: Lane reserved for High Occupancy Vehicles (HOVs) |
+    | driving | Taken from ASAM OpenDRIVE®: "Normal" drivable [road](road_abstractions.html#sec-roads-class-road) that is not one of the other types |
+    | sidewalk | Taken from ASAM OpenDRIVE®: Lane reserved for pedestrians |
+    | biking | Taken from ASAM OpenDRIVE®: Lane reserved for cyclists |
+    | rail | Taken from ASAM OpenDRIVE®: Lane reserved for trains |
+    | tram | Taken from ASAM OpenDRIVE®: Lane reserved for trams |
+    | bus | Taken from ASAM OpenDRIVE®: Lane reserved for buses |
+    | taxi | Taken from ASAM OpenDRIVE®: Lane reserved for taxis |
+    | hov | Taken from ASAM OpenDRIVE®: Lane reserved for High Occupancy Vehicles (HOVs) |
 
 ## 8.7.20 Enum traffic\_participant\_role
 

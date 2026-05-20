@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.5 Object material
+# ASAM OpenDRIVE® v1.9.0 — 13.5 Object material
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_05_object_material.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,14 +11,14 @@
 
 Objects placed on a road, such as patches, may consist of a different material than the surrounding road.
 Therefore, the material of the object may be defined separately.
-In ASAM OpenDRIVE, it is possible to describe the surface, roughness, and friction.
-The values depend on the application and are not defined in ASAM OpenDRIVE.
+In ASAM OpenDRIVE®, it is possible to describe the surface, roughness, and friction.
+The values depend on the application and are not defined in ASAM OpenDRIVE®.
 
 **Elements in UML model**
 
 **`<material>` element**
 
-In ASAM OpenDRIVE, the outlines of objects are represented by the `<material>` element within the `<object>` element.
+In ASAM OpenDRIVE®, the outlines of objects are represented by the `<material>` element within the `<object>` element.
 
 ```
 UML class: t_road_objects_object_material

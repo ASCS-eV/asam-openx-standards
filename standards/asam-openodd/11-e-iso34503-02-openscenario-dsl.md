@@ -1,17 +1,17 @@
-# ASAM Openodd v1.0.0 — B.2 ASAM OpenSCENARIO DSL ISO 34503
+# ASAM OpenODD® v1.0.0 — B.2 ASAM OpenSCENARIO® DSL ISO 34503
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_e_iso34503_02_openscenario_dsl.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
 ---
 
-# B.2 ASAM OpenSCENARIO DSL ISO 34503
+# B.2 ASAM OpenSCENARIO® DSL ISO 34503
 
-The listing in [Code 215](#code-taxonomy-osc) shows an ASAM OpenSCENARIO DSL representation of the taxonomy defined in ISO 34503 [[4](../bibliography.html#bib-iso34503)].
+The listing in [Code 215](#code-taxonomy-osc) shows an ASAM OpenSCENARIO® DSL representation of the taxonomy defined in ISO 34503 [[4](../bibliography.html#bib-iso34503)].
 
-Code 215. Definition of a taxonomy (ASAM OpenSCENARIO DSL)
+Code 215. Definition of a taxonomy (ASAM OpenSCENARIO® DSL)
 
 ```
 # file domain_concepts_definition_iso_34503
@@ -124,7 +124,7 @@ struct drivable_area_geometry inherits odd_element:
 # 1) straight lines; and
 # 2) curves.
 struct horizontal_plane inherits odd_element:
-    curvature_radius : length # Curvature radius of the road. Positive values for curves; infinity or a very high value for straight lines. The exact threshold value is not specified by ISO 34503 nor ASAM OpenODD.
+    curvature_radius : length # Curvature radius of the road. Positive values for curves; infinity or a very high value for straight lines. The exact threshold value is not specified by ISO 34503 nor ASAM OpenODD®.
     straight_line : bool # if true, it means there is no curvature
 
 

@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — B.14 Workflows for tool developers
+# ASAM OpenSCENARIO® DSL v2.2.0 — B.14 Workflows for tool developers
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/annexes/workflows/workflow_tool_devs.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

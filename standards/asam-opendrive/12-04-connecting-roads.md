@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.4 Connecting roads
+# ASAM OpenDRIVE® v1.9.0 — 12.4 Connecting roads
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_04_connecting_roads.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -74,7 +74,7 @@ Table 60. Lane links
 
 **`<connection connectingRoad="…​">` element**
 
-In ASAM OpenDRIVE, connecting roads are represented by the @connectingRoad attribute of `<connection>` elements within the `<junction>` element.
+In ASAM OpenDRIVE®, connecting roads are represented by the @connectingRoad attribute of `<connection>` elements within the `<junction>` element.
 
 ```
 UML class: t_junction_connection_common
@@ -95,7 +95,7 @@ Table 61. Attributes of the <connection> element
 
 **`<laneLink>` element**
 
-In ASAM OpenDRIVE, lane links are represented by `<laneLink>` elements within the `<connection>` element.
+In ASAM OpenDRIVE®, lane links are represented by `<laneLink>` elements within the `<connection>` element.
 
 ```
 UML class: t_junction_connection_laneLink
@@ -159,7 +159,7 @@ The `<priority>` element within the `<junction>` element defines the priority of
 
 **`<priority>` element**
 
-In ASAM OpenDRIVE, the priority of roads is represented by `<priority>` elements within the `<junction>` element.
+In ASAM OpenDRIVE®, the priority of roads is represented by `<priority>` elements within the `<junction>` element.
 
 ```
 UML class: t_junction_priority

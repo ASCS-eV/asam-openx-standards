@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.13 Junction groups
+# ASAM OpenDRIVE® v1.9.0 — 12.13 Junction groups
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_13_junction_groups.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -24,7 +24,7 @@ The junctions that belong to the junction group are specified by `<junctionRefer
 
 **`<junctionGroup>` element**
 
-In ASAM OpenDRIVE, junction groups are represented by the `<junctionGroup>` element within the `<OpenDRIVE>` element.
+In ASAM OpenDRIVE®, junction groups are represented by the `<junctionGroup>` element within the `<OpenDRIVE>` element.
 
 ```
 UML class: t_junctionGroup
@@ -48,11 +48,11 @@ Table 82. Attributes of the <junctionGroup> element
 
 Figure 109. UML class diagram of the JunctionGroup class
 
-[Figure 109](#fig-31ea1f61-71ea-4db1-abc3-6bc684537a29) shows the UML class diagram of the ASAM OpenDRIVE JunctionGroup class.
+[Figure 109](#fig-31ea1f61-71ea-4db1-abc3-6bc684537a29) shows the UML class diagram of the ASAM OpenDRIVE® JunctionGroup class.
 
 **`<junctionReference>` element**
 
-In ASAM OpenDRIVE, references to junctions are represented by the `<junctionReference>` element within the `<junctionGroup>` element.
+In ASAM OpenDRIVE®, references to junctions are represented by the `<junctionReference>` element within the `<junctionGroup>` element.
 
 ```
 UML class: t_junctionGroup_junctionReference

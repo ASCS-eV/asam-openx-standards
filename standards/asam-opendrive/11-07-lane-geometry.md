@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.7 Lane geometry
+# ASAM OpenDRIVE® v1.9.0 — 11.7 Lane geometry
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_07_lane_geometry.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -16,7 +16,7 @@ Lane geometries are defined per lane section but may change within that section.
 
 Figure 70. UML model for lane geometry in the Lanes class
 
-[Figure 70](#fig-24654426-8984-4a53-8627-3effc2b56faf) shows the UML model for lane geometry in the ASAM OpenDRIVE Lanes class.
+[Figure 70](#fig-24654426-8984-4a53-8627-3effc2b56faf) shows the UML model for lane geometry in the ASAM OpenDRIVE® Lanes class.
 Examples of lane geometry are lane width, lane border, and lane height.
 
 **Rules**
@@ -40,7 +40,7 @@ Figure 71. Change of lane width per lane section
 
 **`<width>` element**
 
-In ASAM OpenDRIVE, lane width is represented by the `<width>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, lane width is represented by the `<width>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lr_lane_width
@@ -50,7 +50,7 @@ XML tag:   <width> (Multiplicity: 1..*)
 Lane widths widen or narrow lanes along the t-coordinate within lane sections.
 
 Lane width and lane border elements are mutually exclusive within the same lane group.
-If both width and lane border elements are present for a lane section in the ASAM OpenDRIVE file, the application must use the information from the `<width>` elements.
+If both width and lane border elements are present for a lane section in the ASAM OpenDRIVE® file, the application must use the information from the `<width>` elements.
 
 Table 41. Attributes of the <width> element
 
@@ -132,7 +132,7 @@ Figure 72. Lane with varying border shape
 
 **`<border>` element**
 
-In ASAM OpenDRIVE, lane borders are represented by the `<border>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, lane borders are represented by the `<border>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lr_lane_border
@@ -146,7 +146,7 @@ In this case, inner lanes are defined as lanes which have the same sign for thei
 Especially when road data is derived from automatic measurements, this type of definition is easier than specifying the lane width because it avoids creating many lane sections.
 
 Lane width and lane border elements are mutually exclusive within the same lane group.
-If both width and lane border elements are present for a lane section in the ASAM OpenDRIVE file, the application shall use the information from the `<width>` elements.
+If both width and lane border elements are present for a lane section in the ASAM OpenDRIVE® file, the application shall use the information from the `<width>` elements.
 
 Table 42. Attributes of the <border> element
 
@@ -225,7 +225,7 @@ Lane height is specified as offset from the road (including elevation, superelev
 
 **`<height>` element**
 
-In ASAM OpenDRIVE, lane height is represented by the `<height>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, lane height is represented by the `<height>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lr_lane_height
@@ -287,7 +287,7 @@ Figure 74. Lanes excluded from road elevation
 
 [Figure 74](#fig-3572c8fb-33ca-4f8e-88b9-15352209d4ea) shows the use of the @level attribute, which excludes the outermost lanes of a road from superelevation.
 
-ASAM OpenDRIVE provides the @level attribute for excluding lanes from lateral profile.
+ASAM OpenDRIVE® provides the @level attribute for excluding lanes from lateral profile.
 When the attribute is set to `true` for a lane, then this lane is excluded from superelevation, road shape definition and cross section surface definitions of the road.
 The elevation of the lane stays on the same height as the outer border of the inner connecting lane.
 For lanes with @level="true" the projection does not change.

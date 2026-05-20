@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.9 Object borders
+# ASAM OpenDRIVE® v1.9.0 — 13.9 Object borders
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_09_object_borders.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 13.9 Object borders
 
-In the current version of ASAM OpenDRIVE, object borders are only allowed for Traffic Islands.
+In the current version of ASAM OpenDRIVE®, object borders are only allowed for Traffic Islands.
 Objects of type "trafficIsland" may have a border, that is a frame of a defined width.
 Different border types are available, currently concrete and curb.
 
@@ -19,7 +19,7 @@ The `<borders>` element serves as a wrapper for the `<border>` element, which it
 
 **`<borders>` element**
 
-In ASAM OpenDRIVE, object borders are represented by the `<borders>` element within the `<object>` element.
+In ASAM OpenDRIVE®, object borders are represented by the `<borders>` element within the `<object>` element.
 
 ```
 UML class: t_road_objects_object_borders
@@ -32,7 +32,7 @@ Different border types are available.
 
 **`<border>` element**
 
-In ASAM OpenDRIVE, object borders are represented by the `<border>` element within the `<borders>` element.
+In ASAM OpenDRIVE®, object borders are represented by the `<border>` element within the `<borders>` element.
 
 ```
 UML class: t_road_objects_object_borders_border

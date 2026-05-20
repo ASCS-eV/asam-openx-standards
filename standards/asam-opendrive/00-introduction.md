@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — Introduction
+# ASAM OpenDRIVE® v1.9.0 — Introduction
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/00_preface/00_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,18 +11,18 @@
 
 ## Overview
 
-ASAM OpenDRIVE was developed in response to demand for the specification of an exchange format to define static road networks that can be used in driving simulation applications.
+ASAM OpenDRIVE® was developed in response to demand for the specification of an exchange format to define static road networks that can be used in driving simulation applications.
 
-The ASAM OpenDRIVE Specification specifies the file format for static road network descriptions.
+The ASAM OpenDRIVE® Specification specifies the file format for static road network descriptions.
 The Extensible Markup Language (XML) is used to represent these descriptions.
-The ASAM OpenDRIVE Specification specifies how to model static road networks.
+The ASAM OpenDRIVE® Specification specifies how to model static road networks.
 In more detail, it specifies the structure, the sequence, the elements, and values to represent static road networks.
 
 Static road networks consist of, for example, roads, lanes, signals, junctions, and objects along the road, for example, traffic islands.
-The static road networks described in an ASAM OpenDRIVE file can be either artificial or derived from real world data.
-ASAM OpenDRIVE does not define dynamic content, for example, traffic participants and moving objects.
+The static road networks described in an ASAM OpenDRIVE® file can be either artificial or derived from real world data.
+ASAM OpenDRIVE® does not define dynamic content, for example, traffic participants and moving objects.
 
-ASAM OpenDRIVE descriptions may contain:
+ASAM OpenDRIVE® descriptions may contain:
 
 * Road definitions
 
@@ -41,22 +41,22 @@ ASAM OpenDRIVE descriptions may contain:
 * References to controllers for traffic lights
 * Tram and railway tracks
 
-Every ASAM OpenDRIVE element can be extended by user-defined data.
+Every ASAM OpenDRIVE® element can be extended by user-defined data.
 For example, when defining a speed limit sign, the only way to reference an external 3D object of that speed limit sign is to use the `<userData>' element.
-The extensibility facilitates a high degree of specialization for individual applications, while supporting exchangeability of ASAM OpenDRIVE data between different applications.
+The extensibility facilitates a high degree of specialization for individual applications, while supporting exchangeability of ASAM OpenDRIVE® data between different applications.
 
-ASAM OpenDRIVE is part of the ASAM domain of simulation standards that focus on simulation data for the automotive environment.
-Next to ASAM OpenDRIVE, ASAM provides other standards in the simulation domain, such as ASAM OpenCRG and ASAM OpenSCENARIO.
+ASAM OpenDRIVE® is part of the ASAM domain of simulation standards that focus on simulation data for the automotive environment.
+Next to ASAM OpenDRIVE®, ASAM provides other standards in the simulation domain, such as ASAM OpenCRG and ASAM OpenSCENARIO.
 
 ![img](../_images/00_preface/overview_open_x.png)
 
-Figure 1. Relationship between ASAM OpenDRIVE, ASAM OpenCRG, and ASAM OpenSCENARIO
+Figure 1. Relationship between ASAM OpenDRIVE®, ASAM OpenCRG, and ASAM OpenSCENARIO
 
-[Figure 1](#fig-60c22aa8-d229-456a-b39d-645b894d4cad) shows how to combine ASAM OpenDRIVE, ASAM OpenCRG, and ASAM OpenSCENARIO to define a scenario-driven description for traffic simulation that contains static and dynamic content.
+[Figure 1](#fig-60c22aa8-d229-456a-b39d-645b894d4cad) shows how to combine ASAM OpenDRIVE®, ASAM OpenCRG, and ASAM OpenSCENARIO to define a scenario-driven description for traffic simulation that contains static and dynamic content.
 
-ASAM OpenCRG enables to add detailed road surface descriptions to road networks defined in ASAM OpenDRIVE.
-Like ASAM OpenDRIVE, ASAM OpenCRG does not define dynamic content.
-ASAM OpenSCENARIO enables to add dynamic content to road networks defined in ASAM OpenDRIVE.
+ASAM OpenCRG enables to add detailed road surface descriptions to road networks defined in ASAM OpenDRIVE®.
+Like ASAM OpenDRIVE®, ASAM OpenCRG does not define dynamic content.
+ASAM OpenSCENARIO enables to add dynamic content to road networks defined in ASAM OpenDRIVE®.
 
 ## Conventions and notations
 
@@ -142,7 +142,7 @@ They shall not be used as general units, for example, to define road geometry, e
 
 ### Modal verbs
 
-To ensure compliance with the ASAM OpenDRIVE specification, users need to be able to distinguish between requirements, recommendations, permissions, possibilities and capabilities, and external constraints.
+To ensure compliance with the ASAM OpenDRIVE® specification, users need to be able to distinguish between requirements, recommendations, permissions, possibilities and capabilities, and external constraints.
 
 Table 4. Verbal forms for expressions of provisions
 
@@ -168,9 +168,9 @@ Table 5. Typographical conventions
 | *Terms* | This format is used to introduce glossary terms, new terms and to emphasize terms. |
 | `Mathematical elements` | This format is used for calculations and mathematical elements. |
 | `<element>` | This describes a tag for an element within the XML specification. |
-| @attribute | The "@" identifies an attribute of any ASAM OpenDRIVE element. |
+| @attribute | The "@" identifies an attribute of any ASAM OpenDRIVE® element. |
 
-The ASAM OpenDRIVE structure diagrams are modeled according to Unified Modeling Language (UML).
+The ASAM OpenDRIVE® structure diagrams are modeled according to Unified Modeling Language (UML).
 For detailed information on UML, see the UML specification [[3](../bibliography.html#bib-omguml)].
 
 ![img](../_images/00_preface/uml_notation.drawio.svg)
@@ -182,11 +182,11 @@ See also ISO TS 19103 [[4](../bibliography.html#bib-isots19103)].
 
 The context that an element takes within an association is indicated by its role.
 The role is given near the target of the association.
-For better readability, the ASAM OpenDRIVE class diagrams use a color scheme:
+For better readability, the ASAM OpenDRIVE® class diagrams use a color scheme:
 
 * The top-level element of a diagram is marked orange. This helps finding the entry point when reading a diagram top-down.
 * Classes that are marked yellow belong to the UML package that is discussed in the specification chapter, where the UML diagram is given.
-* Classes that are marked blue belong to an ASAM OpenDRIVE package that is different from the package that is associated with the yellow color.
+* Classes that are marked blue belong to an ASAM OpenDRIVE® package that is different from the package that is associated with the yellow color.
 * Classes that are marked green are classes that contain geometry information.
 
 **Mandatory and optional attributes**
@@ -229,7 +229,7 @@ Table 6. Color conventions for lane types in images
 
 ### Use of IDs
 
-The following rules apply to the use of IDs in ASAM OpenDRIVE:
+The following rules apply to the use of IDs in ASAM OpenDRIVE®:
 
 * [asam.net:xodr:1.4.0:ids.id\_unique\_in\_class](../16_annexes/map_rules.html#asam-net-xodr-1-4-0-ids-id-unique-in-class): IDs shall be unique within a class.
 
@@ -248,13 +248,13 @@ For curvature indications, the following convention applies:
 
 ## Deliverables
 
-The following deliverables are provided for ASAM OpenDRIVE:
+The following deliverables are provided for ASAM OpenDRIVE®:
 
-* [ASAM OpenDRIVE BS 1.9.0 Specification, 2026-05-08](../index.html) (this document, contained in this site)
-* [ASAM OpenDRIVE 1.9.0 Junction guideline 1.0.0, 2026-05-08](../../../../ASAM_OpenDRIVE_Junction_guideline/latest/junction-guidelines/index.html) (contained in this site)
-* [ASAM OpenDRIVE 1.9.0 Signal reference 1.0.0, 2026-05-08](../../../../ASAM_OpenDRIVE_Signal_reference/latest/signal-catalog/index.html) (contained in this site)
-* ASAM OpenDRIVE 1.9.0 Enterprise Architect UML model (contained in the deliverables menu of this site)
-* [ASAM OpenDRIVE 1.9.0 XSD schema files](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_xsd_schema_files.zip) (contained in the deliverables menu of this site)
-* [ASAM OpenDRIVE 1.9.0 Examples and uses cases](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_examples_and_use-cases.zip) (contained in the deliverables menu of this site)
-* [ASAM OpenDRIVE 1.9.0 Implementation examples](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_example_implementations.zip) (contained in the deliverables menu of this site)
-* [ASAM OpenDRIVE 1.9.0 Release Presentation](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_release_presentation.zip) (contained in the deliverables menu of this site)
+* [ASAM OpenDRIVE® BS 1.9.0 Specification, 2026-05-08](../index.html) (this document, contained in this site)
+* [ASAM OpenDRIVE® 1.9.0 Junction guideline 1.0.0, 2026-05-08](../../../../ASAM_OpenDRIVE_Junction_guideline/latest/junction-guidelines/index.html) (contained in this site)
+* [ASAM OpenDRIVE® 1.9.0 Signal reference 1.0.0, 2026-05-08](../../../../ASAM_OpenDRIVE_Signal_reference/latest/signal-catalog/index.html) (contained in this site)
+* ASAM OpenDRIVE® 1.9.0 Enterprise Architect UML model (contained in the deliverables menu of this site)
+* [ASAM OpenDRIVE® 1.9.0 XSD schema files](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_xsd_schema_files.zip) (contained in the deliverables menu of this site)
+* [ASAM OpenDRIVE® 1.9.0 Examples and uses cases](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_examples_and_use-cases.zip) (contained in the deliverables menu of this site)
+* [ASAM OpenDRIVE® 1.9.0 Implementation examples](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_example_implementations.zip) (contained in the deliverables menu of this site)
+* [ASAM OpenDRIVE® 1.9.0 Release Presentation](../_attachments/generated/ASAM_OpenDRIVE_v1-9-0-RC2_release_presentation.zip) (contained in the deliverables menu of this site)

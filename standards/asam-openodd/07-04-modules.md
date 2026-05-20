@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 7.4 ODD modules
+# ASAM OpenODD® v1.0.0 — 7.4 ODD modules
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/07_model_reference/07_04_modules.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,9 +15,9 @@
 
 The module and condition related classes of {THIS\_STANDARD} model
 
-Figure 19. The module and condition related classes of ASAM OpenODD model
+Figure 19. The module and condition related classes of ASAM OpenODD® model
 
-[Figure 19](#fig-reference-modules-module-classes) shows most of the classes related to class `Module` and class `Condition`, so [Figure 19](#fig-reference-modules-module-classes) is a subset of the ASAM OpenODD model.
+[Figure 19](#fig-reference-modules-module-classes) shows most of the classes related to class `Module` and class `Condition`, so [Figure 19](#fig-reference-modules-module-classes) is a subset of the ASAM OpenODD® model.
 
 ### 7.4.1.2 Class Module
 
@@ -37,7 +37,7 @@ Parameters
 
     | Parameter | Type | Mandatory | Description |
     | --- | --- | --- | --- |
-    | id | String | yes | The `Module` id, also referred to as handle, according to specifications in [Section 6.4.4.1, "Module specification"](../06_model_concept/06_04_openodd_modules.html#sec-module-specification) . This ID must be unique within the ASAM OpenODD transmission. |
+    | id | String | yes | The `Module` id, also referred to as handle, according to specifications in [Section 6.4.4.1, "Module specification"](../06_model_concept/06_04_openodd_modules.html#sec-module-specification) . This ID must be unique within the ASAM OpenODD® transmission. |
     | title | LangString | yes | This represents the title of the `Module`. It can be translated into other languages. At least an English title must be provided. |
     | description | LangString | no | This represents a description of the `Module`. It can be translated into other languages. |
     | comment | LangString | no | This represents a comment about the `Module`. It can be translated into other languages. |
@@ -145,9 +145,9 @@ Basic information
 
 The expression related classes of {THIS\_STANDARD} model
 
-Figure 20. The expression related classes of ASAM OpenODD model
+Figure 20. The expression related classes of ASAM OpenODD® model
 
-[Figure 20](#fig-reference-modules-expression-classes) shows most of the classes related to class `Expression`, so [Figure 20](#fig-reference-modules-expression-classes) is a subset of the ASAM OpenODD model.
+[Figure 20](#fig-reference-modules-expression-classes) shows most of the classes related to class `Expression`, so [Figure 20](#fig-reference-modules-expression-classes) is a subset of the ASAM OpenODD® model.
 
 ### 7.4.2.2 Class Expression
 

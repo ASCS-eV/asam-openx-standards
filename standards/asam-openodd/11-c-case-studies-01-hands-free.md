@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — C.1 (informative) Hands free ADS example
+# ASAM OpenODD® v1.0.0 — C.1 (informative) Hands free ADS example
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_c_case_studies_01_hands_free.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -221,9 +221,9 @@ Code 219. Example case study taxonomy (XML)
 </TAXONOMY>
 ```
 
-### C.1.2.3 ASAM OpenSCENARIO DSL
+### C.1.2.3 ASAM OpenSCENARIO® DSL
 
-Code 220. Example case study taxonomy (ASAM OpenSCENARIO DSL)
+Code 220. Example case study taxonomy (ASAM OpenSCENARIO® DSL)
 
 ```
 # file handsfree_taxonomy.osc
@@ -490,9 +490,9 @@ Code 222. Example case study ODD (XML)
 </MODULES>
 ```
 
-### C.1.3.3 ASAM OpenSCENARIO DSL
+### C.1.3.3 ASAM OpenSCENARIO® DSL
 
-Code 223. Example case study ODD (ASAM OpenSCENARIO DSL)
+Code 223. Example case study ODD (ASAM OpenSCENARIO® DSL)
 
 ```
 # file handsfree_feature_ODD.osc

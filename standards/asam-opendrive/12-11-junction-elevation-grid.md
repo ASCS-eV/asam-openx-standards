@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.11 Junction elevation grid
+# ASAM OpenDRIVE® v1.9.0 — 12.11 Junction elevation grid
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_11_junction_elevation_grid.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -39,7 +39,7 @@ Figure 101. Example of an elevation grid with more points
 
 **`<elevationGrid>` element**
 
-In ASAM OpenDRIVE, elevation grids are represented by the `<elevationGrid>` element within the `<junction>` element.
+In ASAM OpenDRIVE®, elevation grids are represented by the `<elevationGrid>` element within the `<junction>` element.
 
 ```
 UML class:  t_junction_elevationGrid
@@ -62,11 +62,11 @@ Table 79. Attributes of the <elevationGrid> element
 
 Figure 102. UML class diagram of the ElevationGrid class
 
-[Figure 102](#fig-aa1298c9-f078-4f90-addb-2d28de614923) shows the UML class diagram of the ASAM OpenDRIVE ElevationGrid class.
+[Figure 102](#fig-aa1298c9-f078-4f90-addb-2d28de614923) shows the UML class diagram of the ASAM OpenDRIVE® ElevationGrid class.
 
 **`<elevation>` element**
 
-In ASAM OpenDRIVE, z-values at distinct points to the left or the right of the junction reference line or directly on the junction reference line are represented by `<elevation>` elements within the `<elevationGrid>` element.
+In ASAM OpenDRIVE®, z-values at distinct points to the left or the right of the junction reference line or directly on the junction reference line are represented by `<elevation>` elements within the `<elevationGrid>` element.
 
 ```
 UML class:  t_junction_elevationGrid_elevation

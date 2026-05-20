@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 8.2 Taxonomy mapping
+# ASAM OpenODD® v1.0.0 — 8.2 Taxonomy mapping
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/08_tabular/08_02_openodd_tabular_taxonomy.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,11 +11,11 @@
 
 ## 8.2.1 General information
 
-This section provides a reference mapping for representing ASAM OpenODD taxonomies in tabular formats.
+This section provides a reference mapping for representing ASAM OpenODD® taxonomies in tabular formats.
 
 The tabular taxonomy file can be either stand-alone, accompany a module, or COD specification or both.
 Each of these is stored in a denormalized tabular file, flattening relevant entities into a single table.
-This is used instead of a normalized collection of interrelated files, one for every entity type of ASAM OpenODD model.
+This is used instead of a normalized collection of interrelated files, one for every entity type of ASAM OpenODD® model.
 By utilizing the easy handling and navigability of (single) table files, it enables data analysis and inspection using common tooling.
 More elaborate logic might be required to map columns and entity properties to each other during import and export.
 Also, checking for inconsistencies during import is advised if the files are processed with common tooling.
@@ -96,7 +96,7 @@ Table 126. Tabular taxonomy representation in TaxonomyElements.csv
 
 |  |  |
 | --- | --- |
-|  | The `Type` column reflects the `Type` class from the ASAM OpenODD model. However, instead of using the generic term "primitive," it directly specifies the applicable primitive type (for example `int`, `float`, and so on) along with its unit (see the `UNIT_TYPE` column in [Table 126](#tab-multilanguagetaxonomyrepresentation)). |
+|  | The `Type` column reflects the `Type` class from the ASAM OpenODD® model. However, instead of using the generic term "primitive," it directly specifies the applicable primitive type (for example `int`, `float`, and so on) along with its unit (see the `UNIT_TYPE` column in [Table 126](#tab-multilanguagetaxonomyrepresentation)). |
 
 ## 8.2.3. Use of expressions for `TaxonomyConcept`
 

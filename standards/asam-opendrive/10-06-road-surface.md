@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 10.6 Road CRG surface
+# ASAM OpenDRIVE® v1.9.0 — 10.6 Road CRG surface
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/10_roads/10_06_road_surface.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,12 +9,12 @@
 
 # 10.6 Road CRG surface
 
-The description of the surface of a road is part of ASAM OpenCRG, not ASAM OpenDRIVE.
-It is possible to reference data created by ASAM OpenCRG in ASAM OpenDRIVE.
-In ASAM OpenDRIVE, the road surface is represented by the `<surface>` element within the `<road>` element.
+The description of the surface of a road is part of ASAM OpenCRG, not ASAM OpenDRIVE®.
+It is possible to reference data created by ASAM OpenCRG in ASAM OpenDRIVE®.
+In ASAM OpenDRIVE®, the road surface is represented by the `<surface>` element within the `<road>` element.
 Data described in ASAM OpenCRG is represented by the `<CRG>` element within the `<surface>` element.
 
-Neither ASAM OpenDRIVE nor ASAM OpenCRG contain data regarding the visual representation of the road surface.
+Neither ASAM OpenDRIVE® nor ASAM OpenCRG contain data regarding the visual representation of the road surface.
 
 ![img](../_images/10_roads/road_surface.png)
 
@@ -24,7 +24,7 @@ Figure 49. Road surface as defined in a CRG file
 
 Besides modeling of elevation, CRG data can also be used to model detailed friction values of the road (see [Section 10.6.5, “Defining friction using ASAM OpenCRG”](#sec-78c54dc8-77a5-4f62-bc2f-42c0e71e2723)).
 
-As the name indicates, CRG (Curved Regular Grid) data is organized in a regular grid which is laid out along a reference line, which is comparable to ASAM OpenDRIVE’s road reference line.
+As the name indicates, CRG (Curved Regular Grid) data is organized in a regular grid which is laid out along a reference line, which is comparable to ASAM OpenDRIVE®’s road reference line.
 At each grid position, it contains the absolute elevation measured along a real road and some additional data which allows for the computation of the delta elevation relative to the reference line.
 
 ![img](../_images/10_roads/opencrg_introductory_example.png)
@@ -33,26 +33,26 @@ Figure 50. ASAM OpenCRG road surface description using u/v coordinates and x/y c
 
 [Figure 50](#fig-ec62cd75-b6c7-4c7c-bc61-c9fa776ad049) shows the reference line and different coordinate systems of ASAM OpenCRG.
 
-The key to combining ASAM OpenDRIVE and CRG data is to define a correlation between the two reference lines and a rule for using the elevation data of both descriptions.
+The key to combining ASAM OpenDRIVE® and CRG data is to define a correlation between the two reference lines and a rule for using the elevation data of both descriptions.
 
 ![img](../_images/10_roads/crg_position_1.png)
 
 Figure 51. Positioning of an ASAM OpenCRG file along the reference line
 
-[Figure 51](#fig-686a36a5-5331-46a1-851a-59809f5d1baa) shows CRG data that may be offset from the ASAM OpenDRIVE road reference line using @tOffset and it may be oriented in the same or opposite direction as the layout direction of the road (see [Section 10.6.2, “Switching orientation”](#sec-58890351-a29c-49b3-9fe4-6178bb2a0a5a)).
+[Figure 51](#fig-686a36a5-5331-46a1-851a-59809f5d1baa) shows CRG data that may be offset from the ASAM OpenDRIVE® road reference line using @tOffset and it may be oriented in the same or opposite direction as the layout direction of the road (see [Section 10.6.2, “Switching orientation”](#sec-58890351-a29c-49b3-9fe4-6178bb2a0a5a)).
 
-## 10.6.1 Modes of combining ASAM OpenDRIVE and ASAM OpenCRG
+## 10.6.1 Modes of combining ASAM OpenDRIVE® and ASAM OpenCRG
 
-The CRG data may be applied to a given ASAM OpenDRIVE road in different modes:
+The CRG data may be applied to a given ASAM OpenDRIVE® road in different modes:
 
-Table 32. Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE
+Table 32. Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE®
 
 
 | Mode | ASAM OpenCRG reference line | Total height | Typical use case |
 | --- | --- | --- | --- |
-| attached | discarded | ASAM OpenDRIVE height plus ASAM OpenCRG height | Relative road height to road surface (including elevation, lateral profile, interpolated elevation grid, and lane height) |
+| attached | discarded | ASAM OpenDRIVE® height plus ASAM OpenCRG height | Relative road height to road surface (including elevation, lateral profile, interpolated elevation grid, and lane height) |
 | attached0 | discarded | ASAM OpenCRG height only | Absolute height measurement |
-| genuine | shifted and rotated so beginning of reference line matches position given in ASAM OpenDRIVE | ASAM OpenCRG height only | Combining complete ASAM OpenCRG tracks (for example, racing tracks) with ASAM OpenDRIVE data |
+| genuine | shifted and rotated so beginning of reference line matches position given in ASAM OpenDRIVE® | ASAM OpenCRG height only | Combining complete ASAM OpenCRG tracks (for example, racing tracks) with ASAM OpenDRIVE® data |
 | global | shifted and rotated by xOffset, yOffset, zOffset and hOffset | ASAM OpenCRG height only | On junctions |
 
 ### 10.6.1.1 @mode = attached
@@ -62,11 +62,11 @@ Table 32. Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE
 Figure 52. ASAM OpenCRG attachment mode, attached
 
 [Figure 52](#fig-510aa072-bc73-4ccd-8d47-2cbbccfd43db) shows the attachment mode `attached`.
-The reference line of the CRG data set is replaced with the ASAM OpenDRIVE road reference line, taking into account the @tOffset and the @sOffset parameters.
-The local CRG elevation values, which are calculated by evaluating the CRG grid and applying @zOffset and @zScale, are added to the surface elevation data of the ASAM OpenDRIVE road, which are derived from the combination of elevation, superelevation and crossfall.
-With this mode, the surface information relative to the original CRG data reference line is transferred from an arbitrary CRG road to an ASAM OpenDRIVE road without having to make sure that the overall geometries of the road match.
+The reference line of the CRG data set is replaced with the ASAM OpenDRIVE® road reference line, taking into account the @tOffset and the @sOffset parameters.
+The local CRG elevation values, which are calculated by evaluating the CRG grid and applying @zOffset and @zScale, are added to the surface elevation data of the ASAM OpenDRIVE® road, which are derived from the combination of elevation, superelevation and crossfall.
+With this mode, the surface information relative to the original CRG data reference line is transferred from an arbitrary CRG road to an ASAM OpenDRIVE® road without having to make sure that the overall geometries of the road match.
 The original position, heading, curvature, elevation and superelevation of the CRG road are disregarded.
-The CRG grid is evaluated along the ASAM OpenDRIVE reference line instead of the CRG reference line.
+The CRG grid is evaluated along the ASAM OpenDRIVE® reference line instead of the CRG reference line.
 
 ![img](../_images/10_roads/crg_attached_2.png)
 
@@ -91,7 +91,7 @@ t - t\_{Offset} \\
 
 ### 10.6.1.2 @mode = attached0
 
-This mode is the same as the attached mode, with the exception that only the CRG data elevation value is considered (that is, the ASAM OpenDRIVE elevation is set to zero).
+This mode is the same as the attached mode, with the exception that only the CRG data elevation value is considered (that is, the ASAM OpenDRIVE® elevation is set to zero).
 
 ![img](../_images/10_roads/crg_attached0.png)
 
@@ -125,10 +125,10 @@ t - t\_{Offset} \\
 Figure 55. ASAM OpenCRG attachment mode, genuine
 
 [Figure 55](#fig-fb28ac87-b3b6-4ec1-ac44-88d29be95045) shows the attachment mode `genuine`.
-The start point of the CRG data set reference line is positioned relative to the point on the ASAM OpenDRIVE road reference line at the position defined by @sStart, @sOffset and @tOffset.
+The start point of the CRG data set reference line is positioned relative to the point on the ASAM OpenDRIVE® road reference line at the position defined by @sStart, @sOffset and @tOffset.
 By providing offset values for the longitudinal (@sOffset) and lateral (@tOffset) displacement, the heading (@hOffset) and the elevation (@zOffset), the correlation between the two descriptions reference lines is clear.
-In genuine mode, the CRG data replace the ASAM OpenDRIVE elevation data, that is, the absolute elevation of a given point of the road surface is directly computed from the CRG data.
-When using this method, it must be assured that the geometry of the CRG data matches – within certain tolerance – the geometry of the underlying ASAM OpenDRIVE road.
+In genuine mode, the CRG data replace the ASAM OpenDRIVE® elevation data, that is, the absolute elevation of a given point of the road surface is directly computed from the CRG data.
+When using this method, it must be assured that the geometry of the CRG data matches – within certain tolerance – the geometry of the underlying ASAM OpenDRIVE® road.
 
 The height of a given `(x,y)` position on the lane is calculated as displayed below.
 
@@ -166,7 +166,7 @@ REFERENCE\\_LINE\\_START\\_Y \\ \end{array}\right)
 The CRG data set is referenced from a given track or a junction record but no translatory or rotatory transformation is applied, except for the xyz and heading offsets defined by the @xOffset, @yOffset, @zOffset and @hOffset attributes.
 All data in the CRG file remains in its native coordinate system.
 Elevation data is interpreted as inertial data, that is, AS IS.
-The ASAM OpenDRIVE height is ignored.
+The ASAM OpenDRIVE® height is ignored.
 This can be used to define heights for junctions.
 This is also the only mode that can be applied directly to `<junction>` elements without a junction reference line.
 
@@ -261,7 +261,7 @@ That means, if a CRG file with @purpose=friction is added to a road, the values 
 
 **`<surface>` element**
 
-In ASAM OpenDRIVE, the road surface is represented by the `<surface>` element within the `<road>` element.
+In ASAM OpenDRIVE®, the road surface is represented by the `<surface>` element within the `<road>` element.
 
 ```
 UML class: t_road_surface
@@ -272,7 +272,7 @@ Contains a series of elements describing a surface.
 
 **`<CRG>` element**
 
-In ASAM OpenDRIVE, the CRG data is represented by the `<CRG>` element within the `<surface>` element.
+In ASAM OpenDRIVE®, the CRG data is represented by the `<CRG>` element within the `<surface>` element.
 
 ```
 UML class: t_road_surface_CRG
@@ -315,13 +315,13 @@ Table 33. Attributes of the <CRG> element
 
 |  |  |
 | --- | --- |
-|  | * Because CRG data may only cover parts of a road’s surface, it must be made sure that outside the valid CRG area, the elevation information derived from ASAM OpenDRIVE data can still be used.  * [asam.net:xodr:1.7.0:road.crg.only\_on\_per\_s](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-crg-only-on-per-s): In the future, multiple CRG files at one position may be combined. For compatibility with future versions, each road or junction should only contain one CRG file per `s`-position and @purpose.  * ASAM OpenCRG files only have an effect on those roads or junctions from which they are referenced (and only between `sStart` and `sEnd` on that road).   Example: if one road references a CRG file in global mode, then only this road is influenced by the CRG file.   Other roads are not affected, even if the CRG file overlapped the road. * If the calculations of the CRG u/v coordinates or x/y coordinates lead to coordinates outside of the defined area of the CRG file, then the normal CRG mechanisms, for example, `BORDER_MODE_U` and `BORDER_MODE_V`, applies and decide which value is returned. * CRG files may be referenced multiple times with different parameters.   For example, CRG file may be placed in mode genuine multiple times, with different `zScale` values.   This should be considered in the implementation, for example, by NOT applying the `SCALE_Z_GRID` upon loading the CRG file, but by doing the calculation outside the CRG library so that multiple instantiations of the same file can share the data in the CRG library. |
+|  | * Because CRG data may only cover parts of a road’s surface, it must be made sure that outside the valid CRG area, the elevation information derived from ASAM OpenDRIVE® data can still be used.  * [asam.net:xodr:1.7.0:road.crg.only\_on\_per\_s](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-crg-only-on-per-s): In the future, multiple CRG files at one position may be combined. For compatibility with future versions, each road or junction should only contain one CRG file per `s`-position and @purpose.  * ASAM OpenCRG files only have an effect on those roads or junctions from which they are referenced (and only between `sStart` and `sEnd` on that road).   Example: if one road references a CRG file in global mode, then only this road is influenced by the CRG file.   Other roads are not affected, even if the CRG file overlapped the road. * If the calculations of the CRG u/v coordinates or x/y coordinates lead to coordinates outside of the defined area of the CRG file, then the normal CRG mechanisms, for example, `BORDER_MODE_U` and `BORDER_MODE_V`, applies and decide which value is returned. * CRG files may be referenced multiple times with different parameters.   For example, CRG file may be placed in mode genuine multiple times, with different `zScale` values.   This should be considered in the implementation, for example, by NOT applying the `SCALE_Z_GRID` upon loading the CRG file, but by doing the calculation outside the CRG library so that multiple instantiations of the same file can share the data in the CRG library. |
 
 **Rules**
 
-The following rules apply to the use of CRG data in ASAM OpenDRIVE:
+The following rules apply to the use of CRG data in ASAM OpenDRIVE®:
 
-* [asam.net:xodr:1.7.0:road.crg.use\_last\_entry](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-crg-use-last-entry): If more than one CRG entry is given for the same physical property (attribute purpose) at a given location, then the last entry in the sequence of occurrence in the ASAM OpenDRIVE file shall be the relevant one. All others are ignored (but see the [note](#Note_CRG)).
+* [asam.net:xodr:1.7.0:road.crg.use\_last\_entry](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-crg-use-last-entry): If more than one CRG entry is given for the same physical property (attribute purpose) at a given location, then the last entry in the sequence of occurrence in the ASAM OpenDRIVE® file shall be the relevant one. All others are ignored (but see the [note](#Note_CRG)).
 
 * [asam.net:xodr:1.7.0:road.crg.junction](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-crg-junction): If a `<junction>` element contains a `<CRG>` element, none of the connecting roads that belong to this junction shall have a `<CRG>` element.
 

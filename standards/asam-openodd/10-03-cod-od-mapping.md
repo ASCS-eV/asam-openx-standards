@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 10.3 COD/OD mapping
+# ASAM OpenODD® v1.0.0 — 10.3 COD/OD mapping
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/10_yaml/10_03_cod_od_mapping.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 10.3 COD/OD mapping
 
-The mapping of ASAM OpenODD model for COD and OD into YAML is achieved by specifying tabular data using a list of YAML data objects under an "COD" or "OD" element, respectively.
+The mapping of ASAM OpenODD® model for COD and OD into YAML is achieved by specifying tabular data using a list of YAML data objects under an "COD" or "OD" element, respectively.
 The COD and OD are defined using a collection of `TaxonomyConceptValues` arrays.
 The mapping is achieved as follows:
 

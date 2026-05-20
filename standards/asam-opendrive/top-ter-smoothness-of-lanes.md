@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — Annex D: Additional rules (normative)
+# ASAM OpenDRIVE® v1.9.0 — Annex D: Additional rules (normative)
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/16_annexes/smoothness_of_lanes/top_ter_smoothness_of_lanes.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -47,7 +47,7 @@ Drivable lanes that are marked as deprecated:
 | --- | --- |
 |  | These lane types may be configurable in the Checker Tool in the future. These are checked within the  [ASAM Quality Checker Framework](https://github.com/asam-ev/qc-framework). |
 
-To determine the smoothness of lanes, several different ASAM OpenDRIVE contents needs to be considered.
+To determine the smoothness of lanes, several different ASAM OpenDRIVE® contents needs to be considered.
 The following elements are relevant, including their respective contents:
 
 * `<planView>`
@@ -85,12 +85,12 @@ Figure 150. Touching Points for connecting roads
 
 Figure 151. Touching Points for multiple lane linkage
 
-The yellow point can not have a horizontal gap by definition, as in ASAM OpenDRIVE there are no gaps between lanes horizontally.
+The yellow point can not have a horizontal gap by definition, as in ASAM OpenDRIVE® there are no gaps between lanes horizontally.
 Also for vertical gaps the yellow point makes no difference for the vertical gap calculations.
 
 In the text below the word 'match' is used.
 If two touching points 'match', they are not mathematically identical.
-There will likely be small differences mathematically due to floating points or different formulas used within ASAM OpenDRIVE.
+There will likely be small differences mathematically due to floating points or different formulas used within ASAM OpenDRIVE®.
 
 ### D.1.2 Horizontal gaps
 
@@ -102,7 +102,7 @@ There will likely be small differences mathematically due to floating points or 
 
 #### D.1.2.2 t-direction
 
-* By definition of ASAM OpenDRIVE there can be no horizontal gaps in t-direction.
+* By definition of ASAM OpenDRIVE® there can be no horizontal gaps in t-direction.
 
 ### D.1.3 Horizontal kinks
 
@@ -115,7 +115,7 @@ There will likely be small differences mathematically due to floating points or 
 
 #### D.1.3.2 t-direction
 
-* By definition of ASAM OpenDRIVE there can be no horizontal kinks in t-direction.
+* By definition of ASAM OpenDRIVE® there can be no horizontal kinks in t-direction.
 
 ### D.1.4 Vertical gaps
 

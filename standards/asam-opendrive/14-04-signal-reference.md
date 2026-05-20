@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.4 Signal reference
+# ASAM OpenDRIVE® v1.9.0 — 14.4 Signal reference
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_04_signal_reference.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -16,7 +16,7 @@ A signal reference is valid for one specific signal only.
 
 **`<reference>` element**
 
-In ASAM OpenDRIVE, a signal reference is represented by the `<reference>` element within the `<signal>` element.
+In ASAM OpenDRIVE®, a signal reference is represented by the `<reference>` element within the `<signal>` element.
 
 ```
 UML class: t_road_signals_signal_reference
@@ -89,9 +89,9 @@ The stop line in turn has a `<dependency>` on the traffic light, since traffic s
 The following rules apply to signal reference elements:
 
 * A signal may have multiple references.
-* The type of reference is not specifically defined in ASAM OpenDRIVE and may be set in the application.
+* The type of reference is not specifically defined in ASAM OpenDRIVE® and may be set in the application.
 
-Rules regarding the type of reference are defined in the application and are not stored in ASAM OpenDRIVE.
+Rules regarding the type of reference are defined in the application and are not stored in ASAM OpenDRIVE®.
 
 **Related topics**
 

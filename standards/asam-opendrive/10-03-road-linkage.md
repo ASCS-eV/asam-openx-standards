@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 10.3 Road linkage
+# ASAM OpenDRIVE® v1.9.0 — 10.3 Road linkage
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/10_roads/10_03_road_linkage.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -42,7 +42,7 @@ For junctions, different attribute sets shall be used for the `<predecessor>` an
 
 **`<link>` element**
 
-In ASAM OpenDRIVE, road linkage is represented by the `<link>` element within the `<road>` element.
+In ASAM OpenDRIVE®, road linkage is represented by the `<link>` element within the `<road>` element.
 
 ```
 UML class: t_road_link
@@ -56,11 +56,11 @@ Isolated roads may omit this element.
 
 Figure 41. UML class diagram of the Link class
 
-[Figure 41](#fig-805c6a13-6e8a-4e6c-bde6-170ae7b09a6c) shows the UML class diagram of the ASAM OpenDRIVE Link class.
+[Figure 41](#fig-805c6a13-6e8a-4e6c-bde6-170ae7b09a6c) shows the UML class diagram of the ASAM OpenDRIVE® Link class.
 
 **`<predecessor>` and `<successor>` elements**
 
-In ASAM OpenDRIVE, predecessors and successors are represented by the `<predecessor>` and `<successor>` elements within the `<link>` element.
+In ASAM OpenDRIVE®, predecessors and successors are represented by the `<predecessor>` and `<successor>` elements within the `<link>` element.
 
 ```
 UML class: t_road_link_predecessorSuccessor

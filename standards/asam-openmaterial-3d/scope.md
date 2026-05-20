@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 1 Scope
+# ASAM OpenMATERIAL® 3D latest — 1 Scope
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/01_scope/scope.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 1 Scope
 
-ASAM OpenMATERIAL 3D specifies the following:
+ASAM OpenMATERIAL® 3D specifies the following:
 
 * Geometry
 

@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 8.5 Material brdf schema
+# ASAM OpenMATERIAL® 3D latest — 8.5 Material brdf schema
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/08_material/material-brdf-schema.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -48,7 +48,7 @@ The version number of the material, following semantic versioning (for example, 
 
 ### 8.5.1.5 openMaterial3dVersion
 
-The version of the ASAM OpenMATERIAL 3D specification used, adhering to semantic versioning (for example, '1.0.0').
+The version of the ASAM OpenMATERIAL® 3D specification used, adhering to semantic versioning (for example, '1.0.0').
 
 **Type:** `string`  
 **Pattern:** `^\\d+\\.\\d+\\.\\d+$`  

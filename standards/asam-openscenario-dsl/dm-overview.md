@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 8.1 Domain model introduction
+# ASAM OpenSCENARIO® DSL v2.2.0 — 8.1 Domain model introduction
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/domain-model/dm_overview.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -87,8 +87,8 @@ Therefore, the following standards have been taken into account:
   Features related to the domain model of ASAM OpenSCENARIO XML 1.3.1 are covered to ensure this version of ASAM OpenSCENARIO is a super-set of ASAM OpenSCENARIO XML 1.3.1.
 * *ASAM OSI*  
   Align with ASAM OSI where possible, to enable coherent reuse of attributes from scenario definition in sensor models.
-* *ASAM OpenDRIVE*  
-  Align with ASAM OpenDRIVE where possible, to avoid conflicting terms and definitions without restricting the usage to maps defined in ASAM OpenDRIVE format.
+* *ASAM OpenDRIVE®*  
+  Align with ASAM OpenDRIVE® where possible, to avoid conflicting terms and definitions without restricting the usage to maps defined in ASAM OpenDRIVE® format.
 * *ASAM OpenXOntology*  
   Collaboration with ASAM OpenXOntology to aim at improved harmonization of ASAM standards.
 * *UN ECE/TRANS/WP.29/78/Rev.6*  

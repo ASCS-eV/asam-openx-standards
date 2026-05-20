@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.13 Object CRG surface
+# ASAM OpenDRIVE® v1.9.0 — 13.13 Object CRG surface
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_13_object_surface.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -19,7 +19,7 @@ Objects with a defined `<surface>` element influence the height of the road, inc
 The object’s surface height is added to the road height.
 In the other direction, it is subtracted if the object’s surface height is negative.
 
-Because CRG data may only cover parts of a road’s surface, it must be made sure that the elevation information derived from ASAM OpenDRIVE data can still be used outside of the valid CRG area.
+Because CRG data may only cover parts of a road’s surface, it must be made sure that the elevation information derived from ASAM OpenDRIVE® data can still be used outside of the valid CRG area.
 Because the reference line of the CRG file for an object is ignored, a CRG file may be referenced multiple times in different parts of the map.
 The local coordinate system of an object is rotated with the object.
 The object surface is thus also rotated.
@@ -37,7 +37,7 @@ The object’s center point is defined as the origin of the CRG coordinate syste
 
 **`<surface>` element**
 
-In ASAM OpenDRIVE, object surfaces are represented by the `<surface>` element within the `<object>` element.
+In ASAM OpenDRIVE®, object surfaces are represented by the `<surface>` element within the `<object>` element.
 
 ```
 UML class:  t_road_objects_object_surface
@@ -49,7 +49,7 @@ Used to describe the road surface elevation of an object.
 
 **`<CRG>` element**
 
-In ASAM OpenDRIVE, ASAM OpenCRG data of object surfaces is represented by the <CRG> element within the <surface> element.
+In ASAM OpenDRIVE®, ASAM OpenCRG data of object surfaces is represented by the <CRG> element within the <surface> element.
 
 ```
 UML class:  t_road_objects_object_surface_CRG
@@ -97,7 +97,7 @@ Table 109. Total height calculation by attachment mode
 | no road surface CRG | OpenDRIVE height + object CRG  400 | OpenDRIVE height + object CRG  400 |
 
 [Table 110](#tab-bea7d535-f628-4299-a083-8fee726cea2) summarizes the calculations for the different combinations.
-For a review of attachment modes, see [Table 32](../10_roads/10_06_road_surface.html#tab-8dd4bfa6-b06a-48be-8044-07887e2e811a), "Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE" in  [Section 10.6, "Road CRG surface"](../10_roads/10_06_road_surface.html#top-7a0a2c4b-41a6-46e6-845e-932f2a014730).
+For a review of attachment modes, see [Table 32](../10_roads/10_06_road_surface.html#tab-8dd4bfa6-b06a-48be-8044-07887e2e811a), "Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE®" in  [Section 10.6, "Road CRG surface"](../10_roads/10_06_road_surface.html#top-7a0a2c4b-41a6-46e6-845e-932f2a014730).
 
 If `crgEvaluv2z` returns NaN, then the object has no defined height at that position.
 This is allowed in ASAM OpenCRG.
@@ -129,7 +129,7 @@ The following rules apply to the use of CRG data in objects:
 
 * [asam.net:xodr:1.7.0:road.object.surface.crg\_hidden\_on\_object\_overlap](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-object-surface-crg-hidden-on-object-overlap): If a road surface CRG is present, that is, the CRG area overlaps the bounding volume of the object and has any mode other than attached, then @hideRoadSurfaceCRG shall be false.
 
-* [asam.net:xodr:1.7.0:road.object.surface.calculate\_road\_height](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-object-surface-calculate-road-height): If `crgEvaluv2z` returns NaN, then the road height at that position shall be the ASAM OpenDRIVE height in addition to the road surface CRG, if it is present. The value of @hideRoadSurfaceCRG attribute shall have no influence.The value of @hideRoadSurfaceCRG attribute shall have no influence.
+* [asam.net:xodr:1.7.0:road.object.surface.calculate\_road\_height](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-object-surface-calculate-road-height): If `crgEvaluv2z` returns NaN, then the road height at that position shall be the ASAM OpenDRIVE® height in addition to the road surface CRG, if it is present. The value of @hideRoadSurfaceCRG attribute shall have no influence.The value of @hideRoadSurfaceCRG attribute shall have no influence.
 
 **Related topics**
 

@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 9.3 Modeling COD/OD
+# ASAM OpenODD® v1.0.0 — 9.3 Modeling COD/OD
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/09_openscenario_dsl/09_03_modeling_cod_od.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -23,17 +23,17 @@ For example, where a domain concepts definition model (taxonomy) used for a COD 
 ## 9.3.2 Modeling COD
 
 The COD specifies concrete values for the attributes in a given domain concepts definition model (taxonomy).
-In a V&V process based on ASAM OpenSCENARIO DSL, a COD will exist primarily in the memory of a supporting execution engine as illustrated in [Figure 22](09_01_overview.html#fig-overview-type-and-instance-models-in-a-scenario-based-v-v-process).
+In a V&V process based on ASAM OpenSCENARIO® DSL, a COD will exist primarily in the memory of a supporting execution engine as illustrated in [Figure 22](09_01_overview.html#fig-overview-type-and-instance-models-in-a-scenario-based-v-v-process).
 
-However, a COD can also be represented using the ASAM OpenSCENARIO DSL language.
-To do this, an ASAM OpenSCENARIO DSL file imports a given domain concepts definition model (taxonomy) and defines values for the fields (attributes ) via type extensions and keep statements of the form `<field-name> == value`.
+However, a COD can also be represented using the ASAM OpenSCENARIO® DSL language.
+To do this, an ASAM OpenSCENARIO® DSL file imports a given domain concepts definition model (taxonomy) and defines values for the fields (attributes ) via type extensions and keep statements of the form `<field-name> == value`.
 
-[Code 119](#code-concrete-values) shows an example of how a COD is modeled using ASAM OpenSCENARIO DSL.
+[Code 119](#code-concrete-values) shows an example of how a COD is modeled using ASAM OpenSCENARIO® DSL.
 The example shows concrete values that are assigned to fields of a `weather` `TaxonomyConcept` instance (represented as a struct in the domain concepts definition model).
 The code assumes that the domain concepts definition model (taxonomy) defines the fields `wind_speed`, `wind`, and `rainfall` for `weather`.
 Also, the example shows how concrete time and location information (see [Code 110](09_02_modeling_taxonomy.html#code-modeling-odd-taxonomy)) is encoded.
 
-Code 119. Example concrete values (ASAM OpenSCENARIO DSL notation)
+Code 119. Example concrete values (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # Import existing domain concepts definition (taxonomy) file
@@ -75,10 +75,10 @@ extend weather:
 ## 9.3.3 Modeling OD
 
 ODs are modeled using the same approach as described for CODs.
-The code example [Code 120](#code-modeling-ods-asam-openscenario-dsl) shows part ASAM OpenSCENARIO DSL file representing an OD.
+The code example [Code 120](#code-modeling-ods-asam-openscenario-dsl) shows part ASAM OpenSCENARIO® DSL file representing an OD.
 The example assumes that all the fields (attributes) and units appearing in the `keep`-constraints are defined in the imported domain concepts definition model (taxonomy) `Domain_Concepts_Definition_ISO_34503_extended_for_OD.osc`.
 
-Code 120. Example modeling ODs in ASAM OpenSCENARIO DSL (ASAM OpenSCENARIO DSL notation)
+Code 120. Example modeling ODs in ASAM OpenSCENARIO® DSL (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # Import existing domain concepts definition (taxonomy) file

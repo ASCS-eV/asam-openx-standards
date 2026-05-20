@@ -1,13 +1,13 @@
-# ASAM OpenODD v1.0.0 — Annex B: ISO 34503 Taxonomy (Tabular CSV)
+# ASAM OpenODD® v1.0.0 — Annex B: ISO 34503 Taxonomy (Tabular CSV)
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_e_iso34503_01_tabular.html
-> **Standard**: ASAM OpenODD Base Standard 1.0.0 Specification, 2025-04-03
+> **Standard**: ASAM OpenODD® Base Standard 1.0.0 Specification, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2025-05-19
 
 ---
 
-This annex provides the ISO 34503 taxonomy in CSV tabular format, as used by ASAM OpenODD.
+This annex provides the ISO 34503 taxonomy in CSV tabular format, as used by ASAM OpenODD®.
 The taxonomy defines the hierarchical classification of ODD-relevant concepts organized into
 three main domains from ISO 34503:
 

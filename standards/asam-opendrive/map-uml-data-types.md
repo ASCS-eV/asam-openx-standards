@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — Annex B (normative): Data types
+# ASAM OpenDRIVE® v1.9.0 — Annex B (normative): Data types
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/16_annexes/map_uml_data_types.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

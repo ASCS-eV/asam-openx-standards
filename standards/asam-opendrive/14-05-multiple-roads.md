@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.5 Signals that apply to multiple roads
+# ASAM OpenDRIVE® v1.9.0 — 14.5 Signals that apply to multiple roads
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_05_multiple_roads.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 14.5 Signals that apply to multiple roads
 
-ASAM OpenDRIVE offers the possibility for one signal to apply to multiple roads.
+ASAM OpenDRIVE® offers the possibility for one signal to apply to multiple roads.
 This is achieved by defining the signal in one road using a `<signal>` element, and referencing it from one or more other roads using `<signalReference>` elements.
 This is especially useful in junctions where many roads are close together and, for example, speed limit signs may need to apply to more than one of those close-together roads.
 
@@ -22,7 +22,7 @@ This makes it possible to include or exclude certain lanes from the signal’s v
 
 **`<signalReference>` element**
 
-In ASAM OpenDRIVE, a referenced signal is represented by the `<signalReference>` element within the `<signals>` element.
+In ASAM OpenDRIVE®, a referenced signal is represented by the `<signalReference>` element within the `<signals>` element.
 
 ```
 UML class: t_road_signals_signalReference
@@ -47,11 +47,11 @@ Table 126. Attributes of the <signalReference> element
 
 Figure 134. UML model of the t\_road\_signals\_signalReference element in the Signals class
 
-[Figure 134](#fig-5135d59a-7c1f-44f2-98e2-06131929e846) shows the UML model of the t\_road\_signals\_signalReference element in the ASAM OpenDRIVE Signals class.
+[Figure 134](#fig-5135d59a-7c1f-44f2-98e2-06131929e846) shows the UML model of the t\_road\_signals\_signalReference element in the ASAM OpenDRIVE® Signals class.
 
 **`<validity>` element**
 
-In ASAM OpenDRIVE, lane validity is represented by the `<validity>` element within the `<signal>` or `<signalReference>` element.
+In ASAM OpenDRIVE®, lane validity is represented by the `<validity>` element within the `<signal>` or `<signalReference>` element.
 
 ```
 UML class: t_road_objects_object_laneValidity

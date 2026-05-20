@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — A.2 XML taxonomy representation
+# ASAM OpenODD® v1.0.0 — A.2 XML taxonomy representation
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_b_xml_02_taxonomy.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -13,7 +13,7 @@
 
 ### A.2.1.1 Overview
 
-The purpose of the XML export is to provide an XML representation of the taxonomy which is aligned with the ASAM OpenODD model.
+The purpose of the XML export is to provide an XML representation of the taxonomy which is aligned with the ASAM OpenODD® model.
 Each taxonomy export should result in a single XML file comprising all taxonomy concepts and their specification, across multiple languages.
 
 The XML format has the following advantages:
@@ -44,7 +44,7 @@ TAXONOMY:
 
 To represent this example, and taxonomy in general, there is a need for a `<TAXONOMY_CONCEPT>` element.
 
-As per the ASAM OpenODD model, the concept element comprises of an ID attribute representing the Unique ID (UID) of the concept, which is a string unique within the XML export.
+As per the ASAM OpenODD® model, the concept element comprises of an ID attribute representing the Unique ID (UID) of the concept, which is a string unique within the XML export.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -54,7 +54,7 @@ As per the ASAM OpenODD model, the concept element comprises of an ID attribute 
 </TAXONOMY>
 ```
 
-As per the ASAM OpenODD model, the `<TAXONOMY_CONCEPT>` element, there is a need to specify the description, and comments which can be translated to multiple languages:
+As per the ASAM OpenODD® model, the `<TAXONOMY_CONCEPT>` element, there is a need to specify the description, and comments which can be translated to multiple languages:
 
 * A `<DESCRIPTION/>` child element (within `<TAXONOMY_CONCEPT/>`) comprising an English text description.
 * A `<COMMENT/>` child element (within `<TAXONOMY_CONCEPT/>`) comprising an English text of the comment.
@@ -89,15 +89,15 @@ The XML schema for the Taxonomy Concept `<TAXONOMY_CONCEPT/>` element is as foll
   + A `<DESCRIPTION/>` child element comprising a description; its child `<I13N/>` elements are specified as part of the `<DESCRIPTION/>` element schema.
   + A `<COMMENT/>` child element comprising a comment; its child `<I13N/>` elements are specified as part of the `<COMMENT/>` schema.
   + A `<META_DATA/>` child element comprising a meta-data map, intended for use by the toolchain; its child `<META_DATA/>` elements are specified as part of the `<META_DATA/>` schema.
-  + A `<EXPORT/>` child element comprising the export instructions for this concept; see the export instructions specification in ASAM OpenODD model.
-  + A `<STRUCT/>` child group used to specify user-defined structures mapping to the Record object in the ASAM OpenODD model.
+  + A `<EXPORT/>` child element comprising the export instructions for this concept; see the export instructions specification in ASAM OpenODD® model.
+  + A `<STRUCT/>` child group used to specify user-defined structures mapping to the Record object in the ASAM OpenODD® model.
 * The following attributes are specified for the `<TAXONOMY_CONCEPT/>` element:
 
-  + The `id` attribute specifying the string id of the concept unique within the XML file; no need to provide global uniqueness; see ID specification in ASAM OpenODD model.
+  + The `id` attribute specifying the string id of the concept unique within the XML file; no need to provide global uniqueness; see ID specification in ASAM OpenODD® model.
   + The `name` attribute, which matches the `id` attribute.
   + The `parent_id` (optional) attribute used when providing a `record` based format rather than pure hierarchy format.
     The record based format allows concepts to be specified as a flat list of elements mirroring the tabular representation format; see explanation and example in the next sub-section.
-  + The `custom_type` (optional) attribute used when the concept is a user-define type specified in the taxonomy data; it is the `Record` object defined in the ASAM OpenODD model.
+  + The `custom_type` (optional) attribute used when the concept is a user-define type specified in the taxonomy data; it is the `Record` object defined in the ASAM OpenODD® model.
 
 ```
 <xs:element name='TAXONOMY_CONCEPT'>
@@ -262,10 +262,10 @@ This can be illustrated using the following example (notice the use of `custom_t
 
 Numeric attributes are specified using the `<NUMERIC/>` elements, having the following attributes:
 
-* The `id` attribute specifying the string id of the concept unique within the XML file; no need to provide global uniqueness; see ID specification in the ASAM OpenODD model section.
+* The `id` attribute specifying the string id of the concept unique within the XML file; no need to provide global uniqueness; see ID specification in the ASAM OpenODD® model section.
 * The `value_type` indicating whether it is a `float` or an `integer` number.
-* The `unit_std` specifying which units standard is associated with the numeric value. See the ASAM OpenODD model for the role of the unique specification standard.
-* The `unit_type` specifying which types of units are compatible with the numeric value; only compatible unique types can be compared. See the ASAM OpenODD model for the role of unit\_type and the list of supported unit types.
+* The `unit_std` specifying which units standard is associated with the numeric value. See the ASAM OpenODD® model for the role of the unique specification standard.
+* The `unit_type` specifying which types of units are compatible with the numeric value; only compatible unique types can be compared. See the ASAM OpenODD® model for the role of unit\_type and the list of supported unit types.
 
 The following is a simple example representing a parent `rainfall` concept having an attribute `rainfall_rate` child which is a float precipitation rate:
 
@@ -284,7 +284,7 @@ The full XSD specification for numeric values is as follows:
 * The xs:complexType xs:sequence represents the same elements of `DESCRIPTION`, `COMMENT`, `META_DATA` and `I13N`, having the same role as for the `<TAXONOMY_CONCEPT/>` element.
 * The attribute of `value_type` which is an `xs:simpleType` `xs:enumeration` of either a `float` or an `integer`.
 * The attribute of `unit_sts` which specifies the standard of unique use to specify the `unit_type`.
-* The attribute of `unit_type` which is a `xs:simpleType` `xs:enumeration` of supported unit types, as per the corresponding ASAM OpenODD model section.
+* The attribute of `unit_type` which is a `xs:simpleType` `xs:enumeration` of supported unit types, as per the corresponding ASAM OpenODD® model section.
 
 ```
 <xs:element name='NUMERIC'>
@@ -357,7 +357,7 @@ The full XSD specification for numeric values is as follows:
 
 Numeric attributes are specified using the `<NUMERIC/>` elements, having the following attributes:
 
-* The `id` attribute specifying the string id of the concept unique within the XML file; no need to provide global uniqueness; see ID specification in the ASAM OpenODD model.
+* The `id` attribute specifying the string id of the concept unique within the XML file; no need to provide global uniqueness; see ID specification in the ASAM OpenODD® model.
 * A hierarchy of child `<CATEGORICAL/>` element representing the category sub-tree.
 
 As an example, consider representing the `vru` (Vulnerable Road User) concept having the categorical values of `toddler`, `child`, and `adult`:
@@ -758,7 +758,7 @@ The following is the XSD specification for the `<META_DATA/>` elements:
 </xs:element>
 ```
 
-## A.2.2 ASAM OpenODD taxonomy XML schema
+## A.2.2 ASAM OpenODD® taxonomy XML schema
 
 The root of the XML schema is the `<ODD>` element, which specifies a single `<TAXONOMY>` element as a child.
 

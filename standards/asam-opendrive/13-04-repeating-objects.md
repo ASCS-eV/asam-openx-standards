@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.4 Repeating objects
+# ASAM OpenDRIVE® v1.9.0 — 13.4 Repeating objects
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_04_repeating_objects.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -69,7 +69,7 @@ Figure 122. Repeated small circular objects with changing shape using a single `
 
 **`<repeat>` element**
 
-In ASAM OpenDRIVE, repeating objects are represented by the `<repeat>` element within the `<object>` element.
+In ASAM OpenDRIVE®, repeating objects are represented by the `<repeat>` element within the `<object>` element.
 
 ```
 UML class: t_road_objects_object_repeat

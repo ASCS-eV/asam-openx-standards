@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 7.3.3 Human structure
+# ASAM OpenMATERIAL® 3D latest — 7.3.3 Human structure
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/07_geometry/object-human/human-index.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -30,7 +30,7 @@ For example, the "Lower\_Arm\_Left" defines the point in the left elbow of the m
 
 The skeleton starts with a root bone positioned at the origin of the asset, the center of the bounding box projected to the ground.
 This position is static and does not change relative to the asset during simulation.
-When using an ASAM OpenMATERIAL 3D human asset in combination with ASAM OSI, the OSI field [bbcenter\_to\_root](https://opensimulationinterface.github.io/osi-antora-generator/asamosi/latest/gen/structosi3_1_1MovingObject_1_1PedestrianAttributes.html#a75db7466abca2d283c8d64d424385c0a) must be set to the vector from the center of the bounding box to the center of the ground projection of the bounding box.
+When using an ASAM OpenMATERIAL® 3D human asset in combination with ASAM OSI, the OSI field [bbcenter\_to\_root](https://opensimulationinterface.github.io/osi-antora-generator/asamosi/latest/gen/structosi3_1_1MovingObject_1_1PedestrianAttributes.html#a75db7466abca2d283c8d64d424385c0a) must be set to the vector from the center of the bounding box to the center of the ground projection of the bounding box.
 This specifically means: x=0, y=0, z=-half of the bounding box height.
 
 [Figure 51](#fig-human-structure) shows the orientation of the coordinate system of a human skeleton.

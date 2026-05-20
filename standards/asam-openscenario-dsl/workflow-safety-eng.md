@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — B.8 Workflows for safety engineers
+# ASAM OpenSCENARIO® DSL v2.2.0 — B.8 Workflows for safety engineers
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/annexes/workflows/workflow_safety_eng.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -262,7 +262,7 @@ ASAM OpenSCENARIO in combination with OpenODD and OpenXOntology can support this
 
 The general process to derive abstract scenarios from the ODD and concretize them, and to measure the coverage of the ODD, can be described as follows.
 
-The ODD, as specified in the ASAM OpenODD language, can be understood as a multi-dimensional delimited space.
+The ODD, as specified in the ASAM OpenODD® language, can be understood as a multi-dimensional delimited space.
 The dimensions are the ODD aspects like road type, lane number, lane with, weather conditions, visibility, presence of infrastructure like guardrails and so on.
 
 The value ranges have one of the following characteristics:

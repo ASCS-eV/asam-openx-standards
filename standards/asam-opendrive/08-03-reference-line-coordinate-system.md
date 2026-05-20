@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 8.3 Road reference line coordinate systems
+# ASAM OpenDRIVE® v1.9.0 — 8.3 Road reference line coordinate systems
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/08_coordinate_systems/08_03_reference_line_coordinate_system.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -65,4 +65,4 @@ Elevation has no effect on the length of s.
 
 |  |  |
 | --- | --- |
-|  | In ASAM OpenDRIVE, objects and signals are placed in their own s/t-coordinate system and are not rotated by superelevation, they specify their position relative to the road reference line and then can be rotated individually. Their @t attribute is rotated with the lane affected only by superelevation, so an object or signal placed at the border of a lane stays at this border regardless of superelevation or not. Their @zOffset attribute is calculated in z-direction, a value of `0` means the object or signal is placed at the local elevation at this s-position. In order to place the object or signal on the road surface and take the superelevation into account, the @zOffset attribute has to match the height offset caused by the superelevation at this position. |
+|  | In ASAM OpenDRIVE®, objects and signals are placed in their own s/t-coordinate system and are not rotated by superelevation, they specify their position relative to the road reference line and then can be rotated individually. Their @t attribute is rotated with the lane affected only by superelevation, so an object or signal placed at the border of a lane stays at this border regardless of superelevation or not. Their @zOffset attribute is calculated in z-direction, a value of `0` means the object or signal is placed at the local elevation at this s-position. In order to place the object or signal on the road surface and take the superelevation into account, the @zOffset attribute has to match the height offset caused by the superelevation at this position. |

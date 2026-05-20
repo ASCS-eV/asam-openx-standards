@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.5 Lane offset
+# ASAM OpenDRIVE® v1.9.0 — 11.5 Lane offset
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_05_lane_offset.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -29,7 +29,7 @@ Figure 65. Lane offset
 
 **`<laneOffset>` element**
 
-In ASAM OpenDRIVE, a lane offset is represented by a `<laneOffset>` element within the `<lanes>` element.
+In ASAM OpenDRIVE®, a lane offset is represented by a `<laneOffset>` element within the `<lanes>` element.
 
 ```
 UML class: t_road_lanes_laneOffset

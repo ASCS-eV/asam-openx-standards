@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.12 Junction CRG surface
+# ASAM OpenDRIVE® v1.9.0 — 12.12 Junction CRG surface
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_12_junction_crg_surface.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,14 +15,14 @@ For junctions that are not flat but without a very detailed surface description,
 
 The CRG data may be applied to a given junction in different modes similar to a road, using the junction reference line specified by the `<planview>` element.
 
-Table 81. Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE
+Table 81. Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE®
 
 
 | Mode | ASAM OpenCRG reference line | Total height | Typical use case |
 | --- | --- | --- | --- |
-| attached | discarded | ASAM OpenDRIVE height plus ASAM OpenCRG height | Relative road height to road surface (including elevation, lateral profile, interpolated elevation grid, and lane height) |
+| attached | discarded | ASAM OpenDRIVE® height plus ASAM OpenCRG height | Relative road height to road surface (including elevation, lateral profile, interpolated elevation grid, and lane height) |
 | attached0 | discarded | ASAM OpenCRG height only | Absolute height measurement |
-| genuine | shifted and rotated so beginning of reference line matches position given in ASAM OpenDRIVE | ASAM OpenCRG height only | Combining complete ASAM OpenCRG tracks (for example, racing tracks) with ASAM OpenDRIVE data |
+| genuine | shifted and rotated so beginning of reference line matches position given in ASAM OpenDRIVE® | ASAM OpenCRG height only | Combining complete ASAM OpenCRG tracks (for example, racing tracks) with ASAM OpenDRIVE® data |
 | global | shifted and rotated by xOffset, yOffset, zOffset and hOffset | ASAM OpenCRG height only | On junctions |
 
 |  |  |
@@ -33,7 +33,7 @@ Table 81. Modes of connecting ASAM OpenCRG to ASAM OpenDRIVE
 
 **`<surface>` element**
 
-In ASAM OpenDRIVE, surfaces in a junction are represented by the `<surface>` element within the `<junction>` element and use the same information as the `<road>` element.
+In ASAM OpenDRIVE®, surfaces in a junction are represented by the `<surface>` element within the `<junction>` element and use the same information as the `<road>` element.
 
 ```
 UML class: t_road_surface
@@ -44,7 +44,7 @@ Contains a series of elements describing a surface.
 
 **`<CRG>` element**
 
-In ASAM OpenDRIVE, ASAM OpenCRG data of road surfaces is represented by the `<CRG>` element within the `<surface>` element.
+In ASAM OpenDRIVE®, ASAM OpenCRG data of road surfaces is represented by the `<CRG>` element within the `<surface>` element.
 
 ```
 UML class: t_road_surface_CRG

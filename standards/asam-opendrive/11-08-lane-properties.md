@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.8 Additional lane properties
+# ASAM OpenDRIVE® v1.9.0 — 11.8 Additional lane properties
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_08_lane_properties.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -17,7 +17,7 @@ If a property is not specifically defined for a lane section, applications can a
 
 Figure 75. UML class diagram of the Lanes class
 
-[Figure 75](#fig-954a4511-24c8-44d7-a385-3ef579556e98) shows the UML class diagram of the ASAM OpenDRIVE Lanes class.
+[Figure 75](#fig-954a4511-24c8-44d7-a385-3ef579556e98) shows the UML class diagram of the ASAM OpenDRIVE® Lanes class.
 Example for additional lane properties are lane type, lane speed limit or lane material.
 
 ## 11.8.1 Lane type
@@ -50,7 +50,7 @@ The available lane types are:
 * `connectingRamp`: Ramp that connects two motorways, for example, motorway junctions.
 * `slipLane`: Lane on which drivers change roads without driving into the main intersection.
 * `none`: Space on the outermost edge of the road and does not have actual content.
-  Its only purpose is for applications to register that ASAM OpenDRIVE is still present in case the (human) driver leaves the road.
+  Its only purpose is for applications to register that ASAM OpenDRIVE® is still present in case the (human) driver leaves the road.
 
 |  |  |
 | --- | --- |
@@ -127,14 +127,14 @@ The following rules apply to lane types:
 
 ## 11.8.2 Lane material
 
-ASAM OpenDRIVE provides an element to store information on the material of lanes (apart from ASAM OpenCRG), meaning their surface, friction properties, and roughness.
+ASAM OpenDRIVE® provides an element to store information on the material of lanes (apart from ASAM OpenCRG), meaning their surface, friction properties, and roughness.
 If no material is defined, applications can apply default values.
 
 **Elements in UML model**
 
 **`<material>` element**
 
-In ASAM OpenDRIVE, lane material is represented by the `<material>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, lane material is represented by the `<material>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lr_lane_material
@@ -186,7 +186,7 @@ The lanes `1` and `-1` have a speed limit of 80 km/h, while the lane `2` has a s
 
 **`<speed>` element**
 
-In ASAM OpenDRIVE, lane speed is represented by the `<speed>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, lane speed is represented by the `<speed>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lr_lane_speed
@@ -238,7 +238,7 @@ The following rules apply to lane speed limits:
 ## 11.8.4 Lane access
 
 Lanes can be restricted to specific road users, such as trucks or buses.
-Such restrictions may be defined in ASAM OpenDRIVE in addition to restrictions described by signals.
+Such restrictions may be defined in ASAM OpenDRIVE® in addition to restrictions described by signals.
 
 ![img](../_images/11_lanes/lane_access.png)
 
@@ -250,7 +250,7 @@ Figure 82. Lane access, bus lane
 
 **`<access>` element**
 
-In ASAM OpenDRIVE, lane access is represented by the `<access>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, lane access is represented by the `<access>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lr_lane_access
@@ -273,7 +273,7 @@ Table 46. Attributes of the <access> element
 
 **`<restriction>` element**
 
-In ASAM OpenDRIVE, restrictions are represented by the `<restriction>` element within the `<access>` element.
+In ASAM OpenDRIVE®, restrictions are represented by the `<restriction>` element within the `<access>` element.
 
 ```
 UML class:  t_road_lanes_laneSection_lr_lane_access_restriction
@@ -331,7 +331,7 @@ The following rules apply to lane access rules:
 
 |  |  |
 | --- | --- |
-|  | In previous versions of ASAM OpenDRIVE each individual restriction was specified as one `<access>` element. This was problematic since it was unclear at what distance between two @sOffset attributes the entries would be considered as one access rule. Therefore, all applied restrictions are now a subset of one access element. |
+|  | In previous versions of ASAM OpenDRIVE® each individual restriction was specified as one `<access>` element. This was problematic since it was unclear at what distance between two @sOffset attributes the entries would be considered as one access rule. Therefore, all applied restrictions are now a subset of one access element. |
 
 **Related topics**
 

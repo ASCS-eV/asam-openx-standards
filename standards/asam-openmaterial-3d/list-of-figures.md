@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — List of figures
+# ASAM OpenMATERIAL® 3D latest — List of figures
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/loft/list_of_figures.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,8 +11,8 @@
 
 | Figure | Description |
 | --- | --- |
-| [Figure 1](../00_preface/introduction.html#fig-openmaterial-overview) | Overview of ASAM OpenMATERIAL 3D file formats and data flow |
-| [Figure 2](../07_geometry/introduction.html#fig-openmaterial-geometry-overview) | Overview of ASAM OpenMATERIAL 3D geometry file formats and data flow |
+| [Figure 1](../00_preface/introduction.html#fig-openmaterial-overview) | Overview of ASAM OpenMATERIAL® 3D file formats and data flow |
+| [Figure 2](../07_geometry/introduction.html#fig-openmaterial-geometry-overview) | Overview of ASAM OpenMATERIAL® 3D geometry file formats and data flow |
 | [Figure 3](../07_geometry/general.html#fig-coordinate-system) | Yaw, pitch, and roll angle in an ISO 8855:2011 compliant coordinate system |
 | [Figure 4](../07_geometry/general.html#fig-coo-sys-rotation) | Coordinate system with defined rotations |
 | [Figure 5](../07_geometry/general.html#fig-coo-sys-example) | Examples of rotations in coordinate system |
@@ -74,4 +74,4 @@
 | [Figure 61](../07_geometry/object-environment/environment-index.html#fig-signals) | Grp\_Signals |
 | [Figure 62](../07_geometry/object-environment/environment-index.html#fig-sign) | Grp\_Sign\_<signal\_idx> |
 | [Figure 63](../07_geometry/object-environment/environment-index.html#fig-traffic-light) | Grp\_Traffic\_Light\_<signal\_idx> |
-| [Figure 64](../08_material/introduction.html#fig-openmaterial-material-overview) | Overview of ASAM OpenMATERIAL 3D Material file formats and data flow |
+| [Figure 64](../08_material/introduction.html#fig-openmaterial-material-overview) | Overview of ASAM OpenMATERIAL® 3D Material file formats and data flow |

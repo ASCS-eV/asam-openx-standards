@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 6.5 Overview of elements
+# ASAM OpenDRIVE® v1.9.0 — 6.5 Overview of elements
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/06_general_architecture/06_05_overview_elements.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 6.5 Overview of elements
 
-Table 12. Overview of ASAM OpenDRIVE elements
+Table 12. Overview of ASAM OpenDRIVE® elements
 
 
 | Element | Section |

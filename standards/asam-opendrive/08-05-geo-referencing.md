@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 8.5 Georeferencing
+# ASAM OpenDRIVE® v1.9.0 — 8.5 Georeferencing
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/08_coordinate_systems/08_05_geo_referencing.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -19,7 +19,7 @@ This data shall be marked as CDATA, because it may contain characters that inter
 
 Figure 21. geoReference and offset
 
-[Figure 21](#fig-575a3505-1d2b-4cbc-b940-c42454b4ff8e) shows the relation between ASAM OpenDRIVE coordinates and geo referenced data.
+[Figure 21](#fig-575a3505-1d2b-4cbc-b940-c42454b4ff8e) shows the relation between ASAM OpenDRIVE® coordinates and geo referenced data.
 The used spatial reference system is defined by PROJ-strings.
 For detailed information on PROJ-strings see the documentation of the *PROJ coordinate transformation software library* [[18](../bibliography.html#bib-PROJ_2023)].
 
@@ -30,9 +30,9 @@ Some spatial reference systems, for example, UTM, have implicit false easting an
 To apply an offset, use the `<offset>` element instead of changing parameter values of a projection definition because overwriting existing definitions may lead to unexpected behavior.
 Alternatively define a custom projection using Transverse Mercator (TM).
 
-If an offset exists, always apply the offset on the local ASAM OpenDRIVE coordinates to get the world coordinates before converting the positions using PROJ.
+If an offset exists, always apply the offset on the local ASAM OpenDRIVE® coordinates to get the world coordinates before converting the positions using PROJ.
 
-The offset is applied on an ASAM OpenDRIVE instance using an Affine Transformation with rotation around z-axis:
+The offset is applied on an ASAM OpenDRIVE® instance using an Affine Transformation with rotation around z-axis:
 
 xWorld = xODR \* cos(hdg) - yODR \* sin(hdg) + xOffset
 
@@ -52,7 +52,7 @@ zWorld = zODR + zOffset
 
 **`<geoReference>` element**
 
-In ASAM OpenDRIVE, the information about the geographic reference of an ASAM OpenDRIVE dataset is represented by the `<geoReference>` element within the `<header>` element.
+In ASAM OpenDRIVE®, the information about the geographic reference of an ASAM OpenDRIVE® dataset is represented by the `<geoReference>` element within the `<header>` element.
 
 ```
 UML class: t_header_GeoReference
@@ -67,7 +67,7 @@ This data shall be marked as CDATA, because it may contain characters that inter
 
 **`<offset>` element**
 
-In ASAM OpenDRIVE, the offset of a database is represented by the `<offset>` element within the `<header>` element.
+In ASAM OpenDRIVE®, the offset of a database is represented by the `<offset>` element within the `<header>` element.
 
 ```
 UML class: t_header_Offset
@@ -102,4 +102,4 @@ Table 17. Attributes of the <offset> element
 
 * [asam.net:xodr:1.9.0:header.proj.max\_one\_proj](../16_annexes/map_rules.html#asam-net-xodr-1-9-0-header-proj-max-one-proj): There shall be no more than one definition of the projection. If the definition is missing, a local Cartesian coordinate system is assumed.
 
-* [asam.net:xodr:1.7.0:header.offset.centered\_coords](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-header-offset-centered-coords): The `<offset>` element should be such that the x and y coordinates of ASAM OpenDRIVE are approximately centered around (0;0). If the x and y coordinates are too large, applications using float coordinates internally might not be able to process them accurately enough due to the limited precision of IEEE 754 double precision floating point numbers.
+* [asam.net:xodr:1.7.0:header.offset.centered\_coords](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-header-offset-centered-coords): The `<offset>` element should be such that the x and y coordinates of ASAM OpenDRIVE® are approximately centered around (0;0). If the x and y coordinates are too large, applications using float coordinates internally might not be able to process them accurately enough due to the limited precision of IEEE 754 double precision floating point numbers.

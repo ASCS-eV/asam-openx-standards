@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.9 Junction reference line
+# ASAM OpenDRIVE® v1.9.0 — 12.9 Junction reference line
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_09_junction_reference_line.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -20,7 +20,7 @@ Figure 97. Junction reference line ~red arrow~
 
 [Figure 97](#fig-298faa87-6415-4285-8c8f-8e9c10bb8c97) shows a junction and a junction reference line.
 
-In ASAM OpenDRIVE, junction reference lines are represented by the `<planView>` element within the `<junction>` element.
+In ASAM OpenDRIVE®, junction reference lines are represented by the `<planView>` element within the `<junction>` element.
 
 ```
 UML class: t_road_planView
@@ -31,7 +31,7 @@ Contains geometry elements that define the layout of the road reference line in 
 
 **`<geometry>` element**
 
-In ASAM OpenDRIVE, the geometry of a junction reference line is represented by the `<geometry>` element within the `<planView>` element.
+In ASAM OpenDRIVE®, the geometry of a junction reference line is represented by the `<geometry>` element within the `<planView>` element.
 
 ```
 UML class: t_road_planView_geometry

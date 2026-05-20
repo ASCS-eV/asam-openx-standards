@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 10.2 Taxonomy mapping
+# ASAM OpenODD® v1.0.0 — 10.2 Taxonomy mapping
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/10_yaml/10_02_openodd_export_taxonomy_yaml.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -195,7 +195,7 @@ In [Code 172](#code-example-range-expressions) the induced order is as follows:
 `fog_not_detectable` < `fog_mist` < `fog_medium` < `fog_heavy` < `fog_thick`
 
 The ranges within the expressions determine the order.
-The sequence of the expressions in the ASAM OpenODD specification file is not relevant.
+The sequence of the expressions in the ASAM OpenODD® specification file is not relevant.
 
 `CategoricalLiteral` instances may refer to expressions which specify a list of values from other categorical concepts.
 Consider to define road types based on German `paved_road` classifications [[12](../bibliography.html#bib-guidelinesmotorways)] as shown in [Code 173](#code-example-motorway-design).

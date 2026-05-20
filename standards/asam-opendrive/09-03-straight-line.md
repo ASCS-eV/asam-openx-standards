@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 9.3 Straight line
+# ASAM OpenDRIVE® v1.9.0 — 9.3 Straight line
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/09_geometries/09_03_straight_line.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -22,7 +22,7 @@ A `<geometry>` element that forms a straight line contains the @s, @x, @y, @leng
 
 **`<line>` element**
 
-In ASAM OpenDRIVE, a straight line is represented by the `<line>` element within the `<geometry>` element.
+In ASAM OpenDRIVE®, a straight line is represented by the `<line>` element within the `<geometry>` element.
 
 ```
 UML class: t_road_planView_geometry_line

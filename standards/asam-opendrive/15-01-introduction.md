@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 15.1 Introduction to railroads
+# ASAM OpenDRIVE® v1.9.0 — 15.1 Introduction to railroads
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/15_railroads/15_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,15 +9,15 @@
 
 # 15.1 Introduction to railroads
 
-In addition to roads, ASAM OpenDRIVE offers the possibility to model rail-based transport systems, that is, trams, and streetcars.
-ASAM OpenDRIVE cannot be used for complex railway networks and railway signals.
-ASAM OpenDRIVE describes rail networks only where roads and railroad tracks meet.
+In addition to roads, ASAM OpenDRIVE® offers the possibility to model rail-based transport systems, that is, trams, and streetcars.
+ASAM OpenDRIVE® cannot be used for complex railway networks and railway signals.
+ASAM OpenDRIVE® describes rail networks only where roads and railroad tracks meet.
 
 **Elements in UML model**
 
 **`<railroad>` element**
 
-In ASAM OpenDRIVE, railroads are represented by the `<railroad>` element within the `<road>` element.
+In ASAM OpenDRIVE®, railroads are represented by the `<railroad>` element within the `<road>` element.
 
 ```
 UML class: t_road_railroad
@@ -34,7 +34,7 @@ Railroad-specific elements are defined against the background of streetcar appli
 
 Figure 143. UML class diagram of the Railroad class
 
-[Figure 143](#fig-cb539359-0b87-4ef7-a951-621b77da3bb4) shows the UML class diagram of the ASAM OpenDRIVE Railroad class.
+[Figure 143](#fig-cb539359-0b87-4ef7-a951-621b77da3bb4) shows the UML class diagram of the ASAM OpenDRIVE® Railroad class.
 
 **Rules**
 

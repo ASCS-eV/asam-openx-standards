@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.7 Signal boards
+# ASAM OpenDRIVE® v1.9.0 — 14.7 Signal boards
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_07_signal_boards.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -316,7 +316,7 @@ Table 133. Attributes of the <vmsGroup> element
 
 Figure 139. UML class diagram of the SignalGroup class
 
-[Figure 139](#fig-4f762530-d9dc-4be1-9181-beb86f9b3443) shows the UML class diagram of the ASAM OpenDRIVE SignalGroup class.
+[Figure 139](#fig-4f762530-d9dc-4be1-9181-beb86f9b3443) shows the UML class diagram of the ASAM OpenDRIVE® SignalGroup class.
 
 **`<vmsBoardReference>` element**
 

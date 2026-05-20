@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.1 Introduction to junctions
+# ASAM OpenDRIVE® v1.9.0 — 12.1 Introduction to junctions
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -38,7 +38,7 @@ Table 54. Usage of the different types of junctions
 
 Figure 84. UML class diagram of the Junction class
 
-[Figure 84](#fig-8b7e2624-7c2f-4771-9e00-284dc2067532) shows the UML class diagram of the ASAM OpenDRIVE Junction class.
+[Figure 84](#fig-8b7e2624-7c2f-4771-9e00-284dc2067532) shows the UML class diagram of the ASAM OpenDRIVE® Junction class.
 
 **Rules**
 

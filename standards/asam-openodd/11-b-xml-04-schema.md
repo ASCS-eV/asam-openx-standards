@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — A.4 XML schema representation
+# ASAM OpenODD® v1.0.0 — A.4 XML schema representation
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_b_xml_04_schema.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # A.4 XML schema representation
 
-## A.4.1 Full ASAM OpenODD XML schema
+## A.4.1 Full ASAM OpenODD® XML schema
 
 The full schema supports both taxonomy and module specifications.
 

@@ -40,7 +40,19 @@ VERIFY_SSL = True
 
 # Project root
 PROJECT_ROOT = Path(__file__).parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "docs" / "specs" / "references"
+OUTPUT_DIR = PROJECT_ROOT / "standards"
+
+# Display names with correct trademark styling
+DISPLAY_NAMES = {
+    "openodd": "ASAM OpenODD®",
+    "openlabel": "ASAM OpenLABEL®",
+    "opendrive": "ASAM OpenDRIVE®",
+    "openscenario-dsl": "ASAM OpenSCENARIO® DSL",
+    "traffic-participants": "ASAM TrafficParticipants",
+    "openmaterial-3d": "ASAM OpenMATERIAL® 3D",
+    "osi": "ASAM OSI®",
+    "opencrg": "ASAM OpenCRG®",
+}
 
 # Standard definitions: name -> (base_url, nav_component, version)
 STANDARDS = {
@@ -246,10 +258,11 @@ def download_antora_standard(standard_key: str) -> None:
             continue
 
         # Add metadata header
-        header = f"""# ASAM {standard_key.replace('-', ' ').title()} {config['version']} — {link['title']}
+        display_name = DISPLAY_NAMES.get(standard_key, f"ASAM {standard_key.replace('-', ' ').title()}")
+        header = f"""# {display_name} {config['version']} — {link['title']}
 
 > **Source**: {link['url']}
-> **Standard**: ASAM {standard_key.replace('-', ' ').title()} {config['version']}, {config['date']}
+> **Standard**: {display_name} {config['version']}, {config['date']}
 > **License**: {config['license']}
 > **Downloaded**: {time.strftime('%Y-%m-%d')}
 
@@ -335,7 +348,8 @@ def create_standard_index(standard_key: str) -> None:
     if not files:
         return
 
-    index_content = f"""# ASAM {standard_key.replace('-', ' ').title()} {config['version']} — Chapter Index
+    display_name = DISPLAY_NAMES.get(standard_key, f"ASAM {standard_key.replace('-', ' ').title()}")
+    index_content = f"""# {display_name} {config['version']} — Chapter Index
 
 > **Version**: {config['version']}
 > **License**: {config.get('license', 'See standard')}

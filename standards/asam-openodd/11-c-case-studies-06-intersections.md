@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — C.6 (informative) Multiple intersections example
+# ASAM OpenODD® v1.0.0 — C.6 (informative) Multiple intersections example
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/11_annexes/11_c_case_studies_06_intersections.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,7 +11,7 @@
 
 ## C.6.1 Introduction
 
-The content of this issue includes the tree major assets of the ASAM OpenODD model: taxonomy, COD, and ODD (modules).
+The content of this issue includes the tree major assets of the ASAM OpenODD® model: taxonomy, COD, and ODD (modules).
 
 ## C.6.2 Taxonomy
 

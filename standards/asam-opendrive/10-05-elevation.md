@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 10.5 Road elevation methods
+# ASAM OpenDRIVE® v1.9.0 — 10.5 Road elevation methods
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/10_roads/10_05_elevation.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -35,7 +35,7 @@ In case georeferencing is used, the definition of zero depends on it.
 
 **`<elevationProfile>` element**
 
-In ASAM OpenDRIVE, the elevation profile is represented by the `<elevationProfile>` element within the `<road>` element.
+In ASAM OpenDRIVE®, the elevation profile is represented by the `<elevationProfile>` element within the `<road>` element.
 
 ```
 UML class: t_road_elevationProfile
@@ -46,7 +46,7 @@ Road elevation specifies the elevation along the road reference line, that is in
 
 **`<elevation>` element**
 
-In ASAM OpenDRIVE, elevation is represented by the `<elevation>` element within the `<elevationProfile>` element.
+In ASAM OpenDRIVE®, elevation is represented by the `<elevation>` element within the `<elevationProfile>` element.
 
 ```
 UML class: t_road_elevationProfile_elevation
@@ -132,7 +132,7 @@ In the example in [Figure 43](#fig-4d4fa618-abfb-4df3-b4b1-a58dcda7c4d4), the ro
 
 **`<lateralProfile>` element**
 
-In ASAM OpenDRIVE, the lateral profile is represented by the `<lateralProfile>` element within the `<road>` element.
+In ASAM OpenDRIVE®, the lateral profile is represented by the `<lateralProfile>` element within the `<road>` element.
 
 ```
 UML class: t_road_lateralProfile
@@ -144,7 +144,7 @@ The lateral profile is defined relative to the elevation of the road reference l
 
 **`<superelevation>` element**
 
-In ASAM OpenDRIVE, superelevation is represented by the `<superelevation>` element within the `<lateralProfile>` element.
+In ASAM OpenDRIVE®, superelevation is represented by the `<superelevation>` element within the `<lateralProfile>` element.
 
 ```
 UML class: t_road_lateralProfile_superelevation
@@ -258,7 +258,7 @@ The shape is rotated using superelevation.
 
 **`<lateralProfile>` element**
 
-In ASAM OpenDRIVE, the lateral profile is represented by the `<lateralProfile>` element within the `<road>` element.
+In ASAM OpenDRIVE®, the lateral profile is represented by the `<lateralProfile>` element within the `<road>` element.
 
 ```
 UML class: t_road_lateralProfile
@@ -270,7 +270,7 @@ The lateral profile is defined relative to the elevation of the road reference l
 
 **`<shape>` element**
 
-In ASAM OpenDRIVE, the lateral profile is represented by the `<shape>` element within the `<lateralProfile>` element.
+In ASAM OpenDRIVE®, the lateral profile is represented by the `<shape>` element within the `<lateralProfile>` element.
 
 ```
 UML class: t_road_lateralProfile_shape
@@ -368,7 +368,7 @@ Figure 48. Cross section surface
 
 **`<lateralProfile>` element**
 
-In ASAM OpenDRIVE, the lateral profile is represented by the `<lateralProfile>` element within the `<road>` element.
+In ASAM OpenDRIVE®, the lateral profile is represented by the `<lateralProfile>` element within the `<road>` element.
 
 ```
 UML class: t_road_lateralProfile
@@ -380,7 +380,7 @@ The lateral profile is defined relative to the elevation of the road reference l
 
 **`<crossSectionSurface>` element**
 
-In ASAM OpenDRIVE, cross section surfaces are represented by the `<crossSectionSurface>` element within the `<lateralProfile>` element.
+In ASAM OpenDRIVE®, cross section surfaces are represented by the `<crossSectionSurface>` element within the `<lateralProfile>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface
@@ -394,7 +394,7 @@ A cross section surface is valid for the full length of the road.
 
 **`<tOffset>` element**
 
-In ASAM OpenDRIVE, a t-offset is represented by the `<tOffset>` element within the `<crossSectionSurface>` element.
+In ASAM OpenDRIVE®, a t-offset is represented by the `<tOffset>` element within the `<crossSectionSurface>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_tOffset
@@ -406,7 +406,7 @@ A t offset shifts all strips relative to the road reference line in t-direction.
 
 **`<surfaceStrips>` element**
 
-In ASAM OpenDRIVE, surfaces are represented by the `<surfaceStrips>` element within the `<crossSectionSurface>` element.
+In ASAM OpenDRIVE®, surfaces are represented by the `<surfaceStrips>` element within the `<crossSectionSurface>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_surfaceStrip
@@ -418,7 +418,7 @@ Surface strips contains the strips.
 
 **`<strip>` element**
 
-In ASAM OpenDRIVE, surface definitions are represented by the `<strip>` element within the `<surfaceStrips>` element.
+In ASAM OpenDRIVE®, surface definitions are represented by the `<strip>` element within the `<surfaceStrips>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_strip
@@ -438,7 +438,7 @@ Table 30. Attributes of the <strip> element
 
 **`<width>` element**
 
-In ASAM OpenDRIVE, definitions of the width are represented by the `<width>` element within the `<strip>` element.
+In ASAM OpenDRIVE®, definitions of the width are represented by the `<width>` element within the `<strip>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_strip_width
@@ -450,7 +450,7 @@ Defines the width of the inner strip.
 
 **`<constant>` element**
 
-In ASAM OpenDRIVE, constant parts are represented by the `<constant>` element within the `<strip>` element.
+In ASAM OpenDRIVE®, constant parts are represented by the `<constant>` element within the `<strip>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_strip_constant
@@ -462,7 +462,7 @@ Defines in t a constant height of the surface.
 
 **`<linear>` element**
 
-In ASAM OpenDRIVE, linear parts are represented by the `<linear>` element within the `<strip>` element.
+In ASAM OpenDRIVE®, linear parts are represented by the `<linear>` element within the `<strip>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_strip_linear
@@ -474,7 +474,7 @@ Defines in t a linear height of the surface.
 
 **`<quadratic>` element**
 
-In ASAM OpenDRIVE, quadratic parts are represented by the `<quadratic>` element within the `<strip>` element.
+In ASAM OpenDRIVE®, quadratic parts are represented by the `<quadratic>` element within the `<strip>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_strip_quadratic
@@ -486,7 +486,7 @@ Defines in t a quadratic height of the surface.
 
 **`<cubic>` element**
 
-In ASAM OpenDRIVE, cubic parts are represented by the `<cubic>` element within the `<strip>` element.
+In ASAM OpenDRIVE®, cubic parts are represented by the `<cubic>` element within the `<strip>` element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_strip_cubic
@@ -498,7 +498,7 @@ Defines in t a cubic height of the surface.
 
 **`<coefficients>` element**
 
-In ASAM OpenDRIVE, the cross section surface polynomial coefficients are represented by the <coefficients> element within the <tOffset>, <width>, <constant>, <linear>, <quadratic>, or <cubic> element.
+In ASAM OpenDRIVE®, the cross section surface polynomial coefficients are represented by the <coefficients> element within the <tOffset>, <width>, <constant>, <linear>, <quadratic>, or <cubic> element.
 
 ```
 UML class:  t_road_lateralProfile_crossSectionSurface_coefficients
@@ -523,7 +523,7 @@ Table 31. Attributes of the <coefficients> element
 
 **XML example**
 
-Code 1. Solution in ASAM OpenDRIVE 1.9.0
+Code 1. Solution in ASAM OpenDRIVE® 1.9.0
 
 ```
 <lateralProfile>

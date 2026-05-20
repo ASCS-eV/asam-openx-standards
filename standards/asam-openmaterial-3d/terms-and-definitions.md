@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 5 Terms and definitions
+# ASAM OpenMATERIAL® 3D latest — 5 Terms and definitions
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/05_terms_and_definitions/terms-and-definitions.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -57,7 +57,7 @@ Material classification
 
 Material parameter file
 :   A file in JSON format containing defined material properties according to the
-    ASAM OpenMATERIAL 3D standard.
+    ASAM OpenMATERIAL® 3D standard.
 
 Material property
 :   Denotes a physical, chemical, or geometric property of a material.

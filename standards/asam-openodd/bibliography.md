@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — Bibliography
+# ASAM OpenODD® v1.0.0 — Bibliography
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/bibliography.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,7 +11,7 @@
 
 [1] ASAM Data Types*,* 2.0.0
 
-[2] ASAM OpenSCENARIO DSL*,* 2.1.0
+[2] ASAM OpenSCENARIO® DSL*,* 2.1.0
 
 [3] ASAM Unit Handling Guide
 

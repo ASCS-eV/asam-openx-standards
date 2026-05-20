@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.10 Object reference
+# ASAM OpenDRIVE® v1.9.0 — 13.10 Object reference
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_10_object_reference.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -22,7 +22,7 @@ The lane validity element may be used to indicate for which lane the object refe
 
 **`<objectReference>` element**
 
-In ASAM OpenDRIVE, the object reference is represented by the `<objectReference>` element within the `<objects>` element.
+In ASAM OpenDRIVE®, the object reference is represented by the `<objectReference>` element within the `<objects>` element.
 
 ```
 UML class: t_road_objects_objectReference
@@ -47,7 +47,7 @@ Table 102. Attributes of the <objectReference> element
 
 **`<validity>` element**
 
-In ASAM OpenDRIVE, lane validity is represented by the `<validity>` element within the `<object>` element or the `<objectReference>` element.
+In ASAM OpenDRIVE®, lane validity is represented by the `<validity>` element within the `<object>` element or the `<objectReference>` element.
 
 ```
 UML class: t_road_objects_object_laneValidity

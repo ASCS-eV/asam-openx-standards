@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.7 Virtual junctions
+# ASAM OpenDRIVE® v1.9.0 — 12.7 Virtual junctions
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_07_virtual_junctions.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -35,7 +35,7 @@ For elements in the UML model see [Figure 84](12_01_introduction.html#fig-8b7e26
 
 **`<junction type="virtual">` element**
 
-In ASAM OpenDRIVE, virtual junctions are represented by `<junction>` elements with the value `virtual` in the @type attribute within the `<OpenDRIVE>` element.
+In ASAM OpenDRIVE®, virtual junctions are represented by `<junction>` elements with the value `virtual` in the @type attribute within the `<OpenDRIVE>` element.
 
 ```
 UML class: t_junction_virtual
@@ -59,7 +59,7 @@ Table 69. Attributes of the <junction type="virtual"> element
 
 **`<connection type="default">` element**
 
-In ASAM OpenDRIVE, the connections are represented by `<connection>` elements with the value `default` in the @type attribute within the `<junction>` element.
+In ASAM OpenDRIVE®, the connections are represented by `<connection>` elements with the value `default` in the @type attribute within the `<junction>` element.
 
 ```
 UML class: t_junction_connection_virtual_default
@@ -81,7 +81,7 @@ Table 70. Attributes of the <connection type="default"> element
 
 **`<laneLink>` element**
 
-In ASAM OpenDRIVE, lane links in virtual junctions are represented by `<laneLink>` elements within the `<connection>` element.
+In ASAM OpenDRIVE®, lane links in virtual junctions are represented by `<laneLink>` elements within the `<connection>` element.
 
 ```
 UML class: t_junction_connection_laneLink
@@ -362,7 +362,7 @@ For elements in the UML model see [Figure 84](12_01_introduction.html#fig-8b7e26
 
 **`<connection type="virtual">` element**
 
-In ASAM OpenDRIVE, virtual connections are represented by `<connection>` elements with the value `virtual` in the @type attribute within the `<junction>` element.
+In ASAM OpenDRIVE®, virtual connections are represented by `<connection>` elements with the value `virtual` in the @type attribute within the `<junction>` element.
 
 ```
 UML class:  t_junction_connection_virtual
@@ -386,7 +386,7 @@ Table 72. Attributes of the <connection type="virtual"> element
 
 **`<predecessor>` and `<successor>` element**
 
-In ASAM OpenDRIVE, predecessors and successors of virtual connections are represented by `<predecessor>` and `<successor>` elements within the `<connection>` element.
+In ASAM OpenDRIVE®, predecessors and successors of virtual connections are represented by `<predecessor>` and `<successor>` elements within the `<connection>` element.
 
 ```
 UML class:  t_junction_predecessorSuccessor

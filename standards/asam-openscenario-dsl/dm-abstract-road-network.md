@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 8.5 Abstract road network
+# ASAM OpenSCENARIO® DSL v2.2.0 — 8.5 Abstract road network
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/domain-model/dm_abstract_road_network.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -67,7 +67,7 @@ Key points when creating an abstract road network are:
 * Describe only a minimum abstract road network that is necessary to support behavior.
   Do not re-create a map file.
 * Let modifiers do the hard work.
-* An abstract road network does not replace ASAM OpenDRIVE or any other map supply.
+* An abstract road network does not replace ASAM OpenDRIVE® or any other map supply.
 * The goal of the abstract road network is to allow a user to outline just the details required for their use case so that suitable maps meeting these requirements can be selected.
 * An abstract road network acts as a set of constraints needed to find and resolve options for behavior and the driving domain.
   In the driving domain, this is narrowed down to a specific set of maps, route points, or routes and sometimes even further using route anchors.
@@ -215,7 +215,7 @@ This chapter contains a short description of each class that inherits from `rout
 * `xyz_point`  
   A waypoint for a route expressed in Cartesian coordinates.
 * `odr_point`  
-  A waypoint for a route expressed in ASAM OpenDRIVE coordinates.
+  A waypoint for a route expressed in ASAM OpenDRIVE® coordinates.
 * `compound_route`  
   An ordered list of adjacent [`route_element`](road_abstractions.html#sec-roads-abstract-route_element) instances which are used to describe a potential course of movement.
   The members of the `compound_route` must be traversed in sequential order.
@@ -250,7 +250,7 @@ Route anchors are string identifiers that allow one or more route entities of a 
 
 * A typical use case for implementors is using an application that creates unique identifiers within the map file to pair with route elements, like `road`, `lane_section`, `lane`, and so on.
 
-ASAM OpenDRIVE examples:
+ASAM OpenDRIVE® examples:
 
 * `<userData code="roadAnchor" value="myRoad">`  
   Used as an attribute of road.
@@ -434,7 +434,7 @@ Key points
       + From one route to another route
       + Used in an all-encompassing route
     * These junction routes can also act as virtual lanes inside the junction.
-    * Junction routes allow for both legal pathways and illegal pathways, whereas ASAM OpenDRIVE or a real road network typically only specifies legal pathways.
+    * Junction routes allow for both legal pathways and illegal pathways, whereas ASAM OpenDRIVE® or a real road network typically only specifies legal pathways.
 
       + `roads_follow_in_junction()` only creates legal junction routes.
       + However, users can use junction routes to create routes (or compound routes) where actors could move against the legal traffic flow.

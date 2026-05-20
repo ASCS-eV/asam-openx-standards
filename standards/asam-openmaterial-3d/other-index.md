@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 7.3.5 Other structure
+# ASAM OpenMATERIAL® 3D latest — 7.3.5 Other structure
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/07_geometry/object-other/other-index.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,7 +11,7 @@
 
 ## 7.3.5.1 General
 
-The other object class comprises all objects not yet specified by ASAM OpenMATERIAL 3D.
+The other object class comprises all objects not yet specified by ASAM OpenMATERIAL® 3D.
 It includes all objects that are not specified by type-specific object classes.
 Definitions in type-specific object classes overwrite the specifications in the other object class.
 

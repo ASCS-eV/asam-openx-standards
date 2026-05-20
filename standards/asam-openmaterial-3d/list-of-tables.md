@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — List of tables
+# ASAM OpenMATERIAL® 3D latest — List of tables
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/loft/list_of_tables.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

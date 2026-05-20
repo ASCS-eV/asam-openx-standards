@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 8.13 Primitive types and structs
+# ASAM OpenSCENARIO® DSL v2.2.0 — 8.13 Primitive types and structs
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/domain-model/primitive_types.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

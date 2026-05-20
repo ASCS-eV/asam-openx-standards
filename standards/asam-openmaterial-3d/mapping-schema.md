@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 7.6 Mapping schema
+# ASAM OpenMATERIAL® 3D latest — 7.6 Mapping schema
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/07_geometry/mapping-schema.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -48,7 +48,7 @@ The version number of the mapping table, following semantic versioning (for exam
 
 ### 7.6.1.5 openMaterial3dVersion
 
-The version of the ASAM OpenMATERIAL 3D specification used, adhering to semantic versioning (for example, '1.0.0').
+The version of the ASAM OpenMATERIAL® 3D specification used, adhering to semantic versioning (for example, '1.0.0').
 
 **Type:** `string`  
 **Pattern:** `^\\d+\\.\\d+\\.\\d+$`  
@@ -92,6 +92,6 @@ Array containing material mappings.
 
 Columns of the table:
 
-* Column 1: Material name or RGB code. The RGB code represents color values in an ASAM OpenMATERIAL 3D assignment texture.
+* Column 1: Material name or RGB code. The RGB code represents color values in an ASAM OpenMATERIAL® 3D assignment texture.
 * Column 2: File path to the material.
 * Column 3: Description of the material.

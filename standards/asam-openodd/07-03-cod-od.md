@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 7.3 COD/OD
+# ASAM OpenODD® v1.0.0 — 7.3 COD/OD
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/07_model_reference/07_03_cod-od.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,9 +15,9 @@
 
 The COD/OD related classes of {THIS\_STANDARD} model
 
-Figure 18. The COD/OD related classes of ASAM OpenODD model
+Figure 18. The COD/OD related classes of ASAM OpenODD® model
 
-[Figure 18](#fig-reference-COD_OD-COD_OD-classes) shows most of the classes related to class `COD_OD`, so [Figure 18](#fig-reference-COD_OD-COD_OD-classes) is a subset of the ASAM OpenODD model.
+[Figure 18](#fig-reference-COD_OD-COD_OD-classes) shows most of the classes related to class `COD_OD`, so [Figure 18](#fig-reference-COD_OD-COD_OD-classes) is a subset of the ASAM OpenODD® model.
 
 ### 7.3.1.2 Class CODorOD
 

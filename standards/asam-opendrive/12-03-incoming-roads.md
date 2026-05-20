@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.3 Incoming roads
+# ASAM OpenDRIVE® v1.9.0 — 12.3 Incoming roads
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_03_incoming_roads.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -10,7 +10,7 @@
 # 12.3 Incoming roads
 
 Incoming roads contain lanes that lead into a junction.
-Because outgoing roads are not specifically defined in ASAM OpenDRIVE, incoming roads may also serve as outgoing roads, see [Figure 85](12_02_common_junctions.html#fig-eac389f6-e0bc-4dcc-acf5-04ebf90e7f21).
+Because outgoing roads are not specifically defined in ASAM OpenDRIVE®, incoming roads may also serve as outgoing roads, see [Figure 85](12_02_common_junctions.html#fig-eac389f6-e0bc-4dcc-acf5-04ebf90e7f21).
 
 To specify a road as incoming road, its ID is referenced in the `<connection>` element using the @incomingRoad attribute.
 
@@ -18,7 +18,7 @@ To specify a road as incoming road, its ID is referenced in the `<connection>` e
 
 **`<connection incomingRoad="…​">` element**
 
-In ASAM OpenDRIVE, incoming roads are represented by the @incomingRoad attribute of `<connection>` elements within the `<junction>` element.
+In ASAM OpenDRIVE®, incoming roads are represented by the @incomingRoad attribute of `<connection>` elements within the `<junction>` element.
 
 ```
 UML class: t_junction_connection_common

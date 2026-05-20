@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 15.4 Stations
+# ASAM OpenDRIVE® v1.9.0 — 15.4 Stations
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/15_railroads/15_04_stations.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -31,7 +31,7 @@ Figure 146. Railroad stations
 
 **`<station>` element**
 
-In ASAM OpenDRIVE, stations are represented by the `<station>` element within the `<OpenDRIVE>` element.
+In ASAM OpenDRIVE®, stations are represented by the `<station>` element within the `<OpenDRIVE>` element.
 
 ```
 UML class: t_station
@@ -55,7 +55,7 @@ Table 151. Attributes of the <station> element
 
 Figure 147. UML class diagram of the Station class
 
-[Figure 147](#fig-cab6a3b8-a90a-4743-83f5-e6820f19ac01) shows the UML class diagram of the ASAM OpenDRIVE Station class.
+[Figure 147](#fig-cab6a3b8-a90a-4743-83f5-e6820f19ac01) shows the UML class diagram of the ASAM OpenDRIVE® Station class.
 
 **XML example**
 
@@ -86,7 +86,7 @@ See picture in [Figure 146](#fig-a1c9fc52-e344-4dad-8624-4dd99fdb5233).
 
 **`<platform>` element**
 
-In ASAM OpenDRIVE, platforms are represented by the `<platform>` element within the `<station>` element.
+In ASAM OpenDRIVE®, platforms are represented by the `<platform>` element within the `<station>` element.
 
 ```
 UML class: t_station_platform
@@ -126,7 +126,7 @@ A platform shall contain at least one segment.
 
 **`<segment>` element**
 
-In ASAM OpenDRIVE, segments are represented by the `<segment>` element within the `<platform>` element.
+In ASAM OpenDRIVE®, segments are represented by the `<segment>` element within the `<platform>` element.
 
 ```
 UML class: t_station_platform_segment

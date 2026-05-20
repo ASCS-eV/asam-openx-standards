@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 2 Normative references
+# ASAM OpenMATERIAL® 3D latest — 2 Normative references
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/02_normative_references/normative-references.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -19,7 +19,7 @@ Standards referenced in this section shall be cited normatively in the text.
 * ASAM OpenCRG [[1](../bibliography.html#bib-ocr)]
 * ASAM OpenSCENARIO XML [[2](../bibliography.html#bib-osc)]
 * ASAM OpenLABEL [[3](../bibliography.html#bib-ola)]
-* ASAM OpenDRIVE [[4](../bibliography.html#bib-odr)]
+* ASAM OpenDRIVE® [[4](../bibliography.html#bib-odr)]
 * ASAM OSI [[5](../bibliography.html#bib-osi)]
 * FMI [[6](../bibliography.html#bib-fmi)]
 * ISO 8855 [[7](../bibliography.html#bib-iso8855)]

@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 9.2 Modeling taxonomy
+# ASAM OpenODD® v1.0.0 — 9.2 Modeling taxonomy
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/09_openscenario_dsl/09_02_modeling_taxonomy.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,7 +11,7 @@
 
 ## 9.2.1 Modeling structured taxonomies for ODDs
 
-A taxonomy is modeled by using ASAM OpenSCENARIO DSL `struct`, which provides a way to build complex structured types from simpler types.
+A taxonomy is modeled by using ASAM OpenSCENARIO® DSL `struct`, which provides a way to build complex structured types from simpler types.
 A `struct` can have multiple instances of `field` and multiple instances of `method`.
 A `field` represents a named attribute of a `struct` that can be typed over:
 
@@ -21,14 +21,14 @@ A `field` represents a named attribute of a `struct` that can be typed over:
 * physical types
 * lists of the above
 
-ASAM OpenSCENARIO DSL distinguishes **parameter** fields and **variable** fields.
+ASAM OpenSCENARIO® DSL distinguishes **parameter** fields and **variable** fields.
 Parameter fields are immutable and their value must be defined during the creation of struct instances, while variable fields can change over time.
 Taxonomies use parameter fields.
 
 This implies that a mapping (see [Section 9.1.5, "Illustrative overview"](09_01_overview.html#sec-illustrative-overview)) from a world or a simulation state to a COD must create a new COD instance whenever the world or simulation state changes.
 Depending on the supporting tool, this may be realized differently.
 
-[Code 110](#code-modeling-odd-taxonomy) shows how structs and parameter fields are used to model a taxonomy with ASAM OpenSCENARIO DSL.
+[Code 110](#code-modeling-odd-taxonomy) shows how structs and parameter fields are used to model a taxonomy with ASAM OpenSCENARIO® DSL.
 The "root" type is the struct `odd`.
 This example ODD struct has two parameter fields `environmental_conditions` and `scenery`, which are again typed over other structs.
 The struct `environmental_conditions` has a field `weather`, typed over a struct that has the fields `wind` and `rainfall`.
@@ -36,18 +36,18 @@ These fields are typed over the enumerated (`enum`) types `wind_kind` and `rain_
 
 |  |  |
 | --- | --- |
-|  | The ASAM OpenSCENARIO DSL convention is that all names, which includes type and field names, are written with lowercase letters and words separated by underscores. |
+|  | The ASAM OpenSCENARIO® DSL convention is that all names, which includes type and field names, are written with lowercase letters and words separated by underscores. |
 
 |  |  |
 | --- | --- |
-|  | ASAM OpenSCENARIO DSL requires that all fields of a structured type (struct) have unique names. This also prohibits name clashes between inherited fields or fields in type extensions. However, it is allowed that two fields of two different structs have the same name or that a field has the same name as another type. In contrast, the ASAM OpenODD model (see [Section 6.1.5, "Taxonomies in ASAM OpenODD"](../06_model_concept/06_01_openodd_model.html#sec-taxonomies-in-this-standard)) requires that all named elements have unique IDs. When aligning or mapping taxonomies and ODDs across these formats, this restriction must be considered. |
+|  | ASAM OpenSCENARIO® DSL requires that all fields of a structured type (struct) have unique names. This also prohibits name clashes between inherited fields or fields in type extensions. However, it is allowed that two fields of two different structs have the same name or that a field has the same name as another type. In contrast, the ASAM OpenODD® model (see [Section 6.1.5, "Taxonomies in ASAM OpenODD®"](../06_model_concept/06_01_openodd_model.html#sec-taxonomies-in-this-standard)) requires that all named elements have unique IDs. When aligning or mapping taxonomies and ODDs across these formats, this restriction must be considered. |
 
 In the following code examples, the following conventions are used:
 Taxonomy structs fields/members and their types will have the same name.
 For example: `scenery : scenery` implies a `scenery` struct field, of type `scenery`.
 For enumerated (categorical) types, the type defined is `_kind` (for example `wind_kind`), while the field/member name is "as is" (for example `wind)`.
 
-Code 109. Example for naming conventions for taxonomy examples (ASAM OpenSCENARIO DSL notation)
+Code 109. Example for naming conventions for taxonomy examples (ASAM OpenSCENARIO® DSL notation)
 
 ```
 struct environmental_conditions:
@@ -57,7 +57,7 @@ struct weather:
     wind : wind_kind
 ```
 
-Code 110. Example modeling of a taxonomy (ASAM OpenSCENARIO DSL notation)
+Code 110. Example modeling of a taxonomy (ASAM OpenSCENARIO® DSL notation)
 
 ```
 struct odd:
@@ -106,7 +106,7 @@ Fields can be typed over the **primitive types** `bool` (Boolean), `int` and `ui
 
 |  |  |
 | --- | --- |
-|  | The term *physical type* is matching the class `UnitType` of the ASAM OpenODD model. |
+|  | The term *physical type* is matching the class `UnitType` of the ASAM OpenODD® model. |
 
 Moreover, fields can be typed over **physical types**.
 A physical type is defined by a name and a **basic unit definition** based on the SI base units:
@@ -127,7 +127,7 @@ The definition indicates the exponents:
 * Acceleration is length divided by time squared.
   The time exponent is negative two.
 
-Code 111. Example physical type definition (ASAM OpenSCENARIO DSL notation)
+Code 111. Example physical type definition (ASAM OpenSCENARIO® DSL notation)
 
 ```
 type speed is SI(m: 1, s: -1)
@@ -137,7 +137,7 @@ type acceleration is SI(m: 1, s: -2)
 **Units** can be defined on the basis of physical type definitions by introducing a unit name, a conversion factor, and an offset from the physical type unit definition.
 [Code 112](#code-defining-units) is an example, that measures speed in unit kilometers per hour:
 
-Code 112. Example for defining a unit (ASAM OpenSCENARIO DSL notation)
+Code 112. Example for defining a unit (ASAM OpenSCENARIO® DSL notation)
 
 ```
 unit kmph of speed is SI(m: 1, s: -1, factor: 0.277777778)
@@ -145,7 +145,7 @@ unit kmph of speed is SI(m: 1, s: -1, factor: 0.277777778)
 
 [Code 113](#code-odd-taxonomy-structs) shows taxonomy structs that have fields typed over primitive and physical types:
 
-Code 113. Example taxonomy structs (ASAM OpenSCENARIO DSL notation)
+Code 113. Example taxonomy structs (ASAM OpenSCENARIO® DSL notation)
 
 ```
 struct scenery:
@@ -173,7 +173,7 @@ To enable the specification of such constraints, the taxonomy must provide two e
 
 Example:
 
-Code 114. Example enum datatype (ASAM OpenSCENARIO DSL notation)
+Code 114. Example enum datatype (ASAM OpenSCENARIO® DSL notation)
 
 ```
 struct odd:
@@ -191,30 +191,30 @@ enum zone: [ zone_undefined ] # to be extended in ODD definitions.
 
 |  |  |
 | --- | --- |
-|  | Definition modes is a concept/feature introduced by ISO 34503 [cite:iso34503]. This concept is not standardized by this release of ASAM OpenODD. Please note that there may be different ODD formats which may enable to express more concepts/features than those standardized in this release of ASAM OpenODD. In these cases, it is left up to the implementation to ensure if a modeled ODD/OD/COD is still compliant with ASAM OpenODD. |
+|  | Definition modes is a concept/feature introduced by ISO 34503 [cite:iso34503]. This concept is not standardized by this release of ASAM OpenODD®. Please note that there may be different ODD formats which may enable to express more concepts/features than those standardized in this release of ASAM OpenODD®. In these cases, it is left up to the implementation to ensure if a modeled ODD/OD/COD is still compliant with ASAM OpenODD®. |
 
 The ISO 34503 introduces three different definition modes *default*, *permissive*, and *restrictive*, which specify what attribute values are allowed when no constraints are specified for some attributes [cite:iso34503].
 The ODD definition modes *default*, *permissive*, and *restrictive* can be defined separately for each concept (struct) of the ODD domain concepts definition (taxonomy).
 
-To model this in ASAM OpenSCENARIO DSL, each taxonomy concept struct should have a field `definition_mode` typed over the `enum definition_mode: [_default, permissive, restrictive, parent]` that represents the three different definition modes.
+To model this in ASAM OpenSCENARIO® DSL, each taxonomy concept struct should have a field `definition_mode` typed over the `enum definition_mode: [_default, permissive, restrictive, parent]` that represents the three different definition modes.
 The fourth value, `parent`, is not a definition mode itself, but expresses that a struct’s definition mode shall be derived from the definition mode of the parent in the domain concepts definition (taxonomy) struct hierarchy.
-The enum value for the default definition mode is written with a leading underscore, because `default` is a reserved keyword in ASAM OpenSCENARIO DSL.
+The enum value for the default definition mode is written with a leading underscore, because `default` is a reserved keyword in ASAM OpenSCENARIO® DSL.
 
 Defining a `definition_mode` field for every struct in the domain concepts definition (taxonomy) model can be achieved by defining a strut supertype that defines this field and then have all other structs inherit from it.
 ODD domain concepts definition (taxonomy) authors can also choose other ways of introducing this property.
 
 In the example below (see [Code 115](#code-enum-definition-mode)), the struct is called supertype `odd_element` and set its definition `parent` via a *default constraint*.
-Default constraints in ASAM OpenSCENARIO DSL is a constraint that can be overridden by subtypes or type extensions, see ASAM OpenSCENARIO DSL [[2](../bibliography.html#bib-oscdsl)] specification, Section 7.3.11.3.2, "Default constraints".
+Default constraints in ASAM OpenSCENARIO® DSL is a constraint that can be overridden by subtypes or type extensions, see ASAM OpenSCENARIO® DSL [[2](../bibliography.html#bib-oscdsl)] specification, Section 7.3.11.3.2, "Default constraints".
 
 If now, in an ODD, the definition mode for the root struct `struct odd` is constrained to another value, for example `permissive`, this means that the ODD shall be interpreted in permissive mode across the full domain concepts definition (taxonomy) hierarchy.
 This is because all other structs retain their definition mode `parent` as defined by the default constraint and thus, the definition mode set for the root struct holds recursively for all child structs further downward in the struct hierarchy.
 Once another definition mode is specified for another struct, then this definition mode holds recursively for all of its child structs further downward in the struct hierarchy.
 
 If an ODD does not constrain the definition mode of the root struct to another value than `parent`, then the definition mode for the ODD is undefined.
-This release of ASAM OpenODD does not define how this shall be interpreted.
+This release of ASAM OpenODD® does not define how this shall be interpreted.
 It may be that the assumed definition mode in this case is `_default` or it may be seen as invalid not to constrain the definition mode of the root struct to another value than `parent`.
 
-Code 115. Example enum definition mode (ASAM OpenSCENARIO DSL notation)
+Code 115. Example enum definition mode (ASAM OpenSCENARIO® DSL notation)
 
 ```
 enum definition_mode: [_default, permissive, restrictive, parent]
@@ -246,10 +246,10 @@ The root struct `odd` can be equipped with sampling time and location metadata.
 This can be done for example as shown in [Code 116](#code-sampling-time-and-location).
 The struct types `geo_location_3D` and `date_time` can be used to capture the sampling time and location in a COD, which is an instance of the type `odd`.
 
-The `SPATIAL_EXTENT` and `TEMPORAL_EXTENT` from the ASAM OpenODD model can be mapped to the fields `geo_location_3D` and `date_time` as can be seen in [Code 116](#code-sampling-time-and-location).
+The `SPATIAL_EXTENT` and `TEMPORAL_EXTENT` from the ASAM OpenODD® model can be mapped to the fields `geo_location_3D` and `date_time` as can be seen in [Code 116](#code-sampling-time-and-location).
 The valid ranges for the fields are given in the comments.
 
-Code 116. Example sampling time and location (ASAM OpenSCENARIO DSL notation)
+Code 116. Example sampling time and location (ASAM OpenSCENARIO® DSL notation)
 
 ```
 type length is SI(m: 1)
@@ -289,13 +289,13 @@ ODD domain concept definitions (taxonomies) can be extended in two ways, by usin
 
 |  |  |
 | --- | --- |
-|  | When to use type extension?  Type extension is used to extend an existing type across all its usages, effectively evolving the definition of that type for the whole scope in which the type extension is visible. The type extension is visible in the ASAM OpenSCENARIO DSL file where it is defined and all files that import that file. Type extension is suited if the goal is to extend a type in an existing struct hierarchy and when the addition is universally applicable, which means that one does not need to distinguish between the original type and the extended one. Type extension can also be used to add new enum literals to existing enum types. This is useful if an existing range of categories needs to be extended. |
+|  | When to use type extension?  Type extension is used to extend an existing type across all its usages, effectively evolving the definition of that type for the whole scope in which the type extension is visible. The type extension is visible in the ASAM OpenSCENARIO® DSL file where it is defined and all files that import that file. Type extension is suited if the goal is to extend a type in an existing struct hierarchy and when the addition is universally applicable, which means that one does not need to distinguish between the original type and the extended one. Type extension can also be used to add new enum literals to existing enum types. This is useful if an existing range of categories needs to be extended. |
 
 |  |  |
 | --- | --- |
 |  | When to use inheritance?  Inheritance can be used to introduce a new type that builds upon an existing one. This new type, however, does not replace the existing type and does not automatically become part of an existing struct hierarchy (taxonomy). Instead, if a struct attribute shall be typed over the new, specialized struct, that attribute must be defined in a new struct as well. This means that inheritance is suited if the goal is to create a specialized struct type that can be integrated into a new struct hierarchy. |
 
-Both type extension and inheritance, combined with the ability to import ASAM OpenSCENARIO DSL files to other ASAM OpenSCENARIO DSL files, allows ODD domain concepts definition (taxonomy) authors to extend existing ODD domain concepts definitions (taxonomies) or reuse parts of existing ODD domain concepts definitions (taxonomies) to create new ones.
+Both type extension and inheritance, combined with the ability to import ASAM OpenSCENARIO® DSL files to other ASAM OpenSCENARIO® DSL files, allows ODD domain concepts definition (taxonomy) authors to extend existing ODD domain concepts definitions (taxonomies) or reuse parts of existing ODD domain concepts definitions (taxonomies) to create new ones.
 
 [Code 117](#code-extending-odd-domain-concepts) shows an example of how to use type extension to extend an existing struct as well as to extend an existing enum type.
 The example code first imports an existing ODD domain concepts definition (taxonomy) file `Domain_Concepts_Definition_ISO_34503.osc`.
@@ -304,7 +304,7 @@ The example code shows how the weather type is extended with a new attribute `cl
 The attribute `cloud_cover` is typed over the enum type `cloud_cover_type` that is introduced as a new enum type, without extending an existing one.
 The second type extension happens to the `rain_kind` enum type, which is extended with additional rain categories, `mist` and `monsoon_rain`.
 
-Code 117. Example extension of ODD domain concepts (ASAM OpenSCENARIO DSL notation)
+Code 117. Example extension of ODD domain concepts (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # Import existing domain concepts definition (taxonomy) file
@@ -320,11 +320,11 @@ enum cloud_cover_type: [clear, mostly_clear, partly_cloudy, mostly_cloudy, overc
 extend rain_kind : [mist, monsoon_rain]
 ```
 
-[Code 118](#code-using-inheritance) shows how to use inheritance to introduce a new struct type `special_weather` that specializes the struct type `weather` from an imported ASAM OpenSCENARIO DSL file, `Domain_Concepts_Definition_ISO_34503.osc`.
+[Code 118](#code-using-inheritance) shows how to use inheritance to introduce a new struct type `special_weather` that specializes the struct type `weather` from an imported ASAM OpenSCENARIO® DSL file, `Domain_Concepts_Definition_ISO_34503.osc`.
 
 This new, specialized struct type `special_weather` can be integrated into a new struct hierarchy (taxonomy), for example by creating a new struct `special_odd` that has an attribute typed over `special_weather`.
 
-Code 118. Example use of inheritance "Domain\_Concepts\_Definition\_ISO\_34503\_MyExtended.osc" (ASAM OpenSCENARIO DSL notation)
+Code 118. Example use of inheritance "Domain\_Concepts\_Definition\_ISO\_34503\_MyExtended.osc" (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # Import existing domain concepts definition (taxonomy) file

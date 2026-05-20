@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 15.3 Switches
+# ASAM OpenDRIVE® v1.9.0 — 15.3 Switches
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/15_railroads/15_03_switches.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -32,7 +32,7 @@ A side track `2` connects the two main tracks `1` and `3`.
 
 **`<switch>` element**
 
-In ASAM OpenDRIVE, switches are represented by the `<switch>` element within the `<railroad>` element.
+In ASAM OpenDRIVE®, switches are represented by the `<switch>` element within the `<railroad>` element.
 
 ```
 UML class: t_road_railroad_switch
@@ -87,7 +87,7 @@ The two track types have been implemented as a convenience function to simplify 
 
 **`<mainTrack>` element**
 
-In ASAM OpenDRIVE, main tracks are represented by the `<mainTrack>` element within the `<switch>` element.
+In ASAM OpenDRIVE®, main tracks are represented by the `<mainTrack>` element within the `<switch>` element.
 
 ```
 UML class: t_road_railroad_switch_mainTrack
@@ -128,7 +128,7 @@ The two track types have been implemented as convenience function to simplify th
 
 **`<sideTrack>` element**
 
-In ASAM OpenDRIVE, side tracks are represented by the `<sideTrack>` element within the `<switch>` element.
+In ASAM OpenDRIVE®, side tracks are represented by the `<sideTrack>` element within the `<switch>` element.
 
 ```
 UML class: t_road_railroad_switch_sideTrack
@@ -168,7 +168,7 @@ These two switches need to be set consistently.
 
 **`<partner>` element**
 
-In ASAM OpenDRIVE, partner switches are represented by the `<partner>` element within the `<switch>` element.
+In ASAM OpenDRIVE®, partner switches are represented by the `<partner>` element within the `<switch>` element.
 
 ```
 UML class: t_road_railroad_switch_partner

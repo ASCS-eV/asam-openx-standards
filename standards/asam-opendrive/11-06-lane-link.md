@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.6 Lane linkage
+# ASAM OpenDRIVE® v1.9.0 — 11.6 Lane linkage
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_06_lane_link.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 11.6 Lane linkage
 
-To enable lane navigation, linkage information for lanes may be stored in ASAM OpenDRIVE.
+To enable lane navigation, linkage information for lanes may be stored in ASAM OpenDRIVE®.
 Linkage is described by means of `<predecessor>` and `<successor>` elements for each lane.
 Lanes may be linked to lanes on the same or another road.
 Furthermore, lane links may be used to connect the permanent and the temporary layer.
@@ -35,7 +35,7 @@ Table 39. Lane predecessors and successors for road with id 10
 | Road 10 with lane id -2 | Lane id -2 (Road 30) | Lane id 2 (Road 20) |
 
 The temporary lane layer does not need to be continuous over the whole length of a road.
-A continuous set of one or more lane sections on the temporary lane layer is called a "temporary lane layer section" in ASAM OpenDRIVE.
+A continuous set of one or more lane sections on the temporary lane layer is called a "temporary lane layer section" in ASAM OpenDRIVE®.
 An example for a temporary lane layer section is a roadworks section that applies to a section of a road.
 To allow entering and exiting the lanes on the temporary lane layer at the start and end of that temporary lane layer section, a transition from the permanent to the temporary lane layer or vice versa must be provided for each lane on the temporary lane layer.
 This leads to the lanes on the permanent layer having more than one predecessor or successor.
@@ -78,7 +78,7 @@ Example where multiple predecessors and successors shall not be used:
 
 **`<link>` element**
 
-In ASAM OpenDRIVE, lane linkage is represented by the `<link>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, lane linkage is represented by the `<link>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_link
@@ -95,11 +95,11 @@ This element may only be omitted, if lanes end at a junction or have no physical
 
 Figure 69. UML class diagram of the t\_road\_lanes\_laneSection\_lcr\_lane\_link element in the Lanes class
 
-[Figure 69](#fig-74955d07-7be3-4527-9d4a-ea2fbbda6a1e) shows the UML class diagram of the t\_road\_lanes\_laneSection\_lcr\_lane\_link element in the ASAM OpenDRIVE Lanes class.
+[Figure 69](#fig-74955d07-7be3-4527-9d4a-ea2fbbda6a1e) shows the UML class diagram of the t\_road\_lanes\_laneSection\_lcr\_lane\_link element in the ASAM OpenDRIVE® Lanes class.
 
 **`<predecessor>` and `<successor>` elements**
 
-In ASAM OpenDRIVE, predecessors and successors are represented by the `<predecessor>` and `<successor>` elements within the `<link>` element.
+In ASAM OpenDRIVE®, predecessors and successors are represented by the `<predecessor>` and `<successor>` elements within the `<link>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor

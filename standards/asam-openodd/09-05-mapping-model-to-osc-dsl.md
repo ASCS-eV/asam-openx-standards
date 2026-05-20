@@ -1,57 +1,57 @@
-# ASAM Openodd v1.0.0 — 9.5 Mapping ASAM OpenODD to ASAM OpenSCENARIO DSL
+# ASAM OpenODD® v1.0.0 — 9.5 Mapping ASAM OpenODD® to ASAM OpenSCENARIO® DSL
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/09_openscenario_dsl/09_05_mapping_model_to_osc_dsl.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
 ---
 
-# 9.5 Mapping ASAM OpenODD to ASAM OpenSCENARIO DSL
+# 9.5 Mapping ASAM OpenODD® to ASAM OpenSCENARIO® DSL
 
 ## 9.5.1 Overview
 
-This section defines how to map ODD definitions as well as COD data from the ASAM OpenODD model to ASAM OpenSCENARIO DSL.
+This section defines how to map ODD definitions as well as COD data from the ASAM OpenODD® model to ASAM OpenSCENARIO® DSL.
 This mapping definition is split into three parts:
 
-1. Mapping taxonomies in the form of ASAM OpenODD model to ASAM OpenSCENARIO DSL types [Section 9.5.2, “Taxonomy mapping”](#sec-dsl-taxonomy-mapping).
-2. Mapping COD and OD data to ASAM OpenSCENARIO DSL compare [Section 9.5.3, “COD/OD mapping”](#sec-mapping-dsl-cod-od).
-3. Mapping ODD modules, which are used in the ASAM OpenODD model to encode constraints, to ASAM OpenSCENARIO DSL expression [Section 9.5.4, “ODD module mapping”](#sec-mapping-dsl-odd-module).
+1. Mapping taxonomies in the form of ASAM OpenODD® model to ASAM OpenSCENARIO® DSL types [Section 9.5.2, “Taxonomy mapping”](#sec-dsl-taxonomy-mapping).
+2. Mapping COD and OD data to ASAM OpenSCENARIO® DSL compare [Section 9.5.3, “COD/OD mapping”](#sec-mapping-dsl-cod-od).
+3. Mapping ODD modules, which are used in the ASAM OpenODD® model to encode constraints, to ASAM OpenSCENARIO® DSL expression [Section 9.5.4, “ODD module mapping”](#sec-mapping-dsl-odd-module).
 
 ## 9.5.2 Taxonomy mapping
 
 ### 9.5.2.1 Overview
 
-The model of ASAM OpenODD describes how to represent a  [Section 6.2, "Taxonomy"](../06_model_concept/06_02_openodd_taxonomy.html#top-openodd-taxonomy):
+The model of ASAM OpenODD® describes how to represent a  [Section 6.2, "Taxonomy"](../06_model_concept/06_02_openodd_taxonomy.html#top-openodd-taxonomy):
 A file can contain multiple taxonomies.
 Each taxonomy can have multiple root taxonomy concepts, which again can be containers that contain other taxonomy concepts, hence giving rise to a hierarchy of taxonomy concepts.
 A taxonomy concept contained by either a container or directly by a taxonomy can also be a primitive type, a categorical type (with categorical literals), or a record (with attributes).
 
-[Figure 24](#fig-taxonomy-model-to-osc-mapping-overview) gives an overview of how concepts for representing taxonomies in the ASAM OpenODD model are mapped to ASAM OpenSCENARIO DSL concepts:
+[Figure 24](#fig-taxonomy-model-to-osc-mapping-overview) gives an overview of how concepts for representing taxonomies in the ASAM OpenODD® model are mapped to ASAM OpenSCENARIO® DSL concepts:
 
-1. Each free-form notation file is mapped to an ASAM OpenSCENARIO DSL file where import references are mapped as import statements.
+1. Each free-form notation file is mapped to an ASAM OpenSCENARIO® DSL file where import references are mapped as import statements.
 2. Taxonomies, containers and records are mapped to structs.
 3. Records' attributes are mapped to fields or structs.
 4. Categorical types and their literals are mapped to enumeration type definitions with enumeration literals.
-5. Primitive types are mapped to ASAM OpenSCENARIO DSL built-in primitive types, limited to bool, int, float, and string supported.
+5. Primitive types are mapped to ASAM OpenSCENARIO® DSL built-in primitive types, limited to bool, int, float, and string supported.
 
-![ASAM OpenODD model to ASAM OpenSCENARIO DSL mapping overview](../_images/OpenSCENARIO_DSL/mapping-OpenODD-model-OSC-overview.svg)
+![ASAM OpenODD® model to ASAM OpenSCENARIO® DSL mapping overview](../_images/OpenSCENARIO_DSL/mapping-OpenODD-model-OSC-overview.svg)
 
-Figure 24. ASAM OpenODD model to ASAM OpenSCENARIO DSL mapping overview
+Figure 24. ASAM OpenODD® model to ASAM OpenSCENARIO® DSL mapping overview
 
-[Figure 24](#fig-taxonomy-model-to-osc-mapping-overview) shows an overview of mapping ASAM OpenODD model to ASAM OpenSCENARIO DSL.
+[Figure 24](#fig-taxonomy-model-to-osc-mapping-overview) shows an overview of mapping ASAM OpenODD® model to ASAM OpenSCENARIO® DSL.
 
 The following subsections describe the mapping in more detail.
 
 ### 9.5.2.2 Mapping files to files
 
-Each taxonomy file is mapped to an ASAM OpenSCENARIO DSL file with the same name.
-Imports references to other files are mapped to equivalent ASAM OpenSCENARIO DSL import statements.
+Each taxonomy file is mapped to an ASAM OpenSCENARIO® DSL file with the same name.
+Imports references to other files are mapped to equivalent ASAM OpenSCENARIO® DSL import statements.
 
-| ASAM OpenODD model | ASAM OpenSCENARIO DSL |
+| ASAM OpenODD® model | ASAM OpenSCENARIO® DSL |
 | --- | --- |
-| **Mapping ASAM OpenODD model → ASAM OpenSCENARIO DSL** | |
-| File  * id: String * imports: File | Becomes a file with name id. Import references become ASAM OpenSCENARIO DSL import statements |
+| **Mapping ASAM OpenODD® model → ASAM OpenSCENARIO® DSL** | |
+| File  * id: String * imports: File | Becomes a file with name id. Import references become ASAM OpenSCENARIO® DSL import statements |
 | **Example** | |
 | There are two files "example\_taxonomy\_file.openoddmodel" and "other\_taxonomy\_file.openoddmodel", where "example\_taxonomy\_file.openoddmodel" imports "other\_taxonomy\_file.openoddmodel". | These files are mapped to the files  "example\_taxonomy\_file.osc" and "other\_taxonomy\_file.osc" where "example\_taxonomy\_file.osc" has `import "other_taxonomy_file.osc"` as only content. |
 
@@ -61,16 +61,16 @@ A file can contain zero or more taxonomies.
 Usually it contains one.
 Each taxonomy element is mapped to a struct that represents the root of that taxonomy.
 
-| ASAM OpenODD model | ASAM OpenSCENARIO DSL |
+| ASAM OpenODD® model | ASAM OpenSCENARIO® DSL |
 | --- | --- |
 | **In the context of a previous mapping of:** | |
 | File | File |
-| **Mapping: ASAM OpenODD model concept becomes ASAM OpenSCENARIO DSL concept:** | |
+| **Mapping: ASAM OpenODD® model concept becomes ASAM OpenSCENARIO® DSL concept:** | |
 | A taxonomy contained in a file that has the following attributes:  * id: String | Is mapped to a struct where the name is the id of the taxonomy. |
 | **Prerequisites:** | |
-| * The id of the taxonomy must be a valid ASAM OpenSCENARIO DSL identifier string. * The length of the id string should be limited for readability of the resulting ASAM OpenSCENARIO DSL code. | |
+| * The id of the taxonomy must be a valid ASAM OpenSCENARIO® DSL identifier string. * The length of the id string should be limited for readability of the resulting ASAM OpenSCENARIO® DSL code. | |
 
-Code 130. ASAM OpenODD model: Mapping taxonomies to structs (free-form notation)
+Code 130. ASAM OpenODD® model: Mapping taxonomies to structs (free-form notation)
 
 ```
 # file example_taxonomy.freeformnotation
@@ -79,7 +79,7 @@ taxonomy
     id is "example_taxonomy"
 ```
 
-Code 131. ASAM OpenSCENARIO DSL: Mapping taxonomies to structs (ASAM OpenSCENARIO DSL notation)
+Code 131. ASAM OpenSCENARIO® DSL: Mapping taxonomies to structs (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example_taxonomy.osc
@@ -89,20 +89,20 @@ struct example_taxonomy
 
 ### 9.5.2.4 Mapping containers to structs
 
-Each container in a taxonomy in the ASAM OpenODD model is mapped to a struct in the corresponding ASAM OpenSCENARIO DSL file:
+Each container in a taxonomy in the ASAM OpenODD® model is mapped to a struct in the corresponding ASAM OpenSCENARIO® DSL file:
 
-| ASAM OpenODD model | ASAM OpenSCENARIO DSL |
+| ASAM OpenODD® model | ASAM OpenSCENARIO® DSL |
 | --- | --- |
 | **In the context of a previous mapping of:** | |
 | Taxonomy | Struct |
 | **Or in the context of a previous mapping of:** | |
 | Container | Struct (recursive mapping rule) |
-| **Mapping: ASAM OpenODD model concept becomes ASAM OpenSCENARIO DSL concept:** | |
+| **Mapping: ASAM OpenODD® model concept becomes ASAM OpenSCENARIO® DSL concept:** | |
 | A container with the following attributes, that is either contained in another container or a direct child of a taxonomy:  * id: String * name: LangString[0..\*] * description: LangString[0..\*] * comment: LangString[0..\*] | Is mapped to a structure, where the name is the name specified for the container in English, with spaces replaced by underscores and uppercase letters replaced by lower case letters. English-language descriptions and comments are translated into comments in the structure definition.  In addition, a field must be added to the structure that corresponds to the parent taxonomy or parent container of the container that represents this parent-child relationship. The name of this field is the same as the name of the assigned container. |
 | **Prerequisites:** | |
-| * Each container has an English-language name string, which must be a valid ASAM OpenSCENARIO-DSL identifier string or becomes a valid ASAM OpenSCENARIO-DSL identifier string after spaces have been replaced by underscores and uppercase letters have been converted to lowercase letters. * The English taxonomy concept names and taxonomy IDs within a file must be sufficiently different so that their assignment, as described above, does not lead to conflicts of structure names. * The length of the name string should be limited for readability of the resulting ASAM OpenSCENARIO DSL code. | |
+| * Each container has an English-language name string, which must be a valid ASAM OpenSCENARIO-DSL identifier string or becomes a valid ASAM OpenSCENARIO-DSL identifier string after spaces have been replaced by underscores and uppercase letters have been converted to lowercase letters. * The English taxonomy concept names and taxonomy IDs within a file must be sufficiently different so that their assignment, as described above, does not lead to conflicts of structure names. * The length of the name string should be limited for readability of the resulting ASAM OpenSCENARIO® DSL code. | |
 
-Code 132. ASAM OpenODD model: Mapping containers to structs (free-form notation)
+Code 132. ASAM OpenODD® model: Mapping containers to structs (free-form notation)
 
 ```
 # file example_taxonomy.freeformnotation
@@ -123,7 +123,7 @@ taxonomy
                 value is "env conditions comment"
 ```
 
-Code 133. ASAM OpenSCENARIO DSL: Mapping containers to structs (ASAM OpenSCENARIO DSL notation)
+Code 133. ASAM OpenSCENARIO® DSL: Mapping containers to structs (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example_taxonomy.osc
@@ -140,18 +140,18 @@ struct environmental_conditions
 
 Each record is mapped to a struct.
 
-| ASAM OpenODD model | ASAM OpenSCENARIO DSL |
+| ASAM OpenODD® model | ASAM OpenSCENARIO® DSL |
 | --- | --- |
 | **In the context of a previous mapping of:** | |
 | Taxonomy | Struct |
 | **Or in the context of a previous mapping of:** | |
 | Container | Struct (recursive mapping rule) |
-| **Mapping: ASAM OpenODD model concept becomes ASAM OpenSCENARIO DSL concept:** | |
+| **Mapping: ASAM OpenODD® model concept becomes ASAM OpenSCENARIO® DSL concept:** | |
 | A record with the following attributes, that is either contained in another container or a direct child of a taxonomy:  * id: String * name: LangString[0..\*] * description: LangString[0..\*] * comment: LangString[0..\*] | Is mapped to a structure, where the name is the name specified for the container in English, with spaces replaced by underscores and uppercase letters replaced by lower case letters. English-language descriptions and comments are translated into comments in the structure definition.  In addition, a field must be added to the structure that corresponds to the parent taxonomy or parent container of the container that represents this parent-child relationship. The name of this field is the same as the name of the assigned container. |
 | **Prerequisites:** | |
 | * The same prerequisites hold as in [Section 9.5.2.4, “Mapping containers to structs”](#sec-mapping-containers-to-structs). | |
 
-Code 134. ASAM OpenODD model: Mapping records to structs (free-form notation)
+Code 134. ASAM OpenODD® model: Mapping records to structs (free-form notation)
 
 ```
 # file example_taxonomy.freeformnotation
@@ -184,7 +184,7 @@ taxonomy
                         value is "Weather comment"
 ```
 
-Code 135. ASAM OpenSCENARIO DSL: Mapping records to structs (ASAM OpenSCENARIO DSL notation)
+Code 135. ASAM OpenSCENARIO® DSL: Mapping records to structs (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example_taxonomy.osc
@@ -204,18 +204,18 @@ struct weather
 
 ### 9.5.2.6 Mapping categorical types to enum types
 
-| ASAM OpenODD model | ASAM OpenSCENARIO DSL |
+| ASAM OpenODD® model | ASAM OpenSCENARIO® DSL |
 | --- | --- |
 | **In the context of a previous mapping of:** | |
 | Taxonomy | Struct |
 | **Or in the context of a previous mapping of:** | |
 | Container | Struct (recursive mapping rule) |
-| **Mapping: ASAM OpenODD model concept becomes ASAM OpenSCENARIO DSL concept:** | |
+| **Mapping: ASAM OpenODD® model concept becomes ASAM OpenSCENARIO® DSL concept:** | |
 | A categorical type with the following attributes, that is either contained in another container or a direct child of a taxonomy:  * id: String * name: LangString[0..\*] * description: LangString[0..\*] * comment: LangString[0..\*] * literals: CategoricalLiteral[0..\*] | Is mapped to an enumeration type, where the name is the English name specified for the categorical type, with spaces replaced by underscores and uppercase letters replaced by lowercase letters. English language descriptions and comments are translated into comments that precede the structure definition.  Each categorical literal is mapped to a literal of the enumeration type definition. The name of the categorical literal is translated into the name of the enumeration literal. |
 | **Prerequisites:** | |
 | * The same prerequisites for naming hold as in [Section 9.5.2.4, “Mapping containers to structs”](#sec-mapping-containers-to-structs). * Categorical literal strings must be valid OpenSCENARIO DSL identifier strings.   A categorical literal must not have two literals with identical literal strings after replacing capital letters with lowercase letters. | |
 
-Code 136. ASAM OpenODD model: Mapping categorical types to enum types (free-form notation)
+Code 136. ASAM OpenODD® model: Mapping categorical types to enum types (free-form notation)
 
 ```
 # file example_taxonomy.freeformnotation
@@ -252,7 +252,7 @@ taxonomy
                         light_air
 ```
 
-Code 137. ASAM OpenSCENARIO DSL: mapping categorical types to enum types (ASAM OpenSCENARIO DSL notation)
+Code 137. ASAM OpenSCENARIO® DSL: mapping categorical types to enum types (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example_taxonomy.osc
@@ -274,15 +274,15 @@ enum wind_kind: [
 
 ### 9.5.2.7 Mapping categorical literals with range expressions
 
-The ASAM OpenODD model supports adding expressions to categorical literals.
+The ASAM OpenODD® model supports adding expressions to categorical literals.
 The purpose of this feature is to align the categorical value of an attribute with a numerical value of another attribute.
 Example: Having an attribute typed over the `wind_kind` categorical and another attribute of `wind_speed` of `UnitType` `speed`.
 Then it is possible to add expressions to each `wind_kind` categorical literal that associates the categorical literal with a range of wind speed.
 
-Such a mapping is not directly supported by ASAM OpenSCENARIO DSL, but such expressions can be mapped to `keep` constraints that enforce consistency among attributes.
+Such a mapping is not directly supported by ASAM OpenSCENARIO® DSL, but such expressions can be mapped to `keep` constraints that enforce consistency among attributes.
 See the code examples below.
 
-Code 138. ASAM OpenODD model: Example of categorical range expressions (free-form notation)
+Code 138. ASAM OpenODD® model: Example of categorical range expressions (free-form notation)
 
 ```
 # file example_taxonomy.freeformnotation
@@ -298,7 +298,7 @@ example_taxonomy
         ...
 ```
 
-Code 139. ASAM OpenSCENARIO DSL: mapping categorical range expressions to consistency constraints in ASAM OpenSCENARIO DSL (ASAM OpenSCENARIO DSL notation)
+Code 139. ASAM OpenSCENARIO® DSL: mapping categorical range expressions to consistency constraints in ASAM OpenSCENARIO® DSL (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example_taxonomy.osc
@@ -325,16 +325,16 @@ enum wind_kind: [
 
 Each attribute of a data record is assigned to a field with a type that corresponds to the type of the attribute:
 
-| ASAM OpenODD model | ASAM OpenSCENARIO DSL |
+| ASAM OpenODD® model | ASAM OpenSCENARIO® DSL |
 | --- | --- |
 | **In the context of a previous mapping of:** | |
 | Record | Struct |
-| **Mapping: ASAM OpenODD model concept becomes ASAM OpenSCENARIO DSL concept:** | |
+| **Mapping: ASAM OpenODD® model concept becomes ASAM OpenSCENARIO® DSL concept:** | |
 | An attribute with the following attributes:  * id: String * type: Type | Is mapped to a field in the context structure, whereby the name is the ID specified for the attribute and uppercase letters are replaced by lower case letters.  The type of the attribute is mapped to the field type as follows:  * If the attribute is typed over a primitive type without an attached unit type, the field is typed over the corresponding primitive type.   Only Boolean, int, float, and string are supported by the mapping. * If the attribute is typed over a categorical type, the field is typed over the corresponding enumeration type. * If the attribute is typed over a primitive type with a unit type, the field is typed over the corresponding unit type according to the ASAM Unit Handling Guide [[3](../bibliography.html#bib-uhg)], see also [Section 6.2.7.1, "Unit specification"](../06_model_concept/06_02_openodd_taxonomy.html#sec-unit-specification). |
 | **Prerequisites:** | |
-| * The ID specified for the attribute, in which uppercase letters are replaced by lower case letters, must be a valid ASAM OpenSCENARIO DSL identifier. * Only unit types are used that are listed in the ASAM Unit Handling Guide [[3](../bibliography.html#bib-uhg)]. * Only Primitive types named boolean, int, float, and string can be mapped. | |
+| * The ID specified for the attribute, in which uppercase letters are replaced by lower case letters, must be a valid ASAM OpenSCENARIO® DSL identifier. * Only unit types are used that are listed in the ASAM Unit Handling Guide [[3](../bibliography.html#bib-uhg)]. * Only Primitive types named boolean, int, float, and string can be mapped. | |
 
-Code 140. ASAM OpenODD model: Mapping attributes to fields (free-form notation)
+Code 140. ASAM OpenODD® model: Mapping attributes to fields (free-form notation)
 
 ```
 # file example_taxonomy.freeformnotation
@@ -383,7 +383,7 @@ taxonomy
                     type is boolean
 ```
 
-Code 141. ASAM OpenSCENARIO DSL: Mapping attributes to fields (ASAM OpenSCENARIO DSL notation)
+Code 141. ASAM OpenSCENARIO® DSL: Mapping attributes to fields (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example_taxonomy.osc
@@ -409,19 +409,19 @@ struct weather:
 
 ## 9.5.3 COD/OD mapping
 
-See following how CODs or ODs in the ASAM OpenODD model can be mapped to an ASAM OpenSCENARIO DSL representation.
+See following how CODs or ODs in the ASAM OpenODD® model can be mapped to an ASAM OpenSCENARIO® DSL representation.
 
-A COD or OD in the ASAM OpenODD model is represented by an instance of the `COD_OD` class which can be associated with a `TemporalExtent` and `SpatialExtent`, that is, information of when and where a COD was recorded.
-Additionally, a `COD_OD` instance has a list of `TaxonomyConceptValues` instances, which in ASAM OpenSCENARIO DSL map types in the domain concepts definition model (taxonomy) to concrete values.
+A COD or OD in the ASAM OpenODD® model is represented by an instance of the `COD_OD` class which can be associated with a `TemporalExtent` and `SpatialExtent`, that is, information of when and where a COD was recorded.
+Additionally, a `COD_OD` instance has a list of `TaxonomyConceptValues` instances, which in ASAM OpenSCENARIO® DSL map types in the domain concepts definition model (taxonomy) to concrete values.
 The values are primitive-, categorical-, or record-values, depending on the type of the referenced taxonomy type.
 A record value is a hierarchical structure that again maps record attribute to values.
 
-The mapping from a ASAM OpenODD model COD or OD structure to OpenSCENARIO DSL consists in mapping of
+The mapping from a ASAM OpenODD® model COD or OD structure to OpenSCENARIO DSL consists in mapping of
 
 1. `TaxonomyConceptValues` instances (type-to-values mappings)
 2. Record values (attribute-to-values mappings)
 
-Both map to `keep`-statements that specify the values for the ASAM OpenSCENARIO DSL struct attributes that correspond to the ASAM OpenODD model class `Type` or ASAM OpenODD model class `Record` attributes.
+Both map to `keep`-statements that specify the values for the ASAM OpenSCENARIO® DSL struct attributes that correspond to the ASAM OpenODD® model class `Type` or ASAM OpenODD® model class `Record` attributes.
 Moreover, the classes `TemporalExtent` and `SpatialExtent` are mapped to keep statements that assign values to the attributes of the `date_time` and `geo_location_3D` structs.
 
 The following example illustrates the mapping.
@@ -436,7 +436,7 @@ Table 146. Example COD table with JSON **Record**
 | --- | --- | --- | --- | --- | --- |
 | 1 | "2024-06-01 08:12:53.784" | "48.0232 11.7153" | 6.214 | convective | {"features": {"refuge\_island\_count": 2, "number\_of\_ways": 4, "is\_signalized": True}, "type": "X\_junction"} |
 
-Code 142. Example ASAM OpenODD model taxonomy with complex structure (free-form notation)
+Code 142. Example ASAM OpenODD® model taxonomy with complex structure (free-form notation)
 
 ```
 TAXONOMY specification is as follows
@@ -458,9 +458,9 @@ TAXONOMY specification is as follows
             X_junction                                          # categorical literal
 ```
 
-The taxonomy can be mapped to the following ASAM OpenSCENARIO DSL representation (by applying the mapping rules as described in [Section 9.5.2, “Taxonomy mapping”](#sec-dsl-taxonomy-mapping)).
+The taxonomy can be mapped to the following ASAM OpenSCENARIO® DSL representation (by applying the mapping rules as described in [Section 9.5.2, “Taxonomy mapping”](#sec-dsl-taxonomy-mapping)).
 
-Code 143. ASAM OpenSCENARIO DSL: domain concepts definition model (taxonomy) corresponding to the taxonomy in [Code 142](#code-example-core-model-cod-complex-structure) (ASAM OpenSCENARIO DSL notation)
+Code 143. ASAM OpenSCENARIO® DSL: domain concepts definition model (taxonomy) corresponding to the taxonomy in [Code 142](#code-example-core-model-cod-complex-structure) (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example-taxonomy.osc
@@ -508,13 +508,13 @@ enum intersection_type: [
     ]
 ```
 
-[Code 144](#code-example-OSC-DSL-COD-intersection-weather) shows the ASAM OpenSCENARIO DSL representation of the COD in [Table 146](#tab-codtablejsonrecord_row1):
+[Code 144](#code-example-OSC-DSL-COD-intersection-weather) shows the ASAM OpenSCENARIO® DSL representation of the COD in [Table 146](#tab-codtablejsonrecord_row1):
 
 1. The `TemporalExtent` and `SpatialExtent` are mapped to keep constraints that specify values for the `date_time` and `geo_location_3D` structs.
 2. The attribute values of the `weather` record are mapped to `keep`-statements of the weather-struct
 3. The attribute values of the `intersection` and `intersection_features` records are mapped to `keep`-statements of the corresponding structs.
 
-Code 144. ASAM OpenSCENARIO DSL: COD corresponding to the COD in [Table 146](#tab-codtablejsonrecord_row1) (ASAM OpenSCENARIO DSL notation)
+Code 144. ASAM OpenSCENARIO® DSL: COD corresponding to the COD in [Table 146](#tab-codtablejsonrecord_row1) (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # file example-COD.osc
@@ -571,19 +571,19 @@ extend intersection_features:
 
 ### 9.5.4.1 Overview
 
-In the ASAM OpenODD model, a module is a reusable building block for defining and structuring an ODD or TOD.
-A module is a combination of conditions and evaluates to a Boolean outcome (see ASAM OpenODD model classes `Module` and `Condition`).
+In the ASAM OpenODD® model, a module is a reusable building block for defining and structuring an ODD or TOD.
+A module is a combination of conditions and evaluates to a Boolean outcome (see ASAM OpenODD® model classes `Module` and `Condition`).
 A module may be referenced by other modules, thus allowing for a hierarchical definition of an ODD or TOD.
 
-This mapping is based on the assumption, that the source ASAM OpenODD model instance is in a file that defines a taxonomy (or imports a taxonomy) as well as a list of modules, where one of the `Module` instances has the field `is_root` set to `true` (see [Section 6.4.4, "Module details"](../06_model_concept/06_04_openodd_modules.html#sec-concept-modules-module-details)).
+This mapping is based on the assumption, that the source ASAM OpenODD® model instance is in a file that defines a taxonomy (or imports a taxonomy) as well as a list of modules, where one of the `Module` instances has the field `is_root` set to `true` (see [Section 6.4.4, "Module details"](../06_model_concept/06_04_openodd_modules.html#sec-concept-modules-module-details)).
 That means it is the root (or main) `Module` instance from which to infer and map the full ODD specification.
 This `Module` can reference other `Module` instances and `Label` instances in that file or imported files.
-This main `Module` instance is then mapped in ASAM OpenSCENARIO DSL to a `keep` statement, or set of `keep` statements, located in the structure corresponding to the taxonomy element, see [Section 9.5.2.3, “Mapping taxonomies to structs”](#sec-mapping-taxonomies-to-structs).
+This main `Module` instance is then mapped in ASAM OpenSCENARIO® DSL to a `keep` statement, or set of `keep` statements, located in the structure corresponding to the taxonomy element, see [Section 9.5.2.3, “Mapping taxonomies to structs”](#sec-mapping-taxonomies-to-structs).
 Other inferred modules are mapped as keep statements to the relevant taxonomy concepts structs.
 
-[Section 9.5.4.2, “Module structure”](#sec-module-structure) revisits the fundamental components of a module, [Section 9.5.4.3, “Mapping module sections”](#sec-mapping-module-sections) proceeds to present an algorithm for mapping modules in ASAM OpenODD to ASAM OpenSCENARIO DSL.
+[Section 9.5.4.2, “Module structure”](#sec-module-structure) revisits the fundamental components of a module, [Section 9.5.4.3, “Mapping module sections”](#sec-mapping-module-sections) proceeds to present an algorithm for mapping modules in ASAM OpenODD® to ASAM OpenSCENARIO® DSL.
 For each module structure, the focus is on its mapping to a Boolean expression.
-The notation \(\mathcal{M}\)(<Module-Component>) is used to denote the Boolean expression mapping of a module component in ASAM OpenSCENARIO DSL.
+The notation \(\mathcal{M}\)(<Module-Component>) is used to denote the Boolean expression mapping of a module component in ASAM OpenSCENARIO® DSL.
 
 ### 9.5.4.2 Module structure
 
@@ -594,7 +594,7 @@ A `Module` instance can declare a collection of `Label` instances as well as `Ta
 ### 9.5.4.3 Mapping module sections
 
 A module section can be either an `INCLUDE` or an `EXCLUDE` section, each of which can be further refined into an `AND` constraint or an `OR` constraint.
-A module \(M\) that has one of these sections is mapped to an ASAM OpenSCENARIO DSL expression \(\mathcal{M}\)(\(M\)) as follows:
+A module \(M\) that has one of these sections is mapped to an ASAM OpenSCENARIO® DSL expression \(\mathcal{M}\)(\(M\)) as follows:
 
 * `INCLUDE_AND`: This constraint type represents the Boolean *conjunction* of a collection of unordered Boolean constraints  
   \(C\_1\), \(C\_2\), …​, \(C\_n\), that is, \(C\_1 \wedge C\_2 \wedge …​ \wedge C\_n\).  
@@ -614,7 +614,7 @@ A module \(M\) that has one of these sections is mapped to an ASAM OpenSCENARIO 
   \(\mathcal{M}\)(\(M\)) = `NOT(` \(\mathcal{M}\)(\(C\_1\)) `OR` \(\mathcal{M}\)(\(C\_2\)) `OR` …​ \(\mathcal{M}\)(\(C\_n\)) `)`
 
 In these descriptions, a constraint \(C\_i\), where \(i\) is the index of the constraint, is an expression over module identifiers, label identifiers, or a constraint over taxonomy attribute, and evaluates to a Boolean value.
-Moreover, \(\mathcal{M}\)(\(C\_i\)) is the mapping of expression \(C\_i\) to an ASAM OpenSCENARIO DSL expression.
+Moreover, \(\mathcal{M}\)(\(C\_i\)) is the mapping of expression \(C\_i\) to an ASAM OpenSCENARIO® DSL expression.
 
 A module may have two sections.
 The mapped sections are logically combined using an `and` operator.
@@ -633,14 +633,14 @@ example_module_1 is
 
 [Code 145](#code-repeat-from-dm-example-module1-include-and) translates to the following expression in OpenSCENARIO DSL:
 
-Code 146. Example `INCLUDE_AND` (ASAM OpenSCENARIO DSL notation)
+Code 146. Example `INCLUDE_AND` (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: example_module_1
 wind_speed < 40 kmph and rainfall_rate < 20 mmph
 ```
 
-The mapping example [Code 146](#code-oscdsl-example-module1-include-and) above also shows that the module name is mapped to a code comment in the ASAM OpenSCENARIO DSL code.
+The mapping example [Code 146](#code-oscdsl-example-module1-include-and) above also shows that the module name is mapped to a code comment in the ASAM OpenSCENARIO® DSL code.
 Module names, titles, descriptions, and comments as well as labels can be mapped to such code comments.
 However, this is optional and only treated informally in the following code examples.
 
@@ -657,7 +657,7 @@ example_module_2 is
 
 [Code 147](#code-repeat-from-dm-example-module2-include-or) translates to the following expression in OpenSCENARIO DSL:
 
-Code 148. Example `INCLUDE_AND` (ASAM OpenSCENARIO DSL notation)
+Code 148. Example `INCLUDE_AND` (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: example_module_2
@@ -677,7 +677,7 @@ example_module_3 is
 
 [Code 149](#code-repeat-from-dm-example-module3-exclude-and) translates to the following expression in OpenSCENARIO DSL:
 
-Code 150. Example EXCLUDE\_AND (ASAM OpenSCENARIO DSL notation)
+Code 150. Example EXCLUDE\_AND (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: example_module_3
@@ -695,9 +695,9 @@ example_module_4 is
         rainfall_rate is greater than 20 mm/h
 ```
 
-[Code 151](#code-repeat-from-dm-example-module4-exclude-or) translates to the following expression in ASAM OpenSCENARIO DSL:
+[Code 151](#code-repeat-from-dm-example-module4-exclude-or) translates to the following expression in ASAM OpenSCENARIO® DSL:
 
-Code 152. Example `EXCLUDE_OR` (ASAM OpenSCENARIO DSL notation)
+Code 152. Example `EXCLUDE_OR` (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: example_module_4
@@ -718,9 +718,9 @@ example_module_5 is
         connectivity_bandwidth is less than 1 Mbps
 ```
 
-[Code 153](#code-repeat-from-dm-example-include-and-exclude-or) translates to the following expression in ASAM OpenSCENARIO DSL:
+[Code 153](#code-repeat-from-dm-example-include-and-exclude-or) translates to the following expression in ASAM OpenSCENARIO® DSL:
 
-Code 154. Example `INCLUDE_AND` and `EXCLUDE_OR` (ASAM OpenSCENARIO DSL notation)
+Code 154. Example `INCLUDE_AND` and `EXCLUDE_OR` (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: example_module_5
@@ -742,9 +742,9 @@ example_module_6 is
         connectivity_bandwidth is less than 1 Mbps
 ```
 
-[Code 155](#code-repeat-from-dm-example-include-or-exclude-and) translates to the following expression in ASAM OpenSCENARIO DSL:
+[Code 155](#code-repeat-from-dm-example-include-or-exclude-and) translates to the following expression in ASAM OpenSCENARIO® DSL:
 
-Code 156. Example `INCLUDE_OR` and `EXCLUDE_AND` (ASAM OpenSCENARIO DSL notation)
+Code 156. Example `INCLUDE_OR` and `EXCLUDE_AND` (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: example_module_6
@@ -771,9 +771,9 @@ example_module_7 is
             road_type is expressway
 ```
 
-[Code 157](#code-repeat-from-dm-example-complex-module) translates to the following expression in ASAM OpenSCENARIO DSL:
+[Code 157](#code-repeat-from-dm-example-complex-module) translates to the following expression in ASAM OpenSCENARIO® DSL:
 
-Code 158. Example complex module (ASAM OpenSCENARIO DSL notation)
+Code 158. Example complex module (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: example_module_7
@@ -845,9 +845,9 @@ passenger_pickup is
     ...
 ```
 
-[Code 160](#code-example-module-reference-include-or-exclude-or), taken together with [Code 159](#code-example-modules-labels-inclusion-exclusion-conditions), translates to the expression [Code 161](#code-oscdsl-example-module-reference-include-or-exclude-or) in ASAM OpenSCENARIO DSL:
+[Code 160](#code-example-module-reference-include-or-exclude-or), taken together with [Code 159](#code-example-modules-labels-inclusion-exclusion-conditions), translates to the expression [Code 161](#code-oscdsl-example-module-reference-include-or-exclude-or) in ASAM OpenSCENARIO® DSL:
 
-Code 161. Example `INCLUDE_OR` and `EXCLUDE_OR` containing Modules (ASAM OpenSCENARIO DSL notation)
+Code 161. Example `INCLUDE_OR` and `EXCLUDE_OR` containing Modules (ASAM OpenSCENARIO® DSL notation)
 
 ```
 # MODULE_NAME: passenger_pickup
@@ -923,38 +923,38 @@ passenger_pickup is
 
 ### 9.5.4.5 Mapping constraints over taxonomy attributes
 
-The ASAM OpenODD model defines different kinds of expressions that refer to taxonomy attributes.
+The ASAM OpenODD® model defines different kinds of expressions that refer to taxonomy attributes.
 
 *Lower- and upper-bound expressions* compare a numerical or unit-typed attribute to a numerical or unit value.
-Comparing values of categorical types via lower- and upper-bound expressions is also possible according to the ASAM OpenODD model.
-However, ASAM OpenSCENARIO DSL does not assume any order among the literals of enumeration types. Hence, the mapping **does not support lower- and upper-bound expressions relating to categorical type attributes.**
-(The ASAM OpenODD model supports extending categorical literals with expressions that can map each literal to a range of values or some numerical attribute.
-In ASAM OpenSCENARIO DSL, this is possible via constraints, compare [Section 9.5.2.7, “Mapping categorical literals with range expressions”](#sec-dsl-mapping-categorical-literals-with-range-expressions), but this still does not enable relation operators to be used with enum values.)
+Comparing values of categorical types via lower- and upper-bound expressions is also possible according to the ASAM OpenODD® model.
+However, ASAM OpenSCENARIO® DSL does not assume any order among the literals of enumeration types. Hence, the mapping **does not support lower- and upper-bound expressions relating to categorical type attributes.**
+(The ASAM OpenODD® model supports extending categorical literals with expressions that can map each literal to a range of values or some numerical attribute.
+In ASAM OpenSCENARIO® DSL, this is possible via constraints, compare [Section 9.5.2.7, “Mapping categorical literals with range expressions”](#sec-dsl-mapping-categorical-literals-with-range-expressions), but this still does not enable relation operators to be used with enum values.)
 
 *Equal expression* forces an attribute value to be equal to a given value of primitive or categorical type.
 
 *Range expression* forces that the value of a numerical or unit-typed attribute is between two given numerical or unit values.
-The restriction of values of categorical types via range expressions is also possible, depending on the ASAM OpenODD model.
+The restriction of values of categorical types via range expressions is also possible, depending on the ASAM OpenODD® model.
 However, for the reasons given above, the mapping **does not support range expressions relating to categorical type attributes.**
 
-* Assuming that a constraint \(C\) is a *lower-bound expression* \(C\) = \(<attribute>\) > \(<value>\) \(<unit>\) (unit is optional), \(C\) is mapped to an ASAM OpenSCENARIO DSL expression as follows:
+* Assuming that a constraint \(C\) is a *lower-bound expression* \(C\) = \(<attribute>\) > \(<value>\) \(<unit>\) (unit is optional), \(C\) is mapped to an ASAM OpenSCENARIO® DSL expression as follows:
   \(\mathcal{M}\)(\(C\)) = `( <attribute> > <value> <unit>)`.
   (unit is optional)
-* Assuming that a constraint \(C\) is an *upper-bound expression* \(C\) = \(<attribute>\) < \(<value>\) \(<unit>\), \(C\) is mapped to an ASAM OpenSCENARIO DSL expression as follows:
+* Assuming that a constraint \(C\) is an *upper-bound expression* \(C\) = \(<attribute>\) < \(<value>\) \(<unit>\), \(C\) is mapped to an ASAM OpenSCENARIO® DSL expression as follows:
   \(\mathcal{M}\)(\(C\)) = `( <attribute> < <value> <unit>)`. (unit is optional)
-* Assuming that a constraint \(C\) is an *equals expression* \(C\) = \(<attribute>\) = \(<value>\) \(<unit>\) (unit is optional), \(C\) is mapped to an ASAM OpenSCENARIO DSL expression as follows:
+* Assuming that a constraint \(C\) is an *equals expression* \(C\) = \(<attribute>\) = \(<value>\) \(<unit>\) (unit is optional), \(C\) is mapped to an ASAM OpenSCENARIO® DSL expression as follows:
   \(\mathcal{M}\)(\(C\)) = `( <attribute> = <value> <unit>)`.
   (unit is optional)
-* Assuming that a constraint \(C\) is a *range expression* \(C\) = \(<attribute>\) [\(<lower-value>\) .. \(<upper-value>\)] \(<unit>\) (unit is optional), \(C\) is mapped to an ASAM OpenSCENARIO DSL expression as follows:
+* Assuming that a constraint \(C\) is a *range expression* \(C\) = \(<attribute>\) [\(<lower-value>\) .. \(<upper-value>\)] \(<unit>\) (unit is optional), \(C\) is mapped to an ASAM OpenSCENARIO® DSL expression as follows:
   \(\mathcal{M}\)(\(C\)) = `( <attribute> in [<lower-value> .. <upper-value>] <unit>)`.
   (unit is optional)
 
 In these mapping rules:
 
 * `<attribute>` refers to an attribute expression that references the mapped taxonomy attribute.
-  In ASAM OpenSCENARIO DSL, this expression is an expression that navigates through the hierarchy of structs that represent the nested taxonomy structure via dot-expressions (like `environmental_conditions.weather.wind_speed`).
+  In ASAM OpenSCENARIO® DSL, this expression is an expression that navigates through the hierarchy of structs that represent the nested taxonomy structure via dot-expressions (like `environmental_conditions.weather.wind_speed`).
 * `<value>` is a one-to-one mapping of the given value
 * `<unit>` is a mapping to the unit.
-  Here, without specifying the details, the mapping implies that units corresponding to ASAM Unit Handling Guide [[3](../bibliography.html#bib-uhg)] are defined in the ASAM OpenSCENARIO DSL file or an imported file, so that all units supported by the ASAM OpenODD model can be mapped.
+  Here, without specifying the details, the mapping implies that units corresponding to ASAM Unit Handling Guide [[3](../bibliography.html#bib-uhg)] are defined in the ASAM OpenSCENARIO® DSL file or an imported file, so that all units supported by the ASAM OpenODD® model can be mapped.
 
 Examples of mapping expressions are provided in the running examples in earlier sections.

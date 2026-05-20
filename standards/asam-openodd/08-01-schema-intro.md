@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 8.1 Overview
+# ASAM OpenODD® v1.0.0 — 8.1 Overview
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/08_tabular/08_01_openodd_schema_intro.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -13,12 +13,12 @@
 
 This mapping reference consists of [Section 8.1, "Overview"](08_01_openodd_schema_intro.html),  [Section 8.2, "Taxonomy mapping"](08_02_openodd_tabular_taxonomy.html#top-tabular-taxonomy),  [Section 8.3, "COD/OD mapping"](08_03_openodd_tabular_od.html#top-tabular-codod),  [Section 8.4, "ODD module mapping"](08_04_openodd_tabular_modules.html#top-tabular-modules), and the annexes  [Annex D.1, *Tabular format SQL*](../11_annexes/11_d_further_examples_01_tabular_sql.html#top-annexes-further-examples-SQL),  [Annex D.2, *Tabular format file transmission*](../11_annexes/11_d_further_examples_02_tabular_transmission.html#top-annex-file-transmission-example),  [Annex B.1, *Tabular format ISO 34503 as CSV*](../11_annexes/11_e_iso34503_01_tabular.html#top-example-iso34503-database), and  [Annex D.3, *Tabular Format weather COD*](../11_annexes/11_d_further_examples_03_weather_cod.html#top-weather-cod-example).
 
-This mapping reference describes how ASAM OpenODD concepts and structures can be represented in a tabular format such as CSV files, spreadsheets, or suitable tabular formats.
-It provides guidance on mapping elements of the ASAM OpenODD model to flat tables to facilitate data representation, storage, and processing in tabular environments.
+This mapping reference describes how ASAM OpenODD® concepts and structures can be represented in a tabular format such as CSV files, spreadsheets, or suitable tabular formats.
+It provides guidance on mapping elements of the ASAM OpenODD® model to flat tables to facilitate data representation, storage, and processing in tabular environments.
 
 ## 8.1.2 Purpose
 
-The purpose of ASAM OpenODD model to tabular format mapping reference is to support the instantiation of the ASAM OpenODD model, which is hereafter referred as ASAM OpenODD model, along with its storage and retrieval.
+The purpose of ASAM OpenODD® model to tabular format mapping reference is to support the instantiation of the ASAM OpenODD® model, which is hereafter referred as ASAM OpenODD® model, along with its storage and retrieval.
 The mapping reference tabular format provides a tabular representation data schema to address the following use cases:
 
 * Ability to store a taxonomy in different languages and maintain traceability between various concepts
@@ -45,7 +45,7 @@ It is particularly recommended to pack all files as a single zip file, with or w
 
 ### 8.1.3.2 Export requirements
 
-When exporting ASAM OpenODD, the export is expected to include the taxonomy concepts required to support the subject:
+When exporting ASAM OpenODD®, the export is expected to include the taxonomy concepts required to support the subject:
 
 When exporting taxonomy only, then only taxonomy content is needed.
 The export can contain a single file or several files that are linked by the keyword `IMPORT`.
@@ -58,7 +58,7 @@ The export can contain a single file or several files that are linked by the key
 
 ## 8.1.4 Storage Mechanisms
 
-A tabular representation of the ASAM OpenODD model serves two purposes:
+A tabular representation of the ASAM OpenODD® model serves two purposes:
 
 1. It is readable by humans, for example csv or spreadsheets.
 2. It can be stored in a database, for example SQL.

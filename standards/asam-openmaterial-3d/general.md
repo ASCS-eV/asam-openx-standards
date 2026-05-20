@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 7.2 General
+# ASAM OpenMATERIAL® 3D latest — 7.2 General
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/07_geometry/general.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,7 +11,7 @@
 
 ## 7.2.1 Dimensions
 
-Unless stated otherwise, all numeric values within ASAM OpenMATERIAL 3D are in SI units. [Table 15](#tab-quantities-units) lists the units and dimensions:
+Unless stated otherwise, all numeric values within ASAM OpenMATERIAL® 3D are in SI units. [Table 15](#tab-quantities-units) lists the units and dimensions:
 
 Table 15. Quantities and units
 
@@ -27,7 +27,7 @@ Table 15. Quantities and units
 
 ## 7.2.2 Coordinate systems
 
-ASAM OpenMATERIAL 3D uses the following types of coordinate systems:
+ASAM OpenMATERIAL® 3D uses the following types of coordinate systems:
 
 * World coordinate system, see [Section 7.2.2.1, "World coordinate system"](#_world_coordinate_system)
 * Local coordinate system, see [Section 7.2.2.2, "Local coordinate system"](#_local_coordinate_system)
@@ -80,23 +80,23 @@ A coordinate system of type (x, y, z) that is fixed in the inertial reference fr
 the simulation environment has the xw- and yw-axes parallel to the ground
 plane and the zw-axis pointing upward.
 
-Neither origin nor orientation of the world coordinate system are defined by the ASAM OpenMATERIAL 3D standard. Nevertheless, the origin of the world coordinate system in an ASAM OpenMATERIAL 3D environment should coincide with the origin of a corresponding ASAM OpenDRIVE map (if available).
+Neither origin nor orientation of the world coordinate system are defined by the ASAM OpenMATERIAL® 3D standard. Nevertheless, the origin of the world coordinate system in an ASAM OpenMATERIAL® 3D environment should coincide with the origin of a corresponding ASAM OpenDRIVE® map (if available).
 The origin of the world coordinate system in ASAM OSI should also be aligned with these two coordinate systems.
 
 ### 7.2.2.2 Local coordinate system
 
-Top-most local coordinate frames of *3D assets* (so-called reference coordinate frames) in ASAM OpenMATERIAL 3D are defined in the center of the bounding box of the corresponding asset, projected to the bottom of the bounding box.
+Top-most local coordinate frames of *3D assets* (so-called reference coordinate frames) in ASAM OpenMATERIAL® 3D are defined in the center of the bounding box of the corresponding asset, projected to the bottom of the bounding box.
 By static transformations, these coordinate frames may be synchronized with reference coordinate frames in ASAM OpenSCENARIO XML and ASAM OSI.
-[Table 16](#tab-local-coordinates) provides an overview of the translations between ASAM OpenMATERIAL 3D asset reference coordinates and ASAM OpenSCENARIO XML and ASAM OSI reference coordinates.
+[Table 16](#tab-local-coordinates) provides an overview of the translations between ASAM OpenMATERIAL® 3D asset reference coordinates and ASAM OpenSCENARIO XML and ASAM OSI reference coordinates.
 
 Table 16. Transformation of asset coordinates to ASAM OpenSCENARIO XML and ASAM OSI
 
 
 | Standard | Coordinate System | Transformation |
 | --- | --- | --- |
-| ASAM OpenSCNEARIO XML | Vehicle | The origin is the center of the rear axle projected to the ground. Add the x-coordinate of the [rear axle](asset-schema.html#_rearaxle) from the vehicle asset metadata to the ASAM OpenMATERIAL 3D reference frame. |
-| ASAM OSI | Moving or stationary object | The origin is in the center of the bounding box. Add half of the height of the asset defined as the maximum z-coordinate in the [bounding box](asset-schema.html#_boundingbox) to the ASAM OpenMATERIAL 3D reference frame. |
-| ASAM OSI | Host vehicle | The origin is the center of the rear axle. Add the x- and z-coordinate of the [rear axle](asset-schema.html#_rearaxle) from the vehicle asset metadata to the ASAM OpenMATERIAL 3D reference frame. |
+| ASAM OpenSCNEARIO XML | Vehicle | The origin is the center of the rear axle projected to the ground. Add the x-coordinate of the [rear axle](asset-schema.html#_rearaxle) from the vehicle asset metadata to the ASAM OpenMATERIAL® 3D reference frame. |
+| ASAM OSI | Moving or stationary object | The origin is in the center of the bounding box. Add half of the height of the asset defined as the maximum z-coordinate in the [bounding box](asset-schema.html#_boundingbox) to the ASAM OpenMATERIAL® 3D reference frame. |
+| ASAM OSI | Host vehicle | The origin is the center of the rear axle. Add the x- and z-coordinate of the [rear axle](asset-schema.html#_rearaxle) from the vehicle asset metadata to the ASAM OpenMATERIAL® 3D reference frame. |
 
 Besides reference coordinate frames, *3D assets* may incorporate other local coordinate frames, see [Section 7.3.1, "Object classes introduction"](object-classes-introduction.html).
 
@@ -104,7 +104,7 @@ Besides reference coordinate frames, *3D assets* may incorporate other local coo
 
 ### 7.2.3.1 General
 
-The following naming conventions apply to ASAM OpenMATERIAL 3D geometry files:
+The following naming conventions apply to ASAM OpenMATERIAL® 3D geometry files:
 
 * The *3D model* file and the related *3D asset* file shall have the same base name.
   Example: `Example.gltf`, `Example.xoma`
@@ -115,7 +115,7 @@ The following naming conventions apply to ASAM OpenMATERIAL 3D geometry files:
 ### 7.2.3.2 Node structure
 
 Every node structure for a 3D object uses predefined keywords to allow a consistent naming convention and parsing.
-Some keywords are already defined by the ASAM OpenMATERIAL 3D standard and more could follow in future updates.
+Some keywords are already defined by the ASAM OpenMATERIAL® 3D standard and more could follow in future updates.
 Users are free to add more keywords for themself, if they are needed. The following rules apply:
 
 * All components shall be named according to capital snake case definition, starting with uppercase letters.
@@ -140,7 +140,7 @@ The following rules for metadata apply:
 
 ## 7.2.4. *3D asset* file
 
-The *3D asset* file provides metadata as well as a mapping table to ASAM OpenMATERIAL 3D *material property* files.
+The *3D asset* file provides metadata as well as a mapping table to ASAM OpenMATERIAL® 3D *material property* files.
 This information extends the geometry of an asset given in standard *3D model* file formats, for example, glTF, FBX, or USD.
 The *3D asset* file is in JSON format with the file extension .xoma.
 The asset file has to have the same file name as the accompanying *3D model*.
@@ -151,14 +151,14 @@ The following is an example of a *3D model* file in glTF format with an accompan
 
 ## 7.2.5 Asset Type
 
-In the current specification of ASAM OpenMATERIAL 3D, assets of type 'object' and 'scene' can be specified.
+In the current specification of ASAM OpenMATERIAL® 3D, assets of type 'object' and 'scene' can be specified.
 Since the concept of 'scene' has been replaced by the following concept of referencing external assets, it can be understood as deprecated.
 
 ## 7.2.6 References to external assets
 
 To accommodate use cases in which 3D objects are not built from single assets but from (variable) compositions of assets
 (e.g., vehicles with roof racks and bicycles, environments built up by separate layers or enhanced with additional objects),
-ASAM OpenMATERIAL 3D allows external assets to be referenced in the *3D asset* file.
+ASAM OpenMATERIAL® 3D allows external assets to be referenced in the *3D asset* file.
 
 To do this, the *3D asset* files of external assets must be associated with a node of an overarching asset in its *3D asset* file.
 This node acts as parent to the external assets and determines their spatial placement and orientation.
@@ -176,7 +176,7 @@ A Grp\_Wheel\_Steering\_Rotating\_<axle\_idx>\_<wheel\_idx> node in a vehicle as
 * Meshes shall not be empty or contain multiple level of details (LoDs).
 * Meshes shall be triangulated. Potential normal maps shall match that triangulation.
 * Rendering materials shall support physically based rendering (PBR) workflows and there shall not be geometry without assigned material.
-* Additional requirements apply when ASAM OpenMATERIAL 3D assignment textures are used:
+* Additional requirements apply when ASAM OpenMATERIAL® 3D assignment textures are used:
 
   + UV channel 1 shall be used for assignment textures.
   + UV Islands shall have margins in between, so that assignment texture interpolation errors are avoided.
@@ -200,7 +200,7 @@ A Grp\_Wheel\_Steering\_Rotating\_<axle\_idx>\_<wheel\_idx> node in a vehicle as
 
 ## 7.2.9 Lighting
 
-The lighting concept in ASAM OpenMATERIAL 3D introduces a clear distinction between discrete light sources, e.g., point lights or spotlights) and emissive materials, enabling both physically simulated light sources and visually emissive elements to be defined in a standardized way.
+The lighting concept in ASAM OpenMATERIAL® 3D introduces a clear distinction between discrete light sources, e.g., point lights or spotlights) and emissive materials, enabling both physically simulated light sources and visually emissive elements to be defined in a standardized way.
 
 ### 7.2.9.1 Discrete light sources
 

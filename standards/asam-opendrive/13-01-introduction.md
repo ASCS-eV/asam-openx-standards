@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.1 Introduction to objects
+# ASAM OpenDRIVE® v1.9.0 — 13.1 Introduction to objects
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -20,7 +20,7 @@ For more on signals, see  [Section 14.1, "Introduction to signals"](../14_signal
 
 Every object is defined by a unique object id, the position of its origin point (in road reference line system coordinates), and a bounding volume.
 The bounding volume of an object defines the object’s dimensions using simple geometric shapes.
-In ASAM OpenDRIVE, this can either be a right rectangular prism (a box) or a cylinder.
+In ASAM OpenDRIVE®, this can either be a right rectangular prism (a box) or a cylinder.
 In either case, no point of an object should be outside of that volume.
 Conversely, each surface of the bounding volume should intersect with at least one point of the object.
 
@@ -38,7 +38,7 @@ Complex objects may be further described using `<outline>` or `<skeleton>` eleme
 If an `<outline>` or `<skeleton>` element is defined, it supersedes the bounding volume.
 However, every point of an `<outline>` or `<skeleton>` element of an object must be contained in its bounding volume.
 
-Objects in ASAM OpenDRIVE do not change their position or orientation (heading, pitch, roll).
+Objects in ASAM OpenDRIVE® do not change their position or orientation (heading, pitch, roll).
 
 They may be declared dynamic or static:
 
@@ -60,7 +60,7 @@ Objects that are placed on roads using the `<elevationProfile>` element or the `
 
 **`<objects>` element**
 
-In ASAM OpenDRIVE, objects are represented by the `<objects>` element within the `<road>` element.
+In ASAM OpenDRIVE®, objects are represented by the `<objects>` element within the `<road>` element.
 
 ```
 UML class: t_road_objects
@@ -73,11 +73,11 @@ Container for all objects along a road.
 
 Figure 113. UML class diagram of the Objects class
 
-[Figure 113](#fig-52ccdd39-1a3c-486c-a6d2-e6fff6202842) shows the UML class diagram of the ASAM OpenDRIVE Objects class.
+[Figure 113](#fig-52ccdd39-1a3c-486c-a6d2-e6fff6202842) shows the UML class diagram of the ASAM OpenDRIVE® Objects class.
 
 **`<object>` element**
 
-In ASAM OpenDRIVE, a single object is represented by the `<object>` element within the `<objects>` element.
+In ASAM OpenDRIVE®, a single object is represented by the `<object>` element within the `<objects>` element.
 
 ```
 UML class: t_road_objects_object
@@ -149,7 +149,7 @@ The following rules apply to objects:
 * [asam.net:xodr:1.7.0:road.object.type\_attr](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-object-type-attr): The type of an object shall be given by the @type attribute.
 
 * An object may either be dynamic or static, but an object cannot change its position or its heading, pitch, or roll.
-* Objects derived from ASAM OpenSCENARIO shall not be mixed with objects described in ASAM OpenDRIVE.
+* Objects derived from ASAM OpenSCENARIO shall not be mixed with objects described in ASAM OpenDRIVE®.
 
 * [asam.net:xodr:1.7.0:road.object.orientation](../16_annexes/map_rules.html#asam-net-xodr-1-7-0-road-object-orientation): The direction for which objects are valid shall be specified.
 

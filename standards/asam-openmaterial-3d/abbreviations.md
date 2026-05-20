@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — 3 Abbreviations
+# ASAM OpenMATERIAL® 3D latest — 3 Abbreviations
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/03_abbreviations/abbreviations.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 

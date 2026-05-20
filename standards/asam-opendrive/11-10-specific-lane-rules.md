@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.10 Specific lane rules
+# ASAM OpenDRIVE® v1.9.0 — 11.10 Specific lane rules
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_10_specific_lane_rules.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,13 +9,13 @@
 
 # 11.10 Specific lane rules
 
-It is possible to define special rules for certain lanes that are not specifically defined in the ASAM OpenDRIVE standard and which are stored in the used application.
+It is possible to define special rules for certain lanes that are not specifically defined in the ASAM OpenDRIVE® standard and which are stored in the used application.
 
 **Elements in UML model**
 
 **`<rule>` element**
 
-In ASAM OpenDRIVE, a lane rule is represented by the `<rule>` element within the `<lane>` element.
+In ASAM OpenDRIVE®, a lane rule is represented by the `<rule>` element within the `<lane>` element.
 
 ```
 UML class: t_road_lanes_laneSection_lr_lane_rule
@@ -36,7 +36,7 @@ Table 53. Attributes of the <rule> element
 
 The following rules apply to lane rules:
 
-* Applications may have specific lane rules that are only valid in the respective application, but not in ASAM OpenDRIVE.
+* Applications may have specific lane rules that are only valid in the respective application, but not in ASAM OpenDRIVE®.
 
 * [asam.net:xodr:1.4.0:road.lane.rule.elem\_asc\_order](../16_annexes/map_rules.html#asam-net-xodr-1-4-0-road-lane-rule-elem-asc-order): `<rule>` elements shall be defined in ascending order according to the s-coordinate.
 

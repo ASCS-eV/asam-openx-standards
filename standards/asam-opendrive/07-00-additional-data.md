@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 7 Additional data
+# ASAM OpenDRIVE® v1.9.0 — 7 Additional data
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/07_additional_data/07_00_additional_data.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -11,25 +11,25 @@
 
 ## 7.1 Introduction
 
-ASAM OpenDRIVE offers the possibility to include external data.
+ASAM OpenDRIVE® offers the possibility to include external data.
 The processing of this data depends on the application.
-Additional data may be placed at any position in ASAM OpenDRIVE.
+Additional data may be placed at any position in ASAM OpenDRIVE®.
 
 ![img](../_images/uml_class_diagrams/EAID_1CD0AF4A_F90A_4a0e_A14A_05ABEC0D1ACB.png)
 
 Figure 6. UML class diagram of the Core class
 
-[Figure 6](#fig-1c28bcdd-95d5-4d29-aa5e-75e3192e2eb1) shows the UML class diagram of the ASAM OpenDRIVE Core class.
+[Figure 6](#fig-1c28bcdd-95d5-4d29-aa5e-75e3192e2eb1) shows the UML class diagram of the ASAM OpenDRIVE® Core class.
 
 ## 7.2 Additional user data
 
-Additional or ancillary data contains data that are not yet described in ASAM OpenDRIVE, or data that is needed by an application for a specific reason, for example different road textures.
+Additional or ancillary data contains data that are not yet described in ASAM OpenDRIVE®, or data that is needed by an application for a specific reason, for example different road textures.
 It should be described near the element it refers to.
-They may be stored at any element in ASAM OpenDRIVE.
+They may be stored at any element in ASAM OpenDRIVE®.
 
 `<userData>` element
 
-In ASAM OpenDRIVE, additional or ancillary data is represented by `<userData>` elements.
+In ASAM OpenDRIVE®, additional or ancillary data is represented by `<userData>` elements.
 
 ```
 UML class: t_userData
@@ -48,19 +48,19 @@ Table 13. Attributes of the <userData> element
 
 ## 7.3 Including additional data
 
-Additional or external files can be included in the ASAM OpenDRIVE file.
-These files shall contain ASAM OpenDRIVE elements.
+Additional or external files can be included in the ASAM OpenDRIVE® file.
+These files shall contain ASAM OpenDRIVE® elements.
 
 **`<include>` element**
 
-In ASAM OpenDRIVE, additional files are represented by `<include>` elements.
+In ASAM OpenDRIVE®, additional files are represented by `<include>` elements.
 
 ```
 UML class: t_include
 XML tag:   <include> (Multiplicity: 0..*)
 ```
 
-Provides information about additional files that should be included while processing the ASAM OpenDRIVE file.
+Provides information about additional files that should be included while processing the ASAM OpenDRIVE® file.
 
 Table 14. Attributes of the <include> element
 
@@ -70,7 +70,7 @@ Table 14. Attributes of the <include> element
 | `file` | string | required | Location of the file that is to be included |
 
 Multiple files can be combined with an `<include>` element at the appropriate locations.
-Upon parsing this element, ASAM OpenDRIVE readers shall immediately start reading the file specified as attribute of the element.
+Upon parsing this element, ASAM OpenDRIVE® readers shall immediately start reading the file specified as attribute of the element.
 It is the user’s responsibility to make sure that contents read from an include file are consistent with the context from which the inclusion starts.
 
 The parent element under which the `<include>` element occurs must be present in both, the parent file and the included file.
@@ -104,33 +104,33 @@ Code 2. Content of the file `planview.xml` with the `<planView>` element as root
 
 ## 7.4 Description of the data quality
 
-Raw data or data from external sources that is integrated in ASAM OpenDRIVE may be of varying quality.
-It is possible to describe quality and accuracy of external data in ASAM OpenDRIVE.
-They may be stored at any position in ASAM OpenDRIVE.
+Raw data or data from external sources that is integrated in ASAM OpenDRIVE® may be of varying quality.
+It is possible to describe quality and accuracy of external data in ASAM OpenDRIVE®.
+They may be stored at any position in ASAM OpenDRIVE®.
 
 **`<dataQuality>` element**
 
-In ASAM OpenDRIVE, data quality from external sources is represented by `<dataQuality>` elements.
+In ASAM OpenDRIVE®, data quality from external sources is represented by `<dataQuality>` elements.
 
 ```
 UML class: t_dataQuality
 XML tag:   <dataQuality> (Multiplicity: 0..1)
 ```
 
-Describes the quality and accuracy of measurement data that is integrated into the ASAM OpenDRIVE file.
+Describes the quality and accuracy of measurement data that is integrated into the ASAM OpenDRIVE® file.
 
-Measurement data derived from external sources like GPS that is integrated in ASAM OpenDRIVE may be inaccurate.
+Measurement data derived from external sources like GPS that is integrated in ASAM OpenDRIVE® may be inaccurate.
 
 **`<error>` element**
 
-In ASAM OpenDRIVE, the absolute or relative errors of road data are described by `<error>` elements within the `<dataQuality>` element.
+In ASAM OpenDRIVE®, the absolute or relative errors of road data are described by `<error>` elements within the `<dataQuality>` element.
 
 ```
 UML class: t_dataQuality_Error
 XML tag:   <error> (Multiplicity: 0..1)
 ```
 
-Describes the error range, given in [m], of measurement data that is integrated into the ASAM OpenDRIVE file.
+Describes the error range, given in [m], of measurement data that is integrated into the ASAM OpenDRIVE® file.
 
 Table 15. Attributes of the <error> element
 
@@ -142,11 +142,11 @@ Table 15. Attributes of the <error> element
 | `zAbsolute` | double | required | m | Absolute error of the road data in z direction |
 | `zRelative` | double | required | m | Relative error of the road data between adjacent element entries in z-direction. |
 
-Additional meta data about the raw data that is integrated can be stored in the ASAM OpenDRIVE.
+Additional meta data about the raw data that is integrated can be stored in the ASAM OpenDRIVE®.
 
 **`<rawData>` element**
 
-In ASAM OpenDRIVE, the raw data is described by the `<rawData>` element within the `<dataQuality>` element.
+In ASAM OpenDRIVE®, the raw data is described by the `<rawData>` element within the `<dataQuality>` element.
 
 ```
 UML class: t_dataQuality_RawData
@@ -162,6 +162,6 @@ Table 16. Attributes of the <rawData> element
 | --- | --- | --- | --- |
 | `date` | string | required | Date of the delivery of raw data, to be given in ISO 8601 notification (YYYY-MM-DDTHH:MM:SS). Time-of-day may be omitted |
 | `postProcessingComment` | string | optional | Comments concerning the post processing attribute. Free text, depending on the application |
-| `postProcessing` | [e\_dataQuality\_RawData\_PostProcessing](../16_annexes/enumerations/map_uml_enumerations.html#top-EAID_65FD4263_96F1_4cf0_8CD3_8BB98CB42D3F) | required | Information about the kind of data handling before exporting data into the ASAM OpenDRIVE file |
+| `postProcessing` | [e\_dataQuality\_RawData\_PostProcessing](../16_annexes/enumerations/map_uml_enumerations.html#top-EAID_65FD4263_96F1_4cf0_8CD3_8BB98CB42D3F) | required | Information about the kind of data handling before exporting data into the ASAM OpenDRIVE® file |
 | `sourceComment` | string | optional | Comments concerning the @source . Free text, depending on the application |
 | `source` | [e\_dataQuality\_RawData\_Source](../16_annexes/enumerations/map_uml_enumerations.html#top-EAID_1C20343D_D9E2_4bf6_9347_EA7C6496DE29) | required | Source that has been used for retrieving the raw data; further sources to be added in upcoming versions |

@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 11.1 Introduction to lanes
+# ASAM OpenDRIVE® v1.9.0 — 11.1 Introduction to lanes
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/11_lanes/11_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 11.1 Introduction to lanes
 
-In ASAM OpenDRIVE, lanes are an essential part of all roads.
+In ASAM OpenDRIVE®, lanes are an essential part of all roads.
 Lanes are assigned to a lane layer, which is attached to the road reference line of the road.
 In each lane layer, lanes are defined from inside to outside.
 A minimum road definition requires a lane layer with a center lane and an additional lane with a defined width.
@@ -41,7 +41,7 @@ Figure 58. Center lane for road with lanes of identical driving direction
 
 **`<lanes>` element**
 
-In ASAM OpenDRIVE, lanes are represented by `<lanes>` elements within the `<road>` element.
+In ASAM OpenDRIVE®, lanes are represented by `<lanes>` elements within the `<road>` element.
 
 ```
 UML class: t_road_lanes
@@ -64,7 +64,7 @@ Table 34. Attributes of the <lanes> element
 
 Figure 59. UML class diagram of the Lanes class
 
-[Figure 59](#fig-d9d918ab-493f-456c-b212-78cde856ccf8) shows the UML class diagram of the ASAM OpenDRIVE Lanes class.
+[Figure 59](#fig-d9d918ab-493f-456c-b212-78cde856ccf8) shows the UML class diagram of the ASAM OpenDRIVE® Lanes class.
 
 **XML example**
 
@@ -135,7 +135,7 @@ The following rules apply to the use of lanes:
 
 |  |  |
 | --- | --- |
-|  | In older ASAM OpenDRIVE versions a road required at least one lane with a width greater zero. As roads can now be used for junction boundaries and do not need an extra lane, this rule has been removed. |
+|  | In older ASAM OpenDRIVE® versions a road required at least one lane with a width greater zero. As roads can now be used for junction boundaries and do not need an extra lane, this rule has been removed. |
 
 **Related topics**
 

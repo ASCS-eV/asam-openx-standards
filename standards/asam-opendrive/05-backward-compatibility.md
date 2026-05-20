@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 5 Backward compatibility
+# ASAM OpenDRIVE® v1.9.0 — 5 Backward compatibility
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/05_backward_compatibility/05_backward_compatibility.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -9,7 +9,7 @@
 
 # 5 Backward compatibility
 
-ASAM OpenDRIVE 1.9.0 is backwards compatible with ASAM OpenDRIVE 1.8.1.
+ASAM OpenDRIVE® 1.9.0 is backwards compatible with ASAM OpenDRIVE® 1.8.1.
 The following changes were introduced:
 
 ## 5.1 Introduction of lane layers
@@ -26,7 +26,7 @@ Lane linking
 Temporary lane layer section
 :   A new term for continuous sections in the temporary lane layer has been introduced.
 
-It is not recommended to use files based on ASAM OpenDRIVE 1.9.0 using lane layers together with scenario specifications not using layers, such as ASAM OpenSCENARIO XML 1.3.1 or earlier.
+It is not recommended to use files based on ASAM OpenDRIVE® 1.9.0 using lane layers together with scenario specifications not using layers, such as ASAM OpenSCENARIO XML 1.3.1 or earlier.
 
 ## 5.2 Roadworks and invalidation states
 
@@ -99,4 +99,4 @@ Multiple small improvements to document structure and readability were introduce
 | [Section 14.8, "Signal semantics"](../14_signals/14_08_signal_semantics.html#top-ac3b27c3-c3ac-49cf-bdaf-c52177f1dcee) |
 | [Annex E, *Categories for signal semantics (informative)*](../16_annexes/signal_semantics_categories/top_signal_semantics_categories.html#top-signal-semantics-categories) |
 
-For a full list of changes see  [Annex G.2, *Revision history ASAM OpenDRIVE 1.9.0*](../16_annexes/revision_history/ASAM_OpenDRIVE_revision_history_V1-9-0.html#top-8014cba9-57bc-4b2e-b07c-44dcc0886381-1-9-0).
+For a full list of changes see  [Annex G.2, *Revision history ASAM OpenDRIVE® 1.9.0*](../16_annexes/revision_history/ASAM_OpenDRIVE_revision_history_V1-9-0.html#top-8014cba9-57bc-4b2e-b07c-44dcc0886381-1-9-0).

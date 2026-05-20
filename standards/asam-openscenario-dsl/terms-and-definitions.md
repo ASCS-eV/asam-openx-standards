@@ -1,7 +1,7 @@
-# ASAM Openscenario Dsl v2.2.0 — 3 Terms and definitions
+# ASAM OpenSCENARIO® DSL v2.2.0 — 3 Terms and definitions
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/terms_and_definitions.html
-> **Standard**: ASAM Openscenario Dsl v2.2.0, 2026-03-19
+> **Standard**: ASAM OpenSCENARIO® DSL v2.2.0, 2026-03-19
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -109,7 +109,7 @@ Signal group
     This allows a signal cycle to be specified only once for the whole signal group.
     For most use cases this grouping will be done within one intersection.
 
-    As the grouping is part of the static content, the signal group should be specified in ASAM OpenDRIVE via the `<controller>` element.
+    As the grouping is part of the static content, the signal group should be specified in ASAM OpenDRIVE® via the `<controller>` element.
 
 Signal phase
 :   A phase of a dynamic signal is the semantic state (see [signal state](#sec-ca1171ec-384a-4d5a-b377-82e719da237b)) in combination with a (possibly infinite) duration, which specifies how long this semantic state is active.
@@ -155,7 +155,7 @@ Signal state
 
 Signal synchronization group
 :   Multiple signal groups (see [signal group](#sec-5dffe4c1-df1e-4cf7-b9a4-b8eac9a3683e)) which should be kept synchronized and whose signal cycles (see [signal cycle](#sec-fe178b76-4fb3-48c9-b19c-981b8b9a787f)) have the same finite duration can, but are not required to be mapped to a synchronization group.
-    This mapping can be used to indicate that whenever the phase of one signal group is set - by an ASAM OpenSCENARIO XML `TrafficSignalControllerAction`, an ASAM OpenSCENARIO DSL `set_group_semantic_state` , or otherwise - the other signal groups in that synchronization group should be set to the corresponding position in their signal cycles.
+    This mapping can be used to indicate that whenever the phase of one signal group is set - by an ASAM OpenSCENARIO XML `TrafficSignalControllerAction`, an ASAM OpenSCENARIO® DSL `set_group_semantic_state` , or otherwise - the other signal groups in that synchronization group should be set to the corresponding position in their signal cycles.
 
-    As the grouping is part of the static content this should be specified in ASAM OpenDRIVE.
-    Currently there is the t\_junction\_controller in ASAM OpenDRIVE to set the grouping of signal groups.
+    As the grouping is part of the static content this should be specified in ASAM OpenDRIVE®.
+    Currently there is the t\_junction\_controller in ASAM OpenDRIVE® to set the grouping of signal groups.

@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 14.2 Lane validity for signals
+# ASAM OpenDRIVE® v1.9.0 — 14.2 Lane validity for signals
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/14_signals/14_02_lane_validity_signals.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -36,7 +36,7 @@ Therefore, the `<validity>` element should only be used to limit signals to spec
 
 **`<validity>` element**
 
-In ASAM OpenDRIVE, lane validity is represented by the `<validity>` element within the `<signal>` or `<signalReference>` element.
+In ASAM OpenDRIVE®, lane validity is represented by the `<validity>` element within the `<signal>` or `<signalReference>` element.
 
 ```
 UML class: t_road_objects_object_laneValidity

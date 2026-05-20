@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 13.8 Object markings
+# ASAM OpenDRIVE® v1.9.0 — 13.8 Object markings
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/13_objects/13_08_object_markings.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -24,7 +24,7 @@ Otherwise, use the `<markings>` element inside `<object>` element.
 
 The `<markings>` element serves as a wrapper for the `<marking>` element, which contains further information about the marking.
 
-In addition to the road markings defined in this section, ASAM OpenDRIVE also supports the following use cases:
+In addition to the road markings defined in this section, ASAM OpenDRIVE® also supports the following use cases:
 
 * For the outer marking lines of a lane, use lane road markings.
   See  [Section 11.9, "Lane road markings"](../11_lanes/11_09_lane_road_markings.html#top-fc59db56-70c8-4320-a8c7-213379f8c037).
@@ -36,7 +36,7 @@ In addition to the road markings defined in this section, ASAM OpenDRIVE also su
 
 ### 13.8.1.1. `<markings>` element
 
-In ASAM OpenDRIVE, the markings of objects are represented by the `<marking>` object:
+In ASAM OpenDRIVE®, the markings of objects are represented by the `<marking>` object:
 
 * within the `<object>` element when using the object’s bounding volume
 * within the related `<outline>` element when referencing outline points
@@ -50,7 +50,7 @@ Object markings are road markings of any objects, for example, crosswalks and pa
 
 ### 13.8.1.2. `<marking>` element
 
-In ASAM OpenDRIVE, a single marking is represented by the `<marking>` element within the `<markings>` element.
+In ASAM OpenDRIVE®, a single marking is represented by the `<marking>` element within the `<markings>` element.
 
 ```
 UML class: t_road_objects_object_markings_marking
@@ -76,7 +76,7 @@ Table 99. Attributes of the <marking> element
 
 ### 13.8.1.3. `<cornerReference>` element
 
-In ASAM OpenDRIVE, a corner reference is represented by the `<cornerReference>` element within the `<marking>` element.
+In ASAM OpenDRIVE®, a corner reference is represented by the `<cornerReference>` element within the `<marking>` element.
 
 ```
 UML class: t_road_objects_object_markings_marking_cornerReference
@@ -116,7 +116,7 @@ For this purpose, the @side attribute of the `<marking>` element is used.
 
 ![img](../_images/13_objects/object_9.png)
 
-Figure 124. Crosswalk in ASAM OpenDRIVE
+Figure 124. Crosswalk in ASAM OpenDRIVE®
 
 [Figure 124](#fig-3df4f0dc-d06a-4a7e-80e6-d4c1e0028349) shows how a crosswalk with exemplary size is modeled.
 

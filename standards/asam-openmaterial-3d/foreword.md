@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — Foreword
+# ASAM OpenMATERIAL® 3D latest — Foreword
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/00_preface/foreword.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -19,9 +19,9 @@ They define file formats, data models, protocols, and interfaces.
 The standards enable easy exchange of data and tools within and across tool chains.
 They are applied worldwide.
 
-ASAM OpenMATERIAL 3D defines physical *material properties* and standardizes *3D model* structures addressing the need for accurate, standardized *3D assets* and *material properties* to simulate sensor behavior effectively.
+ASAM OpenMATERIAL® 3D defines physical *material properties* and standardizes *3D model* structures addressing the need for accurate, standardized *3D assets* and *material properties* to simulate sensor behavior effectively.
 
-ASAM OpenMATERIAL 3D is divided into two key segments:
+ASAM OpenMATERIAL® 3D is divided into two key segments:
 
 * Material: Covers formats and definitions for *material properties*, such as surface roughness and electromagnetic properties.
 * Geometry: Establishes structures for object classes, standardizing nodes, naming, and coordinate systems to support *3D model* exchange and animation.

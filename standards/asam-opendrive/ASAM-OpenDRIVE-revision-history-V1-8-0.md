@@ -1,13 +1,13 @@
-# ASAM Opendrive v1.9.0 — G.1 Revision history ASAM OpenDRIVE 1.8.0
+# ASAM OpenDRIVE® v1.9.0 — G.1 Revision history ASAM OpenDRIVE® 1.8.0
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/16_annexes/revision_history/ASAM_OpenDRIVE_revision_history_V1-8-0.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
 ---
 
-# G.1 Revision history ASAM OpenDRIVE 1.8.0
+# G.1 Revision history ASAM OpenDRIVE® 1.8.0
 
 ## G.1.1 Classes and attributes
 

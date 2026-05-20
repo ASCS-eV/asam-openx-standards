@@ -1,7 +1,7 @@
-# ASAM Openmaterial 3D latest — Bibliography
+# ASAM OpenMATERIAL® 3D latest — Bibliography
 
 > **Source**: https://asam-ev.github.io/OpenMATERIAL-3D/asamopenmaterial/latest/specification/bibliography.html
-> **Standard**: ASAM Openmaterial 3D latest, 2025-01-01
+> **Standard**: ASAM OpenMATERIAL® 3D latest, 2025-01-01
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -15,7 +15,7 @@
 
 [3] ASAM OpenLABEL*,* 1.0.0
 
-[4] ASAM OpenDRIVE*,* 1.8.1
+[4] ASAM OpenDRIVE®*,* 1.8.1
 
 [5] ASAM OSI (Open Simulation Interface)*,* 3.7.0
 

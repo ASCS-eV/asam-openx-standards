@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 10.1 Introduction to roads
+# ASAM OpenDRIVE® v1.9.0 — 10.1 Introduction to roads
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/10_roads/10_01_introduction.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -13,21 +13,21 @@
 
 **`<road>` element**
 
-In ASAM OpenDRIVE, roads are represented by `<road>` elements within the `<OpenDRIVE>` element.
+In ASAM OpenDRIVE®, roads are represented by `<road>` elements within the `<OpenDRIVE>` element.
 
 ```
 UML class: t_road
 XML tag:   <road> (Multiplicity: 1..*)
 ```
 
-Roads are the core elements for any road network in ASAM OpenDRIVE.
+Roads are the core elements for any road network in ASAM OpenDRIVE®.
 Each road runs along one road reference line.
 
 A road shall have at least the center lane.
 Vehicles may drive in both directions of the road reference line.
 The standard driving direction is defined by the value which is assigned to the @rule attribute (RHT=right-hand traffic, LHT=left-han traffic).
 
-ASAM OpenDRIVE roads may be roads in the real road network or artificial road network created for application use.
+ASAM OpenDRIVE® roads may be roads in the real road network or artificial road network created for application use.
 Each road is described by one or more `<road>` elements.
 One `<road>` element may cover a long stretch of a road, shorter stretches between junctions, or even several roads.
 A new `<road>` element should only start if the properties of the road cannot be described within the previous `<road>` element or if a junction is required.d
@@ -47,13 +47,13 @@ Table 23. Attributes of the <road> element
 
 Figure 36. UML class diagram of the Road class
 
-[Figure 36](#fig-85a83e7b-6dd1-4948-8a78-28d7a66907a0) shows the UML class diagram of the ASAM OpenDRIVE Road class.
+[Figure 36](#fig-85a83e7b-6dd1-4948-8a78-28d7a66907a0) shows the UML class diagram of the ASAM OpenDRIVE® Road class.
 
 ![img](../_images/uml_class_diagrams/EAID_8A007E88_354E_463e_9D40_944248350DFB.png)
 
 Figure 37. UML class diagram of the RoadGeometry class
 
-[Figure 37](#fig-1a0ac60d-0a79-4724-b78f-eab7e6b4992b) shows the UML class diagram of the ASAM OpenDRIVE RoadGeometry class.
+[Figure 37](#fig-1a0ac60d-0a79-4724-b78f-eab7e6b4992b) shows the UML class diagram of the ASAM OpenDRIVE® RoadGeometry class.
 
 **Rules**
 

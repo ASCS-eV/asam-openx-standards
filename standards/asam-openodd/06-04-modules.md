@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 6.4 ODD modules
+# ASAM OpenODD® v1.0.0 — 6.4 ODD modules
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/06_model_concept/06_04_openodd_modules.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -13,9 +13,9 @@
 
 The module and condition related classes of {THIS\_STANDARD} model
 
-Figure 13. The module and condition related classes of ASAM OpenODD model
+Figure 13. The module and condition related classes of ASAM OpenODD® model
 
-[Figure 13](#fig-concept-module-module-and-condition-classes) shows most of the classes related to class `Module` and class `Condition`, so [Figure 13](#fig-concept-module-module-and-condition-classes) is a subset of the ASAM OpenODD model.
+[Figure 13](#fig-concept-module-module-and-condition-classes) shows most of the classes related to class `Module` and class `Condition`, so [Figure 13](#fig-concept-module-module-and-condition-classes) is a subset of the ASAM OpenODD® model.
 
 ## 6.4.2 Sections
 
@@ -71,7 +71,7 @@ Class `Condition` contains the following fields:
   By default, all conditions are active, namely the default value is `true`.
   When this flag is `false`, then it is ignored.
 
-The ASAM OpenODD conditions are described using `INCLUDE` and `EXCLUDE` sections.
+The ASAM OpenODD® conditions are described using `INCLUDE` and `EXCLUDE` sections.
 As an example, consider specifying the ODD of a parking assistant to require that only paved roads are supported, within two specific geo-fenced areas:
 
 Code 63. Example condition (free-form notation)
@@ -91,7 +91,7 @@ MODULES condition specification is as follows
 * a requirement that the `road_surface` (= `TaxonomyConcept`) is `paved` (= a `CategoricalLiteral`).
 * an `OR` between (that is union of) two service areas, each specified using a shape file.
 
-The ASAM OpenODD model indicates a reference from `Condition` to `Module`.
+The ASAM OpenODD® model indicates a reference from `Condition` to `Module`.
 This enables a `Condition` instance to refer to a `Module` instance.
 For example, consider the following example:
 
@@ -140,13 +140,13 @@ Parameters
 
 ### 6.4.3.3 Module condition semantics
 
-(ODD boundary) conditions in ASAM OpenODD are specified using propositions which determine what is inside or outside the ODD.
+(ODD boundary) conditions in ASAM OpenODD® are specified using propositions which determine what is inside or outside the ODD.
 
 |  |  |
 | --- | --- |
-|  | A Proposition is a statement or assertion that can be either `true` or `false`. Propositions serve as the basic building blocks in logical reasoning, allowing us to construct arguments, draw inferences, and develop formal systems of logic. The boolean propositional semantics of the ASAM OpenODD module conditions uses contributions to the field by Harald Ganzinger (1950 - 2004) [[13](../bibliography.html#bib-First-Order_Logic_2013)]. |
+|  | A Proposition is a statement or assertion that can be either `true` or `false`. Propositions serve as the basic building blocks in logical reasoning, allowing us to construct arguments, draw inferences, and develop formal systems of logic. The boolean propositional semantics of the ASAM OpenODD® module conditions uses contributions to the field by Harald Ganzinger (1950 - 2004) [[13](../bibliography.html#bib-First-Order_Logic_2013)]. |
 
-Conditions in the ASAM OpenODD model are based on propositions.
+Conditions in the ASAM OpenODD® model are based on propositions.
 (ODD) conditions are organized in modules.
 These modules specify presence or absence of certain characteristics beforehand introduced as taxonomy concepts.
 These conditions are facilitated by expressions and structured within include and/or an exclude sections.
@@ -577,7 +577,7 @@ Parameters
 
     | Parameter | Type | Mandatory | Description |
     | --- | --- | --- | --- |
-    | id | String | yes | The `Module` id, also referred to as handle, according to specifications in [Section 6.4.4.1, "Module specification"](../06_model_concept/06_04_openodd_modules.html#sec-module-specification) . This ID must be unique within the ASAM OpenODD transmission. |
+    | id | String | yes | The `Module` id, also referred to as handle, according to specifications in [Section 6.4.4.1, "Module specification"](../06_model_concept/06_04_openodd_modules.html#sec-module-specification) . This ID must be unique within the ASAM OpenODD® transmission. |
     | title | LangString | yes | This represents the title of the `Module`. It can be translated into other languages. At least an English title must be provided. |
     | description | LangString | no | This represents a description of the `Module`. It can be translated into other languages. |
     | comment | LangString | no | This represents a comment about the `Module`. It can be translated into other languages. |
@@ -614,7 +614,7 @@ To define the ODD in modular form, it is necessary to support the following capa
 * An ODD refers to "library" components that are reusable.
 * Generic conditions such as "bad weather" and "bad connectivity" can occur in numerous unpredictable situations.
 
-[Code 77](#code-example-content-of-modules-file1) illustrates how the ASAM OpenODD model and above semantics are used to realize the above capabilities:
+[Code 77](#code-example-content-of-modules-file1) illustrates how the ASAM OpenODD® model and above semantics are used to realize the above capabilities:
 
 Code 77. Example content of modules\_file1.txt (free-form notation)
 
@@ -760,11 +760,11 @@ Parameters
 Geo-fencing generally refers to the definition of virtual boundaries on a map that can trigger specific actions when crossed.
 Geo-fencing allows the definition of spatial boundaries where an ODD is scoped.
 
-ASAM OpenODD uses ESRI Shapefiles [[14](../bibliography.html#bib-esrishapefile)] to define these regions.
+ASAM OpenODD® uses ESRI Shapefiles [[14](../bibliography.html#bib-esrishapefile)] to define these regions.
 A shapefile represents a vector-based geospatial format that describes the geometry (for example, polygons, points, lines) of service zones.
 This enables precise mapping of operational boundaries.
 
-The example below [Code 81](#code-example-shapefiles) demonstrates how geo-fenced service areas are specified using shapefiles in ASAM OpenODD.
+The example below [Code 81](#code-example-shapefiles) demonstrates how geo-fenced service areas are specified using shapefiles in ASAM OpenODD®.
 
 Code 81. Example shapefiles (free-form notation)
 
@@ -777,7 +777,7 @@ MODULES specification is as follows
             ...
 ```
 
-ASAM OpenODD exclusively supports ESRI shapefiles for defining geo-fenced areas.
+ASAM OpenODD® exclusively supports ESRI shapefiles for defining geo-fenced areas.
 A valid shapefile consists of multiple files, each serving a specific function:
 
 Table 67. ESRI shapefile functions
@@ -878,7 +878,7 @@ Explanation:
 * The `Module` instance `use_case2` accepts only intersections which are `unprotected`, `signalized`, and further, requires that they are either `simple`, `flared`, `channelized`.
 * The `Module` instance `use_case3` accepts only `road_type` of kind `expressway` for a scenery without any intersection.
 
-The above is represented by the ASAM OpenODD model as follows:
+The above is represented by the ASAM OpenODD® model as follows:
 
 * The `TaxonomyConcept` instances of `intersection` and `signs` are represented by records.
 * The `TaxonomyConcept` instances of `speed_limit` and `speed_level` are attributes within the `signs` structure.
@@ -886,7 +886,7 @@ The above is represented by the ASAM OpenODD model as follows:
 ### 6.4.6.2 Discontinuous ODD
 
 It is possible to have a transition from inside ODD to outside ODD of a conditionally automated driving function.
-ASAM OpenODD allows the definition of conditions that trigger ODD exit events.
+ASAM OpenODD® allows the definition of conditions that trigger ODD exit events.
 Some implentations may monitor the ODD attributes in both `INCLUDE_*` and `EXCLUDE_*` for triggering an ODD-exit.
 
 Code 83. ODD Exit Conditions (free-form notation)
@@ -949,7 +949,7 @@ There are two types of uncertainty in measurements:
   As an example, the detection of cyclists is uncertain.
   Such uncertainty can be represented either by using multiple values, for example `vru is [cyclist, motorcycle]`, or using a confidence measure, for example `cyclist.confidence is 0.73`.
 
-[Code 85](#code-example-uncertainty) shows how ASAM OpenODD supports both types of uncertainty:
+[Code 85](#code-example-uncertainty) shows how ASAM OpenODD® supports both types of uncertainty:
 
 Code 85. Example uncertainty (free-form notation)
 
@@ -1028,13 +1028,13 @@ With this model:
 
 The expression related classes of {THIS\_STANDARD} model
 
-Figure 14. The expression related classes of ASAM OpenODD model
+Figure 14. The expression related classes of ASAM OpenODD® model
 
-[Figure 14](#fig-concept-module-expression-classes) shows most of the classes related to class `Expression`, so [Figure 14](#fig-concept-module-expression-classes) is a subset of the ASAM OpenODD model.
+[Figure 14](#fig-concept-module-expression-classes) shows most of the classes related to class `Expression`, so [Figure 14](#fig-concept-module-expression-classes) is a subset of the ASAM OpenODD® model.
 
 ### 6.4.8.2 General information
 
-Expressions in ASAM OpenODD define logical conditions for inclusion or exclusion in an ODD.
+Expressions in ASAM OpenODD® define logical conditions for inclusion or exclusion in an ODD.
 Expressions are used in two primary contexts:
 
 * Conditions within `Module`:  
@@ -1091,9 +1091,9 @@ Interchangeability of conditions and expressions between different formats is ac
 
 |  |  |
 | --- | --- |
-|  | The expressions within the ASAM OpenODD model are not fully formalized as the ASAM OpenODD model is on a meta-level and focuses on ODDs. This section is formulated technology independently. |
+|  | The expressions within the ASAM OpenODD® model are not fully formalized as the ASAM OpenODD® model is on a meta-level and focuses on ODDs. This section is formulated technology independently. |
 
-The ASAM OpenODD model specifies that:
+The ASAM OpenODD® model specifies that:
 
 * A `Condition` references an `Expression`.
 * An `Expression` references a `TaxonomyConcept`.
@@ -1144,7 +1144,7 @@ Code 88. Expression structure for an expression (free-form notation)
 
 [Code 88](#code-example-formal-expression-syntax) illustrates:
 
-* An `<Expression>` is one of the five possible expressions according to the ASAM OpenODD model.
+* An `<Expression>` is one of the five possible expressions according to the ASAM OpenODD® model.
 * An `<UpperBoundExpression>` requires that a numeric taxonomy concept is **smaller** than the upper bound specified by a `<NumericTerm>`, followed by a `<Unit>`, or by a categorical literal associated with an expression.
 * A `<LowerBoundExpression>` requires that a numeric taxonomy concept is **greater** than the lower bound specified by a `<NumericTerm>`, followed by a `<Unit>`, or by a categorical literal associated with an expression.
 * An `<EqualExpression>` requires that a taxonomy concept, either numeric or categorical, equals a specific value specified by a `<NumericTerm>`, followed by a `<Unit>`, or by a categorical literal associated with an expression.

@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — Annex F: Checker rules (normative)
+# ASAM OpenDRIVE® v1.9.0 — Annex F: Checker rules (normative)
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/16_annexes/map_rules.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -12,7 +12,7 @@
 **Checker rule concept**
 
 Checker rules are semantic and syntactic requirements that shall be applied to a scenario.
-ASAM OpenDRIVE defines a basic set of rules that enforce compliance with the standard, as well as additional rules with recommendations in accordance with ASAM OpenDRIVE.
+ASAM OpenDRIVE® defines a basic set of rules that enforce compliance with the standard, as well as additional rules with recommendations in accordance with ASAM OpenDRIVE®.
 Rules consist of a name, an UID (a unique identifier of the check), and a description that specifies the requirements for the scenario.
 
 **Rule UID Concepts**
@@ -62,7 +62,7 @@ UID
 :   asam.net:xodr:1.7.0:header.offset.centered\_coords
 
 Description
-:   The `<offset>` element should be such that the x and y coordinates of ASAM OpenDRIVE are approximately centered around (0;0). If the x and y coordinates are too large, applications using float coordinates internally might not be able to process them accurately enough due to the limited precision of IEEE 754 double precision floating point numbers.
+:   The `<offset>` element should be such that the x and y coordinates of ASAM OpenDRIVE® are approximately centered around (0;0). If the x and y coordinates are too large, applications using float coordinates internally might not be able to process them accurately enough due to the limited precision of IEEE 754 double precision floating point numbers.
 
 ### F.2.2 proj
 
@@ -775,7 +775,7 @@ UID
 :   asam.net:xodr:1.7.0:road.crg.use\_last\_entry
 
 Description
-:   If more than one CRG entry is given for the same physical property (attribute purpose) at a given location, then the last entry in the sequence of occurrence in the ASAM OpenDRIVE file shall be the relevant one. All others are ignored (but see the [note](../10_roads/10_06_road_surface.html#Note_CRG)).
+:   If more than one CRG entry is given for the same physical property (attribute purpose) at a given location, then the last entry in the sequence of occurrence in the ASAM OpenDRIVE® file shall be the relevant one. All others are ignored (but see the [note](../10_roads/10_06_road_surface.html#Note_CRG)).
 
 ### F.6.8 cross\_section\_surface
 
@@ -1962,7 +1962,7 @@ UID
 :   asam.net:xodr:1.7.0:road.object.surface.calculate\_road\_height
 
 Description
-:   If `crgEvaluv2z` returns NaN, then the road height at that position shall be the ASAM OpenDRIVE height in addition to the road surface CRG, if it is present. The value of @hideRoadSurfaceCRG attribute shall have no influence.The value of @hideRoadSurfaceCRG attribute shall have no influence.
+:   If `crgEvaluv2z` returns NaN, then the road height at that position shall be the ASAM OpenDRIVE® height in addition to the road surface CRG, if it is present. The value of @hideRoadSurfaceCRG attribute shall have no influence.The value of @hideRoadSurfaceCRG attribute shall have no influence.
 
 ##### crg\_hidden\_on\_object\_overlap
 

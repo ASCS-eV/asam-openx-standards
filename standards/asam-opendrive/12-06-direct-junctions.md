@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 12.6 Direct junctions
+# ASAM OpenDRIVE® v1.9.0 — 12.6 Direct junctions
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/12_junctions/12_06_direct_junctions.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -18,7 +18,7 @@ For elements in the UML model see [Figure 84](12_01_introduction.html#fig-8b7e26
 
 **`<junction type="direct">` element**
 
-In ASAM OpenDRIVE, direct junctions are represented by `<junction>` elements with the value `direct` in the @type attribute within the `<junction>` element.
+In ASAM OpenDRIVE®, direct junctions are represented by `<junction>` elements with the value `direct` in the @type attribute within the `<junction>` element.
 
 ```
 UML class:  t_junction_direct
@@ -39,7 +39,7 @@ Table 66. Attributes of the <junction type="direct"> element
 
 **`<connection>` element**
 
-In ASAM OpenDRIVE, connections in direct junctions are represented by `<connection>` elements within the `<junction>` element.
+In ASAM OpenDRIVE®, connections in direct junctions are represented by `<connection>` elements within the `<junction>` element.
 
 ```
 UML class: t_junction_connection_direct
@@ -60,7 +60,7 @@ Table 67. Attributes of the <connection> element
 
 **`<laneLink>` element**
 
-In ASAM OpenDRIVE, lane links in direct junctions are represented by `<laneLink>` elements within the `<connection>` element.
+In ASAM OpenDRIVE®, lane links in direct junctions are represented by `<laneLink>` elements within the `<connection>` element.
 
 ```
 UML class: t_junction_connection_laneLink

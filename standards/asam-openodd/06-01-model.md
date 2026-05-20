@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 6.1 Conceptual Overview
+# ASAM OpenODD® v1.0.0 — 6.1 Conceptual Overview
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/06_model_concept/06_01_openodd_model.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -12,22 +12,22 @@
 ## 6.1.1 Introduction
 
 The specified ODD is used to determine if any conditions that are encountered by the ADS are inside or outside of the ODD.
-The ASAM OpenODD model defines rules to represent ODD, COD, OD, and taxonomy specifications.
-The rules are defined by taxonomy concepts, conditions and other ASAM OpenODD model constructs.
+The ASAM OpenODD® model defines rules to represent ODD, COD, OD, and taxonomy specifications.
+The rules are defined by taxonomy concepts, conditions and other ASAM OpenODD® model constructs.
 
-The ASAM OpenODD model is the technology independent core of ASAM OpenODD.
+The ASAM OpenODD® model is the technology independent core of ASAM OpenODD®.
 
 The JSON serialization
 
 |  |  |
 | --- | --- |
-|  | See  [Section 3, "Terms and definitions"](../03_terms_and_definitions/03_terms_and_definitions.html#top-terms_and_definitions-terms_and_definitions) for a definition of the term *ASAM OpenODD model*. |
+|  | See  [Section 3, "Terms and definitions"](../03_terms_and_definitions/03_terms_and_definitions.html#top-terms_and_definitions-terms_and_definitions) for a definition of the term *ASAM OpenODD® model*. |
 
 |  |  |
 | --- | --- |
-|  | This chapter, [Section 6.1, "Conceptual Overview"](06_01_openodd_model.html), provides an overview of the concepts of ASAM OpenODD and the ASAM OpenODD model. Detailed technical aspects are covered in  [Section 6.2, "Taxonomy"](06_02_openodd_taxonomy.html#top-openodd-taxonomy),  [Section 6.3, "COD/OD"](06_03_openodd_od.html#top-concept-codod), and  [Section 6.4, "ODD modules"](06_04_openodd_modules.html#top-concept-modules). |
+|  | This chapter, [Section 6.1, "Conceptual Overview"](06_01_openodd_model.html), provides an overview of the concepts of ASAM OpenODD® and the ASAM OpenODD® model. Detailed technical aspects are covered in  [Section 6.2, "Taxonomy"](06_02_openodd_taxonomy.html#top-openodd-taxonomy),  [Section 6.3, "COD/OD"](06_03_openodd_od.html#top-concept-codod), and  [Section 6.4, "ODD modules"](06_04_openodd_modules.html#top-concept-modules). |
 
-The ASAM OpenODD model describes the overall structure of an ASAM OpenODD specification.
+The ASAM OpenODD® model describes the overall structure of an ASAM OpenODD® specification.
 The core of this structure revolves around the following key classes:
 
 * Taxonomy:  
@@ -42,30 +42,30 @@ The core of this structure revolves around the following key classes:
   + Target Operational Domain (TOD):  
     Represents the expected environmental conditions of all modules.
 
-A core principle of the ASAM OpenODD specification is the ability to export and import multiple formats via multiple interfaces.
+A core principle of the ASAM OpenODD® specification is the ability to export and import multiple formats via multiple interfaces.
 Instances of class `Taxonomy` and `Module` provide their own export instructions.
 Exports can result in a collection of files.
-ASAM OpenODD provides the specifications for export and import that enable unambiguous exchange with respect to taxonomy, the COD/OD and the ODD boundary conditions across the compliant mapping references.
+ASAM OpenODD® provides the specifications for export and import that enable unambiguous exchange with respect to taxonomy, the COD/OD and the ODD boundary conditions across the compliant mapping references.
 For limitations and restrictions, see the individual mapping references.
-For example, ASAM OpenODD allows the import of an ASAM OpenODD YAML specification and its export as an ASAM OpenSCENARIO DSL specification.
+For example, ASAM OpenODD® allows the import of an ASAM OpenODD® YAML specification and its export as an ASAM OpenSCENARIO® DSL specification.
 
-## 6.1.2 ASAM OpenODD design goals
+## 6.1.2 ASAM OpenODD® design goals
 
 |  |  |
 | --- | --- |
 |  | A requirements analysis was conducted for this standard, resulting in the definition of several requirements. These requirements served as the basis for deriving the design goals. For a comprehensive overview of the requirements, see  [Annex E, *(informative) Requirements*](../11_annexes/11_a_requirements.html#top-requirements-analysis). |
 
-The following high-level design goals shape the design approach of the ASAM OpenODD model:
+The following high-level design goals shape the design approach of the ASAM OpenODD® model:
 
 1. Provide the structural representation of the ODD taxonomy including data types and unit types.
 2. Provide the structural representation for defining CODs and ODs based on ODD taxonomy concepts in a data-centric fashion, including timestamp and location.
 3. Provide the structural representation for the modular definition of ODDs and their constraining expressions based on ODD taxonomy concepts.
-4. Provide a standard ASAM OpenODD model framework composed of the aforementioned structural representations, which the machine-readable ASAM OpenODD mapping references adhere to for the sake of interoperability.
+4. Provide a standard ASAM OpenODD® model framework composed of the aforementioned structural representations, which the machine-readable ASAM OpenODD® mapping references adhere to for the sake of interoperability.
    For limitations and restrictions, see the individual mapping references.
    Instead of developing a narrow specification for a single language, the current approach focuses on a model and corresponding interoperability requirements.
-   This approach enables ASAM OpenODD to be interchangeable across all compliant mapping references, supporting multiple machine-readable languages and human-readable descriptions in multiple natural languages.
+   This approach enables ASAM OpenODD® to be interchangeable across all compliant mapping references, supporting multiple machine-readable languages and human-readable descriptions in multiple natural languages.
 
-Offering this flexibility shall give ASAM OpenODD the capability to support the full ADS development life cycle:
+Offering this flexibility shall give ASAM OpenODD® the capability to support the full ADS development life cycle:
 
 * Requirements specification
 * Engineering and development
@@ -79,7 +79,7 @@ Offering this flexibility shall give ASAM OpenODD the capability to support the 
 
 ### 6.1.3.1 Taxonomy features
 
-ASAM OpenODD was designed with the following user stories for the taxonomy representation in mind:
+ASAM OpenODD® was designed with the following user stories for the taxonomy representation in mind:
 
 * Define a taxonomy with diverse concept types:
   As a user, I want to create taxonomies that include concepts with various types such as records, categorical, or primitive to represent numerical, complex, temporal, and spatial taxonomy concepts.
@@ -104,7 +104,7 @@ ASAM OpenODD was designed with the following user stories for the taxonomy repre
 
 ### 6.1.3.2 COD/OD features
 
-ASAM OpenODD was designed with the following features for COD/OD representation in mind:
+ASAM OpenODD® was designed with the following features for COD/OD representation in mind:
 
 * Specification of a large number of CODs, for example billions, in a simple tabular format
 * Support for simple standard formats such as tabular format (for example CSV, spreadsheet, Parquet and JSONL), XML, ASAM OpenLABEL, ASAM MDF.
@@ -121,7 +121,7 @@ ASAM OpenODD was designed with the following features for COD/OD representation 
 
 ### 6.1.3.3 ODD features
 
-ASAM OpenODD was designed with the following features for ODD representation in mind:
+ASAM OpenODD® was designed with the following features for ODD representation in mind:
 
 * Modular rule specifications consisting of simple interpretable include and exclude sections
 * Clear composition semantics using the constructs of `INCLUDE_AND`, `INCLUDE_OR`, `EXCLUDE_OR`, `EXCLUDE_AND`
@@ -146,9 +146,9 @@ ASAM OpenODD was designed with the following features for ODD representation in 
 
 ### 6.1.4.1 General information
 
-The ASAM OpenODD specification is standardizing the exchange format.
+The ASAM OpenODD® specification is standardizing the exchange format.
 In other words, it provides the export and import specification.
-When exporting an ASAM OpenODD, the export is expected to include the taxonomy concepts required to support the subject:
+When exporting an ASAM OpenODD®, the export is expected to include the taxonomy concepts required to support the subject:
 
 * When exporting only a taxonomy, then only taxonomy content is needed.
   The export can contain a single file, or multiple files which use the `IMPORT` keyword linking the files.
@@ -160,13 +160,13 @@ When exporting an ASAM OpenODD, the export is expected to include the taxonomy c
 
 ### 6.1.4.2 Compliance requirements
 
-An ODD specification, written using one of the ASAM OpenODD mapping references, is considered compliant if it remains equivalent after being translated into another mapping reference.
-For example, `ODD1.csv` specification modeled with ASAM OpenODD model to tabular mapping reference (for example, using an additional Manifest construct) shall be equivalent when the same specification is modeled in ASAM OpenODD model to YAML mapping reference to be considered compliant.
-Any additional constructs which are not specified or included in the mapping references are not compliant with ASAM OpenODD.
+An ODD specification, written using one of the ASAM OpenODD® mapping references, is considered compliant if it remains equivalent after being translated into another mapping reference.
+For example, `ODD1.csv` specification modeled with ASAM OpenODD® model to tabular mapping reference (for example, using an additional Manifest construct) shall be equivalent when the same specification is modeled in ASAM OpenODD® model to YAML mapping reference to be considered compliant.
+Any additional constructs which are not specified or included in the mapping references are not compliant with ASAM OpenODD®.
 
 ### 6.1.4.3 File specification
 
-The model contains a class `File`. Instances of this class represent the artifacts transmitted to implement the standardized ASAM OpenODD exchange.
+The model contains a class `File`. Instances of this class represent the artifacts transmitted to implement the standardized ASAM OpenODD® exchange.
 The format of each file is determined by the technology used to represent the content.
 A single transmission, that is sending files from one stakeholder to another stakeholder, could include multiple files and use multiple formats.
 As an example, a single transmission may comprise taxonomy, modular conditions and COD content.
@@ -176,7 +176,7 @@ The collection of all files in a single transmission can be further encapsulated
 
 Each instance of class `File` shall be associated with a file name.
 Files may refer to other files by means of an `IMPORT` which specifies file names.
-ASAM OpenODD uses the standard file naming approaches commonly used by commercial operating systems, for example, file name followed by dot and file extension.
+ASAM OpenODD® uses the standard file naming approaches commonly used by commercial operating systems, for example, file name followed by dot and file extension.
 The specification of valid file names is not in scope for this standard.
 The name of every file shall be unique within the scope of a single transmission.
 
@@ -226,7 +226,7 @@ To facilitate roundtrip validation, whereby the imported files are exported back
 Each format requires specifying the "export instructions" which enable reproducing the files imported to facilitate such roundtrip validation; the exact format of those instruction may differ across compliant exchange formats.
 For example, one exchange format (for example YAML or XML or DSL) may use `IMPORT` statements, whereas a tabular format (for example CSV or spreadsheet) may specify the "export file column".
 
-## 6.1.5 Taxonomies in ASAM OpenODD
+## 6.1.5 Taxonomies in ASAM OpenODD®
 
 ### 6.1.5.1 Overview
 
@@ -236,14 +236,14 @@ This part of the model does not specify a concrete taxonomy.
 
 The taxonomy related classes of {THIS\_STANDARD} model
 
-Figure 1. The taxonomy related classes of ASAM OpenODD model
+Figure 1. The taxonomy related classes of ASAM OpenODD® model
 
-[Figure 1](#fig-concept-overview-taxonomy-classes) shows most of the classes related to class `Taxonomy`, so [Figure 1](#fig-concept-overview-taxonomy-classes) is a subset of the ASAM OpenODD model.
+[Figure 1](#fig-concept-overview-taxonomy-classes) shows most of the classes related to class `Taxonomy`, so [Figure 1](#fig-concept-overview-taxonomy-classes) is a subset of the ASAM OpenODD® model.
 
 ### 6.1.5.2 Taxonomy specification
 
 A taxonomy is defined by an instance of class `Taxonomy` which is the main root entry point for the taxonomy.
-It is possible to have multiple instances of class `Taxonomy` in a single ASAM OpenODD specification.
+It is possible to have multiple instances of class `Taxonomy` in a single ASAM OpenODD® specification.
 This enables the use of external taxonomies, for example, specifications based on ISO 34503 [[4](../bibliography.html#bib-iso34503)] and other standards.
 Each instance of class `Taxonomy` represents an entire concept tree.
 An instance of class `Taxonomy` shall contain zero or more instances of class `TaxonomyConcept`.
@@ -268,7 +268,7 @@ Parameters
 
     | Parameter | Type | Mandatory | Description |
     | --- | --- | --- | --- |
-    | id | String | yes | Unique identifier of a `Taxonomy` instance. It needs to be unique within an ASAM OpenODD transmission |
+    | id | String | yes | Unique identifier of a `Taxonomy` instance. It needs to be unique within an ASAM OpenODD® transmission |
     | name | LangString | yes | This represents the name of the `Taxonomy`. It can be translated into other languages. At least an English name must be provided. |
     | affiliation | String | no | The source of a specific taxonomy. It can be used to distinguish `TaxonomyConcept` instances with the same name stemming from different sources. |
 
@@ -327,9 +327,9 @@ Parameters
 
 The type-related classes of {THIS\_STANDARD} model
 
-Figure 2. The type-related classes of ASAM OpenODD model
+Figure 2. The type-related classes of ASAM OpenODD® model
 
-[Figure 2](#fig-concept-overview-type-classes) shows most of the classes related to class `Type`, so [Figure 2](#fig-concept-overview-type-classes) is a subset of the ASAM OpenODD model.
+[Figure 2](#fig-concept-overview-type-classes) shows most of the classes related to class `Type`, so [Figure 2](#fig-concept-overview-type-classes) is a subset of the ASAM OpenODD® model.
 
 ### 6.1.6.2 Type specification
 
@@ -386,7 +386,7 @@ Such a measure can be used in a condition, for example, `contamination.length is
 
 ### 6.1.6.5 Illustrating taxonomy model usage
 
-To illustrate usage of this model, consider the following ASAM OpenODD compliant example taxonomy:
+To illustrate usage of this model, consider the following ASAM OpenODD® compliant example taxonomy:
 
 * The root concept is called `weather`.
 * The `wind` conditions are specified using a `wind_speed` numeric `Attribute`.
@@ -395,23 +395,23 @@ To illustrate usage of this model, consider the following ASAM OpenODD compliant
 
 |  |  |
 | --- | --- |
-|  | Following this example taxonomy will be displayed in three different ways. [Figure 3](#fig-concept-overview-object_diagram-example_taxonomy) illustrates how the ASAM OpenODD model can be utilized to create an object diagram. [Figure 4](#fig-openodd-example-taxonomy-weather) simplifies the object diagram as a block diagram which should be easier to read. [Code 1](#code-openodd-example-taxonomy-weather) demonstrates the use of free-form notation to represent the object diagram in [Figure 3](#fig-concept-overview-object_diagram-example_taxonomy) and block diagram in [Figure 4](#fig-openodd-example-taxonomy-weather).  It is important to note that the ASAM OpenODD model operates at a meta-level. In the subsequent sections, examples often employ a free-form notation. The free-form notation is tighter and ensures better readability than object and block diagrams. |
+|  | Following this example taxonomy will be displayed in three different ways. [Figure 3](#fig-concept-overview-object_diagram-example_taxonomy) illustrates how the ASAM OpenODD® model can be utilized to create an object diagram. [Figure 4](#fig-openodd-example-taxonomy-weather) simplifies the object diagram as a block diagram which should be easier to read. [Code 1](#code-openodd-example-taxonomy-weather) demonstrates the use of free-form notation to represent the object diagram in [Figure 3](#fig-concept-overview-object_diagram-example_taxonomy) and block diagram in [Figure 4](#fig-openodd-example-taxonomy-weather).  It is important to note that the ASAM OpenODD® model operates at a meta-level. In the subsequent sections, examples often employ a free-form notation. The free-form notation is tighter and ensures better readability than object and block diagrams. |
 
 A example taxonomy represented as an object diagram
 
 Figure 3. A example taxonomy represented as an object diagram
 
-[Figure 3](#fig-concept-overview-object_diagram-example_taxonomy) shows a object diagram visualization of an ASAM OpenODD compliant example taxonomy.
+[Figure 3](#fig-concept-overview-object_diagram-example_taxonomy) shows a object diagram visualization of an ASAM OpenODD® compliant example taxonomy.
 
 ![image](../_images/06_openodd_model/odd_taxonomy_model_example.png)
 
 Figure 4. A example taxonomy represented as a block diagram
 
-[Figure 4](#fig-openodd-example-taxonomy-weather) shows a block diagran visualization of an ASAM OpenODD compliant example taxonomy.
+[Figure 4](#fig-openodd-example-taxonomy-weather) shows a block diagran visualization of an ASAM OpenODD® compliant example taxonomy.
 
 |  |  |
 | --- | --- |
-|  | What is the free-form notation  ASAM OpenODD utilizes a free-form notation to describe concepts in a structured yet technology-independent manner. This structured notation provides a human-readable way to describe the concepts of ASAM OpenODD through examples. |
+|  | What is the free-form notation  ASAM OpenODD® utilizes a free-form notation to describe concepts in a structured yet technology-independent manner. This structured notation provides a human-readable way to describe the concepts of ASAM OpenODD® through examples. |
 
 Code 1. A taxonomy example in free-form notation
 
@@ -443,16 +443,16 @@ This example is interpreted as follows:
 
 The COD/OD related classes of {THIS\_STANDARD} model
 
-Figure 5. The COD/OD related classes of ASAM OpenODD model
+Figure 5. The COD/OD related classes of ASAM OpenODD® model
 
-[Figure 5](#fig-concept-overview-COD_OD-classes) shows most of the classes related to class `COD_OD`, so [Figure 5](#fig-concept-overview-COD_OD-classes) is a subset of the ASAM OpenODD model.
+[Figure 5](#fig-concept-overview-COD_OD-classes) shows most of the classes related to class `COD_OD`, so [Figure 5](#fig-concept-overview-COD_OD-classes) is a subset of the ASAM OpenODD® model.
 
 ### 6.1.7.2 COD/OD concept overview
 
 The Operational Domain (OD) describes all possible conditions that may be encountered by an Automated Driving System (ADS).
 The Current Operational Domain (COD) represents measurements of environment conditions at a specific point in time and location.
 Both COD and OD may include safe and unsafe conditions.
-In the ASAM OpenODD model a common class `COD_OD` is used to represent both CODs and ODs.
+In the ASAM OpenODD® model a common class `COD_OD` is used to represent both CODs and ODs.
 All fields used in `COD_OD` COD instances and `COD_OD` OD instances must be defined in the `Taxonomy`.
 Both OD and COD may include a small subset of the `Taxonomy` fields, and may have a disjoint set of fields.
 It is possible that the fields used in a `COD_OD` instance for a COD, for example `wind_speed`, are aggregated in the `COD_OD` OD instance, for example as `wind_speed.avg`.
@@ -512,7 +512,7 @@ For a more complex example see [Section 6.3.4, "COD/OD with complex structures"]
 
 |  |  |
 | --- | --- |
-|  | A COD can be represented with a table, but there are also different ways to represent a COD which is conform with ASAM OpenODD. This presentation was chosen so that it is easy for the reader to understand. |
+|  | A COD can be represented with a table, but there are also different ways to represent a COD which is conform with ASAM OpenODD®. This presentation was chosen so that it is easy for the reader to understand. |
 
 [Table 12](#tab-examplecodtable) represents a number of interesting cases:
 
@@ -627,7 +627,7 @@ Table 13. Example ODs table
 * Rows 2, 4, 6, and 8 specify values for `PEDESTRIAN_COUNT_AVG`, but no values for `RAINFALL_RATE` and `RAINFALL_TYPE`.
   The values for `RAINFALL_RATE` and `RAINFALL_TYPE` during those days are unknown.
 
-The conditions, that are specified by the ASAM OpenODD modules, show which rows are within the ODD and which are outside.
+The conditions, that are specified by the ASAM OpenODD® modules, show which rows are within the ODD and which are outside.
 The processing of the conditions needs to handle missing values.
 The semantics of the modules' conditions is detailed in  [Section 6.4, "ODD modules"](06_04_openodd_modules.html#top-concept-modules).
 
@@ -661,12 +661,12 @@ Parameters
 
 The module, condition and expression related classes of {THIS\_STANDARD} model
 
-Figure 6. The module, condition and expression related classes of ASAM OpenODD model
+Figure 6. The module, condition and expression related classes of ASAM OpenODD® model
 
-[Figure 6](#fig-concept-overview-module-classes) shows most of the classes related to class `Module` and class `Condition`, so [Figure 6](#fig-concept-overview-module-classes) is a subset of the ASAM OpenODD model.
+[Figure 6](#fig-concept-overview-module-classes) shows most of the classes related to class `Module` and class `Condition`, so [Figure 6](#fig-concept-overview-module-classes) is a subset of the ASAM OpenODD® model.
 
 The ODD describes the conditions in which the ADS is intended to function.
-ASAM OpenODD enables a modular specification of these conditions.
+ASAM OpenODD® enables a modular specification of these conditions.
 
 A collection of instances of class `Module` specifies the conditions.
 The `Module` marked as root is used as the entry point for inference and can be understood as the ODD.
@@ -693,7 +693,7 @@ The modules are intended to represent such rules.
 
 #### 6.1.8.2.1 Classes and their relationships
 
-The ASAM OpenODD model defines the following classes and their relationships.
+The ASAM OpenODD® model defines the following classes and their relationships.
 
 Each instance of class `Module` represents a rule for including or excluding specific environment conditions from the ODD.
 Each `Module` instance comprises one or more instances of class `Section`.
@@ -974,12 +974,12 @@ In the context of propositional logic, there is a long history of attempts to au
 
 In the context of the ODD, all of these approaches result in incorrect assessment of safe operation.
 
-ASAM OpenODD requires that handling of missing values will be specified explicitly in the conditions.
+ASAM OpenODD® requires that handling of missing values will be specified explicitly in the conditions.
 This is called missing value semantics.
 
 |  |  |
 | --- | --- |
-|  | ASAM OpenODD model is able to specify equality expressions, but it is not intended to list the special value `unknown`. It is possible to use equality expressions that compare to `unknown` literals. |
+|  | ASAM OpenODD® model is able to specify equality expressions, but it is not intended to list the special value `unknown`. It is possible to use equality expressions that compare to `unknown` literals. |
 
 * Close-World semantics (CWS):  
   Everything unspecified is assumed to be `false`.
@@ -990,7 +990,7 @@ This is called missing value semantics.
   Situations with missing values for condition fields would be **included** as this condition would be evaluated as `true`.
   When using [Code 22](#code-example-2-missing-value-semantics), this is not desirable, as in situations where no geo-fence data is available, these situations are included.
 
-The ASAM OpenODD also uses:
+The ASAM OpenODD® also uses:
 
 * Missing-Value semantics (MVS):  
   Unless a value is explicitly required, use open-world semantics (OWS).
@@ -1782,7 +1782,7 @@ This approach enables the development of rules that are consistent with specific
 
 Since ADAS/ADS functions of a vehicle will be usually used in more than one country, it is evident that ODDs shall support multiple natural languages in order to be able to create artifacts containing names, descriptions, and comments in various natural languages, for example, "bad weather", "schlechtes Wetter", "mauvais temps".
 
-The ASAM OpenODD model introduced in this document implements this by means of the following modeling constructs:
+The ASAM OpenODD® model introduced in this document implements this by means of the following modeling constructs:
 
 * A data type `LangString` associating a text (string) to an ISO 639 [[10](../bibliography.html#bib-iso639)], for example, ["bad weather", "en"]
 * Classes that need multi-lingual support have fields of data type `LangString`.

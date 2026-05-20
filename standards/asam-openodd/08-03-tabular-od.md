@@ -1,7 +1,7 @@
-# ASAM Openodd v1.0.0 — 8.3 COD/OD mapping
+# ASAM OpenODD® v1.0.0 — 8.3 COD/OD mapping
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/08_tabular/08_03_openodd_tabular_od.html
-> **Standard**: ASAM Openodd v1.0.0, 2025-04-03
+> **Standard**: ASAM OpenODD® v1.0.0, 2025-04-03
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -129,7 +129,7 @@ Table 131. Use of expressions for defining taxonomy concepts
 | light\_rain | rain\_level | categorical\_literal |  | rain\_quantity < 2.5 mm/h | ISO 34503 | environmental\_conditions |
 | moderate\_rain | rain\_level | categorical\_literal |  | rain\_quantity: [2.5,7.6] mm/h | ISO 34503 | environmental\_conditions |
 
-[Code 102](#code-environment-conditions) shows how to map from the ASAM OpenODD model to a tabular representation in [Table 131](#tab-taxonomyexpressions)
+[Code 102](#code-environment-conditions) shows how to map from the ASAM OpenODD® model to a tabular representation in [Table 131](#tab-taxonomyexpressions)
 
 Code 102. Example environment conditions (free-form notation)
 
@@ -258,7 +258,7 @@ The taxonomy required to support the above OD is the same as the taxonomy descri
 ### 8.3.4.1 General information
 
 An OD and COD is represented by a collation of data files that are collated using a manifest.
-The following is the ASAM OpenODD OD and COD file structure:
+The following is the ASAM OpenODD® OD and COD file structure:
 
 * An **optional manifest** file that specifies which files are part of the OD or COD, and how their columns map to the taxonomy.
 * A collection of tabular files, for example csv, spreadsheets, or parquet, that compromise the data:

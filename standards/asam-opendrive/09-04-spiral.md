@@ -1,7 +1,7 @@
-# ASAM Opendrive v1.9.0 — 9.4 Spiral
+# ASAM OpenDRIVE® v1.9.0 — 9.4 Spiral
 
 > **Source**: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/09_geometries/09_04_spiral.html
-> **Standard**: ASAM Opendrive v1.9.0, 2026-05-08
+> **Standard**: ASAM OpenDRIVE® v1.9.0, 2026-05-08
 > **License**: Unrestricted distribution (ASAM e.V.)
 > **Downloaded**: 2026-05-19
 
@@ -27,7 +27,7 @@ It is also possible to arrange several `<line>`, `<spiral>`, and `<arc>` element
 
 **`<spiral>` element**
 
-In ASAM OpenDRIVE, a spiral is represented by the `<spiral>` element within the `<geometry>` element.
+In ASAM OpenDRIVE®, a spiral is represented by the `<spiral>` element within the `<geometry>` element.
 
 ```
 UML class: t_road_planView_geometry_spiral
