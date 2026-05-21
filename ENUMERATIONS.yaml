@@ -1,0 +1,225 @@
+# Machine-Readable Enumeration Index
+# Source: ASAM OpenDRIVE v1.9.0, Annex A (normative)
+# Purpose: Quick agent lookup of valid enum values, versions, and deprecation status
+# Reference: standards/asam-opendrive/map-uml-enumerations.md
+
+opendrive:
+  standard: "ASAM OpenDRIVE"
+  version: "1.9.0"
+  source_file: "standards/asam-opendrive/map-uml-enumerations.md"
+
+  enumerations:
+
+    # ═══════════════════════════════════════════════════════════════
+    # ROAD TYPES — used by hdmap:roadTypes
+    # ═══════════════════════════════════════════════════════════════
+    e_roadType:
+      section: "A.6.2"
+      table: 194
+      ontology_property: "hdmap:roadTypes"
+      values:
+        - bicycle
+        - lowSpeed
+        - motorway
+        - pedestrian
+        - rural
+        - town
+        - townArterial      # introduced 1.5
+        - townCollector     # introduced 1.5
+        - townExpressway    # introduced 1.5
+        - townLocal         # introduced 1.5
+        - townPlayStreet    # introduced 1.5
+        - townPrivate       # introduced 1.5
+        - unknown
+      version_sets:
+        "1.0-1.4": [bicycle, lowSpeed, motorway, pedestrian, rural, town, unknown]
+        "1.5+": [bicycle, lowSpeed, motorway, pedestrian, rural, town, townArterial, townCollector, townExpressway, townLocal, townPlayStreet, townPrivate, unknown]
+
+    # ═══════════════════════════════════════════════════════════════
+    # LANE TYPES — used by hdmap:laneTypes
+    # ═══════════════════════════════════════════════════════════════
+    e_laneType:
+      section: "A.3.7"
+      table: 176
+      ontology_property: "hdmap:laneTypes"
+      values:
+        - HOV
+        - bidirectional
+        - biking
+        - border
+        - bus
+        - connectingRamp
+        - curb              # introduced 1.6
+        - driving
+        - entry
+        - exit
+        - median
+        - mwyEntry
+        - mwyExit
+        - none
+        - offRamp
+        - onRamp
+        - parking
+        - rail
+        - restricted
+        - roadWorks
+        - shared            # introduced 1.8
+        - shoulder
+        - sidewalk
+        - slipLane          # introduced 1.8
+        - special1
+        - special2
+        - special3
+        - stop
+        - taxi
+        - tram
+        - walking           # introduced 1.8
+      version_sets:
+        "1.0-1.4": [bidirectional, biking, border, driving, entry, exit, median, none, offRamp, onRamp, parking, rail, restricted, roadWorks, shoulder, sidewalk, special1, special2, special3, stop, tram]
+        "1.5-1.7": [HOV, bidirectional, biking, border, bus, connectingRamp, driving, entry, exit, median, mwyEntry, mwyExit, none, offRamp, onRamp, parking, rail, restricted, roadWorks, shoulder, sidewalk, special1, special2, special3, stop, taxi, tram]
+        "1.8+": [HOV, bidirectional, biking, border, bus, connectingRamp, curb, driving, entry, exit, median, mwyEntry, mwyExit, none, offRamp, onRamp, parking, rail, restricted, roadWorks, shared, shoulder, sidewalk, slipLane, special1, special2, special3, stop, taxi, tram, walking]
+      deprecated:
+        HOV: {since: "1.8.0", replacement: "<access> element"}
+        bidirectional: {since: "1.8.0", replacement: "@direction attribute"}
+        bus: {since: "1.8.0", replacement: "<access> element"}
+        mwyEntry: {since: "1.5.0", replacement: "entry"}
+        mwyExit: {since: "1.5.0", replacement: "exit"}
+        roadWorks: {since: "1.8.0", replacement: null}
+        sidewalk: {since: "1.8.0", replacement: "walking"}
+        special1: {since: "1.8.0", replacement: null}
+        special2: {since: "1.8.0", replacement: null}
+        special3: {since: "1.8.0", replacement: null}
+        taxi: {since: "1.8.0", replacement: "<access> element"}
+
+    # ═══════════════════════════════════════════════════════════════
+    # OBJECT TYPES — used by hdmap:levelOfDetail (misnamed; actually objectTypes)
+    # ═══════════════════════════════════════════════════════════════
+    e_objectType:
+      section: "A.4.5"
+      table: 186
+      ontology_property: "hdmap:levelOfDetail"
+      note: "Property is misnamed in hdmap ontology; represents object types present in map"
+      values:
+        - barrier
+        - bike
+        - building
+        - bus
+        - car
+        - crosswalk
+        - gantry
+        - motorbike
+        - none
+        - obstacle
+        - parkingSpace
+        - patch
+        - pedestrian
+        - pole
+        - railing
+        - roadMark
+        - roadSurface       # introduced 1.8
+        - soundBarrier
+        - streetLamp
+        - trafficIsland
+        - trailer
+        - train
+        - tram
+        - tree
+        - van
+        - vegetation
+        - wind
+      deprecated:
+        bike: {since: "1.5.0", replacement: null}
+        bus: {since: "1.5.0", replacement: null}
+        car: {since: "1.5.0", replacement: null}
+        motorbike: {since: "1.5.0", replacement: null}
+        patch: {since: "1.8.0", replacement: "roadSurface"}
+        pedestrian: {since: "1.5.0", replacement: null}
+        railing: {since: "1.8.0", replacement: "barrier"}
+        soundBarrier: {since: "1.8.0", replacement: "barrier"}
+        streetLamp: {since: "1.8.0", replacement: "pole"}
+        trailer: {since: "1.5.0", replacement: null}
+        train: {since: "1.5.0", replacement: null}
+        tram: {since: "1.5.0", replacement: null}
+        wind: {since: "1.5.0", replacement: "pole"}
+
+    # ═══════════════════════════════════════════════════════════════
+    # JUNCTION TYPES — NOT currently in hdmap ontology (improvement candidate)
+    # ═══════════════════════════════════════════════════════════════
+    e_junction_type:
+      section: "A.2.1"
+      table: 162
+      ontology_property: null  # not yet modeled
+      note: "Improvement candidate for hdmap:Content"
+      values:
+        - crossing          # introduced 1.8
+        - default
+        - direct            # introduced 1.7
+        - virtual
+
+    # ═══════════════════════════════════════════════════════════════
+    # JUNCTION GROUP TYPES
+    # ═══════════════════════════════════════════════════════════════
+    e_junctionGroup_type:
+      section: "A.2.5"
+      table: 166
+      ontology_property: null
+      values:
+        - complexJunction   # introduced 1.8
+        - highwayInterchange # introduced 1.8
+        - roundabout
+        - unknown
+
+    # ═══════════════════════════════════════════════════════════════
+    # ROAD MARK TYPES
+    # ═══════════════════════════════════════════════════════════════
+    e_roadMarkType:
+      section: "A.3.4"
+      table: 173
+      ontology_property: null
+      values:
+        - "botts dots"
+        - "broken broken"
+        - "broken solid"
+        - broken
+        - curb
+        - custom
+        - edge
+        - grass
+        - none
+        - "solid broken"
+        - "solid solid"
+        - solid
+
+    # ═══════════════════════════════════════════════════════════════
+    # DATA QUALITY SOURCE — relates to hdmap:measurementSystem
+    # ═══════════════════════════════════════════════════════════════
+    e_dataQuality_RawData_Source:
+      section: "A.1.3"
+      table: 156
+      ontology_property: "hdmap:measurementSystem (partial alignment)"
+      values:
+        - cadaster
+        - custom
+        - sensor
+
+    # ═══════════════════════════════════════════════════════════════
+    # CRG MODE/PURPOSE — relates to surface-model domain
+    # ═══════════════════════════════════════════════════════════════
+    e_road_surface_CRG_mode:
+      section: "A.2.3"
+      table: 164
+      ontology_property: null
+      note: "Relevant for surface-model domain"
+      values:
+        - attached0
+        - attached
+        - genuine
+        - global
+
+    e_road_surface_CRG_purpose:
+      section: "A.2.2"
+      table: 163
+      ontology_property: null
+      values:
+        - elevation
+        - friction
