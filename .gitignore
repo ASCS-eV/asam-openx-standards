@@ -12,3 +12,7 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# ASAM member-only source deliverables (restricted distribution)
+# Markdown chapter extractions are committed; original files are not.
+standards/*/Source/

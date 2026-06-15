@@ -48,7 +48,11 @@ source from these references.
 | ODD taxonomy | `asam-openodd/06-02-*` through `06-08-*` | Full ODD module breakdown |
 | ODD scenery | `asam-openodd/06-*` chapters | Road, environment, weather |
 | Scenario structure | `asam-openscenario-dsl/02-*` through `05-*` | Domain model, actions, triggers |
-| Label taxonomy | `asam-openlabel/INDEX.md` | JSON schema reference for labels |
+| Tagging model & semantics | `asam-openlabel/08-scenario-tagging.md` | Full tagging spec: ontology, subsets, values, use cases |
+| Label taxonomy | `asam-openlabel/09-references.md` | Complete JSON schema class reference |
+| OpenLABEL ontology (source) | `asam-openlabel/Source/ontologies/` | Original scenario tagging ontology (Turtle) |
+| OpenLABEL JSON schema | `asam-openlabel/Source/openlabel_json_schema-v1.0.0.json` | Full JSON schema (draft-07) |
+| OpenLABEL examples | `asam-openlabel/Source/examples/` | 10 annotation examples |
 
 ### Material / Environment
 
@@ -68,6 +72,16 @@ grep -A 50 "e_laneType" standards/asam-opendrive/map-uml-enumerations.md
 ### Find a concept definition
 ```bash
 grep -i "junction" standards/asam-opendrive/03-terms-and-definitions.md
+```
+
+### Find OpenLABEL tagging semantics
+```bash
+grep -i "boundary\|subset\|tagging value" standards/asam-openlabel/08-scenario-tagging.md
+```
+
+### Find OpenLABEL ontology class hierarchy
+```bash
+grep "rdfs:subClassOf" standards/asam-openlabel/Source/ontologies/openlabel_ontology_scenario_tags.ttl
 ```
 
 ### Check version history (introduced/deprecated)
@@ -110,7 +124,7 @@ standards/
 ├── asam-openscenario-dsl/   # 59 chapters — scenario language (v2.2.0)
 ├── asam-openodd/            # 62 chapters — operational design domain (v1.0.0)
 ├── asam-openmaterial-3d/    # 27 chapters — material/geometry (BS 1.0.0)
-├── asam-openlabel/          # 2 files — labeling standard (v1.0.0)
+├── asam-openlabel/          # 13 chapters + Source/ — labeling & tagging (v1.0.0)
 ├── asam-osi/                # 1 file — open simulation interface
 ├── asam-opencrg/            # 1 file — road surface profiles
 ├── asam-traffic-participants/ # 1 file — road user types
@@ -126,7 +140,7 @@ submodules/
 |-----------------|-----------------|-------------------|
 | `hdmap` | OpenDRIVE | `map-uml-enumerations.md`, `03-terms-and-definitions.md` |
 | `scenario` | OpenSCENARIO DSL | `02-*` through `05-*` (domain model) |
-| `openlabel-v2` | OpenLABEL + OpenODD + ISO 34503 | `asam-openodd/06-*`, `iso-345xx/` |
+| `openlabel-v2` | OpenLABEL + OpenODD + ISO 34503 | `asam-openlabel/08-scenario-tagging.md`, `asam-openodd/06-*`, `iso-345xx/` |
 | `ositrace` | OSI | `asam-osi/INDEX.md`, submodule source |
 | `surface-model` | OpenCRG + OpenDRIVE | `asam-opencrg/`, CRG sections in OpenDRIVE |
 | `environment-model` | OpenMATERIAL 3D | `asam-openmaterial-3d/` chapters |
