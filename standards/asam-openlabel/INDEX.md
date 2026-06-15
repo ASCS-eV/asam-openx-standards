@@ -24,15 +24,25 @@
 
 ## Source Material
 
-The `Source/` directory contains the original ASAM deliverables:
+### Tracked Normative Deliverables
+
+Machine-readable normative deliverables are tracked in this repository:
+
+| Path | Description |
+|------|-------------|
+| [`ontologies/openlabel_ontology_scenario_tags.ttl`](ontologies/openlabel_ontology_scenario_tags.ttl) | Scenario tagging ontology (1357 lines, RDF Turtle) |
+| [`schema/openlabel_json_schema.json`](schema/openlabel_json_schema.json) | Complete JSON Schema (draft-07, 88 KB) |
+| [`schema/openlabel_json_schema-v1.0.0.json`](schema/openlabel_json_schema-v1.0.0.json) | Versioned JSON Schema copy |
+| [`examples/`](examples/) | 10 annotation examples (bbox, cuboid, poly2d, point cloud) |
+| [`DELIVERABLES.md`](DELIVERABLES.md) | Deliverables manifest |
+
+### Restricted Source Material (gitignored)
+
+The `Source/` directory contains the original ASAM deliverables (not tracked):
 
 | Path | Description |
 |------|-------------|
 | `Source/specification/ASAM_OpenLABEL_BS_V1-0-0.html` | Full HTML specification (12.6 MB, self-contained) |
-| `Source/ontologies/openlabel_ontology_scenario_tags.ttl` | Scenario tagging ontology (1357 lines, RDF Turtle) |
-| `Source/openlabel_json_schema-v1.0.0.json` | Complete JSON schema (draft-07, 81 KB) |
-| `Source/schema/openlabel_json_schema.json` | Same JSON schema (original filename) |
-| `Source/examples/` | 10 annotation examples (bbox, cuboid, poly2d, point cloud) |
 | `Source/release_presentation/` | Release presentation (PDF) |
 
 ## Key Sections for ENVITED-X Ontology Work
