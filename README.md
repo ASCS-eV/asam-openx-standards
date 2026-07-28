@@ -18,7 +18,8 @@ See [LICENSE](LICENSE) for full details. Copyright remains with ASAM e.V.
 
 | Directory | Standard | Version | Format | Source |
 |-----------|----------|---------|--------|--------|
-| `standards/asam-opendrive/` | ASAM OpenDRIVE® | v1.9.0 (2026-05-08) | Markdown (from HTML) | [Spec](https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/) |
+| `standards/asam-opendrive/` | ASAM OpenDRIVE® | v1.9.0 (2026-05-08) | Markdown (from HTML) + **XSD schema** | [Spec](https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/) |
+| `standards/asam-openscenario-xml/` | ASAM OpenSCENARIO® XML | v1.4.0 (2026-06-02) | **XSD schema** | [Spec](https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_XML/latest/) |
 | `standards/asam-openscenario-dsl/` | ASAM OpenSCENARIO® DSL | v2.2.0 (2026-03-19) | Markdown (from HTML) | [Spec](https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/) |
 | `standards/asam-openodd/` | ASAM OpenODD® | v1.0.0 (2025-04-03) | Markdown (from HTML) | [Spec](https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/) |
 | `standards/asam-openlabel/` | ASAM OpenLABEL® | v1.0.0 | Markdown + JSON Schema | [Schema](https://openlabel.asam.net/V1-0-0/schema/openlabel_json_schema.json) |
