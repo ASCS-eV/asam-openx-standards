@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShapeChange "ModelExport" configuration: ASAM Enterprise Architect model -> open SCXML.
+
+  This is the ONLY step that requires Enterprise Architect (inputModelType=EA7 reads
+  the proprietary .qeax). Its output - the committed *.scxml (+ .scxml.zip) next to
+  this file - is the open, tool-neutral model that every downstream step (OWL, SHACL,
+  XSD) consumes WITHOUT EA.
+
+  Run (override the input .qeax on the command line):
+    java -jar ShapeChange-4.0.0.jar -c export-model-to-scxml.config.xml \
+         -x "$inputFile$" "C:/path/to/ASAM_OpenDRIVE.qeax"
+
+  The ModelExport target writes scxml-out/model_export.zip (zipOutput=true) and, when
+  unzipped, the plain SCXML document used as the source-of-truth open model.
+
+  Note: the xi:include below points into your local ShapeChange installation; adjust
+  the path to match where ShapeChange is installed.
+-->
+<ShapeChangeConfiguration
+    xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 http://shapechange.net/resources/schema/ShapeChangeConfiguration.xsd">
+  <input>
+    <parameter name="inputModelType" value="EA7"/>
+    <!-- Provide the .qeax via the command-line override: -x "$inputFile$" "<path>.qeax" -->
+    <parameter name="inputFile" value="$inputFile$"/>
+    <parameter name="appSchemaNameRegex" value=".*"/>
+    <parameter name="publicOnly" value="false"/>
+    <parameter name="checkingConstraints" value="disabled"/>
+    <parameter name="sortedSchemaOutput" value="true"/>
+    <xi:include href="file:///C:/Program%20Files/ShapeChange-4.0.0/config/StandardAliases.xml"/>
+  </input>
+  <log>
+    <parameter name="reportLevel" value="INFO"/>
+  </log>
+  <targets>
+    <TargetXmlSchema class="de.interactive_instruments.shapechange.core.target.modelexport.ModelExport" mode="enabled">
+      <targetParameter name="outputDirectory" value="scxml-out"/>
+      <targetParameter name="zipOutput" value="true"/>
+    </TargetXmlSchema>
+  </targets>
+</ShapeChangeConfiguration>
