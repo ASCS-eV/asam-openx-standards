@@ -46,7 +46,7 @@ odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip-T_road_lateralProfile
 
 odr:T_signals_semantics_supplementaryDistance-T_signals_semantics_supplementaryDistance.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_signals_semantics_supplementaryDistance ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_supplementaryDistance.type .
@@ -77,7 +77,7 @@ odr:T_road_objects_object_repeat-T_road_objects_object_repeat.dT
 
 odr:T_junction_boundary_segment_lane-T_junction_boundary_segment_lane.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_junction_segment_type ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_boundary_segment_lane.type .
@@ -114,7 +114,7 @@ odr:T_road_lanes_laneSection_lcr_lane_link-T_road_lanes_laneSection_lcr_lane_lin
 
 odr:T_road_type_speed-T_road_type_speed.unit
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_unitSpeed ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_type_speed.unit .
@@ -177,7 +177,7 @@ odr:T_signals_semantics-T_signals_semantics.supplementaryProhibits
 
 odr:T_road_objects_object_material-T_road_objects_object_material.roadMarkColor
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkColor ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object_material.roadMarkColor .
 
@@ -188,13 +188,13 @@ odr:T_road_type  rdf:type     sh:NodeShape , rdfs:Class ;
 
 odr:T_road_lanes_laneSection_lr_lane_access-T_road_lanes_laneSection_lr_lane_access.restriction
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_accessRestrictionType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lr_lane_access.restriction .
 
 odr:T_dataQuality_RawData-T_dataQuality_RawData.postProcessing
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_dataQuality_RawData_PostProcessing ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_dataQuality_RawData.postProcessing .
@@ -226,7 +226,7 @@ odr:T_road_lanes_laneSection_lr_lane_speed-T_road_lanes_laneSection_lr_lane_spee
 
 odr:T_road_objects_object-T_road_objects_object.orientation
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_orientation ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object.orientation .
 
@@ -443,13 +443,13 @@ odr:T_junction_direct
 
 odr:T_road_lanes_laneSection_lr_lane_access-T_road_lanes_laneSection_lr_lane_access.rule
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_lanes_laneSection_lr_lane_access_rule ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lr_lane_access.rule .
 
 odr:T_road_link_predecessorSuccessor-T_road_link_predecessorSuccessor.elementType
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_link_elementType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_link_predecessorSuccessor.elementType .
@@ -571,7 +571,7 @@ odr:T_signalGroup_vmsGroup-T_signalGroup_vmsGroup.id
 
 odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3-T_road_objects_object_outlines_outline_curveLocal_paramPoly3.pRange
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_paramPoly3_pRange ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.pRange .
@@ -621,7 +621,7 @@ odr:T_road-T_road.name
 
 odr:T_road_signals_signalReference-T_road_signals_signalReference.orientation
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_orientation ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_signals_signalReference.orientation .
@@ -732,7 +732,7 @@ odr:T_road_railroad_switch_sideTrack-T_road_railroad_switch_sideTrack.id
 
 odr:T_signals_semantics_speed-T_signals_semantics_speed.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_signals_semantics_speed ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_speed.type .
@@ -763,14 +763,14 @@ odr:T_road_signals_signal-T_road_signals_signal.validity
 
 odr:T_road_type-T_road_type.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_type.type .
 
 odr:T_road_objects_object-T_road_objects_object.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_objectType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object.type .
 
@@ -931,7 +931,7 @@ odr:T_road_objects_objectReference-T_road_objects_objectReference.id
 
 odr:T_junction_connection-T_junction_connection.contactPoint
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_contactPoint ;
         sh:maxCount  1 ;
         sh:path      odr:T_junction_connection.contactPoint .
 
@@ -944,7 +944,7 @@ odr:T_road_objects_object_surface_CRG-T_road_objects_object_surface_CRG.hideRoad
 
 odr:T_road_lateralProfile_crossSectionSurface_strip-T_road_lateralProfile_crossSectionSurface_strip.mode
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_strip_mode ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lateralProfile_crossSectionSurface_strip.mode .
 
@@ -987,7 +987,7 @@ odr:T_road_lateralProfile_crossSectionSurface_strip-T_road_lateralProfile_crossS
 
 odr:T_road_objects_object_parkingSpace-T_road_objects_object_parkingSpace.access
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_objects_object_parkingSpace_access ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_objects_object_parkingSpace.access .
@@ -1000,7 +1000,7 @@ odr:T_road_signals_vmsBoard
 
 odr:T_road_railroad_switch_sideTrack-T_road_railroad_switch_sideTrack.dir
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_elementDir ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_railroad_switch_sideTrack.dir .
@@ -1054,7 +1054,7 @@ odr:T_header-T_header.vendor
 
 odr:T_road_objects_object_markings_marking-T_road_objects_object_markings_marking.side
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_sideType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object_markings_marking.side .
 
@@ -1066,7 +1066,7 @@ odr:T_road_surface_CRG
 
 odr:T_junction_connection_laneLink-T_junction_connection_laneLink.fromLayer
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_layerType ;
         sh:maxCount  1 ;
         sh:path      odr:T_junction_connection_laneLink.fromLayer .
 
@@ -1151,7 +1151,7 @@ odr:T_road_objects_object_material
 
 odr:T_road_link_predecessorSuccessor-T_road_link_predecessorSuccessor.contactPoint
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_contactPoint ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_link_predecessorSuccessor.contactPoint .
 
@@ -1186,7 +1186,7 @@ odr:T_road_signals_signal-T_road_signals_signal.roll
 
 odr:T_junction_virtual-T_junction_virtual.orientation
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_orientation ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_virtual.orientation .
@@ -1232,7 +1232,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark
 
 odr:T_road_objects_bridge-T_road_objects_bridge.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_bridgeType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_objects_bridge.type .
@@ -1420,7 +1420,7 @@ odr:T_junction_virtual-T_junction_virtual.priority
 
 odr:T_road_objects_objectReference-T_road_objects_objectReference.orientation
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_orientation ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_objects_objectReference.orientation .
@@ -1586,7 +1586,7 @@ odr:T_junction_crossPath-T_junction_crossPath.crossingRoad
 
 odr:T_road_objects_object_outlines_outline-T_road_objects_object_outlines_outline.laneType
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_laneType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object_outlines_outline.laneType .
 
@@ -1672,14 +1672,14 @@ odr:T_road_signals_signal-T_road_signals_signal.reference
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane_roadMark.color
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkColor ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_roadMark.color .
 
 odr:T_road_signals_signal-T_road_signals_signal.orientation
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_orientation ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_signals_signal.orientation .
@@ -1712,7 +1712,7 @@ odr:T_signals_semantics_prohibited-T_signals_semantics_prohibited.person
 
 odr:T_junction_direct-T_junction_direct.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_junction_type ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_direct.type .
@@ -1767,7 +1767,7 @@ odr:T_junction_boundary_segment_lane
 
 odr:T_road_surface_CRG-T_road_surface_CRG.purpose
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_surface_CRG_purpose ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_surface_CRG.purpose .
 
@@ -1792,7 +1792,7 @@ odr:T_station_platform_segment-T_station_platform_segment.sEnd
 
 odr:T_junction_virtual-T_junction_virtual.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_junction_type ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_virtual.type .
@@ -1818,7 +1818,7 @@ odr:T_road_elevationProfile_elevation-T_road_elevationProfile_elevation.s
 
 odr:T_road_objects_object_outlines_outline-T_road_objects_object_outlines_outline.fillType
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_outlineFillType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object_outlines_outline.fillType .
 
@@ -1919,7 +1919,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line-T_road_lanes_laneSe
 
 odr:T_road_lanes_laneSection_lr_lane_access_restriction-T_road_lanes_laneSection_lr_lane_access_restriction.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_accessRestrictionType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lr_lane_access_restriction.type .
@@ -1992,7 +1992,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway-T_road_lanes_laneSection_lcr
 
 odr:T_signals_semantics_supplementaryTime-T_signals_semantics_supplementaryTime.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_signals_semantics_supplementaryTime ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_supplementaryTime.type .
@@ -2018,7 +2018,7 @@ odr:T_road_lateralProfile_superelevation-T_road_lateralProfile_superelevation.s
 
 odr:T_road_surface_CRG-T_road_surface_CRG.orientation
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_direction ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_surface_CRG.orientation .
@@ -2054,7 +2054,7 @@ odr:T_road_objects_objectReference-T_road_objects_objectReference.zOffset
 
 odr:T_station-T_station.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_station_type ;
         sh:maxCount  1 ;
         sh:path      odr:T_station.type .
 
@@ -2122,7 +2122,7 @@ odr:T_junction_elevationGrid-T_junction_elevationGrid.sStart
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane_roadMark.weight
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkWeight ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_roadMark.weight .
 
@@ -2148,7 +2148,7 @@ odr:T_junction_predecessorSuccessor-T_junction_predecessorSuccessor.elementS
 
 odr:T_junction_connection_laneLink-T_junction_connection_laneLink.toLayer
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_layerType ;
         sh:maxCount  1 ;
         sh:path      odr:T_junction_connection_laneLink.toLayer .
 
@@ -2172,7 +2172,7 @@ odr:T_road_lateralProfile_crossSectionSurface_strip_constant-T_road_lateralProfi
 
 odr:T_junction_predecessorSuccessor-T_junction_predecessorSuccessor.elementDir
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_elementDir ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_predecessorSuccessor.elementDir .
@@ -2530,7 +2530,7 @@ odr:T_station_platform_segment
 
 odr:T_road_objects_tunnel-T_road_objects_tunnel.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_tunnelType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_objects_tunnel.type .
@@ -2560,7 +2560,7 @@ odr:T_road_lateralProfile_crossSectionSurface_strip_width
 
 odr:T_road_surface_CRG-T_road_surface_CRG.mode
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_surface_CRG_mode ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_surface_CRG.mode .
@@ -2574,7 +2574,7 @@ odr:T_road_objects_object_outlines_outline_cornerLocal-T_road_objects_object_out
 
 odr:T_signals_semantics_lane-T_signals_semantics_lane.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_signals_semantics_lane ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_lane.type .
@@ -2599,7 +2599,7 @@ odr:T_road_objects_object_laneValidity
 
 odr:T_junction_common-T_junction_common.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_junction_type ;
         sh:maxCount  1 ;
         sh:path      odr:T_junction_common.type .
 
@@ -2699,14 +2699,14 @@ odr:T_junction_boundary_segment_joint-T_junction_boundary_segment_joint.transiti
 
 odr:T_junction_crossing-T_junction_crossing.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_junction_type ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_crossing.type .
 
 odr:T_road_railroad_switch_mainTrack-T_road_railroad_switch_mainTrack.dir
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_elementDir ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_railroad_switch_mainTrack.dir .
@@ -2780,7 +2780,7 @@ odr:T_road_signals_vmsBoard-T_road_signals_vmsBoard.displayArea
 
 odr:T_signals_semantics_vehicle-T_signals_semantics_vehicle.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_vehicleCategory ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_vehicle.type .
@@ -2851,7 +2851,7 @@ odr:T_road_objects_object_outlines_outline-T_road_objects_object_outlines_outlin
 
 odr:T_road-T_road.rule
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_trafficRule ;
         sh:maxCount  1 ;
         sh:path      odr:T_road.rule .
 
@@ -2863,7 +2863,7 @@ odr:T_road_objects_object-T_road_objects_object.name
 
 odr:T_road_lanes_laneSection_lr_lane-T_road_lanes_laneSection_lr_lane.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_laneType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lr_lane.type .
@@ -2920,7 +2920,7 @@ odr:T_road_lateralProfile_superelevation-T_road_lateralProfile_superelevation.d
 
 odr:T_road_lanes_laneSection_center_lane-T_road_lanes_laneSection_center_lane.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_laneType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_center_lane.type .
 
@@ -2964,7 +2964,7 @@ odr:T_road_signals_signal_reference-T_road_signals_signal_reference.elementId
 
 odr:T_signals_semantics_supplementaryEnvironment-T_signals_semantics_supplementaryEnvironment.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_signals_semantics_supplementaryEnvironment ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_supplementaryEnvironment.type .
@@ -2985,7 +2985,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway-T_road_lanes_laneSection_lcr
 
 odr:T_road_objects_object_markings_marking-T_road_objects_object_markings_marking.color
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkColor ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_objects_object_markings_marking.color .
@@ -2998,7 +2998,7 @@ odr:T_road_lateralProfile_crossSectionSurface_strip_width-T_road_lateralProfile_
 
 odr:T_junction_boundary_segment_joint-T_junction_boundary_segment_joint.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_junction_segment_type ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_boundary_segment_joint.type .
@@ -3092,7 +3092,7 @@ odr:T_road_signals_board-T_road_signals_board.validity
 
 odr:T_signals_semantics_person-T_signals_semantics_person.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_personCategory ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_person.type .
@@ -3120,14 +3120,14 @@ odr:T_road_lanes_laneSection_lr_lane_border-T_road_lanes_laneSection_lr_lane_bor
 
 odr:T_junction_connection_virtual-T_junction_connection_virtual.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_connection_type ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junction_connection_virtual.type .
 
 odr:T_road_objects_object_laneValidity-T_road_objects_object_laneValidity.layer
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_layerType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object_laneValidity.layer .
 
@@ -3152,7 +3152,7 @@ odr:T_road_objects_objectReference-T_road_objects_objectReference.validLength
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane_roadMark.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_roadMark.type .
@@ -3202,7 +3202,7 @@ odr:T_header-T_header.license
 
 odr:T_header_roadRegulation-T_header_roadRegulation.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_header_roadRegulation.type .
@@ -3226,7 +3226,7 @@ odr:T_road_signals_board-T_road_signals_board.reference
 
 odr:T_road_link_predecessorSuccessor-T_road_link_predecessorSuccessor.elementDir
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_elementDir ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_link_predecessorSuccessor.elementDir .
 
@@ -3325,7 +3325,7 @@ odr:T_road_lanes_laneSection_lr_lane_material
 
 odr:T_road_objects_object_markings_marking-T_road_objects_object_markings_marking.weight
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkWeight ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object_markings_marking.weight .
 
@@ -3403,7 +3403,7 @@ odr:T_road_objects_object_outlines_outline_curveLocal-T_road_objects_object_outl
 
 odr:T_signals_semantics_supplementaryDistance-T_signals_semantics_supplementaryDistance.unit
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_unitDistance ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_supplementaryDistance.unit .
@@ -3485,7 +3485,7 @@ odr:T_road_planView_geometry-T_road_planView_geometry.paramPoly3
 
 odr:T_signals_semantics_priority-T_signals_semantics_priority.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_signals_semantics_priority ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_priority.type .
@@ -3499,7 +3499,7 @@ odr:T_junction_crossPath_laneLink-T_junction_crossPath_laneLink.to
 
 odr:T_road_signals_vmsBoard-T_road_signals_vmsBoard.displayType
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_signals_displayType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_signals_vmsBoard.displayType .
@@ -3690,7 +3690,7 @@ odr:T_road_signals_displayArea-T_road_signals_displayArea.height
 
 odr:T_road_signals_signal-T_road_signals_signal.dynamic
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:T_yesNo ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_signals_signal.dynamic .
@@ -3754,7 +3754,7 @@ odr:T_road_signals_signal_positionInertial-T_road_signals_signal_positionInertia
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane_roadMark.laneChange
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_lanes_laneSection_lcr_lane_roadMark_laneChange ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_roadMark.laneChange .
 
@@ -3767,7 +3767,7 @@ odr:T_road_objects_object_outlines_outline_curveLocal-T_road_objects_object_outl
 
 odr:T_road_lanes_laneSection_lr_lane-T_road_lanes_laneSection_lr_lane.direction
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_lane_direction ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lr_lane.direction .
 
@@ -3792,7 +3792,7 @@ odr:T_junction_predecessorSuccessor-T_junction_predecessorSuccessor.elementType
 
 odr:T_road_lanes_laneSection_lr_lane-T_road_lanes_laneSection_lr_lane.advisory
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_laneAdvisory ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lr_lane.advisory .
 
@@ -3923,7 +3923,7 @@ odr:T_road_lanes_laneSection_lr_lane_border-T_road_lanes_laneSection_lr_lane_bor
 
 odr:T_junctionGroup-T_junctionGroup.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_junctionGroup_type ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_junctionGroup.type .
@@ -4028,7 +4028,7 @@ odr:T_header_defaultRegulations-T_header_defaultRegulations.signalRegulations
 
 odr:T_junction_connection_virtual_default-T_junction_connection_virtual_default.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_connection_type ;
         sh:maxCount  1 ;
         sh:path      odr:T_junction_connection_virtual_default.type .
 
@@ -4090,7 +4090,7 @@ odr:T_road_surface_CRG-T_road_surface_CRG.sOffset
 
 odr:T_signals_semantics_speed-T_signals_semantics_speed.unit
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_unitSpeed ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_signals_semantics_speed.unit .
@@ -4133,7 +4133,7 @@ odr:T_signals_semantics-T_signals_semantics.parking
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line-T_road_lanes_laneSection_lcr_lane_roadMark_type_line.color
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkColor ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.color .
 
@@ -4231,7 +4231,7 @@ odr:T_road_objects_object_skeleton_polyline_vertexRoad-T_road_objects_object_ske
 
 odr:T_road_objects_object-T_road_objects_object.dynamic
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:T_yesNo ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_objects_object.dynamic .
 
@@ -4321,7 +4321,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line-T_road_lanes_laneSectio
 
 odr:T_road_planView_geometry_paramPoly3-T_road_planView_geometry_paramPoly3.pRange
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_paramPoly3_pRange ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_planView_geometry_paramPoly3.pRange .
@@ -4509,7 +4509,7 @@ odr:T_road_lateralProfile_crossSectionSurface_tOffset
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line-T_road_lanes_laneSection_lcr_lane_roadMark_type_line.rule
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkRule ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.rule .
 
@@ -4570,7 +4570,7 @@ odr:T_header_signalRegulation-T_header_signalRegulation.subtype
 
 odr:T_station_platform_segment-T_station_platform_segment.side
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_station_platform_segment_side ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_station_platform_segment.side .
@@ -4717,7 +4717,7 @@ odr:T_signalGroup_vmsBoardReference-T_signalGroup_vmsBoardReference.groupIndex
 
 odr:T_road_railroad_switch-T_road_railroad_switch.position
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_railroad_switch_position ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_railroad_switch.position .
@@ -4778,7 +4778,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line-T_road_lanes_laneSectio
 
 odr:T_road_signals_signal_reference-T_road_signals_signal_reference.elementType
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_road_signals_signal_reference_elementType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_signals_signal_reference.elementType .
@@ -4834,7 +4834,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line
 
 odr:T_road_lanes_laneSection_lr_lane_speed-T_road_lanes_laneSection_lr_lane_speed.unit
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_unitSpeed ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lr_lane_speed.unit .
 
@@ -4853,7 +4853,7 @@ odr:T_physicalPosition-T_physicalPosition.positionInertial
 
 odr:T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor-T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor.layer
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_layerType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor.layer .
 
@@ -4884,7 +4884,7 @@ odr:T_road_lanes_laneSection_left-T_road_lanes_laneSection_left.lane
 
 odr:T_road_objects_object_borders_border-T_road_objects_object_borders_border.type
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_borderType ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_road_objects_object_borders_border.type .
@@ -4903,7 +4903,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane
 
 odr:T_road_lanes-T_road_lanes.layer
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_layerType ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes.layer .
 
@@ -4952,7 +4952,7 @@ odr:T_road  rdf:type          rdfs:Class , sh:NodeShape ;
 
 odr:T_dataQuality_RawData-T_dataQuality_RawData.source
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_dataQuality_RawData_Source ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:path      odr:T_dataQuality_RawData.source .
@@ -5174,7 +5174,7 @@ odr:T_road_lanes_laneSection-T_road_lanes_laneSection.s
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line-T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.rule
         rdf:type     sh:PropertyShape ;
-        sh:class     owl:Class ;
+        sh:class     odr:E_roadMarkRule ;
         sh:maxCount  1 ;
         sh:path      odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.rule .
 

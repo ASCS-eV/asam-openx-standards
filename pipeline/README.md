@@ -79,6 +79,46 @@ SHA-256 of the source model, the configuration, and the rules, along with the Sh
 commit. That is what makes a difference in the output diagnosable: it tells a reviewer whether
 the model changed, the configuration changed, or the toolchain did.
 
+### Reading the ShapeChange log
+
+`{OUT}/opendrive-owl-log.xml` is written on every run, and **a successful exit code does not
+mean everything in the model was encoded**. ShapeChange reports a class it cannot encode as a
+warning and carries on:
+
+> `Unsupported class category (enumeration). Ensure that the encoding rule includes a rule
+> that enables the conversion of this type of class – unless your intention is to exclude
+> this class category.`
+
+This repository shipped an OpenDRIVE ontology with **none** of the model's 56 enumerations in
+it, because that warning appeared 55 times and nobody read it. The output was 530 KB of
+plausible-looking OWL, so nothing else gave the omission away. When changing the encoding
+rule, check the log for warnings before trusting the artifact:
+
+```bash
+grep -c 'Unsupported class category' .pipeline-work/owl/opendrive-owl-log.xml
+```
+
+### Coverage of the current encoding
+
+| Model construct | Count | In the OWL | In the SHACL |
+|---|---:|---|---|
+| Classes | 238 | yes | yes |
+| Enumerations | 56 | 55, each an `rdfs:Datatype` with `owl:oneOf`. The 56th, `t_bool`, is mapped to `xsd:boolean` by `mapentries-asam.xml` | **no** — see below |
+| Enumeration literals | 292 | 290. The two absent are `t_bool`'s `true` and `false`, which the mapping turns into `xsd:boolean` | **no** |
+| Cardinality constraints | — | 908 restrictions | 908 `sh:minCount`/`sh:maxCount` |
+
+Names are normalised by ShapeChange, so the model's `e_laneType` appears as
+`odr:E_laneType`. Checking for a model name verbatim will report a false absence.
+
+The enumerations reach the OWL but not the SHACL: the owl2shacl rulesets contain no rule
+mapping `owl:oneOf` to `sh:in`, so the generated shapes constrain an enumerated attribute's
+datatype but not its value set. Closing that gap means contributing an `owl:oneOf` → `sh:in`
+rule upstream to owl2shacl, not post-processing the output here.
+
+Until then, consumers that need enumerated **value** constraints — such as the
+`ontology-management-base` `sh:in` lists — must derive them from the normative XSD in
+`standards/<std>/schema/` rather than from these shapes.
+
 ## The configuration, stage by stage
 
 ### `opendrive-owl.config.xml` — ShapeChange, OWL target
@@ -92,10 +132,24 @@ the model changed, the configuration changed, or the toolchain did.
   first depends on where the tool lives; the model and output paths are repository-relative so
   the configuration reads the same for everyone.
 
+Two rules deserve naming, because getting them wrong fails quietly:
+
+- `rule-owl-prop-multiplicityAsQualifiedCardinalityRestriction` turns a UML multiplicity
+  into a cardinality restriction, and is what ShapeChange#756 corrected.
+- `rule-owl-cls-iso191502Enumeration` encodes each enumeration as an `rdfs:Datatype` with
+  `owl:oneOf` over its literals. The alternative, `rule-owl-cls-enumerationAsCodelist`, is
+  deliberately **not** used: it makes an enumeration fall through to the code list
+  encoding, which only applies when `rule-owl-cls-codelist-191502` or `-external` is also
+  present. With neither, every enumeration reaches the default branch and is dropped — see
+  [Reading the ShapeChange log](#reading-the-shapechange-log).
+
 ### `mapentries-asam.xml` — type mapping
 
 Maps the ASAM primitive types onto XSD datatypes. Without it, ShapeChange treats them as
 unknown classes and the cardinality restrictions land on `owl:Class` rather than a data range.
+
+`t_bool` is mapped to `xsd:boolean` here rather than encoded as an enumeration, which is
+why 55 of the model's 56 enumerations are encoded and one is not.
 
 ### owl2shacl rules — the SHACL stage
 
@@ -110,9 +164,12 @@ changes are required — the script is a path resolver and a runner.
 
 ## Not here yet
 
+- **Enumerated value constraints in the SHACL.** The OWL carries `owl:oneOf`; owl2shacl has
+  no rule that turns it into `sh:in`. See the coverage table above.
 - **The XSD equivalence oracle.** ASAM ships normative XSDs alongside the UML; validating the
   generated SHACL against instance data that the XSD also accepts is the independent check
-  that the derivation is faithful. That belongs in this pipeline as a third stage.
+  that the derivation is faithful. That belongs in this pipeline as a third stage. It is also
+  what would have caught the missing enumerations without anyone reading a log.
 - **CI.** Blocked on ShapeChange#757: until a build without Enterprise Architect is possible
   upstream, a runner cannot build the tool. The generated artifacts are committed, so a CI job
   can eventually assert that regenerating them changes nothing — the same guarantee the

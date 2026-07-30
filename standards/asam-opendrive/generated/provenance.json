@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T13:30:34+00:00",
+  "generated": "2026-07-30T15:09:02+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
@@ -7,7 +7,7 @@
   },
   "configuration": {
     "path": "pipeline/opendrive-owl.config.xml",
-    "sha256": "a8b54206eb9c41f8218f4efeaa2ecb70807acf1e1328c0dd8754865ee359e6d5"
+    "sha256": "58a71fb314623b4c18d2165617be3fc47c6dbf85d76654e5058dfc15ba1d05c5"
   },
   "tools": {
     "shapechange": {
@@ -18,12 +18,12 @@
       "jar": "shacl-play-app-0.12.2-onejar.jar"
     },
     "owl2shacl_rules": {
-      "path": "/home/carlo/workspace/owl2shacl/owl2sh-closed.ttl",
+      "name": "owl2sh-closed.ttl",
       "sha256": "9c9f7795a2e929539b3e4b216786dd2a957e9812e4779ed56b421ebbecaa9b1d"
     }
   },
   "outputs": {
-    "opendrive.owl.ttl": "e02edd8dfa9be80cc489c5d7439c7622907c974efc20d3069414f7e09e13582b",
-    "opendrive.shacl.ttl": "a6a00a793fe169d42ba5a35c5299b5ceab0ef91d5a3342cdf3633aa844943b4c"
+    "opendrive.owl.ttl": "09ecc907158bf50b35c1f2639b14dd087ac3ddaad93b99c818dc314a77537743",
+    "opendrive.shacl.ttl": "9c0048bbc0d49afbf09d177f52a8077399c29d81ff6261230faa96ac2e0a0005"
   }
 }

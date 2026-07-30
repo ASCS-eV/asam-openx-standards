@@ -150,7 +150,7 @@ def generate_owl(spec: dict, classpath: str, resources: Path, out_dir: Path, wor
     return target
 
 
-def generate_shacl(owl: Path, shaclplay_jar: Path, rules: Path, out_dir: Path, artifact: str) -> Path:
+def generate_shacl(owl: Path, shaclplay_jar: Path, rules: Path, out_dir: Path, artifact: str, work: Path) -> Path:
     """Stage 2: OWL 2 → SHACL, via the SHACL Play! owl2shacl rules.
 
     ``--rules`` pins the ruleset to a known file. Without it the tool fetches the rules from
@@ -159,9 +159,37 @@ def generate_shacl(owl: Path, shaclplay_jar: Path, rules: Path, out_dir: Path, a
     """
     print("• converting OWL to SHACL with the pinned owl2shacl rules")
     target = out_dir / f"{artifact}.shacl.ttl"
+    # Runs in the work directory, not the repository root: the shacl-play application
+    # writes shacl-play-app.log into its working directory, and that log is build
+    # output, not a repository file. All paths passed to it are absolute.
     run(["java", "-jar", str(shaclplay_jar), "owl2shacl",
          "-i", str(owl), "-o", str(target), "--rules", str(rules)],
-        cwd=REPO_ROOT, what="owl2shacl conversion")
+        cwd=work, what="owl2shacl conversion")
+    return target
+
+
+def write_provenance(spec: dict, standard: str, shapechange: Path, shaclplay: Path,
+                     rules: Path, owl: Path, shacl: Path, out_dir: Path) -> Path:
+    """Record what produced these artifacts, so a diff in them can be attributed.
+
+    Tools are identified by name and content, never by the path they happened to live at:
+    an absolute path is specific to whoever ran the pipeline and says nothing about what
+    was used. The rules checksum is what makes the SHACL stage reproducible.
+    """
+    provenance = {
+        "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "standard": standard,
+        "source_model": {"path": spec["model"], "sha256": sha256(REPO_ROOT / spec["model"])},
+        "configuration": {"path": spec["config"], "sha256": sha256(REPO_ROOT / spec["config"])},
+        "tools": {
+            "shapechange": {"commit": git_describe(shapechange), "profile": "-DskipEa"},
+            "shacl_play": {"jar": shaclplay.name},
+            "owl2shacl_rules": {"name": rules.name, "sha256": sha256(rules)},
+        },
+        "outputs": {p.name: sha256(p) for p in (owl, shacl)},
+    }
+    target = out_dir / "provenance.json"
+    target.write_text(json.dumps(provenance, indent=2) + "\n")
     return target
 
 
@@ -192,26 +220,15 @@ def main() -> int:
     resources = build_shapechange(args.shapechange.resolve(), args.mvn)
     classpath = shapechange_classpath(args.shapechange.resolve(), args.mvn, work)
     owl = generate_owl(spec, classpath, resources, out_dir, work)
-    shacl = generate_shacl(owl, args.shaclplay.resolve(), args.rules.resolve(), out_dir, spec["artifact"])
+    shacl = generate_shacl(owl, args.shaclplay.resolve(), args.rules.resolve(), out_dir, spec["artifact"], work)
 
-    model = REPO_ROOT / spec["model"]
-    provenance = {
-        "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "standard": args.standard,
-        "source_model": {"path": spec["model"], "sha256": sha256(model)},
-        "configuration": {"path": spec["config"], "sha256": sha256(REPO_ROOT / spec["config"])},
-        "tools": {
-            "shapechange": {"commit": git_describe(args.shapechange.resolve()), "profile": "-DskipEa"},
-            "shacl_play": {"jar": args.shaclplay.name},
-            "owl2shacl_rules": {"path": str(args.rules), "sha256": sha256(args.rules)},
-        },
-        "outputs": {p.name: sha256(p) for p in (owl, shacl)},
-    }
-    (out_dir / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
+    provenance = write_provenance(spec, args.standard, args.shapechange.resolve(),
+                                  args.shaclplay.resolve(), args.rules.resolve(),
+                                  owl, shacl, out_dir)
 
     print(f"\n{owl.relative_to(REPO_ROOT)}   {owl.stat().st_size:,} bytes")
     print(f"{shacl.relative_to(REPO_ROOT)}   {shacl.stat().st_size:,} bytes")
-    print(f"{(out_dir / 'provenance.json').relative_to(REPO_ROOT)}")
+    print(f"{provenance.relative_to(REPO_ROOT)}")
     return 0
 
 

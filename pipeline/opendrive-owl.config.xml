@@ -51,7 +51,16 @@
           <rule name="rule-owl-cls-encode-objecttypes"/>
           <rule name="rule-owl-cls-encode-datatypes"/>
           <rule name="rule-owl-cls-encode-basictypes"/>
-          <rule name="rule-owl-cls-enumerationAsCodelist"/>
+          <!--
+            Encodes each UML enumeration as an rdfs:Datatype with owl:oneOf over its
+            literals. rule-owl-cls-enumerationAsCodelist is the alternative and is NOT
+            used: it makes the enumeration fall through to the code list encoding, which
+            only applies when rule-owl-cls-codelist-191502 or -external is also present.
+            Without one of those the class reaches the default branch and is silently
+            dropped - which is what happened to all 55 unmapped OpenDRIVE enumerations
+            until this rule replaced it. The two rules are mutually exclusive.
+          -->
+          <rule name="rule-owl-cls-iso191502Enumeration"/>
           <rule name="rule-owl-cls-generalization"/>
           <rule name="rule-owl-cls-union"/>
           <rule name="rule-owl-prop-general"/>
