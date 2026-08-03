@@ -1,2 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# ASAM member-only source deliverables (restricted distribution)
+# Markdown chapter extractions are committed; original files are not.
+standards/*/Source/
+
 # Scratch directory of scripts/generate_semantic_artifacts.py (tool builds, ShapeChange logs)
 .pipeline-work/
