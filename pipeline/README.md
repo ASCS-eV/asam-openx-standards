@@ -22,20 +22,24 @@ configuration in this directory; the script only resolves paths and runs them in
 generated artifact is wrong, exactly one of three things is wrong — the **model**, the
 **configuration**, or the **tool** — and the fix belongs there.
 
-That is why the pipeline currently depends on four upstream contributions rather than a patch
+That is why the pipeline currently depends on five upstream contributions rather than a patch
 directory. Every one of them is a general improvement, filed upstream, with the reasoning in
 the pull request:
 
 | Upstream PR | What it fixes | Why the pipeline needs it |
 |---|---|---|
 | [ShapeChange#756](https://github.com/ShapeChange/ShapeChange/pull/756) ✅ merged | Datatype qualified cardinality restrictions emitted `owl:onClass xsd:double`, which is not valid OWL 2 DL | Every typed attribute with a multiplicity |
-| [ShapeChange#757](https://github.com/ShapeChange/ShapeChange/pull/757) | `shapechange-app` could not be built without a proprietary Enterprise Architect artifact | Building the tool in CI at all |
+| [ShapeChange#757](https://github.com/ShapeChange/ShapeChange/pull/757) ✅ merged | `shapechange-app` could not be built without a proprietary Enterprise Architect artifact | Building the tool in CI at all |
 | [owl2shacl#7](https://github.com/sparna-git/owl2shacl/pull/7) | Data-property cardinality was dropped when converting OWL to SHACL | See the numbers below |
 | [shacl-play#344](https://github.com/sparna-git/shacl-play/pull/344) | Conversion rules were fetched from a moving branch at run time | Reproducibility, and offline runs |
+| [shacl-play#345](https://github.com/sparna-git/shacl-play/pull/345) | An input that could not be read produced an empty, plausible-looking output instead of failing | Trusting that a run with no errors actually converted something |
 
-Until they land, each tool is used from a `feature/asam-pipeline` branch that carries exactly
-those commits, one per open pull request, on top of upstream. When a pull request merges, its
-commit disappears from the branch on the next rebase.
+Both ShapeChange fixes are merged upstream, into `next`, its default branch — plain upstream
+ShapeChange needs no fork and no branch switch any more (see [Running it](#running-it)).
+owl2shacl#7 and shacl-play#344/#345 are still open, so those two tools are still built from a
+`feature/asam-pipeline` branch on the `ASCS-eV` fork that carries exactly those commits on top
+of upstream. When a pull request merges, its commit disappears from the branch on the next
+rebase.
 
 ### What owl2shacl#7 is worth here
 
@@ -55,7 +59,7 @@ rules rather than fetching whatever the branch holds today.
 You need JDK 21, Maven, and checkouts of the two tools:
 
 ```bash
-git clone https://github.com/ASCS-eV/ShapeChange.git   && git -C ShapeChange switch feature/asam-pipeline
+git clone https://github.com/ShapeChange/ShapeChange.git  # #756 and #757 both merged upstream
 git clone https://github.com/ASCS-eV/shacl-play.git    && git -C shacl-play  switch feature/asam-pipeline
 git clone https://github.com/ASCS-eV/owl2shacl.git     && git -C owl2shacl   switch feature/asam-pipeline
 
@@ -105,7 +109,12 @@ grep -c 'Unsupported class category' .pipeline-work/owl/opendrive-owl-log.xml
 | Classes | 238 | yes | yes |
 | Enumerations | 56 | 55, each an `rdfs:Datatype` with `owl:oneOf`. The 56th, `t_bool`, is mapped to `xsd:boolean` by `mapentries-asam.xml` | **no** — see below |
 | Enumeration literals | 292 | 290. The two absent are `t_bool`'s `true` and `false`, which the mapping turns into `xsd:boolean` | **no** |
-| Cardinality constraints | — | 908 restrictions | 908 `sh:minCount`/`sh:maxCount` |
+| Cardinality constraints | — | 585 `owl:Restriction` nodes (324 exact, 33 minimum-only, 228 maximum-only) | 908 `sh:minCount`/`sh:maxCount` triples |
+
+The OWL and SHACL numbers count different things, not the same restrictions twice: an exact
+cardinality (`owl:qualifiedCardinality`) is **one** OWL restriction node but becomes **two**
+SHACL triples, `sh:minCount` and `sh:maxCount` with the same value. That accounts for most of
+the gap between 585 and 908 — read "908" as a SHACL triple count, not an OWL restriction count.
 
 Names are normalised by ShapeChange, so the model's `e_laneType` appears as
 `odr:E_laneType`. Checking for a model name verbatim will report a false absence.
@@ -170,8 +179,12 @@ changes are required — the script is a path resolver and a runner.
   generated SHACL against instance data that the XSD also accepts is the independent check
   that the derivation is faithful. That belongs in this pipeline as a third stage. It is also
   what would have caught the missing enumerations without anyone reading a log.
-- **CI.** Blocked on ShapeChange#757: until a build without Enterprise Architect is possible
-  upstream, a runner cannot build the tool. The generated artifacts are committed, so a CI job
-  can eventually assert that regenerating them changes nothing — the same guarantee the
-  ontology-management-base repository already applies to its own generated files.
+- **CI.** No longer blocked on ShapeChange: #757 merged upstream, so a runner can build it
+  today with a plain clone of `ShapeChange/ShapeChange` and no Enterprise Architect
+  installation. owl2shacl#7 and shacl-play#344/#345 are still open, so a CI job would have to
+  build those two tools from the `ASCS-eV` fork's `feature/asam-pipeline` branch rather than a
+  released version — workable, but not what a CI job should depend on long-term. The generated
+  artifacts are committed, so a CI job can assert that regenerating them changes nothing — the
+  same guarantee the ontology-management-base repository already applies to its own generated
+  files.
 - **OpenSCENARIO XML.** The model is committed; the configuration is not written yet.

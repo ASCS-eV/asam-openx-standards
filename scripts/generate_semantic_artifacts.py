@@ -103,7 +103,8 @@ def build_shapechange(home: Path, mvn: str) -> Path:
     target and the SCXML reader both live in shapechange-core, and EA model readers are
     resolved by class name at runtime, so nothing needed here depends on EA.
 
-    Requires ShapeChange/ShapeChange#757; without it the reactor stops at shapechange-ea.
+    Requires ShapeChange/ShapeChange#757 (merged upstream into `next`); without it the
+    reactor stops at shapechange-ea.
     """
     print("• building ShapeChange (-DskipEa)")
     run([mvn, "-q", "-DskipEa", "install", "-DskipTests"], cwd=home, what="ShapeChange build")
