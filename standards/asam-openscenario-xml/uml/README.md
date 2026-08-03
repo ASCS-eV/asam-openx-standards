@@ -19,9 +19,34 @@ Redistributed under the ASAM Unrestricted Distribution Clause; see the repositor
 | Standard | ASAM OpenSCENARIO® XML |
 | Version | **V1.4.0** — matches the normative schema in [`../schema/`](../README.md) |
 | Origin | `OpenSCENARIO.qeax` (Enterprise Architect project) |
-| Exported by | ShapeChange 4.0.0, `ModelExport` target, `inputModelType=EA7`, `zipOutput=true`, `sortedSchemaOutput=true` |
-| Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.0.0"` |
+| Exported by | ShapeChange built from source at commit [`1a16d4af3336`](https://github.com/ShapeChange/ShapeChange/commit/1a16d4af333627059d12d271f588e903e6ecb172) (`next` branch, 2026-07-30), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true`, `sortedSchemaOutput=true` |
+| Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.1.0-SNAPSHOT"` |
 | Classes | 343 |
+
+### Why a commit, not a numbered ShapeChange release
+
+The `4.0.0` release cannot build the EA/`eaapi` module from source at all — that only
+became possible once [ShapeChange#756](https://github.com/ShapeChange/ShapeChange/pull/756)
+and [#757](https://github.com/ShapeChange/ShapeChange/pull/757) merged, making the module
+an optional Maven profile (`ea`, active unless `-DskipEa` is passed). Both are on `next`
+but not yet in a numbered release, so we cite the exact commit above instead. We verified
+it changes nothing in this export except the producer-version string in the header — see
+[`export-model-to-scxml.config.xml`](export-model-to-scxml.config.xml) and
+[Reproducing the export](#reproducing-the-export-requires-ea-once) below for the full
+from-source build. The maintainer has indicated a `4.1.0` release is planned; we intend to
+switch this citation to that release once it ships.
+
+### Why the export config declares a `PackageInfo` override
+
+Unlike OpenDRIVE, the OpenSCENARIO XML schema
+([`../schema/OpenSCENARIO.xsd`](../schema/OpenSCENARIO.xsd)) declares no XML
+`targetNamespace` at all, so its EA model has no package carrying that tagged value —
+ShapeChange's schema detection has nothing to find and aborts with "None of the packages
+... is a schema selected for processing". `export-model-to-scxml.config.xml` therefore
+adds a `<PackageInfo packageName="OpenSCENARIO" ns="..."/>` override to select that
+package regardless. The `ns` value is a ShapeChange bookkeeping placeholder only: it is
+not written into the exported model (`openscenario.scxml` contains zero occurrences of
+`targetNamespace`, verified), so it has no bearing on the standard itself.
 
 ### How the version is established
 
@@ -66,9 +91,9 @@ design, and comparing them byte-for-byte will report a difference that is not on
 
 | Artifact | Bytes | CRLF line endings | SHA-256 (truncated) |
 |---|---:|---:|---|
-| `openscenario.scxml` | 1,925,499 | 0 | `fd1eeb32c8da4e3d…` |
-| `ModelExport.xml` inside the zip | 1,962,824 | 37,325 | `4e928434a2806582…` |
-| `openscenario.scxml.zip` | — | — | `b8f9c111345fe32b…` |
+| `openscenario.scxml` | 1,925,508 | 0 | `2fcea5c4a5fc91e8…` |
+| `ModelExport.xml` inside the zip | 1,962,833 | 37,325 | `39339125d258399e…` |
+| `openscenario.scxml.zip` | 118,375 | — | `2b6aa53090a3cf4b…` |
 
 The 37,325-byte difference is exactly one `\r` per line. Use `openscenario.scxml` unless
 a tool requires the zip.
@@ -82,13 +107,39 @@ OWL→SHACL steps.
 
 ## Reproducing the export (requires EA once)
 
-Only this step needs EA. Everything downstream consumes the committed `*.scxml`:
+Only this step needs EA. Everything downstream consumes the committed `*.scxml`.
+
+`eaapi.jar` (the EA Java API) is not published to Maven Central — it ships with your EA
+installation and must be installed into your local Maven repository once, using the exact
+coordinates the ShapeChange `ea` module expects:
 
 ```bash
-java -jar ShapeChange-4.0.0.jar -c export-model-to-scxml.config.xml \
+mvn install:install-file \
+    -Dfile="C:/Program Files/Sparx Systems/EA/Java API/eaapi.jar" \
+    -DgroupId=org.sparx -DartifactId=eaapi -Dversion=17.0.1704 -Dpackaging=jar
+```
+
+Build ShapeChange from source at the commit in the provenance table above (the `ea`
+Maven profile is active by default and bundles the EA module using the `eaapi` installed
+above):
+
+```bash
+git clone https://github.com/ShapeChange/ShapeChange.git
+cd ShapeChange
+git checkout 1a16d4af333627059d12d271f588e903e6ecb172
+mvn install
+```
+
+This produces `shapechange-app/target/ShapeChange-4.1.0-SNAPSHOT.zip`; unzip it, then run
+the export. The native EA↔Java bridge DLL (`SSJavaCOM64.dll`) lives in the EA installation,
+not in ShapeChange's own distribution, so `-Djava.library.path` must point there:
+
+```bash
+java -Djava.library.path="C:/Program Files/Sparx Systems/EA/Java API" \
+     -jar ShapeChange-4.1.0-SNAPSHOT.jar -c export-model-to-scxml.config.xml \
      -x "$inputFile$" "C:/path/to/OpenSCENARIO.qeax"
 ```
 
-This writes `scxml-out/model_export.zip`; unzip to obtain the SCXML, and normalise its
+This writes `scxml-out/INPUT/ModelExport.zip`; unzip to obtain the SCXML, and normalise its
 line endings to LF before committing. Adjust the `xi:include` path in the config to your
-local ShapeChange installation.
+local ShapeChange build's `config/StandardAliases.xml`.

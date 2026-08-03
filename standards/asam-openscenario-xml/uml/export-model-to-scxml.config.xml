@@ -8,14 +8,30 @@
   XSD) consumes WITHOUT EA.
 
   Run (override the input .qeax on the command line):
-    java -jar ShapeChange-4.0.0.jar -c export-model-to-scxml.config.xml \
+    java -Djava.library.path="C:/Program Files/Sparx Systems/EA/Java API" \
+         -jar ShapeChange-4.1.0-SNAPSHOT.jar -c export-model-to-scxml.config.xml \
          -x "$inputFile$" "C:/path/to/OpenSCENARIO.qeax"
 
-  The ModelExport target writes scxml-out/model_export.zip (zipOutput=true) and, when
-  unzipped, the plain SCXML document used as the source-of-truth open model.
+  ShapeChange must be built from source (see the "Reproducing the export" section of
+  ../README.md for the exact commit, the eaapi Maven install step, and why a commit is
+  cited rather than the 4.0.0 release).
 
-  Note: the xi:include below points into your local ShapeChange installation; adjust
-  the path to match where ShapeChange is installed.
+  The ModelExport target writes scxml-out/INPUT/ModelExport.zip (zipOutput=true) and,
+  when unzipped, the plain SCXML document used as the source-of-truth open model.
+
+  Note: the xi:include below points into your local ShapeChange build's config
+  directory; adjust the path to match where you built/unzipped ShapeChange.
+
+  Note on the <packages>/<PackageInfo> block below: unlike ASAM OpenDRIVE, the ASAM
+  OpenSCENARIO XML schema (../schema/OpenSCENARIO.xsd) declares no XML targetNamespace
+  at all, so the EA model has no package tagged with one - ShapeChange's schema
+  detection ("None of the packages ... is a schema selected for processing") has
+  nothing to find. The PackageInfo override below tells ShapeChange to treat the
+  "OpenSCENARIO" package as the application schema regardless. Its `ns` value is a
+  ShapeChange-internal bookkeeping placeholder only: it selects the schema for
+  processing but is not written into the exported model (verified: the committed
+  openscenario.scxml contains zero occurrences of "targetNamespace"), so it has no
+  bearing on the standard itself.
 -->
 <ShapeChangeConfiguration
     xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
@@ -30,7 +46,12 @@
     <parameter name="publicOnly" value="false"/>
     <parameter name="checkingConstraints" value="disabled"/>
     <parameter name="sortedSchemaOutput" value="true"/>
-    <xi:include href="file:///C:/Program%20Files/ShapeChange-4.0.0/config/StandardAliases.xml"/>
+    <xi:include href="file:///C:/ShapeChange/config/StandardAliases.xml"/>
+    <packages>
+      <PackageInfo packageName="OpenSCENARIO"
+          ns="https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_XML/v1.4.0/"
+          nsabr="osc"/>
+    </packages>
   </input>
   <log>
     <parameter name="reportLevel" value="INFO"/>

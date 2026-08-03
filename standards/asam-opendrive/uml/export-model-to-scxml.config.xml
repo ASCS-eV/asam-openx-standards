@@ -8,14 +8,19 @@
   XSD) consumes WITHOUT EA.
 
   Run (override the input .qeax on the command line):
-    java -jar ShapeChange-4.0.0.jar -c export-model-to-scxml.config.xml \
+    java -Djava.library.path="C:/Program Files/Sparx Systems/EA/Java API" \
+         -jar ShapeChange-4.1.0-SNAPSHOT.jar -c export-model-to-scxml.config.xml \
          -x "$inputFile$" "C:/path/to/ASAM_OpenDRIVE.qeax"
 
-  The ModelExport target writes scxml-out/model_export.zip (zipOutput=true) and, when
-  unzipped, the plain SCXML document used as the source-of-truth open model.
+  ShapeChange must be built from source (see the "Reproducing the export" section of
+  ../README.md for the exact commit, the eaapi Maven install step, and why a commit is
+  cited rather than the 4.0.0 release).
 
-  Note: the xi:include below points into your local ShapeChange installation; adjust
-  the path to match where ShapeChange is installed.
+  The ModelExport target writes scxml-out/INPUT/ModelExport.zip (zipOutput=true) and,
+  when unzipped, the plain SCXML document used as the source-of-truth open model.
+
+  Note: the xi:include below points into your local ShapeChange build's config
+  directory; adjust the path to match where you built/unzipped ShapeChange.
 -->
 <ShapeChangeConfiguration
     xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
@@ -30,7 +35,7 @@
     <parameter name="publicOnly" value="false"/>
     <parameter name="checkingConstraints" value="disabled"/>
     <parameter name="sortedSchemaOutput" value="true"/>
-    <xi:include href="file:///C:/Program%20Files/ShapeChange-4.0.0/config/StandardAliases.xml"/>
+    <xi:include href="file:///C:/ShapeChange/config/StandardAliases.xml"/>
   </input>
   <log>
     <parameter name="reportLevel" value="INFO"/>

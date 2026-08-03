@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sc:Model xsi:schemaLocation="http://shapechange.net/model http://shapechange.net/resources/schema/ShapeChangeExportedModel.xsd" encoding="UTF-8" scxmlProducer="ShapeChange" scxmlProducerVersion="4.0.0" xmlns:sc="http://shapechange.net/model" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<sc:Model xsi:schemaLocation="http://shapechange.net/model http://shapechange.net/resources/schema/ShapeChangeExportedModel.xsd" encoding="UTF-8" scxmlProducer="ShapeChange" scxmlProducerVersion="4.1.0-SNAPSHOT" xmlns:sc="http://shapechange.net/model" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <sc:packages>
     <sc:Package editable="false">
       <sc:name>Model</sc:name>
       <sc:id>P2</sc:id>
       <sc:packages>
-        <sc:Package>
+        <sc:Package editable="false">
           <sc:name>OpenDRIVE</sc:name>
           <sc:id>P3</sc:id>
           <sc:taggedValues>

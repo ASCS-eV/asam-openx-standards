@@ -16,9 +16,22 @@ Redistributed under the ASAM Unrestricted Distribution Clause; see the repositor
 | Standard | ASAM OpenDRIVE® |
 | Version | **V1.9.0** — matches the normative schema in [`../schema/`](../schema/README.md) |
 | Origin | `ASAM_OpenDRIVE.qeax` (Enterprise Architect project) |
-| Exported by | ShapeChange 4.0.0, `ModelExport` target, `inputModelType=EA7`, `zipOutput=true`, `sortedSchemaOutput=true` |
-| Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.0.0"` |
+| Exported by | ShapeChange built from source at commit [`1a16d4af3336`](https://github.com/ShapeChange/ShapeChange/commit/1a16d4af333627059d12d271f588e903e6ecb172) (`next` branch, 2026-07-30), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true`, `sortedSchemaOutput=true` |
+| Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.1.0-SNAPSHOT"` |
 | Classes | 238 |
+
+### Why a commit, not a numbered ShapeChange release
+
+The `4.0.0` release cannot build the EA/`eaapi` module from source at all — that only
+became possible once [ShapeChange#756](https://github.com/ShapeChange/ShapeChange/pull/756)
+and [#757](https://github.com/ShapeChange/ShapeChange/pull/757) merged, making the module
+an optional Maven profile (`ea`, active unless `-DskipEa` is passed). Both are on `next`
+but not yet in a numbered release, so we cite the exact commit above instead. We verified
+it changes nothing in this export except the producer-version string in the header — see
+[`export-model-to-scxml.config.xml`](export-model-to-scxml.config.xml) and
+[Reproducing the export](#reproducing-the-export-requires-ea-once) below for the full
+from-source build. The maintainer has indicated a `4.1.0` release is planned; we intend to
+switch this citation to that release once it ships.
 
 ### How the version is established
 
@@ -56,9 +69,9 @@ design, and comparing them byte-for-byte will report a difference that is not on
 
 | Artifact | Bytes | CRLF line endings | SHA-256 (truncated) |
 |---|---:|---:|---|
-| `opendrive.scxml` | 1,451,724 | 0 | `f67d96b93cd2e807…` |
-| `ModelExport.xml` inside the zip | 1,481,256 | 29,532 | `8bf5554424621bc0…` |
-| `opendrive.scxml.zip` | — | — | `ca2b9c33e245e8e7…` |
+| `opendrive.scxml` | 1,451,750 | 0 | `02648f53ab50e34a…` |
+| `ModelExport.xml` inside the zip | 1,481,282 | 29,532 | `3c377b7b20346703…` |
+| `opendrive.scxml.zip` | 77,472 | — | `bb2f8d6769dd4843…` |
 
 The 29,532-byte difference is exactly one `\r` per line. Use `opendrive.scxml` unless a
 tool requires the zip.
@@ -72,13 +85,39 @@ OWL→SHACL steps.
 
 ## Reproducing the export (requires EA once)
 
-Only this step needs EA. Everything downstream consumes the committed `*.scxml`:
+Only this step needs EA. Everything downstream consumes the committed `*.scxml`.
+
+`eaapi.jar` (the EA Java API) is not published to Maven Central — it ships with your EA
+installation and must be installed into your local Maven repository once, using the exact
+coordinates the ShapeChange `ea` module expects:
 
 ```bash
-java -jar ShapeChange-4.0.0.jar -c export-model-to-scxml.config.xml \
+mvn install:install-file \
+    -Dfile="C:/Program Files/Sparx Systems/EA/Java API/eaapi.jar" \
+    -DgroupId=org.sparx -DartifactId=eaapi -Dversion=17.0.1704 -Dpackaging=jar
+```
+
+Build ShapeChange from source at the commit in the provenance table above (the `ea`
+Maven profile is active by default and bundles the EA module using the `eaapi` installed
+above):
+
+```bash
+git clone https://github.com/ShapeChange/ShapeChange.git
+cd ShapeChange
+git checkout 1a16d4af333627059d12d271f588e903e6ecb172
+mvn install
+```
+
+This produces `shapechange-app/target/ShapeChange-4.1.0-SNAPSHOT.zip`; unzip it, then run
+the export. The native EA↔Java bridge DLL (`SSJavaCOM64.dll`) lives in the EA installation,
+not in ShapeChange's own distribution, so `-Djava.library.path` must point there:
+
+```bash
+java -Djava.library.path="C:/Program Files/Sparx Systems/EA/Java API" \
+     -jar ShapeChange-4.1.0-SNAPSHOT.jar -c export-model-to-scxml.config.xml \
      -x "$inputFile$" "C:/path/to/ASAM_OpenDRIVE.qeax"
 ```
 
-This writes `scxml-out/model_export.zip`; unzip to obtain the SCXML, and normalise its
+This writes `scxml-out/INPUT/ModelExport.zip`; unzip to obtain the SCXML, and normalise its
 line endings to LF before committing. Adjust the `xi:include` path in the config to your
-local ShapeChange installation.
+local ShapeChange build's `config/StandardAliases.xml`.
