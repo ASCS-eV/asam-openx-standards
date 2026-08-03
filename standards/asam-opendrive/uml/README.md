@@ -44,13 +44,49 @@ against the normative schema in `../schema/`, which is the version-pinned artifa
   `e_personCategory`, `e_vehicleCategory`, the `t_road_objects_object_outlines_outline_curveLocal*`
   family and the `t_signals_semantics_{animal,person,vehicle}` family — so the model is
   V1.9.0 and not the previous revision.
-- `e_laneType` carries all 31 values of the V1.9.0 schema.
+- All **56** enumerations of the V1.9.0 XSD are present with literals that match the schema
+  exactly — same names, same counts, no discrepancy in any of them. `e_laneType` carries all
+  31 values.
 
 The model additionally declares 7 classes that have no named XSD counterpart. These are
 UML-level constructs that XML Schema expresses differently, not model/schema drift:
-`OpenDRIVE` is the root **element** (its type is anonymous in the XSD),
-`g_additionalData` is an XSD **group**, and `LaneGeometry`, `t_outline_geometry`,
-`t_physicalPosition` and `t_polyline_geometry` are abstractions the schema inlines.
+
+| Class | Why it has no named XSD type |
+|---|---|
+| `OpenDRIVE` | the root **element**; its type is anonymous in the XSD |
+| `g_additionalData` | an XSD **group**, not a type |
+| `userDataContent` | the free/mixed content of `userData`, which the XSD expresses as `xs:any` rather than a named type |
+| `LaneGeometry`, `t_outline_geometry`, `t_physicalPosition`, `t_polyline_geometry` | abstractions the schema inlines |
+
+### Known encoding gaps
+
+Two things the XSD expresses and this UML model does not. Both originate in the Enterprise
+Architect model, so the export reproduces them faithfully; neither can be repaired by
+configuring ShapeChange differently, and neither is repaired downstream. They are recorded
+here so a consumer is not surprised by them.
+
+**XSD union types carry no union semantics.** The schema declares four unions. In the model
+they are plain classes, and the member types — where they appear at all — appear as
+*supertypes*, which is the inverse of a union:
+
+| XSD union | Members in the XSD | In the model |
+|---|---|---|
+| `e_unit` | `e_unitDistance`, `e_unitSpeed`, `e_unitMass`, `e_unitSlope` | empty class, no members |
+| `t_maxSpeed` | `t_grEqZero`, `e_maxSpeedString` | one supertype; `e_maxSpeedString` absent |
+| `e_countryCode` | 3 member types | two supertypes; `e_countryCode_deprecated` absent |
+| `t_grEqZeroOrContactPoint` | `t_grZero`, `e_contactPoint` | two supertypes |
+
+ShapeChange reports this itself when the model is processed — *"is modelled as a feature
+type, object type, data type, mixin, or union, but has more than one supertype of the same
+kind"*. Seven attributes are typed by these four classes, including
+`t_road_signals_signal.unit`, `t_road_type.country` and `t_road_type_speed.max`, so anything
+generated from the model cannot constrain those values the way the XSD does. Encoding them
+as UML `«union»` classes would fix this at the source; that is a request to ASAM.
+
+**The root element has no content model.** `OpenDRIVE` appears in no association and is the
+type of no property. The XSD root element composes `header`, `road`, `controller`,
+`junction`, `junctionGroup`, `station`, `g_additionalData` and `vmsGroup`; none of that
+composition exists in the UML, so a model-derived artifact has no document entry point.
 
 ## Files
 

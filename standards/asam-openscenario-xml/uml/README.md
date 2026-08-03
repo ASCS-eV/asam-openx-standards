@@ -17,7 +17,7 @@ Redistributed under the ASAM Unrestricted Distribution Clause; see the repositor
 | Field | Value |
 |---|---|
 | Standard | ASAM OpenSCENARIO® XML |
-| Version | **V1.4.0** — matches the normative schema in [`../schema/`](../README.md) |
+| Version | **V1.4.0** — matches the normative schema in [`../schema/`](../schema/) |
 | Origin | `OpenSCENARIO.qeax` (Enterprise Architect project) |
 | Exported by | ShapeChange built from source at commit [`1a16d4af3336`](https://github.com/ShapeChange/ShapeChange/commit/1a16d4af333627059d12d271f588e903e6ecb172) (`next` branch, 2026-07-30), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true`, `sortedSchemaOutput=true` |
 | Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.1.0-SNAPSHOT"` |
@@ -44,9 +44,10 @@ Unlike OpenDRIVE, the OpenSCENARIO XML schema
 ShapeChange's schema detection has nothing to find and aborts with "None of the packages
 ... is a schema selected for processing". `export-model-to-scxml.config.xml` therefore
 adds a `<PackageInfo packageName="OpenSCENARIO" ns="..."/>` override to select that
-package regardless. The `ns` value is a ShapeChange bookkeeping placeholder only: it is
-not written into the exported model (`openscenario.scxml` contains zero occurrences of
-`targetNamespace`, verified), so it has no bearing on the standard itself.
+package regardless. The `ns` value is a ShapeChange bookkeeping placeholder only: it is not
+written into the exported model, so it has no bearing on the standard itself. Verified three
+ways — `openscenario.scxml` contains zero occurrences of `targetNamespace`, zero occurrences
+of the `ns` URI itself, and zero occurrences of the `nsabr` abbreviation.
 
 ### How the version is established
 
@@ -69,10 +70,15 @@ same information differently. Neither direction indicates drift:
   `VariableDeclarations`, `ParameterAssignments`, `TrafficSignals` — are XML list
   wrappers, each holding exactly one `maxOccurs="unbounded"` child; UML expresses that as
   a multiplicity on the owning class, so no wrapper class exists.
-- **18 model classes have no named XSD type.** These are UML abstractions the schema
-  flattens into choices and substitution groups — `Entity`, `EntityObject`,
-  `StoryboardElement`, `ScenarioDefinition`, `CatalogElement`, `MotionControlAction`,
-  the `*DistributionType` family, and similar.
+- **18 model classes have no named XSD type**, where "type" means a top-level
+  `xs:complexType` or `xs:simpleType`. Thirteen of them do appear in the schema, as
+  same-named top-level `xs:group` declarations — `EntityObject`, `ScenarioDefinition`,
+  `CatalogDefinition`, `BrakeInput`, `Gear`, `SteadyState`, `OpenScenarioCategory`,
+  `DistributionDefinition`, `ParameterValueDistributionDefinition` and the
+  `*DistributionType` family — which is how the schema flattens a UML abstraction into a
+  choice. Grepping the XSD for one of those names will find it; that is not drift. Only
+  five have no counterpart in the schema at all: `Entity`, `StoryboardElement`,
+  `CatalogElement`, `MotionControlAction` and `SpawnedObject`.
 
 ## Files
 
