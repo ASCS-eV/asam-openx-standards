@@ -66,6 +66,9 @@ git clone https://github.com/ASCS-eV/owl2shacl.git     && git -C owl2shacl   swi
 # build the SHACL converter once
 mvn -f shacl-play/pom.xml -pl shacl-validator,shacl-play-app -am install -DskipTests
 
+# the serialization stack, pinned — see "Why the output is byte-stable" below
+pip install -r scripts/requirements.txt
+
 python scripts/generate_semantic_artifacts.py \
     --standard asam-opendrive \
     --shapechange ../ShapeChange \
@@ -79,9 +82,35 @@ is involved. EA is needed only to re-export a `.scxml` model, and those exports 
 ## What comes out, and how to trust it
 
 `standards/<std>/generated/` holds the two artifacts plus `provenance.json`, which records the
-SHA-256 of the source model, the configuration, and the rules, along with the ShapeChange
-commit. That is what makes a difference in the output diagnosable: it tells a reviewer whether
-the model changed, the configuration changed, or the toolchain did.
+SHA-256 of the source model, the configuration, and the rules, along with the ShapeChange and
+owl2shacl commits and the versions of the serialization stack. That is what makes a difference
+in the output diagnosable: it tells a reviewer whether the model changed, the configuration
+changed, or the toolchain did.
+
+The ruleset is recorded by commit as well as by checksum, because a checksum alone proves two
+runs used the same bytes but not that a third party can obtain them. An earlier provenance
+record in this branch's history carried a rules checksum that matched no commit in the
+owl2shacl repository — the run had picked up an unversioned working copy. `"commit": "unknown"`
+in that field means the same thing and should be treated as a reproducibility gap.
+
+### Why the output is byte-stable
+
+ShapeChange and shacl-play both label blank nodes from process-dependent ordering, so
+regenerating an unchanged model used to produce a large diff that meant nothing: the earlier
+regeneration in this branch changed 1,428 lines of `opendrive.owl.ttl` while the triple set
+stayed identical, and confirming that took a graph-isomorphism comparison by hand.
+
+Both artifacts are therefore written in RDFC-1.0 canonical form, via
+[`diffable-rdf`](https://github.com/ASCS-eV/diffable-rdf) — canonicalization plus
+Weisfeiler-Lehman blank-node hashing, so a changed triple only touches the blank nodes it
+actually involves. Every triple is preserved and the triple count is asserted before the file
+is written; only the syntactic form changes. The OWL is canonicalized *before* the SHACL stage
+reads it, so stage 2 gets a deterministic input too.
+
+This is why `scripts/requirements.txt` pins exact versions rather than ranges: rdflib performs
+the final serialization, so a minor bump there can reintroduce the churn, arriving in review
+looking like a semantic change. `provenance.json` records the resolved versions, and
+`scripts/check_canonical.py` (run in CI) fails if a committed artifact is not in canonical form.
 
 ### Reading the ShapeChange log
 
@@ -101,6 +130,27 @@ rule, check the log for warnings before trusting the artifact:
 ```bash
 grep -c 'Unsupported class category' .pipeline-work/owl/opendrive-owl-log.xml
 ```
+
+Reading the log is no longer left to whoever remembers. `check_shapechange_log()` parses it on
+every run and stops the pipeline unless everything in it is a condition this repository has
+already explained:
+
+- **227 tolerated errors.** `rule-owl-pkg-singleOntologyPerSchema` reports *"no schema package
+  was found for class X"* for 227 of the 238 classes. The OpenDRIVE EA model tags all seven
+  sub-packages with the same `targetNamespace`, so ShapeChange sees eight schemas resolving to
+  one ontology name and complains about every class outside the schema it is processing. The
+  emitted ontology is complete regardless — verified class by class — so these are counted and
+  reported rather than hidden, and **any other error fails the build**.
+- **2 known union-encoding defects.** ShapeChange rejects the supertype structure of
+  `e_countryCode` and `t_grEqZeroOrContactPoint`, because the EA model encodes XSD unions as
+  generalizations. This is the model-side gap documented under "Known encoding gaps" in
+  `standards/asam-opendrive/uml/README.md`. If the warning names a class outside the documented
+  set, the build fails: that is either a change in the EA model or a new defect, and both
+  deserve a decision rather than a silent artifact.
+
+Widening either allowlist means editing `TOLERATED_ERRORS` or `KNOWN_UNION_DEFECTS` in
+`scripts/generate_semantic_artifacts.py` *and* saying why in the model's README, in the same
+change.
 
 ### Coverage of the current encoding
 
