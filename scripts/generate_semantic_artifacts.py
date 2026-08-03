@@ -43,6 +43,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -123,9 +124,9 @@ def shapechange_classpath(home: Path, mvn: str, work: Path) -> str:
     app_classes = work / "shapechange-app-classes"
     app_classes.mkdir(parents=True, exist_ok=True)
     app_source = home / "shapechange-app/src/main/java/de/interactive_instruments/shapechange/app/Main.java"
-    run(["javac", "-nowarn", "-cp", f"{cp_file.read_text()}:{core_classes}",
+    run(["javac", "-nowarn", "-cp", os.pathsep.join([cp_file.read_text(), str(core_classes)]),
          "-d", str(app_classes), str(app_source)], cwd=home, what="ShapeChange app compile")
-    return f"{cp_file.read_text()}:{core_classes}:{app_classes}"
+    return os.pathsep.join([cp_file.read_text(), str(core_classes), str(app_classes)])
 
 
 def generate_owl(spec: dict, classpath: str, resources: Path, out_dir: Path, work: Path) -> Path:
@@ -145,6 +146,15 @@ def generate_owl(spec: dict, classpath: str, resources: Path, out_dir: Path, wor
     produced = sorted((work / "owl").rglob("*.ttl"))
     if not produced:
         raise SystemExit("ShapeChange produced no Turtle output; see the log in the work directory")
+    if len(produced) > 1:
+        raise SystemExit(
+            "ShapeChange produced more than one Turtle output "
+            f"({', '.join(str(p) for p in produced)}); refusing to silently pick one. "
+            "Picking the wrong file is exactly the class of bug this pipeline exists to "
+            "catch (see the enumeration-dropping fix earlier in this branch's history) - "
+            "fix the ShapeChange target configuration to emit exactly one file, or make "
+            "the selection explicit here."
+        )
     target = out_dir / f"{spec['artifact']}.owl.ttl"
     shutil.copyfile(produced[0], target)
     return target
