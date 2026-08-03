@@ -19,12 +19,18 @@
   The ModelExport target writes scxml-out/INPUT/ModelExport.zip (zipOutput=true) and,
   when unzipped, the plain SCXML document used as the source-of-truth open model.
 
-  Note: the xi:include below points into your local ShapeChange build's config
-  directory; adjust the path to match where you built/unzipped ShapeChange.
+  Portability: this configuration runs as committed. It declares no xi:include of
+  ShapeChange's StandardAliases.xml, which earlier versions of this file pointed at via an
+  absolute Windows path. That include is not needed here and its removal is verified
+  output-neutral: re-running ModelExport over the committed model with and without it
+  reproduces the committed *.scxml byte for byte, for both standards. StandardAliases.xml
+  only maps non-well-known stereotype spellings onto well-known ones, and the only
+  stereotypes these models carry - "enumeration" and, in OpenSCENARIO XML, "union" - are
+  well-known already; no alias in that file maps to either. If a future re-export adds
+  stereotypes, check the log for unknown-stereotype warnings and reinstate an include then.
 -->
 <ShapeChangeConfiguration
     xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 http://shapechange.net/resources/schema/ShapeChangeConfiguration.xsd">
   <input>
@@ -34,16 +40,19 @@
     <parameter name="appSchemaNameRegex" value=".*"/>
     <parameter name="publicOnly" value="false"/>
     <parameter name="checkingConstraints" value="disabled"/>
+    <!-- Orders the *schemas* ShapeChange processes. It does not order classes within a
+         schema: that is the "sortedOutput" parameter, which ModelExport ignores (verified
+         against this model, as both an input and a target parameter - the output is
+         unchanged either way). Element order therefore follows the source model. -->
     <parameter name="sortedSchemaOutput" value="true"/>
-    <xi:include href="file:///C:/ShapeChange/config/StandardAliases.xml"/>
   </input>
   <log>
     <parameter name="reportLevel" value="INFO"/>
   </log>
   <targets>
-    <TargetXmlSchema class="de.interactive_instruments.shapechange.core.target.modelexport.ModelExport" mode="enabled">
+    <Target class="de.interactive_instruments.shapechange.core.target.modelexport.ModelExport" mode="enabled">
       <targetParameter name="outputDirectory" value="scxml-out"/>
       <targetParameter name="zipOutput" value="true"/>
-    </TargetXmlSchema>
+    </Target>
   </targets>
 </ShapeChangeConfiguration>

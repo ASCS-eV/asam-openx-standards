@@ -19,7 +19,7 @@ Redistributed under the ASAM Unrestricted Distribution Clause; see the repositor
 | Standard | ASAM OpenSCENARIO® XML |
 | Version | **V1.4.0** — matches the normative schema in [`../schema/`](../schema/) |
 | Origin | `OpenSCENARIO.qeax` (Enterprise Architect project) |
-| Exported by | ShapeChange built from source at commit [`1a16d4af3336`](https://github.com/ShapeChange/ShapeChange/commit/1a16d4af333627059d12d271f588e903e6ecb172) (`next` branch, 2026-07-30), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true`, `sortedSchemaOutput=true` |
+| Exported by | ShapeChange built from source at commit [`1a16d4af3336`](https://github.com/ShapeChange/ShapeChange/commit/1a16d4af333627059d12d271f588e903e6ecb172) (`next` branch, 2026-07-30), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true` |
 | Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.1.0-SNAPSHOT"` |
 | Classes | 343 |
 
@@ -104,6 +104,21 @@ design, and comparing them byte-for-byte will report a difference that is not on
 The 37,325-byte difference is exactly one `\r` per line. Use `openscenario.scxml` unless
 a tool requires the zip.
 
+### Why the export is diff-friendly
+
+Not because of a sort parameter. ShapeChange's `sortedSchemaOutput` orders the *schemas* it
+processes, not the classes within one; class order is `sortedOutput`, and `ModelExport` ignores
+that parameter — verified against this model, as both an input and a target parameter, with the
+output unchanged either way. Element order therefore follows the source model, and no package
+in this export is alphabetical.
+
+What makes the file reviewable is that `ModelExport` is **deterministic**: the committed
+`.scxml` is a fixed point of the exporter. Re-running `ModelExport` over it, using the
+committed `export-model-to-scxml.config.xml` with only `inputModelType` switched from `EA7` to
+`SCXML`, reproduces the committed bytes exactly. Element order is a function of the model, not
+of the run, so re-exporting an unchanged model yields an unchanged file and any diff here
+reflects a real change in the Enterprise Architect project.
+
 ## Using the model without EA (the normal case)
 
 Point a ShapeChange OWL (or XSD) configuration's `inputFile` at `openscenario.scxml` (or
@@ -147,5 +162,17 @@ java -Djava.library.path="C:/Program Files/Sparx Systems/EA/Java API" \
 ```
 
 This writes `scxml-out/INPUT/ModelExport.zip`; unzip to obtain the SCXML, and normalise its
-line endings to LF before committing. Adjust the `xi:include` path in the config to your
-local ShapeChange build's `config/StandardAliases.xml`.
+line endings to LF before committing. The configuration needs no editing: it runs as
+committed, and carries no absolute paths.
+
+Two things to settle at the next re-export, deliberately left alone here because changing
+them would mean the committed artifacts were no longer what this configuration produces:
+
+- **`outputFilename`.** Unset, so `ModelExport` uses its default and the zip entry is called
+  `ModelExport.xml` rather than something that identifies the standard. Setting it changes
+  the zip's contents, so it belongs with a real re-export.
+- **`representTaggedValues`.** Unset, so only tagged values ShapeChange already knows are
+  carried; this export contains just `targetNamespace` and `xmlns`. Whether ASAM annotates
+  the Enterprise Architect model further — deprecation, version-added — cannot be
+  determined from the export itself. Run the export once with and once without the
+  parameter and diff, then either set it or record that there was nothing to carry.
