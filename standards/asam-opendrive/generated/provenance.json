@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-03T11:58:41+00:00",
+  "generated": "2026-08-03T14:33:16+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
@@ -19,11 +19,17 @@
     },
     "owl2shacl_rules": {
       "name": "owl2sh-closed.ttl",
-      "sha256": "f5b670cfd113fd800ba8b5e3bd9a94186381c2b1f65aaaf9abd76067e86a1e2f"
+      "sha256": "9c9f7795a2e929539b3e4b216786dd2a957e9812e4779ed56b421ebbecaa9b1d",
+      "commit": "302d91439b866c2e6c732cf2bebdcd343df4bc72"
+    },
+    "serialization": {
+      "diffable-rdf": "0.0.1",
+      "rdflib": "7.6.0",
+      "pyoxigraph": "0.5.9"
     }
   },
   "outputs": {
-    "opendrive.owl.ttl": "0a0408fce46f0db89c4a9faa29878bc3efa87d2d7d9fcfb723b108ecb6361c9d",
-    "opendrive.shacl.ttl": "9c0048bbc0d49afbf09d177f52a8077399c29d81ff6261230faa96ac2e0a0005"
+    "opendrive.owl.ttl": "6ab5bc399d7ac2ef6a7ce550bc2565b0feb7ba36ac0917152b2449c9b4e09bd9",
+    "opendrive.shacl.ttl": "2b8f3644bc851c6e9e6b22b3d0192d02942b98af5a169bf3512cd6bc423d79e1"
   }
 }
