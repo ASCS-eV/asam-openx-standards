@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShapeChange, XML Schema target - regenerates an OpenDRIVE XSD from the committed
+  SCXML model, for the structural equivalence check in
+  scripts/check_xsd_structural_parity.py (see pipeline/README.md, "The XSD equivalence
+  oracle").
+
+  This does not add a third committed artifact alongside the OWL/SHACL pair: the XSD
+  produced here is written to a scratch directory and compared against ASAM's
+  normative schema in standards/asam-opendrive/schema/, never committed itself. Its
+  only purpose is evidence that the open UML model captures the same content as the
+  independently maintained XSD - not a replacement for either.
+
+  {SHAPECHANGE_RESOURCES}, {PIPELINE} and {OUT} are substituted by the script, the same
+  as in opendrive-owl.config.xml.
+-->
+<ShapeChangeConfiguration
+    xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 file:///{SHAPECHANGE_RESOURCES}/schema/ShapeChangeConfiguration.xsd">
+  <input>
+    <parameter name="inputModelType" value="SCXML"/>
+    <!-- Committed, EA-free source model. Paths are relative to the repository root. -->
+    <parameter name="inputFile" value="standards/asam-opendrive/uml/opendrive.scxml"/>
+    <parameter name="appSchemaNamespaceRegex" value="http://code.asam.net/simulation/standard/opendrive_schema"/>
+    <parameter name="publicOnly" value="false"/>
+    <parameter name="checkingConstraints" value="disabled"/>
+    <parameter name="sortedSchemaOutput" value="true"/>
+    <packages>
+      <!--
+        Each sub-package becomes its own XSD document, one per PackageInfo, matching
+        ASAM's official 7-file split (OpenDRIVE_Core.xsd, OpenDRIVE_Junction.xsd, ...) so
+        the comparison script can pair files up by name. The OWL target instead merges
+        everything into one ontology (rule-owl-pkg-singleOntologyPerSchema) - the two
+        targets are configured differently on purpose, each to match what it is compared
+        against.
+      -->
+      <PackageInfo packageName="Core" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" xsdDocument="Core.xsd"/>
+      <PackageInfo packageName="Junction" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" xsdDocument="Junction.xsd"/>
+      <PackageInfo packageName="Lane" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" xsdDocument="Lane.xsd"/>
+      <PackageInfo packageName="Object" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" xsdDocument="Object.xsd"/>
+      <PackageInfo packageName="Railroad" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" xsdDocument="Railroad.xsd"/>
+      <PackageInfo packageName="Road" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" xsdDocument="Road.xsd"/>
+      <PackageInfo packageName="Signal" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" xsdDocument="Signal.xsd"/>
+    </packages>
+    <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardAliases.xml"/>
+  </input>
+  <log>
+    <parameter name="reportLevel" value="INFO"/>
+    <parameter name="logFile" value="{OUT}/opendrive-xsd-log.xml"/>
+  </log>
+  <targets>
+    <TargetXmlSchema class="de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema" mode="enabled">
+      <targetParameter name="outputDirectory" value="{OUT}"/>
+      <targetParameter name="sortedOutput" value="true"/>
+      <targetParameter name="defaultEncodingRule" value="asam-xsd"/>
+      <rules>
+        <EncodingRule name="asam-xsd" extends="*">
+          <rule name="rule-xsd-all-naming-gml"/>
+          <rule name="rule-xsd-cls-basictype"/>
+          <!--
+            Emits each UML enumeration as a single NAMED simpleType
+            (e.g. e_elementDirType), referenced from every property that uses it.
+            Without this rule the class-category dispatch in XmlSchema.java still
+            renders an enumeration reference at every use site, but never emits the
+            simpleType it points to - referenced everywhere, defined nowhere. The
+            alternative, rule-xsd-cls-local-enumeration, was tried first and rejected:
+            it renders an anonymous inline simpleType at every use site instead of one
+            shared type, which inflated the enumeration-value count to 480 against
+            ASAM's 292 through pure duplication.
+          -->
+          <rule name="rule-xsd-cls-global-enumeration"/>
+          <rule name="rule-xsd-cls-no-base-class"/>
+          <rule name="rule-xsd-cls-no-gml-types"/>
+          <!--
+            Gates the branch in XsdDocument.mapPropertyType() that renders
+            enumeration/codelist/basictype property references at all. The same
+            condition also appears, as an unrelated sibling, nested inside a
+            classHasObjectElement() check earlier in the same if/else-if chain - that
+            nested occurrence does not apply to enumerations and is easy to mistake for
+            this one. Without this top-level rule, every enumeration- or
+            basictype-valued property falls through to the final catch-all branch and
+            fails with "No type can be provided for the property" - this single rule
+            change took the prototype for this check from 190 errors to zero.
+          -->
+          <rule name="rule-xsd-cls-standard-gml-property-types"/>
+        </EncodingRule>
+      </rules>
+      <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardNamespaces.xml"/>
+      <xmlNamespaces>
+        <XmlNamespace nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema" location="Core.xsd"/>
+      </xmlNamespaces>
+      <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardMapEntries.xml"/>
+      <xi:include href="{PIPELINE}/xsdmapentries-asam.xml"/>
+    </TargetXmlSchema>
+  </targets>
+</ShapeChangeConfiguration>

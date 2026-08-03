@@ -65,6 +65,11 @@ STANDARDS = {
         "model": "standards/asam-opendrive/uml/opendrive.scxml",
         "config": "pipeline/opendrive-owl.config.xml",
         "artifact": "opendrive",
+        # Used by scripts/check_xsd_structural_parity.py only; the OWL/SHACL stages
+        # above never read these three keys.
+        "xsd_config": "pipeline/opendrive-xsd.config.xml",
+        "xsd_schema_dir": "standards/asam-opendrive/schema",
+        "xsd_prefix": "OpenDRIVE",
     },
 }
 

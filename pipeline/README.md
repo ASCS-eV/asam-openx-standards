@@ -15,6 +15,10 @@ standards/<std>/generated/<std>.shacl.ttl SHACL shapes
 
 Run it with [`scripts/generate_semantic_artifacts.py`](../scripts/generate_semantic_artifacts.py).
 
+A second script, [`scripts/check_xsd_structural_parity.py`](../scripts/check_xsd_structural_parity.py),
+does not produce an artifact at all: it checks the same model against ASAM's independently
+published XSD. See [Checking it](#checking-it-the-xsd-structural-parity-check) below.
+
 ## The rule that shapes everything here
 
 **Nothing is post-processed.** Both stages are off-the-shelf tools driven by the
@@ -178,6 +182,50 @@ Until then, consumers that need enumerated **value** constraints — such as the
 `ontology-management-base` `sh:in` lists — must derive them from the normative XSD in
 `standards/<std>/schema/` rather than from these shapes.
 
+## Checking it: the XSD structural parity check
+
+ASAM does not just publish the UML model — it separately publishes a normative XSD
+(`standards/<std>/schema/`). That is something the OWL/SHACL stages alone cannot give this
+pipeline: an independently produced description of the same standard to check against.
+[`scripts/check_xsd_structural_parity.py`](../scripts/check_xsd_structural_parity.py)
+regenerates an XSD from the same committed SCXML, using
+[`opendrive-xsd.config.xml`](opendrive-xsd.config.xml) — a third ShapeChange target
+configuration — and compares its structural inventory against ASAM's official schema, file
+by file:
+
+```bash
+python scripts/check_xsd_structural_parity.py \
+    --standard asam-opendrive \
+    --shapechange ../ShapeChange
+```
+
+It builds ShapeChange the same way `generate_semantic_artifacts.py` does and needs nothing
+else — no owl2shacl, no shacl-play, no fork, since the XSD target rules it uses need no
+patch beyond what plain upstream ShapeChange already has. Its output goes to
+`.pipeline-work/xsd/`, never to `standards/<std>/generated/`: the XSD it produces is
+evidence, not a deliverable, and is not committed.
+
+### What it checks, and what it found
+
+The comparison is a structural inventory — elements, attributes, complexTypes, simpleTypes
+and enumeration values, each counted at any nesting depth — not a byte diff: the two
+schemas use different naming and structuring conventions by design (see the config file for
+why). The current result, regenerated from the committed model:
+
+| Metric | Generated | Official | Reading it |
+|---|---:|---:|---|
+| Enumeration values | **292** | **292** | Exact match, all 7 files. This is the strongest signal the check produces: it is the same count that silently dropped to 0 for the OWL stage before `rule-owl-cls-iso191502Enumeration` was added (see the coverage table above) — here it is checked directly, per file, on every run. |
+| Elements | 1018 | 209 | ASAM's XSD encodes most properties as XML **attributes**, not elements; see below. |
+| Attributes | 0 | 468 | The committed UML model has no `xsdEncodingRule=xsdAsAttribute` tagged value on any property (confirmed: zero occurrences), so ShapeChange has no basis to choose attribute encoding for any of them. Closing this needs modelling effort in Enterprise Architect, not a configuration change — see [Not here yet](#not-here-yet). |
+| complexTypes | 366 | 166 | Follows from the element/attribute difference above: content modelled as child elements needs more complexType machinery than the same content modelled as attributes. |
+| simpleTypes | 58 | 66 | The residual gap after mapping ASAM's stereotype-less base types (`t_grEqZero`, `t_bool`, …) in `xsdmapentries-asam.xml`; ASAM's XSD additionally factors out a handful of inline restrictions as named simpleTypes that this model does not represent as separate UML classes. |
+
+The check fails only when a file's enumeration-value count stops matching exactly — the one
+invariant that is meaningful to assert automatically today. The element, attribute,
+complexType and simpleType differences are reported for visibility but do not fail the run:
+they reflect a known, current limitation of the model, not evidence that a run derived the
+wrong content.
+
 ## The configuration, stage by stage
 
 ### `opendrive-owl.config.xml` — ShapeChange, OWL target
@@ -216,25 +264,64 @@ why 55 of the model's 56 enumerations are encoded and one is not.
 ontology does not declare. `owl2sh-open.ttl` and `owl2sh-semi-closed.ttl` are the looser
 alternatives; the choice belongs in this file, not in the script.
 
+### `opendrive-xsd.config.xml` — ShapeChange, XML Schema target
+
+- Same `inputModelType=SCXML` input as the OWL config, but one `PackageInfo` per
+  sub-package (`Core`, `Junction`, `Lane`, `Object`, `Railroad`, `Road`, `Signal`), each with
+  its own `xsdDocument`. This matches ASAM's official 7-file split, rather than the OWL
+  target's single merged ontology (`rule-owl-pkg-singleOntologyPerSchema`) — the two targets
+  are configured differently on purpose, each to match what it is compared against.
+- `rule-xsd-cls-standard-gml-property-types` is the rule that matters most, and the one most
+  likely to be dropped by accident when trimming an encoding rule down: it gates the branch in
+  ShapeChange's XSD target that renders enumeration, codelist and basictype property
+  references at all. Without it, every enumeration- or basictype-valued property fails with
+  "No type can be provided for the property", regardless of which enumeration- or
+  basictype-specific rules are also present — those are only consulted once this rule has
+  let the branch run.
+- `rule-xsd-cls-global-enumeration` emits each enumeration as one named, shared `simpleType`.
+  The alternative, `rule-xsd-cls-local-enumeration`, renders an anonymous inline `simpleType`
+  at every use site instead — tried first, and rejected, because it inflated the
+  enumeration-value count to 480 against ASAM's 292 through pure duplication rather than any
+  difference in content.
+
+### `xsdmapentries-asam.xml` — type mapping
+
+The XSD-target counterpart of `mapentries-asam.xml`, mapping the same ASAM primitive and
+stereotype-less base types to XSD built-ins, for the same reason: `t_grEqZero`, `t_grZero`,
+`t_zeroOne` and `t_bool` carry no UML stereotype at all in the committed model, so
+ShapeChange's category dispatch cannot recognise them without a map entry and would render
+them as empty, content-less `complexType`s instead.
+
 ## Adding a standard
 
 Add an entry to `STANDARDS` in the script and a ShapeChange configuration here. No code
-changes are required — the script is a path resolver and a runner.
+changes are required — the script is a path resolver and a runner. The `xsd_config`,
+`xsd_schema_dir` and `xsd_prefix` keys are optional and only used by
+`check_xsd_structural_parity.py`; a standard without an official XSD to compare against, or
+without an XSD target configuration yet, simply omits them and is left out of that script's
+`--standard` choices.
 
 ## Not here yet
 
 - **Enumerated value constraints in the SHACL.** The OWL carries `owl:oneOf`; owl2shacl has
   no rule that turns it into `sh:in`. See the coverage table above.
-- **The XSD equivalence oracle.** ASAM ships normative XSDs alongside the UML; validating the
-  generated SHACL against instance data that the XSD also accepts is the independent check
-  that the derivation is faithful. That belongs in this pipeline as a third stage. It is also
-  what would have caught the missing enumerations without anyone reading a log.
-- **CI.** No longer blocked on ShapeChange: #757 merged upstream, so a runner can build it
-  today with a plain clone of `ShapeChange/ShapeChange` and no Enterprise Architect
-  installation. owl2shacl#7 and shacl-play#344/#345 are still open, so a CI job would have to
-  build those two tools from the `ASCS-eV` fork's `feature/asam-pipeline` branch rather than a
-  released version — workable, but not what a CI job should depend on long-term. The generated
-  artifacts are committed, so a CI job can assert that regenerating them changes nothing — the
-  same guarantee the ontology-management-base repository already applies to its own generated
-  files.
+- **Data-instance validation against both schemas.** [`check_xsd_structural_parity.py`](#checking-it-the-xsd-structural-parity-check)
+  now checks *structure* — element, attribute and enumeration-value counts — between a
+  regenerated XSD and ASAM's official one, and would have caught the missing-enumeration
+  regression directly, per file, without anyone reading a log. What it does not do is what
+  was originally sketched here: take real instance data and confirm the *same document*
+  validates against the generated SHACL and against ASAM's XSD. That would be a stronger
+  check still — it would catch a value that satisfies the SHACL's datatype but violates a
+  facet the XSD encodes and the SHACL does not (see the `t_grEqZero`-family gap in
+  `xsdmapentries-asam.xml`) — but it needs a corpus of representative instance documents,
+  which this pipeline does not have.
+- **CI beyond the cheap checks.** [`verify-generated.yml`](../.github/workflows/verify-generated.yml)
+  and [`verify-models.yml`](../.github/workflows/verify-models.yml) catch drift cheaply —
+  canonical form, recorded serialization versions, and the committed models against their zips
+  and published checksums — without needing Maven or a JVM. Neither actually re-runs
+  ShapeChange or shacl-play, so a PR still cannot assert that regenerating the OWL/SHACL from
+  scratch reproduces what is committed. `check_xsd_structural_parity.py` has no such blocker —
+  it needs a plain ShapeChange checkout and nothing else — so it could run in CI today; the
+  OWL/SHACL side still cannot, until owl2shacl#7 and shacl-play#344/#345 land and it no longer
+  needs the `ASCS-eV` fork's `feature/asam-pipeline` branch.
 - **OpenSCENARIO XML.** The model is committed; the configuration is not written yet.

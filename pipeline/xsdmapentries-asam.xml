@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ASAM base/simple types -> XSD built-ins for the ShapeChange XML Schema target.
+  Mirrors mapentries-asam.xml (the OWL target's map entries) so the same raw type
+  names resolve the same way on both targets - see opendrive-xsd.config.xml.
+-->
+<xsdMapEntries xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1">
+
+  <!-- XSD built-in primitives referenced by name in the ASAM UML -->
+  <XsdMapEntry type="string" xsdEncodingRules="*" xmlType="string" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="string"/>
+  <XsdMapEntry type="double" xsdEncodingRules="*" xmlType="double" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="double"/>
+  <XsdMapEntry type="int" xsdEncodingRules="*" xmlType="int" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="int"/>
+  <XsdMapEntry type="integer" xsdEncodingRules="*" xmlType="integer" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="integer"/>
+  <XsdMapEntry type="negativeInteger" xsdEncodingRules="*" xmlType="negativeInteger" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="negativeInteger"/>
+  <XsdMapEntry type="nonNegativeInteger" xsdEncodingRules="*" xmlType="nonNegativeInteger" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="nonNegativeInteger"/>
+  <XsdMapEntry type="positiveInteger" xsdEncodingRules="*" xmlType="positiveInteger" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="positiveInteger"/>
+  <XsdMapEntry type="boolean" xsdEncodingRules="*" xmlType="boolean" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="boolean"/>
+  <XsdMapEntry type="dateTime" xsdEncodingRules="*" xmlType="dateTime" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="dateTime"/>
+  <XsdMapEntry type="unsignedInt" xsdEncodingRules="*" xmlType="unsignedInt" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="unsignedInt"/>
+  <XsdMapEntry type="unsignedShort" xsdEncodingRules="*" xmlType="unsignedShort" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="unsignedShort"/>
+  <!-- OpenDRIVE 'userData' free/mixed content is serialized as text, same as the OWL target -->
+  <XsdMapEntry type="userDataContent" xsdEncodingRules="*" xmlType="string" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="string"/>
+
+  <!--
+    These four ASAM base/simple types carry no UML stereotype at all in the committed
+    SCXML model, so ShapeChange's class-category dispatch - which relies on the
+    "basictype"/"enumeration" stereotype to pick an encoding - falls back to a plain
+    object and emits an empty, content-less complexType. mapentries-asam.xml works
+    around the identical gap for the OWL target with matching raw-name entries;
+    mirrored here. Restriction facets (e.g. t_grEqZero's minInclusive=0) are not
+    representable via a map entry and are lost here exactly as they are on the OWL side.
+  -->
+  <XsdMapEntry type="t_grEqZero" xsdEncodingRules="*" xmlType="double" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="double"/>
+  <XsdMapEntry type="t_grZero" xsdEncodingRules="*" xmlType="double" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="double"/>
+  <XsdMapEntry type="t_zeroOne" xsdEncodingRules="*" xmlType="double" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="double"/>
+  <XsdMapEntry type="t_bool" xsdEncodingRules="*" xmlType="boolean" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="boolean"/>
+
+</xsdMapEntries>
