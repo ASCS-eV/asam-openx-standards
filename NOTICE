@@ -1,12 +1,18 @@
 ASAM OpenX® Standards — Redistribution Notice
 ================================================
 
-This repository contains specification texts of ASAM OpenX® standards,
-redistributed under the "unrestricted distribution" clause that ASAM e.V.
-applies to its publicly published simulation standards.
+This repository contains material from ASAM OpenX® standards, redistributed
+under the "unrestricted distribution" clause that ASAM e.V. applies to its
+publicly published simulation standards. Three kinds of material are covered:
+
+- specification texts, converted from the published HTML to Markdown;
+- normative machine-readable schemas, redistributed verbatim (XSD, JSON Schema);
+- UML models of the standards, exported from ASAM's Enterprise Architect
+  projects to the tool-neutral ShapeChange SCXML format.
 
 Original source URLs:
 - OpenDRIVE: https://publications.pages.asam.net/standards/ASAM_OpenDRIVE/ASAM_OpenDRIVE_Specification/latest/specification/
+- OpenSCENARIO XML: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_XML/latest/
 - OpenSCENARIO DSL: https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_DSL/latest/
 - OpenODD: https://publications.pages.asam.net/standards/ASAM_OpenODD/ASAM_OpenODD/latest/specification/
 - OpenLABEL: https://openlabel.asam.net/V1-0-0/schema/openlabel_json_schema.json
@@ -14,8 +20,11 @@ Original source URLs:
 - OSI: https://github.com/OpenSimulationInterface/open-simulation-interface (MPL-2.0)
 - OpenCRG: https://github.com/ASAM-ev/OpenCRG (Apache-2.0)
 
-All specification texts are © ASAM e.V. All rights not explicitly granted
-by the unrestricted distribution clause are reserved.
+All of this material is © ASAM e.V. All rights not explicitly granted by the
+unrestricted distribution clause are reserved. The UML models are derived works
+of ASAM's Enterprise Architect projects and are covered by the same clause; see
+LICENSE for the list of standards it applies to.
 
-The format conversion (HTML → Markdown) and organizational structure of this
-repository are provided by ASCS e.V. for use in ontology development workflows.
+The format conversions (HTML → Markdown, Enterprise Architect → SCXML) and the
+organizational structure of this repository are provided by ASCS e.V. for use in
+ontology development workflows.
