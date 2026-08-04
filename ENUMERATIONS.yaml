@@ -1,11 +1,24 @@
 # Machine-Readable Enumeration Index
 # Source: ASAM OpenDRIVE v1.9.0, Annex A (normative)
 # Purpose: Quick agent lookup of valid enum values, versions, and deprecation status
-# Reference: standards/asam-opendrive/map-uml-enumerations.md
+#
+# SCOPE: this is a curated subset (9 of 56 enumerations), hand-maintained for the
+# enumerations the ENVITED-X ontologies bind to. It is NOT the complete value set.
+#
+# For a complete, machine-readable, exactly-schema-matching set of all 56 OpenDRIVE
+# enumerations, use one of:
+#   - standards/asam-opendrive/uml/opendrive.scxml   (UML model, 56 enumerations)
+#   - standards/asam-opendrive/schema/*.xsd          (normative XSD)
+# Both carry the V1.9.0 additions (e_layerType, e_personCategory, e_vehicleCategory)
+# that the Annex A Markdown conversion below does not name.
 
 opendrive:
   standard: "ASAM OpenDRIVE"
   version: "1.9.0"
+  subset_of_total: "9 of 56"
+  authoritative_sources:
+    - "standards/asam-opendrive/uml/opendrive.scxml"
+    - "standards/asam-opendrive/schema/"
   source_file: "standards/asam-opendrive/map-uml-enumerations.md"
 
   enumerations:

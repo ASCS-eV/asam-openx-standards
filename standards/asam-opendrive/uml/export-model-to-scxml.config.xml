@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShapeChange "ModelExport" configuration: ASAM Enterprise Architect model -> open SCXML.
+
+  This is the ONLY step that requires Enterprise Architect (inputModelType=EA7 reads
+  the proprietary .qeax). Its output - the committed *.scxml (+ .scxml.zip) next to
+  this file - is the open, tool-neutral model that every downstream step (OWL, SHACL,
+  XSD) consumes WITHOUT EA.
+
+  Run (override the input .qeax on the command line):
+    java -Djava.library.path="C:/Program Files/Sparx Systems/EA/Java API" \
+         -jar ShapeChange-4.1.0-SNAPSHOT.jar -c export-model-to-scxml.config.xml \
+         -x "$inputFile$" "C:/path/to/ASAM_OpenDRIVE.qeax"
+
+  ShapeChange must be built from source (see the "Reproducing the export" section of
+  ../README.md for the exact commit, the eaapi Maven install step, and why a commit is
+  cited rather than the 4.0.0 release).
+
+  The ModelExport target writes scxml-out/INPUT/ModelExport.zip (zipOutput=true) and,
+  when unzipped, the plain SCXML document used as the source-of-truth open model.
+
+  Portability: this configuration runs as committed. It declares no xi:include of
+  ShapeChange's StandardAliases.xml, which earlier versions of this file pointed at via an
+  absolute Windows path. That include is not needed here and its removal is verified
+  output-neutral: re-running ModelExport over the committed model with and without it
+  reproduces the committed *.scxml byte for byte, for both standards. StandardAliases.xml
+  only maps non-well-known stereotype spellings onto well-known ones, and the only
+  stereotypes these models carry - "enumeration" and, in OpenSCENARIO XML, "union" - are
+  well-known already; no alias in that file maps to either. If a future re-export adds
+  stereotypes, check the log for unknown-stereotype warnings and reinstate an include then.
+-->
+<ShapeChangeConfiguration
+    xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 http://shapechange.net/resources/schema/ShapeChangeConfiguration.xsd">
+  <input>
+    <parameter name="inputModelType" value="EA7"/>
+    <!-- Provide the .qeax via the command-line override: -x "$inputFile$" "<path>.qeax" -->
+    <parameter name="inputFile" value="$inputFile$"/>
+    <parameter name="appSchemaNameRegex" value=".*"/>
+    <parameter name="publicOnly" value="false"/>
+    <parameter name="checkingConstraints" value="disabled"/>
+    <!-- Orders the *schemas* ShapeChange processes. It does not order classes within a
+         schema: that is the "sortedOutput" parameter, which ModelExport ignores (verified
+         against this model, as both an input and a target parameter - the output is
+         unchanged either way). Element order therefore follows the source model. -->
+    <parameter name="sortedSchemaOutput" value="true"/>
+  </input>
+  <log>
+    <parameter name="reportLevel" value="INFO"/>
+  </log>
+  <targets>
+    <Target class="de.interactive_instruments.shapechange.core.target.modelexport.ModelExport" mode="enabled">
+      <targetParameter name="outputDirectory" value="scxml-out"/>
+      <targetParameter name="zipOutput" value="true"/>
+    </Target>
+  </targets>
+</ShapeChangeConfiguration>

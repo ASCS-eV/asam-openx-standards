@@ -1,0 +1,21 @@
+# Line-ending policy.
+#
+# The UML READMEs publish SHA-256 checksums of the committed *.scxml files. Without a rule
+# here, a checkout with core.autocrlf=true rewrites them to CRLF, the published checksums
+# stop matching, and re-committing normalises them back — churn that looks like a model
+# change but is not one.
+*.scxml    text eol=lf
+
+# Generated RDF is written in canonical form by scripts/generate_semantic_artifacts.py and
+# its checksums are recorded in provenance.json; same reasoning as above.
+*.ttl      text eol=lf
+
+# The ModelExport zip preserves the byte-exact Windows output of ShapeChange. It must never
+# be touched by line-ending normalisation.
+*.zip      binary
+
+# Verbatim redistributions of ASAM deliverables are byte-exact by design and their
+# checksums are published in the sibling README. Git must not convert them in either
+# direction: the OpenDRIVE XSDs ship with CRLF, and normalising them would both break the
+# documented checksums and misrepresent what was redistributed.
+standards/*/schema/**   -text

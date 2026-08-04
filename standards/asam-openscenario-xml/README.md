@@ -4,8 +4,13 @@ ASAM OpenSCENARIO® **XML** is a distinct standard from ASAM OpenSCENARIO® **DS
 (see `../asam-openscenario-dsl/`): XML describes concrete scenarios in a declarative
 file format, DSL is an abstract scenario description language with its own grammar.
 
-This directory currently carries the normative XML schema only, not the specification
-prose.
+This directory carries the normative XML schema and the UML model, not the specification
+prose:
+
+| Directory | Contents |
+|---|---|
+| [`schema/`](schema/) | The normative `OpenSCENARIO.xsd`, V1.4.0 |
+| [`uml/`](uml/README.md) | The tool-neutral UML model (ShapeChange SCXML), V1.4.0, exported from Enterprise Architect so downstream generation needs no EA licence |
 
 **These files are not original works of this project.** Copyright © ASAM e.V., 2026.
 Redistributed under the ASAM Unrestricted Distribution Clause; see the repository

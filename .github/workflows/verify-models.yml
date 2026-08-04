@@ -1,0 +1,67 @@
+name: Verify redistributed models
+
+# The UML READMEs make three checkable claims about the committed models: that each
+# .scxml is the zip's ModelExport.xml with CRLF converted to LF, that both files have the
+# published SHA-256, and that the .scxml is stored with LF endings. Nothing enforced them
+# before, so a checkout on a CRLF platform could re-commit a file that no longer matches
+# its own documentation.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - "standards/*/uml/**"
+      - ".gitattributes"
+      - ".github/workflows/verify-models.yml"
+
+jobs:
+  scxml-matches-zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: .scxml equals the zip entry after CRLF -> LF
+        run: |
+          set -euo pipefail
+          found=0
+          for scxml in standards/*/uml/*.scxml; do
+            zip="${scxml}.zip"
+            [ -f "$zip" ] || { echo "::error::missing $zip"; exit 1; }
+            unzip -p "$zip" > /tmp/entry.xml
+            tr -d '\r' < /tmp/entry.xml > /tmp/entry.lf.xml
+            if ! cmp -s /tmp/entry.lf.xml "$scxml"; then
+              echo "::error file=$scxml::differs from $zip after CRLF -> LF conversion"
+              exit 1
+            fi
+            echo "ok: $scxml == $(basename "$zip"):ModelExport.xml (LF-normalised)"
+            found=$((found + 1))
+          done
+          [ "$found" -gt 0 ] || { echo "::error::no .scxml models found to check"; exit 1; }
+          echo "checked $found model(s)"
+
+      - name: .scxml is stored with LF endings
+        run: |
+          set -euo pipefail
+          for scxml in standards/*/uml/*.scxml; do
+            cr=$(tr -cd '\r' < "$scxml" | wc -c)
+            [ "$cr" -eq 0 ] || { echo "::error file=$scxml::contains $cr CR bytes"; exit 1; }
+            echo "ok: $scxml is LF-only"
+          done
+
+      - name: Published SHA-256 checksums still match
+        run: |
+          set -euo pipefail
+          # Each uml/README.md tabulates the truncated SHA-256 of the .scxml and the .zip.
+          # Recompute and require the published prefix to appear in the README.
+          for readme in standards/*/uml/README.md; do
+            dir=$(dirname "$readme")
+            for artifact in "$dir"/*.scxml "$dir"/*.scxml.zip; do
+              actual=$(sha256sum "$artifact" | cut -c1-16)
+              if ! grep -qF "$actual" "$readme"; then
+                echo "::error file=$readme::$(basename "$artifact") has SHA-256 ${actual}… which is not documented"
+                exit 1
+              fi
+              echo "ok: $(basename "$artifact") -> ${actual}… documented"
+            done
+          done

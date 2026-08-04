@@ -16,6 +16,14 @@ source from these references.
 
 ### Enumerations (most commonly needed)
 
+**Authoritative source: `asam-opendrive/uml/opendrive.scxml`.** It carries all **56**
+OpenDRIVE enumerations with literals that match the normative XSD exactly, including the
+V1.9.0 additions (`e_layerType`, `e_personCategory`, `e_vehicleCategory`). The prose table
+below and `ENUMERATIONS.yaml` are convenience indexes over a subset — `map-uml-enumerations.md`
+is a Markdown conversion of the specification annex and does not contain the `e_*` type
+identifiers at all, so it cannot be grepped by type name. Prefer the model, or the XSD in
+`asam-opendrive/schema/`, whenever a complete or exact value set matters.
+
 | Concept | File | Section |
 |---------|------|---------|
 | Road types | `asam-opendrive/map-uml-enumerations.md` | A.6.2 `e_roadType` |
@@ -121,6 +129,11 @@ see_also:
 ```
 standards/
 ├── asam-opendrive/          # 95 chapters — road network format (v1.9.0)
+│   ├── schema/              # normative XSD (v1.9.0)
+│   └── uml/                 # tool-neutral UML model, SCXML (v1.9.0) — 238 classes
+├── asam-openscenario-xml/   # scenario file format (v1.4.0), no prose chapters
+│   ├── schema/              # normative XSD (v1.4.0)
+│   └── uml/                 # tool-neutral UML model, SCXML (v1.4.0) — 343 classes
 ├── asam-openscenario-dsl/   # 59 chapters — scenario language (v2.2.0)
 ├── asam-openodd/            # 62 chapters — operational design domain (v1.0.0)
 ├── asam-openmaterial-3d/    # 27 chapters — material/geometry (BS 1.0.0)
