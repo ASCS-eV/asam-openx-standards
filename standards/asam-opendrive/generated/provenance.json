@@ -1,0 +1,35 @@
+{
+  "generated": "2026-08-03T14:33:16+00:00",
+  "standard": "asam-opendrive",
+  "source_model": {
+    "path": "standards/asam-opendrive/uml/opendrive.scxml",
+    "sha256": "02648f53ab50e34a882e7c49fea1cb160d29d2b478065024338713ad25d5b21d"
+  },
+  "configuration": {
+    "path": "pipeline/opendrive-owl.config.xml",
+    "sha256": "58a71fb314623b4c18d2165617be3fc47c6dbf85d76654e5058dfc15ba1d05c5"
+  },
+  "tools": {
+    "shapechange": {
+      "commit": "1a16d4af333627059d12d271f588e903e6ecb172",
+      "profile": "-DskipEa"
+    },
+    "shacl_play": {
+      "jar": "shacl-play-app-0.12.2-onejar.jar"
+    },
+    "owl2shacl_rules": {
+      "name": "owl2sh-closed.ttl",
+      "sha256": "9c9f7795a2e929539b3e4b216786dd2a957e9812e4779ed56b421ebbecaa9b1d",
+      "commit": "302d91439b866c2e6c732cf2bebdcd343df4bc72"
+    },
+    "serialization": {
+      "diffable-rdf": "0.0.1",
+      "rdflib": "7.6.0",
+      "pyoxigraph": "0.5.9"
+    }
+  },
+  "outputs": {
+    "opendrive.owl.ttl": "6ab5bc399d7ac2ef6a7ce550bc2565b0feb7ba36ac0917152b2449c9b4e09bd9",
+    "opendrive.shacl.ttl": "2b8f3644bc851c6e9e6b22b3d0192d02942b98af5a169bf3512cd6bc423d79e1"
+  }
+}

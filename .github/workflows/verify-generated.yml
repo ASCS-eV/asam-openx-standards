@@ -1,0 +1,64 @@
+name: Verify generated artifacts
+
+# Cheap invariant on the committed OWL/SHACL: they must be in RDFC-1.0 canonical form, which
+# is what makes regeneration byte-stable. A non-canonical artifact means it was hand-edited,
+# produced by an older pipeline, or produced with a different serialization stack.
+#
+# This does not re-run ShapeChange or shacl-play — that needs Maven, an Enterprise-Architect-
+# free ShapeChange build and the shacl-play jar, and belongs in a separate, heavier job.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - "standards/*/generated/**"
+      - "scripts/check_canonical.py"
+      - "scripts/generate_semantic_artifacts.py"
+      - "scripts/requirements.txt"
+      - ".github/workflows/verify-generated.yml"
+
+jobs:
+  canonical-form:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install the pinned serialization stack
+        run: pip install -r scripts/requirements.txt
+
+      - name: Generated artifacts are in canonical form
+        run: python scripts/check_canonical.py
+
+      - name: Recorded serialization versions match the installed ones
+        run: |
+          python - <<'EOF'
+          import json
+          import sys
+          from importlib.metadata import version
+          from pathlib import Path
+
+          failed = False
+          for provenance_file in sorted(Path("standards").glob("*/generated/provenance.json")):
+              recorded = json.loads(provenance_file.read_text())["tools"].get("serialization")
+              if not recorded:
+                  print(f"::error file={provenance_file}::no serialization block recorded")
+                  failed = True
+                  continue
+              for dist, want in recorded.items():
+                  have = version(dist)
+                  if have != want:
+                      print(
+                          f"::error file={provenance_file}::{dist} recorded as {want} "
+                          f"but {have} is installed; the artifact bytes may not reproduce"
+                      )
+                      failed = True
+              print(f"ok: {provenance_file} -> {recorded}")
+          sys.exit(1 if failed else 0)
+          EOF

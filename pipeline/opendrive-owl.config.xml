@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  04 - OWL generation from the committed SCXML using the PATCHED ShapeChange build.
+
+  Difference from 02-owl-opendrive.config.xml: this is the config used with the
+  patched ShapeChange (ShapeChange PR #756: emit owl:onDataRange, not owl:onClass,
+  for datatype qualified cardinality restrictions). It reads the committed,
+  EA-free SCXML model from the asam-openx-standards submodule.
+
+  Reference artifact (like the other poc-configs): environment-specific locations
+  are shown as <PLACEHOLDER>. To run:
+    - build the patched ShapeChange (branch fix/owl-qualified-cardinality-ondatarange)
+      and set {SHAPECHANGE_RESOURCES} to its dist directory;
+    - run from the OMB repo root so the repo-relative inputFile resolves.
+-->
+<ShapeChangeConfiguration
+    xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 file:///{SHAPECHANGE_RESOURCES}/schema/ShapeChangeConfiguration.xsd">
+  <input>
+    <parameter name="inputModelType" value="SCXML"/>
+    <!-- Committed, EA-free source model. Paths are relative to the repository root. -->
+    <parameter name="inputFile" value="standards/asam-opendrive/uml/opendrive.scxml"/>
+    <parameter name="appSchemaNamespaceRegex" value="http://code.asam.net/simulation/standard/opendrive_schema"/>
+    <parameter name="publicOnly" value="false"/>
+    <parameter name="checkingConstraints" value="disabled"/>
+    <parameter name="sortedSchemaOutput" value="true"/>
+    <packages>
+      <PackageInfo packageName="OpenDRIVE" nsabr="odr" ns="http://code.asam.net/simulation/standard/opendrive_schema"/>
+    </packages>
+    <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardAliases.xml"/>
+  </input>
+  <log>
+    <parameter name="reportLevel" value="INFO"/>
+    <parameter name="logFile" value="{OUT}/opendrive-owl-log.xml"/>
+  </log>
+  <targets>
+    <TargetOwl class="de.interactive_instruments.shapechange.core.target.ontology.OWLISO19150" mode="enabled">
+      <targetParameter name="outputDirectory" value="{OUT}"/>
+      <targetParameter name="language" value="en"/>
+      <targetParameter name="defaultEncodingRule" value="asam-owl"/>
+      <targetParameter name="ontologyNameCode" value="opendrive"/>
+      <targetParameter name="URIbase" value="http://code.asam.net/simulation/standard"/>
+      <rules>
+        <EncodingRule name="asam-owl">
+          <rule name="rule-owl-pkg-singleOntologyPerSchema"/>
+          <rule name="rule-owl-pkg-ontologyName-code"/>
+          <rule name="rule-owl-pkg-versionInfo"/>
+          <rule name="rule-owl-cls-encode-featuretypes"/>
+          <rule name="rule-owl-cls-encode-objecttypes"/>
+          <rule name="rule-owl-cls-encode-datatypes"/>
+          <rule name="rule-owl-cls-encode-basictypes"/>
+          <!--
+            Encodes each UML enumeration as an rdfs:Datatype with owl:oneOf over its
+            literals. rule-owl-cls-enumerationAsCodelist is the alternative and is NOT
+            used: it makes the enumeration fall through to the code list encoding, which
+            only applies when rule-owl-cls-codelist-191502 or -external is also present.
+            Without one of those the class reaches the default branch and is silently
+            dropped - which is what happened to all 55 unmapped OpenDRIVE enumerations
+            until this rule replaced it. The two rules are mutually exclusive.
+          -->
+          <rule name="rule-owl-cls-iso191502Enumeration"/>
+          <rule name="rule-owl-cls-generalization"/>
+          <rule name="rule-owl-cls-union"/>
+          <rule name="rule-owl-prop-general"/>
+          <rule name="rule-owl-prop-localScopeAll"/>
+          <rule name="rule-owl-prop-range-global"/>
+          <rule name="rule-owl-prop-multiplicityAsQualifiedCardinalityRestriction"/>
+        </EncodingRule>
+      </rules>
+      <xi:include href="{PIPELINE}/mapentries-asam.xml"/>
+      <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardMapEntries_iso19103-owl.xml"/>
+      <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardNamespaces-owl.xml"/>
+      <descriptorTargets>
+        <DescriptorTarget appliesTo="all" target="rdfs:label" format="langString" template="[[name]]"/>
+        <DescriptorTarget appliesTo="all" target="skos:definition" format="langString" template="[[definition]]"/>
+        <DescriptorTarget appliesTo="all" target="rdfs:comment" format="langString" template="[[documentation]]"/>
+      </descriptorTargets>
+    </TargetOwl>
+  </targets>
+</ShapeChangeConfiguration>

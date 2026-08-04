@@ -16,3 +16,6 @@ Thumbs.db
 # ASAM member-only source deliverables (restricted distribution)
 # Markdown chapter extractions are committed; original files are not.
 standards/*/Source/
+
+# Scratch directory of scripts/generate_semantic_artifacts.py (tool builds, ShapeChange logs)
+.pipeline-work/

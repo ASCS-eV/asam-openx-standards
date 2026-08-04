@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ASAM base/simple types -> RDF datatypes for the ShapeChange OWL target.
+  XSD built-in primitives and the ASAM numeric restriction simpleTypes are
+  mapped to xsd datatypes so attributes become owl:DatatypeProperty.
+  Restriction facets (e.g. t_grEqZero's minInclusive=0) are intentionally NOT
+  encoded here; they belong in the SHACL layer (value constraints), keeping OWL
+  = types and SHACL = constraints cleanly separated.
+-->
+<rdfMapEntries xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1">
+
+  <!-- XSD built-in primitives referenced by name in the ASAM UML -->
+  <RdfTypeMapEntry type="string"             target="xsd:string"             targetType="datatype"/>
+  <RdfTypeMapEntry type="double"             target="xsd:double"             targetType="datatype"/>
+  <RdfTypeMapEntry type="int"                target="xsd:int"                targetType="datatype"/>
+  <RdfTypeMapEntry type="integer"            target="xsd:integer"            targetType="datatype"/>
+  <RdfTypeMapEntry type="negativeInteger"    target="xsd:negativeInteger"    targetType="datatype"/>
+  <RdfTypeMapEntry type="nonNegativeInteger" target="xsd:nonNegativeInteger" targetType="datatype"/>
+  <RdfTypeMapEntry type="positiveInteger"    target="xsd:positiveInteger"    targetType="datatype"/>
+  <RdfTypeMapEntry type="boolean"            target="xsd:boolean"            targetType="datatype"/>
+  <RdfTypeMapEntry type="dateTime"           target="xsd:dateTime"           targetType="datatype"/>
+  <RdfTypeMapEntry type="unsignedInt"        target="xsd:unsignedInt"        targetType="datatype"/>
+  <RdfTypeMapEntry type="unsignedShort"      target="xsd:unsignedShort"      targetType="datatype"/>
+  <!-- OpenDRIVE 'userData' free/mixed content is serialized as text -->
+  <RdfTypeMapEntry type="userDataContent"    target="xsd:string"             targetType="datatype"/>
+
+  <!-- ASAM numeric restriction simpleTypes (base = double); facet -> SHACL -->
+  <RdfTypeMapEntry type="t_grEqZero"         target="xsd:double"             targetType="datatype"/>
+  <RdfTypeMapEntry type="t_grZero"           target="xsd:double"             targetType="datatype"/>
+  <RdfTypeMapEntry type="t_zeroOne"          target="xsd:double"             targetType="datatype"/>
+
+  <!-- ASAM boolean is modelled as an enumeration true/false -> xsd:boolean -->
+  <RdfTypeMapEntry type="t_bool"             target="xsd:boolean"            targetType="datatype"/>
+
+</rdfMapEntries>

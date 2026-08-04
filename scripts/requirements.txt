@@ -1,0 +1,10 @@
+# Dependencies of scripts/generate_semantic_artifacts.py and scripts/check_canonical.py.
+#
+# Pinned exactly, not by range. diffable-rdf performs RDFC-1.0 canonicalization via
+# pyoxigraph and then re-serializes with rdflib, so the bytes of a generated artifact depend
+# on all three. A minor rdflib bump can reintroduce exactly the blank-node churn that
+# canonicalizing exists to remove, and it would arrive looking like a semantic change.
+# provenance.json records the resolved versions so such a diff can be attributed.
+diffable-rdf==0.0.1
+rdflib==7.6.0
+pyoxigraph==0.5.9
