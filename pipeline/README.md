@@ -27,23 +27,96 @@ generated artifact is wrong, exactly one of three things is wrong — the **mode
 **configuration**, or the **tool** — and the fix belongs there.
 
 ShapeChange and the SHACL Play! owl2shacl converter are both consumed from `feature/asam-pipeline`
-branches on the `ASCS-eV` forks of each tool. Those branches carry the fixes the pipeline
-depends on, applied as self-contained upstream contributions. `provenance.json` records the
-exact commit each artifact was built from, so which fixes an artifact contains is a matter of
-record rather than recollection.
+branches on the `ASCS-eV` forks of each tool, rebased on the fork's stated upstream development
+branch with only the pending upstream-contribution commits cherry-picked on top. Those branches
+carry the fixes the pipeline depends on, applied as self-contained upstream contributions:
+[ShapeChange#764](https://github.com/ShapeChange/ShapeChange/pull/764) and
+[#766](https://github.com/ShapeChange/ShapeChange/pull/766);
+[owl2shacl#7](https://github.com/sparna-git/owl2shacl/pull/7) and
+[#8](https://github.com/sparna-git/owl2shacl/pull/8);
+[shacl-play#344](https://github.com/sparna-git/shacl-play/pull/344),
+[#345](https://github.com/sparna-git/shacl-play/pull/345) and
+[#346](https://github.com/sparna-git/shacl-play/pull/346). Tracked in
+[ASCS-eV/asam-openx-standards#7](https://github.com/ASCS-eV/asam-openx-standards/issues/7)
+(ShapeChange) and
+[#9](https://github.com/ASCS-eV/asam-openx-standards/issues/9) (owl2shacl, SHACL Play): when an
+upstream PR merges, that issue is where the transition to a released upstream commit is decided
+and recorded — never a silent branch drift.
+
+## The toolchain lock
+
+[`pipeline/toolchain-lock.json`](toolchain-lock.json) pins every input that determines the output
+bytes: for each fork, its exact commit, the upstream development branch and base commit it was
+rebased on, and the ordered list of commits it carries on top (each mapped to the upstream PR it
+implements); the exact Python serialization versions from
+[`scripts/requirements.txt`](../scripts/requirements.txt); and the exact JDK/Maven build
+environment plus content-based fingerprints of the built ShapeChange runtime and the built SHACL
+Play jar.
+
+`scripts/generate_semantic_artifacts.py` validates every tool checkout against this lock before
+building anything: the checkout must be clean, at the exact locked commit, with the locked
+upstream base an ancestor and the actual carried-commit list matching exactly. `--shaclplay` is
+therefore a checkout root, not a pre-built jar — the jar is always rebuilt here from that locked
+source, so the binary that runs is provably the one the lock describes, never a stale artifact
+left over from an earlier build.
+
+**Two independent checks, not one:**
+
+- `scripts/check_toolchain_lock.py` is static — no JDK, no Maven, no network, no tool checkout.
+  It proves the lock is internally consistent and that every committed `provenance.json` matches
+  what the lock claims produced it. This is the one CI can always run, and it is wired into
+  [`.github/workflows/verify-generated.yml`](../.github/workflows/verify-generated.yml).
+- `scripts/generate_semantic_artifacts.py` itself proves the *live* checkouts still match the
+  lock and reproduce the same `build_inputs` fingerprints — this needs the sibling tool
+  checkouts and a JDK/Maven, so it runs wherever a maintainer regenerates, not in ordinary CI.
+
+**Updating the lock is a release-like action, never a routine edit:**
+
+```bash
+# 1. Rebase the fork on its current upstream development branch, re-cherry-pick the
+#    pending contributions (see the issue for which PRs are still open)
+git -C ../ShapeChange fetch upstream next
+git -C ../ShapeChange rebase upstream/next   # or re-apply the cherry-picks after a reset
+
+# 2. Update pipeline/toolchain-lock.json: the new commit, the new upstream_base if it
+#    moved, and the exact carried_commits (compare with `git rev-list --reverse
+#    <upstream_base>..HEAD`)
+
+# 3. Regenerate both standards TWICE with a clean build each time, and confirm the
+#    build_inputs fingerprints and the generated OWL/SHACL bytes are identical between
+#    the two runs before trusting either value
+just  # or invoke scripts/generate_semantic_artifacts.py directly, see below
+
+# 4. Commit the lock update, the regenerated artifacts, and the provenance together,
+#    with the reasoning in the commit message
+```
+
+Never lock a raw file hash for a built jar: SHACL Play's onejar embeds per-entry ZIP timestamps,
+so its raw file SHA-256 differs on every clean build even from identical source — verified across
+three independent builds. `build_inputs.shacl_play_jar_fingerprint` is a **content** fingerprint
+(every entry's decompressed bytes, hashed, sorted by name, concatenated, hashed again), which is
+stable because it ignores the timestamps. The same reasoning applies to
+`shapechange_runtime_fingerprint`, computed from the compiled classes plus the resolved dependency
+classpath, identified by relative path / filename rather than absolute local path so it does not
+depend on where the checkout happens to sit.
 
 ## Running it
 
-You need JDK 21, Maven, and checkouts of the two tools:
+You need JDK 21, Maven, and the three tool checkouts as *siblings* of this repository (`../*`,
+never nested inside it) — this matches the layout `pipeline/toolchain-lock.json` and
+`scripts/generate_semantic_artifacts.py` assume:
 
 ```bash
-git clone https://github.com/ASCS-eV/ShapeChange.git   && git -C ShapeChange switch feature/asam-pipeline
-git clone https://github.com/ASCS-eV/shacl-play.git    && git -C shacl-play  switch feature/asam-pipeline
-git clone https://github.com/ASCS-eV/owl2shacl.git     && git -C owl2shacl   switch feature/asam-pipeline
+git clone https://github.com/ASCS-eV/ShapeChange.git   && git -C ShapeChange checkout <locked commit>
+git clone https://github.com/ASCS-eV/shacl-play.git    && git -C shacl-play  checkout <locked commit>
+git clone https://github.com/ASCS-eV/owl2shacl.git     && git -C owl2shacl   checkout <locked commit>
+```
 
-# build the SHACL converter once
-mvn -f shacl-play/pom.xml -pl shacl-validator,shacl-play-app -am install -DskipTests
+Read the locked commits from `pipeline/toolchain-lock.json`'s `tools.*.commit` fields rather than
+switching to the moving `feature/asam-pipeline` branch tip — the branch name is where the fork's
+work happens, the lock is what a run is actually validated against.
 
+```bash
 # the serialization stack, pinned — see "Why the output is byte-stable" below
 pip install -r scripts/requirements.txt
 
@@ -51,7 +124,7 @@ for standard in asam-opendrive asam-openscenario-xml; do
   python scripts/generate_semantic_artifacts.py \
       --standard "$standard" \
       --shapechange ../ShapeChange \
-      --shaclplay ../shacl-play/shacl-play-app/target/shacl-play-app-0.12.2-onejar.jar \
+      --shaclplay ../shacl-play \
       --rules ../owl2shacl/owl2sh-closed.ttl
 done
 ```
@@ -62,14 +135,19 @@ configuration that causes it.
 
 ShapeChange is built by the script itself, with `-DskipEa`, so no Enterprise Architect licence
 is involved. EA is needed only to re-export a `.scxml` model, and those exports are committed.
+SHACL Play is built by the script too, from the `--shaclplay` checkout — never point it at a
+pre-built jar.
 
 ## What comes out, and how to trust it
 
 `standards/<std>/generated/` holds the two artifacts plus `provenance.json`, which records the
-SHA-256 of the source model, the configuration, and the rules, along with the ShapeChange and
-owl2shacl commits and the versions of the serialization stack. That is what makes a difference
-in the output diagnosable: it tells a reviewer whether the model changed, the configuration
-changed, or the toolchain did.
+SHA-256 of the source model and the configuration; the ShapeChange commit and its content-based
+runtime fingerprint; the SHACL Play commit and its content-based jar fingerprint; the owl2shacl
+rules' checksum and commit; the resolved serialization versions; and the JDK/Maven build
+environment. That is what makes a difference in the output diagnosable: it tells a reviewer
+whether the model changed, the configuration changed, or the toolchain did — and
+`scripts/check_toolchain_lock.py` asserts every one of those fields against
+`pipeline/toolchain-lock.json` on every CI run.
 
 The ruleset is recorded by commit as well as by checksum, because a checksum alone proves two
 runs used the same bytes but not that a third party can obtain them. `"commit": "unknown"` in
