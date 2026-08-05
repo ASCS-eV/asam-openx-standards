@@ -70,6 +70,26 @@ STANDARDS = {
         "xsd_config": "pipeline/opendrive-xsd.config.xml",
         "xsd_schema_dir": "standards/asam-opendrive/schema",
         "xsd_prefix": "OpenDRIVE",
+        # The XSD target does not apply the OWL packaging rule, so its run is clean.
+        "tolerated_errors": {"owl": ("single-ontology-per-schema",)},
+        "union_defects": frozenset({"e_countryCode", "t_grEqZeroOrContactPoint"}),
+    },
+    "asam-openscenario-xml": {
+        "model": "standards/asam-openscenario-xml/uml/openscenario.scxml",
+        "config": "pipeline/openscenario-owl.config.xml",
+        "artifact": "openscenario",
+        "xsd_config": "pipeline/openscenario-xsd.config.xml",
+        "xsd_schema_dir": "standards/asam-openscenario-xml/schema",
+        "xsd_prefix": "OpenSCENARIO",
+        # The OWL stage tolerates nothing, and needs to tolerate nothing. Unlike OpenDRIVE,
+        # the OpenSCENARIO model carries no targetNamespace tagged values at all, so the schema
+        # package is named once in the configuration and ShapeChange resolves exactly one
+        # schema — the condition producing OpenDRIVE's 227 singleOntologyPerSchema errors does
+        # not arise, and neither do any union-encoding defects. Should either appear, that is a
+        # change in the model and this pipeline will stop. Only the XSD verification stage has
+        # a documented exception, for one property ASAM models as a reference to a union.
+        "tolerated_errors": {"xsd": ("union-valued-reference",)},
+        "union_defects": frozenset(),
     },
 }
 
@@ -80,11 +100,18 @@ STANDARDS = {
 #: recorded in provenance.json.
 SERIALIZATION_DISTS = ("diffable-rdf", "rdflib", "pyoxigraph")
 
-#: ShapeChange log messages that are understood and deliberately do not fail the build. Each
-#: entry pairs a matcher with the reason it is tolerated. Anything else logged at Error level
-#: stops the pipeline, so a genuine error cannot hide among these.
-TOLERATED_ERRORS = (
-    (
+#: ShapeChange log messages that are understood and deliberately do not fail the build, keyed
+#: by the name a standard opts into through its ``tolerated_errors``. Each entry pairs a matcher
+#: with the reason it is tolerated. Anything else logged at Error level stops the pipeline, so a
+#: genuine error cannot hide among these.
+#:
+#: Tolerations are opted into per standard *and per stage* rather than applied globally: a
+#: condition explained by one model's encoding says nothing about another's, and one explained
+#: for the XML Schema target says nothing about the OWL target. Extending OpenDRIVE's
+#: explanation to a second standard, or OpenSCENARIO's XSD exception to its OWL run, would
+#: suppress exactly the signal each one documents.
+TOLERATED_ERRORS = {
+    "single-ontology-per-schema": (
         re.compile(
             r"Rule 'rule-owl-pkg-singleOntologyPerSchema' is in effect, "
             r"but no schema package was found for class"
@@ -94,13 +121,20 @@ TOLERATED_ERRORS = (
         "class outside the schema it is currently processing. The emitted ontology is "
         "complete regardless; see the pipeline README",
     ),
-)
-
-#: Classes whose supertypes ShapeChange rejects because the EA model encodes XSD union types
-#: as generalizations. Documented in standards/asam-opendrive/uml/README.md under "Known
-#: encoding gaps". A class reported here that is not in this set is a new modelling defect and
-#: must fail the build rather than be discovered later in the generated artifact.
-KNOWN_UNION_DEFECTS = frozenset({"e_countryCode", "t_grEqZeroOrContactPoint"})
+    "union-valued-reference": (
+        re.compile(
+            r"Property '[^']+' of class '[^']+' is not a composition, but has a data type as "
+            r"its value"
+        ),
+        "OpenSCENARIO models ActivateControllerAction.objectControllerRef as an association to "
+        "ObjectController, a <<union>>, while ASAM's normative XSD declares it type=\"String\" "
+        "- a reference by name. A union has no identity, so the XML Schema target is right to "
+        "refuse to encode a reference to one. The generated XSD therefore omits this one "
+        "property, which is why the structural comparison shows one fewer attribute; the "
+        "enumeration-value invariant this check enforces is unaffected. Tracked as an ASAM "
+        "change request; see the pipeline README",
+    ),
+}
 
 _UNION_WARNING = re.compile(
     r"The class '([^']+)' is modelled as a feature type, object type, data type, mixin, or "
@@ -124,17 +158,40 @@ def serialization_versions() -> dict[str, str]:
     return versions
 
 
-def check_shapechange_log(log: Path) -> None:
+def check_shapechange_log(log: Path, spec: dict, stage: str) -> None:
     """Fail on anything in the ShapeChange log that is not a known, explained condition.
 
     ShapeChange exits 0 while logging Error-level messages, so its exit code says nothing
-    about whether the run was clean. The OpenDRIVE model currently produces two categories of
-    noise, both rooted in the EA model rather than in this pipeline; both are enumerated above
-    and counted here rather than silently ignored, so a new message of either kind is a build
+    about whether the run was clean. What counts as explained is declared by the standard's
+    own entry in ``STANDARDS``, per *stage*: the OpenDRIVE model produces two categories of
+    noise in its OWL run, both rooted in the EA model rather than in this pipeline, and both
+    are counted here rather than silently ignored, so a new message of either kind is a build
     failure instead of something a reader has to notice in a 900-line log.
+
+    Tolerations are keyed by stage because the two ShapeChange targets diagnose different
+    things about the same model, and a condition explained for one is not explained for the
+    other. OpenSCENARIO is the case in point: its OWL run is completely clean, while its XML
+    Schema run reports one property the target cannot encode. Declaring that per standard
+    would have suppressed the OWL run's zero-tolerance guarantee to buy a toleration the XSD
+    verification needs. A stage that declares no tolerations - the default - requires a
+    completely clean log.
+
+    Args:
+        log: The log file the resolved configuration wrote.
+        spec: The standard's ``STANDARDS`` entry.
+        stage: Which target produced the log, ``"owl"`` or ``"xsd"``.
     """
     if not log.exists():
         raise SystemExit(f"ShapeChange wrote no log at {log}; cannot verify the run was clean")
+
+    by_stage = spec.get("tolerated_errors", {})
+    unknown = set(by_stage) - {"owl", "xsd"}
+    if unknown:
+        raise SystemExit(
+            f"unknown stage(s) {sorted(unknown)} in tolerated_errors; expected 'owl' or 'xsd'"
+        )
+    tolerations = tuple(TOLERATED_ERRORS[name] for name in by_stage.get(stage, ()))
+    union_defects = spec.get("union_defects", frozenset())
 
     try:
         root = ElementTree.parse(log).getroot()
@@ -151,7 +208,7 @@ def check_shapechange_log(log: Path) -> None:
         if not element.tag.endswith("Error"):
             continue
         message = element.get("message", "")
-        for matcher, reason in TOLERATED_ERRORS:
+        for matcher, reason in tolerations:
             if matcher.search(message):
                 tolerated[reason] = tolerated.get(reason, 0) + 1
                 break
@@ -176,19 +233,101 @@ def check_shapechange_log(log: Path) -> None:
         for match in [_UNION_WARNING.search(element.get("message", ""))]
         if match
     }
-    if reported - KNOWN_UNION_DEFECTS:
+    if reported - union_defects:
         raise SystemExit(
             "ShapeChange rejects the supertype structure of "
-            f"{', '.join(sorted(reported - KNOWN_UNION_DEFECTS))}, which is not in the "
-            "documented set of union-encoding defects. Either the EA model changed or a new "
-            "defect appeared: investigate before publishing, then update KNOWN_UNION_DEFECTS "
-            "and the 'Known encoding gaps' section of the model's README together."
+            f"{', '.join(sorted(reported - union_defects))}, which is not in the documented "
+            "set of union-encoding defects for this standard. Either the EA model changed or "
+            "a new defect appeared: investigate before publishing, then update the standard's "
+            "'union_defects' entry and the 'Known encoding gaps' section of the model's "
+            "README together."
         )
     if reported:
         print(
             f"  {len(reported)} known union-encoding defect(s) unchanged: "
             f"{', '.join(sorted(reported))}"
         )
+
+
+def model_class_names(model: Path) -> set[str]:
+    """Every class name in an SCXML model, lower-cased.
+
+    Raises:
+        SystemExit: if two classes differ only by case. Coverage below is compared
+            case-insensitively, because ShapeChange normalises a class name by upper-casing
+            its first character; that comparison is only exact while no two names collide
+            under it, so the condition is asserted rather than assumed.
+    """
+    names: dict[str, str] = {}
+    for element in ElementTree.parse(model).getroot().iter():
+        if not element.tag.endswith("}Class") and element.tag != "Class":
+            continue
+        for child in element:
+            if child.tag.endswith("}name") or child.tag == "name":
+                name = (child.text or "").strip()
+                if name:
+                    previous = names.setdefault(name.lower(), name)
+                    if previous != name:
+                        raise SystemExit(
+                            f"{model.name} contains classes '{previous}' and '{name}', which "
+                            "differ only by case; the coverage check below cannot tell them "
+                            "apart and would pass while one was missing"
+                        )
+                break
+    return set(names)
+
+
+def check_model_coverage(spec: dict, owl: Path, config: Path) -> None:
+    """Fail unless every class in the source model reached the ontology.
+
+    This is the guard for the regression that motivated the whole pipeline: all 55 unmapped
+    OpenDRIVE enumerations were once silently dropped, and the result was 530 KB of
+    plausible-looking OWL. ShapeChange logged a warning 55 times and exited 0.
+
+    A class is accounted for when it is emitted as a named ``owl:Class`` or ``rdfs:Datatype``,
+    or when a map entry deliberately replaces it with an RDF datatype - OpenDRIVE's ``t_bool``
+    becomes ``xsd:boolean``, so its absence from the ontology is correct. Anything else is a
+    class the model declares and the ontology does not have.
+
+    The map entries are read from the resolved configuration rather than assumed, for the same
+    reason ``shapechange_log`` reads the log path from it: a configuration that maps types from
+    a different file would otherwise make this check quietly wrong.
+    """
+    from rdflib import BNode, Graph, RDF, RDFS
+    from rdflib.namespace import OWL as OWL_NS
+
+    mapped: set[str] = set()
+    for include in ElementTree.parse(config).getroot().iter():
+        href = include.get("href", "") if include.tag.endswith("include") else ""
+        if not href.endswith("mapentries-asam.xml"):
+            continue
+        entries = ElementTree.parse(href.removeprefix("file:///")).getroot()
+        for entry in entries.iter():
+            if entry.tag.endswith("RdfTypeMapEntry") and entry.get("type"):
+                mapped.add(entry.get("type", "").lower())
+
+    graph = Graph().parse(owl, format="turtle")
+    emitted = {
+        str(subject).rsplit("#", 1)[-1].rsplit("/", 1)[-1].lower()
+        for class_type in (OWL_NS.Class, RDFS.Datatype)
+        for subject in graph.subjects(RDF.type, class_type)
+        if not isinstance(subject, BNode)
+    }
+
+    declared = model_class_names(REPO_ROOT / spec["model"])
+    missing = sorted(declared - emitted - mapped)
+    if missing:
+        raise SystemExit(
+            f"{len(missing)} of {len(declared)} classes in {Path(spec['model']).name} reached "
+            f"neither the ontology nor a map entry: {', '.join(missing[:15])}"
+            + (" …" if len(missing) > 15 else "")
+            + ". Check the ShapeChange log for 'Unsupported class category' - an encoding rule "
+            "is probably missing for that category."
+        )
+    print(
+        f"  all {len(declared)} model classes accounted for "
+        f"({len(declared & mapped)} mapped to RDF datatypes by configuration)"
+    )
 
 
 def canonicalize_turtle(path: Path) -> None:
@@ -200,8 +339,14 @@ def canonicalize_turtle(path: Path) -> None:
     stayed identical. Canonicalizing makes regeneration byte-stable, so a diff in a generated
     artifact means the model or the toolchain changed and is worth reading.
 
-    Only the serialization changes. The triple count is asserted to be unchanged, and the file
-    is written as bytes with LF endings so a Windows run cannot introduce CRLF.
+    Only the serialization changes. That the output says the same thing as the input is
+    guaranteed by diffable-rdf itself from 0.0.2 on: it re-parses its own output, requires the
+    result to be isomorphic to the input, and raises otherwise (ASCS-eV/diffable-rdf#1, where
+    shared rdf:List tails were silently dropped or duplicated). The triple count is still
+    asserted here as a cheap tripwire against a regression in that guarantee - a full
+    isomorphism check would repeat, at ninety seconds per artifact, work the library has
+    already done. The file is written as bytes with LF endings so a Windows run cannot
+    introduce CRLF.
     """
     try:
         from diffable_rdf import deterministic_turtle
@@ -308,17 +453,23 @@ def generate_owl(spec: dict, classpath: str, resources: Path, out_dir: Path, wor
     print("• generating OWL from the committed SCXML model")
     template = (REPO_ROOT / spec["config"]).read_text()
     config = work / "shapechange.config.xml"
+    owl_out = work / "owl"
+    # Emptied first, so that the "exactly one Turtle output" check below is a statement about
+    # this run. The work directory is reused across invocations, and generating a second
+    # standard into a directory still holding the first one's ontology made that check fail on
+    # a file ShapeChange had not just produced.
+    shutil.rmtree(owl_out, ignore_errors=True)
     config.write_text(
         template.replace("{SHAPECHANGE_RESOURCES}", str(resources))
         .replace("{PIPELINE}", str(REPO_ROOT / "pipeline"))
-        .replace("{OUT}", str(work / "owl"))
+        .replace("{OUT}", str(owl_out))
     )
     run(["java", "-cp", classpath,
          "de.interactive_instruments.shapechange.app.Main", "-c", str(config)],
         cwd=REPO_ROOT, what="ShapeChange OWL generation")
-    check_shapechange_log(shapechange_log(config))
+    check_shapechange_log(shapechange_log(config), spec, stage="owl")
 
-    produced = sorted((work / "owl").rglob("*.ttl"))
+    produced = sorted(owl_out.rglob("*.ttl"))
     if not produced:
         raise SystemExit("ShapeChange produced no Turtle output; see the log in the work directory")
     if len(produced) > 1:
@@ -332,6 +483,9 @@ def generate_owl(spec: dict, classpath: str, resources: Path, out_dir: Path, wor
         )
     target = out_dir / f"{spec['artifact']}.owl.ttl"
     shutil.copyfile(produced[0], target)
+    # Checked before stage 2 rather than after: shapes derived from an incomplete ontology are
+    # themselves incomplete, and the missing classes are far harder to spot there.
+    check_model_coverage(spec, target, config)
     # Before stage 2, so the SHACL is derived from a deterministic input too.
     canonicalize_turtle(target)
     return target

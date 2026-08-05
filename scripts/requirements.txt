@@ -5,6 +5,11 @@
 # on all three. A minor rdflib bump can reintroduce exactly the blank-node churn that
 # canonicalizing exists to remove, and it would arrive looking like a semantic change.
 # provenance.json records the resolved versions so such a diff can be attributed.
-diffable-rdf==0.0.1
+#
+# diffable-rdf 0.0.2 is the minimum that is safe here: 0.0.1 could silently drop or duplicate
+# RDF collections whose tails are shared, which OWL ontologies produce routinely through
+# owl:unionOf and owl:oneOf and which SHACL sh:in inherits. 0.0.2 verifies that its output
+# round-trips before returning it, so the pipeline no longer needs to re-check that itself.
+diffable-rdf==0.0.2
 rdflib==7.6.0
 pyoxigraph==0.5.9

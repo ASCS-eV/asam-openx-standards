@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShapeChange, XML Schema target - regenerates an OpenSCENARIO XSD from the committed SCXML
+  model, for the structural equivalence check in scripts/check_xsd_structural_parity.py (see
+  pipeline/README.md, "The XSD equivalence oracle").
+
+  As with the OpenDRIVE counterpart, the XSD produced here is written to a scratch directory
+  and compared against ASAM's normative schema in standards/asam-openscenario-xml/schema/,
+  never committed. Its only purpose is evidence that the open UML model captures the same
+  content as the independently maintained XSD.
+
+  Differs from opendrive-xsd.config.xml in one structural respect: ASAM publishes OpenSCENARIO
+  as a SINGLE schema document, not a seven-file split, so exactly one PackageInfo is declared
+  and its xsdDocument names the file the comparison pairs against.
+
+  {SHAPECHANGE_RESOURCES}, {PIPELINE} and {OUT} are substituted by the script, the same as in
+  openscenario-owl.config.xml.
+-->
+<ShapeChangeConfiguration
+    xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 file:///{SHAPECHANGE_RESOURCES}/schema/ShapeChangeConfiguration.xsd">
+  <input>
+    <parameter name="inputModelType" value="SCXML"/>
+    <!-- Committed, EA-free source model. Paths are relative to the repository root. -->
+    <parameter name="inputFile" value="standards/asam-openscenario-xml/uml/openscenario.scxml"/>
+    <parameter name="appSchemaNamespaceRegex" value="http://code.asam.net/simulation/standard/openscenario_schema"/>
+    <parameter name="publicOnly" value="false"/>
+    <parameter name="checkingConstraints" value="disabled"/>
+    <parameter name="sortedSchemaOutput" value="true"/>
+    <packages>
+      <PackageInfo packageName="OpenSCENARIO" nsabr="osc" ns="http://code.asam.net/simulation/standard/openscenario_schema" xsdDocument="OpenSCENARIO.xsd"/>
+    </packages>
+    <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardAliases.xml"/>
+  </input>
+  <log>
+    <parameter name="reportLevel" value="INFO"/>
+    <parameter name="logFile" value="{OUT}/openscenario-xsd-log.xml"/>
+  </log>
+  <targets>
+    <TargetXmlSchema class="de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema" mode="enabled">
+      <targetParameter name="outputDirectory" value="{OUT}"/>
+      <targetParameter name="sortedOutput" value="true"/>
+      <targetParameter name="defaultEncodingRule" value="asam-xsd"/>
+      <rules>
+        <!-- Identical to the OpenDRIVE encoding rule; see opendrive-xsd.config.xml for why
+             each of these five rules is present, in particular the two enumeration rules and
+             rule-xsd-cls-standard-gml-property-types. -->
+        <EncodingRule name="asam-xsd" extends="*">
+          <rule name="rule-xsd-all-naming-gml"/>
+          <rule name="rule-xsd-cls-basictype"/>
+          <rule name="rule-xsd-cls-global-enumeration"/>
+          <rule name="rule-xsd-cls-no-base-class"/>
+          <rule name="rule-xsd-cls-no-gml-types"/>
+          <rule name="rule-xsd-cls-standard-gml-property-types"/>
+        </EncodingRule>
+      </rules>
+      <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardNamespaces.xml"/>
+      <xmlNamespaces>
+        <XmlNamespace nsabr="osc" ns="http://code.asam.net/simulation/standard/openscenario_schema" location="OpenSCENARIO.xsd"/>
+      </xmlNamespaces>
+      <xi:include href="file:///{SHAPECHANGE_RESOURCES}/config/StandardMapEntries.xml"/>
+      <xi:include href="{PIPELINE}/xsdmapentries-asam.xml"/>
+    </TargetXmlSchema>
+  </targets>
+</ShapeChangeConfiguration>
