@@ -121,10 +121,37 @@ reflects a real change in the Enterprise Architect project.
 
 ## Using the model without EA (the normal case)
 
-Point a ShapeChange OWL (or XSD) configuration's `inputFile` at `openscenario.scxml` (or
-`openscenario.scxml.zip`) and set `inputModelType=SCXML`. No EA is required. See the
-`ontology-management-base` pipeline documentation (`docs/future/asam-openx/`) for the
-OWL→SHACL steps.
+This model drives the generation pipeline in this repository. No EA is required:
+
+```bash
+python scripts/generate_semantic_artifacts.py \
+    --standard asam-openscenario-xml \
+    --shapechange ../ShapeChange \
+    --shaclplay ../shacl-play/shacl-play-app/target/shacl-play-app-0.12.2-onejar.jar \
+    --rules ../owl2shacl/owl2sh-closed.ttl
+```
+
+It produces `../generated/openscenario.owl.ttl`, `../generated/openscenario.shacl.ttl` and a
+`provenance.json` recording exactly what produced them. See [`pipeline/README.md`](../../../pipeline/README.md)
+for the configuration, what is checked on every run, and the structural comparison against
+ASAM's normative XSD.
+
+Any other ShapeChange configuration can read the model the same way: point `inputFile` at
+`openscenario.scxml` (or `openscenario.scxml.zip`) and set `inputModelType=SCXML`.
+
+### What the generated artifacts cover
+
+Every one of the model's 343 classes reaches the ontology — 304 as `owl:Class`, 39 as an
+`rdfs:Datatype` with `owl:oneOf` — and that is asserted on every run, not assumed. The 48
+`<<union>>` classes are encoded as OWL disjunctions, and the ShapeChange log is free of errors
+and warnings, so the pipeline tolerates none for this standard. See the coverage table in
+[`pipeline/README.md`](../../../pipeline/README.md).
+
+One modelling issue is known, and it is visible only in the XSD comparison:
+`ActivateControllerAction.objectControllerRef` is modelled as an association to
+`ObjectController`, a `<<union>>`, while ASAM's normative schema declares it `type="String"` — a
+reference by name. 34 `*Ref` properties share that shape; this one fails loudly because a union
+has no identity for a reference to point at. Filed as an ASAM change request.
 
 ## Reproducing the export (requires EA once)
 

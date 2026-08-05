@@ -1,13 +1,13 @@
 {
-  "generated": "2026-08-05T06:25:15+00:00",
-  "standard": "asam-opendrive",
+  "generated": "2026-08-05T06:21:43+00:00",
+  "standard": "asam-openscenario-xml",
   "source_model": {
-    "path": "standards/asam-opendrive/uml/opendrive.scxml",
-    "sha256": "02648f53ab50e34a882e7c49fea1cb160d29d2b478065024338713ad25d5b21d"
+    "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
+    "sha256": "2fcea5c4a5fc91e840739c515130f28167da30f357c32bf1031d72fb853dc0ea"
   },
   "configuration": {
-    "path": "pipeline/opendrive-owl.config.xml",
-    "sha256": "58a71fb314623b4c18d2165617be3fc47c6dbf85d76654e5058dfc15ba1d05c5"
+    "path": "pipeline/openscenario-owl.config.xml",
+    "sha256": "e20278f8ad0dd8d94166735962bf25425efd510776e56b9a2c70c1d227ef453b"
   },
   "tools": {
     "shapechange": {
@@ -29,7 +29,7 @@
     }
   },
   "outputs": {
-    "opendrive.owl.ttl": "5ab9657fb61b21f6da247e933eca7a901008d0e83d3619febe869512ab12cb81",
-    "opendrive.shacl.ttl": "f154bf8e421cebdafad7177462bc5f1aede8744162215a5999ab8ea5b729e1b5"
+    "openscenario.owl.ttl": "b977523d0544877dc7e32b3abd25c72e472c12e26ccfa8f80031f868a6efdebc",
+    "openscenario.shacl.ttl": "30a158fa7c6fd38413b5fd4b965eea053f775c96b11600e81c7a9a46e5d7ad31"
   }
 }

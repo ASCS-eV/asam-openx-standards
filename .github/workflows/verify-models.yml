@@ -12,6 +12,7 @@ on:
   pull_request:
     paths:
       - "standards/*/uml/**"
+      - "standards/*/schema/**"
       - ".gitattributes"
       - ".github/workflows/verify-models.yml"
 
@@ -64,4 +65,46 @@ jobs:
               fi
               echo "ok: $(basename "$artifact") -> ${actual}… documented"
             done
+          done
+
+  # Same claim, made about ASAM's normative schemas rather than the UML exports, and it needs
+  # enforcing for a sharper reason: those checksums cover the deliverables byte-for-byte *as
+  # ASAM shipped them*, line endings included. Several OpenDRIVE files are stored with CRLF and
+  # OpenSCENARIO's with LF, so any well-meaning normalisation - a .gitattributes change, an
+  # editor, a pre-commit hook - silently makes them unverifiable against the published
+  # deliverable. Downstream consumers copy these files expecting exactly those bytes; see the
+  # derived vocabularies in ontology-management-base's imports/.
+  schema-checksums:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Published schema SHA-256 checksums still match
+        run: |
+          set -euo pipefail
+          found=0
+          for readme in standards/*/schema/README.md; do
+            dir=$(dirname "$readme")
+            for artifact in "$dir"/*.xsd; do
+              actual=$(sha256sum "$artifact" | cut -c1-16)
+              if ! grep -qF "$actual" "$readme"; then
+                echo "::error file=$readme::$(basename "$artifact") has SHA-256 ${actual}… which is not documented. If line endings were normalised, restore the bytes ASAM published rather than updating this checksum."
+                exit 1
+              fi
+              echo "ok: $(basename "$artifact") -> ${actual}… documented"
+              found=$((found + 1))
+            done
+          done
+          [ "$found" -gt 0 ] || { echo "::error::no schema files found to check"; exit 1; }
+          echo "checked $found schema file(s)"
+
+      - name: Every schema directory publishes its provenance
+        run: |
+          set -euo pipefail
+          # A schema directory without a README is a redistributed ASAM deliverable with no
+          # record of where it came from, and the step above would silently check nothing.
+          for dir in standards/*/schema; do
+            [ -n "$(find "$dir" -maxdepth 1 -name '*.xsd' -print -quit)" ] || continue
+            [ -f "$dir/README.md" ] || { echo "::error::$dir holds schemas but no README.md recording their provenance"; exit 1; }
+            echo "ok: $dir/README.md present"
           done

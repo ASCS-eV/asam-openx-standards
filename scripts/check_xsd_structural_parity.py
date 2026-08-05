@@ -100,7 +100,7 @@ def generate_xsd(spec: dict, classpath: str, resources: Path, work: Path) -> Pat
     # Same reasoning as the OWL stage: a 0 exit code does not mean the run was clean, so the
     # log is parsed and any error or union-encoding warning outside the already-documented set
     # fails the build rather than shipping a silently incomplete comparison.
-    check_shapechange_log(shapechange_log(config))
+    check_shapechange_log(shapechange_log(config), spec, stage="xsd")
 
     # ShapeChange nests output under a subdirectory named after the pseudo-package that
     # wraps the input model (observed as "INPUT"); searched recursively rather than
@@ -114,9 +114,19 @@ def compare(generated_dir: Path, official_dir: Path, prefix: str) -> bool:
     """Print the structural comparison and report whether enumeration values match exactly."""
     pairs = []
     for generated in sorted(generated_dir.rglob("*.xsd")):
-        official = official_dir / f"{prefix}_{generated.stem}.xsd"
-        if not official.exists():
-            raise SystemExit(f"no official counterpart for {generated.name}: expected {official}")
+        # Two naming conventions are in use among ASAM's published schemas: a multi-document
+        # standard prefixes each file with the standard's name (OpenDRIVE_Core.xsd), while a
+        # single-document standard publishes one file named after the standard itself
+        # (OpenSCENARIO.xsd). Both are tried rather than configured per standard, because the
+        # generated document is named by the configuration in either case and a mismatch is
+        # reported below with both candidates.
+        candidates = [official_dir / f"{prefix}_{generated.stem}.xsd", official_dir / f"{generated.stem}.xsd"]
+        official = next((c for c in candidates if c.exists()), None)
+        if official is None:
+            raise SystemExit(
+                f"no official counterpart for {generated.name}: tried "
+                + ", ".join(str(c) for c in candidates)
+            )
         pairs.append((generated, official))
     if not pairs:
         raise SystemExit(f"no generated .xsd files found under {generated_dir}")
