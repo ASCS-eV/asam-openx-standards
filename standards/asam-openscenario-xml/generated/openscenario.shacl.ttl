@@ -7,33 +7,38 @@
 osc:AbsoluteSpeed a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AbsoluteSpeed-AbsoluteSpeed.steadyState,
         osc:AbsoluteSpeed-AbsoluteSpeed.value .
 
 osc:AbsoluteTargetLane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AbsoluteTargetLane-AbsoluteTargetLane.layer,
         osc:AbsoluteTargetLane-AbsoluteTargetLane.value .
 
 osc:AbsoluteTargetLaneOffset a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AbsoluteTargetLaneOffset-AbsoluteTargetLaneOffset.value .
 
 osc:AbsoluteTargetSpeed a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AbsoluteTargetSpeed-AbsoluteTargetSpeed.value .
 
 osc:AccelerationCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AccelerationCondition-AccelerationCondition.direction,
         osc:AccelerationCondition-AccelerationCondition.rule,
         osc:AccelerationCondition-AccelerationCondition.value .
@@ -41,13 +46,15 @@ osc:AccelerationCondition a rdfs:Class,
 osc:AcquirePositionAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AcquirePositionAction-AcquirePositionAction.position .
 
 osc:Act a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Act-Act.maneuverGroups,
         osc:Act-Act.name,
         osc:Act-Act.startTrigger,
@@ -56,7 +63,8 @@ osc:Act a rdfs:Class,
 osc:Action a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Action-Action.globalAction,
         osc:Action-Action.name,
         osc:Action-Action.privateAction,
@@ -65,7 +73,8 @@ osc:Action a rdfs:Class,
 osc:ActivateControllerAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ActivateControllerAction-ActivateControllerAction.animation,
         osc:ActivateControllerAction-ActivateControllerAction.controllerRef,
         osc:ActivateControllerAction-ActivateControllerAction.lateral,
@@ -76,20 +85,23 @@ osc:ActivateControllerAction a rdfs:Class,
 osc:Actors a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Actors-Actors.entityRefs,
         osc:Actors-Actors.selectTriggeringEntities .
 
 osc:AddEntityAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AddEntityAction-AddEntityAction.position .
 
 osc:AngleCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AngleCondition-AngleCondition.angle,
         osc:AngleCondition-AngleCondition.angleTolerance,
         osc:AngleCondition-AngleCondition.angleType,
@@ -98,7 +110,8 @@ osc:AngleCondition a rdfs:Class,
 osc:AnimationAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AnimationAction-AnimationAction.animationDuration,
         osc:AnimationAction-AnimationAction.animationState,
         osc:AnimationAction-AnimationAction.animationType,
@@ -107,20 +120,23 @@ osc:AnimationAction a rdfs:Class,
 osc:AnimationFile a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AnimationFile-AnimationFile.file,
         osc:AnimationFile-AnimationFile.timeOffset .
 
 osc:AnimationState a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AnimationState-AnimationState.state .
 
 osc:AnimationType a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AnimationType-AnimationType.animationFile,
         osc:AnimationType-AnimationType.componentAnimation,
         osc:AnimationType-AnimationType.pedestrianAnimation,
@@ -129,14 +145,16 @@ osc:AnimationType a rdfs:Class,
 osc:AppearanceAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AppearanceAction-AppearanceAction.animationAction,
         osc:AppearanceAction-AppearanceAction.lightStateAction .
 
 osc:AssignControllerAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AssignControllerAction-AssignControllerAction.activateAnimation,
         osc:AssignControllerAction-AssignControllerAction.activateLateral,
         osc:AssignControllerAction-AssignControllerAction.activateLighting,
@@ -148,20 +166,23 @@ osc:AssignControllerAction a rdfs:Class,
 osc:AssignRouteAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AssignRouteAction-AssignRouteAction.catalogReference,
         osc:AssignRouteAction-AssignRouteAction.route .
 
 osc:AutomaticGear a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:AutomaticGear-AutomaticGear.gear .
 
 osc:Axle a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Axle-Axle.maxSteering,
         osc:Axle-Axle.positionX,
         osc:Axle-Axle.positionZ,
@@ -171,7 +192,8 @@ osc:Axle a rdfs:Class,
 osc:Axles a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Axles-Axles.additionalAxles,
         osc:Axles-Axles.frontAxle,
         osc:Axles-Axles.rearAxle .
@@ -179,47 +201,54 @@ osc:Axles a rdfs:Class,
 osc:BoundingBox a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:BoundingBox-BoundingBox.center,
         osc:BoundingBox-BoundingBox.dimensions .
 
 osc:Brake a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Brake-Brake.maxRate,
         osc:Brake-Brake.value .
 
 osc:BrakeInput a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:BrakeInput-BrakeInput.brakeForce,
         osc:BrakeInput-BrakeInput.brakePercent .
 
 osc:ByEntityCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ByEntityCondition-ByEntityCondition.entityCondition,
         osc:ByEntityCondition-ByEntityCondition.triggeringEntities .
 
 osc:ByObjectType a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ByObjectType-ByObjectType.type .
 
 osc:ByType a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ByType-ByType.objectType .
 
 osc:ByValueCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ByValueCondition-ByValueCondition.parameterCondition,
         osc:ByValueCondition-ByValueCondition.simulationTimeCondition,
         osc:ByValueCondition-ByValueCondition.storyboardElementStateCondition,
@@ -232,7 +261,8 @@ osc:ByValueCondition a rdfs:Class,
 osc:Catalog a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Catalog-Catalog.controllers,
         osc:Catalog-Catalog.environments,
         osc:Catalog-Catalog.maneuvers,
@@ -247,13 +277,15 @@ osc:Catalog a rdfs:Class,
 osc:CatalogDefinition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:CatalogDefinition-CatalogDefinition.catalog .
 
 osc:CatalogLocations a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:CatalogLocations-CatalogLocations.controllerCatalog,
         osc:CatalogLocations-CatalogLocations.environmentCatalog,
         osc:CatalogLocations-CatalogLocations.maneuverCatalog,
@@ -267,7 +299,8 @@ osc:CatalogLocations a rdfs:Class,
 osc:CatalogReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:CatalogReference-CatalogReference.catalogName,
         osc:CatalogReference-CatalogReference.entryName,
         osc:CatalogReference-CatalogReference.parameterAssignments,
@@ -276,7 +309,8 @@ osc:CatalogReference a rdfs:Class,
 osc:Center a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Center-Center.x,
         osc:Center-Center.y,
         osc:Center-Center.z .
@@ -284,13 +318,15 @@ osc:Center a rdfs:Class,
 osc:CentralSwarmObject a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:CentralSwarmObject-CentralSwarmObject.entityRef .
 
 osc:Clothoid a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Clothoid-Clothoid.curvature,
         osc:Clothoid-Clothoid.curvatureDot,
         osc:Clothoid-Clothoid.curvaturePrime,
@@ -304,7 +340,8 @@ osc:Clothoid a rdfs:Class,
 osc:ClothoidSpline a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ClothoidSpline-ClothoidSpline.motionEnd,
         osc:ClothoidSpline-ClothoidSpline.segments,
         osc:ClothoidSpline-ClothoidSpline.timeEnd .
@@ -312,7 +349,8 @@ osc:ClothoidSpline a rdfs:Class,
 osc:ClothoidSplineSegment a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ClothoidSplineSegment-ClothoidSplineSegment.curvatureEnd,
         osc:ClothoidSplineSegment-ClothoidSplineSegment.curvatureStart,
         osc:ClothoidSplineSegment-ClothoidSplineSegment.hOffset,
@@ -324,14 +362,16 @@ osc:ClothoidSplineSegment a rdfs:Class,
 osc:CollisionCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:CollisionCondition-CollisionCondition.byType,
         osc:CollisionCondition-CollisionCondition.entityRef .
 
 osc:Color a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Color-Color.colorCmyk,
         osc:Color-Color.colorRgb,
         osc:Color-Color.colorType .
@@ -339,7 +379,8 @@ osc:Color a rdfs:Class,
 osc:ColorCmyk a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ColorCmyk-ColorCmyk.cyan,
         osc:ColorCmyk-ColorCmyk.key,
         osc:ColorCmyk-ColorCmyk.magenta,
@@ -348,7 +389,8 @@ osc:ColorCmyk a rdfs:Class,
 osc:ColorRgb a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ColorRgb-ColorRgb.blue,
         osc:ColorRgb-ColorRgb.green,
         osc:ColorRgb-ColorRgb.red .
@@ -356,14 +398,16 @@ osc:ColorRgb a rdfs:Class,
 osc:ComponentAnimation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ComponentAnimation-ComponentAnimation.userDefinedComponent,
         osc:ComponentAnimation-ComponentAnimation.vehicleComponent .
 
 osc:Condition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Condition-Condition.byEntityCondition,
         osc:Condition-Condition.byValueCondition,
         osc:Condition-Condition.conditionEdge,
@@ -373,19 +417,22 @@ osc:Condition a rdfs:Class,
 osc:ConditionGroup a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ConditionGroup-ConditionGroup.conditions .
 
 osc:ConnectTrailerAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ConnectTrailerAction-ConnectTrailerAction.trailerRef .
 
 osc:ControlPoint a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ControlPoint-ControlPoint.position,
         osc:ControlPoint-ControlPoint.time,
         osc:ControlPoint-ControlPoint.weight .
@@ -393,7 +440,8 @@ osc:ControlPoint a rdfs:Class,
 osc:Controller a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Controller-Controller.controllerType,
         osc:Controller-Controller.name,
         osc:Controller-Controller.parameterDeclarations,
@@ -402,7 +450,8 @@ osc:Controller a rdfs:Class,
 osc:ControllerAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ControllerAction-ControllerAction.activateControllerAction,
         osc:ControllerAction-ControllerAction.assignControllerAction,
         osc:ControllerAction-ControllerAction.overrideControllerValueAction .
@@ -410,19 +459,22 @@ osc:ControllerAction a rdfs:Class,
 osc:ControllerCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ControllerCatalogLocation-ControllerCatalogLocation.directory .
 
 osc:ControllerDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ControllerDistribution-ControllerDistribution.controllerDistributionEntries .
 
 osc:ControllerDistributionEntry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ControllerDistributionEntry-ControllerDistributionEntry.catalogReference,
         osc:ControllerDistributionEntry-ControllerDistributionEntry.controller,
         osc:ControllerDistributionEntry-ControllerDistributionEntry.weight .
@@ -430,52 +482,60 @@ osc:ControllerDistributionEntry a rdfs:Class,
 osc:CustomCommandAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:CustomCommandAction-CustomCommandAction.content,
         osc:CustomCommandAction-CustomCommandAction.type .
 
 osc:CustomContent a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:CustomContent-CustomContent.content .
 
 osc:Deterministic a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Deterministic-Deterministic.deterministicParameterDistributions .
 
 osc:DeterministicMultiParameterDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DeterministicMultiParameterDistribution-DeterministicMultiParameterDistribution.deterministicMultiParameterDistributionType .
 
 osc:DeterministicMultiParameterDistributionType a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DeterministicMultiParameterDistributionType-DeterministicMultiParameterDistributionType.valueSetDistribution .
 
 osc:DeterministicParameterDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DeterministicParameterDistribution-DeterministicParameterDistribution.deterministicMultiParameterDistribution,
         osc:DeterministicParameterDistribution-DeterministicParameterDistribution.deterministicSingleParameterDistribution .
 
 osc:DeterministicSingleParameterDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DeterministicSingleParameterDistribution-DeterministicSingleParameterDistribution.deterministicSingleParameterDistributionType,
         osc:DeterministicSingleParameterDistribution-DeterministicSingleParameterDistribution.parameterName .
 
 osc:DeterministicSingleParameterDistributionType a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DeterministicSingleParameterDistributionType-DeterministicSingleParameterDistributionType.distributionRange,
         osc:DeterministicSingleParameterDistributionType-DeterministicSingleParameterDistributionType.distributionSet,
         osc:DeterministicSingleParameterDistributionType-DeterministicSingleParameterDistributionType.userDefinedDistribution .
@@ -483,7 +543,8 @@ osc:DeterministicSingleParameterDistributionType a rdfs:Class,
 osc:Dimensions a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Dimensions-Dimensions.height,
         osc:Dimensions-Dimensions.length,
         osc:Dimensions-Dimensions.width .
@@ -491,20 +552,23 @@ osc:Dimensions a rdfs:Class,
 osc:DirectionOfTravelDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DirectionOfTravelDistribution-DirectionOfTravelDistribution.opposite,
         osc:DirectionOfTravelDistribution-DirectionOfTravelDistribution.same .
 
 osc:Directory a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Directory-Directory.path .
 
 osc:DistanceCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DistanceCondition-DistanceCondition.alongRoute,
         osc:DistanceCondition-DistanceCondition.coordinateSystem,
         osc:DistanceCondition-DistanceCondition.freespace,
@@ -517,40 +581,46 @@ osc:DistanceCondition a rdfs:Class,
 osc:DistributionDefinition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DistributionDefinition-DistributionDefinition.deterministic,
         osc:DistributionDefinition-DistributionDefinition.stochastic .
 
 osc:DistributionRange a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DistributionRange-DistributionRange.range,
         osc:DistributionRange-DistributionRange.stepWidth .
 
 osc:DistributionSet a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DistributionSet-DistributionSet.elements .
 
 osc:DistributionSetElement a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DistributionSetElement-DistributionSetElement.value .
 
 osc:DomeImage a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DomeImage-DomeImage.azimuthOffset,
         osc:DomeImage-DomeImage.domeFile .
 
 osc:DynamicConstraints a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:DynamicConstraints-DynamicConstraints.maxAcceleration,
         osc:DynamicConstraints-DynamicConstraints.maxAccelerationRate,
         osc:DynamicConstraints-DynamicConstraints.maxDeceleration,
@@ -560,20 +630,23 @@ osc:DynamicConstraints a rdfs:Class,
 osc:EndOfRoadCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EndOfRoadCondition-EndOfRoadCondition.duration .
 
 osc:Entities a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Entities-Entities.entitySelections,
         osc:Entities-Entities.scenarioObjects .
 
 osc:EntityAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EntityAction-EntityAction.addEntityAction,
         osc:EntityAction-EntityAction.deleteEntityAction,
         osc:EntityAction-EntityAction.entityRef .
@@ -581,7 +654,8 @@ osc:EntityAction a rdfs:Class,
 osc:EntityCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EntityCondition-EntityCondition.accelerationCondition,
         osc:EntityCondition-EntityCondition.angleCondition,
         osc:EntityCondition-EntityCondition.collisionCondition,
@@ -602,20 +676,23 @@ osc:EntityCondition a rdfs:Class,
 osc:EntityDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EntityDistribution-EntityDistribution.entityDistributionEntry .
 
 osc:EntityDistributionEntry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EntityDistributionEntry-EntityDistributionEntry.scenarioObjectTemplate,
         osc:EntityDistributionEntry-EntityDistributionEntry.weight .
 
 osc:EntityObject a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EntityObject-EntityObject.catalogReference,
         osc:EntityObject-EntityObject.externalObjectReference,
         osc:EntityObject-EntityObject.miscObject,
@@ -625,20 +702,23 @@ osc:EntityObject a rdfs:Class,
 osc:EntityRef a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EntityRef-EntityRef.entityRef .
 
 osc:EntitySelection a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EntitySelection-EntitySelection.members,
         osc:EntitySelection-EntitySelection.name .
 
 osc:Environment a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Environment-Environment.name,
         osc:Environment-Environment.parameterDeclarations,
         osc:Environment-Environment.roadCondition,
@@ -648,20 +728,23 @@ osc:Environment a rdfs:Class,
 osc:EnvironmentAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EnvironmentAction-EnvironmentAction.catalogReference,
         osc:EnvironmentAction-EnvironmentAction.environment .
 
 osc:EnvironmentCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:EnvironmentCatalogLocation-EnvironmentCatalogLocation.directory .
 
 osc:Event a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Event-Event.actions,
         osc:Event-Event.maximumExecutionCount,
         osc:Event-Event.name,
@@ -671,19 +754,22 @@ osc:Event a rdfs:Class,
 osc:ExternalObjectReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ExternalObjectReference-ExternalObjectReference.name .
 
 osc:File a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:File-File.filepath .
 
 osc:FileHeader a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:FileHeader-FileHeader.author,
         osc:FileHeader-FileHeader.date,
         osc:FileHeader-FileHeader.description,
@@ -695,21 +781,24 @@ osc:FileHeader a rdfs:Class,
 osc:FinalSpeed a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:FinalSpeed-FinalSpeed.absoluteSpeed,
         osc:FinalSpeed-FinalSpeed.relativeSpeedToMaster .
 
 osc:Fog a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Fog-Fog.boundingBox,
         osc:Fog-Fog.visualRange .
 
 osc:FollowTrajectoryAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:FollowTrajectoryAction-FollowTrajectoryAction.catalogReference,
         osc:FollowTrajectoryAction-FollowTrajectoryAction.initialDistanceOffset,
         osc:FollowTrajectoryAction-FollowTrajectoryAction.timeReference,
@@ -720,14 +809,16 @@ osc:FollowTrajectoryAction a rdfs:Class,
 osc:Gear a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Gear-Gear.automaticGear,
         osc:Gear-Gear.manualGear .
 
 osc:GeoPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:GeoPosition-GeoPosition.altitude,
         osc:GeoPosition-GeoPosition.height,
         osc:GeoPosition-GeoPosition.latitude,
@@ -740,7 +831,8 @@ osc:GeoPosition a rdfs:Class,
 osc:GlobalAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:GlobalAction-GlobalAction.entityAction,
         osc:GlobalAction-GlobalAction.environmentAction,
         osc:GlobalAction-GlobalAction.infrastructureAction,
@@ -752,20 +844,23 @@ osc:GlobalAction a rdfs:Class,
 osc:Histogram a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Histogram-Histogram.bins .
 
 osc:HistogramBin a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:HistogramBin-HistogramBin.range,
         osc:HistogramBin-HistogramBin.weight .
 
 osc:InRoutePosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:InRoutePosition-InRoutePosition.fromCurrentEntity,
         osc:InRoutePosition-InRoutePosition.fromLaneCoordinates,
         osc:InRoutePosition-InRoutePosition.fromRoadCoordinates .
@@ -773,19 +868,22 @@ osc:InRoutePosition a rdfs:Class,
 osc:InfrastructureAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:InfrastructureAction-InfrastructureAction.trafficSignalAction .
 
 osc:Init a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Init-Init.actions .
 
 osc:InitActions a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:InitActions-InitActions.globalActions,
         osc:InitActions-InitActions.privates,
         osc:InitActions-InitActions.userDefinedActions .
@@ -793,19 +891,22 @@ osc:InitActions a rdfs:Class,
 osc:Knot a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Knot-Knot.value .
 
 osc:Lane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Lane-Lane.id .
 
 osc:LaneChangeAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LaneChangeAction-LaneChangeAction.laneChangeActionDynamics,
         osc:LaneChangeAction-LaneChangeAction.laneChangeTarget,
         osc:LaneChangeAction-LaneChangeAction.targetLaneOffset .
@@ -813,14 +914,16 @@ osc:LaneChangeAction a rdfs:Class,
 osc:LaneChangeTarget a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LaneChangeTarget-LaneChangeTarget.absoluteTargetLane,
         osc:LaneChangeTarget-LaneChangeTarget.relativeTargetLane .
 
 osc:LaneOffsetAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LaneOffsetAction-LaneOffsetAction.continuous,
         osc:LaneOffsetAction-LaneOffsetAction.laneOffsetActionDynamics,
         osc:LaneOffsetAction-LaneOffsetAction.laneOffsetTarget .
@@ -828,21 +931,24 @@ osc:LaneOffsetAction a rdfs:Class,
 osc:LaneOffsetActionDynamics a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LaneOffsetActionDynamics-LaneOffsetActionDynamics.dynamicsShape,
         osc:LaneOffsetActionDynamics-LaneOffsetActionDynamics.maxLateralAcc .
 
 osc:LaneOffsetTarget a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LaneOffsetTarget-LaneOffsetTarget.absoluteTargetLaneOffset,
         osc:LaneOffsetTarget-LaneOffsetTarget.relativeTargetLaneOffset .
 
 osc:LanePosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LanePosition-LanePosition.laneId,
         osc:LanePosition-LanePosition.layer,
         osc:LanePosition-LanePosition.offset,
@@ -853,7 +959,8 @@ osc:LanePosition a rdfs:Class,
 osc:LateralAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LateralAction-LateralAction.laneChangeAction,
         osc:LateralAction-LateralAction.laneOffsetAction,
         osc:LateralAction-LateralAction.lateralDistanceAction .
@@ -861,7 +968,8 @@ osc:LateralAction a rdfs:Class,
 osc:LateralDistanceAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LateralDistanceAction-LateralDistanceAction.continuous,
         osc:LateralDistanceAction-LateralDistanceAction.coordinateSystem,
         osc:LateralDistanceAction-LateralDistanceAction.displacement,
@@ -873,7 +981,8 @@ osc:LateralDistanceAction a rdfs:Class,
 osc:License a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:License-License.name,
         osc:License-License.resource,
         osc:License-License.spdxId,
@@ -882,7 +991,8 @@ osc:License a rdfs:Class,
 osc:LightState a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LightState-LightState.color,
         osc:LightState-LightState.flashingOffDuration,
         osc:LightState-LightState.flashingOnDuration,
@@ -892,7 +1002,8 @@ osc:LightState a rdfs:Class,
 osc:LightStateAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LightStateAction-LightStateAction.lightState,
         osc:LightStateAction-LightStateAction.lightType,
         osc:LightStateAction-LightStateAction.transitionTime .
@@ -900,14 +1011,16 @@ osc:LightStateAction a rdfs:Class,
 osc:LightType a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LightType-LightType.userDefinedLight,
         osc:LightType-LightType.vehicleLight .
 
 osc:LogNormalDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LogNormalDistribution-LogNormalDistribution.expectedValue,
         osc:LogNormalDistribution-LogNormalDistribution.range,
         osc:LogNormalDistribution-LogNormalDistribution.variance .
@@ -915,7 +1028,8 @@ osc:LogNormalDistribution a rdfs:Class,
 osc:LongitudinalAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LongitudinalAction-LongitudinalAction.longitudinalDistanceAction,
         osc:LongitudinalAction-LongitudinalAction.speedAction,
         osc:LongitudinalAction-LongitudinalAction.speedProfileAction .
@@ -923,7 +1037,8 @@ osc:LongitudinalAction a rdfs:Class,
 osc:LongitudinalDistanceAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:LongitudinalDistanceAction-LongitudinalDistanceAction.continuous,
         osc:LongitudinalDistanceAction-LongitudinalDistanceAction.coordinateSystem,
         osc:LongitudinalDistanceAction-LongitudinalDistanceAction.displacement,
@@ -936,7 +1051,8 @@ osc:LongitudinalDistanceAction a rdfs:Class,
 osc:Maneuver a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Maneuver-Maneuver.events,
         osc:Maneuver-Maneuver.name,
         osc:Maneuver-Maneuver.parameterDeclarations .
@@ -944,13 +1060,15 @@ osc:Maneuver a rdfs:Class,
 osc:ManeuverCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ManeuverCatalogLocation-ManeuverCatalogLocation.directory .
 
 osc:ManeuverGroup a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ManeuverGroup-ManeuverGroup.actors,
         osc:ManeuverGroup-ManeuverGroup.catalogReferences,
         osc:ManeuverGroup-ManeuverGroup.maneuvers,
@@ -960,13 +1078,15 @@ osc:ManeuverGroup a rdfs:Class,
 osc:ManualGear a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ManualGear-ManualGear.number .
 
 osc:MiscObject a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:MiscObject-MiscObject.boundingBox,
         osc:MiscObject-MiscObject.mass,
         osc:MiscObject-MiscObject.miscObjectCategory,
@@ -978,34 +1098,39 @@ osc:MiscObject a rdfs:Class,
 osc:MiscObjectCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:MiscObjectCatalogLocation-MiscObjectCatalogLocation.directory .
 
 osc:ModifyRule a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ModifyRule-ModifyRule.addValue,
         osc:ModifyRule-ModifyRule.multiplyByValue .
 
 osc:MonitorDeclaration a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:MonitorDeclaration-MonitorDeclaration.name,
         osc:MonitorDeclaration-MonitorDeclaration.value .
 
 osc:Motion a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Motion-Motion.acceleration_longitudinal,
         osc:Motion-Motion.speed_longitudinal .
 
 osc:NormalDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:NormalDistribution-NormalDistribution.expectedValue,
         osc:NormalDistribution-NormalDistribution.range,
         osc:NormalDistribution-NormalDistribution.variance .
@@ -1013,7 +1138,8 @@ osc:NormalDistribution a rdfs:Class,
 osc:Nurbs a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Nurbs-Nurbs.controlPoints,
         osc:Nurbs-Nurbs.knots,
         osc:Nurbs-Nurbs.order .
@@ -1021,7 +1147,8 @@ osc:Nurbs a rdfs:Class,
 osc:ObjectController a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ObjectController-ObjectController.catalogReference,
         osc:ObjectController-ObjectController.controller,
         osc:ObjectController-ObjectController.name .
@@ -1029,20 +1156,23 @@ osc:ObjectController a rdfs:Class,
 osc:OffroadCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OffroadCondition-OffroadCondition.duration .
 
 osc:OpenScenario a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OpenScenario-OpenScenario.fileHeader,
         osc:OpenScenario-OpenScenario.openScenarioCategory .
 
 osc:OpenScenarioCategory a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OpenScenarioCategory-OpenScenarioCategory.catalogDefinition,
         osc:OpenScenarioCategory-OpenScenarioCategory.parameterValueDistributionDefinition,
         osc:OpenScenarioCategory-OpenScenarioCategory.scenarioDefinition .
@@ -1050,7 +1180,8 @@ osc:OpenScenarioCategory a rdfs:Class,
 osc:Orientation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Orientation-Orientation.h,
         osc:Orientation-Orientation.p,
         osc:Orientation-Orientation.r,
@@ -1059,7 +1190,8 @@ osc:Orientation a rdfs:Class,
 osc:OverrideBrakeAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OverrideBrakeAction-OverrideBrakeAction.active,
         osc:OverrideBrakeAction-OverrideBrakeAction.brakeInput,
         osc:OverrideBrakeAction-OverrideBrakeAction.value .
@@ -1067,7 +1199,8 @@ osc:OverrideBrakeAction a rdfs:Class,
 osc:OverrideClutchAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OverrideClutchAction-OverrideClutchAction.active,
         osc:OverrideClutchAction-OverrideClutchAction.maxRate,
         osc:OverrideClutchAction-OverrideClutchAction.value .
@@ -1075,7 +1208,8 @@ osc:OverrideClutchAction a rdfs:Class,
 osc:OverrideControllerValueAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OverrideControllerValueAction-OverrideControllerValueAction.brake,
         osc:OverrideControllerValueAction-OverrideControllerValueAction.clutch,
         osc:OverrideControllerValueAction-OverrideControllerValueAction.gear,
@@ -1086,7 +1220,8 @@ osc:OverrideControllerValueAction a rdfs:Class,
 osc:OverrideGearAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OverrideGearAction-OverrideGearAction.active,
         osc:OverrideGearAction-OverrideGearAction.gear,
         osc:OverrideGearAction-OverrideGearAction.number .
@@ -1094,7 +1229,8 @@ osc:OverrideGearAction a rdfs:Class,
 osc:OverrideParkingBrakeAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OverrideParkingBrakeAction-OverrideParkingBrakeAction.active,
         osc:OverrideParkingBrakeAction-OverrideParkingBrakeAction.brakeInput,
         osc:OverrideParkingBrakeAction-OverrideParkingBrakeAction.value .
@@ -1102,7 +1238,8 @@ osc:OverrideParkingBrakeAction a rdfs:Class,
 osc:OverrideSteeringWheelAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OverrideSteeringWheelAction-OverrideSteeringWheelAction.active,
         osc:OverrideSteeringWheelAction-OverrideSteeringWheelAction.maxRate,
         osc:OverrideSteeringWheelAction-OverrideSteeringWheelAction.maxTorque,
@@ -1111,7 +1248,8 @@ osc:OverrideSteeringWheelAction a rdfs:Class,
 osc:OverrideThrottleAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:OverrideThrottleAction-OverrideThrottleAction.active,
         osc:OverrideThrottleAction-OverrideThrottleAction.maxRate,
         osc:OverrideThrottleAction-OverrideThrottleAction.value .
@@ -1119,7 +1257,8 @@ osc:OverrideThrottleAction a rdfs:Class,
 osc:ParameterAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterAction-ParameterAction.modifyAction,
         osc:ParameterAction-ParameterAction.parameterRef,
         osc:ParameterAction-ParameterAction.setAction .
@@ -1127,20 +1266,23 @@ osc:ParameterAction a rdfs:Class,
 osc:ParameterAddValueRule a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterAddValueRule-ParameterAddValueRule.value .
 
 osc:ParameterAssignment a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterAssignment-ParameterAssignment.parameterRef,
         osc:ParameterAssignment-ParameterAssignment.value .
 
 osc:ParameterCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterCondition-ParameterCondition.parameterRef,
         osc:ParameterCondition-ParameterCondition.rule,
         osc:ParameterCondition-ParameterCondition.value .
@@ -1148,7 +1290,8 @@ osc:ParameterCondition a rdfs:Class,
 osc:ParameterDeclaration a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterDeclaration-ParameterDeclaration.constraintGroups,
         osc:ParameterDeclaration-ParameterDeclaration.name,
         osc:ParameterDeclaration-ParameterDeclaration.parameterType,
@@ -1157,44 +1300,51 @@ osc:ParameterDeclaration a rdfs:Class,
 osc:ParameterModifyAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterModifyAction-ParameterModifyAction.rule .
 
 osc:ParameterMultiplyByValueRule a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterMultiplyByValueRule-ParameterMultiplyByValueRule.value .
 
 osc:ParameterSetAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterSetAction-ParameterSetAction.value .
 
 osc:ParameterValueDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterValueDistribution-ParameterValueDistribution.distributionDefinition,
         osc:ParameterValueDistribution-ParameterValueDistribution.scenarioFile .
 
 osc:ParameterValueDistributionDefinition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterValueDistributionDefinition-ParameterValueDistributionDefinition.parameterValueDistribution .
 
 osc:ParameterValueSet a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ParameterValueSet-ParameterValueSet.parameterAssignments .
 
 osc:Pedestrian a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Pedestrian-Pedestrian.boundingBox,
         osc:Pedestrian-Pedestrian.mass,
         osc:Pedestrian-Pedestrian.model,
@@ -1208,7 +1358,8 @@ osc:Pedestrian a rdfs:Class,
 osc:PedestrianAnimation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PedestrianAnimation-PedestrianAnimation.gestures,
         osc:PedestrianAnimation-PedestrianAnimation.motion,
         osc:PedestrianAnimation-PedestrianAnimation.userDefinedPedestrianAnimation .
@@ -1216,19 +1367,22 @@ osc:PedestrianAnimation a rdfs:Class,
 osc:PedestrianCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PedestrianCatalogLocation-PedestrianCatalogLocation.directory .
 
 osc:PedestrianGesture a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PedestrianGesture-PedestrianGesture.gesture .
 
 osc:Performance a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Performance-Performance.maxAcceleration,
         osc:Performance-Performance.maxAccelerationRate,
         osc:Performance-Performance.maxDeceleration,
@@ -1238,7 +1392,8 @@ osc:Performance a rdfs:Class,
 osc:Phase a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Phase-Phase.duration,
         osc:Phase-Phase.name,
         osc:Phase-Phase.semantics,
@@ -1248,27 +1403,31 @@ osc:Phase a rdfs:Class,
 osc:PoissonDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PoissonDistribution-PoissonDistribution.expectedValue,
         osc:PoissonDistribution-PoissonDistribution.range .
 
 osc:Polygon a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Polygon-Polygon.positions .
 
 osc:Polyline a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Polyline-Polyline.interpolation,
         osc:Polyline-Polyline.vertices .
 
 osc:Position a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Position-Position.geoPosition,
         osc:Position-Position.lanePosition,
         osc:Position-Position.relativeLanePosition,
@@ -1283,7 +1442,8 @@ osc:Position a rdfs:Class,
 osc:PositionInLaneCoordinates a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PositionInLaneCoordinates-PositionInLaneCoordinates.laneId,
         osc:PositionInLaneCoordinates-PositionInLaneCoordinates.laneOffset,
         osc:PositionInLaneCoordinates-PositionInLaneCoordinates.pathS .
@@ -1291,20 +1451,23 @@ osc:PositionInLaneCoordinates a rdfs:Class,
 osc:PositionInRoadCoordinates a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PositionInRoadCoordinates-PositionInRoadCoordinates.pathS,
         osc:PositionInRoadCoordinates-PositionInRoadCoordinates.t .
 
 osc:PositionOfCurrentEntity a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PositionOfCurrentEntity-PositionOfCurrentEntity.entityRef .
 
 osc:Precipitation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Precipitation-Precipitation.intensity,
         osc:Precipitation-Precipitation.precipitationIntensity,
         osc:Precipitation-Precipitation.precipitationType .
@@ -1312,20 +1475,23 @@ osc:Precipitation a rdfs:Class,
 osc:PreferredLaneLayerAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PreferredLaneLayerAction-PreferredLaneLayerAction.layer .
 
 osc:Private a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Private-Private.entityRef,
         osc:Private-Private.privateActions .
 
 osc:PrivateAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:PrivateAction-PrivateAction.activateControllerAction,
         osc:PrivateAction-PrivateAction.appearanceAction,
         osc:PrivateAction-PrivateAction.controllerAction,
@@ -1340,20 +1506,23 @@ osc:PrivateAction a rdfs:Class,
 osc:ProbabilityDistributionSet a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ProbabilityDistributionSet-ProbabilityDistributionSet.elements .
 
 osc:ProbabilityDistributionSetElement a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ProbabilityDistributionSetElement-ProbabilityDistributionSetElement.value,
         osc:ProbabilityDistributionSetElement-ProbabilityDistributionSetElement.weight .
 
 osc:Properties a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Properties-Properties.customContent,
         osc:Properties-Properties.files,
         osc:Properties-Properties.properties .
@@ -1361,28 +1530,32 @@ osc:Properties a rdfs:Class,
 osc:Property a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Property-Property.name,
         osc:Property-Property.value .
 
 osc:Range a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Range-Range.lowerLimit,
         osc:Range-Range.upperLimit .
 
 osc:ReachPositionCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ReachPositionCondition-ReachPositionCondition.position,
         osc:ReachPositionCondition-ReachPositionCondition.tolerance .
 
 osc:RelativeAngleCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeAngleCondition-RelativeAngleCondition.angle,
         osc:RelativeAngleCondition-RelativeAngleCondition.angleTolerance,
         osc:RelativeAngleCondition-RelativeAngleCondition.angleType,
@@ -1392,7 +1565,8 @@ osc:RelativeAngleCondition a rdfs:Class,
 osc:RelativeClearanceCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeClearanceCondition-RelativeClearanceCondition.distanceBackward,
         osc:RelativeClearanceCondition-RelativeClearanceCondition.distanceForward,
         osc:RelativeClearanceCondition-RelativeClearanceCondition.entityRef,
@@ -1403,7 +1577,8 @@ osc:RelativeClearanceCondition a rdfs:Class,
 osc:RelativeDistanceCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeDistanceCondition-RelativeDistanceCondition.coordinateSystem,
         osc:RelativeDistanceCondition-RelativeDistanceCondition.entityRef,
         osc:RelativeDistanceCondition-RelativeDistanceCondition.freespace,
@@ -1415,7 +1590,8 @@ osc:RelativeDistanceCondition a rdfs:Class,
 osc:RelativeLanePosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeLanePosition-RelativeLanePosition.dLane,
         osc:RelativeLanePosition-RelativeLanePosition.ds,
         osc:RelativeLanePosition-RelativeLanePosition.dsLane,
@@ -1426,14 +1602,16 @@ osc:RelativeLanePosition a rdfs:Class,
 osc:RelativeLaneRange a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeLaneRange-RelativeLaneRange.from,
         osc:RelativeLaneRange-RelativeLaneRange.to .
 
 osc:RelativeObjectPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeObjectPosition-RelativeObjectPosition.dx,
         osc:RelativeObjectPosition-RelativeObjectPosition.dy,
         osc:RelativeObjectPosition-RelativeObjectPosition.dz,
@@ -1443,7 +1621,8 @@ osc:RelativeObjectPosition a rdfs:Class,
 osc:RelativeRoadPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeRoadPosition-RelativeRoadPosition.ds,
         osc:RelativeRoadPosition-RelativeRoadPosition.dt,
         osc:RelativeRoadPosition-RelativeRoadPosition.entityRef,
@@ -1452,7 +1631,8 @@ osc:RelativeRoadPosition a rdfs:Class,
 osc:RelativeSpeedCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeSpeedCondition-RelativeSpeedCondition.direction,
         osc:RelativeSpeedCondition-RelativeSpeedCondition.entityRef,
         osc:RelativeSpeedCondition-RelativeSpeedCondition.rule,
@@ -1461,7 +1641,8 @@ osc:RelativeSpeedCondition a rdfs:Class,
 osc:RelativeSpeedToMaster a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeSpeedToMaster-RelativeSpeedToMaster.speedTargetValueType,
         osc:RelativeSpeedToMaster-RelativeSpeedToMaster.steadyState,
         osc:RelativeSpeedToMaster-RelativeSpeedToMaster.value .
@@ -1469,7 +1650,8 @@ osc:RelativeSpeedToMaster a rdfs:Class,
 osc:RelativeTargetLane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeTargetLane-RelativeTargetLane.entityRef,
         osc:RelativeTargetLane-RelativeTargetLane.layer,
         osc:RelativeTargetLane-RelativeTargetLane.value .
@@ -1477,14 +1659,16 @@ osc:RelativeTargetLane a rdfs:Class,
 osc:RelativeTargetLaneOffset a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeTargetLaneOffset-RelativeTargetLaneOffset.entityRef,
         osc:RelativeTargetLaneOffset-RelativeTargetLaneOffset.value .
 
 osc:RelativeTargetSpeed a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeTargetSpeed-RelativeTargetSpeed.continuous,
         osc:RelativeTargetSpeed-RelativeTargetSpeed.entityRef,
         osc:RelativeTargetSpeed-RelativeTargetSpeed.speedTargetValueType,
@@ -1493,7 +1677,8 @@ osc:RelativeTargetSpeed a rdfs:Class,
 osc:RelativeWorldPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RelativeWorldPosition-RelativeWorldPosition.dx,
         osc:RelativeWorldPosition-RelativeWorldPosition.dy,
         osc:RelativeWorldPosition-RelativeWorldPosition.dz,
@@ -1503,7 +1688,8 @@ osc:RelativeWorldPosition a rdfs:Class,
 osc:RoadCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RoadCondition-RoadCondition.frictionScaleFactor,
         osc:RoadCondition-RoadCondition.properties,
         osc:RoadCondition-RoadCondition.wetness .
@@ -1511,7 +1697,8 @@ osc:RoadCondition a rdfs:Class,
 osc:RoadCursor a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RoadCursor-RoadCursor.lane,
         osc:RoadCursor-RoadCursor.roadId,
         osc:RoadCursor-RoadCursor.s .
@@ -1519,7 +1706,8 @@ osc:RoadCursor a rdfs:Class,
 osc:RoadNetwork a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RoadNetwork-RoadNetwork.logicFile,
         osc:RoadNetwork-RoadNetwork.sceneGraphFile,
         osc:RoadNetwork-RoadNetwork.trafficSignals,
@@ -1528,7 +1716,8 @@ osc:RoadNetwork a rdfs:Class,
 osc:RoadPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RoadPosition-RoadPosition.orientation,
         osc:RoadPosition-RoadPosition.roadId,
         osc:RoadPosition-RoadPosition.s,
@@ -1537,14 +1726,16 @@ osc:RoadPosition a rdfs:Class,
 osc:RoadRange a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RoadRange-RoadRange.length,
         osc:RoadRange-RoadRange.roadCursor .
 
 osc:Route a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Route-Route.closed,
         osc:Route-Route.name,
         osc:Route-Route.parameterDeclarations,
@@ -1553,13 +1744,15 @@ osc:Route a rdfs:Class,
 osc:RouteCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RouteCatalogLocation-RouteCatalogLocation.directory .
 
 osc:RoutePosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RoutePosition-RoutePosition.inRoutePosition,
         osc:RoutePosition-RoutePosition.orientation,
         osc:RoutePosition-RoutePosition.routeRef .
@@ -1567,14 +1760,16 @@ osc:RoutePosition a rdfs:Class,
 osc:RouteRef a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RouteRef-RouteRef.catalogReference,
         osc:RouteRef-RouteRef.route .
 
 osc:RoutingAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:RoutingAction-RoutingAction.acquirePositionAction,
         osc:RoutingAction-RoutingAction.assignRouteAction,
         osc:RoutingAction-RoutingAction.followTrajectoryAction,
@@ -1584,7 +1779,8 @@ osc:RoutingAction a rdfs:Class,
 osc:ScenarioDefinition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ScenarioDefinition-ScenarioDefinition.catalogLocations,
         osc:ScenarioDefinition-ScenarioDefinition.entities,
         osc:ScenarioDefinition-ScenarioDefinition.monitorDeclarations,
@@ -1596,7 +1792,8 @@ osc:ScenarioDefinition a rdfs:Class,
 osc:ScenarioObject a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ScenarioObject-ScenarioObject.entityObject,
         osc:ScenarioObject-ScenarioObject.name,
         osc:ScenarioObject-ScenarioObject.objectController .
@@ -1604,40 +1801,46 @@ osc:ScenarioObject a rdfs:Class,
 osc:ScenarioObjectTemplate a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ScenarioObjectTemplate-ScenarioObjectTemplate.entitiyObject,
         osc:ScenarioObjectTemplate-ScenarioObjectTemplate.objectController .
 
 osc:SelectedEntities a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SelectedEntities-SelectedEntities.byType,
         osc:SelectedEntities-SelectedEntities.entityRef .
 
 osc:SensorReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SensorReference-SensorReference.name .
 
 osc:SensorReferenceSet a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SensorReferenceSet-SensorReferenceSet.sensorReferences .
 
 osc:SetMonitorAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SetMonitorAction-SetMonitorAction.monitorRef,
         osc:SetMonitorAction-SetMonitorAction.value .
 
 osc:Shape a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Shape-Shape.clothoid,
         osc:Shape-Shape.clothoidSpline,
         osc:Shape-Shape.nurbs,
@@ -1646,28 +1849,32 @@ osc:Shape a rdfs:Class,
 osc:SimulationTimeCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SimulationTimeCondition-SimulationTimeCondition.rule,
         osc:SimulationTimeCondition-SimulationTimeCondition.value .
 
 osc:SpeedAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SpeedAction-SpeedAction.speedActionDynamics,
         osc:SpeedAction-SpeedAction.speedActionTarget .
 
 osc:SpeedActionTarget a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SpeedActionTarget-SpeedActionTarget.absoluteTargetSpeed,
         osc:SpeedActionTarget-SpeedActionTarget.relativeTargetSpeed .
 
 osc:SpeedCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SpeedCondition-SpeedCondition.direction,
         osc:SpeedCondition-SpeedCondition.rule,
         osc:SpeedCondition-SpeedCondition.value .
@@ -1675,7 +1882,8 @@ osc:SpeedCondition a rdfs:Class,
 osc:SpeedProfileAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SpeedProfileAction-SpeedProfileAction.dynamicConstraints,
         osc:SpeedProfileAction-SpeedProfileAction.entityRef,
         osc:SpeedProfileAction-SpeedProfileAction.followingMode,
@@ -1684,27 +1892,31 @@ osc:SpeedProfileAction a rdfs:Class,
 osc:SpeedProfileEntry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SpeedProfileEntry-SpeedProfileEntry.speed,
         osc:SpeedProfileEntry-SpeedProfileEntry.time .
 
 osc:StandStillCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:StandStillCondition-StandStillCondition.duration .
 
 osc:SteadyState a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SteadyState-SteadyState.targetDistanceSteadyState,
         osc:SteadyState-SteadyState.targetTimeSteadyState .
 
 osc:Stochastic a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Stochastic-Stochastic.numberOfTestRuns,
         osc:Stochastic-Stochastic.randomSeed,
         osc:Stochastic-Stochastic.stochasticDistributions .
@@ -1712,14 +1924,16 @@ osc:Stochastic a rdfs:Class,
 osc:StochasticDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:StochasticDistribution-StochasticDistribution.parameterName,
         osc:StochasticDistribution-StochasticDistribution.stochasticDistributionType .
 
 osc:StochasticDistributionType a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:StochasticDistributionType-StochasticDistributionType.histogram,
         osc:StochasticDistributionType-StochasticDistributionType.logNormalDistribution,
         osc:StochasticDistributionType-StochasticDistributionType.normalDistribution,
@@ -1731,7 +1945,8 @@ osc:StochasticDistributionType a rdfs:Class,
 osc:Story a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Story-Story.acts,
         osc:Story-Story.name,
         osc:Story-Story.parameterDeclarations .
@@ -1739,7 +1954,8 @@ osc:Story a rdfs:Class,
 osc:Storyboard a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Storyboard-Storyboard.init,
         osc:Storyboard-Storyboard.stopTrigger,
         osc:Storyboard-Storyboard.stories .
@@ -1747,7 +1963,8 @@ osc:Storyboard a rdfs:Class,
 osc:StoryboardElementStateCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:StoryboardElementStateCondition-StoryboardElementStateCondition.state,
         osc:StoryboardElementStateCondition-StoryboardElementStateCondition.storyboardElementRef,
         osc:StoryboardElementStateCondition-StoryboardElementStateCondition.storyboardElementType .
@@ -1755,7 +1972,8 @@ osc:StoryboardElementStateCondition a rdfs:Class,
 osc:Sun a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Sun-Sun.azimuth,
         osc:Sun-Sun.elevation,
         osc:Sun-Sun.illuminance,
@@ -1764,7 +1982,8 @@ osc:Sun a rdfs:Class,
 osc:SynchronizeAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:SynchronizeAction-SynchronizeAction.finalSpeed,
         osc:SynchronizeAction-SynchronizeAction.masterEntityRef,
         osc:SynchronizeAction-SynchronizeAction.targetPosition,
@@ -1775,25 +1994,29 @@ osc:SynchronizeAction a rdfs:Class,
 osc:TargetDistanceSteadyState a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TargetDistanceSteadyState-TargetDistanceSteadyState.distance .
 
 osc:TargetTimeSteadyState a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TargetTimeSteadyState-TargetTimeSteadyState.time .
 
 osc:TeleportAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TeleportAction-TeleportAction.position .
 
 osc:TimeHeadwayCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TimeHeadwayCondition-TimeHeadwayCondition.alongRoute,
         osc:TimeHeadwayCondition-TimeHeadwayCondition.coordinateSystem,
         osc:TimeHeadwayCondition-TimeHeadwayCondition.entityRef,
@@ -1806,28 +2029,32 @@ osc:TimeHeadwayCondition a rdfs:Class,
 osc:TimeOfDay a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TimeOfDay-TimeOfDay.animation,
         osc:TimeOfDay-TimeOfDay.dateTime .
 
 osc:TimeOfDayCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TimeOfDayCondition-TimeOfDayCondition.dateTime,
         osc:TimeOfDayCondition-TimeOfDayCondition.rule .
 
 osc:TimeReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TimeReference-TimeReference.none,
         osc:TimeReference-TimeReference.timing .
 
 osc:TimeToCollisionCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TimeToCollisionCondition-TimeToCollisionCondition.alongRoute,
         osc:TimeToCollisionCondition-TimeToCollisionCondition.coordinateSystem,
         osc:TimeToCollisionCondition-TimeToCollisionCondition.freespace,
@@ -1840,14 +2067,16 @@ osc:TimeToCollisionCondition a rdfs:Class,
 osc:TimeToCollisionConditionTarget a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TimeToCollisionConditionTarget-TimeToCollisionConditionTarget.entityRef,
         osc:TimeToCollisionConditionTarget-TimeToCollisionConditionTarget.position .
 
 osc:Timing a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Timing-Timing.domainAbsoluteRelative,
         osc:Timing-Timing.offset,
         osc:Timing-Timing.scale .
@@ -1855,7 +2084,8 @@ osc:Timing a rdfs:Class,
 osc:TrafficAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficAction-TrafficAction.trafficAreaAction,
         osc:TrafficAction-TrafficAction.trafficName,
         osc:TrafficAction-TrafficAction.trafficSinkAction,
@@ -1866,14 +2096,16 @@ osc:TrafficAction a rdfs:Class,
 osc:TrafficArea a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficArea-TrafficArea.polygon,
         osc:TrafficArea-TrafficArea.roadRange .
 
 osc:TrafficAreaAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficAreaAction-TrafficAreaAction.continuous,
         osc:TrafficAreaAction-TrafficAreaAction.numberOfEntities,
         osc:TrafficAreaAction-TrafficAreaAction.trafficArea,
@@ -1882,7 +2114,8 @@ osc:TrafficAreaAction a rdfs:Class,
 osc:TrafficDefinition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficDefinition-TrafficDefinition.controllerDistribution,
         osc:TrafficDefinition-TrafficDefinition.name,
         osc:TrafficDefinition-TrafficDefinition.vehicleCategoryDistribution,
@@ -1891,14 +2124,16 @@ osc:TrafficDefinition a rdfs:Class,
 osc:TrafficDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficDistribution-TrafficDistribution.catalogReferences,
         osc:TrafficDistribution-TrafficDistribution.trafficDistributionEntry .
 
 osc:TrafficDistributionEntry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficDistributionEntry-TrafficDistributionEntry.entityDistribution,
         osc:TrafficDistributionEntry-TrafficDistributionEntry.name,
         osc:TrafficDistributionEntry-TrafficDistributionEntry.parameterDeclarations,
@@ -1908,27 +2143,31 @@ osc:TrafficDistributionEntry a rdfs:Class,
 osc:TrafficDistributionEntryCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficDistributionEntryCatalogLocation-TrafficDistributionEntryCatalogLocation.directory .
 
 osc:TrafficSignalAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalAction-TrafficSignalAction.trafficSignalControllerAction,
         osc:TrafficSignalAction-TrafficSignalAction.trafficSignalStateAction .
 
 osc:TrafficSignalCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalCondition-TrafficSignalCondition.name,
         osc:TrafficSignalCondition-TrafficSignalCondition.state .
 
 osc:TrafficSignalController a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalController-TrafficSignalController.delay,
         osc:TrafficSignalController-TrafficSignalController.name,
         osc:TrafficSignalController-TrafficSignalController.phases,
@@ -1937,7 +2176,8 @@ osc:TrafficSignalController a rdfs:Class,
 osc:TrafficSignalControllerAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalControllerAction-TrafficSignalControllerAction.phase,
         osc:TrafficSignalControllerAction-TrafficSignalControllerAction.phaseRef,
         osc:TrafficSignalControllerAction-TrafficSignalControllerAction.trafficSignalControllerRef .
@@ -1945,7 +2185,8 @@ osc:TrafficSignalControllerAction a rdfs:Class,
 osc:TrafficSignalControllerCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalControllerCondition-TrafficSignalControllerCondition.phase,
         osc:TrafficSignalControllerCondition-TrafficSignalControllerCondition.phaseRef,
         osc:TrafficSignalControllerCondition-TrafficSignalControllerCondition.trafficSignalControllerRef .
@@ -1953,27 +2194,31 @@ osc:TrafficSignalControllerCondition a rdfs:Class,
 osc:TrafficSignalGroupState a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalGroupState-TrafficSignalGroupState.state .
 
 osc:TrafficSignalState a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalState-TrafficSignalState.state,
         osc:TrafficSignalState-TrafficSignalState.trafficSignalId .
 
 osc:TrafficSignalStateAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSignalStateAction-TrafficSignalStateAction.name,
         osc:TrafficSignalStateAction-TrafficSignalStateAction.state .
 
 osc:TrafficSinkAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSinkAction-TrafficSinkAction.position,
         osc:TrafficSinkAction-TrafficSinkAction.radius,
         osc:TrafficSinkAction-TrafficSinkAction.rate,
@@ -1982,7 +2227,8 @@ osc:TrafficSinkAction a rdfs:Class,
 osc:TrafficSourceAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSourceAction-TrafficSourceAction.position,
         osc:TrafficSourceAction-TrafficSourceAction.radius,
         osc:TrafficSourceAction-TrafficSourceAction.rate,
@@ -1994,7 +2240,8 @@ osc:TrafficSourceAction a rdfs:Class,
 osc:TrafficSwarmAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrafficSwarmAction-TrafficSwarmAction.centralObject,
         osc:TrafficSwarmAction-TrafficSwarmAction.directionOfTravelDistribution,
         osc:TrafficSwarmAction-TrafficSwarmAction.initialSpeedRange,
@@ -2010,35 +2257,40 @@ osc:TrafficSwarmAction a rdfs:Class,
 osc:Trailer a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Trailer-Trailer.trailer,
         osc:Trailer-Trailer.trailerRef .
 
 osc:TrailerAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrailerAction-TrailerAction.connectTrailerAction,
         osc:TrailerAction-TrailerAction.disconnectTrailerAction .
 
 osc:TrailerCoupler a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrailerCoupler-TrailerCoupler.dx,
         osc:TrailerCoupler-TrailerCoupler.dz .
 
 osc:TrailerHitch a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrailerHitch-TrailerHitch.dx,
         osc:TrailerHitch-TrailerHitch.dz .
 
 osc:Trajectory a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Trajectory-Trajectory.closed,
         osc:Trajectory-Trajectory.name,
         osc:Trajectory-Trajectory.parameterDeclarations,
@@ -2047,19 +2299,22 @@ osc:Trajectory a rdfs:Class,
 osc:TrajectoryCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrajectoryCatalogLocation-TrajectoryCatalogLocation.directory .
 
 osc:TrajectoryFollowingMode a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrajectoryFollowingMode-TrajectoryFollowingMode.followingMode .
 
 osc:TrajectoryPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrajectoryPosition-TrajectoryPosition.orientation,
         osc:TrajectoryPosition-TrajectoryPosition.s,
         osc:TrajectoryPosition-TrajectoryPosition.t,
@@ -2068,14 +2323,16 @@ osc:TrajectoryPosition a rdfs:Class,
 osc:TrajectoryRef a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TrajectoryRef-TrajectoryRef.catalogReference,
         osc:TrajectoryRef-TrajectoryRef.trajectory .
 
 osc:TransitionDynamics a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TransitionDynamics-TransitionDynamics.dynamicsDimension,
         osc:TransitionDynamics-TransitionDynamics.dynamicsShape,
         osc:TransitionDynamics-TransitionDynamics.followingMode,
@@ -2084,69 +2341,80 @@ osc:TransitionDynamics a rdfs:Class,
 osc:TraveledDistanceCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TraveledDistanceCondition-TraveledDistanceCondition.value .
 
 osc:Trigger a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Trigger-Trigger.conditionGroups .
 
 osc:TriggeringEntities a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:TriggeringEntities-TriggeringEntities.entityRefs,
         osc:TriggeringEntities-TriggeringEntities.triggeringEntitiesRule .
 
 osc:UniformDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UniformDistribution-UniformDistribution.range .
 
 osc:UsedArea a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UsedArea-UsedArea.positions .
 
 osc:UserDefinedAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UserDefinedAction-UserDefinedAction.customCommandAction .
 
 osc:UserDefinedAnimation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UserDefinedAnimation-UserDefinedAnimation.userDefinedAnimationType .
 
 osc:UserDefinedComponent a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UserDefinedComponent-UserDefinedComponent.userDefinedComponentType .
 
 osc:UserDefinedDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UserDefinedDistribution-UserDefinedDistribution.content,
         osc:UserDefinedDistribution-UserDefinedDistribution.type .
 
 osc:UserDefinedLight a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UserDefinedLight-UserDefinedLight.userDefinedLightType .
 
 osc:UserDefinedValueCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:UserDefinedValueCondition-UserDefinedValueCondition.name,
         osc:UserDefinedValueCondition-UserDefinedValueCondition.rule,
         osc:UserDefinedValueCondition-UserDefinedValueCondition.value .
@@ -2154,26 +2422,30 @@ osc:UserDefinedValueCondition a rdfs:Class,
 osc:ValueConstraint a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ValueConstraint-ValueConstraint.rule,
         osc:ValueConstraint-ValueConstraint.value .
 
 osc:ValueConstraintGroup a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ValueConstraintGroup-ValueConstraintGroup.constraints .
 
 osc:ValueSetDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:ValueSetDistribution-ValueSetDistribution.parameterValueSets .
 
 osc:VariableAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableAction-VariableAction.modifyAction,
         osc:VariableAction-VariableAction.setAction,
         osc:VariableAction-VariableAction.variableRef .
@@ -2181,13 +2453,15 @@ osc:VariableAction a rdfs:Class,
 osc:VariableAddValueRule a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableAddValueRule-VariableAddValueRule.value .
 
 osc:VariableCondition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableCondition-VariableCondition.rule,
         osc:VariableCondition-VariableCondition.value,
         osc:VariableCondition-VariableCondition.variableRef .
@@ -2195,7 +2469,8 @@ osc:VariableCondition a rdfs:Class,
 osc:VariableDeclaration a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableDeclaration-VariableDeclaration.name,
         osc:VariableDeclaration-VariableDeclaration.value,
         osc:VariableDeclaration-VariableDeclaration.variableType .
@@ -2203,32 +2478,37 @@ osc:VariableDeclaration a rdfs:Class,
 osc:VariableModifyAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableModifyAction-VariableModifyAction.rule .
 
 osc:VariableModifyRule a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableModifyRule-VariableModifyRule.addValue,
         osc:VariableModifyRule-VariableModifyRule.multiplyByValue .
 
 osc:VariableMultiplyByValueRule a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableMultiplyByValueRule-VariableMultiplyByValueRule.value .
 
 osc:VariableSetAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VariableSetAction-VariableSetAction.value .
 
 osc:Vehicle a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Vehicle-Vehicle.axles,
         osc:Vehicle-Vehicle.boundingBox,
         osc:Vehicle-Vehicle.mass,
@@ -2246,51 +2526,59 @@ osc:Vehicle a rdfs:Class,
 osc:VehicleCatalogLocation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VehicleCatalogLocation-VehicleCatalogLocation.directory .
 
 osc:VehicleCategoryDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VehicleCategoryDistribution-VehicleCategoryDistribution.vehicleCategoryDistributionEntries .
 
 osc:VehicleCategoryDistributionEntry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VehicleCategoryDistributionEntry-VehicleCategoryDistributionEntry.category,
         osc:VehicleCategoryDistributionEntry-VehicleCategoryDistributionEntry.weight .
 
 osc:VehicleComponent a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VehicleComponent-VehicleComponent.vehicleComponentType .
 
 osc:VehicleLight a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VehicleLight-VehicleLight.vehicleLightType .
 
 osc:VehicleRoleDistribution a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VehicleRoleDistribution-VehicleRoleDistribution.vehicleRoleDistributionEntries .
 
 osc:VehicleRoleDistributionEntry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VehicleRoleDistributionEntry-VehicleRoleDistributionEntry.role,
         osc:VehicleRoleDistributionEntry-VehicleRoleDistributionEntry.weight .
 
 osc:Vertex a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Vertex-Vertex.motion,
         osc:Vertex-Vertex.position,
         osc:Vertex-Vertex.time .
@@ -2298,7 +2586,8 @@ osc:Vertex a rdfs:Class,
 osc:VisibilityAction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:VisibilityAction-VisibilityAction.graphics,
         osc:VisibilityAction-VisibilityAction.sensorReferenceSet,
         osc:VisibilityAction-VisibilityAction.sensors,
@@ -2307,14 +2596,16 @@ osc:VisibilityAction a rdfs:Class,
 osc:Waypoint a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Waypoint-Waypoint.position,
         osc:Waypoint-Waypoint.routeStrategy .
 
 osc:Weather a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Weather-Weather.atmosphericPressure,
         osc:Weather-Weather.cloudState,
         osc:Weather-Weather.domeImage,
@@ -2328,14 +2619,16 @@ osc:Weather a rdfs:Class,
 osc:Wind a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:Wind-Wind.direction,
         osc:Wind-Wind.speed .
 
 osc:WorldPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property osc:WorldPosition-WorldPosition.h,
         osc:WorldPosition-WorldPosition.p,
         osc:WorldPosition-WorldPosition.r,

@@ -20,11 +20,28 @@ on:
     paths:
       - "standards/*/generated/**"
       - "scripts/check_canonical.py"
+      - "scripts/check_toolchain_lock.py"
       - "scripts/generate_semantic_artifacts.py"
       - "scripts/requirements.txt"
+      - "pipeline/toolchain-lock.json"
       - ".github/workflows/verify-generated.yml"
 
 jobs:
+  toolchain-lock:
+    # Static and fast: no JDK, no Maven, no network, no tool checkout. Proves the lock is
+    # internally consistent and that every committed provenance.json matches what it pins.
+    # Does not prove the fork commits are still correctly checked out anywhere - that half
+    # needs a live checkout and is scripts/generate_semantic_artifacts.py's job, run from a
+    # machine with the ../ShapeChange, ../shacl-play and ../owl2shacl siblings available.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: pipeline/toolchain-lock.json matches every committed provenance.json
+        run: python scripts/check_toolchain_lock.py
+
   canonical-form:
     runs-on: ubuntu-latest
     timeout-minutes: 45

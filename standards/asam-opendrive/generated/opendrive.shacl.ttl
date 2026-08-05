@@ -7,7 +7,8 @@
 odr:G_additionalData a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:G_additionalData-G_additionalData.dataQuality,
         odr:G_additionalData-G_additionalData.include,
         odr:G_additionalData-G_additionalData.userData .
@@ -15,14 +16,16 @@ odr:G_additionalData a rdfs:Class,
 odr:LaneGeometry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:LaneGeometry-LaneGeometry.border,
         odr:LaneGeometry-LaneGeometry.width .
 
 odr:T_controller a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_controller-T_controller.control,
         odr:T_controller-T_controller.id,
         odr:T_controller-T_controller.name,
@@ -31,21 +34,24 @@ odr:T_controller a rdfs:Class,
 odr:T_controller_control a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_controller_control-T_controller_control.signalId,
         odr:T_controller_control-T_controller_control.type .
 
 odr:T_dataQuality a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_dataQuality-T_dataQuality.error,
         odr:T_dataQuality-T_dataQuality.rawData .
 
 odr:T_dataQuality_Error a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_dataQuality_Error-T_dataQuality_Error.xyAbsolute,
         odr:T_dataQuality_Error-T_dataQuality_Error.xyRelative,
         odr:T_dataQuality_Error-T_dataQuality_Error.zAbsolute,
@@ -54,7 +60,8 @@ odr:T_dataQuality_Error a rdfs:Class,
 odr:T_dataQuality_RawData a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_dataQuality_RawData-T_dataQuality_RawData.date,
         odr:T_dataQuality_RawData-T_dataQuality_RawData.postProcessing,
         odr:T_dataQuality_RawData-T_dataQuality_RawData.postProcessingComment,
@@ -64,7 +71,8 @@ odr:T_dataQuality_RawData a rdfs:Class,
 odr:T_header a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_header-T_header.date,
         odr:T_header-T_header.defaultRegulations,
         odr:T_header-T_header.east,
@@ -83,7 +91,8 @@ odr:T_header a rdfs:Class,
 odr:T_header_Offset a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_header_Offset-T_header_Offset.hdg,
         odr:T_header_Offset-T_header_Offset.x,
         odr:T_header_Offset-T_header_Offset.y,
@@ -92,21 +101,24 @@ odr:T_header_Offset a rdfs:Class,
 odr:T_header_defaultRegulations a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_header_defaultRegulations-T_header_defaultRegulations.roadRegulations,
         odr:T_header_defaultRegulations-T_header_defaultRegulations.signalRegulations .
 
 odr:T_header_roadRegulation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_header_roadRegulation-T_header_roadRegulation.semantics,
         odr:T_header_roadRegulation-T_header_roadRegulation.type .
 
 odr:T_header_signalRegulation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_header_signalRegulation-T_header_signalRegulation.semantics,
         odr:T_header_signalRegulation-T_header_signalRegulation.subtype,
         odr:T_header_signalRegulation-T_header_signalRegulation.type .
@@ -114,49 +126,51 @@ odr:T_header_signalRegulation a rdfs:Class,
 odr:T_include a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_include-T_include.file .
 
 odr:T_junction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_common.boundary,
-        odr:T_junction_common.connection,
-        odr:T_junction_common.controller,
-        odr:T_junction_common.crossPath,
-        odr:T_junction_common.elevationGrid,
-        odr:T_junction_common.objects,
-        odr:T_junction_common.planView,
-        odr:T_junction_common.priority,
-        odr:T_junction_common.surface,
-        odr:T_junction_common.type,
-        odr:T_junction_crossing.controller,
-        odr:T_junction_crossing.objects,
-        odr:T_junction_crossing.planView,
-        odr:T_junction_crossing.priority,
-        odr:T_junction_crossing.roadSection,
-        odr:T_junction_crossing.surface,
-        odr:T_junction_crossing.type,
-        odr:T_junction_direct.connection,
-        odr:T_junction_direct.controller,
-        odr:T_junction_direct.objects,
-        odr:T_junction_direct.planView,
-        odr:T_junction_direct.priority,
-        odr:T_junction_direct.surface,
-        odr:T_junction_direct.type,
-        odr:T_junction_virtual.connection,
-        odr:T_junction_virtual.controller,
-        odr:T_junction_virtual.crossPath,
-        odr:T_junction_virtual.mainRoad,
-        odr:T_junction_virtual.objects,
-        odr:T_junction_virtual.orientation,
-        odr:T_junction_virtual.planView,
-        odr:T_junction_virtual.priority,
-        odr:T_junction_virtual.sEnd,
-        odr:T_junction_virtual.sStart,
-        odr:T_junction_virtual.surface,
-        odr:T_junction_virtual.type,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction_direct.connection ;
+            rdf:rest [ rdf:first odr:T_junction_virtual.sStart ;
+                    rdf:rest [ rdf:first odr:T_junction_virtual.controller ;
+                            rdf:rest [ rdf:first odr:T_junction_crossing.planView ;
+                                    rdf:rest [ rdf:first odr:T_junction_common.surface ;
+                                            rdf:rest [ rdf:first odr:T_junction_crossing.surface ;
+                                                    rdf:rest [ rdf:first odr:T_junction_virtual.connection ;
+                                                            rdf:rest [ rdf:first odr:T_junction_common.objects ;
+                                                                    rdf:rest [ rdf:first odr:T_junction_common.connection ;
+                                                                            rdf:rest [ rdf:first odr:T_junction_virtual.type ;
+                                                                                    rdf:rest [ rdf:first odr:T_junction_direct.priority ;
+                                                                                            rdf:rest [ rdf:first odr:T_junction_common.priority ;
+                                                                                                    rdf:rest [ rdf:first odr:T_junction_common.boundary ;
+                                                                                                            rdf:rest [ rdf:first odr:T_junction_direct.planView ;
+                                                                                                                    rdf:rest [ rdf:first odr:T_junction_direct.type ;
+                                                                                                                            rdf:rest [ rdf:first odr:T_junction_direct.controller ;
+                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_common.planView ;
+                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_crossing.roadSection ;
+                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_crossing.type ;
+                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_virtual.surface ;
+                                                                                                                                                                    rdf:rest [ rdf:first rdf:type ;
+                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_virtual.crossPath ;
+                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_common.crossPath ;
+                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_virtual.sEnd ;
+                                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_virtual.planView ;
+                                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_virtual.priority ;
+                                                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_virtual.orientation ;
+                                                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_common.controller ;
+                                                                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_virtual.mainRoad ;
+                                                                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_direct.objects ;
+                                                                                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_crossing.objects ;
+                                                                                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_crossing.priority ;
+                                                                                                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_crossing.controller ;
+                                                                                                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_common.type ;
+                                                                                                                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_direct.surface ;
+                                                                                                                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_junction_common.elevationGrid ;
+                                                                                                                                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_junction_virtual.objects ;
+                                                                                                                                                                                                                                                                                                            rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ;
     sh:property odr:T_junction-T_junction.controller,
         odr:T_junction-T_junction.id,
         odr:T_junction-T_junction.name,
@@ -168,7 +182,8 @@ odr:T_junction a rdfs:Class,
 odr:T_junctionGroup a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junctionGroup-T_junctionGroup.id,
         odr:T_junctionGroup-T_junctionGroup.junctionReference,
         odr:T_junctionGroup-T_junctionGroup.name,
@@ -177,35 +192,39 @@ odr:T_junctionGroup a rdfs:Class,
 odr:T_junctionGroup_junctionReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junctionGroup_junctionReference-T_junctionGroup_junctionReference.junction .
 
 odr:T_junction_boundary a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_boundary-T_junction_boundary.segment .
 
 odr:T_junction_boundary_segment a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_boundary_segment_joint.contactPoint,
-        odr:T_junction_boundary_segment_joint.jointLaneEnd,
-        odr:T_junction_boundary_segment_joint.jointLaneStart,
-        odr:T_junction_boundary_segment_joint.transitionLength,
-        odr:T_junction_boundary_segment_joint.type,
-        odr:T_junction_boundary_segment_lane.boundaryLane,
-        odr:T_junction_boundary_segment_lane.sEnd,
-        odr:T_junction_boundary_segment_lane.sStart,
-        odr:T_junction_boundary_segment_lane.type,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest [ rdf:first odr:T_junction_boundary_segment_lane.sStart ;
+                    rdf:rest [ rdf:first odr:T_junction_boundary_segment_joint.contactPoint ;
+                            rdf:rest [ rdf:first odr:T_junction_boundary_segment_lane.type ;
+                                    rdf:rest [ rdf:first odr:T_junction_boundary_segment_joint.transitionLength ;
+                                            rdf:rest [ rdf:first odr:T_junction_boundary_segment_lane.sEnd ;
+                                                    rdf:rest [ rdf:first odr:T_junction_boundary_segment_lane.boundaryLane ;
+                                                            rdf:rest [ rdf:first odr:T_junction_boundary_segment_joint.type ;
+                                                                    rdf:rest [ rdf:first odr:T_junction_boundary_segment_joint.jointLaneStart ;
+                                                                            rdf:rest [ rdf:first odr:T_junction_boundary_segment_joint.jointLaneEnd ;
+                                                                                    rdf:rest () ] ] ] ] ] ] ] ] ] ] ;
     sh:property odr:T_junction_boundary_segment-T_junction_boundary_segment.roadId .
 
 odr:T_junction_boundary_segment_joint a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_boundary_segment.roadId,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest [ rdf:first odr:T_junction_boundary_segment.roadId ;
+                    rdf:rest () ] ] ;
     sh:property odr:T_junction_boundary_segment_joint-T_junction_boundary_segment_joint.contactPoint,
         odr:T_junction_boundary_segment_joint-T_junction_boundary_segment_joint.jointLaneEnd,
         odr:T_junction_boundary_segment_joint-T_junction_boundary_segment_joint.jointLaneStart,
@@ -215,8 +234,9 @@ odr:T_junction_boundary_segment_joint a rdfs:Class,
 odr:T_junction_boundary_segment_lane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_boundary_segment.roadId,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction_boundary_segment.roadId ;
+            rdf:rest [ rdf:first rdf:type ;
+                    rdf:rest () ] ] ;
     sh:property odr:T_junction_boundary_segment_lane-T_junction_boundary_segment_lane.boundaryLane,
         odr:T_junction_boundary_segment_lane-T_junction_boundary_segment_lane.sEnd,
         odr:T_junction_boundary_segment_lane-T_junction_boundary_segment_lane.sStart,
@@ -225,14 +245,15 @@ odr:T_junction_boundary_segment_lane a rdfs:Class,
 odr:T_junction_common a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction.controller,
-        odr:T_junction.id,
-        odr:T_junction.name,
-        odr:T_junction.objects,
-        odr:T_junction.planView,
-        odr:T_junction.priority,
-        odr:T_junction.surface,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction.name ;
+            rdf:rest [ rdf:first odr:T_junction.surface ;
+                    rdf:rest [ rdf:first odr:T_junction.priority ;
+                            rdf:rest [ rdf:first odr:T_junction.controller ;
+                                    rdf:rest [ rdf:first odr:T_junction.planView ;
+                                            rdf:rest [ rdf:first odr:T_junction.id ;
+                                                    rdf:rest [ rdf:first rdf:type ;
+                                                            rdf:rest [ rdf:first odr:T_junction.objects ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
     sh:property odr:T_junction_common-T_junction_common.boundary,
         odr:T_junction_common-T_junction_common.connection,
         odr:T_junction_common-T_junction_common.controller,
@@ -247,15 +268,16 @@ odr:T_junction_common a rdfs:Class,
 odr:T_junction_connection a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_connection_common.connectingRoad,
-        odr:T_junction_connection_direct.linkedRoad,
-        odr:T_junction_connection_virtual.connectingRoad,
-        odr:T_junction_connection_virtual.predecessor,
-        odr:T_junction_connection_virtual.successor,
-        odr:T_junction_connection_virtual.type,
-        odr:T_junction_connection_virtual_default.connectingRoad,
-        odr:T_junction_connection_virtual_default.type,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction_connection_virtual_default.connectingRoad ;
+            rdf:rest [ rdf:first odr:T_junction_connection_virtual_default.type ;
+                    rdf:rest [ rdf:first odr:T_junction_connection_virtual.type ;
+                            rdf:rest [ rdf:first odr:T_junction_connection_virtual.connectingRoad ;
+                                    rdf:rest [ rdf:first odr:T_junction_connection_virtual.successor ;
+                                            rdf:rest [ rdf:first odr:T_junction_connection_virtual.predecessor ;
+                                                    rdf:rest [ rdf:first odr:T_junction_connection_common.connectingRoad ;
+                                                            rdf:rest [ rdf:first odr:T_junction_connection_direct.linkedRoad ;
+                                                                    rdf:rest [ rdf:first rdf:type ;
+                                                                            rdf:rest () ] ] ] ] ] ] ] ] ] ;
     sh:property odr:T_junction_connection-T_junction_connection.contactPoint,
         odr:T_junction_connection-T_junction_connection.id,
         odr:T_junction_connection-T_junction_connection.incomingRoad,
@@ -264,27 +286,30 @@ odr:T_junction_connection a rdfs:Class,
 odr:T_junction_connection_common a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_connection.contactPoint,
-        odr:T_junction_connection.id,
-        odr:T_junction_connection.incomingRoad,
-        odr:T_junction_connection.laneLink,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction_connection.contactPoint ;
+            rdf:rest [ rdf:first odr:T_junction_connection.laneLink ;
+                    rdf:rest [ rdf:first rdf:type ;
+                            rdf:rest [ rdf:first odr:T_junction_connection.incomingRoad ;
+                                    rdf:rest [ rdf:first odr:T_junction_connection.id ;
+                                            rdf:rest () ] ] ] ] ] ;
     sh:property odr:T_junction_connection_common-T_junction_connection_common.connectingRoad .
 
 odr:T_junction_connection_direct a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_connection.contactPoint,
-        odr:T_junction_connection.id,
-        odr:T_junction_connection.incomingRoad,
-        odr:T_junction_connection.laneLink,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction_connection.id ;
+            rdf:rest [ rdf:first odr:T_junction_connection.incomingRoad ;
+                    rdf:rest [ rdf:first odr:T_junction_connection.contactPoint ;
+                            rdf:rest [ rdf:first rdf:type ;
+                                    rdf:rest [ rdf:first odr:T_junction_connection.laneLink ;
+                                            rdf:rest () ] ] ] ] ] ;
     sh:property odr:T_junction_connection_direct-T_junction_connection_direct.linkedRoad .
 
 odr:T_junction_connection_laneLink a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_connection_laneLink-T_junction_connection_laneLink.from,
         odr:T_junction_connection_laneLink-T_junction_connection_laneLink.fromLayer,
         odr:T_junction_connection_laneLink-T_junction_connection_laneLink.overlapZone,
@@ -294,11 +319,12 @@ odr:T_junction_connection_laneLink a rdfs:Class,
 odr:T_junction_connection_virtual a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_connection.contactPoint,
-        odr:T_junction_connection.id,
-        odr:T_junction_connection.incomingRoad,
-        odr:T_junction_connection.laneLink,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction_connection.id ;
+            rdf:rest [ rdf:first odr:T_junction_connection.incomingRoad ;
+                    rdf:rest [ rdf:first odr:T_junction_connection.contactPoint ;
+                            rdf:rest [ rdf:first odr:T_junction_connection.laneLink ;
+                                    rdf:rest [ rdf:first rdf:type ;
+                                            rdf:rest () ] ] ] ] ] ;
     sh:property odr:T_junction_connection_virtual-T_junction_connection_virtual.connectingRoad,
         odr:T_junction_connection_virtual-T_junction_connection_virtual.predecessor,
         odr:T_junction_connection_virtual-T_junction_connection_virtual.successor,
@@ -307,18 +333,20 @@ odr:T_junction_connection_virtual a rdfs:Class,
 odr:T_junction_connection_virtual_default a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction_connection.contactPoint,
-        odr:T_junction_connection.id,
-        odr:T_junction_connection.incomingRoad,
-        odr:T_junction_connection.laneLink,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction_connection.laneLink ;
+            rdf:rest [ rdf:first odr:T_junction_connection.contactPoint ;
+                    rdf:rest [ rdf:first odr:T_junction_connection.incomingRoad ;
+                            rdf:rest [ rdf:first odr:T_junction_connection.id ;
+                                    rdf:rest [ rdf:first rdf:type ;
+                                            rdf:rest () ] ] ] ] ] ;
     sh:property odr:T_junction_connection_virtual_default-T_junction_connection_virtual_default.connectingRoad,
         odr:T_junction_connection_virtual_default-T_junction_connection_virtual_default.type .
 
 odr:T_junction_controller a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_controller-T_junction_controller.id,
         odr:T_junction_controller-T_junction_controller.sequence,
         odr:T_junction_controller-T_junction_controller.type .
@@ -326,7 +354,8 @@ odr:T_junction_controller a rdfs:Class,
 odr:T_junction_crossPath a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_crossPath-T_junction_crossPath.crossingRoad,
         odr:T_junction_crossPath-T_junction_crossPath.endLaneLink,
         odr:T_junction_crossPath-T_junction_crossPath.id,
@@ -337,7 +366,8 @@ odr:T_junction_crossPath a rdfs:Class,
 odr:T_junction_crossPath_laneLink a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_crossPath_laneLink-T_junction_crossPath_laneLink.from,
         odr:T_junction_crossPath_laneLink-T_junction_crossPath_laneLink.s,
         odr:T_junction_crossPath_laneLink-T_junction_crossPath_laneLink.to .
@@ -345,14 +375,15 @@ odr:T_junction_crossPath_laneLink a rdfs:Class,
 odr:T_junction_crossing a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction.controller,
-        odr:T_junction.id,
-        odr:T_junction.name,
-        odr:T_junction.objects,
-        odr:T_junction.planView,
-        odr:T_junction.priority,
-        odr:T_junction.surface,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction.planView ;
+            rdf:rest [ rdf:first odr:T_junction.priority ;
+                    rdf:rest [ rdf:first odr:T_junction.id ;
+                            rdf:rest [ rdf:first odr:T_junction.surface ;
+                                    rdf:rest [ rdf:first rdf:type ;
+                                            rdf:rest [ rdf:first odr:T_junction.name ;
+                                                    rdf:rest [ rdf:first odr:T_junction.controller ;
+                                                            rdf:rest [ rdf:first odr:T_junction.objects ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
     sh:property odr:T_junction_crossing-T_junction_crossing.controller,
         odr:T_junction_crossing-T_junction_crossing.objects,
         odr:T_junction_crossing-T_junction_crossing.planView,
@@ -364,14 +395,15 @@ odr:T_junction_crossing a rdfs:Class,
 odr:T_junction_direct a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction.controller,
-        odr:T_junction.id,
-        odr:T_junction.name,
-        odr:T_junction.objects,
-        odr:T_junction.planView,
-        odr:T_junction.priority,
-        odr:T_junction.surface,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction.id ;
+            rdf:rest [ rdf:first odr:T_junction.name ;
+                    rdf:rest [ rdf:first odr:T_junction.priority ;
+                            rdf:rest [ rdf:first odr:T_junction.planView ;
+                                    rdf:rest [ rdf:first rdf:type ;
+                                            rdf:rest [ rdf:first odr:T_junction.surface ;
+                                                    rdf:rest [ rdf:first odr:T_junction.controller ;
+                                                            rdf:rest [ rdf:first odr:T_junction.objects ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
     sh:property odr:T_junction_direct-T_junction_direct.connection,
         odr:T_junction_direct-T_junction_direct.controller,
         odr:T_junction_direct-T_junction_direct.objects,
@@ -383,7 +415,8 @@ odr:T_junction_direct a rdfs:Class,
 odr:T_junction_elevationGrid a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_elevationGrid-T_junction_elevationGrid.elevation,
         odr:T_junction_elevationGrid-T_junction_elevationGrid.gridSpacing,
         odr:T_junction_elevationGrid-T_junction_elevationGrid.sStart .
@@ -391,7 +424,8 @@ odr:T_junction_elevationGrid a rdfs:Class,
 odr:T_junction_elevationGrid_elevation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_elevationGrid_elevation-T_junction_elevationGrid_elevation.center,
         odr:T_junction_elevationGrid_elevation-T_junction_elevationGrid_elevation.left,
         odr:T_junction_elevationGrid_elevation-T_junction_elevationGrid_elevation.right .
@@ -399,7 +433,8 @@ odr:T_junction_elevationGrid_elevation a rdfs:Class,
 odr:T_junction_predecessorSuccessor a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_predecessorSuccessor-T_junction_predecessorSuccessor.elementDir,
         odr:T_junction_predecessorSuccessor-T_junction_predecessorSuccessor.elementId,
         odr:T_junction_predecessorSuccessor-T_junction_predecessorSuccessor.elementS,
@@ -408,14 +443,16 @@ odr:T_junction_predecessorSuccessor a rdfs:Class,
 odr:T_junction_priority a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_priority-T_junction_priority.high,
         odr:T_junction_priority-T_junction_priority.low .
 
 odr:T_junction_roadSection a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_junction_roadSection-T_junction_roadSection.id,
         odr:T_junction_roadSection-T_junction_roadSection.roadId,
         odr:T_junction_roadSection-T_junction_roadSection.sEnd,
@@ -424,14 +461,15 @@ odr:T_junction_roadSection a rdfs:Class,
 odr:T_junction_virtual a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_junction.controller,
-        odr:T_junction.id,
-        odr:T_junction.name,
-        odr:T_junction.objects,
-        odr:T_junction.planView,
-        odr:T_junction.priority,
-        odr:T_junction.surface,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_junction.surface ;
+            rdf:rest [ rdf:first odr:T_junction.id ;
+                    rdf:rest [ rdf:first odr:T_junction.priority ;
+                            rdf:rest [ rdf:first odr:T_junction.objects ;
+                                    rdf:rest [ rdf:first odr:T_junction.planView ;
+                                            rdf:rest [ rdf:first odr:T_junction.name ;
+                                                    rdf:rest [ rdf:first rdf:type ;
+                                                            rdf:rest [ rdf:first odr:T_junction.controller ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
     sh:property odr:T_junction_virtual-T_junction_virtual.connection,
         odr:T_junction_virtual-T_junction_virtual.controller,
         odr:T_junction_virtual-T_junction_virtual.crossPath,
@@ -448,7 +486,8 @@ odr:T_junction_virtual a rdfs:Class,
 odr:T_license a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_license-T_license.name,
         odr:T_license-T_license.resource,
         odr:T_license-T_license.spdxid,
@@ -457,7 +496,8 @@ odr:T_license a rdfs:Class,
 odr:T_outline_geometry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_outline_geometry-T_outline_geometry.cornerLocal,
         odr:T_outline_geometry-T_outline_geometry.cornerRoad,
         odr:T_outline_geometry-T_outline_geometry.curveLocal .
@@ -465,21 +505,24 @@ odr:T_outline_geometry a rdfs:Class,
 odr:T_physicalPosition a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_physicalPosition-T_physicalPosition.positionInertial,
         odr:T_physicalPosition-T_physicalPosition.positionRoad .
 
 odr:T_polyline_geometry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_polyline_geometry-T_polyline_geometry.vertexLocal,
         odr:T_polyline_geometry-T_polyline_geometry.vertexRoad .
 
 odr:T_road a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road-T_road.elevationProfile,
         odr:T_road-T_road.id,
         odr:T_road-T_road.junction,
@@ -499,13 +542,15 @@ odr:T_road a rdfs:Class,
 odr:T_road_elevationProfile a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_elevationProfile-T_road_elevationProfile.elevation .
 
 odr:T_road_elevationProfile_elevation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_elevationProfile_elevation-T_road_elevationProfile_elevation.a,
         odr:T_road_elevationProfile_elevation-T_road_elevationProfile_elevation.b,
         odr:T_road_elevationProfile_elevation-T_road_elevationProfile_elevation.c,
@@ -515,7 +560,8 @@ odr:T_road_elevationProfile_elevation a rdfs:Class,
 odr:T_road_lanes a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes-T_road_lanes.laneOffset,
         odr:T_road_lanes-T_road_lanes.laneSection,
         odr:T_road_lanes-T_road_lanes.layer .
@@ -523,7 +569,8 @@ odr:T_road_lanes a rdfs:Class,
 odr:T_road_lanes_laneOffset a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneOffset-T_road_lanes_laneOffset.a,
         odr:T_road_lanes_laneOffset-T_road_lanes_laneOffset.b,
         odr:T_road_lanes_laneOffset-T_road_lanes_laneOffset.c,
@@ -533,7 +580,8 @@ odr:T_road_lanes_laneOffset a rdfs:Class,
 odr:T_road_lanes_laneSection a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection-T_road_lanes_laneSection.center,
         odr:T_road_lanes_laneSection-T_road_lanes_laneSection.left,
         odr:T_road_lanes_laneSection-T_road_lanes_laneSection.length,
@@ -544,13 +592,15 @@ odr:T_road_lanes_laneSection a rdfs:Class,
 odr:T_road_lanes_laneSection_center a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_center-T_road_lanes_laneSection_center.lane .
 
 odr:T_road_lanes_laneSection_center_lane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_center_lane-T_road_lanes_laneSection_center_lane.id,
         odr:T_road_lanes_laneSection_center_lane-T_road_lanes_laneSection_center_lane.level,
         odr:T_road_lanes_laneSection_center_lane-T_road_lanes_laneSection_center_lane.link,
@@ -560,21 +610,24 @@ odr:T_road_lanes_laneSection_center_lane a rdfs:Class,
 odr:T_road_lanes_laneSection_lcr_lane_link a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_link-T_road_lanes_laneSection_lcr_lane_link.predecessor,
         odr:T_road_lanes_laneSection_lcr_lane_link-T_road_lanes_laneSection_lcr_lane_link.successor .
 
 odr:T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor-T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor.id,
         odr:T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor-T_road_lanes_laneSection_lcr_lane_link_predecessorSuccessor.layer .
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane_roadMark.color,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane_roadMark.explicit,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark-T_road_lanes_laneSection_lcr_lane_roadMark.height,
@@ -589,13 +642,15 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark a rdfs:Class,
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit-T_road_lanes_laneSection_lcr_lane_roadMark_explicit.line .
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line-T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.length,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line-T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.rule,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line-T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.sOffset,
@@ -605,7 +660,8 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line a rdfs:Class,
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway-T_road_lanes_laneSection_lcr_lane_roadMark_sway.a,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway-T_road_lanes_laneSection_lcr_lane_roadMark_sway.b,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway-T_road_lanes_laneSection_lcr_lane_roadMark_sway.c,
@@ -615,7 +671,8 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway a rdfs:Class,
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_type a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_roadMark_type-T_road_lanes_laneSection_lcr_lane_roadMark_type.line,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_type-T_road_lanes_laneSection_lcr_lane_roadMark_type.name,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_type-T_road_lanes_laneSection_lcr_lane_roadMark_type.width .
@@ -623,7 +680,8 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type a rdfs:Class,
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line-T_road_lanes_laneSection_lcr_lane_roadMark_type_line.color,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line-T_road_lanes_laneSection_lcr_lane_roadMark_type_line.length,
         odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line-T_road_lanes_laneSection_lcr_lane_roadMark_type_line.rule,
@@ -635,35 +693,38 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line a rdfs:Class,
 odr:T_road_lanes_laneSection_left a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_left-T_road_lanes_laneSection_left.lane .
 
 odr:T_road_lanes_laneSection_left_lane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_lanes_laneSection_lr_lane.access,
-        odr:T_road_lanes_laneSection_lr_lane.advisory,
-        odr:T_road_lanes_laneSection_lr_lane.direction,
-        odr:T_road_lanes_laneSection_lr_lane.dynamicLaneDirection,
-        odr:T_road_lanes_laneSection_lr_lane.dynamicLaneType,
-        odr:T_road_lanes_laneSection_lr_lane.height,
-        odr:T_road_lanes_laneSection_lr_lane.level,
-        odr:T_road_lanes_laneSection_lr_lane.link,
-        odr:T_road_lanes_laneSection_lr_lane.material,
-        odr:T_road_lanes_laneSection_lr_lane.roadMark,
-        odr:T_road_lanes_laneSection_lr_lane.roadWorks,
-        odr:T_road_lanes_laneSection_lr_lane.rule,
-        odr:T_road_lanes_laneSection_lr_lane.speed,
-        odr:T_road_lanes_laneSection_lr_lane.type,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_lanes_laneSection_lr_lane.type ;
+            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.advisory ;
+                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.speed ;
+                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.dynamicLaneDirection ;
+                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.roadMark ;
+                                            rdf:rest [ rdf:first rdf:type ;
+                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.roadWorks ;
+                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.material ;
+                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.rule ;
+                                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.level ;
+                                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.link ;
+                                                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.access ;
+                                                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.dynamicLaneType ;
+                                                                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.direction ;
+                                                                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.height ;
+                                                                                                                            rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ;
     sh:property odr:T_road_lanes_laneSection_left_lane-T_road_lanes_laneSection_left_lane.id .
 
 odr:T_road_lanes_laneSection_lr_lane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_lanes_laneSection_left_lane.id,
-        odr:T_road_lanes_laneSection_right_lane.id,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_lanes_laneSection_left_lane.id ;
+            rdf:rest [ rdf:first rdf:type ;
+                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_right_lane.id ;
+                            rdf:rest () ] ] ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane-T_road_lanes_laneSection_lr_lane.access,
         odr:T_road_lanes_laneSection_lr_lane-T_road_lanes_laneSection_lr_lane.advisory,
         odr:T_road_lanes_laneSection_lr_lane-T_road_lanes_laneSection_lr_lane.direction,
@@ -682,7 +743,8 @@ odr:T_road_lanes_laneSection_lr_lane a rdfs:Class,
 odr:T_road_lanes_laneSection_lr_lane_access a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_access-T_road_lanes_laneSection_lr_lane_access.restriction,
         odr:T_road_lanes_laneSection_lr_lane_access-T_road_lanes_laneSection_lr_lane_access.rule,
         odr:T_road_lanes_laneSection_lr_lane_access-T_road_lanes_laneSection_lr_lane_access.sOffset .
@@ -690,13 +752,15 @@ odr:T_road_lanes_laneSection_lr_lane_access a rdfs:Class,
 odr:T_road_lanes_laneSection_lr_lane_access_restriction a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_access_restriction-T_road_lanes_laneSection_lr_lane_access_restriction.type .
 
 odr:T_road_lanes_laneSection_lr_lane_border a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_border-T_road_lanes_laneSection_lr_lane_border.a,
         odr:T_road_lanes_laneSection_lr_lane_border-T_road_lanes_laneSection_lr_lane_border.b,
         odr:T_road_lanes_laneSection_lr_lane_border-T_road_lanes_laneSection_lr_lane_border.c,
@@ -706,7 +770,8 @@ odr:T_road_lanes_laneSection_lr_lane_border a rdfs:Class,
 odr:T_road_lanes_laneSection_lr_lane_height a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_height-T_road_lanes_laneSection_lr_lane_height.inner,
         odr:T_road_lanes_laneSection_lr_lane_height-T_road_lanes_laneSection_lr_lane_height.outer,
         odr:T_road_lanes_laneSection_lr_lane_height-T_road_lanes_laneSection_lr_lane_height.sOffset .
@@ -714,7 +779,8 @@ odr:T_road_lanes_laneSection_lr_lane_height a rdfs:Class,
 odr:T_road_lanes_laneSection_lr_lane_material a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_material-T_road_lanes_laneSection_lr_lane_material.friction,
         odr:T_road_lanes_laneSection_lr_lane_material-T_road_lanes_laneSection_lr_lane_material.roughness,
         odr:T_road_lanes_laneSection_lr_lane_material-T_road_lanes_laneSection_lr_lane_material.sOffset,
@@ -723,14 +789,16 @@ odr:T_road_lanes_laneSection_lr_lane_material a rdfs:Class,
 odr:T_road_lanes_laneSection_lr_lane_rule a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_rule-T_road_lanes_laneSection_lr_lane_rule.sOffset,
         odr:T_road_lanes_laneSection_lr_lane_rule-T_road_lanes_laneSection_lr_lane_rule.value .
 
 odr:T_road_lanes_laneSection_lr_lane_speed a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_speed-T_road_lanes_laneSection_lr_lane_speed.max,
         odr:T_road_lanes_laneSection_lr_lane_speed-T_road_lanes_laneSection_lr_lane_speed.sOffset,
         odr:T_road_lanes_laneSection_lr_lane_speed-T_road_lanes_laneSection_lr_lane_speed.unit .
@@ -738,7 +806,8 @@ odr:T_road_lanes_laneSection_lr_lane_speed a rdfs:Class,
 odr:T_road_lanes_laneSection_lr_lane_width a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_lr_lane_width-T_road_lanes_laneSection_lr_lane_width.a,
         odr:T_road_lanes_laneSection_lr_lane_width-T_road_lanes_laneSection_lr_lane_width.b,
         odr:T_road_lanes_laneSection_lr_lane_width-T_road_lanes_laneSection_lr_lane_width.c,
@@ -748,33 +817,36 @@ odr:T_road_lanes_laneSection_lr_lane_width a rdfs:Class,
 odr:T_road_lanes_laneSection_right a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lanes_laneSection_right-T_road_lanes_laneSection_right.lane .
 
 odr:T_road_lanes_laneSection_right_lane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_lanes_laneSection_lr_lane.access,
-        odr:T_road_lanes_laneSection_lr_lane.advisory,
-        odr:T_road_lanes_laneSection_lr_lane.direction,
-        odr:T_road_lanes_laneSection_lr_lane.dynamicLaneDirection,
-        odr:T_road_lanes_laneSection_lr_lane.dynamicLaneType,
-        odr:T_road_lanes_laneSection_lr_lane.height,
-        odr:T_road_lanes_laneSection_lr_lane.level,
-        odr:T_road_lanes_laneSection_lr_lane.link,
-        odr:T_road_lanes_laneSection_lr_lane.material,
-        odr:T_road_lanes_laneSection_lr_lane.roadMark,
-        odr:T_road_lanes_laneSection_lr_lane.roadWorks,
-        odr:T_road_lanes_laneSection_lr_lane.rule,
-        odr:T_road_lanes_laneSection_lr_lane.speed,
-        odr:T_road_lanes_laneSection_lr_lane.type,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_lanes_laneSection_lr_lane.dynamicLaneDirection ;
+            rdf:rest [ rdf:first rdf:type ;
+                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.height ;
+                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.advisory ;
+                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.rule ;
+                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.roadMark ;
+                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.link ;
+                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.dynamicLaneType ;
+                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.material ;
+                                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.speed ;
+                                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.type ;
+                                                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.access ;
+                                                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.level ;
+                                                                                                            rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.roadWorks ;
+                                                                                                                    rdf:rest [ rdf:first odr:T_road_lanes_laneSection_lr_lane.direction ;
+                                                                                                                            rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ;
     sh:property odr:T_road_lanes_laneSection_right_lane-T_road_lanes_laneSection_right_lane.id .
 
 odr:T_road_lateralProfile a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile-T_road_lateralProfile.crossSectionSurface,
         odr:T_road_lateralProfile-T_road_lateralProfile.shape,
         odr:T_road_lateralProfile-T_road_lateralProfile.superelevation .
@@ -782,14 +854,16 @@ odr:T_road_lateralProfile a rdfs:Class,
 odr:T_road_lateralProfile_crossSectionSurface a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface-T_road_lateralProfile_crossSectionSurface.surfaceStrips,
         odr:T_road_lateralProfile_crossSectionSurface-T_road_lateralProfile_crossSectionSurface.tOffset .
 
 odr:T_road_lateralProfile_crossSectionSurface_coefficients a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_coefficients-T_road_lateralProfile_crossSectionSurface_coefficients.a,
         odr:T_road_lateralProfile_crossSectionSurface_coefficients-T_road_lateralProfile_crossSectionSurface_coefficients.b,
         odr:T_road_lateralProfile_crossSectionSurface_coefficients-T_road_lateralProfile_crossSectionSurface_coefficients.c,
@@ -799,7 +873,8 @@ odr:T_road_lateralProfile_crossSectionSurface_coefficients a rdfs:Class,
 odr:T_road_lateralProfile_crossSectionSurface_strip a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_strip-T_road_lateralProfile_crossSectionSurface_strip.constant,
         odr:T_road_lateralProfile_crossSectionSurface_strip-T_road_lateralProfile_crossSectionSurface_strip.cubic,
         odr:T_road_lateralProfile_crossSectionSurface_strip-T_road_lateralProfile_crossSectionSurface_strip.id,
@@ -811,49 +886,57 @@ odr:T_road_lateralProfile_crossSectionSurface_strip a rdfs:Class,
 odr:T_road_lateralProfile_crossSectionSurface_strip_constant a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_strip_constant-T_road_lateralProfile_crossSectionSurface_strip_constant.coefficients .
 
 odr:T_road_lateralProfile_crossSectionSurface_strip_cubic a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_strip_cubic-T_road_lateralProfile_crossSectionSurface_strip_cubic.coefficients .
 
 odr:T_road_lateralProfile_crossSectionSurface_strip_linear a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_strip_linear-T_road_lateralProfile_crossSectionSurface_strip_linear.coefficients .
 
 odr:T_road_lateralProfile_crossSectionSurface_strip_quadratic a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_strip_quadratic-T_road_lateralProfile_crossSectionSurface_strip_quadratic.coefficients .
 
 odr:T_road_lateralProfile_crossSectionSurface_strip_width a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_strip_width-T_road_lateralProfile_crossSectionSurface_strip_width.coefficients .
 
 odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip-T_road_lateralProfile_crossSectionSurface_surfaceStrip.strip .
 
 odr:T_road_lateralProfile_crossSectionSurface_tOffset a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_crossSectionSurface_tOffset-T_road_lateralProfile_crossSectionSurface_tOffset.coefficients .
 
 odr:T_road_lateralProfile_shape a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_shape-T_road_lateralProfile_shape.a,
         odr:T_road_lateralProfile_shape-T_road_lateralProfile_shape.b,
         odr:T_road_lateralProfile_shape-T_road_lateralProfile_shape.c,
@@ -864,7 +947,8 @@ odr:T_road_lateralProfile_shape a rdfs:Class,
 odr:T_road_lateralProfile_superelevation a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_lateralProfile_superelevation-T_road_lateralProfile_superelevation.a,
         odr:T_road_lateralProfile_superelevation-T_road_lateralProfile_superelevation.b,
         odr:T_road_lateralProfile_superelevation-T_road_lateralProfile_superelevation.c,
@@ -874,14 +958,16 @@ odr:T_road_lateralProfile_superelevation a rdfs:Class,
 odr:T_road_link a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_link-T_road_link.predecessor,
         odr:T_road_link-T_road_link.successor .
 
 odr:T_road_link_predecessorSuccessor a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_link_predecessorSuccessor-T_road_link_predecessorSuccessor.contactPoint,
         odr:T_road_link_predecessorSuccessor-T_road_link_predecessorSuccessor.elementDir,
         odr:T_road_link_predecessorSuccessor-T_road_link_predecessorSuccessor.elementId,
@@ -891,7 +977,8 @@ odr:T_road_link_predecessorSuccessor a rdfs:Class,
 odr:T_road_objects a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects-T_road_objects.bridge,
         odr:T_road_objects-T_road_objects.object,
         odr:T_road_objects-T_road_objects.objectReference,
@@ -900,7 +987,8 @@ odr:T_road_objects a rdfs:Class,
 odr:T_road_objects_bridge a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_bridge-T_road_objects_bridge.id,
         odr:T_road_objects_bridge-T_road_objects_bridge.length,
         odr:T_road_objects_bridge-T_road_objects_bridge.name,
@@ -911,7 +999,8 @@ odr:T_road_objects_bridge a rdfs:Class,
 odr:T_road_objects_object a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object-T_road_objects_object.borders,
         odr:T_road_objects_object-T_road_objects_object.dynamic,
         odr:T_road_objects_object-T_road_objects_object.hdg,
@@ -946,7 +1035,8 @@ odr:T_road_objects_object a rdfs:Class,
 odr:T_road_objects_objectReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_objectReference-T_road_objects_objectReference.id,
         odr:T_road_objects_objectReference-T_road_objects_objectReference.orientation,
         odr:T_road_objects_objectReference-T_road_objects_objectReference.s,
@@ -958,13 +1048,15 @@ odr:T_road_objects_objectReference a rdfs:Class,
 odr:T_road_objects_object_borders a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_borders-T_road_objects_object_borders.border .
 
 odr:T_road_objects_object_borders_border a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_borders_border-T_road_objects_object_borders_border.cornerReference,
         odr:T_road_objects_object_borders_border-T_road_objects_object_borders_border.outlineId,
         odr:T_road_objects_object_borders_border-T_road_objects_object_borders_border.type,
@@ -974,7 +1066,8 @@ odr:T_road_objects_object_borders_border a rdfs:Class,
 odr:T_road_objects_object_laneValidity a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_laneValidity-T_road_objects_object_laneValidity.fromLane,
         odr:T_road_objects_object_laneValidity-T_road_objects_object_laneValidity.layer,
         odr:T_road_objects_object_laneValidity-T_road_objects_object_laneValidity.toLane .
@@ -982,13 +1075,15 @@ odr:T_road_objects_object_laneValidity a rdfs:Class,
 odr:T_road_objects_object_markings a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_markings-T_road_objects_object_markings.marking .
 
 odr:T_road_objects_object_markings_marking a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_markings_marking-T_road_objects_object_markings_marking.color,
         odr:T_road_objects_object_markings_marking-T_road_objects_object_markings_marking.cornerReference,
         odr:T_road_objects_object_markings_marking-T_road_objects_object_markings_marking.lineLength,
@@ -1003,13 +1098,15 @@ odr:T_road_objects_object_markings_marking a rdfs:Class,
 odr:T_road_objects_object_markings_marking_cornerReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_markings_marking_cornerReference-T_road_objects_object_markings_marking_cornerReference.id .
 
 odr:T_road_objects_object_material a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_material-T_road_objects_object_material.friction,
         odr:T_road_objects_object_material-T_road_objects_object_material.roadMarkColor,
         odr:T_road_objects_object_material-T_road_objects_object_material.roughness,
@@ -1018,13 +1115,15 @@ odr:T_road_objects_object_material a rdfs:Class,
 odr:T_road_objects_object_outlines a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_outlines-T_road_objects_object_outlines.outline .
 
 odr:T_road_objects_object_outlines_outline a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_outlines_outline-T_road_objects_object_outlines_outline.closed,
         odr:T_road_objects_object_outlines_outline-T_road_objects_object_outlines_outline.fillType,
         odr:T_road_objects_object_outlines_outline-T_road_objects_object_outlines_outline.id,
@@ -1035,7 +1134,8 @@ odr:T_road_objects_object_outlines_outline a rdfs:Class,
 odr:T_road_objects_object_outlines_outline_cornerLocal a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_outlines_outline_cornerLocal-T_road_objects_object_outlines_outline_cornerLocal.height,
         odr:T_road_objects_object_outlines_outline_cornerLocal-T_road_objects_object_outlines_outline_cornerLocal.id,
         odr:T_road_objects_object_outlines_outline_cornerLocal-T_road_objects_object_outlines_outline_cornerLocal.u,
@@ -1045,7 +1145,8 @@ odr:T_road_objects_object_outlines_outline_cornerLocal a rdfs:Class,
 odr:T_road_objects_object_outlines_outline_cornerRoad a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_outlines_outline_cornerRoad-T_road_objects_object_outlines_outline_cornerRoad.dz,
         odr:T_road_objects_object_outlines_outline_cornerRoad-T_road_objects_object_outlines_outline_cornerRoad.height,
         odr:T_road_objects_object_outlines_outline_cornerRoad-T_road_objects_object_outlines_outline_cornerRoad.id,
@@ -1055,7 +1156,8 @@ odr:T_road_objects_object_outlines_outline_cornerRoad a rdfs:Class,
 odr:T_road_objects_object_outlines_outline_curveLocal a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_outlines_outline_curveLocal-T_road_objects_object_outlines_outline_curveLocal.arc,
         odr:T_road_objects_object_outlines_outline_curveLocal-T_road_objects_object_outlines_outline_curveLocal.hdg,
         odr:T_road_objects_object_outlines_outline_curveLocal-T_road_objects_object_outlines_outline_curveLocal.height,
@@ -1070,13 +1172,15 @@ odr:T_road_objects_object_outlines_outline_curveLocal a rdfs:Class,
 odr:T_road_objects_object_outlines_outline_curveLocal_arc a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_outlines_outline_curveLocal_arc-T_road_objects_object_outlines_outline_curveLocal_arc.curvature .
 
 odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3 a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3-T_road_objects_object_outlines_outline_curveLocal_paramPoly3.aU,
         odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3-T_road_objects_object_outlines_outline_curveLocal_paramPoly3.aV,
         odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3-T_road_objects_object_outlines_outline_curveLocal_paramPoly3.bU,
@@ -1090,14 +1194,16 @@ odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3 a rdfs:Class,
 odr:T_road_objects_object_parkingSpace a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_parkingSpace-T_road_objects_object_parkingSpace.access,
         odr:T_road_objects_object_parkingSpace-T_road_objects_object_parkingSpace.restrictions .
 
 odr:T_road_objects_object_repeat a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_repeat-T_road_objects_object_repeat.bT,
         odr:T_road_objects_object_repeat-T_road_objects_object_repeat.cT,
         odr:T_road_objects_object_repeat-T_road_objects_object_repeat.dT,
@@ -1121,19 +1227,22 @@ odr:T_road_objects_object_repeat a rdfs:Class,
 odr:T_road_objects_object_skeleton a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_skeleton-T_road_objects_object_skeleton.polyline .
 
 odr:T_road_objects_object_skeleton_polyline a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_skeleton_polyline-T_road_objects_object_skeleton_polyline.id .
 
 odr:T_road_objects_object_skeleton_polyline_vertexLocal a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_skeleton_polyline_vertexLocal-T_road_objects_object_skeleton_polyline_vertexLocal.id,
         odr:T_road_objects_object_skeleton_polyline_vertexLocal-T_road_objects_object_skeleton_polyline_vertexLocal.intersectionPoint,
         odr:T_road_objects_object_skeleton_polyline_vertexLocal-T_road_objects_object_skeleton_polyline_vertexLocal.radius,
@@ -1144,7 +1253,8 @@ odr:T_road_objects_object_skeleton_polyline_vertexLocal a rdfs:Class,
 odr:T_road_objects_object_skeleton_polyline_vertexRoad a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_skeleton_polyline_vertexRoad-T_road_objects_object_skeleton_polyline_vertexRoad.dz,
         odr:T_road_objects_object_skeleton_polyline_vertexRoad-T_road_objects_object_skeleton_polyline_vertexRoad.id,
         odr:T_road_objects_object_skeleton_polyline_vertexRoad-T_road_objects_object_skeleton_polyline_vertexRoad.intersectionPoint,
@@ -1155,13 +1265,15 @@ odr:T_road_objects_object_skeleton_polyline_vertexRoad a rdfs:Class,
 odr:T_road_objects_object_surface a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_surface-T_road_objects_object_surface.cRG .
 
 odr:T_road_objects_object_surface_CRG a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_object_surface_CRG-T_road_objects_object_surface_CRG.file,
         odr:T_road_objects_object_surface_CRG-T_road_objects_object_surface_CRG.hideRoadSurfaceCRG,
         odr:T_road_objects_object_surface_CRG-T_road_objects_object_surface_CRG.zScale .
@@ -1169,7 +1281,8 @@ odr:T_road_objects_object_surface_CRG a rdfs:Class,
 odr:T_road_objects_tunnel a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_objects_tunnel-T_road_objects_tunnel.daylight,
         odr:T_road_objects_tunnel-T_road_objects_tunnel.id,
         odr:T_road_objects_tunnel-T_road_objects_tunnel.length,
@@ -1182,13 +1295,15 @@ odr:T_road_objects_tunnel a rdfs:Class,
 odr:T_road_planView a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_planView-T_road_planView.geometry .
 
 odr:T_road_planView_geometry a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_planView_geometry-T_road_planView_geometry.arc,
         odr:T_road_planView_geometry-T_road_planView_geometry.hdg,
         odr:T_road_planView_geometry-T_road_planView_geometry.length,
@@ -1203,13 +1318,15 @@ odr:T_road_planView_geometry a rdfs:Class,
 odr:T_road_planView_geometry_arc a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_planView_geometry_arc-T_road_planView_geometry_arc.curvature .
 
 odr:T_road_planView_geometry_paramPoly3 a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_planView_geometry_paramPoly3-T_road_planView_geometry_paramPoly3.aU,
         odr:T_road_planView_geometry_paramPoly3-T_road_planView_geometry_paramPoly3.aV,
         odr:T_road_planView_geometry_paramPoly3-T_road_planView_geometry_paramPoly3.bU,
@@ -1223,7 +1340,8 @@ odr:T_road_planView_geometry_paramPoly3 a rdfs:Class,
 odr:T_road_planView_geometry_poly3 a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_planView_geometry_poly3-T_road_planView_geometry_poly3.a,
         odr:T_road_planView_geometry_poly3-T_road_planView_geometry_poly3.b,
         odr:T_road_planView_geometry_poly3-T_road_planView_geometry_poly3.c,
@@ -1232,20 +1350,23 @@ odr:T_road_planView_geometry_poly3 a rdfs:Class,
 odr:T_road_planView_geometry_spiral a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_planView_geometry_spiral-T_road_planView_geometry_spiral.curvEnd,
         odr:T_road_planView_geometry_spiral-T_road_planView_geometry_spiral.curvStart .
 
 odr:T_road_railroad a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_railroad-T_road_railroad.switch .
 
 odr:T_road_railroad_switch a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_railroad_switch-T_road_railroad_switch.id,
         odr:T_road_railroad_switch-T_road_railroad_switch.mainTrack,
         odr:T_road_railroad_switch-T_road_railroad_switch.name,
@@ -1256,7 +1377,8 @@ odr:T_road_railroad_switch a rdfs:Class,
 odr:T_road_railroad_switch_mainTrack a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_railroad_switch_mainTrack-T_road_railroad_switch_mainTrack.dir,
         odr:T_road_railroad_switch_mainTrack-T_road_railroad_switch_mainTrack.id,
         odr:T_road_railroad_switch_mainTrack-T_road_railroad_switch_mainTrack.s .
@@ -1264,14 +1386,16 @@ odr:T_road_railroad_switch_mainTrack a rdfs:Class,
 odr:T_road_railroad_switch_partner a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_railroad_switch_partner-T_road_railroad_switch_partner.id,
         odr:T_road_railroad_switch_partner-T_road_railroad_switch_partner.name .
 
 odr:T_road_railroad_switch_sideTrack a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_railroad_switch_sideTrack-T_road_railroad_switch_sideTrack.dir,
         odr:T_road_railroad_switch_sideTrack-T_road_railroad_switch_sideTrack.id,
         odr:T_road_railroad_switch_sideTrack-T_road_railroad_switch_sideTrack.s .
@@ -1279,21 +1403,23 @@ odr:T_road_railroad_switch_sideTrack a rdfs:Class,
 odr:T_road_signals a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_signals-T_road_signals.signal,
         odr:T_road_signals-T_road_signals.signalReference .
 
 odr:T_road_signals_board a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_signals_staticBoard.sign,
-        odr:T_road_signals_vmsBoard.displayArea,
-        odr:T_road_signals_vmsBoard.displayHeight,
-        odr:T_road_signals_vmsBoard.displayType,
-        odr:T_road_signals_vmsBoard.displayWidth,
-        odr:T_road_signals_vmsBoard.v,
-        odr:T_road_signals_vmsBoard.z,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest [ rdf:first odr:T_road_signals_vmsBoard.displayWidth ;
+                    rdf:rest [ rdf:first odr:T_road_signals_vmsBoard.z ;
+                            rdf:rest [ rdf:first odr:T_road_signals_vmsBoard.displayHeight ;
+                                    rdf:rest [ rdf:first odr:T_road_signals_vmsBoard.displayType ;
+                                            rdf:rest [ rdf:first odr:T_road_signals_vmsBoard.v ;
+                                                    rdf:rest [ rdf:first odr:T_road_signals_staticBoard.sign ;
+                                                            rdf:rest [ rdf:first odr:T_road_signals_vmsBoard.displayArea ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
     sh:property odr:T_road_signals_board-T_road_signals_board.dependency,
         odr:T_road_signals_board-T_road_signals_board.reference,
         odr:T_road_signals_board-T_road_signals_board.validity .
@@ -1301,37 +1427,39 @@ odr:T_road_signals_board a rdfs:Class,
 odr:T_road_signals_board_sign a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_signals_signal.country,
-        odr:T_road_signals_signal.countryRevision,
-        odr:T_road_signals_signal.dependency,
-        odr:T_road_signals_signal.dynamic,
-        odr:T_road_signals_signal.hOffset,
-        odr:T_road_signals_signal.height,
-        odr:T_road_signals_signal.id,
-        odr:T_road_signals_signal.invalidated,
-        odr:T_road_signals_signal.length,
-        odr:T_road_signals_signal.name,
-        odr:T_road_signals_signal.orientation,
-        odr:T_road_signals_signal.pitch,
-        odr:T_road_signals_signal.reference,
-        odr:T_road_signals_signal.roll,
-        odr:T_road_signals_signal.semantics,
-        odr:T_road_signals_signal.subtype,
-        odr:T_road_signals_signal.temporary,
-        odr:T_road_signals_signal.text,
-        odr:T_road_signals_signal.type,
-        odr:T_road_signals_signal.unit,
-        odr:T_road_signals_signal.validity,
-        odr:T_road_signals_signal.value,
-        odr:T_road_signals_signal.width,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_signals_signal.semantics ;
+            rdf:rest [ rdf:first odr:T_road_signals_signal.subtype ;
+                    rdf:rest [ rdf:first odr:T_road_signals_signal.validity ;
+                            rdf:rest [ rdf:first odr:T_road_signals_signal.temporary ;
+                                    rdf:rest [ rdf:first odr:T_road_signals_signal.id ;
+                                            rdf:rest [ rdf:first odr:T_road_signals_signal.country ;
+                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.name ;
+                                                            rdf:rest [ rdf:first rdf:type ;
+                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.reference ;
+                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.length ;
+                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.dynamic ;
+                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.countryRevision ;
+                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.invalidated ;
+                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.pitch ;
+                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.roll ;
+                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.unit ;
+                                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.width ;
+                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.hOffset ;
+                                                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.orientation ;
+                                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.height ;
+                                                                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.type ;
+                                                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.value ;
+                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.text ;
+                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.dependency ;
+                                                                                                                                                                                                    rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ;
     sh:property odr:T_road_signals_board_sign-T_road_signals_board_sign.v,
         odr:T_road_signals_board_sign-T_road_signals_board_sign.z .
 
 odr:T_road_signals_displayArea a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_signals_displayArea-T_road_signals_displayArea.height,
         odr:T_road_signals_displayArea-T_road_signals_displayArea.index,
         odr:T_road_signals_displayArea-T_road_signals_displayArea.v,
@@ -1341,14 +1469,15 @@ odr:T_road_signals_displayArea a rdfs:Class,
 odr:T_road_signals_signal a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_signals_board_sign.v,
-        odr:T_road_signals_board_sign.z,
-        odr:T_road_signals_signal_road.s,
-        odr:T_road_signals_signal_road.staticBoard,
-        odr:T_road_signals_signal_road.t,
-        odr:T_road_signals_signal_road.vmsBoard,
-        odr:T_road_signals_signal_road.zOffset,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_signals_signal_road.vmsBoard ;
+            rdf:rest [ rdf:first odr:T_road_signals_signal_road.staticBoard ;
+                    rdf:rest [ rdf:first odr:T_road_signals_signal_road.zOffset ;
+                            rdf:rest [ rdf:first rdf:type ;
+                                    rdf:rest [ rdf:first odr:T_road_signals_signal_road.s ;
+                                            rdf:rest [ rdf:first odr:T_road_signals_board_sign.v ;
+                                                    rdf:rest [ rdf:first odr:T_road_signals_board_sign.z ;
+                                                            rdf:rest [ rdf:first odr:T_road_signals_signal_road.t ;
+                                                                    rdf:rest () ] ] ] ] ] ] ] ] ;
     sh:property odr:T_road_signals_signal-T_road_signals_signal.country,
         odr:T_road_signals_signal-T_road_signals_signal.countryRevision,
         odr:T_road_signals_signal-T_road_signals_signal.dependency,
@@ -1376,7 +1505,8 @@ odr:T_road_signals_signal a rdfs:Class,
 odr:T_road_signals_signalReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_signals_signalReference-T_road_signals_signalReference.id,
         odr:T_road_signals_signalReference-T_road_signals_signalReference.orientation,
         odr:T_road_signals_signalReference-T_road_signals_signalReference.s,
@@ -1386,14 +1516,16 @@ odr:T_road_signals_signalReference a rdfs:Class,
 odr:T_road_signals_signal_dependency a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_signals_signal_dependency-T_road_signals_signal_dependency.id,
         odr:T_road_signals_signal_dependency-T_road_signals_signal_dependency.type .
 
 odr:T_road_signals_signal_positionInertial a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_signals_signal_positionInertial-T_road_signals_signal_positionInertial.hdg,
         odr:T_road_signals_signal_positionInertial-T_road_signals_signal_positionInertial.pitch,
         odr:T_road_signals_signal_positionInertial-T_road_signals_signal_positionInertial.roll,
@@ -1404,7 +1536,8 @@ odr:T_road_signals_signal_positionInertial a rdfs:Class,
 odr:T_road_signals_signal_positionRoad a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_signals_signal_positionRoad-T_road_signals_signal_positionRoad.hOffset,
         odr:T_road_signals_signal_positionRoad-T_road_signals_signal_positionRoad.pitch,
         odr:T_road_signals_signal_positionRoad-T_road_signals_signal_positionRoad.roadId,
@@ -1416,7 +1549,8 @@ odr:T_road_signals_signal_positionRoad a rdfs:Class,
 odr:T_road_signals_signal_reference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_signals_signal_reference-T_road_signals_signal_reference.elementId,
         odr:T_road_signals_signal_reference-T_road_signals_signal_reference.elementType,
         odr:T_road_signals_signal_reference-T_road_signals_signal_reference.type .
@@ -1424,30 +1558,31 @@ odr:T_road_signals_signal_reference a rdfs:Class,
 odr:T_road_signals_signal_road a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_signals_signal.country,
-        odr:T_road_signals_signal.countryRevision,
-        odr:T_road_signals_signal.dependency,
-        odr:T_road_signals_signal.dynamic,
-        odr:T_road_signals_signal.hOffset,
-        odr:T_road_signals_signal.height,
-        odr:T_road_signals_signal.id,
-        odr:T_road_signals_signal.invalidated,
-        odr:T_road_signals_signal.length,
-        odr:T_road_signals_signal.name,
-        odr:T_road_signals_signal.orientation,
-        odr:T_road_signals_signal.pitch,
-        odr:T_road_signals_signal.reference,
-        odr:T_road_signals_signal.roll,
-        odr:T_road_signals_signal.semantics,
-        odr:T_road_signals_signal.subtype,
-        odr:T_road_signals_signal.temporary,
-        odr:T_road_signals_signal.text,
-        odr:T_road_signals_signal.type,
-        odr:T_road_signals_signal.unit,
-        odr:T_road_signals_signal.validity,
-        odr:T_road_signals_signal.value,
-        odr:T_road_signals_signal.width,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_signals_signal.value ;
+            rdf:rest [ rdf:first odr:T_road_signals_signal.subtype ;
+                    rdf:rest [ rdf:first odr:T_road_signals_signal.invalidated ;
+                            rdf:rest [ rdf:first odr:T_road_signals_signal.country ;
+                                    rdf:rest [ rdf:first odr:T_road_signals_signal.height ;
+                                            rdf:rest [ rdf:first odr:T_road_signals_signal.roll ;
+                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.length ;
+                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.hOffset ;
+                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.name ;
+                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.temporary ;
+                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.text ;
+                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.validity ;
+                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.id ;
+                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.semantics ;
+                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.unit ;
+                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.orientation ;
+                                                                                                                                    rdf:rest [ rdf:first rdf:type ;
+                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.reference ;
+                                                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.dependency ;
+                                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.type ;
+                                                                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.pitch ;
+                                                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.width ;
+                                                                                                                                                                                    rdf:rest [ rdf:first odr:T_road_signals_signal.dynamic ;
+                                                                                                                                                                                            rdf:rest [ rdf:first odr:T_road_signals_signal.countryRevision ;
+                                                                                                                                                                                                    rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ;
     sh:property odr:T_road_signals_signal_road-T_road_signals_signal_road.s,
         odr:T_road_signals_signal_road-T_road_signals_signal_road.staticBoard,
         odr:T_road_signals_signal_road-T_road_signals_signal_road.t,
@@ -1457,19 +1592,21 @@ odr:T_road_signals_signal_road a rdfs:Class,
 odr:T_road_signals_staticBoard a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_signals_board.dependency,
-        odr:T_road_signals_board.reference,
-        odr:T_road_signals_board.validity,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_signals_board.validity ;
+            rdf:rest [ rdf:first odr:T_road_signals_board.reference ;
+                    rdf:rest [ rdf:first odr:T_road_signals_board.dependency ;
+                            rdf:rest [ rdf:first rdf:type ;
+                                    rdf:rest () ] ] ] ] ;
     sh:property odr:T_road_signals_staticBoard-T_road_signals_staticBoard.sign .
 
 odr:T_road_signals_vmsBoard a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties odr:T_road_signals_board.dependency,
-        odr:T_road_signals_board.reference,
-        odr:T_road_signals_board.validity,
-        rdf:type ;
+    sh:ignoredProperties [ rdf:first odr:T_road_signals_board.reference ;
+            rdf:rest [ rdf:first odr:T_road_signals_board.validity ;
+                    rdf:rest [ rdf:first odr:T_road_signals_board.dependency ;
+                            rdf:rest [ rdf:first rdf:type ;
+                                    rdf:rest () ] ] ] ] ;
     sh:property odr:T_road_signals_vmsBoard-T_road_signals_vmsBoard.displayArea,
         odr:T_road_signals_vmsBoard-T_road_signals_vmsBoard.displayHeight,
         odr:T_road_signals_vmsBoard-T_road_signals_vmsBoard.displayType,
@@ -1480,13 +1617,15 @@ odr:T_road_signals_vmsBoard a rdfs:Class,
 odr:T_road_surface a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_surface-T_road_surface.cRG .
 
 odr:T_road_surface_CRG a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_surface_CRG-T_road_surface_CRG.file,
         odr:T_road_surface_CRG-T_road_surface_CRG.hOffset,
         odr:T_road_surface_CRG-T_road_surface_CRG.mode,
@@ -1504,7 +1643,8 @@ odr:T_road_surface_CRG a rdfs:Class,
 odr:T_road_type a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_type-T_road_type.country,
         odr:T_road_type-T_road_type.s,
         odr:T_road_type-T_road_type.speed,
@@ -1513,14 +1653,16 @@ odr:T_road_type a rdfs:Class,
 odr:T_road_type_speed a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_road_type_speed-T_road_type_speed.max,
         odr:T_road_type_speed-T_road_type_speed.unit .
 
 odr:T_signalGroup_vmsBoardReference a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signalGroup_vmsBoardReference-T_signalGroup_vmsBoardReference.groupIndex,
         odr:T_signalGroup_vmsBoardReference-T_signalGroup_vmsBoardReference.signalId,
         odr:T_signalGroup_vmsBoardReference-T_signalGroup_vmsBoardReference.vmsIndex .
@@ -1528,14 +1670,16 @@ odr:T_signalGroup_vmsBoardReference a rdfs:Class,
 odr:T_signalGroup_vmsGroup a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signalGroup_vmsGroup-T_signalGroup_vmsGroup.id,
         odr:T_signalGroup_vmsGroup-T_signalGroup_vmsGroup.vmsBoardReference .
 
 odr:T_signals_semantics a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics-T_signals_semantics.lane,
         odr:T_signals_semantics-T_signals_semantics.parking,
         odr:T_signals_semantics-T_signals_semantics.priority,
@@ -1555,25 +1699,29 @@ odr:T_signals_semantics a rdfs:Class,
 odr:T_signals_semantics_lane a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_lane-T_signals_semantics_lane.type .
 
 odr:T_signals_semantics_person a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_person-T_signals_semantics_person.type .
 
 odr:T_signals_semantics_priority a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_priority-T_signals_semantics_priority.type .
 
 odr:T_signals_semantics_prohibited a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_prohibited-T_signals_semantics_prohibited.animal,
         odr:T_signals_semantics_prohibited-T_signals_semantics_prohibited.person,
         odr:T_signals_semantics_prohibited-T_signals_semantics_prohibited.vehicle .
@@ -1581,7 +1729,8 @@ odr:T_signals_semantics_prohibited a rdfs:Class,
 odr:T_signals_semantics_speed a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_speed-T_signals_semantics_speed.type,
         odr:T_signals_semantics_speed-T_signals_semantics_speed.unit,
         odr:T_signals_semantics_speed-T_signals_semantics_speed.value .
@@ -1589,7 +1738,8 @@ odr:T_signals_semantics_speed a rdfs:Class,
 odr:T_signals_semantics_supplementaryAllows a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_supplementaryAllows-T_signals_semantics_supplementaryAllows.animal,
         odr:T_signals_semantics_supplementaryAllows-T_signals_semantics_supplementaryAllows.person,
         odr:T_signals_semantics_supplementaryAllows-T_signals_semantics_supplementaryAllows.vehicle .
@@ -1597,7 +1747,8 @@ odr:T_signals_semantics_supplementaryAllows a rdfs:Class,
 odr:T_signals_semantics_supplementaryDistance a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_supplementaryDistance-T_signals_semantics_supplementaryDistance.type,
         odr:T_signals_semantics_supplementaryDistance-T_signals_semantics_supplementaryDistance.unit,
         odr:T_signals_semantics_supplementaryDistance-T_signals_semantics_supplementaryDistance.value .
@@ -1605,13 +1756,15 @@ odr:T_signals_semantics_supplementaryDistance a rdfs:Class,
 odr:T_signals_semantics_supplementaryEnvironment a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_supplementaryEnvironment-T_signals_semantics_supplementaryEnvironment.type .
 
 odr:T_signals_semantics_supplementaryProhibits a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_supplementaryProhibits-T_signals_semantics_supplementaryProhibits.animal,
         odr:T_signals_semantics_supplementaryProhibits-T_signals_semantics_supplementaryProhibits.person,
         odr:T_signals_semantics_supplementaryProhibits-T_signals_semantics_supplementaryProhibits.vehicle .
@@ -1619,20 +1772,23 @@ odr:T_signals_semantics_supplementaryProhibits a rdfs:Class,
 odr:T_signals_semantics_supplementaryTime a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_supplementaryTime-T_signals_semantics_supplementaryTime.type,
         odr:T_signals_semantics_supplementaryTime-T_signals_semantics_supplementaryTime.value .
 
 odr:T_signals_semantics_vehicle a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_signals_semantics_vehicle-T_signals_semantics_vehicle.type .
 
 odr:T_station a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_station-T_station.id,
         odr:T_station-T_station.name,
         odr:T_station-T_station.platform,
@@ -1641,7 +1797,8 @@ odr:T_station a rdfs:Class,
 odr:T_station_platform a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_station_platform-T_station_platform.id,
         odr:T_station_platform-T_station_platform.name,
         odr:T_station_platform-T_station_platform.segment .
@@ -1649,7 +1806,8 @@ odr:T_station_platform a rdfs:Class,
 odr:T_station_platform_segment a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_station_platform_segment-T_station_platform_segment.roadId,
         odr:T_station_platform_segment-T_station_platform_segment.sEnd,
         odr:T_station_platform_segment-T_station_platform_segment.sStart,
@@ -1658,7 +1816,8 @@ odr:T_station_platform_segment a rdfs:Class,
 odr:T_userData a rdfs:Class,
         sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties rdf:type ;
+    sh:ignoredProperties [ rdf:first rdf:type ;
+            rdf:rest () ] ;
     sh:property odr:T_userData-T_userData.code,
         odr:T_userData-T_userData.value .
 
