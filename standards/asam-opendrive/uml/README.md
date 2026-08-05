@@ -137,8 +137,7 @@ reflects a real change in the Enterprise Architect project.
 
 Point a ShapeChange OWL (or XSD) configuration's `inputFile` at `opendrive.scxml` (or
 `opendrive.scxml.zip`) and set `inputModelType=SCXML`. No EA is required. See the
-`ontology-management-base` pipeline documentation (`docs/future/asam-openx/`) for the
-OWL→SHACL steps.
+pipeline runbook ([`pipeline/README.md`](../../../pipeline/README.md)) for the OWL→SHACL steps.
 
 ## Reproducing the export (requires EA once)
 
