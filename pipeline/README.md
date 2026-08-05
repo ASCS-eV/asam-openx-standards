@@ -1,4 +1,4 @@
-# From ASAM UML to OWL and SHACL
+# From ASAM UML to OWL and SHACL — Operational Runbook
 
 This directory holds the configuration that turns the committed ASAM UML models into
 machine-readable artifacts:
@@ -26,48 +26,11 @@ configuration in this directory; the script only resolves paths and runs them in
 generated artifact is wrong, exactly one of three things is wrong — the **model**, the
 **configuration**, or the **tool** — and the fix belongs there.
 
-That is why the pipeline currently depends on five upstream contributions rather than a patch
-directory. Every one of them is a general improvement, filed upstream, with the reasoning in
-the pull request:
-
-| Upstream PR | What it fixes | Why the pipeline needs it |
-|---|---|---|
-| [ShapeChange#756](https://github.com/ShapeChange/ShapeChange/pull/756) ✅ merged | Datatype qualified cardinality restrictions emitted `owl:onClass xsd:double`, which is not valid OWL 2 DL | Every typed attribute with a multiplicity |
-| [ShapeChange#757](https://github.com/ShapeChange/ShapeChange/pull/757) ✅ merged | `shapechange-app` could not be built without a proprietary Enterprise Architect artifact | Building the tool in CI at all |
-| [ShapeChange#764](https://github.com/ShapeChange/ShapeChange/pull/764) | `ModelExport` ignored `sortedOutput`, so a re-export reordered elements by internal id | A committed `.scxml` that changes only when the model changes |
-| [ShapeChange#766](https://github.com/ShapeChange/ShapeChange/pull/766) | An enumeration-valued property was emitted as an `owl:ObjectProperty`, so #756's `owl:onDataRange` never applied to it | Every enumeration-typed attribute — 81 in OpenDRIVE, 420 in OpenSCENARIO |
-| [owl2shacl#7](https://github.com/sparna-git/owl2shacl/pull/7) | Data-property cardinality was dropped when converting OWL to SHACL | See the numbers below |
-| [owl2shacl#8](https://github.com/sparna-git/owl2shacl/pull/8) | A hardcoded list decided what counted as a datatype, so most XSD built-ins got an unsatisfiable `sh:class`; and `owl:oneOf` had no rule at all, so enumerated value sets were dropped | Value constraints in the SHACL — see the coverage tables |
-| [shacl-play#344](https://github.com/sparna-git/shacl-play/pull/344) | Conversion rules were fetched from a moving branch at run time | Reproducibility, and offline runs |
-| [shacl-play#345](https://github.com/sparna-git/shacl-play/pull/345) | An input that could not be read produced an empty, plausible-looking output instead of failing | Trusting that a run with no errors actually converted something |
-
-ShapeChange#756 and #757 are merged upstream into `next`, its default branch. #764 and #766 are
-open, so ShapeChange is again built from a `feature/asam-pipeline` branch on the `ASCS-eV` fork
-that carries exactly those two commits on top of upstream — as are owl2shacl and shacl-play, for
-their own open pull requests. When a pull request merges, its commit disappears from the branch
-on the next rebase. `provenance.json` records the commit each artifact was built from, so which
-fixes an artifact contains is a matter of record rather than recollection.
-
-### What owl2shacl#8 is worth here
-
-The `sh:in` counts in the coverage tables below are all of it: before the fix, **no** ruleset had
-a rule reading `owl:oneOf`, so every enumerated value set reached the OWL and stopped there. The
-same code path also decided datatype-versus-class from a hardcoded list of nine IRIs, which put
-an `sh:class xsd:double` — a constraint no literal can satisfy (SHACL Core, Sec. 4.1.1) — on 241
-OpenDRIVE properties.
-
-### What owl2shacl#7 is worth here
-
-Converting the same generated OpenDRIVE ontology twice, changing only the rules:
-
-| Rules | `sh:minCount` / `sh:maxCount` constraints |
-|---|---|
-| Pinned, with owl2shacl#7 | **908** |
-| Upstream `main` | 278 |
-
-630 constraints — every required or optional typed attribute in OpenDRIVE — are silently lost
-without the fix. The shapes still look plausible, which is what makes it worth pinning the
-rules rather than fetching whatever the branch holds today.
+ShapeChange and the SHACL Play! owl2shacl converter are both consumed from `feature/asam-pipeline`
+branches on the `ASCS-eV` forks of each tool. Those branches carry the fixes the pipeline
+depends on, applied as self-contained upstream contributions. `provenance.json` records the
+exact commit each artifact was built from, so which fixes an artifact contains is a matter of
+record rather than recollection.
 
 ## Running it
 
@@ -109,34 +72,24 @@ in the output diagnosable: it tells a reviewer whether the model changed, the co
 changed, or the toolchain did.
 
 The ruleset is recorded by commit as well as by checksum, because a checksum alone proves two
-runs used the same bytes but not that a third party can obtain them. An earlier provenance
-record in this branch's history carried a rules checksum that matched no commit in the
-owl2shacl repository — the run had picked up an unversioned working copy. `"commit": "unknown"`
-in that field means the same thing and should be treated as a reproducibility gap.
+runs used the same bytes but not that a third party can obtain them. `"commit": "unknown"` in
+that field means the run picked up an unversioned working copy and should be treated as a
+reproducibility gap.
 
 ### Why the output is byte-stable
 
 ShapeChange and shacl-play both label blank nodes from process-dependent ordering, so
-regenerating an unchanged model used to produce a large diff that meant nothing: the earlier
-regeneration in this branch changed 1,428 lines of `opendrive.owl.ttl` while the triple set
-stayed identical, and confirming that took a graph-isomorphism comparison by hand.
-
-Both artifacts are therefore written in RDFC-1.0 canonical form, via
+regenerating an unchanged model can produce a large diff that means nothing. Both artifacts are
+therefore written in RDFC-1.0 canonical form, via
 [`diffable-rdf`](https://github.com/ASCS-eV/diffable-rdf) — canonicalization plus
 Weisfeiler-Lehman blank-node hashing, so a changed triple only touches the blank nodes it
 actually involves. Only the syntactic form changes. The OWL is canonicalized *before* the SHACL
 stage reads it, so stage 2 gets a deterministic input too.
 
 That the canonical form says the same thing as its input is guaranteed by the library rather
-than hoped for: from **0.0.2** on, `deterministic_turtle` re-parses its own output, requires the
-result to be isomorphic to the input, and raises otherwise. This pipeline is why that check
-exists. 0.0.1 rendered RDF collections with Turtle's compact `( … )` syntax, which cannot
-express a list whose tail is shared — and `owl:unionOf`, `owl:oneOf` and the `sh:in` lists
-derived from them share tails routinely. The result parsed cleanly and looked plausible while
-having silently duplicated 152 triples of `opendrive.shacl.ttl`
-([diffable-rdf#1](https://github.com/ASCS-eV/diffable-rdf/issues/1)). The pipeline still asserts
-the triple count as a cheap tripwire, but no longer re-checks content the library has already
-verified: a full isomorphism check costs ninety seconds per artifact.
+than hoped for: `deterministic_turtle` re-parses its own output, requires the result to be
+isomorphic to the input, and raises otherwise. The pipeline asserts the triple count as a cheap
+additional tripwire.
 
 This is why `scripts/requirements.txt` pins exact versions rather than ranges: rdflib performs
 the final serialization, so a minor bump there can reintroduce the churn, arriving in review
@@ -153,20 +106,16 @@ warning and carries on:
 > that enables the conversion of this type of class – unless your intention is to exclude
 > this class category.`
 
-This repository shipped an OpenDRIVE ontology with **none** of the model's 56 enumerations in
-it, because that warning appeared 55 times and nobody read it. The output was 530 KB of
-plausible-looking OWL, so nothing else gave the omission away. When changing the encoding
-rule, check the log for warnings before trusting the artifact:
+When changing the encoding rule, check the log for warnings before trusting the artifact:
 
 ```bash
 grep -c 'Unsupported class category' .pipeline-work/owl/opendrive-owl-log.xml
 ```
 
-Reading the log is no longer left to whoever remembers. `check_shapechange_log()` parses it on
-every run and stops the pipeline unless everything in it is a condition this repository has
-already explained. What counts as explained is declared **per standard and per stage**, because
-the two ShapeChange targets diagnose different things about the same model and a condition
-explained for one is not explained for the other.
+`check_shapechange_log()` parses the log on every run and stops the pipeline unless everything in
+it is a condition this repository has already explained. What counts as explained is declared
+**per standard and per stage**, because the two ShapeChange targets diagnose different things
+about the same model and a condition explained for one is not explained for the other.
 
 **OpenDRIVE, OWL stage:**
 
@@ -199,12 +148,10 @@ the model's README — in the same change.
 
 ### Coverage of the current encoding
 
-**Every class in both models reaches the ontology.** That is asserted on every run, not claimed
-here: `check_model_coverage()` compares the class names in the SCXML against the named
+**Every class in both models reaches the ontology.** That is asserted on every run:
+`check_model_coverage()` compares the class names in the SCXML against the named
 `owl:Class` and `rdfs:Datatype` declarations in the output, allowing only the classes a map
-entry deliberately replaces with an RDF datatype. Removing the 55 `rdfs:Datatype` declarations
-from a copy of the OpenDRIVE ontology makes it fail and name all 55 — which is exactly the
-regression that shipped once, undetected.
+entry deliberately replaces with an RDF datatype.
 
 | | OpenDRIVE | OpenSCENARIO |
 |---|---:|---:|
@@ -230,17 +177,14 @@ Reading the numbers:
   them, so all 343 of its classes are emitted.
 - **`sh:in` counts properties, not enumerations.** Each of OpenDRIVE's 81 enumeration-typed
   properties receives the full value list of its enumeration, so the 452 permitted values count
-  an enumeration's members once per property that uses it. These constraints exist only because
-  of owl2shacl#8; before it, every one of them was absent.
+  an enumeration's members once per property that uses it.
 - **Cardinality is not double-counted.** An exact cardinality is **one** OWL restriction node
   but **two** SHACL triples, `sh:minCount` and `sh:maxCount` with the same value. Read the SHACL
   figure as a triple count.
 - **OpenSCENARIO's 1664 restrictions** are dominated by its 48 `<<union>>` classes. A union of
   *n* options is encoded as a disjunction of *n* alternatives, each asserting
   `owl:qualifiedCardinality 1` on its own property and `owl:cardinality 0` on the other *n-1* —
-  the standard "exactly one of these" encoding, and 840 of the restrictions are those zeros. It
-  is also why these ontologies stress RDF collection handling so hard, and how
-  [diffable-rdf#1](https://github.com/ASCS-eV/diffable-rdf/issues/1) was found.
+  the standard "exactly one of these" encoding, and 840 of the restrictions are those zeros.
 - **Names are normalised by ShapeChange**, so the model's `e_laneType` appears as
   `odr:E_laneType`. Checking for a model name verbatim will report a false absence.
 
@@ -281,7 +225,7 @@ why). The current result, regenerated from the committed model:
 
 | Metric | OpenDRIVE gen. | official | OpenSCENARIO gen. | official | Reading it |
 |---|---:|---:|---:|---:|---|
-| **Enumeration values** | **292** | **292** | **251** | **251** | Exact match — for OpenDRIVE, file by file across all 7. This is the strongest signal the check produces: it is the same count that silently dropped to 0 for the OWL stage before `rule-owl-cls-iso191502Enumeration` was added, checked directly on every run. |
+| **Enumeration values** | **292** | **292** | **251** | **251** | Exact match — for OpenDRIVE, file by file across all 7. This is the strongest signal the check produces: the count is asserted directly on every run. |
 | Elements | 1018 | 209 | 1829 | 410 | ASAM's XSD encodes most properties as XML **attributes**, not elements; see the next row. |
 | Attributes | 0 | 468 | 0 | 448 | Neither committed UML model has an `xsdEncodingRule=xsdAsAttribute` tagged value on any property (confirmed: zero occurrences), so ShapeChange has no basis to choose attribute encoding for any of them. Closing this needs modelling effort in Enterprise Architect, not a configuration change — see [Not here yet](#not-here-yet). |
 | complexTypes | 366 | 166 | 955 | 291 | Follows from the element/attribute difference: content modelled as child elements needs more complexType machinery than the same content modelled as attributes. |
@@ -367,9 +311,8 @@ alternatives; the choice belongs in this file, not in the script.
   let the branch run.
 - `rule-xsd-cls-global-enumeration` emits each enumeration as one named, shared `simpleType`.
   The alternative, `rule-xsd-cls-local-enumeration`, renders an anonymous inline `simpleType`
-  at every use site instead — tried first, and rejected, because it inflated the
-  enumeration-value count to 480 against ASAM's 292 through pure duplication rather than any
-  difference in content.
+  at every use site instead; it inflates the enumeration-value count through duplication rather
+  than changing the content, so it is not used here.
 
 ### `xsdmapentries-asam.xml` — type mapping
 
@@ -419,20 +362,17 @@ one run — whereas inheriting OpenDRIVE's would have hidden whatever its own mo
 
 - **Numeric facets in the SHACL.** `t_grEqZero`'s `minInclusive=0` and its siblings are mapped
   to plain `xsd:double`: `mapentries-asam.xml` maps types, not facets, so the shapes constrain
-  those attributes' datatype but not their range. Enumerated *value* sets are no longer in this
-  list — owl2shacl#8 added the `owl:oneOf` → `sh:in` rule, and the counts are in the coverage
-  table above.
+  those attributes' datatype but not their range. Enumerated value sets are covered: the
+  `owl:oneOf` → `sh:in` rule applies, and the counts are in the coverage table above.
 - **Reference semantics.** 34 `*Ref` properties in OpenSCENARIO are non-composition
   associations to a class, while ASAM's XSD declares them `type="String"` — references by name.
   The OWL encodes them as containment. This is a modelling question for ASAM, filed as a change
   request; see [the parity check](#one-property-asam-models-as-a-reference-to-a-union).
 - **Data-instance validation against both schemas.** [`check_xsd_structural_parity.py`](#checking-it-the-xsd-structural-parity-check)
-  now checks *structure* — element, attribute and enumeration-value counts — between a
-  regenerated XSD and ASAM's official one, and would have caught the missing-enumeration
-  regression directly, per file, without anyone reading a log. What it does not do is what
-  was originally sketched here: take real instance data and confirm the *same document*
-  validates against the generated SHACL and against ASAM's XSD. That would be a stronger
-  check still — it would catch a value that satisfies the SHACL's datatype but violates a
+  checks *structure* — element, attribute and enumeration-value counts — between a regenerated
+  XSD and ASAM's official one. What it does not do is take real instance data and confirm the
+  *same document* validates against the generated SHACL and against ASAM's XSD. That would be a
+  stronger check — it would catch a value that satisfies the SHACL's datatype but violates a
   facet the XSD encodes and the SHACL does not (see the `t_grEqZero`-family gap in
   `xsdmapentries-asam.xml`) — but it needs a corpus of representative instance documents,
   which this pipeline does not have.
@@ -440,12 +380,11 @@ one run — whereas inheriting OpenDRIVE's would have hidden whatever its own mo
   and [`verify-models.yml`](../.github/workflows/verify-models.yml) catch drift cheaply —
   canonical form, recorded serialization versions, and the committed models against their zips
   and published checksums — without needing Maven or a JVM. Neither actually re-runs
-  ShapeChange or shacl-play, so a PR still cannot assert that regenerating the OWL/SHACL from
+  ShapeChange or shacl-play, so a change cannot assert that regenerating the OWL/SHACL from
   scratch reproduces what is committed. `check_xsd_structural_parity.py` has no such blocker —
   it needs a plain ShapeChange checkout and nothing else — so it could run in CI today; the
-  OWL/SHACL side still cannot, until ShapeChange#764/#766, owl2shacl#7/#8 and
-  shacl-play#344/#345 land and it no longer needs the `ASCS-eV` forks'
-  `feature/asam-pipeline` branches.
+  OWL/SHACL side still cannot, until the open upstream contributions land and the pipeline no
+  longer depends on the `ASCS-eV` forks' `feature/asam-pipeline` branches.
 - **The remaining ASAM standards.** OpenDRIVE and OpenSCENARIO XML both run end to end.
   `standards/` holds directories for OpenCRG, OpenLABEL, OpenMATERIAL 3D, OpenODD,
   OpenSCENARIO DSL, OSI, traffic participants and ISO 345xx; none of those has a committed UML
