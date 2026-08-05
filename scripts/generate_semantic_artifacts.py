@@ -22,11 +22,23 @@ Usage
     python scripts/generate_semantic_artifacts.py \\
         --standard asam-opendrive \\
         --shapechange ../ShapeChange \\
-        --shaclplay ../shacl-play/shacl-play-app/target/shacl-play-app-0.12.2-onejar.jar \\
+        --shaclplay ../shacl-play \\
         --rules ../owl2shacl/owl2sh-closed.ttl
 
 Run ``--help`` for the full argument list. See ``pipeline/README.md`` for how to obtain the
-two tools, which versions are pinned, and why each stage is configured the way it is.
+tools, which commits are pinned, and why each stage is configured the way it is.
+
+Toolchain lock
+--------------
+``pipeline/toolchain-lock.json`` pins every generator input that determines the output
+bytes: the exact fork commit and carried upstream-contribution commits for ShapeChange,
+owl2shacl and SHACL Play; the exact Python serialization versions; and the exact JDK/Maven
+build environment plus content-based fingerprints of the built ShapeChange runtime and the
+built SHACL Play jar. Before any generation, every tool checkout is validated against this
+lock - wrong commit, dirty working tree, an upstream base that is not an ancestor, or a
+carried-commit list that does not match all stop the run. ``--shaclplay`` is therefore a
+*checkout root*, not a pre-built jar: the jar is always rebuilt here from that locked source,
+never accepted pre-existing, so the binary that runs is provably the one the lock describes.
 
 Outputs
 -------
@@ -51,12 +63,14 @@ import re
 import shutil
 import subprocess
 import sys
+import zipfile
 from datetime import datetime, timezone
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 from xml.etree import ElementTree
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+LOCK_PATH = REPO_ROOT / "pipeline" / "toolchain-lock.json"
 
 #: Per-standard pipeline description. Adding a standard means adding an entry plus its
 #: ShapeChange configuration under pipeline/ — no code change.
@@ -398,6 +412,174 @@ def git_describe(repo: Path) -> str:
         return "unknown"
 
 
+def _git_strict(args: list[str], cwd: Path) -> str:
+    """Run git, raising ``SystemExit`` with the real stderr on failure.
+
+    Distinct from ``git_describe`` above, which is deliberately lenient (returns
+    ``"unknown"``) because it only feeds a provenance display field. Lock validation is a
+    gate, not a display: a git failure here - including ``merge-base --is-ancestor``
+    reporting "not an ancestor" via a non-zero exit - must stop the pipeline.
+    """
+    result = subprocess.run(["git", "-C", str(cwd)] + args, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise SystemExit(f"git {' '.join(args)} failed in {cwd}: {result.stderr.strip()}")
+    return result.stdout.strip()
+
+
+def _git_root(path: Path) -> Path:
+    """The git worktree root enclosing ``path``.
+
+    Callers may point ``--shapechange``/``--shaclplay`` at the checkout root, or
+    ``--rules`` at a file several directories inside the owl2shacl checkout; this walks
+    up to whichever git root actually contains it, so lock validation checks the real
+    repository rather than assuming a fixed layout.
+    """
+    return Path(_git_strict(["rev-parse", "--show-toplevel"], path if path.is_dir() else path.parent))
+
+
+def load_toolchain_lock(lock_path: Path) -> dict:
+    if not lock_path.exists():
+        raise SystemExit(
+            f"toolchain lock not found: {lock_path}. Every generator input that determines "
+            "output bytes must be pinned there before generation runs; see pipeline/README.md."
+        )
+    return json.loads(lock_path.read_text())
+
+
+def validate_tool_lock(name: str, checkout: Path, entry: dict) -> None:
+    """Verify a tool checkout matches its lock entry exactly.
+
+    Checks, in order: the checkout is a git repository; it is clean (no uncommitted
+    changes - a dirty checkout could be building something other than what its commit
+    says); ``HEAD`` is the exact locked commit, not merely "close" or "the right
+    branch"; the locked ``upstream_base`` is an ancestor of ``HEAD`` (the fork has not
+    fallen behind the upstream development branch it was rebased on); and the actual
+    ordered list of commits between that base and ``HEAD`` exactly equals the lock's
+    ``carried_commits`` (the fork carries only the documented pending upstream
+    contributions, nothing else, in the same order). Any mismatch raises ``SystemExit``:
+    the lock is a contract this pipeline enforces, not a hint a maintainer might follow.
+    """
+    if not (checkout / ".git").exists():
+        raise SystemExit(
+            f"{name}: {checkout} is not a git checkout. Clone {entry['fork']} there and "
+            f"check out {entry['commit']} ({entry['branch']}); see pipeline/README.md."
+        )
+    status = _git_strict(["status", "--porcelain"], checkout)
+    if status:
+        raise SystemExit(
+            f"{name}: {checkout} has uncommitted changes; refusing to build from a dirty "
+            "checkout, whose output cannot be attributed to the locked commit."
+        )
+    head = _git_strict(["rev-parse", "HEAD"], checkout)
+    if head != entry["commit"]:
+        raise SystemExit(
+            f"{name}: {checkout} is at {head}, but pipeline/toolchain-lock.json pins "
+            f"{entry['commit']}. Check out the locked commit, or update the lock after a "
+            "deliberate rebase and regeneration (see pipeline/README.md)."
+        )
+    try:
+        _git_strict(["merge-base", "--is-ancestor", entry["upstream_base"], "HEAD"], checkout)
+    except SystemExit as exc:
+        raise SystemExit(
+            f"{name}: {entry['upstream_base']} ({entry['upstream']}/{entry['upstream_branch']}) "
+            f"is not an ancestor of the locked commit {head}; the fork branch has fallen behind "
+            "the upstream development branch it was supposed to be rebased on."
+        ) from exc
+    actual_range = _git_strict(["rev-list", "--reverse", f"{entry['upstream_base']}..HEAD"], checkout)
+    actual_commits = actual_range.splitlines() if actual_range else []
+    expected_commits = [carried["commit"] for carried in entry["carried_commits"]]
+    if actual_commits != expected_commits:
+        raise SystemExit(
+            f"{name}: the commits carried between {entry['upstream_base']} and HEAD do not "
+            f"match pipeline/toolchain-lock.json.\n  expected: {expected_commits}\n"
+            f"  actual:   {actual_commits}\n"
+            "Either the fork carries commits the lock does not document, or the lock is "
+            "stale - update both together after review, never one without the other."
+        )
+
+
+def validate_build_environment(lock: dict, mvn: str) -> None:
+    """Verify the live JDK and Maven match the lock's ``build_environment`` exactly.
+
+    A different JDK or Maven minor version can legally resolve different transitive
+    dependency versions or compile bytecode differently, which is exactly the kind of
+    silent drift a content-based fingerprint alone cannot distinguish from a real
+    toolchain change. Checked by substring rather than a full version parser: the
+    locked strings (e.g. ``"21.0.12+8"``, ``"3.9.9"``) are exact fragments of the real
+    ``-version`` banners, and matching the fragment is simpler and just as precise as
+    parsing every vendor's differently-formatted output.
+    """
+    env = lock["build_environment"]
+    java_version_output = subprocess.run(
+        ["java", "-version"], capture_output=True, text=True
+    ).stderr
+    if env["jdk_version"] not in java_version_output:
+        raise SystemExit(
+            f"java -version does not report the locked JDK {env['jdk_version']}:\n"
+            f"{java_version_output}\n"
+            "Use the JDK recorded in pipeline/toolchain-lock.json's build_environment, or "
+            "update the lock's build_inputs fingerprints after confirming two independent "
+            "clean builds agree on the new JDK."
+        )
+    mvn_version_output = subprocess.run([mvn, "-version"], capture_output=True, text=True).stdout
+    if env["maven_version"] not in mvn_version_output:
+        raise SystemExit(
+            f"{mvn} -version does not report the locked Maven {env['maven_version']}:\n"
+            f"{mvn_version_output}\n"
+            "Use the Maven recorded in pipeline/toolchain-lock.json's build_environment."
+        )
+
+
+def zip_content_fingerprint(jar: Path) -> str:
+    """Content-based fingerprint of a jar: SHA-256 of every entry, sorted by name.
+
+    **Do not fingerprint the raw jar file instead.** Verified across three independent
+    clean ``mvn clean install`` builds of shacl-play-app from the same locked commit:
+    the raw file SHA-256 was different every time (the onejar plugin embeds per-entry
+    ZIP timestamps), while this content fingerprint - decompressed bytes of every
+    non-directory entry, SHA-256 each, sort by entry name, concatenate as
+    ``"{name}:{hash}\\n"``, SHA-256 the concatenation - was identical all three times.
+    """
+    lines = []
+    with zipfile.ZipFile(jar) as archive:
+        names = sorted(info.filename for info in archive.infolist() if not info.is_dir())
+        for name in names:
+            digest = hashlib.sha256(archive.read(name)).hexdigest()
+            lines.append(f"{name}:{digest}\n")
+    return hashlib.sha256("".join(lines).encode("utf-8")).hexdigest()
+
+
+def shapechange_runtime_fingerprint(shapechange_home: Path, mvn: str, work: Path) -> str:
+    """Content-based fingerprint of the resolved ShapeChange OWL-target runtime.
+
+    Covers everything that can make the same source commit produce different bytes:
+    the compiled ``shapechange-core`` classes, plus every jar Maven resolves onto its
+    dependency classpath. Each is identified by a path-independent name - the compiled
+    classes by their path relative to ``target/classes`` (e.g. ``de/.../Foo.class``),
+    the classpath jars by filename alone (Maven's local-repository naming already makes
+    ``group-artifact-version.jar`` unique per classpath) - never by absolute local path,
+    which would make the fingerprint depend on where the checkout happens to sit rather
+    than on what it contains. Verified identical across two independent clean builds.
+    """
+    classes_dir = shapechange_home / "shapechange-core" / "target" / "classes"
+    cp_file = work / "shapechange-fingerprint-classpath.txt"
+    run(
+        [mvn, "-q", "-pl", "shapechange-core", "dependency:build-classpath",
+         f"-Dmdep.outputFile={cp_file}"],
+        cwd=shapechange_home, what="ShapeChange classpath export for fingerprint",
+    )
+    identified: dict[str, Path] = {}
+    for class_file in classes_dir.rglob("*"):
+        if class_file.is_file():
+            identified[class_file.relative_to(classes_dir).as_posix()] = class_file
+    for entry in cp_file.read_text().split(os.pathsep):
+        if entry and Path(entry).is_file():
+            identified[Path(entry).name] = Path(entry)
+
+    lines = [f"{name}:{sha256(path)}\n" for name, path in sorted(identified.items())]
+    return hashlib.sha256("".join(lines).encode("utf-8")).hexdigest()
+
+
 def build_shapechange(home: Path, mvn: str) -> Path:
     """Build ShapeChange without Enterprise Architect and return its resource directory.
 
@@ -491,6 +673,33 @@ def generate_owl(spec: dict, classpath: str, resources: Path, out_dir: Path, wor
     return target
 
 
+def build_shacl_play(checkout: Path, mvn: str) -> Path:
+    """Build the shacl-play-app onejar from a locked, clean source checkout.
+
+    Never accepts a pre-existing jar supplied out of band: the whole point of the lock
+    is that the binary that runs is reproduced from the exact locked source on every
+    invocation, not trusted from whatever happens to already sit on disk.
+    """
+    print("• building shacl-play (shacl-validator, shacl-play-app)")
+    run(
+        [mvn, "-q", "-f", str(checkout / "pom.xml"), "-pl", "shacl-validator,shacl-play-app",
+         "-am", "install", "-DskipTests"],
+        cwd=checkout, what="shacl-play build",
+    )
+    candidates = sorted((checkout / "shacl-play-app" / "target").glob("*onejar*.jar"))
+    if not candidates:
+        raise SystemExit(
+            f"shacl-play build produced no onejar under "
+            f"{checkout / 'shacl-play-app' / 'target'}"
+        )
+    if len(candidates) > 1:
+        raise SystemExit(
+            "shacl-play build produced more than one onejar "
+            f"({', '.join(str(c) for c in candidates)}); refusing to silently pick one"
+        )
+    return candidates[0]
+
+
 def generate_shacl(owl: Path, shaclplay_jar: Path, rules: Path, out_dir: Path, artifact: str, work: Path) -> Path:
     """Stage 2: OWL 2 → SHACL, via the SHACL Play! owl2shacl rules.
 
@@ -510,8 +719,10 @@ def generate_shacl(owl: Path, shaclplay_jar: Path, rules: Path, out_dir: Path, a
     return target
 
 
-def write_provenance(spec: dict, standard: str, shapechange: Path, shaclplay: Path,
-                     rules: Path, owl: Path, shacl: Path, out_dir: Path) -> Path:
+def write_provenance(spec: dict, standard: str, shapechange: Path, shapechange_fingerprint: str,
+                     shaclplay: Path, shaclplay_commit: str, shaclplay_fingerprint: str,
+                     rules: Path, owl: Path, shacl: Path, out_dir: Path,
+                     build_environment: dict) -> Path:
     """Record what produced these artifacts, so a diff in them can be attributed.
 
     Tools are identified by name and content, never by the path they happened to live at:
@@ -524,6 +735,12 @@ def write_provenance(spec: dict, standard: str, shapechange: Path, shaclplay: Pa
     matches no commit in the owl2shacl repository, because the run had picked up an
     unversioned working copy. The commit is what makes the stage reproducible by a third
     party, and "unknown" here means the ruleset was not under version control.
+
+    ShapeChange and SHACL Play get the same treatment as the ruleset, plus a content-based
+    fingerprint of what was actually built: a commit alone proves which source was checked
+    out, not that the same bytes came out of the build. ``shapechange_fingerprint`` and
+    ``shaclplay_fingerprint`` are validated against ``pipeline/toolchain-lock.json``'s
+    ``build_inputs`` before this function is ever called - see ``main()``.
     """
     provenance = {
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -531,8 +748,16 @@ def write_provenance(spec: dict, standard: str, shapechange: Path, shaclplay: Pa
         "source_model": {"path": spec["model"], "sha256": sha256(REPO_ROOT / spec["model"])},
         "configuration": {"path": spec["config"], "sha256": sha256(REPO_ROOT / spec["config"])},
         "tools": {
-            "shapechange": {"commit": git_describe(shapechange), "profile": "-DskipEa"},
-            "shacl_play": {"jar": shaclplay.name},
+            "shapechange": {
+                "commit": git_describe(shapechange),
+                "profile": "-DskipEa",
+                "runtime_fingerprint": shapechange_fingerprint,
+            },
+            "shacl_play": {
+                "commit": shaclplay_commit,
+                "jar": shaclplay.name,
+                "jar_fingerprint": shaclplay_fingerprint,
+            },
             "owl2shacl_rules": {
                 "name": rules.name,
                 "sha256": sha256(rules),
@@ -540,6 +765,7 @@ def write_provenance(spec: dict, standard: str, shapechange: Path, shaclplay: Pa
             },
             "serialization": serialization_versions(),
         },
+        "build_environment": build_environment,
         "outputs": {p.name: sha256(p) for p in (owl, shacl)},
     }
     target = out_dir / "provenance.json"
@@ -553,10 +779,13 @@ def main() -> int:
     parser.add_argument("--shapechange", type=Path, required=True,
                         help="ShapeChange checkout, built here with -DskipEa")
     parser.add_argument("--shaclplay", type=Path, required=True,
-                        help="shacl-play-app onejar providing the owl2shacl command")
+                        help="shacl-play checkout root; the onejar is built here from this "
+                             "locked source, never accepted as a pre-built jar")
     parser.add_argument("--rules", type=Path, required=True,
                         help="owl2shacl ruleset to pin, e.g. owl2sh-closed.ttl")
     parser.add_argument("--mvn", default="mvn", help="Maven executable (default: mvn)")
+    parser.add_argument("--lock", type=Path, default=Path("pipeline/toolchain-lock.json"),
+                        help="toolchain lock file (default: pipeline/toolchain-lock.json)")
     parser.add_argument("--work", type=Path, default=Path(".pipeline-work"),
                         help="scratch directory for build output (default: .pipeline-work)")
     args = parser.parse_args()
@@ -565,20 +794,60 @@ def main() -> int:
         if not path.exists():
             raise SystemExit(f"{what} does not exist: {path}")
 
+    lock_path = args.lock if args.lock.is_absolute() else REPO_ROOT / args.lock
+    lock = load_toolchain_lock(lock_path)
+    validate_build_environment(lock, args.mvn)
+    shapechange_root = _git_root(args.shapechange.resolve())
+    owl2shacl_root = _git_root(args.rules.resolve())
+    shaclplay_root = _git_root(args.shaclplay.resolve())
+    validate_tool_lock("shapechange", shapechange_root, lock["tools"]["shapechange"])
+    validate_tool_lock("owl2shacl", owl2shacl_root, lock["tools"]["owl2shacl"])
+    validate_tool_lock("shacl_play", shaclplay_root, lock["tools"]["shacl_play"])
+
     spec = STANDARDS[args.standard]
     work = (REPO_ROOT / args.work).resolve()
     work.mkdir(parents=True, exist_ok=True)
     out_dir = REPO_ROOT / "standards" / args.standard / "generated"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    resources = build_shapechange(args.shapechange.resolve(), args.mvn)
-    classpath = shapechange_classpath(args.shapechange.resolve(), args.mvn, work)
-    owl = generate_owl(spec, classpath, resources, out_dir, work)
-    shacl = generate_shacl(owl, args.shaclplay.resolve(), args.rules.resolve(), out_dir, spec["artifact"], work)
+    resources = build_shapechange(shapechange_root, args.mvn)
+    classpath = shapechange_classpath(shapechange_root, args.mvn, work)
+    shapechange_fingerprint = shapechange_runtime_fingerprint(shapechange_root, args.mvn, work)
+    expected_sc_fingerprint = lock["build_inputs"]["shapechange_runtime_fingerprint"]
+    if shapechange_fingerprint != expected_sc_fingerprint:
+        raise SystemExit(
+            f"ShapeChange runtime fingerprint {shapechange_fingerprint} does not match the "
+            f"locked build_inputs.shapechange_runtime_fingerprint "
+            f"({expected_sc_fingerprint}). Either the build environment drifted from "
+            "pipeline/toolchain-lock.json's build_environment, or the lock is stale - "
+            "reproduce with two independent clean builds before updating build_inputs, "
+            "never with a single run."
+        )
 
-    provenance = write_provenance(spec, args.standard, args.shapechange.resolve(),
-                                  args.shaclplay.resolve(), args.rules.resolve(),
-                                  owl, shacl, out_dir)
+    shaclplay_jar = build_shacl_play(shaclplay_root, args.mvn)
+    shaclplay_fingerprint = zip_content_fingerprint(shaclplay_jar)
+    expected_sp_fingerprint = lock["build_inputs"]["shacl_play_jar_fingerprint"]
+    if shaclplay_fingerprint != expected_sp_fingerprint:
+        raise SystemExit(
+            f"shacl-play jar content fingerprint {shaclplay_fingerprint} does not match the "
+            f"locked build_inputs.shacl_play_jar_fingerprint ({expected_sp_fingerprint}). "
+            "Reproduce with two independent clean builds before updating build_inputs - "
+            "never lock a raw file hash, it embeds non-deterministic ZIP timestamps."
+        )
+    shaclplay_commit = _git_strict(["rev-parse", "HEAD"], shaclplay_root)
+
+    owl = generate_owl(spec, classpath, resources, out_dir, work)
+    shacl = generate_shacl(owl, shaclplay_jar, args.rules.resolve(), out_dir, spec["artifact"], work)
+
+    build_environment = {
+        "jdk_version": lock["build_environment"]["jdk_version"],
+        "maven_version": lock["build_environment"]["maven_version"],
+    }
+    provenance = write_provenance(
+        spec, args.standard, shapechange_root, shapechange_fingerprint,
+        shaclplay_jar, shaclplay_commit, shaclplay_fingerprint,
+        args.rules.resolve(), owl, shacl, out_dir, build_environment,
+    )
 
     print(f"\n{owl.relative_to(REPO_ROOT)}   {owl.stat().st_size:,} bytes")
     print(f"{shacl.relative_to(REPO_ROOT)}   {shacl.stat().st_size:,} bytes")

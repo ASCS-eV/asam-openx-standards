@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-05T06:25:15+00:00",
+  "generated": "2026-08-05T14:04:34+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
@@ -12,10 +12,13 @@
   "tools": {
     "shapechange": {
       "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
-      "profile": "-DskipEa"
+      "profile": "-DskipEa",
+      "runtime_fingerprint": "01b273d7af9292b2ef981fa7506a9111207a0550eeae61d72932ac22758312ba"
     },
     "shacl_play": {
-      "jar": "shacl-play-app-0.12.2-onejar.jar"
+      "commit": "27a9fef02f1afb2f3e0c714ab04d01ce7118f5b2",
+      "jar": "shacl-play-app-0.12.2-onejar.jar",
+      "jar_fingerprint": "560cd0031bf60b88795db9c6f5ed91a38adc350bc608efd137419b7367e2cf23"
     },
     "owl2shacl_rules": {
       "name": "owl2sh-closed.ttl",
@@ -28,8 +31,12 @@
       "pyoxigraph": "0.5.9"
     }
   },
+  "build_environment": {
+    "jdk_version": "21.0.12+8",
+    "maven_version": "3.9.9"
+  },
   "outputs": {
     "opendrive.owl.ttl": "5ab9657fb61b21f6da247e933eca7a901008d0e83d3619febe869512ab12cb81",
-    "opendrive.shacl.ttl": "f154bf8e421cebdafad7177462bc5f1aede8744162215a5999ab8ea5b729e1b5"
+    "opendrive.shacl.ttl": "4e5552b6ccc091a736598f940f57247c1cc1911fba8aa93b168a9a21b2c4628e"
   }
 }

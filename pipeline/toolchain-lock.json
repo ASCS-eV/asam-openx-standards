@@ -1,0 +1,124 @@
+{
+  "_comment": "Every generator tool is a sibling ../* checkout of an ASCS-eV fork, on the feature/asam-pipeline branch, rebased on the recorded upstream development branch with only the recorded carried_commits cherry-picked on top. Updating this file is a release-like action: rebase/cherry-pick, re-verify carried_commits, regenerate both standards, and review the artifact diff in the same change. See pipeline/README.md, and issues #7 (ShapeChange) and #9 (owl2shacl, SHACL Play) for upstream transition tracking.",
+  "tools": {
+    "shapechange": {
+      "fork": "ASCS-eV/ShapeChange",
+      "branch": "feature/asam-pipeline",
+      "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
+      "upstream": "ShapeChange/ShapeChange",
+      "upstream_branch": "next",
+      "upstream_base": "1a16d4af333627059d12d271f588e903e6ecb172",
+      "carried_commits": [
+        {
+          "commit": "a682aeffff23568f675f8c986fe3dfdaf6c3bd15",
+          "subject": "fix(modelexport): honour the sortedOutput parameter",
+          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/764"
+        },
+        {
+          "commit": "59ec6bce3e2ff863fc20ef5c4d3ed4aeb57d57ba",
+          "subject": "test: reorder the model export references the sortedOutput fix affects",
+          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/764"
+        },
+        {
+          "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
+          "subject": "fix(owl): declare a data property when the value type is an enumeration",
+          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/766"
+        }
+      ],
+      "build": {
+        "tool": "maven",
+        "goal": "install",
+        "args": ["-DskipEa", "-DskipTests"],
+        "fingerprint_algorithm": "sha256-of-sorted-content-hashes",
+        "fingerprint_inputs": "shapechange-core/target/classes (recursively) plus every jar resolved by `mvn -pl shapechange-core dependency:build-classpath`; each file's own SHA-256, sorted by filename, concatenated as '{filename}:{hash}\\n', then SHA-256 of the concatenation"
+      }
+    },
+    "owl2shacl": {
+      "fork": "ASCS-eV/owl2shacl",
+      "branch": "feature/asam-pipeline",
+      "commit": "8f130eae1bf50234b44767d99714e2bd271688df",
+      "upstream": "sparna-git/owl2shacl",
+      "upstream_branch": "main",
+      "upstream_base": "c012a0870403f124c35fe6f7207d68bd77875df6",
+      "carried_commits": [
+        {
+          "commit": "0bbcf09f0d2ab33a80b8e78db28a11bcbfffc242",
+          "subject": "feat: add owl:onDataRange simple cardinality rules (data-property counterpart of owl:onClass)",
+          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
+        },
+        {
+          "commit": "3c7fecad30f5e38b43077ab13000a64e661d3a05",
+          "subject": "test: add offline verification and the object-property maximum control",
+          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
+        },
+        {
+          "commit": "b173fb70e411c2bf7590344b575479e811fc6cce",
+          "subject": "fix: guard the qualified onDataRange rules in the open and original rulesets",
+          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
+        },
+        {
+          "commit": "302d91439b866c2e6c732cf2bebdcd343df4bc72",
+          "subject": "refactor: limit the change to the three documented flavors, cross-check with the CLI",
+          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
+        },
+        {
+          "commit": "8f130eae1bf50234b44767d99714e2bd271688df",
+          "subject": "fix: decide datatype ranges structurally, and map owl:oneOf to sh:in",
+          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/8"
+        }
+      ],
+      "rules_file": "owl2sh-closed.ttl"
+    },
+    "shacl_play": {
+      "fork": "ASCS-eV/shacl-play",
+      "branch": "feature/asam-pipeline",
+      "commit": "27a9fef02f1afb2f3e0c714ab04d01ce7118f5b2",
+      "upstream": "sparna-git/shacl-play",
+      "upstream_branch": "master",
+      "upstream_base": "0caeac8004131598ba0f8a7e0a8c69e4f10589f9",
+      "carried_commits": [
+        {
+          "commit": "700f31154292b8336714625a5bff62d06e5e180f",
+          "subject": "feat(owl2shacl): allow the conversion rules to be supplied explicitly",
+          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/344"
+        },
+        {
+          "commit": "0494a6772b9db35a47024bef9e13458042736bdb",
+          "subject": "fix(app): fail on an input that cannot be read instead of producing an empty result",
+          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/345"
+        },
+        {
+          "commit": "27a9fef02f1afb2f3e0c714ab04d01ce7118f5b2",
+          "subject": "fix(owl2shacl): gather sh:ignoredProperties into an RDF list",
+          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/346"
+        }
+      ],
+      "build": {
+        "tool": "maven",
+        "goal": "install",
+        "modules": ["shacl-validator", "shacl-play-app"],
+        "args": ["-am", "-DskipTests"],
+        "expected_jar": "shacl-play-app-0.12.2-onejar.jar",
+        "fingerprint_algorithm": "sha256-of-sorted-zip-entry-content-hashes",
+        "fingerprint_note": "the onejar's raw file SHA-256 is NOT reproducible across clean builds: the plugin embeds per-entry ZIP timestamps. Verified across three independent clean `mvn clean install` runs: three different raw file hashes, one stable content fingerprint. The content fingerprint is computed by opening the jar as a zip, taking every non-directory entry, SHA-256 of its decompressed bytes, sorted by entry name, concatenated as '{name}:{hash}\\n', then SHA-256 of the concatenation. Never lock or compare the raw file hash."
+      }
+    }
+  },
+  "serialization": {
+    "_comment": "Released Python distributions, not sibling forks. Exact versions from scripts/requirements.txt.",
+    "diffable-rdf": "0.0.2",
+    "rdflib": "7.6.0",
+    "pyoxigraph": "0.5.9"
+  },
+  "build_environment": {
+    "jdk_version": "21.0.12+8",
+    "jdk_vendor": "Eclipse Adoptium (Temurin)",
+    "maven_version": "3.9.9",
+    "maven_archive_sha512": "8beac8d11ef208f1e2a8df0682b9448a9a363d2ad13ca74af43705549e72e74c9378823bf689287801cbbfc2f6ea9596201d19ccacfdfb682ee8a2ff4c4418ba"
+  },
+  "build_inputs": {
+    "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment.",
+    "shapechange_runtime_fingerprint": "01b273d7af9292b2ef981fa7506a9111207a0550eeae61d72932ac22758312ba",
+    "shacl_play_jar_fingerprint": "560cd0031bf60b88795db9c6f5ed91a38adc350bc608efd137419b7367e2cf23"
+  }
+}
