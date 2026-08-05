@@ -71,7 +71,25 @@
             ASAM's 292 through pure duplication.
           -->
           <rule name="rule-xsd-cls-global-enumeration"/>
-          <rule name="rule-xsd-cls-no-base-class"/>
+          <!--
+            rule-xsd-cls-no-base-class must NOT be added here. It sets cibase = null in
+            XmlSchema.java, discarding every class's base class, which removes the entire
+            encoded class hierarchy: no <extension base="..."> is emitted at all, against 152
+            in ASAM's schema. Its absence is what lets the model's 155 generalizations
+            reproduce ASAM's inheritance structure per file - Core 6/6, Junction 24/24,
+            Lane 26/26, Object 23/23, Railroad 8/8, Signal 36/36, Road 30/29.
+
+            Adding it is also hard to notice, which is the reason for this comment.
+            ShapeChange emits every property exactly once whether or not base classes are
+            encoded, so the element, attribute, complexType, simpleType and enumeration-value
+            counts are identical either way and cannot detect the loss. That is what the
+            per-file xs:extension count in check_xsd_structural_parity.py is for.
+
+            The single extra extension in Road.xsd is e_countryCode, a consequence of the
+            union encoding rather than of this rule: the model gives that «XSDunion» class its
+            alternatives as *supertypes*, so encoding the hierarchy makes it extend one of its
+            own alternatives, where ASAM's schema declares a simpleType union.
+          -->
           <rule name="rule-xsd-cls-no-gml-types"/>
           <!--
             Gates the branch in XsdDocument.mapPropertyType() that renders

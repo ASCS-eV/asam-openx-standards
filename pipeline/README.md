@@ -296,24 +296,39 @@ evidence, not a deliverable, and is not committed.
 
 ### What it checks, and what it found
 
-The comparison is a structural inventory — elements, attributes, complexTypes, simpleTypes
-and enumeration values, each counted at any nesting depth — not a byte diff: the two
-schemas use different naming and structuring conventions by design (see the config file for
-why). The current result, regenerated from the committed model:
+The comparison is a structural inventory — elements, attributes, complexTypes, simpleTypes,
+enumeration values and `complexContent` extensions, each counted at any nesting depth — not a
+byte diff: the two schemas use different naming and structuring conventions by design (see the
+config file for why). The current result, regenerated from the committed model:
 
 | Metric | OpenDRIVE gen. | official | OpenSCENARIO gen. | official | Reading it |
 |---|---:|---:|---:|---:|---|
 | **Enumeration values** | **292** | **292** | **251** | **251** | Exact match — for OpenDRIVE, file by file across all 7. This is the strongest signal the check produces: the count is asserted directly on every run. |
+| **Extensions** (`complexContent`) | **153** | **152** | 1 | 0 | The encoded class hierarchy. For OpenDRIVE it matches ASAM per file — Core 6/6, Junction 24/24, Lane 26/26, Object 23/23, Railroad 8/8, Signal 36/36 — with Road 30/29; the one extra is `e_countryCode`, which extends one of its own alternatives because the model gives that `«XSDunion»` class its alternatives as supertypes, where ASAM declares a `simpleType` union. OpenSCENARIO's model yields one extension (`SpawnedObject` → `Entity`) where ASAM's schema has none; ASAM's four `xs:extension` uses there are `simpleContent`, which is not inheritance. |
 | Elements | 1018 | 209 | 1829 | 410 | ASAM's XSD encodes most properties as XML **attributes**, not elements; see the next row. |
 | Attributes | 0 | 468 | 0 | 448 | Neither committed UML model has an `xsdEncodingRule=xsdAsAttribute` tagged value on any property (confirmed: zero occurrences), so ShapeChange has no basis to choose attribute encoding for any of them. Closing this needs modelling effort in Enterprise Architect, not a configuration change — see [Not here yet](#not-here-yet). |
 | complexTypes | 366 | 166 | 955 | 291 | Follows from the element/attribute difference: content modelled as child elements needs more complexType machinery than the same content modelled as attributes. |
 | simpleTypes | 58 | 66 | 39 | 126 | The residual gap after mapping ASAM's stereotype-less base types in `xsdmapentries-asam.xml`; both official schemas additionally factor out inline restrictions as named simpleTypes that the models do not represent as separate UML classes. |
 
-The check fails only when a file's enumeration-value count stops matching exactly — the one
-invariant that is meaningful to assert automatically today. The element, attribute,
-complexType and simpleType differences are reported for visibility but do not fail the run:
-they reflect a known, current limitation of the models, not evidence that a run derived the
-wrong content.
+The check fails on two conditions: a file's enumeration-value count not matching exactly, and
+the official schema encoding a class hierarchy that the generated schema does not encode at all. Those are the two invariants meaningful to assert automatically today. The
+element, attribute, complexType and simpleType differences are reported for visibility but do
+not fail the run: they reflect a known, current limitation of the models, not evidence that a
+run derived the wrong content. Extension counts are reported rather than asserted exactly, for
+the `e_countryCode` reason above — only a collapse to zero is unambiguously a defect.
+
+The extension row is there because the other metrics cannot see inheritance at all. Adding
+`rule-xsd-cls-no-base-class` to the XSD encoding rule discards every class's base class, so the
+generated schema emits **no** `xs:extension` against ASAM's 152 — while the element, attribute,
+complexType, simpleType and enumeration-value counts stay **identical to the numbers above**,
+because ShapeChange emits each property exactly once either way. A whole class hierarchy can
+therefore disappear without a single one of those counts moving, which is why that rule must not
+be added and why this row is asserted, if loosely.
+
+Note that no workflow runs this check: like the generation stages it needs a JDK, Maven and a
+ShapeChange build, which is the same dependency argument that keeps those out of this
+repository's cheap workflows. The assertion above therefore fires for whoever runs the script,
+not on a pull request — run it whenever the XSD encoding rule or a committed model changes.
 
 #### One property ASAM models as a reference to a union
 
@@ -391,6 +406,11 @@ alternatives; the choice belongs in this file, not in the script.
   The alternative, `rule-xsd-cls-local-enumeration`, renders an anonymous inline `simpleType`
   at every use site instead; it inflates the enumeration-value count through duplication rather
   than changing the content, so it is not used here.
+- `rule-xsd-cls-no-base-class` is **deliberately absent**, and the config comment says so in the
+  same words, because an encoding rule reads as a list of choices and an absence is easy to
+  mistake for an oversight. Adding it discards every base class, removing all 152 of OpenDRIVE's
+  `xs:extension` declarations while leaving every other reported count unchanged; see the
+  extension row of the table above.
 
 ### `xsdmapentries-asam.xml` — type mapping
 

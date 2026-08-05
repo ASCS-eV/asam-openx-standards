@@ -114,7 +114,11 @@
     "jdk_version": "21.0.12+8",
     "jdk_vendor": "Eclipse Adoptium (Temurin)",
     "maven_version": "3.9.9",
-    "maven_archive_sha512": "8beac8d11ef208f1e2a8df0682b9448a9a363d2ad13ca74af43705549e72e74c9378823bf689287801cbbfc2f6ea9596201d19ccacfdfb682ee8a2ff4c4418ba"
+    "_maven_archive_comment": "Keyed by archive filename because the two published archives of the same release have different checksums, and an unqualified value cannot say which one it verifies. On Linux you fetch the .tar.gz. Both values are Apache's published ones from archive.apache.org/dist/maven/maven-3/3.9.9/binaries/.",
+    "maven_archive_sha512": {
+      "apache-maven-3.9.9-bin.tar.gz": "a555254d6b53d267965a3404ecb14e53c3827c09c3b94b5678835887ab404556bfaf78dcfe03ba76fa2508649dca8531c74bca4d5846513522404d48e8c4ac8b",
+      "apache-maven-3.9.9-bin.zip": "8beac8d11ef208f1e2a8df0682b9448a9a363d2ad13ca74af43705549e72e74c9378823bf689287801cbbfc2f6ea9596201d19ccacfdfb682ee8a2ff4c4418ba"
+    }
   },
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment.",

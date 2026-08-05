@@ -33,13 +33,16 @@ Exit status
 -----------
 Non-zero if ShapeChange fails to build or run, if its log contains an error or
 union-encoding warning outside the set ``check_shapechange_log()`` already tolerates (see
-``generate_semantic_artifacts.py``), or if any file's enumeration-value count does not
-match the official schema exactly - that count is the one invariant this check exists to
-guarantee. Differences in element, attribute, complexType or simpleType counts are
+``generate_semantic_artifacts.py``), if any file's enumeration-value count does not
+match the official schema exactly, or if the official schema encodes a class hierarchy
+that the generated schema does not encode at all. Those are the two invariants this check
+guarantees. Differences in element, attribute, complexType or simpleType counts are
 reported but do not fail the run: they reflect a known, documented style difference
 (ASAM's XSD favours XML attributes; the UML model carries no ``xsdEncodingRule`` tagged
 value selecting attribute encoding for any property, so ShapeChange renders them as
-elements instead), not a correctness regression.
+elements instead), not a correctness regression. Extension counts are likewise reported
+rather than asserted exactly - OpenDRIVE's Road.xsd differs by one - because only the
+total collapse to zero is unambiguously a defect rather than a modelling difference.
 """
 
 from __future__ import annotations
@@ -63,7 +66,18 @@ XS = "{http://www.w3.org/2001/XMLSchema}"
 
 #: Structural counts taken across the whole document (any nesting depth), so a
 #: property's inline anonymous type is counted along with top-level declarations.
-METRICS = ("all_elements", "all_attributes", "all_enumeration_values", "all_complexTypes", "all_simpleTypes")
+#:
+#: ``all_extensions`` counts ``complexContent`` extensions specifically - the encoded class
+#: hierarchy - and deliberately not ``simpleContent`` extensions, which add attributes to a
+#: simple type and are not inheritance (ASAM's OpenSCENARIO schema uses only that second kind,
+#: four times, for its «XSDsimpleContent» classes). It is here because the other five metrics are
+#: blind to inheritance: ShapeChange emits every property exactly once whether or not base classes
+#: are encoded, so adding rule-xsd-cls-no-base-class to the encoding rule - which discards every
+#: base class - removes all 152 of OpenDRIVE's extensions while leaving those five counts
+#: unchanged. A metric that cannot move when the whole hierarchy disappears cannot be the only
+#: thing this script looks at.
+METRICS = ("all_elements", "all_attributes", "all_enumeration_values", "all_complexTypes",
+           "all_simpleTypes", "all_extensions")
 
 
 def inventory(path: Path) -> dict[str, int]:
@@ -75,6 +89,7 @@ def inventory(path: Path) -> dict[str, int]:
         "all_enumeration_values": len(root.findall(f".//{XS}enumeration")),
         "all_complexTypes": len(root.findall(f".//{XS}complexType")),
         "all_simpleTypes": len(root.findall(f".//{XS}simpleType")),
+        "all_extensions": len(root.findall(f".//{XS}complexContent/{XS}extension")),
     }
 
 
@@ -110,8 +125,13 @@ def generate_xsd(spec: dict, classpath: str, resources: Path, work: Path) -> Pat
     return out_dir
 
 
-def compare(generated_dir: Path, official_dir: Path, prefix: str) -> bool:
-    """Print the structural comparison and report whether enumeration values match exactly."""
+def compare(generated_dir: Path, official_dir: Path, prefix: str) -> tuple[bool, bool]:
+    """Print the structural comparison.
+
+    Returns ``(enumerations_match, hierarchy_encoded)`` - whether every file's
+    enumeration-value count matches the official schema exactly, and whether the generated
+    schema encodes a class hierarchy wherever the official one does.
+    """
     pairs = []
     for generated in sorted(generated_dir.rglob("*.xsd")):
         # Two naming conventions are in use among ASAM's published schemas: a multi-document
@@ -134,6 +154,7 @@ def compare(generated_dir: Path, official_dir: Path, prefix: str) -> bool:
     totals_gen: dict[str, int] = defaultdict(int)
     totals_off: dict[str, int] = defaultdict(int)
     enumerations_match = True
+    hierarchy_encoded = True
 
     print(f"{'File':<10} {'Metric':<24} {'Generated':>10} {'Official':>10} {'Diff':>8}")
     print("-" * 66)
@@ -142,6 +163,11 @@ def compare(generated_dir: Path, official_dir: Path, prefix: str) -> bool:
         off_counts = inventory(official)
         if gen_counts["all_enumeration_values"] != off_counts["all_enumeration_values"]:
             enumerations_match = False
+        # Not an exact-match assertion: a one-off difference is a modelling difference, while
+        # "the official schema has a hierarchy and the generated one has none" is the specific
+        # failure the other metrics cannot see.
+        if off_counts["all_extensions"] > 0 and gen_counts["all_extensions"] == 0:
+            hierarchy_encoded = False
         for metric in METRICS:
             totals_gen[metric] += gen_counts[metric]
             totals_off[metric] += off_counts[metric]
@@ -155,7 +181,7 @@ def compare(generated_dir: Path, official_dir: Path, prefix: str) -> bool:
         print(f"{'TOTAL':<10} {metric:<24} {totals_gen[metric]:>10} "
               f"{totals_off[metric]:>10} {totals_gen[metric] - totals_off[metric]:>8}")
 
-    return enumerations_match
+    return enumerations_match, hierarchy_encoded
 
 
 def main() -> int:
@@ -181,12 +207,21 @@ def main() -> int:
     generated_dir = generate_xsd(spec, classpath, resources, work)
 
     official_dir = REPO_ROOT / spec["xsd_schema_dir"]
-    enumerations_match = compare(generated_dir, official_dir, spec["xsd_prefix"])
+    enumerations_match, hierarchy_encoded = compare(generated_dir, official_dir, spec["xsd_prefix"])
 
+    failed = False
     if not enumerations_match:
         print("\nFAIL: enumeration-value counts do not match the official schema exactly.")
+        failed = True
+    if not hierarchy_encoded:
+        print("\nFAIL: the official schema encodes a class hierarchy that the generated schema "
+              "does not encode at all. Check whether rule-xsd-cls-no-base-class is listed in "
+              "the XSD encoding rule; it must not be.")
+        failed = True
+    if failed:
         return 1
-    print("\nPASS: enumeration-value counts match the official schema exactly, file by file.")
+    print("\nPASS: enumeration-value counts match the official schema exactly, file by file, "
+          "and the class hierarchy is encoded wherever the official schema encodes one.")
     return 0
 
 
