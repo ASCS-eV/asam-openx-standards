@@ -44,14 +44,19 @@
       <targetParameter name="sortedOutput" value="true"/>
       <targetParameter name="defaultEncodingRule" value="asam-xsd"/>
       <rules>
-        <!-- Identical to the OpenDRIVE encoding rule; see opendrive-xsd.config.xml for why
-             each of these five rules is present, in particular the two enumeration rules and
-             rule-xsd-cls-standard-gml-property-types. -->
+        <!-- Identical to the OpenDRIVE encoding rule; see opendrive-xsd.config.xml for why each
+             of these five rules is present, in particular the two enumeration rules,
+             rule-xsd-cls-standard-gml-property-types, and why rule-xsd-cls-no-base-class must
+             not be added. This model exercises inheritance far less than OpenDRIVE: it yields a
+             single complexContent extension (SpawnedObject extending Entity, one of the five
+             «transient» interfaces), against none in ASAM's schema, whose only four
+             xs:extension uses are simpleContent - the «XSDsimpleContent» classes adding
+             attributes to a simple type, which is not class inheritance. Both standards
+             deliberately run the same encoding rule regardless. -->
         <EncodingRule name="asam-xsd" extends="*">
           <rule name="rule-xsd-all-naming-gml"/>
           <rule name="rule-xsd-cls-basictype"/>
           <rule name="rule-xsd-cls-global-enumeration"/>
-          <rule name="rule-xsd-cls-no-base-class"/>
           <rule name="rule-xsd-cls-no-gml-types"/>
           <rule name="rule-xsd-cls-standard-gml-property-types"/>
         </EncodingRule>
