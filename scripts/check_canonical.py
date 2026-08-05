@@ -4,11 +4,20 @@
 ``generate_semantic_artifacts.py`` writes canonical Turtle, so a committed artifact that is
 not canonical was hand-edited, produced by an older pipeline, or produced with a different
 serialization stack. This check catches all three without needing Maven, ShapeChange or
-shacl-play, which makes it cheap enough to run on every pull request.
+shacl-play.
 
 It deliberately does not re-run the generators: proving that the bytes are canonical is a
-different and much cheaper claim than proving they are what the model implies, and the two
-belong in different jobs.
+different claim from proving they are what the model implies, and the two belong in different
+jobs.
+
+Cheap in dependencies, not in time
+----------------------------------
+Canonicalizing is the only way to prove a file is canonical, so this costs what
+canonicalization costs - and RDFC-1.0 is superlinear in the number of blank nodes. Measured
+locally: about 6 seconds for ``opendrive.shacl.ttl`` (4,963 triples) and about 17 minutes for
+``openscenario.owl.ttl`` (15,673 triples, dominated by the 1,664 restriction nodes its 48
+unions produce). Pass explicit paths, or run one standard per CI job, rather than assuming the
+whole set is quick.
 
 Usage::
 

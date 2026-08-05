@@ -1,11 +1,17 @@
 name: Verify generated artifacts
 
-# Cheap invariant on the committed OWL/SHACL: they must be in RDFC-1.0 canonical form, which
-# is what makes regeneration byte-stable. A non-canonical artifact means it was hand-edited,
-# produced by an older pipeline, or produced with a different serialization stack.
+# Invariant on the committed OWL/SHACL: they must be in RDFC-1.0 canonical form, which is what
+# makes regeneration byte-stable. A non-canonical artifact means it was hand-edited, produced by
+# an older pipeline, or produced with a different serialization stack.
 #
 # This does not re-run ShapeChange or shacl-play — that needs Maven, an Enterprise-Architect-
 # free ShapeChange build and the shacl-play jar, and belongs in a separate, heavier job.
+#
+# Cheap in dependencies, not in time: proving a file is canonical means canonicalizing it, and
+# RDFC-1.0 is superlinear in blank nodes. openscenario.owl.ttl alone takes about 17 minutes
+# locally, against 6 seconds for opendrive.shacl.ttl. Hence one job per standard, in parallel,
+# so wall-clock is the slowest standard rather than the sum — and a timeout, so a pathological
+# graph fails visibly instead of running for hours.
 
 on:
   push:
@@ -21,6 +27,11 @@ on:
 jobs:
   canonical-form:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [asam-opendrive, asam-openscenario-xml]
     steps:
       - uses: actions/checkout@v4
 
@@ -34,7 +45,43 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Generated artifacts are in canonical form
-        run: python scripts/check_canonical.py
+        # Explicit paths rather than the default glob, so this job checks its own standard and
+        # a new standard added without a matrix entry is not silently left unchecked - the
+        # coverage job below fails in that case.
+        run: python scripts/check_canonical.py standards/${{ matrix.standard }}/generated/*.ttl
+
+  # Guards the matrix above: a standard added to STANDARDS without a matrix entry would
+  # otherwise have its artifacts committed and never checked.
+  matrix-covers-every-standard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every generated directory has a canonical-form job
+        run: |
+          set -euo pipefail
+          for dir in standards/*/generated; do
+            [ -n "$(find "$dir" -maxdepth 1 -name '*.ttl' -print -quit)" ] || continue
+            standard=$(basename "$(dirname "$dir")")
+            if ! grep -q "        standard: \[.*${standard}.*\]" .github/workflows/verify-generated.yml; then
+              echo "::error::$standard has generated artifacts but no entry in the canonical-form matrix"
+              exit 1
+            fi
+            echo "ok: $standard is in the matrix"
+          done
+
+  serialization-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install the pinned serialization stack
+        run: pip install -r scripts/requirements.txt
 
       - name: Recorded serialization versions match the installed ones
         run: |
