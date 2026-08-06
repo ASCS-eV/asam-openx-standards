@@ -72,7 +72,7 @@
     "shacl_play": {
       "fork": "ASCS-eV/shacl-play",
       "branch": "feature/asam-pipeline",
-      "commit": "27a9fef02f1afb2f3e0c714ab04d01ce7118f5b2",
+      "commit": "7f5eed7a9e3bb2e1bbb433b128b2657639afd025",
       "upstream": "sparna-git/shacl-play",
       "upstream_branch": "master",
       "upstream_base": "0caeac8004131598ba0f8a7e0a8c69e4f10589f9",
@@ -91,11 +91,16 @@
           "commit": "27a9fef02f1afb2f3e0c714ab04d01ce7118f5b2",
           "subject": "fix(owl2shacl): gather sh:ignoredProperties into an RDF list",
           "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/346"
+        },
+        {
+          "commit": "7f5eed7a9e3bb2e1bbb433b128b2657639afd025",
+          "subject": "fix(build): pin the xls2rdf dependency instead of tracking master",
+          "note": "Not yet submitted upstream. Required for jar_fingerprint to mean anything: shacl-play-app bundles com.github.sparna-git.xls2rdf:xls2rdf-lib into its onejar, and version-managing it as master-SNAPSHOT let Maven's daily update policy swap 162 bundled entries with no change in any repository, so the same commit built on two days produced different binaries."
         }
       ],
       "build": {
         "tool": "maven",
-        "goal": "install",
+        "goals": ["clean", "install"],
         "modules": ["shacl-validator", "shacl-play-app"],
         "args": ["-am", "-DskipTests"],
         "expected_jar": "shacl-play-app-0.12.2-onejar.jar",
@@ -121,8 +126,8 @@
     }
   },
   "build_inputs": {
-    "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment.",
+    "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
     "shapechange_runtime_fingerprint": "01b273d7af9292b2ef981fa7506a9111207a0550eeae61d72932ac22758312ba",
-    "shacl_play_jar_fingerprint": "560cd0031bf60b88795db9c6f5ed91a38adc350bc608efd137419b7367e2cf23"
+    "shacl_play_jar_fingerprint": "bf10ef761e5e8e41492651265346bd3f86c91675a11ff391686638a8227e62e6"
   }
 }

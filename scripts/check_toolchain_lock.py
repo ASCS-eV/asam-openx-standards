@@ -85,11 +85,16 @@ def check_lock_schema(lock: dict) -> list[str]:
                 f"tools.{tool_name}.carried_commits does not end at the locked commit "
                 f"({carried_shas[-1]!r} != {commit!r})"
             )
+        # Every carried commit must say why the fork carries it. Normally that is the
+        # upstream contribution it implements; a fork may also legitimately carry a change
+        # that has not been submitted yet, and refusing to record one would only push it
+        # out of the lock and out of sight. Either is accepted, neither may be absent - an
+        # unexplained commit on a fork branch is exactly what this file exists to prevent.
         for carried_commit in carried:
-            if not carried_commit.get("upstream_pr"):
+            if not (carried_commit.get("upstream_pr") or carried_commit.get("note")):
                 problems.append(
-                    f"tools.{tool_name} carries {carried_commit.get('commit')} with no "
-                    "upstream_pr mapping"
+                    f"tools.{tool_name} carries {carried_commit.get('commit')} with neither "
+                    "an upstream_pr mapping nor a note explaining why the fork carries it"
                 )
 
     build_inputs = lock.get("build_inputs")

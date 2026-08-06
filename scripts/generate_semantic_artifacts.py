@@ -172,6 +172,40 @@ def serialization_versions() -> dict[str, str]:
     return versions
 
 
+def validate_serialization_stack(lock: dict) -> None:
+    """Verify the installed serialization stack matches the lock, before anything is written.
+
+    Checked up front, alongside the build environment and the tool checkouts, for two
+    reasons. The stack is only *used* at the end of a run, in ``canonicalize_turtle()``, so
+    a missing or wrong-versioned distribution surfaced there has already let ShapeChange
+    overwrite ``standards/<standard>/generated/`` with non-canonical output - the run fails
+    and still leaves the working tree dirty, which is the opposite of what a lock is for.
+
+    And these versions determine the output bytes as surely as the Java tools do: rdflib
+    performs the final serialization, so a bump can reintroduce exactly the blank-node churn
+    canonicalization removes. The lock records them; without this they were the one locked
+    input nothing verified at run time.
+    """
+    locked = {name: value for name, value in lock["serialization"].items()
+              if not name.startswith("_")}
+    for dist, expected in locked.items():
+        try:
+            installed = version(dist)
+        except PackageNotFoundError:
+            raise SystemExit(
+                f"{dist} is not installed, but pipeline/toolchain-lock.json pins it at "
+                f"{expected}. Install the pinned stack with "
+                "'pip install -r scripts/requirements.txt'."
+            ) from None
+        if installed != expected:
+            raise SystemExit(
+                f"{dist} {installed} is installed, but pipeline/toolchain-lock.json pins "
+                f"{expected}. These versions determine the serialized bytes; install the "
+                "pinned stack with 'pip install -r scripts/requirements.txt', or update the "
+                "lock and regenerate in the same change."
+            )
+
+
 def check_shapechange_log(log: Path, spec: dict, stage: str) -> None:
     """Fail on anything in the ShapeChange log that is not a known, explained condition.
 
@@ -679,11 +713,18 @@ def build_shacl_play(checkout: Path, mvn: str) -> Path:
     Never accepts a pre-existing jar supplied out of band: the whole point of the lock
     is that the binary that runs is reproduced from the exact locked source on every
     invocation, not trusted from whatever happens to already sit on disk.
+
+    ``clean`` is part of that guarantee and not an optimisation to drop. Without it Maven
+    reuses whatever is already in ``target/``, so classes compiled earlier - possibly by a
+    different JDK - survive into the onejar and the fingerprint describes a mixture rather
+    than the locked source. The JDK matters at this granularity: the same source built by
+    21.0.11 and by 21.0.12 yields different fingerprints, which is why the lock records an
+    exact ``build_environment``.
     """
     print("• building shacl-play (shacl-validator, shacl-play-app)")
     run(
         [mvn, "-q", "-f", str(checkout / "pom.xml"), "-pl", "shacl-validator,shacl-play-app",
-         "-am", "install", "-DskipTests"],
+         "-am", "clean", "install", "-DskipTests"],
         cwd=checkout, what="shacl-play build",
     )
     candidates = sorted((checkout / "shacl-play-app" / "target").glob("*onejar*.jar"))
@@ -797,6 +838,7 @@ def main() -> int:
     lock_path = args.lock if args.lock.is_absolute() else REPO_ROOT / args.lock
     lock = load_toolchain_lock(lock_path)
     validate_build_environment(lock, args.mvn)
+    validate_serialization_stack(lock)
     shapechange_root = _git_root(args.shapechange.resolve())
     owl2shacl_root = _git_root(args.rules.resolve())
     shaclplay_root = _git_root(args.shaclplay.resolve())
