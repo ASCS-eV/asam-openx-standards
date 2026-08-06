@@ -588,8 +588,8 @@ def build_shapechange(home: Path, mvn: str) -> Path:
     target and the SCXML reader both live in shapechange-core, and EA model readers are
     resolved by class name at runtime, so nothing needed here depends on EA.
 
-    Requires ShapeChange/ShapeChange#757 (merged upstream into `next`); without it the
-    reactor stops at shapechange-ea.
+    Requires a ShapeChange in which the EA module is an optional Maven profile; without
+    that, the reactor stops at shapechange-ea.
     """
     print("• building ShapeChange (-DskipEa)")
     run([mvn, "-q", "-DskipEa", "install", "-DskipTests"], cwd=home, what="ShapeChange build")
@@ -705,7 +705,8 @@ def generate_shacl(owl: Path, shaclplay_jar: Path, rules: Path, out_dir: Path, a
 
     ``--rules`` pins the ruleset to a known file. Without it the tool fetches the rules from
     the main branch of the owl2shacl repository at run time, which makes the output depend on
-    what that branch happened to contain (see sparna-git/shacl-play#344).
+    whatever that branch happens to contain; supplying them explicitly is what the option
+    exists for.
     """
     print("• converting OWL to SHACL with the pinned owl2shacl rules")
     target = out_dir / f"{artifact}.shacl.ttl"

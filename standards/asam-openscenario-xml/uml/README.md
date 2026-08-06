@@ -26,10 +26,9 @@ Redistributed under the ASAM Unrestricted Distribution Clause; see the repositor
 ### Why a commit, not a numbered ShapeChange release
 
 The `4.0.0` release cannot build the EA/`eaapi` module from source at all — that only
-became possible once [ShapeChange#756](https://github.com/ShapeChange/ShapeChange/pull/756)
-and [#757](https://github.com/ShapeChange/ShapeChange/pull/757) merged, making the module
-an optional Maven profile (`ea`, active unless `-DskipEa` is passed). Both are on `next`
-but not yet in a numbered release, so we cite the exact commit above instead. We verified
+became possible once the EA module upstream became an optional Maven profile (`ea`,
+active unless `-DskipEa` is passed). That change is on `next` but not yet in a numbered
+release, so we cite the exact commit above instead. We verified
 it changes nothing in this export except the producer-version string in the header — see
 [`export-model-to-scxml.config.xml`](export-model-to-scxml.config.xml) and
 [Reproducing the export](#reproducing-the-export-requires-ea-once) below for the full

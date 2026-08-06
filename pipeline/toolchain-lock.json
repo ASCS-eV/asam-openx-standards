@@ -1,5 +1,5 @@
 {
-  "_comment": "Every generator tool is a sibling ../* checkout of an ASCS-eV fork, on the feature/asam-pipeline branch, rebased on the recorded upstream development branch with only the recorded carried_commits cherry-picked on top. Updating this file is a release-like action: rebase/cherry-pick, re-verify carried_commits, regenerate both standards, and review the artifact diff in the same change. See pipeline/README.md, and issues #7 (ShapeChange) and #9 (owl2shacl, SHACL Play) for upstream transition tracking.",
+  "_comment": "Every generator tool is a sibling ../* checkout of an ASCS-eV fork, on the feature/asam-pipeline branch, rebased on the recorded upstream development branch with only the recorded carried_commits cherry-picked on top. Updating this file is a release-like action: rebase/cherry-pick, re-verify carried_commits, regenerate both standards, and review the artifact diff in the same change. See pipeline/README.md for the procedure and for what each fork's carried commits are for.",
   "tools": {
     "shapechange": {
       "fork": "ASCS-eV/ShapeChange",

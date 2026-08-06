@@ -29,19 +29,20 @@ generated artifact is wrong, exactly one of three things is wrong — the **mode
 ShapeChange and the SHACL Play! owl2shacl converter are both consumed from `feature/asam-pipeline`
 branches on the `ASCS-eV` forks of each tool, rebased on the fork's stated upstream development
 branch with only the pending upstream-contribution commits cherry-picked on top. Those branches
-carry the fixes the pipeline depends on, applied as self-contained upstream contributions:
-[ShapeChange#764](https://github.com/ShapeChange/ShapeChange/pull/764) and
-[#766](https://github.com/ShapeChange/ShapeChange/pull/766);
-[owl2shacl#7](https://github.com/sparna-git/owl2shacl/pull/7) and
-[#8](https://github.com/sparna-git/owl2shacl/pull/8);
-[shacl-play#344](https://github.com/sparna-git/shacl-play/pull/344),
-[#345](https://github.com/sparna-git/shacl-play/pull/345) and
-[#346](https://github.com/sparna-git/shacl-play/pull/346). Tracked in
-[ASCS-eV/asam-openx-standards#7](https://github.com/ASCS-eV/asam-openx-standards/issues/7)
-(ShapeChange) and
-[#9](https://github.com/ASCS-eV/asam-openx-standards/issues/9) (owl2shacl, SHACL Play): when an
-upstream PR merges, that issue is where the transition to a released upstream commit is decided
-and recorded — never a silent branch drift.
+carry the fixes the pipeline depends on, each applied as a self-contained upstream contribution:
+
+- **ShapeChange** — `ModelExport` honouring the `sortedOutput` parameter, and the OWL target
+  declaring a data property when a property's value type is an enumeration.
+- **owl2shacl** — `owl:onDataRange` cardinality rules as the data-property counterpart of
+  `owl:onClass`, datatype ranges decided structurally, and `owl:oneOf` mapped to `sh:in`.
+- **SHACL Play!** — conversion rules supplied explicitly via `--rules`, failing on an input that
+  cannot be read instead of producing an empty result, and `sh:ignoredProperties` gathered into an
+  RDF list so closed shapes are honoured outside the web UI.
+
+[`pipeline/toolchain-lock.json`](toolchain-lock.json) records exactly which commit each fork
+carries for each of these, and names the upstream contribution it implements. Moving a tool to a
+released upstream commit is a lock update, described under
+[The toolchain lock](#the-toolchain-lock) — never a silent branch drift.
 
 ## The toolchain lock
 
@@ -356,9 +357,8 @@ the OWL stage's zero-tolerance guarantee is untouched.
 
 - `inputModelType=SCXML` reads the committed model. `EA7` would read a `.qea` repository and
   require Enterprise Architect; the SCXML export exists precisely to avoid that.
-- The `asam-owl` encoding rule selects the OWL constructs the ASAM models actually use.
-  `rule-owl-prop-multiplicityAsQualifiedCardinalityRestriction` is the one that turns a UML
-  multiplicity into a cardinality restriction, and is what ShapeChange#756 corrected.
+- The `asam-owl` encoding rule selects the OWL constructs the ASAM models actually use; the two
+  rules that fail quietly when wrong are named below.
 - `{SHAPECHANGE_RESOURCES}`, `{PIPELINE}` and `{OUT}` are substituted by the script. Only the
   first depends on where the tool lives; the model and output paths are repository-relative so
   the configuration reads the same for everyone.
@@ -366,7 +366,8 @@ the OWL stage's zero-tolerance guarantee is untouched.
 Two rules deserve naming, because getting them wrong fails quietly:
 
 - `rule-owl-prop-multiplicityAsQualifiedCardinalityRestriction` turns a UML multiplicity
-  into a cardinality restriction, and is what ShapeChange#756 corrected.
+  into a cardinality restriction. It needs a ShapeChange that emits `owl:onDataRange`, not
+  `owl:onClass`, when the restricted value type is a datatype.
 - `rule-owl-cls-iso191502Enumeration` encodes each enumeration as an `rdfs:Datatype` with
   `owl:oneOf` over its literals. The alternative, `rule-owl-cls-enumerationAsCodelist`, is
   deliberately **not** used: it makes an enumeration fall through to the code list
