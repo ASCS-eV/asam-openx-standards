@@ -330,6 +330,71 @@ ShapeChange build, which is the same dependency argument that keeps those out of
 repository's cheap workflows. The assertion above therefore fires for whoever runs the script,
 not on a pull request — run it whenever the XSD encoding rule or a committed model changes.
 
+### The content-model level
+
+The counts above are blind to two things a schema says: which compositor groups a set of
+particles, and how many times each may occur. So they can all match, or differ only by the
+documented attribute-encoding style, while the generated schema accepts a **different
+language** than the official one. `scripts/xsd_content_model.py` adds the comparison that
+sees it, per `complexType`, with `xs:extension` bases and `xs:group` references resolved
+first:
+
+| Verdict | Meaning | OpenDRIVE | OpenSCENARIO |
+|---|---|---:|---:|
+| `MISSING` | the official schema declares a particle the model cannot express | **465** | 48 |
+| `EXTRA` | the generated schema invents a particle | **5** | 24 |
+| `CONTRADICTS` | the generated schema *demands* what the official schema makes optional, or makes mandatory what it offers as one alternative of a choice — **a conforming document is rejected** | **90** | 20 |
+| `TYPE_MISMATCH` | same particle, different declared type | 8 | 32 |
+
+`CONTRADICTS` is the only verdict that is unsound rather than incomplete, and it is not
+zero: OpenDRIVE's `t_road_planView_geometry` requires all five geometry primitives at once
+where ASAM declares an `xs:choice`, so the generated schema — and the SHACL derived from
+the same model — reject every conforming `.xodr`. That was invisible to the counts, which
+see five element declarations on both sides.
+
+Three normalizations keep this from reporting the encoding style as a defect. Each is
+derived from a published artifact, never written out by hand:
+
+- **element vs attribute** — compared as one particle set, because ASAM's schema favours
+  XML attributes and the model carries no `xsdEncodingRule` tagged value selecting them.
+  An attribute's `use="required"` reads as `minOccurs="1"`.
+- **type substitutions** — the XSD target's own `XsdMapEntry` entries are applied to the
+  official side, plus the official schema's own `xs:simpleType` unions, so
+  OpenSCENARIO's `Double` (a union of `expression parameter xs:double`, the parameter
+  mechanism) pairs with the model's `double`. Without the latter, 366 of OpenSCENARIO's
+  findings were that one difference.
+- **particle names** — ASAM names an XML element, ShapeChange names the UML role. In
+  OpenDRIVE they coincide; in OpenSCENARIO the element is UpperCamelCase and singular
+  (`<ManeuverGroup>`) while the role is lowerCamelCase and plural (`maneuverGroups`).
+  Pairing is conservative — a candidate must be unique, and anything unpaired stays
+  reported — because a wrong pairing hides a real difference. Without it one particle was
+  reported as both `MISSING` and `EXTRA`, 400 times over.
+
+#### Gating, and why by baseline
+
+Each standard has a committed baseline of accepted findings
+(`pipeline/<artifact>-xsd-content-baseline.json`). A finding outside it fails the run; a
+baseline entry that no longer occurs is reported so the baseline is tightened in the same
+change that resolved it (`--write-content-baseline`).
+
+Absolute zero is the target for `CONTRADICTS` and `EXTRA`, not the current state, so a
+baseline is the only gate that can be enforced today. It is also the only gate that reads
+correctly when a fix lands: content the model currently cannot express will, once it can,
+*raise* the generated element count further above ASAM's total — because ASAM's total is
+low for the unrelated attribute-encoding reason. A count-based check would read that
+improvement as a regression.
+
+#### Testing the oracle
+
+`scripts/test_xsd_content_model.py` runs on every pull request — stdlib only, no JDK. Every
+case in it exists because an earlier version of the comparison produced a confident wrong
+answer: stripping ShapeChange's `Type` suffix from official names that genuinely end in
+`Type` (`e_roadType`) invented 141 mismatches; pairing against the empty `PropertyType`
+wrapper instead of the content type reported all 1222 particles as `MISSING`; defaulting an
+attribute's `minOccurs` to 1 invented 174 contradictions; and one wiring loaded no schemas
+at all, reported zero findings for all four verdicts, wrote an empty baseline and printed
+PASS. A `VacuousComparison` error now makes that last one impossible.
+
 #### One property ASAM models as a reference to a union
 
 OpenSCENARIO's XSD run reports exactly one error, and it is a finding rather than noise:
