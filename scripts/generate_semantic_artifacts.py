@@ -84,6 +84,11 @@ STANDARDS = {
         "xsd_config": "pipeline/opendrive-xsd.config.xml",
         "xsd_schema_dir": "standards/asam-opendrive/schema",
         "xsd_prefix": "OpenDRIVE",
+        # The XSD target's own type substitutions, applied to the OFFICIAL side of the
+        # content-model comparison so a documented encoding choice is not reported as a
+        # divergence. Same file the target itself is configured with.
+        "xsd_map_entries": "pipeline/xsdmapentries-asam.xml",
+        "xsd_content_baseline": "pipeline/opendrive-xsd-content-baseline.json",
         # The XSD target does not apply the OWL packaging rule, so its run is clean.
         "tolerated_errors": {"owl": ("single-ontology-per-schema",)},
         "union_defects": frozenset({"e_countryCode", "t_grEqZeroOrContactPoint"}),
@@ -95,6 +100,8 @@ STANDARDS = {
         "xsd_config": "pipeline/openscenario-xsd.config.xml",
         "xsd_schema_dir": "standards/asam-openscenario-xml/schema",
         "xsd_prefix": "OpenSCENARIO",
+        "xsd_map_entries": "pipeline/xsdmapentries-asam.xml",
+        "xsd_content_baseline": "pipeline/openscenario-xsd-content-baseline.json",
         # The OWL stage tolerates nothing, and needs to tolerate nothing. Unlike OpenDRIVE,
         # the OpenSCENARIO model carries no targetNamespace tagged values at all, so the schema
         # package is named once in the configuration and ShapeChange resolves exactly one

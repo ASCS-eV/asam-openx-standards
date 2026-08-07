@@ -24,6 +24,10 @@ on:
       - "scripts/generate_semantic_artifacts.py"
       - "scripts/requirements.txt"
       - "pipeline/toolchain-lock.json"
+      - "pipeline/*-xsd-content-baseline.json"
+      - "scripts/xsd_content_model.py"
+      - "scripts/test_xsd_content_model.py"
+      - "scripts/check_xsd_structural_parity.py"
       - ".github/workflows/verify-generated.yml"
 
 jobs:
@@ -41,6 +45,29 @@ jobs:
           python-version: "3.12"
       - name: pipeline/toolchain-lock.json matches every committed provenance.json
         run: python scripts/check_toolchain_lock.py
+
+  xsd-content-model:
+    # The content-model comparison used by check_xsd_structural_parity.py, tested on its
+    # own. Pure lxml over inline schemas: no JDK, no Maven, no ShapeChange build, so it
+    # belongs in the cheap workflow even though the check that uses it does not.
+    #
+    # Every case in this suite exists because an earlier version of the comparison
+    # produced a confident wrong answer - including one that reported zero findings for
+    # all four verdicts, wrote an empty baseline and printed PASS, because it had loaded
+    # no schemas at all. An oracle the rest of the pipeline is judged against has to be
+    # tested itself.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - name: Install the pinned serialization stack
+        run: pip install -r scripts/requirements.txt
+      - name: The XSD content-model comparison behaves as specified
+        run: python scripts/test_xsd_content_model.py
 
   canonical-form:
     runs-on: ubuntu-latest
