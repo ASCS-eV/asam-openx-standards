@@ -20,8 +20,10 @@ rather than measured — measuring it is what the count-based check already does
 
 **The compositor** — whether a particle is an alternative of an ``xs:choice``.
 
-**The multiplicity** — ``minOccurs``, with an XML attribute's ``use="required"`` read as 1
-and anything else as 0, since an attribute has no ``minOccurs`` of its own.
+**The multiplicity** — both bounds. ``minOccurs``, with an XML attribute's
+``use="required"`` read as 1 and anything else as 0 since an attribute has no ``minOccurs``
+of its own; and ``maxOccurs``, since a generated schema that permits fewer occurrences than
+the reference also rejects a conforming document.
 
 Four verdicts, kept apart because they mean different things and have different fixes:
 
@@ -377,7 +379,22 @@ def compare(generated: Schema, reference: Schema) -> dict[str, list[tuple]]:
                 findings["CONTRADICTS"].append((
                     type_name, name, "reference: optional",
                     f"generated: mandatory (minOccurs={g.min})"))
+
+            # The upper bound, by the same asymmetry: a generated schema that permits
+            # FEWER occurrences than the reference rejects a conforming document. This was
+            # collected and never compared in the first version of this module, so a
+            # property the reference schema repeats and the model caps at one - a real
+            # cardinality contradiction - passed silently.
+            if _upper(g.max) < _upper(r.max):
+                findings["CONTRADICTS"].append((
+                    type_name, name, f"reference: maxOccurs={r.max}",
+                    f"generated: maxOccurs={g.max}"))
     return findings
+
+
+def _upper(max_occurs: str) -> float:
+    """``maxOccurs`` as a comparable number; ``unbounded`` is the top."""
+    return float("inf") if max_occurs == "unbounded" else float(max_occurs or "1")
 
 
 def finding_key(finding: tuple) -> str:

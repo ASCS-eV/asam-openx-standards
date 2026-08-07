@@ -40,6 +40,7 @@
   "t_junction_virtual :: type :: reference: optional :: generated: mandatory (minOccurs=1)",
   "t_license :: name :: reference: optional :: generated: mandatory (minOccurs=1)",
   "t_road_lanes_laneSection_lcr_lane_roadMark :: type :: reference: optional :: generated: mandatory (minOccurs=1)",
+  "t_road_lanes_laneSection_lr_lane_access :: restriction :: reference: maxOccurs=unbounded :: generated: maxOccurs=1",
   "t_road_lanes_laneSection_lr_lane_access_restriction :: type :: reference: optional :: generated: mandatory (minOccurs=1)",
   "t_road_lateralProfile_crossSectionSurface_coefficients :: s :: reference: optional :: generated: mandatory (minOccurs=1)",
   "t_road_lateralProfile_crossSectionSurface_strip :: id :: reference: optional :: generated: mandatory (minOccurs=1)",

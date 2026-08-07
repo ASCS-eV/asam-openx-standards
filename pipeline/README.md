@@ -343,7 +343,7 @@ first:
 |---|---|---:|---:|
 | `MISSING` | the official schema declares a particle the model cannot express | **465** | 48 |
 | `EXTRA` | the generated schema invents a particle | **5** | 24 |
-| `CONTRADICTS` | the generated schema *demands* what the official schema makes optional, or makes mandatory what it offers as one alternative of a choice — **a conforming document is rejected** | **90** | 20 |
+| `CONTRADICTS` | the generated schema *demands* what the official schema makes optional, makes mandatory what it offers as one alternative of a choice, or *permits fewer occurrences* than it allows — **a conforming document is rejected** | **91** | 20 |
 | `TYPE_MISMATCH` | same particle, different declared type | 8 | 32 |
 
 `CONTRADICTS` is the only verdict that is unsound rather than incomplete, and it is not

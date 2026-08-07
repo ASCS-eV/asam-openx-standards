@@ -250,6 +250,43 @@ findings = run(
 check(counts(findings)["EXTRA"] == 1, f"invented content is EXTRA (got {counts(findings)})")
 
 # ---------------------------------------------------------------------------------------
+print("\nthe UPPER bound is compared too")
+# Was: maxOccurs was collected and never compared, so a property the reference schema
+# repeats and the generated one caps at one passed silently.
+findings = run(
+    reference_body='<xs:complexType name="t_x"><xs:sequence>'
+                   '<xs:element maxOccurs="unbounded" name="a" type="t_a"/>'
+                   "</xs:sequence></xs:complexType>",
+    generated_body='<xs:complexType name="t_xType"><xs:sequence>'
+                   '<xs:element name="a" type="t_aPropertyType"/>'
+                   "</xs:sequence></xs:complexType>",
+)
+check(counts(findings)["CONTRADICTS"] == 1,
+      f"unbounded capped at 1 IS a contradiction (got {counts(findings)})")
+
+findings = run(
+    reference_body='<xs:complexType name="t_x"><xs:sequence>'
+                   '<xs:element name="a" type="t_a"/>'
+                   "</xs:sequence></xs:complexType>",
+    generated_body='<xs:complexType name="t_xType"><xs:sequence>'
+                   '<xs:element maxOccurs="unbounded" name="a" type="t_aPropertyType"/>'
+                   "</xs:sequence></xs:complexType>",
+)
+check(counts(findings)["CONTRADICTS"] == 0,
+      f"1 widened to unbounded is laxity, not a contradiction (got {counts(findings)})")
+
+findings = run(
+    reference_body='<xs:complexType name="t_x">'
+                   '<xs:attribute name="a" type="xs:string" use="required"/>'
+                   "</xs:complexType>",
+    generated_body='<xs:complexType name="t_xType"><xs:sequence>'
+                   '<xs:element name="a" type="xs:string"/>'
+                   "</xs:sequence></xs:complexType>",
+)
+check(counts(findings)["CONTRADICTS"] == 0,
+      f"an attribute's implicit max of 1 does not false-positive (got {counts(findings)})")
+
+# ---------------------------------------------------------------------------------------
 print("\na comparison with nothing to compare FAILS instead of passing")
 # Was: the first wiring globbed *.xsd non-recursively while ShapeChange nests its output
 # one directory deeper. Zero schemas loaded -> zero findings -> empty baseline -> PASS.
