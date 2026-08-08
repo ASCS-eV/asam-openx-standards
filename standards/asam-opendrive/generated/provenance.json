@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-06T05:15:20+00:00",
+  "generated": "2026-08-08T07:58:47+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
@@ -11,9 +11,9 @@
   },
   "tools": {
     "shapechange": {
-      "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
+      "commit": "82f8bf986e21572771d5ae77a951a18752e855b2",
       "profile": "-DskipEa",
-      "runtime_fingerprint": "01b273d7af9292b2ef981fa7506a9111207a0550eeae61d72932ac22758312ba"
+      "runtime_fingerprint": "2e51b3650d18d00d9ee9fe7187bd26d0d6ca728769a10d55c0db4684251ea174"
     },
     "shacl_play": {
       "commit": "7f5eed7a9e3bb2e1bbb433b128b2657639afd025",

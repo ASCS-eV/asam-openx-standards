@@ -2720,6 +2720,8 @@ osc:Action-Action.globalAction a sh:PropertyShape ;
 
 osc:Action-Action.name a sh:PropertyShape ;
     sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:path osc:Action.name .
 
 osc:Action-Action.privateAction a sh:PropertyShape ;
@@ -2863,18 +2865,22 @@ osc:AppearanceAction-AppearanceAction.lightStateAction a sh:PropertyShape ;
 
 osc:AssignControllerAction-AssignControllerAction.activateAnimation a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
     sh:path osc:AssignControllerAction.activateAnimation .
 
 osc:AssignControllerAction-AssignControllerAction.activateLateral a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
     sh:path osc:AssignControllerAction.activateLateral .
 
 osc:AssignControllerAction-AssignControllerAction.activateLighting a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
     sh:path osc:AssignControllerAction.activateLighting .
 
 osc:AssignControllerAction-AssignControllerAction.activateLongitudinal a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
     sh:path osc:AssignControllerAction.activateLongitudinal .
 
 osc:AssignControllerAction-AssignControllerAction.catalogReference a sh:PropertyShape ;
@@ -3308,6 +3314,8 @@ osc:Color-Color.colorType a sh:PropertyShape ;
                                                                             rdf:rest [ rdf:first "grey" ;
                                                                                     rdf:rest [ rdf:first "white" ;
                                                                                             rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:path osc:Color.colorType .
 
 osc:ColorCmyk-ColorCmyk.cyan a sh:PropertyShape ;
@@ -3374,14 +3382,20 @@ osc:Condition-Condition.conditionEdge a sh:PropertyShape ;
                     rdf:rest [ rdf:first "rising" ;
                             rdf:rest [ rdf:first "risingOrFalling" ;
                                     rdf:rest () ] ] ] ] ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:path osc:Condition.conditionEdge .
 
 osc:Condition-Condition.delay a sh:PropertyShape ;
     sh:datatype xsd:double ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:path osc:Condition.delay .
 
 osc:Condition-Condition.name a sh:PropertyShape ;
     sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:path osc:Condition.name .
 
 osc:ConditionGroup-ConditionGroup.conditions a sh:PropertyShape ;
@@ -3477,6 +3491,8 @@ osc:ControllerDistributionEntry-ControllerDistributionEntry.controller a sh:Prop
 
 osc:ControllerDistributionEntry-ControllerDistributionEntry.weight a sh:PropertyShape ;
     sh:datatype xsd:double ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:path osc:ControllerDistributionEntry.weight .
 
 osc:CustomCommandAction-CustomCommandAction.content a sh:PropertyShape ;
@@ -4636,6 +4652,7 @@ osc:ObjectController-ObjectController.controller a sh:PropertyShape ;
 
 osc:ObjectController-ObjectController.name a sh:PropertyShape ;
     sh:datatype xsd:string ;
+    sh:maxCount 1 ;
     sh:path osc:ObjectController.name .
 
 osc:OffroadCondition-OffroadCondition.duration a sh:PropertyShape ;
@@ -6356,6 +6373,7 @@ osc:TrafficAction-TrafficAction.trafficAreaAction a sh:PropertyShape ;
 
 osc:TrafficAction-TrafficAction.trafficName a sh:PropertyShape ;
     sh:datatype xsd:string ;
+    sh:maxCount 1 ;
     sh:path osc:TrafficAction.trafficName .
 
 osc:TrafficAction-TrafficAction.trafficSinkAction a sh:PropertyShape ;

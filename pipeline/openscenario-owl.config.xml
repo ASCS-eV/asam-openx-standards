@@ -84,6 +84,18 @@
             typed by other classes is encoded as owl:unionOf over their IRIs.
           -->
           <rule name="rule-owl-cls-union"/>
+          <!--
+            ASAM stereotypes a class «union» when its element children form an xs:choice,
+            even when the class also carries required XML attributes. Without this rule
+            those attributes become alternatives of the choice, which no instance can
+            satisfy: the union asserts cardinality 0 on the attribute in every other
+            member while its own multiplicity requires it always. Seven of the 48 unions
+            in this model are affected (Action, Condition, AssignControllerAction, Color,
+            ControllerDistributionEntry, ObjectController, TrafficAction). The rule keeps
+            the alternatives - the association ends - and lets each excluded attribute get
+            its own cardinality restriction instead.
+          -->
+          <rule name="rule-owl-cls-unionAlternativesFromAssociations"/>
           <rule name="rule-owl-prop-general"/>
           <rule name="rule-owl-prop-localScopeAll"/>
           <rule name="rule-owl-prop-range-global"/>

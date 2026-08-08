@@ -4,7 +4,7 @@
     "shapechange": {
       "fork": "ASCS-eV/ShapeChange",
       "branch": "feature/asam-pipeline",
-      "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
+      "commit": "82f8bf986e21572771d5ae77a951a18752e855b2",
       "upstream": "ShapeChange/ShapeChange",
       "upstream_branch": "next",
       "upstream_base": "1a16d4af333627059d12d271f588e903e6ecb172",
@@ -23,12 +23,20 @@
           "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
           "subject": "fix(owl): declare a data property when the value type is an enumeration",
           "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/766"
+        },
+        {
+          "commit": "82f8bf986e21572771d5ae77a951a18752e855b2",
+          "subject": "feat(owl): let a union's alternatives be its association ends only",
+          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/768"
         }
       ],
       "build": {
         "tool": "maven",
         "goal": "install",
-        "args": ["-DskipEa", "-DskipTests"],
+        "args": [
+          "-DskipEa",
+          "-DskipTests"
+        ],
         "fingerprint_algorithm": "sha256-of-sorted-content-hashes",
         "fingerprint_inputs": "shapechange-core/target/classes (recursively) plus every jar resolved by `mvn -pl shapechange-core dependency:build-classpath`; each file's own SHA-256, sorted by filename, concatenated as '{filename}:{hash}\\n', then SHA-256 of the concatenation"
       }
@@ -100,9 +108,18 @@
       ],
       "build": {
         "tool": "maven",
-        "goals": ["clean", "install"],
-        "modules": ["shacl-validator", "shacl-play-app"],
-        "args": ["-am", "-DskipTests"],
+        "goals": [
+          "clean",
+          "install"
+        ],
+        "modules": [
+          "shacl-validator",
+          "shacl-play-app"
+        ],
+        "args": [
+          "-am",
+          "-DskipTests"
+        ],
         "expected_jar": "shacl-play-app-0.12.2-onejar.jar",
         "fingerprint_algorithm": "sha256-of-sorted-zip-entry-content-hashes",
         "fingerprint_note": "the onejar's raw file SHA-256 is NOT reproducible across clean builds: the plugin embeds per-entry ZIP timestamps. Verified across three independent clean `mvn clean install` runs: three different raw file hashes, one stable content fingerprint. The content fingerprint is computed by opening the jar as a zip, taking every non-directory entry, SHA-256 of its decompressed bytes, sorted by entry name, concatenated as '{name}:{hash}\\n', then SHA-256 of the concatenation. Never lock or compare the raw file hash."
@@ -127,7 +144,7 @@
   },
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
-    "shapechange_runtime_fingerprint": "01b273d7af9292b2ef981fa7506a9111207a0550eeae61d72932ac22758312ba",
+    "shapechange_runtime_fingerprint": "2e51b3650d18d00d9ee9fe7187bd26d0d6ca728769a10d55c0db4684251ea174",
     "shacl_play_jar_fingerprint": "bf10ef761e5e8e41492651265346bd3f86c91675a11ff391686638a8227e62e6"
   }
 }

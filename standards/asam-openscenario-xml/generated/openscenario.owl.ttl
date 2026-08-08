@@ -366,6 +366,13 @@ osc:Act.stopTrigger a owl:ObjectProperty ;
     rdfs:domain osc:Act ;
     rdfs:range osc:Trigger .
 
+osc:Action.name a owl:DatatypeProperty ;
+    rdfs:label "name"@en ;
+    rdfs:comment "Name of this action."@en ;
+    rdfs:domain osc:Action ;
+    rdfs:range xsd:string ;
+    skos:definition "Name of this action."@en .
+
 osc:ActivateControllerAction.animation a owl:DatatypeProperty ;
     rdfs:label "animation"@en ;
     rdfs:comment "In animation domain: Activate or deactivate an animation. If not specified: No change for controlling the animation domain is applied."@en ;
@@ -490,6 +497,34 @@ osc:AnimationState.state a owl:DatatypeProperty ;
     rdfs:domain osc:AnimationState ;
     rdfs:range xsd:double ;
     skos:definition "The goal state of a component after the AnimationStateAction is executed (rotation: 0% -> lower limiting angle / 100% -> upper limiting angle; translation: 0% -> lower limiting position on movement axis / 100% -> upper limiting position on movement axis). Range: [0..1]."@en .
+
+osc:AssignControllerAction.activateAnimation a owl:DatatypeProperty ;
+    rdfs:label "activateAnimation"@en ;
+    rdfs:comment "True: The assigned controller gets activated the animation domain. False: the assigned animation controller gets deactivated. If not specified: No change for controlling the animation domain is applied."@en ;
+    rdfs:domain osc:AssignControllerAction ;
+    rdfs:range xsd:boolean ;
+    skos:definition "True: The assigned controller gets activated the animation domain. False: the assigned animation controller gets deactivated. If not specified: No change for controlling the animation domain is applied."@en .
+
+osc:AssignControllerAction.activateLateral a owl:DatatypeProperty ;
+    rdfs:label "activateLateral"@en ;
+    rdfs:comment "True: The assigned controller gets activated for the lateral dimension. False: the assigned controller gets deactivated for the lateral dimension. If not specified: No change for controlling the lateral dimension is applied."@en ;
+    rdfs:domain osc:AssignControllerAction ;
+    rdfs:range xsd:boolean ;
+    skos:definition "True: The assigned controller gets activated for the lateral dimension. False: the assigned controller gets deactivated for the lateral dimension. If not specified: No change for controlling the lateral dimension is applied."@en .
+
+osc:AssignControllerAction.activateLighting a owl:DatatypeProperty ;
+    rdfs:label "activateLighting"@en ;
+    rdfs:comment "True: The assigned controller gets activated the lighting domain. False: the assigned lighting controller gets deactivated. If not specified: No change for controlling the lighting domain is applied."@en ;
+    rdfs:domain osc:AssignControllerAction ;
+    rdfs:range xsd:boolean ;
+    skos:definition "True: The assigned controller gets activated the lighting domain. False: the assigned lighting controller gets deactivated. If not specified: No change for controlling the lighting domain is applied."@en .
+
+osc:AssignControllerAction.activateLongitudinal a owl:DatatypeProperty ;
+    rdfs:label "activateLongitudinal"@en ;
+    rdfs:comment "True: The assigned controller gets activated for the longitudinal dimension. False: the assigned controller gets deactivated for the longitudinal dimension. If not specified: No change for controlling the longitudinal  dimension is applied."@en ;
+    rdfs:domain osc:AssignControllerAction ;
+    rdfs:range xsd:boolean ;
+    skos:definition "True: The assigned controller gets activated for the longitudinal dimension. False: the assigned controller gets deactivated for the longitudinal dimension. If not specified: No change for controlling the longitudinal  dimension is applied."@en .
 
 osc:AutomaticGear.gear a owl:DatatypeProperty ;
     rdfs:label "gear"@en ;
@@ -816,6 +851,13 @@ osc:ClothoidSplineSegment.timeStart a owl:DatatypeProperty ;
     rdfs:range xsd:double ;
     skos:definition "Optional time specification at the start of the clothoid segment. Unit: [s]. Range: [0..inf[."@en .
 
+osc:Color.colorType a owl:DatatypeProperty ;
+    rdfs:label "colorType"@en ;
+    rdfs:comment "Semantic value of the color."@en ;
+    rdfs:domain osc:Color ;
+    rdfs:range osc:ColorType ;
+    skos:definition "Semantic value of the color."@en .
+
 osc:ColorCmyk.cyan a owl:DatatypeProperty ;
     rdfs:label "cyan"@en ;
     rdfs:comment "Cyan component of the color. Range: [0..1]."@en ;
@@ -864,6 +906,27 @@ osc:ColorRgb.red a owl:DatatypeProperty ;
     rdfs:domain osc:ColorRgb ;
     rdfs:range xsd:double ;
     skos:definition "Red component of the color. Range: [0..1]."@en .
+
+osc:Condition.conditionEdge a owl:DatatypeProperty ;
+    rdfs:label "conditionEdge"@en ;
+    rdfs:comment "Specifies the edge when the condition is evaluated to true (rising, falling, risingOrFalling, none)."@en ;
+    rdfs:domain osc:Condition ;
+    rdfs:range osc:ConditionEdge ;
+    skos:definition "Specifies the edge when the condition is evaluated to true (rising, falling, risingOrFalling, none)."@en .
+
+osc:Condition.delay a owl:DatatypeProperty ;
+    rdfs:label "delay"@en ;
+    rdfs:comment "Time elapsed after the edge condition is verified, until the condition returns true to the scenario. Unit: [s]. Range: [0..inf[."@en ;
+    rdfs:domain osc:Condition ;
+    rdfs:range xsd:double ;
+    skos:definition "Time elapsed after the edge condition is verified, until the condition returns true to the scenario. Unit: [s]. Range: [0..inf[."@en .
+
+osc:Condition.name a owl:DatatypeProperty ;
+    rdfs:label "name"@en ;
+    rdfs:comment "Name of the condition."@en ;
+    rdfs:domain osc:Condition ;
+    rdfs:range xsd:string ;
+    skos:definition "Name of the condition."@en .
 
 osc:ConditionGroup.conditions a owl:ObjectProperty ;
     rdfs:label "conditions"@en ;
@@ -939,6 +1002,13 @@ osc:ControllerDistribution.controllerDistributionEntries a owl:ObjectProperty ;
     rdfs:label "controllerDistributionEntries"@en ;
     rdfs:domain osc:ControllerDistribution ;
     rdfs:range osc:ControllerDistributionEntry .
+
+osc:ControllerDistributionEntry.weight a owl:DatatypeProperty ;
+    rdfs:label "weight"@en ;
+    rdfs:comment "The weight of the entry. Range: ]0..inf[."@en ;
+    rdfs:domain osc:ControllerDistributionEntry ;
+    rdfs:range xsd:double ;
+    skos:definition "The weight of the entry. Range: ]0..inf[."@en .
 
 osc:CustomCommandAction.content a owl:DatatypeProperty ;
     rdfs:label "content"@en ;
@@ -1888,6 +1958,13 @@ osc:Nurbs.order a owl:DatatypeProperty ;
     rdfs:domain osc:Nurbs ;
     rdfs:range xsd:unsignedInt ;
     skos:definition "Order of the NURBS trajectory. This is the order of the curve, not the degree of the polynomials, which will be one less than the order of the curve. Range: [2..inf[."@en .
+
+osc:ObjectController.name a owl:DatatypeProperty ;
+    rdfs:label "name"@en ;
+    rdfs:comment "Identifier of the ObjectController."@en ;
+    rdfs:domain osc:ObjectController ;
+    rdfs:range xsd:string ;
+    skos:definition "Identifier of the ObjectController."@en .
 
 osc:OffroadCondition.duration a owl:DatatypeProperty ;
     rdfs:label "duration"@en ;
@@ -3462,6 +3539,13 @@ osc:Timing.scale a owl:DatatypeProperty ;
     rdfs:range xsd:double ;
     skos:definition "Scaling factor for time values. While values smaller than 1.0 represent negative scaling, values larger than 1.0 will result in positive scaling. A value of 1.0 means no scaling. Range: ]0..inf[."@en .
 
+osc:TrafficAction.trafficName a owl:DatatypeProperty ;
+    rdfs:label "trafficName"@en ;
+    rdfs:comment "Name of the traffic that is created. This name can be referenced when stopping the traffic with StopTrafficAction."@en ;
+    rdfs:domain osc:TrafficAction ;
+    rdfs:range xsd:string ;
+    skos:definition "Name of the traffic that is created. This name can be referenced when stopping the traffic with StopTrafficAction."@en .
+
 osc:TrafficArea.polygon a owl:ObjectProperty ;
     rdfs:label "polygon"@en ;
     rdfs:domain osc:TrafficArea ;
@@ -4450,6 +4534,16 @@ osc:CollisionCondition.entityRef a owl:ObjectProperty ;
     rdfs:domain osc:CollisionCondition ;
     rdfs:range osc:EntityRef .
 
+osc:Color.colorCmyk a owl:ObjectProperty ;
+    rdfs:label "colorCmyk"@en ;
+    rdfs:domain osc:Color ;
+    rdfs:range osc:ColorCmyk .
+
+osc:Color.colorRgb a owl:ObjectProperty ;
+    rdfs:label "colorRgb"@en ;
+    rdfs:domain osc:Color ;
+    rdfs:range osc:ColorRgb .
+
 osc:ColorType a rdfs:Datatype ;
     rdfs:label "ColorType"@en ;
     rdfs:comment "Semantic value of a color."@en ;
@@ -4466,6 +4560,16 @@ osc:ComponentAnimation.vehicleComponent a owl:ObjectProperty ;
     rdfs:domain osc:ComponentAnimation ;
     rdfs:range osc:VehicleComponent .
 
+osc:Condition.byEntityCondition a owl:ObjectProperty ;
+    rdfs:label "byEntityCondition"@en ;
+    rdfs:domain osc:Condition ;
+    rdfs:range osc:ByEntityCondition .
+
+osc:Condition.byValueCondition a owl:ObjectProperty ;
+    rdfs:label "byValueCondition"@en ;
+    rdfs:domain osc:Condition ;
+    rdfs:range osc:ByValueCondition .
+
 osc:ConditionEdge a rdfs:Datatype ;
     rdfs:label "ConditionEdge"@en ;
     rdfs:comment "Edge types that can be used for conditions."@en ;
@@ -4480,6 +4584,16 @@ osc:ConditionGroup a owl:Class ;
             owl:onClass osc:Condition ;
             owl:onProperty osc:ConditionGroup.conditions ] ;
     skos:definition "A condition group is an association of conditions that is assessed during simulation time and signals true when all associated conditions are evaluated to true."@en .
+
+osc:ControllerDistributionEntry.catalogReference a owl:ObjectProperty ;
+    rdfs:label "catalogReference"@en ;
+    rdfs:domain osc:ControllerDistributionEntry ;
+    rdfs:range osc:CatalogReference .
+
+osc:ControllerDistributionEntry.controller a owl:ObjectProperty ;
+    rdfs:label "controller"@en ;
+    rdfs:domain osc:ControllerDistributionEntry ;
+    rdfs:range osc:Controller .
 
 osc:ControllerType a rdfs:Datatype ;
     rdfs:label "ControllerType"@en ;
@@ -4654,6 +4768,16 @@ osc:None a owl:Class ;
     rdfs:label "None"@en ;
     rdfs:comment "Empty container, indicating unused controlling behavior or dynamics limitations for specific axis."@en ;
     skos:definition "Empty container, indicating unused controlling behavior or dynamics limitations for specific axis."@en .
+
+osc:ObjectController.catalogReference a owl:ObjectProperty ;
+    rdfs:label "catalogReference"@en ;
+    rdfs:domain osc:ObjectController ;
+    rdfs:range osc:CatalogReference .
+
+osc:ObjectController.controller a owl:ObjectProperty ;
+    rdfs:label "controller"@en ;
+    rdfs:domain osc:ObjectController ;
+    rdfs:range osc:Controller .
 
 osc:OpenScenario a owl:Class ;
     rdfs:label "OpenScenario"@en ;
@@ -4902,6 +5026,21 @@ osc:AcquirePositionAction a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Controls the entity to acquire a target position."@en .
 
+osc:Action.globalAction a owl:ObjectProperty ;
+    rdfs:label "globalAction"@en ;
+    rdfs:domain osc:Action ;
+    rdfs:range osc:GlobalAction .
+
+osc:Action.privateAction a owl:ObjectProperty ;
+    rdfs:label "privateAction"@en ;
+    rdfs:domain osc:Action ;
+    rdfs:range osc:PrivateAction .
+
+osc:Action.userDefinedAction a owl:ObjectProperty ;
+    rdfs:label "userDefinedAction"@en ;
+    rdfs:domain osc:Action ;
+    rdfs:range osc:UserDefinedAction .
+
 osc:AddEntityAction a owl:Class ;
     rdfs:label "AddEntityAction"@en ;
     rdfs:comment """Adds an entity to the scenario, at a predefined position.\r
@@ -4921,6 +5060,21 @@ osc:AnimationState a owl:Class ;
             owl:onProperty osc:AnimationState.state ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Definition of the animation state."@en .
+
+osc:AssignControllerAction.catalogReference a owl:ObjectProperty ;
+    rdfs:label "catalogReference"@en ;
+    rdfs:domain osc:AssignControllerAction ;
+    rdfs:range osc:CatalogReference .
+
+osc:AssignControllerAction.controller a owl:ObjectProperty ;
+    rdfs:label "controller"@en ;
+    rdfs:domain osc:AssignControllerAction ;
+    rdfs:range osc:Controller .
+
+osc:AssignControllerAction.objectController a owl:ObjectProperty ;
+    rdfs:label "objectController"@en ;
+    rdfs:domain osc:AssignControllerAction ;
+    rdfs:range osc:ObjectController .
 
 osc:AutomaticGear a owl:Class ;
     rdfs:label "AutomaticGear"@en ;
@@ -4967,23 +5121,6 @@ osc:CentralSwarmObject a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "The entity that represents the center of a swarm."@en .
 
-osc:Color.colorCmyk a owl:ObjectProperty ;
-    rdfs:label "colorCmyk"@en ;
-    rdfs:domain osc:Color ;
-    rdfs:range osc:ColorCmyk .
-
-osc:Color.colorRgb a owl:ObjectProperty ;
-    rdfs:label "colorRgb"@en ;
-    rdfs:domain osc:Color ;
-    rdfs:range osc:ColorRgb .
-
-osc:Color.colorType a owl:DatatypeProperty ;
-    rdfs:label "colorType"@en ;
-    rdfs:comment "Semantic value of the color."@en ;
-    rdfs:domain osc:Color ;
-    rdfs:range osc:ColorType ;
-    skos:definition "Semantic value of the color."@en .
-
 osc:ConnectTrailerAction a owl:Class ;
     rdfs:label "ConnectTrailerAction"@en ;
     rdfs:comment "Connect trailer to entity."@en ;
@@ -5010,23 +5147,6 @@ osc:ControllerDistribution a owl:Class ;
             owl:onClass osc:ControllerDistributionEntry ;
             owl:onProperty osc:ControllerDistribution.controllerDistributionEntries ] ;
     skos:definition "Defines a distribution which controller should be used in a traffic."@en .
-
-osc:ControllerDistributionEntry.catalogReference a owl:ObjectProperty ;
-    rdfs:label "catalogReference"@en ;
-    rdfs:domain osc:ControllerDistributionEntry ;
-    rdfs:range osc:CatalogReference .
-
-osc:ControllerDistributionEntry.controller a owl:ObjectProperty ;
-    rdfs:label "controller"@en ;
-    rdfs:domain osc:ControllerDistributionEntry ;
-    rdfs:range osc:Controller .
-
-osc:ControllerDistributionEntry.weight a owl:DatatypeProperty ;
-    rdfs:label "weight"@en ;
-    rdfs:comment "The weight of the entry. Range: ]0..inf[."@en ;
-    rdfs:domain osc:ControllerDistributionEntry ;
-    rdfs:range xsd:double ;
-    skos:definition "The weight of the entry. Range: ]0..inf[."@en .
 
 osc:Deterministic a owl:Class ;
     rdfs:label "Deterministic"@en ;
@@ -5276,23 +5396,6 @@ osc:MiscObjectCatalogLocation a owl:Class ;
             owl:onProperty osc:MiscObjectCatalogLocation.directory ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "The directory where to look up miscellaneous object catalogs."@en .
-
-osc:ObjectController.catalogReference a owl:ObjectProperty ;
-    rdfs:label "catalogReference"@en ;
-    rdfs:domain osc:ObjectController ;
-    rdfs:range osc:CatalogReference .
-
-osc:ObjectController.controller a owl:ObjectProperty ;
-    rdfs:label "controller"@en ;
-    rdfs:domain osc:ObjectController ;
-    rdfs:range osc:Controller .
-
-osc:ObjectController.name a owl:DatatypeProperty ;
-    rdfs:label "name"@en ;
-    rdfs:comment "Identifier of the ObjectController."@en ;
-    rdfs:domain osc:ObjectController ;
-    rdfs:range xsd:string ;
-    skos:definition "Identifier of the ObjectController."@en .
 
 osc:OffroadCondition a owl:Class ;
     rdfs:label "OffroadCondition"@en ;
@@ -5775,28 +5878,6 @@ osc:AbsoluteTargetLane a owl:Class ;
             owl:onDataRange osc:LaneLayerType ;
             owl:onProperty osc:AbsoluteTargetLane.layer ] ;
     skos:definition "Defines the number (ID) and (optionally) the layer of the target lane."@en .
-
-osc:Action.globalAction a owl:ObjectProperty ;
-    rdfs:label "globalAction"@en ;
-    rdfs:domain osc:Action ;
-    rdfs:range osc:GlobalAction .
-
-osc:Action.name a owl:DatatypeProperty ;
-    rdfs:label "name"@en ;
-    rdfs:comment "Name of this action."@en ;
-    rdfs:domain osc:Action ;
-    rdfs:range xsd:string ;
-    skos:definition "Name of this action."@en .
-
-osc:Action.privateAction a owl:ObjectProperty ;
-    rdfs:label "privateAction"@en ;
-    rdfs:domain osc:Action ;
-    rdfs:range osc:PrivateAction .
-
-osc:Action.userDefinedAction a owl:ObjectProperty ;
-    rdfs:label "userDefinedAction"@en ;
-    rdfs:domain osc:Action ;
-    rdfs:range osc:UserDefinedAction .
 
 osc:Actors a owl:Class ;
     rdfs:label "Actors"@en ;
@@ -6869,16 +6950,6 @@ osc:Color a owl:Class ;
     rdfs:subClassOf [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:onDataRange osc:ColorType ;
-                                    owl:onProperty osc:Color.colorType ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Color.colorRgb ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Color.colorCmyk ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Color.colorType ] [ a owl:Restriction ;
                                     owl:onClass osc:ColorRgb ;
                                     owl:onProperty osc:Color.colorRgb ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
@@ -6886,12 +6957,14 @@ osc:Color a owl:Class ;
                                     owl:onProperty osc:Color.colorCmyk ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Color.colorType ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:Color.colorRgb ] [ a owl:Restriction ;
                                     owl:onClass osc:ColorCmyk ;
                                     owl:onProperty osc:Color.colorCmyk ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ] ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:ColorType ;
+            owl:onProperty osc:Color.colorType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Color description with a semantic color value and an optional detailed value for visualization."@en .
 
 osc:ColorRgb a owl:Class ;
@@ -6910,37 +6983,6 @@ osc:ColorRgb a owl:Class ;
             owl:onProperty osc:ColorRgb.green ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Color description in RGB schema."@en .
-
-osc:Condition.byEntityCondition a owl:ObjectProperty ;
-    rdfs:label "byEntityCondition"@en ;
-    rdfs:domain osc:Condition ;
-    rdfs:range osc:ByEntityCondition .
-
-osc:Condition.byValueCondition a owl:ObjectProperty ;
-    rdfs:label "byValueCondition"@en ;
-    rdfs:domain osc:Condition ;
-    rdfs:range osc:ByValueCondition .
-
-osc:Condition.conditionEdge a owl:DatatypeProperty ;
-    rdfs:label "conditionEdge"@en ;
-    rdfs:comment "Specifies the edge when the condition is evaluated to true (rising, falling, risingOrFalling, none)."@en ;
-    rdfs:domain osc:Condition ;
-    rdfs:range osc:ConditionEdge ;
-    skos:definition "Specifies the edge when the condition is evaluated to true (rising, falling, risingOrFalling, none)."@en .
-
-osc:Condition.delay a owl:DatatypeProperty ;
-    rdfs:label "delay"@en ;
-    rdfs:comment "Time elapsed after the edge condition is verified, until the condition returns true to the scenario. Unit: [s]. Range: [0..inf[."@en ;
-    rdfs:domain osc:Condition ;
-    rdfs:range xsd:double ;
-    skos:definition "Time elapsed after the edge condition is verified, until the condition returns true to the scenario. Unit: [s]. Range: [0..inf[."@en .
-
-osc:Condition.name a owl:DatatypeProperty ;
-    rdfs:label "name"@en ;
-    rdfs:comment "Name of the condition."@en ;
-    rdfs:domain osc:Condition ;
-    rdfs:range xsd:string ;
-    skos:definition "Name of the condition."@en .
 
 osc:ControlPoint a owl:Class ;
     rdfs:label "ControlPoint"@en ;
@@ -6979,27 +7021,19 @@ osc:ControllerAction a owl:Class ;
 osc:ControllerDistributionEntry a owl:Class ;
     rdfs:label "ControllerDistributionEntry"@en ;
     rdfs:comment "Defines that weight in a controller distribution, for the given controller type."@en ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:ControllerDistributionEntry.weight ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:onDataRange xsd:double ;
-                                    owl:onProperty osc:ControllerDistributionEntry.weight ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ControllerDistributionEntry.controller ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ControllerDistributionEntry.catalogReference ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ControllerDistributionEntry.weight ] [ a owl:Restriction ;
                                     owl:onClass osc:Controller ;
                                     owl:onProperty osc:ControllerDistributionEntry.controller ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:ControllerDistributionEntry.catalogReference ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ControllerDistributionEntry.weight ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:ControllerDistributionEntry.controller ] [ a owl:Restriction ;
                                     owl:onClass osc:CatalogReference ;
@@ -7764,6 +7798,31 @@ osc:Timing a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Adjust the timing within time references by scale and offset."@en .
 
+osc:TrafficAction.trafficAreaAction a owl:ObjectProperty ;
+    rdfs:label "trafficAreaAction"@en ;
+    rdfs:domain osc:TrafficAction ;
+    rdfs:range osc:TrafficAreaAction .
+
+osc:TrafficAction.trafficSinkAction a owl:ObjectProperty ;
+    rdfs:label "trafficSinkAction"@en ;
+    rdfs:domain osc:TrafficAction ;
+    rdfs:range osc:TrafficSinkAction .
+
+osc:TrafficAction.trafficSourceAction a owl:ObjectProperty ;
+    rdfs:label "trafficSourceAction"@en ;
+    rdfs:domain osc:TrafficAction ;
+    rdfs:range osc:TrafficSourceAction .
+
+osc:TrafficAction.trafficStopAction a owl:ObjectProperty ;
+    rdfs:label "trafficStopAction"@en ;
+    rdfs:domain osc:TrafficAction ;
+    rdfs:range osc:TrafficStopAction .
+
+osc:TrafficAction.trafficSwarmAction a owl:ObjectProperty ;
+    rdfs:label "trafficSwarmAction"@en ;
+    rdfs:domain osc:TrafficAction ;
+    rdfs:range osc:TrafficSwarmAction .
+
 osc:TrafficSignalControllerAction a owl:Class ;
     rdfs:label "TrafficSignalControllerAction"@en ;
     rdfs:comment "Sets a specific semantic phase of a traffic signal controller, typically affecting a signal group."@en ;
@@ -7898,21 +7957,13 @@ osc:Act a owl:Class ;
 osc:Action a owl:Class ;
     rdfs:label "Action"@en ;
     rdfs:comment "An action serves to create or modify all dynamic elements of a scenario."@en ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:Action.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:onDataRange xsd:string ;
-                                    owl:onProperty osc:Action.name ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Action.globalAction ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Action.privateAction ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Action.userDefinedAction ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Action.name ] [ a owl:Restriction ;
                                     owl:onClass osc:GlobalAction ;
                                     owl:onProperty osc:Action.globalAction ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
@@ -7922,8 +7973,6 @@ osc:Action a owl:Class ;
                                     owl:onProperty osc:Action.userDefinedAction ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Action.name ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:Action.globalAction ] [ a owl:Restriction ;
                                     owl:onClass osc:PrivateAction ;
                                     owl:onProperty osc:Action.privateAction ;
@@ -7931,8 +7980,6 @@ osc:Action a owl:Class ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:Action.userDefinedAction ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Action.name ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:Action.globalAction ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
@@ -8384,38 +8431,6 @@ osc:Sun a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Specification of sun properties."@en .
 
-osc:TrafficAction.trafficAreaAction a owl:ObjectProperty ;
-    rdfs:label "trafficAreaAction"@en ;
-    rdfs:domain osc:TrafficAction ;
-    rdfs:range osc:TrafficAreaAction .
-
-osc:TrafficAction.trafficName a owl:DatatypeProperty ;
-    rdfs:label "trafficName"@en ;
-    rdfs:comment "Name of the traffic that is created. This name can be referenced when stopping the traffic with StopTrafficAction."@en ;
-    rdfs:domain osc:TrafficAction ;
-    rdfs:range xsd:string ;
-    skos:definition "Name of the traffic that is created. This name can be referenced when stopping the traffic with StopTrafficAction."@en .
-
-osc:TrafficAction.trafficSinkAction a owl:ObjectProperty ;
-    rdfs:label "trafficSinkAction"@en ;
-    rdfs:domain osc:TrafficAction ;
-    rdfs:range osc:TrafficSinkAction .
-
-osc:TrafficAction.trafficSourceAction a owl:ObjectProperty ;
-    rdfs:label "trafficSourceAction"@en ;
-    rdfs:domain osc:TrafficAction ;
-    rdfs:range osc:TrafficSourceAction .
-
-osc:TrafficAction.trafficStopAction a owl:ObjectProperty ;
-    rdfs:label "trafficStopAction"@en ;
-    rdfs:domain osc:TrafficAction ;
-    rdfs:range osc:TrafficStopAction .
-
-osc:TrafficAction.trafficSwarmAction a owl:ObjectProperty ;
-    rdfs:label "trafficSwarmAction"@en ;
-    rdfs:domain osc:TrafficAction ;
-    rdfs:range osc:TrafficSwarmAction .
-
 osc:TrafficAreaAction a owl:Class ;
     rdfs:label "TrafficAreaAction"@en ;
     rdfs:comment "Defines traffic in a specific area."@en ;
@@ -8532,97 +8547,20 @@ osc:VisibilityAction a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Action that toggles (on or off) an entity's visibility attributes, with respect to sensors, other traffic or the graphics engine. The default for entities is that they are visible everywhere."@en .
 
-osc:AssignControllerAction.activateAnimation a owl:DatatypeProperty ;
-    rdfs:label "activateAnimation"@en ;
-    rdfs:comment "True: The assigned controller gets activated the animation domain. False: the assigned animation controller gets deactivated. If not specified: No change for controlling the animation domain is applied."@en ;
-    rdfs:domain osc:AssignControllerAction ;
-    rdfs:range xsd:boolean ;
-    skos:definition "True: The assigned controller gets activated the animation domain. False: the assigned animation controller gets deactivated. If not specified: No change for controlling the animation domain is applied."@en .
-
-osc:AssignControllerAction.activateLateral a owl:DatatypeProperty ;
-    rdfs:label "activateLateral"@en ;
-    rdfs:comment "True: The assigned controller gets activated for the lateral dimension. False: the assigned controller gets deactivated for the lateral dimension. If not specified: No change for controlling the lateral dimension is applied."@en ;
-    rdfs:domain osc:AssignControllerAction ;
-    rdfs:range xsd:boolean ;
-    skos:definition "True: The assigned controller gets activated for the lateral dimension. False: the assigned controller gets deactivated for the lateral dimension. If not specified: No change for controlling the lateral dimension is applied."@en .
-
-osc:AssignControllerAction.activateLighting a owl:DatatypeProperty ;
-    rdfs:label "activateLighting"@en ;
-    rdfs:comment "True: The assigned controller gets activated the lighting domain. False: the assigned lighting controller gets deactivated. If not specified: No change for controlling the lighting domain is applied."@en ;
-    rdfs:domain osc:AssignControllerAction ;
-    rdfs:range xsd:boolean ;
-    skos:definition "True: The assigned controller gets activated the lighting domain. False: the assigned lighting controller gets deactivated. If not specified: No change for controlling the lighting domain is applied."@en .
-
-osc:AssignControllerAction.activateLongitudinal a owl:DatatypeProperty ;
-    rdfs:label "activateLongitudinal"@en ;
-    rdfs:comment "True: The assigned controller gets activated for the longitudinal dimension. False: the assigned controller gets deactivated for the longitudinal dimension. If not specified: No change for controlling the longitudinal  dimension is applied."@en ;
-    rdfs:domain osc:AssignControllerAction ;
-    rdfs:range xsd:boolean ;
-    skos:definition "True: The assigned controller gets activated for the longitudinal dimension. False: the assigned controller gets deactivated for the longitudinal dimension. If not specified: No change for controlling the longitudinal  dimension is applied."@en .
-
-osc:AssignControllerAction.catalogReference a owl:ObjectProperty ;
-    rdfs:label "catalogReference"@en ;
-    rdfs:domain osc:AssignControllerAction ;
-    rdfs:range osc:CatalogReference .
-
-osc:AssignControllerAction.controller a owl:ObjectProperty ;
-    rdfs:label "controller"@en ;
-    rdfs:domain osc:AssignControllerAction ;
-    rdfs:range osc:Controller .
-
-osc:AssignControllerAction.objectController a owl:ObjectProperty ;
-    rdfs:label "objectController"@en ;
-    rdfs:domain osc:AssignControllerAction ;
-    rdfs:range osc:ObjectController .
-
 osc:Condition a owl:Class ;
     rdfs:label "Condition"@en ;
     rdfs:comment "A condition represents a set of logical expressions that evaluate the relationship of values provided by the user. These values may be entity states, scenario properties, scenario states or external signals. Conditions are the main components in triggers."@en ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:Condition.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:ConditionEdge ;
+            owl:onProperty osc:Condition.conditionEdge ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:onDataRange osc:ConditionEdge ;
-                                    owl:onProperty osc:Condition.conditionEdge ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.delay ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.name ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.byEntityCondition ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.byValueCondition ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.conditionEdge ] [ a owl:Restriction ;
-                                    owl:onDataRange xsd:double ;
-                                    owl:onProperty osc:Condition.delay ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.name ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.byEntityCondition ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.byValueCondition ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.conditionEdge ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.delay ] [ a owl:Restriction ;
-                                    owl:onDataRange xsd:string ;
-                                    owl:onProperty osc:Condition.name ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.byEntityCondition ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.byValueCondition ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.conditionEdge ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.delay ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.name ] [ a owl:Restriction ;
                                     owl:onClass osc:ByEntityCondition ;
                                     owl:onProperty osc:Condition.byEntityCondition ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
@@ -8630,16 +8568,14 @@ osc:Condition a owl:Class ;
                                     owl:onProperty osc:Condition.byValueCondition ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.conditionEdge ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.delay ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:Condition.name ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:Condition.byEntityCondition ] [ a owl:Restriction ;
                                     owl:onClass osc:ByValueCondition ;
                                     owl:onProperty osc:Condition.byValueCondition ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ] ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Condition.delay ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "A condition represents a set of logical expressions that evaluate the relationship of values provided by the user. These values may be entity states, scenario properties, scenario states or external signals. Conditions are the main components in triggers."@en .
 
 osc:Event a owl:Class ;
@@ -9271,25 +9207,13 @@ osc:SynchronizeAction a owl:Class ;
 osc:TrafficAction a owl:Class ;
     rdfs:label "TrafficAction"@en ;
     rdfs:comment "Actions defining macroscopic traffic flow and behavior."@en ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:TrafficAction.trafficName ],
+        [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string ;
-                                    owl:onProperty osc:TrafficAction.trafficName ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficSinkAction ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficSourceAction ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficSwarmAction ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficStopAction ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficAreaAction ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficName ] [ a owl:Restriction ;
                                     owl:onClass osc:TrafficSinkAction ;
                                     owl:onProperty osc:TrafficAction.trafficSinkAction ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
@@ -9303,8 +9227,6 @@ osc:TrafficAction a owl:Class ;
                                     owl:onProperty osc:TrafficAction.trafficAreaAction ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficName ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:TrafficAction.trafficSinkAction ] [ a owl:Restriction ;
                                     owl:onClass osc:TrafficSourceAction ;
                                     owl:onProperty osc:TrafficAction.trafficSourceAction ;
@@ -9316,8 +9238,6 @@ osc:TrafficAction a owl:Class ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:TrafficAction.trafficAreaAction ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficName ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:TrafficAction.trafficSinkAction ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
@@ -9331,8 +9251,6 @@ osc:TrafficAction a owl:Class ;
                                     owl:onProperty osc:TrafficAction.trafficAreaAction ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficName ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:TrafficAction.trafficSinkAction ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:TrafficAction.trafficSourceAction ] [ a owl:Restriction ;
@@ -9344,8 +9262,6 @@ osc:TrafficAction a owl:Class ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:TrafficAction.trafficAreaAction ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:TrafficAction.trafficName ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:TrafficAction.trafficSinkAction ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
@@ -9463,81 +9379,13 @@ osc:WorldPosition a owl:Class ;
 osc:AssignControllerAction a owl:Class ;
     rdfs:label "AssignControllerAction"@en ;
     rdfs:comment "This action assigns an object controller to the given entity defined in the enclosing PrivateAction. "@en ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:AssignControllerAction.activateAnimation ],
+        [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:boolean ;
-                                    owl:onProperty osc:AssignControllerAction.activateLateral ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLongitudinal ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateAnimation ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLighting ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.catalogReference ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.controller ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.objectController ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLateral ] [ a owl:Restriction ;
-                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:boolean ;
-                                    owl:onProperty osc:AssignControllerAction.activateLongitudinal ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateAnimation ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLighting ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.catalogReference ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.controller ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.objectController ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLateral ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLongitudinal ] [ a owl:Restriction ;
-                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:boolean ;
-                                    owl:onProperty osc:AssignControllerAction.activateAnimation ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLighting ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.catalogReference ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.controller ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.objectController ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLateral ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLongitudinal ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateAnimation ] [ a owl:Restriction ;
-                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:boolean ;
-                                    owl:onProperty osc:AssignControllerAction.activateLighting ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.catalogReference ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.controller ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.objectController ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLateral ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLongitudinal ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateAnimation ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLighting ] [ a owl:Restriction ;
                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass osc:CatalogReference ;
                                     owl:onProperty osc:AssignControllerAction.catalogReference ] [ a owl:Restriction ;
@@ -9547,14 +9395,6 @@ osc:AssignControllerAction a owl:Class ;
                                     owl:onProperty osc:AssignControllerAction.objectController ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLateral ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLongitudinal ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateAnimation ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLighting ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:AssignControllerAction.catalogReference ] [ a owl:Restriction ;
                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass osc:Controller ;
@@ -9563,20 +9403,24 @@ osc:AssignControllerAction a owl:Class ;
                                     owl:onProperty osc:AssignControllerAction.objectController ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLateral ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLongitudinal ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateAnimation ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:AssignControllerAction.activateLighting ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:AssignControllerAction.catalogReference ] [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:AssignControllerAction.controller ] [ a owl:Restriction ;
                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass osc:ObjectController ;
-                                    owl:onProperty osc:AssignControllerAction.objectController ] ) ] ) ] ;
+                                    owl:onProperty osc:AssignControllerAction.objectController ] ) ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:AssignControllerAction.activateLongitudinal ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:AssignControllerAction.activateLighting ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:AssignControllerAction.activateLateral ] ;
     skos:definition "This action assigns an object controller to the given entity defined in the enclosing PrivateAction."@en .
 
 osc:ClothoidSplineSegment a owl:Class ;
@@ -9751,16 +9595,6 @@ osc:ObjectController a owl:Class ;
     rdfs:subClassOf [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string ;
-                                    owl:onProperty osc:ObjectController.name ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ObjectController.controller ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ObjectController.catalogReference ] ) ] [ a owl:Class ;
-                        owl:intersectionOf ( [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ObjectController.name ] [ a owl:Restriction ;
                                     owl:onClass osc:Controller ;
                                     owl:onProperty osc:ObjectController.controller ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
@@ -9768,12 +9602,14 @@ osc:ObjectController a owl:Class ;
                                     owl:onProperty osc:ObjectController.catalogReference ] ) ] [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onProperty osc:ObjectController.name ] [ a owl:Restriction ;
-                                    owl:cardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onProperty osc:ObjectController.controller ] [ a owl:Restriction ;
                                     owl:onClass osc:CatalogReference ;
                                     owl:onProperty osc:ObjectController.catalogReference ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ] ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:ObjectController.name ] ;
     skos:definition "Definition of a controller for a scenario object. Either an inline definition or a catalog reference to a controller."@en .
 
 osc:RelativeDistanceCondition a owl:Class ;
