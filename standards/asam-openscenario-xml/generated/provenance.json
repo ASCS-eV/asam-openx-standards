@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-06T05:33:16+00:00",
+  "generated": "2026-08-08T08:21:38+00:00",
   "standard": "asam-openscenario-xml",
   "source_model": {
     "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
@@ -7,13 +7,13 @@
   },
   "configuration": {
     "path": "pipeline/openscenario-owl.config.xml",
-    "sha256": "e20278f8ad0dd8d94166735962bf25425efd510776e56b9a2c70c1d227ef453b"
+    "sha256": "3059c7b0c0b8754cd8dcd178e65e1650a9a7da9858731ad126652b0254d28661"
   },
   "tools": {
     "shapechange": {
-      "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
+      "commit": "82f8bf986e21572771d5ae77a951a18752e855b2",
       "profile": "-DskipEa",
-      "runtime_fingerprint": "01b273d7af9292b2ef981fa7506a9111207a0550eeae61d72932ac22758312ba"
+      "runtime_fingerprint": "2e51b3650d18d00d9ee9fe7187bd26d0d6ca728769a10d55c0db4684251ea174"
     },
     "shacl_play": {
       "commit": "7f5eed7a9e3bb2e1bbb433b128b2657639afd025",
@@ -36,7 +36,7 @@
     "maven_version": "3.9.9"
   },
   "outputs": {
-    "openscenario.owl.ttl": "b977523d0544877dc7e32b3abd25c72e472c12e26ccfa8f80031f868a6efdebc",
-    "openscenario.shacl.ttl": "eabbbe630412203352cfc926e66438d959d0ce9af3458ffc7fd5f28c4e63eb72"
+    "openscenario.owl.ttl": "2b24299f6ced64b3dbe6837f0498a8fb11691cc9bfb63db88f61609aa4e7e07e",
+    "openscenario.shacl.ttl": "da72f1787a7aeb44521706a628a91762055704d17979a70ee5954ea4bf58419f"
   }
 }
