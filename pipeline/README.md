@@ -54,6 +54,12 @@ implements); the exact Python serialization versions from
 environment plus content-based fingerprints of the built ShapeChange runtime and the built SHACL
 Play jar.
 
+`carried_commits` and the `commit`/`upstream_base` pair state the same thing twice, and both
+checks below hold them to agreeing: the carried list is exactly the path from the base to the
+locked commit. An **empty** carried list is therefore not a defect but the goal — it says upstream
+has merged everything this fork was carrying, so the fork is pinned at plain upstream and `commit`
+equals `upstream_base`. Every carried commit is working towards being deleted from this file.
+
 `scripts/generate_semantic_artifacts.py` validates every tool checkout against this lock before
 building anything: the checkout must be clean, at the exact locked commit, with the locked
 upstream base an ancestor and the actual carried-commit list matching exactly. `--shaclplay` is
