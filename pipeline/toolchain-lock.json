@@ -1,5 +1,5 @@
 {
-  "_comment": "Every generator tool is a sibling ../* checkout of an ASCS-eV fork, on the feature/asam-pipeline branch, rebased on the recorded upstream development branch with only the recorded carried_commits cherry-picked on top. Updating this file is a release-like action: rebase/cherry-pick, re-verify carried_commits, regenerate both standards, and review the artifact diff in the same change. See pipeline/README.md for the procedure and for what each fork's carried commits are for.",
+  "_comment": "Every generator tool is a sibling ../* checkout of an ASCS-eV fork, on the feature/asam-pipeline branch, rebased on the recorded upstream development branch with only the recorded carried_commits cherry-picked on top. An empty carried_commits is the goal state, not a defect: it says upstream has merged everything the fork was carrying, so the fork is pinned at plain upstream and commit equals upstream_base. Updating this file is a release-like action: rebase/cherry-pick, re-verify carried_commits, regenerate both standards, and review the artifact diff in the same change. See pipeline/README.md for the procedure and for what each fork's carried commits are for.",
   "tools": {
     "shapechange": {
       "fork": "ASCS-eV/ShapeChange",
@@ -44,68 +44,23 @@
     "owl2shacl": {
       "fork": "ASCS-eV/owl2shacl",
       "branch": "feature/asam-pipeline",
-      "commit": "8f130eae1bf50234b44767d99714e2bd271688df",
+      "commit": "ab57749f9a95f82257a1b58f8c5210a279536bd9",
       "upstream": "sparna-git/owl2shacl",
       "upstream_branch": "main",
-      "upstream_base": "c012a0870403f124c35fe6f7207d68bd77875df6",
-      "carried_commits": [
-        {
-          "commit": "0bbcf09f0d2ab33a80b8e78db28a11bcbfffc242",
-          "subject": "feat: add owl:onDataRange simple cardinality rules (data-property counterpart of owl:onClass)",
-          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
-        },
-        {
-          "commit": "3c7fecad30f5e38b43077ab13000a64e661d3a05",
-          "subject": "test: add offline verification and the object-property maximum control",
-          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
-        },
-        {
-          "commit": "b173fb70e411c2bf7590344b575479e811fc6cce",
-          "subject": "fix: guard the qualified onDataRange rules in the open and original rulesets",
-          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
-        },
-        {
-          "commit": "302d91439b866c2e6c732cf2bebdcd343df4bc72",
-          "subject": "refactor: limit the change to the three documented flavors, cross-check with the CLI",
-          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/7"
-        },
-        {
-          "commit": "8f130eae1bf50234b44767d99714e2bd271688df",
-          "subject": "fix: decide datatype ranges structurally, and map owl:oneOf to sh:in",
-          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/8"
-        }
-      ],
+      "upstream_base": "ab57749f9a95f82257a1b58f8c5210a279536bd9",
+      "_carried_comment": "None: the fork is pinned at plain upstream. Upstream merged every contribution it was carrying - PR 7 (owl:onDataRange simple cardinality rules), PR 8 (structural datatype ranges, owl:oneOf to sh:in) and PR 9 (owl:unionOf of class expressions to sh:or), the last as commit d5e17f9. The locked commit is upstream/main's own merge commit for PR 8.",
+      "carried_commits": [],
       "rules_file": "owl2sh-closed.ttl"
     },
     "shacl_play": {
       "fork": "ASCS-eV/shacl-play",
       "branch": "feature/asam-pipeline",
-      "commit": "7f5eed7a9e3bb2e1bbb433b128b2657639afd025",
+      "commit": "5fba8275b834099d93d5bf6a3875ea60e40695e9",
       "upstream": "sparna-git/shacl-play",
       "upstream_branch": "master",
-      "upstream_base": "0caeac8004131598ba0f8a7e0a8c69e4f10589f9",
-      "carried_commits": [
-        {
-          "commit": "700f31154292b8336714625a5bff62d06e5e180f",
-          "subject": "feat(owl2shacl): allow the conversion rules to be supplied explicitly",
-          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/344"
-        },
-        {
-          "commit": "0494a6772b9db35a47024bef9e13458042736bdb",
-          "subject": "fix(app): fail on an input that cannot be read instead of producing an empty result",
-          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/345"
-        },
-        {
-          "commit": "27a9fef02f1afb2f3e0c714ab04d01ce7118f5b2",
-          "subject": "fix(owl2shacl): gather sh:ignoredProperties into an RDF list",
-          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/346"
-        },
-        {
-          "commit": "7f5eed7a9e3bb2e1bbb433b128b2657639afd025",
-          "subject": "fix(build): pin the xls2rdf dependency instead of tracking master",
-          "note": "Not yet submitted upstream. Required for jar_fingerprint to mean anything: shacl-play-app bundles com.github.sparna-git.xls2rdf:xls2rdf-lib into its onejar, and version-managing it as master-SNAPSHOT let Maven's daily update policy swap 162 bundled entries with no change in any repository, so the same commit built on two days produced different binaries."
-        }
-      ],
+      "upstream_base": "5fba8275b834099d93d5bf6a3875ea60e40695e9",
+      "_carried_comment": "None: the fork is pinned at plain upstream. Upstream merged every contribution it was carrying - PR 344 (supply the conversion rules explicitly), PR 345 (fail on an unreadable input), PR 346 (gather sh:ignoredProperties into an RDF list), PR 347 (gather every list-valued constraint, so sh:or/sh:and/sh:xone are well-formed lists) and, with PR 347, the xls2rdf version pin that makes this jar's content fingerprint reproducible at all. The locked commit is upstream's own follow-up 'fix merge bug', which restores the assignment in Owl2Shacl.convert that the PR 346/347 merge dropped; without it the list gathering is unreachable, so it is part of what makes PR 347 effective rather than an unrelated later change.",
+      "carried_commits": [],
       "build": {
         "tool": "maven",
         "goals": [
@@ -145,6 +100,6 @@
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
     "shapechange_runtime_fingerprint": "2e51b3650d18d00d9ee9fe7187bd26d0d6ca728769a10d55c0db4684251ea174",
-    "shacl_play_jar_fingerprint": "bf10ef761e5e8e41492651265346bd3f86c91675a11ff391686638a8227e62e6"
+    "shacl_play_jar_fingerprint": "0250a07b40e1102c3df9880d4e14cc0dbd087b5d87d88babdb6da93ccf68dbcd"
   }
 }
