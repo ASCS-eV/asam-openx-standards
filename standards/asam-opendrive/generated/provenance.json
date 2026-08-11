@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-08T07:58:47+00:00",
+  "generated": "2026-08-11T09:13:31+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
@@ -16,14 +16,14 @@
       "runtime_fingerprint": "2e51b3650d18d00d9ee9fe7187bd26d0d6ca728769a10d55c0db4684251ea174"
     },
     "shacl_play": {
-      "commit": "7f5eed7a9e3bb2e1bbb433b128b2657639afd025",
+      "commit": "5fba8275b834099d93d5bf6a3875ea60e40695e9",
       "jar": "shacl-play-app-0.12.2-onejar.jar",
-      "jar_fingerprint": "bf10ef761e5e8e41492651265346bd3f86c91675a11ff391686638a8227e62e6"
+      "jar_fingerprint": "0250a07b40e1102c3df9880d4e14cc0dbd087b5d87d88babdb6da93ccf68dbcd"
     },
     "owl2shacl_rules": {
       "name": "owl2sh-closed.ttl",
-      "sha256": "79357c5f1a3e48ca0bcc323aebb44cfa954f3665311751f0e2b60b8b9976bef5",
-      "commit": "8f130eae1bf50234b44767d99714e2bd271688df"
+      "sha256": "c486b2fe73c27a5a310b7135b317b1df3902eb6f16796da01c4f57fda783a758",
+      "commit": "ab57749f9a95f82257a1b58f8c5210a279536bd9"
     },
     "serialization": {
       "diffable-rdf": "0.0.2",

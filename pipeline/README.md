@@ -26,22 +26,39 @@ configuration in this directory; the script only resolves paths and runs them in
 generated artifact is wrong, exactly one of three things is wrong — the **model**, the
 **configuration**, or the **tool** — and the fix belongs there.
 
-ShapeChange and the SHACL Play! owl2shacl converter are both consumed from `feature/asam-pipeline`
-branches on the `ASCS-eV` forks of each tool, rebased on the fork's stated upstream development
-branch with only the pending upstream-contribution commits cherry-picked on top. Those branches
-carry the fixes the pipeline depends on, each applied as a self-contained upstream contribution:
+Every fix the pipeline depends on was written as a self-contained upstream contribution rather
+than a local patch, so a tool is only forked for as long as its contributions are unmerged. Two of
+the three are now plain upstream:
 
-- **ShapeChange** — `ModelExport` honouring the `sortedOutput` parameter, and the OWL target
-  declaring a data property when a property's value type is an enumeration.
-- **owl2shacl** — `owl:onDataRange` cardinality rules as the data-property counterpart of
-  `owl:onClass`, datatype ranges decided structurally, and `owl:oneOf` mapped to `sh:in`.
-- **SHACL Play!** — conversion rules supplied explicitly via `--rules`, failing on an input that
-  cannot be read instead of producing an empty result, and `sh:ignoredProperties` gathered into an
-  RDF list so closed shapes are honoured outside the web UI.
+- **owl2shacl** — ✅ **upstream.** `owl:onDataRange` cardinality rules as the data-property
+  counterpart of `owl:onClass` ([#7]), datatype ranges decided structurally and `owl:oneOf` mapped
+  to `sh:in` ([#8]), and `owl:unionOf` of class expressions translated to `sh:or` ([#9]).
+- **SHACL Play!** — ✅ **upstream.** Conversion rules supplied explicitly via `--rules` ([#344]),
+  failing on an input that cannot be read instead of producing an empty result ([#345]),
+  `sh:ignoredProperties` gathered into an RDF list so closed shapes are honoured outside the web
+  UI ([#346]), and every *other* list-valued constraint gathered too, so the `sh:or` above is a
+  well-formed SHACL list rather than repeated bare values ([#347]).
+- **ShapeChange** — ⏳ still forked, consumed from `feature/asam-pipeline` on the `ASCS-eV` fork:
+  `ModelExport` honouring the `sortedOutput` parameter ([#764]), the OWL target declaring a data
+  property when a property's value type is an enumeration ([#766]), and a `«union»`'s alternatives
+  being its association ends so an attribute of the union keeps its own cardinality ([#768]).
 
-[`pipeline/toolchain-lock.json`](toolchain-lock.json) records exactly which commit each fork
-carries for each of these, and names the upstream contribution it implements. Moving a tool to a
-released upstream commit is a lock update, described under
+[#7]: https://github.com/sparna-git/owl2shacl/pull/7
+[#8]: https://github.com/sparna-git/owl2shacl/pull/8
+[#9]: https://github.com/sparna-git/owl2shacl/pull/9
+[#344]: https://github.com/sparna-git/shacl-play/pull/344
+[#345]: https://github.com/sparna-git/shacl-play/pull/345
+[#346]: https://github.com/sparna-git/shacl-play/pull/346
+[#347]: https://github.com/sparna-git/shacl-play/pull/347
+[#764]: https://github.com/ShapeChange/ShapeChange/pull/764
+[#766]: https://github.com/ShapeChange/ShapeChange/pull/766
+[#768]: https://github.com/ShapeChange/ShapeChange/pull/768
+
+A tool that carries nothing is still pinned to an exact commit — being upstream is not the same as
+being unpinned, and the two `ASCS-eV` forks remain the checkouts the pipeline reads, now sitting at
+plain upstream. [`pipeline/toolchain-lock.json`](toolchain-lock.json) records that exact commit for
+each tool and, for anything still carried, the upstream contribution it implements. Moving a tool to
+a released upstream commit is a lock update, described under
 [The toolchain lock](#the-toolchain-lock) — never a silent branch drift.
 
 ## The toolchain lock
@@ -552,9 +569,13 @@ one run — whereas inheriting OpenDRIVE's would have hidden whatever its own mo
   and published checksums — without needing Maven or a JVM. Neither actually re-runs
   ShapeChange or shacl-play, so a change cannot assert that regenerating the OWL/SHACL from
   scratch reproduces what is committed. `check_xsd_structural_parity.py` has no such blocker —
-  it needs a plain ShapeChange checkout and nothing else — so it could run in CI today; the
-  OWL/SHACL side still cannot, until the open upstream contributions land and the pipeline no
-  longer depends on the `ASCS-eV` forks' `feature/asam-pipeline` branches.
+  it needs a plain ShapeChange checkout and nothing else — so it could run in CI today.
+
+  For the OWL/SHACL side the blocker has narrowed to one tool. owl2shacl and SHACL Play! are now
+  pinned at plain upstream commits, which a workflow can clone directly; **ShapeChange is the last
+  fork dependency**, and it is what still stops a workflow from building the toolchain from
+  released sources. Once [#764], [#766] and [#768] land, every stage runs from upstream and this
+  becomes a question of CI cost — a JDK, Maven and two tool builds — rather than of access.
 - **The remaining ASAM standards.** OpenDRIVE and OpenSCENARIO XML both run end to end.
   `standards/` holds directories for OpenCRG, OpenLABEL, OpenMATERIAL 3D, OpenODD,
   OpenSCENARIO DSL, OSI, traffic participants and ISO 345xx; none of those has a committed UML
