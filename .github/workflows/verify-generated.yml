@@ -21,6 +21,7 @@ on:
       - "standards/*/generated/**"
       - "scripts/check_canonical.py"
       - "scripts/check_toolchain_lock.py"
+      - "scripts/test_check_toolchain_lock.py"
       - "scripts/generate_semantic_artifacts.py"
       - "scripts/requirements.txt"
       - "pipeline/toolchain-lock.json"
@@ -43,6 +44,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      # Before asking whether the lock is consistent, check that the thing doing the asking
+      # is right: a consistency check that accepts a state it should reject, or rejects one
+      # it should accept, misattributes its own defect to the lock.
+      - name: The lock consistency check behaves as specified
+        run: python scripts/test_check_toolchain_lock.py
       - name: pipeline/toolchain-lock.json matches every committed provenance.json
         run: python scripts/check_toolchain_lock.py
 

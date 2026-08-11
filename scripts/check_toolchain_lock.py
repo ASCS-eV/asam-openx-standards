@@ -63,12 +63,7 @@ def check_lock_schema(lock: dict) -> list[str]:
         base = entry.get("upstream_base", "")
         if base and not _is_hex(base, _SHA_LENGTH):
             problems.append(f"tools.{tool_name}.upstream_base is not a full 40-char SHA: {base!r}")
-        if commit and base and commit == base:
-            problems.append(f"tools.{tool_name}.commit equals upstream_base; the fork carries nothing")
-
         carried = entry.get("carried_commits", [])
-        if not carried:
-            problems.append(f"tools.{tool_name}.carried_commits is empty")
         carried_shas = [carried_commit.get("commit", "") for carried_commit in carried]
         for sha in carried_shas:
             if not _is_hex(sha, _SHA_LENGTH):
@@ -77,13 +72,29 @@ def check_lock_schema(lock: dict) -> list[str]:
                 )
         if len(carried_shas) != len(set(carried_shas)):
             problems.append(f"tools.{tool_name}.carried_commits has duplicate entries")
-        # The chain of carried commits is the ordered path from upstream_base to the
-        # locked commit; if its last entry is not the locked commit, either the lock
-        # was hand-edited inconsistently or a later rebase was only half-applied.
-        if carried_shas and commit and carried_shas[-1] != commit:
+        # carried_commits and the commit/upstream_base pair say the same thing twice, so
+        # they have to agree: the carried list is exactly the path from upstream_base to
+        # the locked commit. That makes "carries nothing" and "is pinned at upstream" one
+        # state, not two, and it is the state every carried commit is working towards -
+        # once upstream merges a contribution the fork stops carrying it. Rejecting an
+        # empty list would mean the lock could not describe a tool whose contributions
+        # have all landed, and the only way to satisfy it would be to keep a merged
+        # commit listed as pending, which is exactly the drift this file prevents.
+        if carried_shas:
+            if commit and carried_shas[-1] != commit:
+                problems.append(
+                    f"tools.{tool_name}.carried_commits does not end at the locked commit "
+                    f"({carried_shas[-1]!r} != {commit!r})"
+                )
+            if commit and base and commit == base:
+                problems.append(
+                    f"tools.{tool_name}.commit equals upstream_base, so the fork carries "
+                    f"nothing, yet carried_commits lists {len(carried_shas)}"
+                )
+        elif commit and base and commit != base:
             problems.append(
-                f"tools.{tool_name}.carried_commits does not end at the locked commit "
-                f"({carried_shas[-1]!r} != {commit!r})"
+                f"tools.{tool_name}.carried_commits is empty, so the fork should be pinned "
+                f"at upstream_base {base}, but commit is {commit}"
             )
         # Every carried commit must say why the fork carries it. Normally that is the
         # upstream contribution it implements; a fork may also legitimately carry a change
