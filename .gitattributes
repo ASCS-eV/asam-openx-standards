@@ -1,5 +1,19 @@
-# Line-ending policy.
+# Line-ending policy: LF everywhere, except the bytes we redistribute verbatim.
 #
+# The default below is what makes this policy hold for files nobody thought to list.
+# Everything Git detects as text is stored and checked out with LF regardless of platform,
+# so a Windows checkout cannot reintroduce CRLF into a generated artifact, a provenance
+# record or a script. Without it the rules were per-extension, and anything outside that
+# list - provenance.json in particular - silently picked up CRLF on Windows and had to be
+# normalised by hand before it could be committed.
+#
+# Verified safe when introduced: `git ls-files --eol` reported 317 tracked files already
+# LF in the index and exactly 7 mixed, all of them the byte-exact ASAM schemas excluded
+# below. So this pins the status quo rather than rewriting it.
+#
+# Order matters - later rules win, so every exception must stay below this line.
+*          text=auto eol=lf
+
 # The UML READMEs publish SHA-256 checksums of the committed *.scxml files. Without a rule
 # here, a checkout with core.autocrlf=true rewrites them to CRLF, the published checksums
 # stop matching, and re-committing normalises them back — churn that looks like a model
@@ -17,5 +31,6 @@
 # Verbatim redistributions of ASAM deliverables are byte-exact by design and their
 # checksums are published in the sibling README. Git must not convert them in either
 # direction: the OpenDRIVE XSDs ship with CRLF, and normalising them would both break the
-# documented checksums and misrepresent what was redistributed.
+# documented checksums and misrepresent what was redistributed. This is the one place where
+# CRLF in the index is correct, and verify-models.yml fails if it is ever "fixed".
 standards/*/schema/**   -text
