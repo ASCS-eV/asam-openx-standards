@@ -73,6 +73,32 @@
     "rdflib": "7.6.0",
     "pyoxigraph": "0.5.9"
   },
+  "upstream_contributions": {
+    "_comment": "Forks this organisation maintains whose work the pipeline does NOT build from source, recorded here so the contributions stay trackable from the lock itself rather than only from GitHub. `tools` above is the opposite case: a fork is listed there because the pipeline needs what it carries and therefore builds it. A fork listed *here* is deliberately not built - the pipeline installs released wheels, and a fork commit is not something a third party can `pip install`, which is exactly the reproducibility contract `serialization` exists to keep. The entries are still pinned by commit so the claim 'this is what we are carrying' is checkable. When upstream merges one of these and cuts a release, bump the matching `serialization` entry and regenerate both standards in the same change.",
+    "rdflib": {
+      "fork": "ASCS-eV/rdflib",
+      "branch": "feat/envited-x-pipeline",
+      "commit": "342175bf34132b8e26a2db150b250cefd8fc020e",
+      "upstream": "RDFLib/rdflib",
+      "upstream_branch": "main",
+      "upstream_base": "a090f3f98f7c7c1ba21ec84a9acb001e88313caa",
+      "consumed": false,
+      "consumed_as": "serialization.rdflib, as the released PyPI wheel",
+      "_why_not_consumed": "rdflib performs the final serialization of every generated artifact, so building it from a fork would make the output bytes depend on a commit nobody else can install. The merged PR 3504 is the precedent for how these arrive instead: it shipped in a release, and the pin moved to that release. diffable-rdf works around the defects in the meantime rather than requiring a patched rdflib - confirmed at its v0.4.0 tag, which declares only floors (rdflib>=6.3.2, pyoxigraph>=0.5.4) and has no git dependency.",
+      "carried_commits": [
+        {
+          "commit": "81fe1fbe839e46929182251833ab1f42d5c4a266",
+          "subject": "fix: JSON-LD collection syntax can silently duplicate shared RDF lists",
+          "upstream_pr": "https://github.com/RDFLib/rdflib/pull/3543"
+        },
+        {
+          "commit": "342175bf34132b8e26a2db150b250cefd8fc020e",
+          "subject": "feat: deterministic N-Triples serialization via an opt-in canon parameter",
+          "upstream_pr": "https://github.com/RDFLib/rdflib/pull/3546"
+        }
+      ]
+    }
+  },
   "build_environment": {
     "jdk_version": "21.0.12+8",
     "jdk_vendor": "Eclipse Adoptium (Temurin)",
