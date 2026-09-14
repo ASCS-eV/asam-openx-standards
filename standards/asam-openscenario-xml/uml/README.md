@@ -18,7 +18,7 @@ Redistributed under the ASAM Unrestricted Distribution Clause; see the repositor
 |---|---|
 | Standard | ASAM OpenSCENARIO® XML |
 | Version | **V1.4.0** — matches the normative schema in [`../schema/`](../schema/) |
-| Origin | `OpenSCENARIO.qeax` (Enterprise Architect project) |
+| Origin | [`source/OpenSCENARIO.qeax`](source/README.md) (Enterprise Architect project, committed) |
 | Exported by | ShapeChange built from source at commit [`1a16d4af3336`](https://github.com/ShapeChange/ShapeChange/commit/1a16d4af333627059d12d271f588e903e6ecb172) (`next` branch, 2026-07-30), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true` |
 | Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.1.0-SNAPSHOT"` |
 | Classes | 343 |
