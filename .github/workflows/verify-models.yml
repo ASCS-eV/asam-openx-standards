@@ -78,6 +78,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # *.qeax is stored in Git LFS. Without this the checkout yields ~130-byte pointer
+          # files, the step below hashes the pointers, and the job passes without ever having
+          # looked at an ASAM deliverable.
+          lfs: true
 
       - name: Published schema SHA-256 checksums still match
         run: |
@@ -108,3 +113,32 @@ jobs:
             [ -f "$dir/README.md" ] || { echo "::error::$dir holds schemas but no README.md recording their provenance"; exit 1; }
             echo "ok: $dir/README.md present"
           done
+
+      # The Enterprise Architect projects are the root input of the entire pipeline: the SCXML
+      # models, and therefore the OWL, SHACL and generated XSD, all derive from these bytes.
+      # They are redistributed verbatim under the same clause as the schemas, so they get the
+      # same treatment - a published checksum that CI re-verifies.
+      - name: Committed EA projects still match their published checksums
+        run: |
+          set -euo pipefail
+          found=0
+          for readme in standards/*/uml/source/README.md; do
+            dir=$(dirname "$readme")
+            for artifact in "$dir"/*.qeax; do
+              # A pointer file means the LFS checkout above did not take effect. Hashing it
+              # would "pass" against nothing, so fail loudly instead.
+              if head -c 40 "$artifact" | grep -q 'git-lfs.github.com'; then
+                echo "::error file=$artifact::is a Git LFS pointer, not the model. The checkout needs lfs: true."
+                exit 1
+              fi
+              actual=$(sha256sum "$artifact" | cut -c1-16)
+              if ! grep -qF "$actual" "$readme"; then
+                echo "::error file=$readme::$(basename "$artifact") has SHA-256 ${actual}… which is not documented. Restore the bytes ASAM published rather than updating this checksum."
+                exit 1
+              fi
+              echo "ok: $(basename "$artifact") -> ${actual}… documented"
+              found=$((found + 1))
+            done
+          done
+          [ "$found" -gt 0 ] || { echo "::error::no EA projects found to check"; exit 1; }
+          echo "checked $found EA project(s)"

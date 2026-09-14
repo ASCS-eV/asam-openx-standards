@@ -13,24 +13,31 @@
 #
 # Order matters - later rules win, so every exception must stay below this line.
 *          text=auto eol=lf
-
 # The UML READMEs publish SHA-256 checksums of the committed *.scxml files. Without a rule
 # here, a checkout with core.autocrlf=true rewrites them to CRLF, the published checksums
 # stop matching, and re-committing normalises them back — churn that looks like a model
 # change but is not one.
 *.scxml    text eol=lf
-
 # Generated RDF is written in canonical form by scripts/generate_semantic_artifacts.py and
 # its checksums are recorded in provenance.json; same reasoning as above.
 *.ttl      text eol=lf
-
 # The ModelExport zip preserves the byte-exact Windows output of ShapeChange. It must never
 # be touched by line-ending normalisation.
 *.zip      binary
-
 # Verbatim redistributions of ASAM deliverables are byte-exact by design and their
 # checksums are published in the sibling README. Git must not convert them in either
 # direction: the OpenDRIVE XSDs ship with CRLF, and normalising them would both break the
 # documented checksums and misrepresent what was redistributed. This is the one place where
 # CRLF in the index is correct, and verify-models.yml fails if it is ever "fixed".
 standards/*/schema/**   -text
+# ASAM's Enterprise Architect projects, redistributed verbatim under the same Unrestricted
+# Distribution Clause as the schemas above. They are opaque SQLite databases, so Git cannot
+# delta-compress them and every future ASAM revision would add its full compressed size to
+# history permanently; LFS keeps that out of the pack. `-text` is what stops any line-ending
+# conversion from corrupting the database.
+#
+# Note for consumers: a clone without Git LFS yields a ~130-byte pointer instead of the
+# model. `git lfs pull` fetches the real bytes; the SHA-256 in each uml/source/README.md
+# identifies them, so a pointer file is detectable. CI must check out with `lfs: true` or
+# the checksum job hashes pointers and passes without checking anything.
+*.qeax     filter=lfs diff=lfs merge=lfs -text
