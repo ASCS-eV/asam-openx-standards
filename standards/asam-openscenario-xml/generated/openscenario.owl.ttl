@@ -4783,12 +4783,12 @@ osc:OpenScenario a owl:Class ;
     rdfs:label "OpenScenario"@en ;
     rdfs:comment "Top level container for scenarios or catalogs."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:OpenScenarioCategory ;
-            owl:onProperty osc:OpenScenario.openScenarioCategory ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:FileHeader ;
             owl:onProperty osc:OpenScenario.fileHeader ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:OpenScenarioCategory ;
+            owl:onProperty osc:OpenScenario.openScenarioCategory ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Top level container for scenarios or catalogs."@en .
 
@@ -5534,13 +5534,13 @@ osc:Private a owl:Class ;
     rdfs:label "Private"@en ;
     rdfs:comment "Container for private actions assigned to one specific entity and used in the initialization phase of a scenario."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:Entity ;
-            owl:onProperty osc:Private.entityRef ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:PrivateAction ;
-            owl:onProperty osc:Private.privateActions ] ;
+            owl:onProperty osc:Private.privateActions ],
+        [ a owl:Restriction ;
+            owl:onClass osc:Entity ;
+            owl:onProperty osc:Private.entityRef ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Container for private actions assigned to one specific entity and used in the initialization phase of a scenario."@en .
 
 osc:ProbabilityDistributionSet a owl:Class ;
@@ -5557,11 +5557,11 @@ osc:Property a owl:Class ;
     rdfs:comment "Definition of a property by name and value."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:Property.name ;
+            owl:onProperty osc:Property.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:Property.value ;
+            owl:onProperty osc:Property.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Definition of a property by name and value."@en .
 
@@ -5571,11 +5571,11 @@ osc:RelativeLaneRange a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:int ;
-            owl:onProperty osc:RelativeLaneRange.from ],
+            owl:onProperty osc:RelativeLaneRange.to ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:int ;
-            owl:onProperty osc:RelativeLaneRange.to ] ;
+            owl:onProperty osc:RelativeLaneRange.from ] ;
     skos:definition "A range of lanes to the left and/or right of a referenced entity. The properties \"from\" and \"to\" define the signed numbers of lanes that are offset the referenced entity's current lane. (0 is the entity's current lane, positive is left of the entity, negative is right of the entity). Set \"from\" and \"to\" to the same number in order to check clearance for only one lane."@en .
 
 osc:RouteCatalogLocation a owl:Class ;
@@ -5857,13 +5857,13 @@ osc:AbsoluteSpeed a owl:Class ;
     rdfs:label "AbsoluteSpeed"@en ;
     rdfs:comment "Absolute speed definition."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:AbsoluteSpeed.value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:SteadyState ;
-            owl:onProperty osc:AbsoluteSpeed.steadyState ] ;
+            owl:onProperty osc:AbsoluteSpeed.steadyState ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:AbsoluteSpeed.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Absolute speed definition."@en .
 
 osc:AbsoluteTargetLane a owl:Class ;
@@ -5969,12 +5969,12 @@ osc:ByEntityCondition a owl:Class ;
     rdfs:label "ByEntityCondition"@en ;
     rdfs:comment "Conditions referring an entity need to know which entity shall trigger the condition. TriggeringEntities is a collection of entities whose states are used to verify the given condition. An additional attribute needs to specify if one of the entities is enough for the condition to become true, or if all of them are required."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:TriggeringEntities ;
-            owl:onProperty osc:ByEntityCondition.triggeringEntities ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:EntityCondition ;
             owl:onProperty osc:ByEntityCondition.entityCondition ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:TriggeringEntities ;
+            owl:onProperty osc:ByEntityCondition.triggeringEntities ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Conditions referring an entity need to know which entity shall trigger the condition. TriggeringEntities is a collection of entities whose states are used to verify the given condition. An additional attribute needs to specify if one of the entities is enough for the condition to become true, or if all of them are required."@en .
 
@@ -6021,11 +6021,11 @@ osc:CustomCommandAction a owl:Class ;
     rdfs:comment "Used to activate a custom action native to the specific user environment. By using this action, the executability of the scenario will be dependent on a specific user environment."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:CustomCommandAction.content ;
+            owl:onProperty osc:CustomCommandAction.type ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:CustomCommandAction.type ;
+            owl:onProperty osc:CustomCommandAction.content ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Used to activate a custom action native to the specific user environment. By using this action, the executability of the scenario will be dependent on a specific user environment."@en .
 
@@ -6033,12 +6033,12 @@ osc:DeterministicSingleParameterDistribution a owl:Class ;
     rdfs:label "DeterministicSingleParameterDistribution"@en ;
     rdfs:comment "Container for a deterministic distribution which is applied to a single parameter."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:DeterministicSingleParameterDistribution.parameterName ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:DeterministicSingleParameterDistributionType ;
             owl:onProperty osc:DeterministicSingleParameterDistribution.deterministicSingleParameterDistributionType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:DeterministicSingleParameterDistribution.parameterName ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Container for a deterministic distribution which is applied to a single parameter."@en .
 
@@ -6080,12 +6080,12 @@ osc:DistributionRange a owl:Class ;
     rdfs:label "DistributionRange"@en ;
     rdfs:comment "A range of values used for a deterministic distribution. The range starts with lower limit, Each additional value is defined by adding the step value to the previous value until the value is greater than upper limit. Upper limit can be part of the range."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:DistributionRange.stepWidth ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:Range ;
             owl:onProperty osc:DistributionRange.range ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:DistributionRange.stepWidth ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "A range of values used for a deterministic distribution. The range starts with lower limit, Each additional value is defined by adding the step value to the previous value until the value is greater than upper limit. Upper limit can be part of the range."@en .
 
@@ -6093,13 +6093,13 @@ osc:DomeImage a owl:Class ;
     rdfs:label "DomeImage"@en ;
     rdfs:comment "Image reference to represent the sky and optionally the lighting if the image also contains lighting information."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:File ;
-            owl:onProperty osc:DomeImage.domeFile ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:DomeImage.azimuthOffset ] ;
+            owl:onProperty osc:DomeImage.azimuthOffset ],
+        [ a owl:Restriction ;
+            owl:onClass osc:File ;
+            owl:onProperty osc:DomeImage.domeFile ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Image reference to represent the sky and optionally the lighting if the image also contains lighting information."@en .
 
 osc:DynamicsShape a rdfs:Datatype ;
@@ -6168,13 +6168,13 @@ osc:Fog a owl:Class ;
     rdfs:label "Fog"@en ;
     rdfs:comment "Defines fog at simulation runtime."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Fog.visualRange ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:BoundingBox ;
-            owl:onProperty osc:Fog.boundingBox ] ;
+            owl:onProperty osc:Fog.boundingBox ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Fog.visualRange ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines fog at simulation runtime."@en .
 
 osc:Gear a owl:Class ;
@@ -6327,13 +6327,13 @@ osc:PoissonDistribution a owl:Class ;
     rdfs:label "PoissonDistribution"@en ;
     rdfs:comment "Poisson distribution which can be applied to a single parameter."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Range ;
-            owl:onProperty osc:PoissonDistribution.range ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:PoissonDistribution.expectedValue ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Range ;
+            owl:onProperty osc:PoissonDistribution.range ] ;
     skos:definition "Poisson distribution which can be applied to a single parameter."@en .
 
 osc:Polyline a owl:Class ;
@@ -6354,11 +6354,11 @@ osc:PositionInRoadCoordinates a owl:Class ;
     rdfs:comment "Position defined in terms of distance along  a route (pathS) and lateral offset from the route's reference line (t) at that point."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:PositionInRoadCoordinates.pathS ;
+            owl:onProperty osc:PositionInRoadCoordinates.t ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:PositionInRoadCoordinates.t ;
+            owl:onProperty osc:PositionInRoadCoordinates.pathS ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Position defined in terms of distance along  a route (pathS) and lateral offset from the route's reference line (t) at that point."@en .
 
@@ -6366,12 +6366,12 @@ osc:ProbabilityDistributionSetElement a owl:Class ;
     rdfs:label "ProbabilityDistributionSetElement"@en ;
     rdfs:comment "Indicates a value and probability in a stochastic distribution."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:ProbabilityDistributionSetElement.weight ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:ProbabilityDistributionSetElement.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:ProbabilityDistributionSetElement.weight ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Indicates a value and probability in a stochastic distribution."@en .
 
@@ -6379,12 +6379,12 @@ osc:ReachPositionCondition a owl:Class ;
     rdfs:label "ReachPositionCondition"@en ;
     rdfs:comment "Checks if a triggering entity/entities has reached a given position, within some user specified tolerance. "@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:ReachPositionCondition.tolerance ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:Position ;
             owl:onProperty osc:ReachPositionCondition.position ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:ReachPositionCondition.tolerance ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Checks if a triggering entity/entities has reached a given position, within some user specified tolerance."@en .
 
@@ -6398,12 +6398,12 @@ osc:RelativeTargetLaneOffset a owl:Class ;
     rdfs:label "RelativeTargetLaneOffset"@en ;
     rdfs:comment "Defines the relative lane offset from a triggering entity/entities to a reference entity as a target for a LaneOffsetTarget."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeTargetLaneOffset.value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:RelativeTargetLaneOffset.entityRef ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeTargetLaneOffset.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines the relative lane offset from a triggering entity/entities to a reference entity as a target for a LaneOffsetTarget."@en .
 
@@ -6517,12 +6517,12 @@ osc:SpeedAction a owl:Class ;
     rdfs:label "SpeedAction"@en ;
     rdfs:comment "This action describes the transition of an entity's speed to a target speed. SpeedActionDynamics specifies the transition with respects to time or distance combined with a shape."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:TransitionDynamics ;
-            owl:onProperty osc:SpeedAction.speedActionDynamics ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:SpeedActionTarget ;
             owl:onProperty osc:SpeedAction.speedActionTarget ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:TransitionDynamics ;
+            owl:onProperty osc:SpeedAction.speedActionDynamics ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "This action describes the transition of an entity's speed to a target speed. SpeedActionDynamics specifies the transition with respects to time or distance combined with a shape."@en .
 
@@ -6568,12 +6568,12 @@ osc:StochasticDistribution a owl:Class ;
     rdfs:label "StochasticDistribution"@en ;
     rdfs:comment "Container for a stochastic distribution which applies to a single parameter."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:StochasticDistributionType ;
-            owl:onProperty osc:StochasticDistribution.stochasticDistributionType ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:StochasticDistribution.parameterName ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:StochasticDistributionType ;
+            owl:onProperty osc:StochasticDistribution.stochasticDistributionType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Container for a stochastic distribution which applies to a single parameter."@en .
 
@@ -6607,12 +6607,12 @@ osc:TimeOfDayCondition a owl:Class ;
     rdfs:label "TimeOfDayCondition"@en ;
     rdfs:comment "The logical expression is considered true if the simulated time and date verifies the specified relation rule (bigger than, smaller than, or equal to) relatively to a given time and date value."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange osc:Rule ;
-            owl:onProperty osc:TimeOfDayCondition.rule ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:dateTime ;
             owl:onProperty osc:TimeOfDayCondition.dateTime ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:Rule ;
+            owl:onProperty osc:TimeOfDayCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "The logical expression is considered true if the simulated time and date verifies the specified relation rule (bigger than, smaller than, or equal to) relatively to a given time and date value."@en .
 
@@ -6658,13 +6658,13 @@ osc:TrafficArea a owl:Class ;
     rdfs:label "TrafficArea"@en ;
     rdfs:comment "Defines the area, where the traffic shall be spawned."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:RoadRange ;
-            owl:onProperty osc:TrafficArea.roadRange ],
-        [ a owl:Restriction ;
             owl:onClass osc:Polygon ;
             owl:onProperty osc:TrafficArea.polygon ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:RoadRange ;
+            owl:onProperty osc:TrafficArea.roadRange ] ;
     skos:definition "Defines the area, where the traffic shall be spawned."@en .
 
 osc:TrafficSignalAction a owl:Class ;
@@ -6691,11 +6691,11 @@ osc:TrafficSignalCondition a owl:Class ;
     rdfs:comment "Considered true if a referenced traffic signal (e.g. from an OpenDRIVE file) reaches a specific observable state."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:TrafficSignalCondition.name ;
+            owl:onProperty osc:TrafficSignalCondition.state ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:TrafficSignalCondition.state ;
+            owl:onProperty osc:TrafficSignalCondition.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Considered true if a referenced traffic signal (e.g. from an OpenDRIVE file) reaches a specific observable state."@en .
 
@@ -6716,12 +6716,12 @@ osc:Trailer a owl:Class ;
     rdfs:label "Trailer"@en ;
     rdfs:comment "Definition of a trailer to be towed. The included or referred ScenarioObject must include an EntityObject of type Vehicle. The Vehicle must have a trailerCoupler in order for the connection to be complete."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:ScenarioObject ;
-            owl:onProperty osc:Trailer.trailer ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:EntityRef ;
             owl:onProperty osc:Trailer.trailerRef ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:ScenarioObject ;
+            owl:onProperty osc:Trailer.trailer ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Definition of a trailer to be towed. The included or referred ScenarioObject must include an EntityObject of type Vehicle. The Vehicle must have a trailerCoupler in order for the connection to be complete."@en .
 
@@ -6742,13 +6742,13 @@ osc:TrailerCoupler a owl:Class ;
     rdfs:label "TrailerCoupler"@en ;
     rdfs:comment "Definition of the mounting point for connecting the trailer to a towing vehicle."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrailerCoupler.dz ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:TrailerCoupler.dx ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrailerCoupler.dz ] ;
     skos:definition "Definition of the mounting point for connecting the trailer to a towing vehicle."@en .
 
 osc:TrailerHitch a owl:Class ;
@@ -6872,11 +6872,11 @@ osc:Wind a owl:Class ;
     rdfs:comment "Defines wind properties."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Wind.direction ;
+            owl:onProperty osc:Wind.speed ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Wind.speed ;
+            owl:onProperty osc:Wind.direction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines wind properties."@en .
 
@@ -6884,12 +6884,12 @@ osc:AccelerationCondition a owl:Class ;
     rdfs:label "AccelerationCondition"@en ;
     rdfs:comment "Compares the entity's acceleration to a reference value. The logical operator used for comparison is defined by the rule attribute (less, greater, equal). If direction is used, only the projection to that direction is used in the comparison."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange osc:Rule ;
-            owl:onProperty osc:AccelerationCondition.rule ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:AccelerationCondition.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:Rule ;
+            owl:onProperty osc:AccelerationCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -6936,18 +6936,22 @@ osc:ClothoidSpline a owl:Class ;
             owl:onProperty osc:ClothoidSpline.segments ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Motion ;
-            owl:onProperty osc:ClothoidSpline.motionEnd ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:ClothoidSpline.timeEnd ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:ClothoidSpline.timeEnd ] ;
+            owl:onClass osc:Motion ;
+            owl:onProperty osc:ClothoidSpline.motionEnd ] ;
     skos:definition "A shape specification which consists of one or multiple concatenated clothoids (clothoid spline)."@en .
 
 osc:Color a owl:Class ;
     rdfs:label "Color"@en ;
     rdfs:comment "Color description with a semantic color value and an optional detailed value for visualization."@en ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange osc:ColorType ;
+            owl:onProperty osc:Color.colorType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:onClass osc:ColorRgb ;
@@ -6960,11 +6964,7 @@ osc:Color a owl:Class ;
                                     owl:onProperty osc:Color.colorRgb ] [ a owl:Restriction ;
                                     owl:onClass osc:ColorCmyk ;
                                     owl:onProperty osc:Color.colorCmyk ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ],
-        [ a owl:Restriction ;
-            owl:onDataRange osc:ColorType ;
-            owl:onProperty osc:Color.colorType ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ] ;
     skos:definition "Color description with a semantic color value and an optional detailed value for visualization."@en .
 
 osc:ColorRgb a owl:Class ;
@@ -6972,7 +6972,7 @@ osc:ColorRgb a owl:Class ;
     rdfs:comment "Color description in RGB schema."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:ColorRgb.blue ;
+            owl:onProperty osc:ColorRgb.green ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6980,7 +6980,7 @@ osc:ColorRgb a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:ColorRgb.green ;
+            owl:onProperty osc:ColorRgb.blue ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Color description in RGB schema."@en .
 
@@ -6992,29 +6992,29 @@ osc:ControlPoint a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:ControlPoint.time ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:ControlPoint.weight ],
-        [ a owl:Restriction ;
             owl:onClass osc:Position ;
             owl:onProperty osc:ControlPoint.position ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:ControlPoint.weight ] ;
     skos:definition "Specification of one control point of a NURBS trajectory."@en .
 
 osc:ControllerAction a owl:Class ;
     rdfs:label "ControllerAction"@en ;
     rdfs:comment "Action that either assigns a new controller, overrides an existing one or activates a controller."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:ActivateControllerAction ;
-            owl:onProperty osc:ControllerAction.activateControllerAction ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:AssignControllerAction ;
             owl:onProperty osc:ControllerAction.assignControllerAction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:OverrideControllerValueAction ;
             owl:onProperty osc:ControllerAction.overrideControllerValueAction ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:ActivateControllerAction ;
+            owl:onProperty osc:ControllerAction.activateControllerAction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Action that either assigns a new controller, overrides an existing one or activates a controller."@en .
 
@@ -7077,15 +7077,15 @@ osc:Dimensions a owl:Class ;
     rdfs:comment "Dimensions for a three dimensional box. Width, length and height are the absolute extensions in the (y,x,z) coordinate system of the entity's local coordinate system."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Dimensions.length ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty osc:Dimensions.width ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Dimensions.height ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Dimensions.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Dimensions for a three dimensional box. Width, length and height are the absolute extensions in the (y,x,z) coordinate system of the entity's local coordinate system."@en .
 
@@ -7206,12 +7206,12 @@ osc:LaneOffsetAction a owl:Class ;
     rdfs:label "LaneOffsetAction"@en ;
     rdfs:comment "This action describes the transition to a defined lane offset of an entity. The lane offset will be kept if the action is set as continuous. The lane offset may be given in absolute or relative terms. The dynamics are specified by providing the maxLateralAcc used to keep the lane offset. Lane offset keeping starts immediately at start of the action and ends after the given duration. Different shapes can be used for the initial transition. Step defines an immediate transition, i.e. a jump from the current lane offset to the target lane offset. Usage of time and distance does not make any sense in combination with step; linear will result in a linear movement between the start and target lane offset; cubic and sinusoidal will result in smooth transitions (basically s-shaped) between start and end state. A smooth transition is only given with cubic and sinusoidal shape."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:LaneOffsetAction.continuous ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:LaneOffsetTarget ;
             owl:onProperty osc:LaneOffsetAction.laneOffsetTarget ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:LaneOffsetAction.continuous ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:LaneOffsetActionDynamics ;
@@ -7254,33 +7254,33 @@ osc:LightStateAction a owl:Class ;
     rdfs:label "LightStateAction"@en ;
     rdfs:comment "This action describes the transition of a current light state to the target light state."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:LightStateAction.transitionTime ],
-        [ a owl:Restriction ;
             owl:onClass osc:LightType ;
             owl:onProperty osc:LightStateAction.lightType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:LightState ;
             owl:onProperty osc:LightStateAction.lightState ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:LightStateAction.transitionTime ] ;
     skos:definition "This action describes the transition of a current light state to the target light state."@en .
 
 osc:LogNormalDistribution a owl:Class ;
     rdfs:label "LogNormalDistribution"@en ;
     rdfs:comment "Defines a log normal distribution."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:LogNormalDistribution.expectedValue ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Range ;
             owl:onProperty osc:LogNormalDistribution.range ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:LogNormalDistribution.variance ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:LogNormalDistribution.expectedValue ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines a log normal distribution."@en .
 
@@ -7319,13 +7319,13 @@ osc:Maneuver a owl:Class ;
     rdfs:label "Maneuver"@en ;
     rdfs:comment "A container for Events. Can be stored in a maneuver catalog. Allows declaration of parameters within its scope."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Event ;
-            owl:onProperty osc:Maneuver.events ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Maneuver.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Event ;
+            owl:onProperty osc:Maneuver.events ] ;
     skos:definition "A container for Events. Can be stored in a maneuver catalog. Allows declaration of parameters within its scope."@en .
 
 osc:MonitorDeclaration a owl:Class ;
@@ -7345,16 +7345,16 @@ osc:NormalDistribution a owl:Class ;
     rdfs:label "NormalDistribution"@en ;
     rdfs:comment "Normal distribution which can be applied to a single parameter."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:NormalDistribution.variance ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Range ;
             owl:onProperty osc:NormalDistribution.range ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:NormalDistribution.expectedValue ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:NormalDistribution.variance ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Normal distribution which can be applied to a single parameter."@en .
 
@@ -7427,34 +7427,34 @@ osc:OverrideClutchAction a owl:Class ;
     rdfs:label "OverrideClutchAction"@en ;
     rdfs:comment "Defines the state of the clutch of a vehicle, when overriding a clutch value in a ControllerAction."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:OverrideClutchAction.maxRate ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:OverrideClutchAction.active ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:OverrideClutchAction.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:OverrideClutchAction.active ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:OverrideClutchAction.maxRate ] ;
     skos:definition "Defines the state of the clutch of a vehicle, when overriding a clutch value in a ControllerAction."@en .
 
 osc:OverrideGearAction a owl:Class ;
     rdfs:label "OverrideGearAction"@en ;
     rdfs:comment "Defines the state of the gear of a vehicle, when overriding a gear value in a ControllerAction."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Gear ;
-            owl:onProperty osc:OverrideGearAction.gear ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty osc:OverrideGearAction.active ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:OverrideGearAction.number ] ;
+            owl:onProperty osc:OverrideGearAction.number ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Gear ;
+            owl:onProperty osc:OverrideGearAction.gear ] ;
     skos:definition "Defines the state of the gear of a vehicle, when overriding a gear value in a ControllerAction."@en .
 
 osc:OverrideParkingBrakeAction a owl:Class ;
@@ -7465,13 +7465,13 @@ osc:OverrideParkingBrakeAction a owl:Class ;
             owl:onClass osc:BrakeInput ;
             owl:onProperty osc:OverrideParkingBrakeAction.brakeInput ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:OverrideParkingBrakeAction.active ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:OverrideParkingBrakeAction.value ] ;
+            owl:onProperty osc:OverrideParkingBrakeAction.value ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:OverrideParkingBrakeAction.active ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines the state of the parking brake of a vehicle, when overriding a parking brake value in a ControllerAction."@en .
 
 osc:OverrideThrottleAction a owl:Class ;
@@ -7539,16 +7539,16 @@ osc:ParameterCondition a owl:Class ;
     rdfs:label "ParameterCondition"@en ;
     rdfs:comment "Compares a named parameter's value to a reference value. The logical operator used for comparison is defined by the rule attribute Less and greater operator will only be supported if the value given as string can unambiguously be converted into a scalar value (e.g. value=5, value=16.667)."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:ParameterDeclaration ;
-            owl:onProperty osc:ParameterCondition.parameterRef ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange osc:Rule ;
             owl:onProperty osc:ParameterCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:ParameterCondition.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:ParameterDeclaration ;
+            owl:onProperty osc:ParameterCondition.parameterRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Compares a named parameter's value to a reference value. The logical operator used for comparison is defined by the rule attribute Less and greater operator will only be supported if the value given as string can unambiguously be converted into a scalar value (e.g. value=5, value=16.667)."@en .
 
@@ -7569,17 +7569,17 @@ osc:PositionInLaneCoordinates a owl:Class ;
     rdfs:label "PositionInLaneCoordinates"@en ;
     rdfs:comment "Defines a coordinate along a lane with a given s coordinate and lane ID."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:PositionInLaneCoordinates.laneOffset ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:PositionInLaneCoordinates.pathS ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:PositionInLaneCoordinates.laneId ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:PositionInLaneCoordinates.laneOffset ] ;
     skos:definition "Defines a coordinate along a lane with a given s coordinate and lane ID."@en .
 
 osc:Precipitation a owl:Class ;
@@ -7590,13 +7590,13 @@ osc:Precipitation a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Precipitation.precipitationIntensity ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:PrecipitationType ;
-            owl:onProperty osc:Precipitation.precipitationType ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Precipitation.intensity ] ;
+            owl:onProperty osc:Precipitation.intensity ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:PrecipitationType ;
+            owl:onProperty osc:Precipitation.precipitationType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines a precipitation by type and value of a weather."@en .
 
 osc:RelativeSpeedToMaster a owl:Class ;
@@ -7649,13 +7649,13 @@ osc:RoadCondition a owl:Class ;
     rdfs:label "RoadCondition"@en ;
     rdfs:comment "Definition of the road friction scale factor. Can be augmented with the addition of optional road properties."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:Wetness ;
-            owl:onProperty osc:RoadCondition.wetness ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:RoadCondition.frictionScaleFactor ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:Wetness ;
+            owl:onProperty osc:RoadCondition.wetness ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Properties ;
@@ -7666,13 +7666,13 @@ osc:RoadCursor a owl:Class ;
     rdfs:label "RoadCursor"@en ;
     rdfs:comment "Defines a cross-section across lanes on a road with respect to the road reference line."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RoadCursor.s ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:RoadCursor.roadId ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RoadCursor.s ] ;
     skos:definition "Defines a cross-section across lanes on a road with respect to the road reference line."@en .
 
 osc:RoutePosition a owl:Class ;
@@ -7725,12 +7725,12 @@ osc:SpeedCondition a owl:Class ;
             owl:onDataRange osc:DirectionalDimension ;
             owl:onProperty osc:SpeedCondition.direction ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:Rule ;
-            owl:onProperty osc:SpeedCondition.rule ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:SpeedCondition.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:Rule ;
+            owl:onProperty osc:SpeedCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Compares a triggering entity's/entities' speed to a target speed. The logical operator for the comparison is given by the rule attribute. If direction is used, only the projection to that direction is used in the comparison."@en .
 
@@ -7742,13 +7742,13 @@ osc:Stochastic a owl:Class ;
             owl:onProperty osc:Stochastic.numberOfTestRuns ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:StochasticDistribution ;
-            owl:onProperty osc:Stochastic.stochasticDistributions ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Stochastic.randomSeed ] ;
+            owl:onProperty osc:Stochastic.randomSeed ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:StochasticDistribution ;
+            owl:onProperty osc:Stochastic.stochasticDistributions ] ;
     skos:definition "Top level container for all stochastic distribution elements."@en .
 
 osc:Storyboard a owl:Class ;
@@ -7768,16 +7768,16 @@ osc:StoryboardElementStateCondition a owl:Class ;
     rdfs:label "StoryboardElementStateCondition"@en ;
     rdfs:comment "Considered true if a referenced storyboard element has reached a given runtime state (standbyState, runningState, completeState) or if the referenced storyboard element undergoes a specific transition (startTransition, stopTransition, endTransition, skipTransition) at a discrete time."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass osc:StoryboardElement ;
+            owl:onProperty osc:StoryboardElementStateCondition.storyboardElementRef ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange osc:StoryboardElementType ;
             owl:onProperty osc:StoryboardElementStateCondition.storyboardElementType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange osc:StoryboardElementState ;
             owl:onProperty osc:StoryboardElementStateCondition.state ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass osc:StoryboardElement ;
-            owl:onProperty osc:StoryboardElementStateCondition.storyboardElementRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Considered true if a referenced storyboard element has reached a given runtime state (standbyState, runningState, completeState) or if the referenced storyboard element undergoes a specific transition (startTransition, stopTransition, endTransition, skipTransition) at a discrete time."@en .
 
@@ -7785,12 +7785,12 @@ osc:Timing a owl:Class ;
     rdfs:label "Timing"@en ;
     rdfs:comment "Adjust the timing within time references by scale and offset."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Timing.offset ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange osc:ReferenceContext ;
             owl:onProperty osc:Timing.domainAbsoluteRelative ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Timing.offset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -7854,16 +7854,16 @@ osc:UserDefinedValueCondition a owl:Class ;
     rdfs:comment """This condition acts as a wrapper for external custom conditions which are implemented in the simulation user software. It can compare e.g. complex types, which are not covered by the primitive types of OpenSCENARIO (boolean, int, double...). This condition is considered true if the given external value verifies the specified relation rule (<, <=, ==, >=, >) relatively to the provided reference value.\r
 The external value can only be set from outside the scenario. Therefore this condition creates an interface from the scenario to the simulator or other components (e.g. test software, test case, system under test or simulation models)."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange osc:Rule ;
+            owl:onProperty osc:UserDefinedValueCondition.rule ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:UserDefinedValueCondition.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:UserDefinedValueCondition.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange osc:Rule ;
-            owl:onProperty osc:UserDefinedValueCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition """This condition acts as a wrapper for external custom conditions which are implemented in the simulation user software. It can compare e.g. complex types, which are not covered by the primitive types of OpenSCENARIO (boolean, int, double...). This condition is considered true if the given external value verifies the specified relation rule (<, <=, ==, >=, >) relatively to the provided reference value.\r
 The external value can only be set from outside the scenario. Therefore this condition creates an interface from the scenario to the simulator or other components (e.g. test software, test case, system under test or simulation models)."""@en .
@@ -7921,16 +7921,16 @@ osc:Vertex a owl:Class ;
     rdfs:comment "Vertex of a polygonal chain (polyline) trajectory specification."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Vertex.time ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Motion ;
             owl:onProperty osc:Vertex.motion ],
         [ a owl:Restriction ;
             owl:onClass osc:Position ;
             owl:onProperty osc:Vertex.position ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Vertex.time ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Vertex of a polygonal chain (polyline) trajectory specification."@en .
 
 osc:Act a owl:Class ;
@@ -7943,15 +7943,15 @@ osc:Act a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Trigger ;
-            owl:onProperty osc:Act.stopTrigger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Trigger ;
             owl:onProperty osc:Act.startTrigger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Act.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Trigger ;
+            owl:onProperty osc:Act.stopTrigger ] ;
     skos:definition "A container for maneuver groups. An Act can be only executed once, whereby the included maneuver groups can be executed several times depending on the maximum execution count within the maneuver groups. New executions are only allowed to start when all contained maneuver groups are either in the complete or standby state and the start trigger evaluates to true."@en .
 
 osc:Action a owl:Class ;
@@ -7995,21 +7995,21 @@ osc:AngleCondition a owl:Class ;
 \r
 The angle can be measured in the global world coordinate system or in s-t coordinates like road, lane or trajectory coordinates. In case of s-t coordinates, the orientation is measured at the local s-coordinate of the triggering entity."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange osc:AngleType ;
-            owl:onProperty osc:AngleCondition.angleType ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:AngleCondition.angle ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:CoordinateSystem ;
-            owl:onProperty osc:AngleCondition.coordinateSystem ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:AngleCondition.angleTolerance ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:AngleType ;
+            owl:onProperty osc:AngleCondition.angleType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:CoordinateSystem ;
+            owl:onProperty osc:AngleCondition.coordinateSystem ] ;
     skos:definition """Checks if a triggering entity has reached a given angle in a specific angular coordinate, within some user-specified angle tolerance.\r
 \r
 The angle can be measured in the global world coordinate system or in s-t coordinates like road, lane or trajectory coordinates. In case of s-t coordinates, the orientation is measured at the local s-coordinate of the triggering entity."""@en .
@@ -8023,16 +8023,16 @@ osc:AnimationAction a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:AnimationState ;
-            owl:onProperty osc:AnimationAction.animationState ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:AnimationAction.animationDuration ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty osc:AnimationAction.loop ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:AnimationAction.animationDuration ] ;
+            owl:onClass osc:AnimationState ;
+            owl:onProperty osc:AnimationAction.animationState ] ;
     skos:definition "This action describes the transition of a current component state to the target component state or more complex animations like pedestrian motions and gestures as well as animations with a referenced file."@en .
 
 osc:AnimationType a owl:Class ;
@@ -8119,11 +8119,7 @@ osc:ColorCmyk a owl:Class ;
     rdfs:comment "Color description in CMYK schema."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:ColorCmyk.cyan ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:ColorCmyk.magenta ;
+            owl:onProperty osc:ColorCmyk.yellow ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -8131,7 +8127,11 @@ osc:ColorCmyk a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:ColorCmyk.yellow ;
+            owl:onProperty osc:ColorCmyk.magenta ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:ColorCmyk.cyan ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Color description in CMYK schema."@en .
 
@@ -8155,17 +8155,17 @@ osc:License a owl:Class ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:License.resource ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:License.spdxId ],
+            owl:onProperty osc:License.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:License.text ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:License.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty osc:License.spdxId ] ;
     skos:definition "Licensing information about the OpenSCENARIO file."@en .
 
 osc:OverrideSteeringWheelAction a owl:Class ;
@@ -8174,11 +8174,7 @@ osc:OverrideSteeringWheelAction a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:OverrideSteeringWheelAction.maxTorque ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:OverrideSteeringWheelAction.active ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty osc:OverrideSteeringWheelAction.maxRate ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:OverrideSteeringWheelAction.value ;
@@ -8186,7 +8182,11 @@ osc:OverrideSteeringWheelAction a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:OverrideSteeringWheelAction.maxRate ] ;
+            owl:onProperty osc:OverrideSteeringWheelAction.maxTorque ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:OverrideSteeringWheelAction.active ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines the state of the steering wheel of a vehicle, when overriding a steering wheel angle in a ControllerAction."@en .
 
 osc:RelativeRoadPosition a owl:Class ;
@@ -8197,21 +8197,21 @@ The target position may be either on the same road segment (defined by roadId) w
 \r
 The ds- and dt-coordinates should be specified so that the target position is within a road defined by roadId taken from the respective road network definition file (external to the ASAM OpenSCENARIO). If the target position would be outside the road boundaries, the z-coordinate of the position is undefined."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Orientation ;
+            owl:onProperty osc:RelativeRoadPosition.orientation ],
+        [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:RelativeRoadPosition.entityRef ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeRoadPosition.ds ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:RelativeRoadPosition.dt ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Orientation ;
-            owl:onProperty osc:RelativeRoadPosition.orientation ] ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeRoadPosition.ds ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition """Position defined in terms of the relative distance (ds) along the road's reference line and the relative lateral offset (dt) to the road's reference line which are derived from the position of the reference entity.\r
 \r
 The target position may be either on the same road segment (defined by roadId) where the reference entity is positioned or on a connecting road. In the latter case, the ds-coordinate is calculated along the road reference line of the connecting road. It is assumed that the reference line of the road of the reference entity continues seamlessly on the connecting road (even if its shape changes). It is assumed that the target position relates to the routing of the reference entity. Otherwise, the calculation of the target position cannot be interpreted within the OpenSCENARIO standard.\r
@@ -8222,6 +8222,10 @@ osc:RelativeSpeedCondition a owl:Class ;
     rdfs:label "RelativeSpeedCondition"@en ;
     rdfs:comment "The current relative speed of a triggering entity/entities to a reference entity is compared to a given value. The logical operator used for the evaluation is defined by the rule attribute. If direction is used, only the projection to that direction is used in the comparison, with the triggering entity/entities as the reference."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeSpeedCondition.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange osc:Rule ;
             owl:onProperty osc:RelativeSpeedCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -8229,10 +8233,6 @@ osc:RelativeSpeedCondition a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:DirectionalDimension ;
             owl:onProperty osc:RelativeSpeedCondition.direction ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeSpeedCondition.value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:RelativeSpeedCondition.entityRef ;
@@ -8243,10 +8243,6 @@ osc:RelativeTargetSpeed a owl:Class ;
     rdfs:label "RelativeTargetSpeed"@en ;
     rdfs:comment "Defines a target speed relative to a reference entity's speed."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:RelativeTargetSpeed.continuous ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange osc:SpeedTargetValueType ;
             owl:onProperty osc:RelativeTargetSpeed.speedTargetValueType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -8257,6 +8253,10 @@ osc:RelativeTargetSpeed a owl:Class ;
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:RelativeTargetSpeed.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:RelativeTargetSpeed.continuous ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines a target speed relative to a reference entity's speed."@en .
 
@@ -8266,7 +8266,7 @@ osc:RoadNetwork a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:File ;
-            owl:onProperty osc:RoadNetwork.logicFile ],
+            owl:onProperty osc:RoadNetwork.sceneGraphFile ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:UsedArea ;
@@ -8274,7 +8274,7 @@ osc:RoadNetwork a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:File ;
-            owl:onProperty osc:RoadNetwork.sceneGraphFile ] ;
+            owl:onProperty osc:RoadNetwork.logicFile ] ;
     skos:definition "The road network which provides the base layer (and road-relative coordinate systems) for all scenario elements is defined as a reference to a road network file. This reference is optional; in case it is not specified, an infinite non-inclined plane on level z=0 shall be assumed as base layer. Additionally and optionally, a visual 3D model file can be referenced and any number of signals can be specified."@en .
 
 osc:RoadPosition a owl:Class ;
@@ -8283,21 +8283,21 @@ osc:RoadPosition a owl:Class ;
 \r
 The s- and t-coordinates should be specified so that the target position is within a road defined by roadId taken from the respective road network definition file (external to the ASAM OpenSCENARIO). If the target position would be outside the road boundaries, the z-coordinate of the position is undefined."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:RoadPosition.roadId ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RoadPosition.t ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:RoadPosition.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Orientation ;
-            owl:onProperty osc:RoadPosition.orientation ] ;
+            owl:onProperty osc:RoadPosition.orientation ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RoadPosition.t ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:RoadPosition.roadId ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition """Position defined in terms of the road segment (roadId), the distance (s) along the road's reference line, and the lateral offset (t) to the road's reference line at that point. Orientation is optional.\r
 \r
 The s- and t-coordinates should be specified so that the target position is within a road defined by roadId taken from the respective road network definition file (external to the ASAM OpenSCENARIO). If the target position would be outside the road boundaries, the z-coordinate of the position is undefined."""@en .
@@ -8314,12 +8314,12 @@ osc:ScenarioObject a owl:Class ;
     rdfs:label "ScenarioObject"@en ;
     rdfs:comment "A scenario object represents a runtime object that is created from an EntityObject (vehicle type, pedestrian type, miscellaneous object type and external object reference type) and Controllers. Miscellaneous objects and external object references must not have controllers."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:EntityObject ;
-            owl:onProperty osc:ScenarioObject.entityObject ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:ScenarioObject.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:EntityObject ;
+            owl:onProperty osc:ScenarioObject.entityObject ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "A scenario object represents a runtime object that is created from an EntityObject (vehicle type, pedestrian type, miscellaneous object type and external object reference type) and Controllers. Miscellaneous objects and external object references must not have controllers."@en .
 
@@ -8374,21 +8374,21 @@ osc:SpeedProfileAction a owl:Class ;
     rdfs:label "SpeedProfileAction"@en ;
     rdfs:comment "This action describes the change of speed in terms of a series of speed targets over time."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:DynamicConstraints ;
+            owl:onProperty osc:SpeedProfileAction.dynamicConstraints ],
+        [ a owl:Restriction ;
             owl:onDataRange osc:FollowingMode ;
             owl:onProperty osc:SpeedProfileAction.followingMode ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:DynamicConstraints ;
-            owl:onProperty osc:SpeedProfileAction.dynamicConstraints ],
+            owl:onClass osc:Entity ;
+            owl:onProperty osc:SpeedProfileAction.entityRef ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:SpeedProfileEntry ;
-            owl:onProperty osc:SpeedProfileAction.speedProfileEntry ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Entity ;
-            owl:onProperty osc:SpeedProfileAction.entityRef ] ;
+            owl:onProperty osc:SpeedProfileAction.speedProfileEntry ] ;
     skos:definition "This action describes the change of speed in terms of a series of speed targets over time."@en .
 
 osc:SteadyState a owl:Class ;
@@ -8414,17 +8414,17 @@ osc:Sun a owl:Class ;
     rdfs:label "Sun"@en ;
     rdfs:comment "Specification of sun properties."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Sun.illuminance ],
+            owl:onProperty osc:Sun.elevation ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Sun.intensity ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Sun.elevation ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty osc:Sun.illuminance ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Sun.azimuth ;
@@ -8435,20 +8435,20 @@ osc:TrafficAreaAction a owl:Class ;
     rdfs:label "TrafficAreaAction"@en ;
     rdfs:comment "Defines traffic in a specific area."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:unsignedInt ;
-            owl:onProperty osc:TrafficAreaAction.numberOfEntities ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass osc:TrafficArea ;
-            owl:onProperty osc:TrafficAreaAction.trafficArea ;
+            owl:onClass osc:TrafficDistribution ;
+            owl:onProperty osc:TrafficAreaAction.trafficDistribution ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty osc:TrafficAreaAction.continuous ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass osc:TrafficDistribution ;
-            owl:onProperty osc:TrafficAreaAction.trafficDistribution ;
+            owl:onDataRange xsd:unsignedInt ;
+            owl:onProperty osc:TrafficAreaAction.numberOfEntities ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:TrafficArea ;
+            owl:onProperty osc:TrafficAreaAction.trafficArea ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines traffic in a specific area."@en .
 
@@ -8456,42 +8456,42 @@ osc:TrafficSinkAction a owl:Class ;
     rdfs:label "TrafficSinkAction"@en ;
     rdfs:comment "Defines a sink of traffic at a specific position."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSinkAction.rate ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSinkAction.radius ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:Position ;
             owl:onProperty osc:TrafficSinkAction.position ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:TrafficDefinition ;
-            owl:onProperty osc:TrafficSinkAction.trafficDefinition ] ;
+            owl:onProperty osc:TrafficSinkAction.trafficDefinition ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrafficSinkAction.rate ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrafficSinkAction.radius ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines a sink of traffic at a specific position."@en .
 
 osc:TrajectoryPosition a owl:Class ;
     rdfs:label "TrajectoryPosition"@en ;
     rdfs:comment "Definition of a trajectory type in terms of shape and optional time domain."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrajectoryPosition.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass osc:TrajectoryRef ;
-            owl:onProperty osc:TrajectoryPosition.trajectoryRef ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Orientation ;
             owl:onProperty osc:TrajectoryPosition.orientation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrajectoryPosition.t ] ;
+            owl:onProperty osc:TrajectoryPosition.t ],
+        [ a owl:Restriction ;
+            owl:onClass osc:TrajectoryRef ;
+            owl:onProperty osc:TrajectoryPosition.trajectoryRef ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrajectoryPosition.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Definition of a trajectory type in terms of shape and optional time domain."@en .
 
 osc:TrajectoryRef a owl:Class ;
@@ -8530,20 +8530,20 @@ osc:VisibilityAction a owl:Class ;
     rdfs:label "VisibilityAction"@en ;
     rdfs:comment "Action that toggles (on or off) an entity's visibility attributes, with respect to sensors, other traffic or the graphics engine. The default for entities is that they are visible everywhere."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:SensorReferenceSet ;
-            owl:onProperty osc:VisibilityAction.sensorReferenceSet ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty osc:VisibilityAction.sensors ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:VisibilityAction.traffic ;
+            owl:onProperty osc:VisibilityAction.graphics ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:SensorReferenceSet ;
+            owl:onProperty osc:VisibilityAction.sensorReferenceSet ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:VisibilityAction.graphics ;
+            owl:onProperty osc:VisibilityAction.traffic ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Action that toggles (on or off) an entity's visibility attributes, with respect to sensors, other traffic or the graphics engine. The default for entities is that they are visible everywhere."@en .
 
@@ -8555,8 +8555,8 @@ osc:Condition a owl:Class ;
             owl:onProperty osc:Condition.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:ConditionEdge ;
-            owl:onProperty osc:Condition.conditionEdge ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Condition.delay ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
@@ -8573,8 +8573,8 @@ osc:Condition a owl:Class ;
                                     owl:onProperty osc:Condition.byValueCondition ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Condition.delay ;
+            owl:onDataRange osc:ConditionEdge ;
+            owl:onProperty osc:Condition.conditionEdge ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "A condition represents a set of logical expressions that evaluate the relationship of values provided by the user. These values may be entity states, scenario properties, scenario states or external signals. Conditions are the main components in triggers."@en .
 
@@ -8582,25 +8582,25 @@ osc:Event a owl:Class ;
     rdfs:label "Event"@en ;
     rdfs:comment "Container for Actions. Its priority settings determine how to interact with other events within the same scope (maneuver)."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Trigger ;
+            owl:onProperty osc:Event.startTrigger ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Action ;
             owl:onProperty osc:Event.actions ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:Event.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange osc:Priority ;
             owl:onProperty osc:Event.priority ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Trigger ;
-            owl:onProperty osc:Event.startTrigger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:unsignedInt ;
-            owl:onProperty osc:Event.maximumExecutionCount ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:Event.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty osc:Event.maximumExecutionCount ] ;
     skos:definition "Container for Actions. Its priority settings determine how to interact with other events within the same scope (maneuver)."@en .
 
 osc:GlobalAction.entityAction a owl:ObjectProperty ;
@@ -8642,13 +8642,13 @@ osc:LightState a owl:Class ;
     rdfs:label "LightState"@en ;
     rdfs:comment "Definition of the light state."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:LightState.flashingOffDuration ],
+            owl:onDataRange osc:LightMode ;
+            owl:onProperty osc:LightState.mode ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Color ;
-            owl:onProperty osc:LightState.color ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:LightState.luminousIntensity ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -8656,27 +8656,27 @@ osc:LightState a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:LightState.luminousIntensity ],
+            owl:onProperty osc:LightState.flashingOffDuration ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:LightMode ;
-            owl:onProperty osc:LightState.mode ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Color ;
+            owl:onProperty osc:LightState.color ] ;
     skos:definition "Definition of the light state."@en .
 
 osc:ManeuverGroup a owl:Class ;
     rdfs:label "ManeuverGroup"@en ;
     rdfs:comment "Grouping element connecting a set of actors to a set maneuvers. Multiple maneuver groups can run independently in parallel. Maneuvers can be defined or instantiated from a maneuver type in a catalog."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:ManeuverGroup.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onClass osc:Actors ;
             owl:onProperty osc:ManeuverGroup.actors ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:unsignedInt ;
             owl:onProperty osc:ManeuverGroup.maximumExecutionCount ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:ManeuverGroup.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Grouping element connecting a set of actors to a set maneuvers. Multiple maneuver groups can run independently in parallel. Maneuvers can be defined or instantiated from a maneuver type in a catalog."@en .
 
@@ -8685,11 +8685,7 @@ osc:Performance a owl:Class ;
     rdfs:comment "Container for Performance values of a vehicle."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Performance.maxSpeed ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Performance.maxDeceleration ;
+            owl:onProperty osc:Performance.maxAcceleration ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -8701,7 +8697,11 @@ osc:Performance a owl:Class ;
             owl:onProperty osc:Performance.maxAccelerationRate ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Performance.maxAcceleration ;
+            owl:onProperty osc:Performance.maxDeceleration ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Performance.maxSpeed ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Container for Performance values of a vehicle."@en .
 
@@ -8715,8 +8715,16 @@ Both angles must be measured in the same coordinate system, as specified by the 
 When the entity value is used, the angles are measured in the local coordinate system of the reference entity.\r
 Note that for the s-t coordinate systems the orientation is measured at the local s-coordinate of each entity."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:CoordinateSystem ;
+            owl:onProperty osc:RelativeAngleCondition.coordinateSystem ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:RelativeAngleCondition.angleTolerance ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:AngleType ;
+            owl:onProperty osc:RelativeAngleCondition.angleType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -8725,15 +8733,7 @@ Note that for the s-t coordinate systems the orientation is measured at the loca
         [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:RelativeAngleCondition.entityRef ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange osc:AngleType ;
-            owl:onProperty osc:RelativeAngleCondition.angleType ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:CoordinateSystem ;
-            owl:onProperty osc:RelativeAngleCondition.coordinateSystem ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition """Checks if the relative angle of the triggering entity, measured with respect to the reference entity, has reached a given value, within some user-specified angle tolerance.\r
 \r
 The relative angle is generally measured as angle of the triggering entity minus angle of the reference entity.\r
@@ -8746,21 +8746,21 @@ osc:RelativeObjectPosition a owl:Class ;
     rdfs:label "RelativeObjectPosition"@en ;
     rdfs:comment "Defines a position derived from coordinates (dx, dy and dz) relative to a reference entity. The coordinate system for the relative coordinates is the reference entity's coordinate system (taking the orientation of the entity into account)."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeObjectPosition.dx ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:RelativeObjectPosition.entityRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeObjectPosition.dz ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeObjectPosition.dx ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Orientation ;
             owl:onProperty osc:RelativeObjectPosition.orientation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeObjectPosition.dz ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:RelativeObjectPosition.dy ;
@@ -8779,13 +8779,13 @@ osc:RelativeWorldPosition a owl:Class ;
             owl:onProperty osc:RelativeWorldPosition.dy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeWorldPosition.dz ],
-        [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:RelativeWorldPosition.entityRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeWorldPosition.dz ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Orientation ;
@@ -8941,20 +8941,20 @@ osc:Environment a owl:Class ;
     rdfs:comment "Defines the environment conditions of a scenario, e.g. time of day, weather and road condition. If one of the conditions is missing it means that it doesn't change."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:TimeOfDay ;
-            owl:onProperty osc:Environment.timeOfDay ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Weather ;
             owl:onProperty osc:Environment.weather ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:RoadCondition ;
+            owl:onProperty osc:Environment.roadCondition ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Environment.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:RoadCondition ;
-            owl:onProperty osc:Environment.roadCondition ] ;
+            owl:onClass osc:TimeOfDay ;
+            owl:onProperty osc:Environment.timeOfDay ] ;
     skos:definition "Defines the environment conditions of a scenario, e.g. time of day, weather and road condition. If one of the conditions is missing it means that it doesn't change."@en .
 
 osc:FollowTrajectoryAction a owl:Class ;
@@ -8965,25 +8965,25 @@ osc:FollowTrajectoryAction a owl:Class ;
             owl:onClass osc:TrajectoryRef ;
             owl:onProperty osc:FollowTrajectoryAction.trajectoryRef ],
         [ a owl:Restriction ;
-            owl:onClass osc:TrajectoryFollowingMode ;
-            owl:onProperty osc:FollowTrajectoryAction.trajectoryFollowingMode ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass osc:TimeReference ;
-            owl:onProperty osc:FollowTrajectoryAction.timeReference ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Trajectory ;
+            owl:onProperty osc:FollowTrajectoryAction.trajectory ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:FollowTrajectoryAction.initialDistanceOffset ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Trajectory ;
-            owl:onProperty osc:FollowTrajectoryAction.trajectory ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:CatalogReference ;
-            owl:onProperty osc:FollowTrajectoryAction.catalogReference ] ;
+            owl:onProperty osc:FollowTrajectoryAction.catalogReference ],
+        [ a owl:Restriction ;
+            owl:onClass osc:TimeReference ;
+            owl:onProperty osc:FollowTrajectoryAction.timeReference ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:TrajectoryFollowingMode ;
+            owl:onProperty osc:FollowTrajectoryAction.trajectoryFollowingMode ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Controls an entity to follow a trajectory using vertices, timings (optionally) and a corresponding interpolation strategy. The trajectory can be instantiated from a catalog type, or defined within this declaration. Use trajectoryRef to define a trajectory."@en .
 
 osc:LaneLayerType a rdfs:Datatype ;
@@ -8998,24 +8998,24 @@ osc:LanePosition a owl:Class ;
 The s-coordinate and the offset should be specified so that the target position is within a road defined by roadId taken from the respective road network definition file (external to the ASAM OpenSCENARIO). If the target position would be outside the road boundaries, the z-coordinate of the position is undefined."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:LanePosition.offset ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Orientation ;
-            owl:onProperty osc:LanePosition.orientation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:LaneLayerType ;
             owl:onProperty osc:LanePosition.layer ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:LanePosition.roadId ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:LanePosition.offset ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:LanePosition.laneId ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:LanePosition.roadId ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Orientation ;
+            owl:onProperty osc:LanePosition.orientation ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:LanePosition.s ;
@@ -9029,28 +9029,28 @@ osc:OverrideControllerValueAction a owl:Class ;
 It is assumed that a respective user-defined Controller is assigned to the entity, defined in the "movement" domain, and activated."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:OverrideThrottleAction ;
-            owl:onProperty osc:OverrideControllerValueAction.throttle ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:OverrideSteeringWheelAction ;
-            owl:onProperty osc:OverrideControllerValueAction.steeringWheel ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:OverrideClutchAction ;
-            owl:onProperty osc:OverrideControllerValueAction.clutch ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:OverrideBrakeAction ;
-            owl:onProperty osc:OverrideControllerValueAction.brake ],
+            owl:onClass osc:OverrideParkingBrakeAction ;
+            owl:onProperty osc:OverrideControllerValueAction.parkingBrake ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:OverrideGearAction ;
             owl:onProperty osc:OverrideControllerValueAction.gear ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:OverrideParkingBrakeAction ;
-            owl:onProperty osc:OverrideControllerValueAction.parkingBrake ] ;
+            owl:onClass osc:OverrideThrottleAction ;
+            owl:onProperty osc:OverrideControllerValueAction.throttle ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:OverrideBrakeAction ;
+            owl:onProperty osc:OverrideControllerValueAction.brake ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:OverrideClutchAction ;
+            owl:onProperty osc:OverrideControllerValueAction.clutch ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:OverrideSteeringWheelAction ;
+            owl:onProperty osc:OverrideControllerValueAction.steeringWheel ] ;
     skos:definition """Overrides entity controller values. Mostly suited for motor vehicles.\r
 It is assumed that a respective user-defined Controller is assigned to the entity, defined in the "movement" domain, and activated."""@en .
 
@@ -9058,20 +9058,20 @@ osc:Phase a owl:Class ;
     rdfs:label "Phase"@en ;
     rdfs:comment "Phase of a TrafficSignalController. A TrafficSignalController has sequential semantic phases, forming the signal cycle. Each semantic phase can have multiple TrafficSignalStates or one TrafficSignalGroupState (mutually exclusive). When TrafficSignalStates are used to model the observable states of a traffic signal individually, exactly one TrafficSignalState has to be defined for every traffic signal controlled by this TrafficSignalController. The semantic phase information like go, attention, stop, etc. is set in Phase attribute semantics and the observable state like the visual information \"off;off;on\" in trafficSignalStates or trafficSignalGroupState."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Phase.duration ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:TrafficSignalGroupState ;
+            owl:onProperty osc:Phase.trafficSignalGroupState ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:TrafficSignalSemantics ;
             owl:onProperty osc:Phase.semantics ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:TrafficSignalGroupState ;
-            owl:onProperty osc:Phase.trafficSignalGroupState ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Phase.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Phase.duration ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Phase of a TrafficSignalController. A TrafficSignalController has sequential semantic phases, forming the signal cycle. Each semantic phase can have multiple TrafficSignalStates or one TrafficSignalGroupState (mutually exclusive). When TrafficSignalStates are used to model the observable states of a traffic signal individually, exactly one TrafficSignalState has to be defined for every traffic signal controlled by this TrafficSignalController. The semantic phase information like go, attention, stop, etc. is set in Phase attribute semantics and the observable state like the visual information \"off;off;on\" in trafficSignalStates or trafficSignalGroupState."@en .
 
@@ -9079,12 +9079,8 @@ osc:RelativeClearanceCondition a owl:Class ;
     rdfs:label "RelativeClearanceCondition"@en ;
     rdfs:comment "Checks if an amount of lanes next to the triggering entity is free from other entities. Evaluates to true, if the specified area exists and is free, otherwise evaluates to false. The longitudinal distance to be checked is defined in the lane coordinate system of the current lane of the triggering entity. In lateral direction the checked area is defined by the lane boundaries."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeClearanceCondition.distanceBackward ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:RelativeClearanceCondition.freeSpace ;
+            owl:onProperty osc:RelativeClearanceCondition.oppositeLanes ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -9092,8 +9088,12 @@ osc:RelativeClearanceCondition a owl:Class ;
             owl:onProperty osc:RelativeClearanceCondition.distanceForward ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:RelativeClearanceCondition.oppositeLanes ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty osc:RelativeClearanceCondition.freeSpace ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeClearanceCondition.distanceBackward ] ;
     skos:definition "Checks if an amount of lanes next to the triggering entity is free from other entities. Evaluates to true, if the specified area exists and is free, otherwise evaluates to false. The longitudinal distance to be checked is defined in the lane coordinate system of the current lane of the triggering entity. In lateral direction the checked area is defined by the lane boundaries."@en .
 
 osc:RelativeDistanceType a rdfs:Datatype ;
@@ -9129,25 +9129,25 @@ The relative lane coordinates (dLane, ds/dsLane, and offset) should be specified
             owl:onProperty osc:RelativeLanePosition.dLane ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeLanePosition.ds ],
+        [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:RelativeLanePosition.entityRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Orientation ;
-            owl:onProperty osc:RelativeLanePosition.orientation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeLanePosition.ds ],
+            owl:onProperty osc:RelativeLanePosition.dsLane ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:RelativeLanePosition.offset ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeLanePosition.dsLane ] ;
+            owl:onClass osc:Orientation ;
+            owl:onProperty osc:RelativeLanePosition.orientation ] ;
     skos:definition """Defines a position derived from relative lane coordinates (dLane, ds / dsLane and offset) to a reference entity.\r
 Where ds is provided, the position is computed by the following process:\r
 \r
@@ -9179,39 +9179,35 @@ osc:SynchronizeAction a owl:Class ;
     rdfs:label "SynchronizeAction"@en ;
     rdfs:comment "Synchronizes an entity's arrival at a destination with a master entity. Both entities are provided with their own reference position which shall be reached at the same time. Final speed can be specified. Note that the reference positions can be different or identical."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:SynchronizeAction.targetTolerance ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:FinalSpeed ;
-            owl:onProperty osc:SynchronizeAction.finalSpeed ],
+            owl:onClass osc:Position ;
+            owl:onProperty osc:SynchronizeAction.targetPosition ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:Position ;
             owl:onProperty osc:SynchronizeAction.targetPositionMaster ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass osc:Position ;
-            owl:onProperty osc:SynchronizeAction.targetPosition ;
+            owl:onClass osc:Entity ;
+            owl:onProperty osc:SynchronizeAction.masterEntityRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:SynchronizeAction.targetToleranceMaster ],
         [ a owl:Restriction ;
-            owl:onClass osc:Entity ;
-            owl:onProperty osc:SynchronizeAction.masterEntityRef ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:FinalSpeed ;
+            owl:onProperty osc:SynchronizeAction.finalSpeed ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:SynchronizeAction.targetTolerance ] ;
     skos:definition "Synchronizes an entity's arrival at a destination with a master entity. Both entities are provided with their own reference position which shall be reached at the same time. Final speed can be specified. Note that the reference positions can be different or identical."@en .
 
 osc:TrafficAction a owl:Class ;
     rdfs:label "TrafficAction"@en ;
     rdfs:comment "Actions defining macroscopic traffic flow and behavior."@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:TrafficAction.trafficName ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:onClass osc:TrafficSinkAction ;
@@ -9272,7 +9268,11 @@ osc:TrafficAction a owl:Class ;
                                     owl:onProperty osc:TrafficAction.trafficStopAction ] [ a owl:Restriction ;
                                     owl:onClass osc:TrafficAreaAction ;
                                     owl:onProperty osc:TrafficAction.trafficAreaAction ;
-                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ] ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:TrafficAction.trafficName ] ;
     skos:definition "Actions defining macroscopic traffic flow and behavior."@en .
 
 osc:TrafficDistribution a owl:Class ;
@@ -9292,20 +9292,20 @@ osc:TrafficDistributionEntry a owl:Class ;
     rdfs:label "TrafficDistributionEntry"@en ;
     rdfs:comment "Defines one weighted vehicle/pedestrian entity group as part of the traffic."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficDistributionEntry.weight ;
+            owl:onClass osc:EntityDistribution ;
+            owl:onProperty osc:TrafficDistributionEntry.entityDistribution ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Properties ;
-            owl:onProperty osc:TrafficDistributionEntry.properties ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:TrafficDistributionEntry.name ],
         [ a owl:Restriction ;
-            owl:onClass osc:EntityDistribution ;
-            owl:onProperty osc:TrafficDistributionEntry.entityDistribution ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Properties ;
+            owl:onProperty osc:TrafficDistributionEntry.properties ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrafficDistributionEntry.weight ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines one weighted vehicle/pedestrian entity group as part of the traffic."@en .
 
@@ -9313,20 +9313,20 @@ osc:TransitionDynamics a owl:Class ;
     rdfs:label "TransitionDynamics"@en ;
     rdfs:comment "Specifies the dynamics of a value transition and defines how the value changes over time or distance. Different shapes can be used for the transition. Step is an immediate transition, i.e. a jump from the current current value to the target value. In this case value for time or distance must be 0. Linear will result in a linear transition between the start and end value. A smooth transition is only given with cubic and sinusoidal shape."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:FollowingMode ;
-            owl:onProperty osc:TransitionDynamics.followingMode ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TransitionDynamics.value ;
+            owl:onDataRange osc:DynamicsShape ;
+            owl:onProperty osc:TransitionDynamics.dynamicsShape ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange osc:DynamicsDimension ;
             owl:onProperty osc:TransitionDynamics.dynamicsDimension ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:DynamicsShape ;
-            owl:onProperty osc:TransitionDynamics.dynamicsShape ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:FollowingMode ;
+            owl:onProperty osc:TransitionDynamics.followingMode ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TransitionDynamics.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Specifies the dynamics of a value transition and defines how the value changes over time or distance. Different shapes can be used for the transition. Step is an immediate transition, i.e. a jump from the current current value to the target value. In this case value for time or distance must be 0. Linear will result in a linear transition between the start and end value. A smooth transition is only given with cubic and sinusoidal shape."@en .
 
@@ -9338,12 +9338,12 @@ osc:VariableDeclaration a owl:Class ;
             owl:onProperty osc:VariableDeclaration.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:ParameterType ;
-            owl:onProperty osc:VariableDeclaration.variableType ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:VariableDeclaration.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:ParameterType ;
+            owl:onProperty osc:VariableDeclaration.variableType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Declaration of a typed variable with a name and a default value. Its value can change during runtime either from within the scenario (OSC Model instance) by using a VariableAction or can be also set from external side, e.g. by a test software. For this the Simulator Core needs to provide an interface to change variable values. The value can be used to either trigger Events in the scenario with VariableConditions or it can be used on external side, e.g. a test software to trigger test steps. For this the Simulator Core needs to provide an interface to read the variable values."@en .
 
@@ -9353,11 +9353,7 @@ osc:WorldPosition a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:WorldPosition.h ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:WorldPosition.y ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty osc:WorldPosition.p ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:WorldPosition.x ;
@@ -9365,7 +9361,7 @@ osc:WorldPosition a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:WorldPosition.p ],
+            owl:onProperty osc:WorldPosition.h ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -9373,17 +9369,17 @@ osc:WorldPosition a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:WorldPosition.z ] ;
+            owl:onProperty osc:WorldPosition.z ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:WorldPosition.y ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "A position which is fixed in the inertial reference frame of the simulation environment, the so-called world coordinate system."@en .
 
 osc:AssignControllerAction a owl:Class ;
     rdfs:label "AssignControllerAction"@en ;
     rdfs:comment "This action assigns an object controller to the given entity defined in the enclosing PrivateAction. "@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:AssignControllerAction.activateAnimation ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:intersectionOf ( [ a owl:Restriction ;
                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -9416,6 +9412,10 @@ osc:AssignControllerAction a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:AssignControllerAction.activateAnimation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
             owl:onProperty osc:AssignControllerAction.activateLighting ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -9427,32 +9427,32 @@ osc:ClothoidSplineSegment a owl:Class ;
     rdfs:label "ClothoidSplineSegment"@en ;
     rdfs:comment "One segment of a clothoid spline."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Motion ;
-            owl:onProperty osc:ClothoidSplineSegment.motionStart ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:ClothoidSplineSegment.timeStart ],
+            owl:onProperty osc:ClothoidSplineSegment.length ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:ClothoidSplineSegment.hOffset ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:ClothoidSplineSegment.curvatureStart ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty osc:ClothoidSplineSegment.curvatureEnd ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:ClothoidSplineSegment.timeStart ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Motion ;
+            owl:onProperty osc:ClothoidSplineSegment.motionStart ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Position ;
             owl:onProperty osc:ClothoidSplineSegment.positionStart ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:ClothoidSplineSegment.length ;
+            owl:onProperty osc:ClothoidSplineSegment.curvatureStart ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "One segment of a clothoid spline."@en .
 
@@ -9527,13 +9527,25 @@ osc:FileHeader a owl:Class ;
     rdfs:label "FileHeader"@en ;
     rdfs:comment "File header used in OpenSCENARIO files, e.g. scenario file or catalog files."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:dateTime ;
-            owl:onProperty osc:FileHeader.date ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:License ;
             owl:onProperty osc:FileHeader.license ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:FileHeader.description ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:unsignedShort ;
+            owl:onProperty osc:FileHeader.revMinor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:FileHeader.author ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty osc:FileHeader.date ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:unsignedShort ;
             owl:onProperty osc:FileHeader.revMajor ;
@@ -9541,19 +9553,7 @@ osc:FileHeader a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Properties ;
-            owl:onProperty osc:FileHeader.properties ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:FileHeader.description ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:FileHeader.author ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:unsignedShort ;
-            owl:onProperty osc:FileHeader.revMinor ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty osc:FileHeader.properties ] ;
     skos:definition "File header used in OpenSCENARIO files, e.g. scenario file or catalog files."@en .
 
 osc:LateralDistanceAction a owl:Class ;
@@ -9561,32 +9561,32 @@ osc:LateralDistanceAction a owl:Class ;
     rdfs:comment "This action describes a continuously kept lateral distance of an entity with respect to a reference entity. The distance can be maintained by using a controller, requiring limiting values for lateral acceleration, lateral deceleration and lateral speed. Without this limiting parameters lateral distance is kept rigid. Distance measurement could either be calculated from the distance between the entities' reference points or from the free space between the entities' bounding boxes."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:LateralDistanceAction.distance ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:DynamicConstraints ;
             owl:onProperty osc:LateralDistanceAction.dynamicConstraints ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:LateralDistanceAction.freespace ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:LateralDistanceAction.distance ],
         [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:LateralDistanceAction.entityRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:LateralDisplacement ;
+            owl:onProperty osc:LateralDistanceAction.displacement ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty osc:LateralDistanceAction.continuous ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:CoordinateSystem ;
-            owl:onProperty osc:LateralDistanceAction.coordinateSystem ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:LateralDistanceAction.freespace ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:LateralDisplacement ;
-            owl:onProperty osc:LateralDistanceAction.displacement ] ;
+            owl:onDataRange osc:CoordinateSystem ;
+            owl:onProperty osc:LateralDistanceAction.coordinateSystem ] ;
     skos:definition "This action describes a continuously kept lateral distance of an entity with respect to a reference entity. The distance can be maintained by using a controller, requiring limiting values for lateral acceleration, lateral deceleration and lateral speed. Without this limiting parameters lateral distance is kept rigid. Distance measurement could either be calculated from the distance between the entities' reference points or from the free space between the entities' bounding boxes."@en .
 
 osc:ObjectController a owl:Class ;
@@ -9616,32 +9616,32 @@ osc:RelativeDistanceCondition a owl:Class ;
     rdfs:label "RelativeDistanceCondition"@en ;
     rdfs:comment "The current relative distance of a triggering entity/entities to a reference entity is compared to a given value. The logical operator used for comparison is defined in the rule attribute."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:RelativeDistanceCondition.value ;
+            owl:onDataRange osc:RelativeDistanceType ;
+            owl:onProperty osc:RelativeDistanceCondition.relativeDistanceType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass osc:Entity ;
-            owl:onProperty osc:RelativeDistanceCondition.entityRef ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:RelativeDistanceCondition.freespace ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:RelativeDistanceCondition.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:CoordinateSystem ;
             owl:onProperty osc:RelativeDistanceCondition.coordinateSystem ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:RelativeDistanceCondition.freespace ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange osc:Rule ;
-            owl:onProperty osc:RelativeDistanceCondition.rule ;
+            owl:onClass osc:Entity ;
+            owl:onProperty osc:RelativeDistanceCondition.entityRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:RoutingAlgorithm ;
             owl:onProperty osc:RelativeDistanceCondition.routingAlgorithm ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:RelativeDistanceType ;
-            owl:onProperty osc:RelativeDistanceCondition.relativeDistanceType ;
+            owl:onDataRange osc:Rule ;
+            owl:onProperty osc:RelativeDistanceCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "The current relative distance of a triggering entity/entities to a reference entity is compared to a given value. The logical operator used for comparison is defined in the rule attribute."@en .
 
@@ -9649,37 +9649,37 @@ osc:Route a owl:Class ;
     rdfs:label "Route"@en ;
     rdfs:comment "A route is defined in a scenario or in a catalog. It represents a continuous path throughout the road network, defined by a series of waypoints."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:Route.closed ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Route.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Waypoint ;
-            owl:onProperty osc:Route.waypoints ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:Route.closed ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty osc:Route.waypoints ] ;
     skos:definition "A route is defined in a scenario or in a catalog. It represents a continuous path throughout the road network, defined by a series of waypoints."@en .
 
 osc:ScenarioDefinition a owl:Class ;
     rdfs:label "ScenarioDefinition"@en ;
     rdfs:comment "Top level container containing all scenario elements."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:CatalogLocations ;
-            owl:onProperty osc:ScenarioDefinition.catalogLocations ;
+            owl:onClass osc:Storyboard ;
+            owl:onProperty osc:ScenarioDefinition.storyboard ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass osc:RoadNetwork ;
-            owl:onProperty osc:ScenarioDefinition.roadNetwork ;
+            owl:onClass osc:CatalogLocations ;
+            owl:onProperty osc:ScenarioDefinition.catalogLocations ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:Entities ;
             owl:onProperty osc:ScenarioDefinition.entities ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass osc:Storyboard ;
-            owl:onProperty osc:ScenarioDefinition.storyboard ;
+            owl:onClass osc:RoadNetwork ;
+            owl:onProperty osc:ScenarioDefinition.roadNetwork ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Top level container containing all scenario elements."@en .
 
@@ -9823,8 +9823,16 @@ osc:TrafficSourceAction a owl:Class ;
     rdfs:label "TrafficSourceAction"@en ;
     rdfs:comment "Defines a source of traffic at a specific position."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:TrafficDefinition ;
+            owl:onProperty osc:TrafficSourceAction.trafficDefinition ],
+        [ a owl:Restriction ;
+            owl:onClass osc:Position ;
+            owl:onProperty osc:TrafficSourceAction.position ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSourceAction.radius ;
+            owl:onProperty osc:TrafficSourceAction.rate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -9832,24 +9840,16 @@ osc:TrafficSourceAction a owl:Class ;
             owl:onProperty osc:TrafficSourceAction.velocity ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSourceAction.speed ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:TrafficDefinition ;
-            owl:onProperty osc:TrafficSourceAction.trafficDefinition ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:TrafficDistribution ;
             owl:onProperty osc:TrafficSourceAction.trafficDistribution ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSourceAction.rate ;
+            owl:onProperty osc:TrafficSourceAction.radius ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass osc:Position ;
-            owl:onProperty osc:TrafficSourceAction.position ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrafficSourceAction.speed ] ;
     skos:definition "Defines a source of traffic at a specific position."@en .
 
 osc:Trajectory a owl:Class ;
@@ -9881,20 +9881,16 @@ osc:ActivateControllerAction a owl:Class ;
 Note: Although it is allowed to omit the objectControllerRef attribute for the sake of a backward compatibility if only a single user-defined controller is assigned to the concerned Entity, it is considered unmeaningful in case of multiple controllers are assigned. This is expected to be addressed in one of the follow-up major versions, where the attribute shall be defined as mandatory to exclude an ambiguity in specifying the reference controller."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:ActivateControllerAction.animation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Controller ;
             owl:onProperty osc:ActivateControllerAction.controllerRef ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:ActivateControllerAction.lighting ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:ObjectController ;
-            owl:onProperty osc:ActivateControllerAction.objectControllerRef ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:ActivateControllerAction.animation ],
+            owl:onProperty osc:ActivateControllerAction.lateral ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
@@ -9902,7 +9898,11 @@ Note: Although it is allowed to omit the objectControllerRef attribute for the s
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:ActivateControllerAction.lateral ] ;
+            owl:onProperty osc:ActivateControllerAction.lighting ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:ObjectController ;
+            owl:onProperty osc:ActivateControllerAction.objectControllerRef ] ;
     skos:definition """This action activates or deactivates a user-defined controller which must be assigned to the specified entity. A controller cannot be activated in a domain in which it is not defined.\r
 \r
 Note: Although it is allowed to omit the objectControllerRef attribute for the sake of a backward compatibility if only a single user-defined controller is assigned to the concerned Entity, it is considered unmeaningful in case of multiple controllers are assigned. This is expected to be addressed in one of the follow-up major versions, where the attribute shall be defined as mandatory to exclude an ambiguity in specifying the reference controller."""@en .
@@ -9911,14 +9911,6 @@ osc:Axle a owl:Class ;
     rdfs:label "Axle"@en ;
     rdfs:comment "The definition of vehicle axle."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Axle.wheelDiameter ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Axle.trackWidth ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Axle.maxSteering ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -9929,6 +9921,14 @@ osc:Axle a owl:Class ;
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Axle.positionX ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Axle.trackWidth ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Axle.wheelDiameter ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "The definition of vehicle axle."@en .
 
@@ -9936,12 +9936,12 @@ osc:BoundingBox a owl:Class ;
     rdfs:label "BoundingBox"@en ;
     rdfs:comment "Defines geometric properties of the entities as a simplified three dimensional bounding box."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:Dimensions ;
-            owl:onProperty osc:BoundingBox.dimensions ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass osc:Center ;
             owl:onProperty osc:BoundingBox.center ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:Dimensions ;
+            owl:onProperty osc:BoundingBox.dimensions ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines geometric properties of the entities as a simplified three dimensional bounding box."@en .
 
@@ -10100,9 +10100,9 @@ osc:DistanceCondition a owl:Class ;
     rdfs:label "DistanceCondition"@en ;
     rdfs:comment "The current distance between an entity and a position is compared to a given distance (less, greater, equal). Several additional parameters like free space etc. can be defined. The property \"alongRoute\" is deprecated. If \"coordinateSystem\" or \"relativeDistanceType\" are set, \"alongRoute\" is ignored."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:DistanceCondition.value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:RelativeDistanceType ;
+            owl:onProperty osc:DistanceCondition.relativeDistanceType ],
         [ a owl:Restriction ;
             owl:onClass osc:Position ;
             owl:onProperty osc:DistanceCondition.position ;
@@ -10112,25 +10112,25 @@ osc:DistanceCondition a owl:Class ;
             owl:onProperty osc:DistanceCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:CoordinateSystem ;
-            owl:onProperty osc:DistanceCondition.coordinateSystem ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:RoutingAlgorithm ;
-            owl:onProperty osc:DistanceCondition.routingAlgorithm ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:DistanceCondition.alongRoute ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty osc:DistanceCondition.freespace ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:RelativeDistanceType ;
-            owl:onProperty osc:DistanceCondition.relativeDistanceType ] ;
+            owl:onDataRange osc:CoordinateSystem ;
+            owl:onProperty osc:DistanceCondition.coordinateSystem ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:DistanceCondition.alongRoute ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:DistanceCondition.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:RoutingAlgorithm ;
+            owl:onProperty osc:DistanceCondition.routingAlgorithm ] ;
     skos:definition "The current distance between an entity and a position is compared to a given distance (less, greater, equal). Several additional parameters like free space etc. can be defined. The property \"alongRoute\" is deprecated. If \"coordinateSystem\" or \"relativeDistanceType\" are set, \"alongRoute\" is ignored."@en .
 
 osc:GeoPosition a owl:Class ;
@@ -10141,8 +10141,12 @@ The orientation of the road in the inertial (X,Y,Z)-coordinate system, in turn, 
 The transformation of angular geographic coordinates into the flat (X,Y)-projection in the World coordinate system is entrusted to a simulation environment. However, if the target position would be outside the road boundaries, the Z-coordinate of the position is undefined by the OpenSCENARIO standard."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty osc:GeoPosition.verticalRoadSelection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:GeoPosition.longitudeDeg ],
+            owl:onProperty osc:GeoPosition.height ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -10162,15 +10166,11 @@ The transformation of angular geographic coordinates into the flat (X,Y)-project
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:GeoPosition.latitude ],
+            owl:onProperty osc:GeoPosition.longitudeDeg ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:GeoPosition.height ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:int ;
-            owl:onProperty osc:GeoPosition.verticalRoadSelection ] ;
+            owl:onProperty osc:GeoPosition.latitude ] ;
     skos:definition """Position defined in terms of the spherical geographic coordinates (angular Longitude and Latitude) derived from the geodetic datum specified in the respective road network definition file (external to the ASAM OpenSCENARIO). Optionally, the orientation of the position can be specified.\r
 In the general case, the altitude of the target position above a conventional reference level (e.g., the mean sea level on the Earth) is determined by the surface of the underlying road, which is derived from the Longitude/Latitude-coordinates of the position. However, optionally, the altitude of the target position with respect to the road surface can be specified.\r
 The orientation of the road in the inertial (X,Y,Z)-coordinate system, in turn, is specified in the respective road network definition file too.\r
@@ -10301,24 +10301,8 @@ osc:LongitudinalDistanceAction a owl:Class ;
 The target position may be either on the same road segment where the reference entity is positioned or on a connecting road. In the latter case for coordinate systems lane and road, the distance or time gap is calculated along the road reference line / lane centerline of the connecting road. It is assumed that the reference line of the road / lane centerline of the reference entity continues seamlessly on the connecting road (even if its shape changes). It is assumed that the target position relates to the routing of the reference entity. Otherwise, the calculation of the target position cannot be interpreted within the OpenSCENARIO standard."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:LongitudinalDisplacement ;
-            owl:onProperty osc:LongitudinalDistanceAction.displacement ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:LongitudinalDistanceAction.freespace ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:LongitudinalDistanceAction.continuous ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:LongitudinalDistanceAction.distance ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:LongitudinalDistanceAction.timeGap ],
         [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:LongitudinalDistanceAction.entityRef ;
@@ -10329,8 +10313,24 @@ The target position may be either on the same road segment where the reference e
             owl:onProperty osc:LongitudinalDistanceAction.coordinateSystem ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:LongitudinalDistanceAction.timeGap ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:LongitudinalDistanceAction.continuous ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:DynamicConstraints ;
-            owl:onProperty osc:LongitudinalDistanceAction.dynamicConstraints ] ;
+            owl:onProperty osc:LongitudinalDistanceAction.dynamicConstraints ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:LongitudinalDistanceAction.freespace ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:LongitudinalDisplacement ;
+            owl:onProperty osc:LongitudinalDistanceAction.displacement ] ;
     skos:definition """This action activates a controller for the longitudinal behavior of an entity in a way that a given distance or time gap to the reference entity is maintained.\r
 The target position may be either on the same road segment where the reference entity is positioned or on a connecting road. In the latter case for coordinate systems lane and road, the distance or time gap is calculated along the road reference line / lane centerline of the connecting road. It is assumed that the reference line of the road / lane centerline of the reference entity continues seamlessly on the connecting road (even if its shape changes). It is assumed that the target position relates to the routing of the reference entity. Otherwise, the calculation of the target position cannot be interpreted within the OpenSCENARIO standard."""@en .
 
@@ -10338,12 +10338,12 @@ osc:MiscObject a owl:Class ;
     rdfs:label "MiscObject"@en ;
     rdfs:comment "Definition of a miscellaneous object type. A miscellaneous object has no controller."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange osc:MiscObjectCategory ;
-            owl:onProperty osc:MiscObject.miscObjectCategory ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:MiscObject.name ;
+            owl:onProperty osc:MiscObject.model3d ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:MiscObject.mass ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:BoundingBox ;
@@ -10354,12 +10354,12 @@ osc:MiscObject a owl:Class ;
             owl:onClass osc:Properties ;
             owl:onProperty osc:MiscObject.properties ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:MiscObject.model3d ],
+            owl:onProperty osc:MiscObject.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:MiscObject.mass ;
+            owl:onDataRange osc:MiscObjectCategory ;
+            owl:onProperty osc:MiscObject.miscObjectCategory ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Definition of a miscellaneous object type. A miscellaneous object has no controller."@en .
 
@@ -10467,54 +10467,62 @@ osc:TimeHeadwayCondition a owl:Class ;
     rdfs:label "TimeHeadwayCondition"@en ;
     rdfs:comment "Condition based on the headway time between a triggering entity and a reference entity. The reference entity is assumed to be leading/ahead, so the triggering entity is trailing. TimeHeadway is calculated similar to TimeToCollision (distance divided by relative speed, no acceleration) with the following exception: For the relative speed only the speed of the triggering entity is considered but not the speed of the reference entity. This is because it doesn't matter where the reference entity moves, only the time it takes for the triggering entity to reach the current position of the reference entity is calculated. The logical operator used for comparison is defined by the rule attribute. The property \"alongRoute\" is deprecated. If \"coordinateSystem\" or \"relativeDistanceType\" are set, \"alongRoute\" is ignored."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:TimeHeadwayCondition.freespace ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:RoutingAlgorithm ;
+            owl:onProperty osc:TimeHeadwayCondition.routingAlgorithm ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TimeHeadwayCondition.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onClass osc:Entity ;
             owl:onProperty osc:TimeHeadwayCondition.entityRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:Rule ;
+            owl:onProperty osc:TimeHeadwayCondition.rule ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:RelativeDistanceType ;
+            owl:onProperty osc:TimeHeadwayCondition.relativeDistanceType ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:CoordinateSystem ;
             owl:onProperty osc:TimeHeadwayCondition.coordinateSystem ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:RoutingAlgorithm ;
-            owl:onProperty osc:TimeHeadwayCondition.routingAlgorithm ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:TimeHeadwayCondition.freespace ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TimeHeadwayCondition.value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:TimeHeadwayCondition.alongRoute ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:RelativeDistanceType ;
-            owl:onProperty osc:TimeHeadwayCondition.relativeDistanceType ],
-        [ a owl:Restriction ;
-            owl:onDataRange osc:Rule ;
-            owl:onProperty osc:TimeHeadwayCondition.rule ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty osc:TimeHeadwayCondition.alongRoute ] ;
     skos:definition "Condition based on the headway time between a triggering entity and a reference entity. The reference entity is assumed to be leading/ahead, so the triggering entity is trailing. TimeHeadway is calculated similar to TimeToCollision (distance divided by relative speed, no acceleration) with the following exception: For the relative speed only the speed of the triggering entity is considered but not the speed of the reference entity. This is because it doesn't matter where the reference entity moves, only the time it takes for the triggering entity to reach the current position of the reference entity is calculated. The logical operator used for comparison is defined by the rule attribute. The property \"alongRoute\" is deprecated. If \"coordinateSystem\" or \"relativeDistanceType\" are set, \"alongRoute\" is ignored."@en .
 
 osc:TimeToCollisionCondition a owl:Class ;
     rdfs:label "TimeToCollisionCondition"@en ;
     rdfs:comment "The currently predicted time to collision of a triggering entity/entities and either a reference entity or an explicit position is compared to a given time value. Time to collision is calculated as the distance divided by the relative speed. Acceleration of entities is not taken into consideration. For the relative speed calculation the same coordinate system and relative distance type applies as for the distance calculation. If the relative speed is negative, which means the entity is moving away from the position / the entities are moving away from each other, then the time to collision cannot be predicted and the condition evaluates to false. The logical operator for comparison is defined by the rule attribute. The property \"alongRoute\" is deprecated. If \"coordinateSystem\" or \"relativeDistanceType\" are set, \"alongRoute\" is ignored."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:TimeToCollisionCondition.freespace ;
+            owl:onClass osc:TimeToCollisionConditionTarget ;
+            owl:onProperty osc:TimeToCollisionCondition.timeToCollisionConditionTarget ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty osc:TimeToCollisionCondition.alongRoute ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:RoutingAlgorithm ;
+            owl:onProperty osc:TimeToCollisionCondition.routingAlgorithm ],
         [ a owl:Restriction ;
             owl:onDataRange osc:Rule ;
             owl:onProperty osc:TimeToCollisionCondition.rule ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:RoutingAlgorithm ;
-            owl:onProperty osc:TimeToCollisionCondition.routingAlgorithm ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TimeToCollisionCondition.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:CoordinateSystem ;
@@ -10524,16 +10532,8 @@ osc:TimeToCollisionCondition a owl:Class ;
             owl:onDataRange osc:RelativeDistanceType ;
             owl:onProperty osc:TimeToCollisionCondition.relativeDistanceType ],
         [ a owl:Restriction ;
-            owl:onClass osc:TimeToCollisionConditionTarget ;
-            owl:onProperty osc:TimeToCollisionCondition.timeToCollisionConditionTarget ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty osc:TimeToCollisionCondition.alongRoute ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TimeToCollisionCondition.value ;
+            owl:onProperty osc:TimeToCollisionCondition.freespace ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "The currently predicted time to collision of a triggering entity/entities and either a reference entity or an explicit position is compared to a given time value. Time to collision is calculated as the distance divided by the relative speed. Acceleration of entities is not taken into consideration. For the relative speed calculation the same coordinate system and relative distance type applies as for the distance calculation. If the relative speed is negative, which means the entity is moving away from the position / the entities are moving away from each other, then the time to collision cannot be predicted and the condition evaluates to false. The logical operator for comparison is defined by the rule attribute. The property \"alongRoute\" is deprecated. If \"coordinateSystem\" or \"relativeDistanceType\" are set, \"alongRoute\" is ignored."@en .
 
@@ -10541,20 +10541,20 @@ osc:TrafficDefinition a owl:Class ;
     rdfs:label "TrafficDefinition"@en ;
     rdfs:comment "Definition of macroscopic traffic based on vehicle and controller definitions. "@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass osc:ControllerDistribution ;
-            owl:onProperty osc:TrafficDefinition.controllerDistribution ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:TrafficDefinition.name ;
+            owl:onClass osc:VehicleCategoryDistribution ;
+            owl:onProperty osc:TrafficDefinition.vehicleCategoryDistribution ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:VehicleRoleDistribution ;
             owl:onProperty osc:TrafficDefinition.vehicleRoleDistribution ],
         [ a owl:Restriction ;
-            owl:onClass osc:VehicleCategoryDistribution ;
-            owl:onProperty osc:TrafficDefinition.vehicleCategoryDistribution ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:TrafficDefinition.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:ControllerDistribution ;
+            owl:onProperty osc:TrafficDefinition.controllerDistribution ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Definition of macroscopic traffic based on vehicle and controller definitions."@en .
 
@@ -10562,14 +10562,6 @@ osc:CatalogLocations a owl:Class ;
     rdfs:label "CatalogLocations"@en ;
     rdfs:comment "Set of catalogs which are referenced in a scenario."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:EnvironmentCatalogLocation ;
-            owl:onProperty osc:CatalogLocations.environmentCatalog ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:VehicleCatalogLocation ;
-            owl:onProperty osc:CatalogLocations.vehicleCatalog ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:TrajectoryCatalogLocation ;
             owl:onProperty osc:CatalogLocations.trajectoryCatalog ],
@@ -10583,16 +10575,24 @@ osc:CatalogLocations a owl:Class ;
             owl:onProperty osc:CatalogLocations.miscObjectCatalog ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:EnvironmentCatalogLocation ;
+            owl:onProperty osc:CatalogLocations.environmentCatalog ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:PedestrianCatalogLocation ;
             owl:onProperty osc:CatalogLocations.pedestrianCatalog ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:ManeuverCatalogLocation ;
+            owl:onProperty osc:CatalogLocations.maneuverCatalog ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:ControllerCatalogLocation ;
             owl:onProperty osc:CatalogLocations.controllerCatalog ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:ManeuverCatalogLocation ;
-            owl:onProperty osc:CatalogLocations.maneuverCatalog ],
+            owl:onClass osc:VehicleCatalogLocation ;
+            owl:onProperty osc:CatalogLocations.vehicleCatalog ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:TrafficDistributionEntryCatalogLocation ;
@@ -10603,33 +10603,29 @@ osc:Clothoid a owl:Class ;
     rdfs:label "Clothoid"@en ;
     rdfs:comment "A shape of the trajectory of an entity. A clothoid is a curve whose curvature changes linearly with its curve length. If curvaturePrime is 0, then the resulting trajectory is a circular arc. If curvaturePrime is 0 and additionally curvature is 0, then the resulting trajectory is a line."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Motion ;
-            owl:onProperty osc:Clothoid.motionEnd ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Motion ;
-            owl:onProperty osc:Clothoid.motionStart ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Clothoid.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Clothoid.curvatureDot ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Clothoid.stopTime ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Clothoid.curvature ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Motion ;
+            owl:onProperty osc:Clothoid.motionEnd ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Clothoid.startTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Motion ;
+            owl:onProperty osc:Clothoid.motionStart ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Clothoid.stopTime ],
         [ a owl:Restriction ;
             owl:onClass osc:Position ;
             owl:onProperty osc:Clothoid.position ;
@@ -10637,7 +10633,11 @@ osc:Clothoid a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Clothoid.curvaturePrime ] ;
+            owl:onProperty osc:Clothoid.curvaturePrime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Clothoid.curvatureDot ] ;
     skos:definition "A shape of the trajectory of an entity. A clothoid is a curve whose curvature changes linearly with its curve length. If curvaturePrime is 0, then the resulting trajectory is a circular arc. If curvaturePrime is 0 and additionally curvature is 0, then the resulting trajectory is a line."@en .
 
 osc:DynamicConstraints a owl:Class ;
@@ -10646,15 +10646,11 @@ osc:DynamicConstraints a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:DynamicConstraints.maxSpeed ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
             owl:onProperty osc:DynamicConstraints.maxDeceleration ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:DynamicConstraints.maxAcceleration ],
+            owl:onProperty osc:DynamicConstraints.maxDecelerationRate ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -10662,7 +10658,11 @@ osc:DynamicConstraints a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:DynamicConstraints.maxDecelerationRate ] ;
+            owl:onProperty osc:DynamicConstraints.maxAcceleration ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:DynamicConstraints.maxSpeed ] ;
     skos:definition "Constraints that are limiting the acceleration, the deceleration and the speed. Used in lateral or longitudinal actions."@en .
 
 osc:Weather a owl:Class ;
@@ -10670,8 +10670,8 @@ osc:Weather a owl:Class ;
     rdfs:comment "Defines the weather conditions in terms of light, fog, precipitation, cloud, temperature and atmospheric pressure states. If one of the conditions is missing it means that it doesn't change."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:FractionalCloudCover ;
-            owl:onProperty osc:Weather.fractionalCloudCover ],
+            owl:onClass osc:Wind ;
+            owl:onProperty osc:Weather.wind ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:DomeImage ;
@@ -10679,31 +10679,31 @@ osc:Weather a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Weather.atmosphericPressure ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Sun ;
-            owl:onProperty osc:Weather.sun ],
+            owl:onProperty osc:Weather.temperature ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Precipitation ;
             owl:onProperty osc:Weather.precipitation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Weather.temperature ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Fog ;
             owl:onProperty osc:Weather.fog ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Wind ;
-            owl:onProperty osc:Weather.wind ],
+            owl:onClass osc:Sun ;
+            owl:onProperty osc:Weather.sun ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange osc:CloudState ;
-            owl:onProperty osc:Weather.cloudState ] ;
+            owl:onProperty osc:Weather.cloudState ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:FractionalCloudCover ;
+            owl:onProperty osc:Weather.fractionalCloudCover ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Weather.atmosphericPressure ] ;
     skos:definition "Defines the weather conditions in terms of light, fog, precipitation, cloud, temperature and atmospheric pressure states. If one of the conditions is missing it means that it doesn't change."@en .
 
 osc:Catalog a owl:Class ;
@@ -10731,11 +10731,11 @@ May not be empty. At least one of its attributes shall be provided."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Motion.acceleration_longitudinal ],
+            owl:onProperty osc:Motion.speed_longitudinal ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Motion.speed_longitudinal ] ;
+            owl:onProperty osc:Motion.acceleration_longitudinal ] ;
     skos:definition """Specifies motion information at a given point in space and, if defined, time, for example: speed and acceleration.\r
 May not be empty. At least one of its attributes shall be provided."""@en .
 
@@ -10746,14 +10746,6 @@ osc:Pedestrian a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Pedestrian.model ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Properties ;
-            owl:onProperty osc:Pedestrian.properties ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:Role ;
-            owl:onProperty osc:Pedestrian.role ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty osc:Pedestrian.mass ;
@@ -10768,8 +10760,16 @@ osc:Pedestrian a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:Role ;
+            owl:onProperty osc:Pedestrian.role ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Pedestrian.model3d ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Properties ;
+            owl:onProperty osc:Pedestrian.properties ],
         [ a owl:Restriction ;
             owl:onClass osc:BoundingBox ;
             owl:onProperty osc:Pedestrian.boundingBox ;
@@ -10784,13 +10784,13 @@ osc:Controller a owl:Class ;
             owl:onClass osc:Properties ;
             owl:onProperty osc:Controller.properties ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:ControllerType ;
-            owl:onProperty osc:Controller.controllerType ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:Controller.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:ControllerType ;
+            owl:onProperty osc:Controller.controllerType ] ;
     skos:definition "Defines a controller type and parameters for the controller."@en .
 
 osc:EntityRef a owl:Class ;
@@ -10807,31 +10807,11 @@ osc:TrafficSwarmAction a owl:Class ;
     rdfs:comment "Defines swarm traffic within an elliptical planview around a given central entity. The innerRadius defines the minimum distance between the central vehicle and swarm traffic. The latter is set up in the free space between the circular area defined by innerRadius and the outline of the ellipsis defined by the two semi axis attributes. While vehicles are created in this area, they are removed if they leave it crossing the it ellipsis’ outline. Within the innerRadius, vehicles are neither set up nor removed. Optionally, the swarm area can be longitudinally offset to the central scenario object."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:TrafficDistribution ;
-            owl:onProperty osc:TrafficSwarmAction.trafficDistribution ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSwarmAction.velocity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:DirectionOfTravelDistribution ;
-            owl:onProperty osc:TrafficSwarmAction.directionOfTravelDistribution ],
+            owl:onClass osc:TrafficDefinition ;
+            owl:onProperty osc:TrafficSwarmAction.trafficDefinition ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSwarmAction.semiMinorAxis ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass osc:CentralSwarmObject ;
-            owl:onProperty osc:TrafficSwarmAction.centralObject ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSwarmAction.semiMajorAxis ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSwarmAction.innerRadius ;
+            owl:onProperty osc:TrafficSwarmAction.offset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:unsignedInt ;
@@ -10839,15 +10819,35 @@ osc:TrafficSwarmAction a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:TrafficDefinition ;
-            owl:onProperty osc:TrafficSwarmAction.trafficDefinition ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:Range ;
             owl:onProperty osc:TrafficSwarmAction.initialSpeedRange ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:TrafficDistribution ;
+            owl:onProperty osc:TrafficSwarmAction.trafficDistribution ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:TrafficSwarmAction.offset ;
+            owl:onProperty osc:TrafficSwarmAction.innerRadius ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:DirectionOfTravelDistribution ;
+            owl:onProperty osc:TrafficSwarmAction.directionOfTravelDistribution ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrafficSwarmAction.velocity ],
+        [ a owl:Restriction ;
+            owl:onClass osc:CentralSwarmObject ;
+            owl:onProperty osc:TrafficSwarmAction.centralObject ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrafficSwarmAction.semiMinorAxis ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:TrafficSwarmAction.semiMajorAxis ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines swarm traffic within an elliptical planview around a given central entity. The innerRadius defines the minimum distance between the central vehicle and swarm traffic. The latter is set up in the free space between the circular area defined by innerRadius and the outline of the ellipsis defined by the two semi axis attributes. While vehicles are created in this area, they are removed if they leave it crossing the it ellipsis’ outline. Within the innerRadius, vehicles are neither set up nor removed. Optionally, the swarm area can be longitudinally offset to the central scenario object."@en .
 
@@ -11182,43 +11182,11 @@ osc:Vehicle a owl:Class ;
     rdfs:comment "Definition of a vehicle type in a scenario or in a catalog."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Properties ;
-            owl:onProperty osc:Vehicle.properties ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:Vehicle.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:Role ;
-            owl:onProperty osc:Vehicle.role ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Vehicle.mass ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:TrailerCoupler ;
-            owl:onProperty osc:Vehicle.trailerCoupler ],
-        [ a owl:Restriction ;
-            owl:onClass osc:Performance ;
-            owl:onProperty osc:Vehicle.performance ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass osc:TrailerHitch ;
             owl:onProperty osc:Vehicle.trailerHitch ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass osc:Trailer ;
-            owl:onProperty osc:Vehicle.trailer ],
-        [ a owl:Restriction ;
             owl:onDataRange osc:VehicleCategory ;
             owl:onProperty osc:Vehicle.vehicleCategory ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass osc:BoundingBox ;
-            owl:onProperty osc:Vehicle.boundingBox ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass osc:Axles ;
@@ -11227,7 +11195,39 @@ osc:Vehicle a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty osc:Vehicle.model3d ] ;
+            owl:onProperty osc:Vehicle.model3d ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Properties ;
+            owl:onProperty osc:Vehicle.properties ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange osc:Role ;
+            owl:onProperty osc:Vehicle.role ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:TrailerCoupler ;
+            owl:onProperty osc:Vehicle.trailerCoupler ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Vehicle.mass ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass osc:Trailer ;
+            owl:onProperty osc:Vehicle.trailer ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:Vehicle.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:BoundingBox ;
+            owl:onProperty osc:Vehicle.boundingBox ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass osc:Performance ;
+            owl:onProperty osc:Vehicle.performance ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Definition of a vehicle type in a scenario or in a catalog."@en .
 
 osc:Properties a owl:Class ;
@@ -11809,12 +11809,12 @@ The value of a parameter cannot change after startup during runtime."""@en ;
             owl:onProperty osc:ParameterDeclaration.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange osc:ParameterType ;
-            owl:onProperty osc:ParameterDeclaration.parameterType ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:ParameterDeclaration.value ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange osc:ParameterType ;
+            owl:onProperty osc:ParameterDeclaration.parameterType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition """Declaration of a typed parameter with a name and a default value. It is used for creating variations of the same scenario by using the ParameterValueDistributionDefinition in an additional file.\r
 There are two options for applying ParameterValueDistributions:\r
@@ -11832,8 +11832,8 @@ If more than one orientation angle are specified at the same time, rotations are
 The relative reference context refers to the orientation with respect to a reference coordinate system. In the case of referencing to the road- or lane coordinate system, Pitch and Roll angles are determined by a surface tilt of an underlying road and therefore cannot be meaningfully interpreted within the OpenSCENARIO standard. As well, the Heading=0 means the Heading is aligned with the direction of the reference lane or road s-axis. In other cases, Heading=Pitch=Roll=0 means the orientation is identical to the reference orientation."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange osc:ReferenceContext ;
-            owl:onProperty osc:Orientation.type ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty osc:Orientation.h ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -11841,11 +11841,11 @@ The relative reference context refers to the orientation with respect to a refer
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty osc:Orientation.h ],
+            owl:onProperty osc:Orientation.r ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty osc:Orientation.r ] ;
+            owl:onDataRange osc:ReferenceContext ;
+            owl:onProperty osc:Orientation.type ] ;
     skos:definition """Orientation is defined in terms of the Heading/Pitch/Roll orientation angles in the Cartesian coordinate system and considered in the absolute or relative reference context.\r
 The absolute reference context refers to the orientation with respect to the World coordinate system.\r
 If more than one orientation angle are specified at the same time, rotations are applied in the order: about Z-axis (Heading), then Y-axis (Pitch), then X-axis (Roll), assumed the positive rotation to be counter-clockwise. Heading=Pitch=Roll=0 means the orientation is aligned with coordinate axes (no rotation).\r
@@ -11855,16 +11855,16 @@ osc:CatalogReference a owl:Class ;
     rdfs:label "CatalogReference"@en ;
     rdfs:comment "A reference to type in a catalog. It is used when importing the type in a scenario. Furthermore, it hands over additional parameter values."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty osc:CatalogReference.entryName ;
+            owl:onClass osc:CatalogElement ;
+            owl:onProperty osc:CatalogReference.ref ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty osc:CatalogReference.catalogName ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass osc:CatalogElement ;
-            owl:onProperty osc:CatalogReference.ref ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty osc:CatalogReference.entryName ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "A reference to type in a catalog. It is used when importing the type in a scenario. Furthermore, it hands over additional parameter values."@en .
 

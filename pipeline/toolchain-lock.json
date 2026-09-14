@@ -76,14 +76,14 @@
           "-DskipTests"
         ],
         "expected_jar": "shacl-play-app-0.12.2-onejar.jar",
-        "fingerprint_algorithm": "sha256-of-sorted-zip-entry-content-hashes",
-        "fingerprint_note": "the onejar's raw file SHA-256 is NOT reproducible across clean builds: the plugin embeds per-entry ZIP timestamps. Verified across three independent clean `mvn clean install` runs: three different raw file hashes, one stable content fingerprint. The content fingerprint is computed by opening the jar as a zip, taking every non-directory entry, SHA-256 of its decompressed bytes, sorted by entry name, concatenated as '{name}:{hash}\\n', then SHA-256 of the concatenation. Never lock or compare the raw file hash."
+        "fingerprint_algorithm": "sha256-of-sorted-zip-entry-content-hashes, excluding META-INF/maven/{groupId}/{artifactId}/pom.properties",
+        "fingerprint_note": "the onejar's raw file SHA-256 is NOT reproducible across clean builds: the plugin embeds per-entry ZIP timestamps. Verified across three independent clean `mvn clean install` runs: three different raw file hashes, one stable content fingerprint. The content fingerprint is computed by opening the jar as a zip, taking every non-directory entry, SHA-256 of its decompressed bytes, sorted by entry name, concatenated as '{name}:{hash}\\n', then SHA-256 of the concatenation. Never lock or compare the raw file hash. Maven's generated `META-INF/maven/{groupId}/{artifactId}/pom.properties` descriptors are excluded, because they carry a build timestamp rather than code: this is a onejar, so it unpacks its dependencies, and `xls2rdf-lib` is resolved from JitPack, which builds on demand - the same pinned commit `ac18090cfd` therefore yields a different artifact each time it is rebuilt. Measured on two cached builds of that commit: 163 entries each, none missing on either side, exactly one differing - `pom.properties`, and within it only '#Thu Aug 06 04:58:39 UTC 2026' against '#Fri Jul 03 16:22:50 UTC 2026', with the same version=4.0.2 and every class byte-identical. Including it made the fingerprint report when a transitive dependency was last built instead of what this jar contains, so a clean checkout could not run at all. The exclusion is matched by location and is deliberately narrow - MANIFEST.MF and pom.xml are still covered; see scripts/test_zip_content_fingerprint.py."
       }
     }
   },
   "serialization": {
-    "_comment": "Released Python distributions, not sibling forks. Exact versions from scripts/requirements.txt.",
-    "diffable-rdf": "0.0.2",
+    "_comment": "Released Python distributions, not sibling forks. Exact versions from scripts/requirements.txt. rdflib and pyoxigraph are deliberately not moved with diffable-rdf: 0.4.0 declares floors rdflib>=6.3.2 and pyoxigraph>=0.5.4, and its own uv.lock resolves to exactly 7.6.0 and 0.5.9, so these pins are the combination it is tested against.",
+    "diffable-rdf": "0.4.0",
     "rdflib": "7.6.0",
     "pyoxigraph": "0.5.9"
   },
@@ -100,6 +100,6 @@
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
     "shapechange_runtime_fingerprint": "2e51b3650d18d00d9ee9fe7187bd26d0d6ca728769a10d55c0db4684251ea174",
-    "shacl_play_jar_fingerprint": "0250a07b40e1102c3df9880d4e14cc0dbd087b5d87d88babdb6da93ccf68dbcd"
+    "shacl_play_jar_fingerprint": "16a1afcb4e2872afc2a4ad189895a07387d415c9db9746a3d1d96b478e88565a"
   }
 }
