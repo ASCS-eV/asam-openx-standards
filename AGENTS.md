@@ -278,7 +278,9 @@ Running the pipeline needs **JDK 21 and Maven**. CI does not *regenerate* artifa
 must be byte-reproducible and so needs the exact locked JDK — but it does build ShapeChange
 to measure the gap against ASAM's normative schemas
 ([`measure-gap.yml`](.github/workflows/measure-gap.yml)). The other workflows verify canonical
-form, lock/provenance consistency, and the committed models' and EA projects' checksums.
+form, lock/provenance consistency, the recorded serialization versions, the self-tests of the
+lock and content-model oracles, and the checksums of the committed models, ASAM's schemas and
+the EA projects.
 
 ## Ontology ↔ Standard Mapping
 

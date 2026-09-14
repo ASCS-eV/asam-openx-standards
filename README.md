@@ -194,9 +194,13 @@ both Java tools from source, so the binaries that run are provably the ones the 
 describes. Read [`pipeline/README.md`](pipeline/README.md) first — updating a pin is a
 release-like action that must regenerate both standards in the same change.
 
-CI does not run this (it needs a JDK and Maven). CI verifies the cheap invariants instead:
-canonical form of the committed artifacts, lock↔provenance consistency, the content-model
-oracle's own test suite, and the checksums of the redistributed models and schemas.
+CI does not *regenerate* the artifacts: that has to be byte-reproducible, which needs the exact
+JDK the lock pins. It does build ShapeChange, to measure how far the generated XSD is from
+ASAM's normative one ([`measure-gap.yml`](.github/workflows/measure-gap.yml), which publishes
+the four verdict counts on every run). Alongside that it verifies the cheap invariants:
+canonical form of the committed artifacts, lock↔provenance consistency, the recorded
+serialization versions, the self-tests of the lock and content-model oracles, and the checksums
+of the redistributed models, ASAM's schemas and the EA projects.
 
 ## Refreshing Standards
 
