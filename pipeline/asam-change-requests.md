@@ -23,7 +23,8 @@ is plain XML. Each entry below states which of the two it rests on.
 ## Status
 
 Nothing here has been sent to ASAM yet. Before sending, re-check each entry against the current
-export — this list has already had one request withdrawn after such a check.
+export — this list has already had **two** requests withdrawn after such a check, both of which
+turned out to describe defects in our own pipeline.
 
 | # | Standard | Kind | Summary |
 |---|---|---|---|
@@ -46,9 +47,10 @@ adding anything here.
 ## 1. Union alternatives are encoded as supertypes
 
 **Source: the export and the normative schema.** All four OpenDRIVE union classes carry the
-`XSDunion` stereotype and **no properties at all**. Three of the four attach some of their
-member types as *supertypes*, which is the inverse of a union — a union is a choice among its
-members, a supertype is a generalisation of them — and none attaches all of them.
+`XSDunion` stereotype and **no properties at all**. All four attach their member types — where
+they attach them at all — as *supertypes*, which is the inverse of a union: a union is a choice
+among its members, a supertype is a generalisation of them. Three of the four also attach only
+part of their member list.
 
 | Class | Members in the schema | Attached as supertypes in the model | Properties |
 |---|---|---|---:|
@@ -57,9 +59,10 @@ members, a supertype is a generalisation of them — and none attaches all of th
 | `e_countryCode` | `e_countryCode_iso3166alpha2`, `e_countryCode_iso3166alpha3_deprecated`, `e_countryCode_deprecated` | the first two only | **0** |
 | `t_grEqZeroOrContactPoint` | `t_grZero`, `e_contactPoint` | both | **0** |
 
-So no class states its full member list, and `e_unit` states nothing at all: the schema declares
-it a union of four types and the model relates it to none of them. `e_maxSpeedString` and
-`e_countryCode_deprecated` exist as classes in the model but are attached to nothing.
+So only `t_grEqZeroOrContactPoint` states its full member list, and `e_unit` states nothing at
+all: the schema declares it a union of four types and the model relates it to none of them.
+`e_maxSpeedString` and `e_countryCode_deprecated` exist as classes in the model but are attached
+to nothing. Even where the list is complete the relationship is still wrong way round.
 
 ShapeChange reports the supertype encoding itself:
 
@@ -86,9 +89,11 @@ document previously did — but the two are **not the same construct**: OpenSCEN
 `xsd:complexType`/`xsd:group` with an `xs:choice` of *elements*, whereas OpenDRIVE's are simple-type
 unions of *datatypes* used as attribute types. Re-encoding `e_unit` as a complex type would make
 it unusable as the type of `<xs:attribute name="unit">`. The OpenSCENARIO encoding is also not
-defect-free: `pipeline/openscenario-owl.config.xml` records seven classes where a required XML
-attribute becomes an alternative of the choice, which no instance can satisfy, and 9 of the 20
-accepted `CONTRADICTS` in `openscenario-xsd-content-baseline.json` are exactly that pattern.
+defect-free: `pipeline/openscenario-owl.config.xml` records seven classes that carry XML
+attributes outside the choice, and in four of them — `Action`, `Color`, `Condition` and
+`ControllerDistributionEntry` — that attribute is `use="required"`, so the choice is
+unsatisfiable. Those four are the source of 9 of the 20 accepted `CONTRADICTS` in
+`openscenario-xsd-content-baseline.json`.
 
 ## 2. The root element has no content model
 
@@ -250,8 +255,9 @@ The export now carries `modelGroup`; honouring it in the OWL, SHACL and XSD targ
 This asked ASAM whether their model carried any constraints, reasoning that because none reach
 the export, none exist. **Both halves were wrong.**
 
-OpenDRIVE carries **24 approved `Invariant` constraints on 11 classes**, including 11
-type-conditional invariants on `t_road_objects_object` alone:
+OpenDRIVE carries **24 approved `Invariant` constraints on 11 classes**, including twelve
+`@type`-conditional invariants on `t_road_objects_object` alone, plus this mutual-exclusivity
+rule on the same class:
 
 ```
 not(@radius or @width or @length)

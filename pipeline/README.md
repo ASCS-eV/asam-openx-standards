@@ -562,7 +562,8 @@ one run — whereas inheriting OpenDRIVE's would have hidden whatever its own mo
 Several of the gaps below are not ours to close: they are properties of ASAM's models rather
 than of this pipeline. Those are collected, with reproducible evidence, in
 [`asam-change-requests.md`](asam-change-requests.md) — the authoritative list of what we intend
-to raise with ASAM, and of one request already withdrawn after it turned out to be our own bug.
+to raise with ASAM, and of two requests already withdrawn after they turned out to be our own
+bugs.
 
 - **Numeric facets in the SHACL.** `t_grEqZero`'s `minInclusive=0` and its siblings are mapped
   to plain `xsd:double`: `mapentries-asam.xml` maps types, not facets, so the shapes constrain
