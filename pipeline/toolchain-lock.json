@@ -41,12 +41,18 @@
     "shacl_play": {
       "fork": "ASCS-eV/shacl-play",
       "branch": "feature/asam-pipeline",
-      "commit": "f113f5a885f39f1e5a6d018912e362b99bd801fa",
+      "commit": "03f48d9276e64d3cd508c6b83a8dd5bdd2b6ddb9",
       "upstream": "sparna-git/shacl-play",
       "upstream_branch": "master",
       "upstream_base": "f113f5a885f39f1e5a6d018912e362b99bd801fa",
-      "_carried_comment": "None: the fork is pinned at plain upstream. Upstream merged every contribution it was carrying - PR 344 (supply the conversion rules explicitly), PR 345 (fail on an unreadable input), PR 346 (gather sh:ignoredProperties into an RDF list), PR 347 (gather every list-valued constraint, so sh:or/sh:and/sh:xone are well-formed lists) and, with PR 347, the xls2rdf version pin that makes this jar's content fingerprint reproducible at all. Rebased from the earlier pin at 5fba8275 onto current upstream master, which advanced 28 commits across the 0.12.3 and 0.12.4 releases - hence the expected_jar name below.",
-      "carried_commits": [],
+      "_carried_comment": "One commit, carried while sparna-git/shacl-play#361 is open. Everything this fork previously carried was merged upstream - PR 344 (supply the conversion rules explicitly), PR 345 (fail on an unreadable input), PR 346 (gather sh:ignoredProperties into an RDF list), PR 347 (gather every list-valued constraint, so sh:or/sh:and/sh:xone are well-formed lists) and, with PR 347, the xls2rdf version pin that makes this jar's content fingerprint reproducible at all. PR 361 fixes a defect in PR 347's own gathering step: it took its members in Model.listStatements order, which for blank nodes follows JVM identity hash codes, so the same ontology converted to a different graph on every run. Drop this carried commit and move the pin back to upstream once 361 merges.",
+      "carried_commits": [
+        {
+          "commit": "03f48d9276e64d3cd508c6b83a8dd5bdd2b6ddb9",
+          "subject": "fix(owl2shacl): gather list-valued constraints in a deterministic order",
+          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/361"
+        }
+      ],
       "build": {
         "tool": "maven",
         "goals": [
@@ -112,6 +118,6 @@
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
     "shapechange_runtime_fingerprint": "c256e617cfb9633afca57f14bc2b0e6d0fdb6a56f423bdd3d36141d3737d9097",
-    "shacl_play_jar_fingerprint": "79b9dc298694c14a348dc011648efb52ed4aa96407ef6e924d8170663f25abae"
+    "shacl_play_jar_fingerprint": "9c9ea781b35326ea273f03e220dfc780a442ad6ce43da73584de81c4086557dd"
   }
 }
