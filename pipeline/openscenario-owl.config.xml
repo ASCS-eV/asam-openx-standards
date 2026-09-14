@@ -9,7 +9,8 @@
   model rather than chosen:
 
   1. The schema package is declared here, not read from the model. The OpenSCENARIO model
-     carries no tagged values at all - no targetNamespace anywhere - so PackageInfo below is
+     carries no targetNamespace tagged value on any package - the string does not occur in
+     the export at all - so PackageInfo below is
      what makes OpenSCENARIO a schema package as far as ShapeChange is concerned
      (PackageInfoImpl.isSchema falls back to the namespace configured for a package name).
      One consequence is welcome: exactly one schema resolves, so

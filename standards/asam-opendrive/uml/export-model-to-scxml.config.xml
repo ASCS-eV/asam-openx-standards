@@ -16,18 +16,17 @@
   ../README.md for the exact commit, the eaapi Maven install step, and why a commit is
   cited rather than the 4.0.0 release).
 
-  The ModelExport target writes scxml-out/INPUT/ModelExport.zip (zipOutput=true) and,
-  when unzipped, the plain SCXML document used as the source-of-truth open model.
+  The ModelExport target writes scxml-out/INPUT/opendrive.zip (zipOutput=true, and
+  outputFilename below naming the entry) and, when unzipped, the plain SCXML document
+  used as the source-of-truth open model.
 
   Portability: this configuration runs as committed. It declares no xi:include of
   ShapeChange's StandardAliases.xml, which earlier versions of this file pointed at via an
-  absolute Windows path. That include is not needed here and its removal is verified
-  output-neutral: re-running ModelExport over the committed model with and without it
-  reproduces the committed *.scxml byte for byte, for both standards. StandardAliases.xml
-  only maps non-well-known stereotype spellings onto well-known ones, and the only
-  stereotypes these models carry - "enumeration" and, in OpenSCENARIO XML, "union" - are
-  well-known already; no alias in that file maps to either. If a future re-export adds
-  stereotypes, check the log for unknown-stereotype warnings and reinstate an include then.
+  absolute Windows path. That include is not needed here: it only maps non-well-known
+  stereotype spellings onto well-known ones, and "addStereotypes" below carries every
+  stereotype verbatim instead, which is what this model needs - its stereotypes are the EA
+  XML Schema profile (XSDattribute, XSDcomplexType, XSDunion, ...), and no alias in that
+  file maps to any of them.
 -->
 <ShapeChangeConfiguration
     xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"
@@ -40,11 +39,50 @@
     <parameter name="appSchemaNameRegex" value=".*"/>
     <parameter name="publicOnly" value="false"/>
     <parameter name="checkingConstraints" value="disabled"/>
-    <!-- Orders the *schemas* ShapeChange processes. It does not order classes within a
-         schema: that is the "sortedOutput" parameter, which ModelExport ignores (verified
-         against this model, as both an input and a target parameter - the output is
-         unchanged either way). Element order therefore follows the source model. -->
+    <!-- Orders the *schemas* ShapeChange processes. Class order within a schema is not this
+         parameter's job, but the exporter now emits classes in name order by default, so the
+         committed model is a function of the model's names rather than of Enterprise
+         Architect's internal element ids. That matters because EA ids shift when the project
+         is edited, which would otherwise reorder this file for no semantic reason.
+         "sortedOutput" is deliberately NOT set: it was verified byte-for-byte inert here,
+         because the order it requests is the order already produced. -->
     <parameter name="sortedSchemaOutput" value="true"/>
+    <!-- Carry every stereotype the model applies, not just ShapeChange's well-known set.
+         The ASAM models are stereotyped with the EA XML Schema profile, and without this the
+         export silently drops 691 of 775 stereotypes - including all 468 "XSDattribute",
+         which state which properties are XML attributes and correspond exactly to the 468
+         xs:attribute declarations in the normative schema. -->
+    <parameter name="addStereotypes" value="*"/>
+    <!-- Carry the tagged values that hold model information. This parameter takes a list of
+         tag names; unlike addStereotypes and addTaggedValues it has no wildcard form, so a
+         named list is the only way to use it. The comparison worth recording is against
+         addTaggedValues="*", which does carry everything: measured, that produces an export
+         93,675 bytes larger than this list, almost all of it value-less elements.
+
+         Carried by this parameter, with the number of occurrences that have a value:
+           use                  365 of 444, required/optional - attribute requiredness
+           position             244 of 244 - element order within a content model
+           introducedAtVersion  242 of 242, 1.6.0..1.9.0 - per-element version provenance
+           modelGroup           161 of 161, sequence/group/choice - content-model kind
+           mixed                100 of 100
+           deprecatedWithVersion 41 of  42
+
+         Deliberately not named, because the model declares them and never fills them in:
+           memberNames           98 occurrences, none with a value
+           minOccurs             56 occurrences, none with a value
+           fractionDigits, totalDigits, whiteSpace
+                                 15 occurrences each, none with a value
+
+         Note that several tags are in ShapeChange's well-known set and are therefore
+         exported whether or not they appear here - this parameter cannot suppress them.
+         That includes the populated facets (minInclusive 2 values, maxInclusive 1,
+         minExclusive 1, pattern 2 - six in the whole model, matching the six restriction
+         facets in the normative schema) and "unit" (224 values), but also four facets the
+         model leaves empty (length, minLength, maxLength, maxExclusive: 15 occurrences
+         each, none with a value) and maxOccurs (56, one value). Those 60 empty well-known
+         elements are in the committed model and cannot be configured away here. -->
+    <parameter name="representTaggedValues"
+               value="use,position,introducedAtVersion,modelGroup,mixed,deprecatedWithVersion"/>
   </input>
   <log>
     <parameter name="reportLevel" value="INFO"/>
@@ -53,6 +91,9 @@
     <Target class="de.interactive_instruments.shapechange.core.target.modelexport.ModelExport" mode="enabled">
       <targetParameter name="outputDirectory" value="scxml-out"/>
       <targetParameter name="zipOutput" value="true"/>
+      <!-- Without this the zip entry is called ModelExport.xml, which says nothing about
+           which standard it holds. -->
+      <targetParameter name="outputFilename" value="opendrive"/>
     </Target>
   </targets>
 </ShapeChangeConfiguration>

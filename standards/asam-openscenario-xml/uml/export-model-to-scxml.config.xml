@@ -16,18 +16,17 @@
   ../README.md for the exact commit, the eaapi Maven install step, and why a commit is
   cited rather than the 4.0.0 release).
 
-  The ModelExport target writes scxml-out/INPUT/ModelExport.zip (zipOutput=true) and,
-  when unzipped, the plain SCXML document used as the source-of-truth open model.
+  The ModelExport target writes scxml-out/INPUT/openscenario.zip (zipOutput=true, and
+  outputFilename below naming the entry) and, when unzipped, the plain SCXML document
+  used as the source-of-truth open model.
 
   Portability: this configuration runs as committed. It declares no xi:include of
   ShapeChange's StandardAliases.xml, which earlier versions of this file pointed at via an
-  absolute Windows path. That include is not needed here and its removal is verified
-  output-neutral: re-running ModelExport over the committed model with and without it
-  reproduces the committed *.scxml byte for byte, for both standards. StandardAliases.xml
-  only maps non-well-known stereotype spellings onto well-known ones, and the only
-  stereotypes these models carry - "enumeration" and, in OpenSCENARIO XML, "union" - are
-  well-known already; no alias in that file maps to either. If a future re-export adds
-  stereotypes, check the log for unknown-stereotype warnings and reinstate an include then.
+  absolute Windows path. That include is not needed here: it only maps non-well-known
+  stereotype spellings onto well-known ones, and "addStereotypes" below carries every
+  stereotype verbatim instead, which is what this model needs - its stereotypes are the EA
+  XML Schema profile (XSDelement, XSDattribute, XSDcomplexType, xor, ...), and no alias in
+  that file maps to any of them.
 
   Note on the <packages>/<PackageInfo> block below: unlike ASAM OpenDRIVE, the ASAM
   OpenSCENARIO XML schema (../schema/OpenSCENARIO.xsd) declares no XML targetNamespace
@@ -51,11 +50,41 @@
     <parameter name="appSchemaNameRegex" value=".*"/>
     <parameter name="publicOnly" value="false"/>
     <parameter name="checkingConstraints" value="disabled"/>
-    <!-- Orders the *schemas* ShapeChange processes. It does not order classes within a
-         schema: that is the "sortedOutput" parameter, which ModelExport ignores (verified
-         against this model, as both an input and a target parameter - the output is
-         unchanged either way). Element order therefore follows the source model. -->
+    <!-- Orders the *schemas* ShapeChange processes. Class order within a schema is not this
+         parameter's job, but the exporter now emits classes in name order by default, so the
+         committed model is a function of the model's names rather than of Enterprise
+         Architect's internal element ids. That matters because EA ids shift when the project
+         is edited, which would otherwise reorder this file for no semantic reason.
+         "sortedOutput" is deliberately NOT set: it was verified byte-for-byte inert here,
+         because the order it requests is the order already produced. -->
     <parameter name="sortedSchemaOutput" value="true"/>
+    <!-- Carry every stereotype the model applies, not just ShapeChange's well-known set.
+         Without this the export drops 1495 of 1582 stereotypes, including 419 "XSDelement"
+         and 448 "XSDattribute" (the element-vs-attribute distinction, which nothing
+         downstream currently has any basis for) and 171 "xor" on connectors, which are
+         explicit exclusive-choice constraints between associations. -->
+    <parameter name="addStereotypes" value="*"/>
+    <!-- Carry the tagged values that hold model information. This parameter takes a list of
+         tag names and has no wildcard form, so a named list is the only way to use it. The
+         comparison worth recording is against addTaggedValues="*", which does carry
+         everything: measured, that produces an export 157,918 bytes larger than this list,
+         almost all of it value-less elements.
+
+         Carried by this parameter, with the number of occurrences that have a value:
+           position     450 of 450 - element order within a content model
+           modelGroup   295 of 296, sequence/all/choice - XSD content-model kind
+           mixed        282 of 284
+           withVersion   39 of  41 - this standard's spelling of introducedAtVersion
+
+         Deliberately not named, because the model declares them and never fills them in:
+           use                  165 occurrences, none with a value
+           memberNames           72 occurrences, none with a value
+           form, fixed, default 106 occurrences each, none with a value
+
+         That "use" is empty here is worth noting: OpenDRIVE populates 365 of its 444 with
+         required/optional, so this standard cannot express attribute requiredness at all. -->
+    <parameter name="representTaggedValues"
+               value="position,modelGroup,mixed,withVersion"/>
     <packages>
       <PackageInfo packageName="OpenSCENARIO"
           ns="https://publications.pages.asam.net/standards/ASAM_OpenSCENARIO/ASAM_OpenSCENARIO_XML/v1.4.0/"
@@ -69,6 +98,9 @@
     <Target class="de.interactive_instruments.shapechange.core.target.modelexport.ModelExport" mode="enabled">
       <targetParameter name="outputDirectory" value="scxml-out"/>
       <targetParameter name="zipOutput" value="true"/>
+      <!-- Without this the zip entry is called ModelExport.xml, which says nothing about
+           which standard it holds. -->
+      <targetParameter name="outputFilename" value="openscenario"/>
     </Target>
   </targets>
 </ShapeChangeConfiguration>
