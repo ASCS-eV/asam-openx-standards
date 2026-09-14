@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T16:05:56+00:00",
+  "generated": "2026-09-14T21:26:00+00:00",
   "standard": "asam-openscenario-xml",
   "source_model": {
     "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
@@ -16,9 +16,9 @@
       "runtime_fingerprint": "c256e617cfb9633afca57f14bc2b0e6d0fdb6a56f423bdd3d36141d3737d9097"
     },
     "shacl_play": {
-      "commit": "f113f5a885f39f1e5a6d018912e362b99bd801fa",
+      "commit": "b60583bf59a288b68e58ff02f7c8d1fa206794ee",
       "jar": "shacl-play-app-0.12.4-onejar.jar",
-      "jar_fingerprint": "79b9dc298694c14a348dc011648efb52ed4aa96407ef6e924d8170663f25abae"
+      "jar_fingerprint": "487be38d72a193b907a794df737c5e352acde1786f59d23dc04a8fef94b9e1a2"
     },
     "owl2shacl_rules": {
       "name": "owl2sh-closed.ttl",
@@ -37,6 +37,6 @@
   },
   "outputs": {
     "openscenario.owl.ttl": "6531f02322847abfe891d228bd9978fdb367ca330ed50cb728d2b491aa1a1ebf",
-    "openscenario.shacl.ttl": "b02183e400d3686c1e281973d9e4fc4a0616347d82bc8673c6c94c9b7e92a07d"
+    "openscenario.shacl.ttl": "68334ebfa2f785480b0010611dfe70f88ab7d9b7d953a03f6170551fcb34d27e"
   }
 }
