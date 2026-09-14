@@ -179,9 +179,9 @@ Maven profile is active by default and bundles the EA module using the `eaapi` i
 above):
 
 ```bash
-git clone https://github.com/ShapeChange/ShapeChange.git
+git clone https://github.com/ASCS-eV/ShapeChange.git
 cd ShapeChange
-git checkout 1a16d4af333627059d12d271f588e903e6ecb172
+git checkout f4ee27b5dfac3f58d6534fb31b943cbef0269d34
 mvn install
 ```
 

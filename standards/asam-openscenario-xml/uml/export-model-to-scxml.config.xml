@@ -16,8 +16,9 @@
   ../README.md for the exact commit, the eaapi Maven install step, and why a commit is
   cited rather than the 4.0.0 release).
 
-  The ModelExport target writes scxml-out/INPUT/ModelExport.zip (zipOutput=true) and,
-  when unzipped, the plain SCXML document used as the source-of-truth open model.
+  The ModelExport target writes scxml-out/INPUT/openscenario.zip (zipOutput=true, and
+  outputFilename below naming the entry) and, when unzipped, the plain SCXML document
+  used as the source-of-truth open model.
 
   Portability: this configuration runs as committed. It declares no xi:include of
   ShapeChange's StandardAliases.xml, which earlier versions of this file pointed at via an
@@ -64,19 +65,22 @@
          explicit exclusive-choice constraints between associations. -->
     <parameter name="addStereotypes" value="*"/>
     <!-- Carry the tagged values that hold model information, named explicitly rather than
-         with "*". Every tag listed here was verified to be populated in the model; the ones
-         left out were verified empty:
-           use          165 present, 0 with a value  (populated in OpenDRIVE, blank here -
-                                                      this standard cannot express attribute
-                                                      requiredness at all)
-           memberNames   72 present, 0 with a value
-           form/fixed/default
-                        106 present each, 0 with a value
-         Carried:
-           position     450 values - element order within a content model
-           modelGroup   295 values, sequence/all/choice - XSD content-model kind
-           mixed        282 values
-           withVersion   39 values - this standard's spelling of introducedAtVersion -->
+         with "*". Measured, "*" produces an export 157,918 bytes larger than this list,
+         almost all of it value-less elements.
+
+         Carried by this parameter, with the number of occurrences that have a value:
+           position     450 of 450 - element order within a content model
+           modelGroup   295 of 296, sequence/all/choice - XSD content-model kind
+           mixed        282 of 284
+           withVersion   39 of  41 - this standard's spelling of introducedAtVersion
+
+         Deliberately not named, because the model declares them and never fills them in:
+           use                  165 occurrences, none with a value
+           memberNames           72 occurrences, none with a value
+           form, fixed, default 106 occurrences each, none with a value
+
+         That "use" is empty here is worth noting: OpenDRIVE populates 365 of its 444 with
+         required/optional, so this standard cannot express attribute requiredness at all. -->
     <parameter name="representTaggedValues"
                value="position,modelGroup,mixed,withVersion"/>
     <packages>

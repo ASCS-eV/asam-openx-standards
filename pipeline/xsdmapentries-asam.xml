@@ -22,10 +22,13 @@
   <XsdMapEntry type="userDataContent" xsdEncodingRules="*" xmlType="string" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="string"/>
 
   <!--
-    These four ASAM base/simple types carry no UML stereotype at all in the committed
-    SCXML model, so ShapeChange's class-category dispatch - which relies on the
-    "basictype"/"enumeration" stereotype to pick an encoding - falls back to a plain
-    object and emits an empty, content-less complexType. mapentries-asam.xml works
+    These four ASAM base/simple types carry no stereotype that ShapeChange's class-category
+    dispatch recognises - that dispatch relies on "basictype"/"enumeration" to pick an
+    encoding. Since the re-export set addStereotypes="*", three of them (t_grEqZero,
+    t_grZero, t_zeroOne) do now carry XSDsimpleType from ASAM's EA XML Schema profile and
+    t_bool carries enumeration, but XSDsimpleType is not a category stereotype, so the
+    dispatch still falls back to a plain object and emits an empty, content-less
+    complexType. These entries remain necessary. mapentries-asam.xml works
     around the identical gap for the OWL target with matching raw-name entries;
     mirrored here. Restriction facets (e.g. t_grEqZero's minInclusive=0) are not
     representable via a map entry and are lost here exactly as they are on the OWL side.

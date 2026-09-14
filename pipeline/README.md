@@ -239,7 +239,8 @@ about the same model and a condition explained for one is not explained for the 
   deserve a decision rather than a silent artifact.
 
 **OpenSCENARIO, OWL stage: nothing is tolerated, and nothing needs to be.** The model carries no
-tagged values at all, so the schema package is named once in the configuration and exactly one
+`targetNamespace` tagged value on any package, so the schema package is named once in the
+configuration and exactly one
 schema resolves — the collision behind OpenDRIVE's 227 errors cannot arise. Its 48 `<<union>>`
 classes also encode without supertype defects. The log is empty of errors and warnings, and any
 that appear will stop the build.
@@ -508,10 +509,12 @@ alternatives; the choice belongs in this file, not in the script.
 ### `xsdmapentries-asam.xml` — type mapping
 
 The XSD-target counterpart of `mapentries-asam.xml`, mapping the same ASAM primitive and
-stereotype-less base types to XSD built-ins, for the same reason: `t_grEqZero`, `t_grZero`,
-`t_zeroOne` and `t_bool` carry no UML stereotype at all in the committed model, so
-ShapeChange's category dispatch cannot recognise them without a map entry and would render
-them as empty, content-less `complexType`s instead.
+uncategorised base types to XSD built-ins, for the same reason: `t_grEqZero`, `t_grZero`,
+`t_zeroOne` and `t_bool` carry no stereotype that ShapeChange's category dispatch recognises,
+so it cannot classify them without a map entry and would render
+them as empty, content-less `complexType`s instead. Since the re-export set
+`addStereotypes="*"` the first three do carry `XSDsimpleType` from ASAM's EA XML Schema
+profile, but that is not a category stereotype, so the map entries remain necessary.
 
 ### `openscenario-owl.config.xml` and `openscenario-xsd.config.xml`
 

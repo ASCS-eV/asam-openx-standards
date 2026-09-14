@@ -176,9 +176,9 @@ Maven profile is active by default and bundles the EA module using the `eaapi` i
 above):
 
 ```bash
-git clone https://github.com/ShapeChange/ShapeChange.git
+git clone https://github.com/ASCS-eV/ShapeChange.git
 cd ShapeChange
-git checkout 1a16d4af333627059d12d271f588e903e6ecb172
+git checkout f4ee27b5dfac3f58d6534fb31b943cbef0269d34
 mvn install
 ```
 
@@ -215,15 +215,20 @@ Carried because the model populates them:
 | `deprecatedWithVersion` | 41 | when an element was deprecated |
 | `unit` | 224 | physical units — well-known, carried without configuration |
 
-Left out because the model declares them but leaves them empty — carrying them would add about
-440 KB of blank elements:
+Left out of `representTaggedValues` because the model declares them and never fills them in —
+naming them would only add value-less elements. Measured, `representTaggedValues="*"` produces
+an export 93,675 bytes larger than the named list:
 
-`memberNames` (98 present, 0 with a value), `minOccurs` / `maxOccurs` (56 present, 1 with a
-value — multiplicity already arrives as cardinality), and the facets `fractionDigits`,
-`totalDigits`, `whiteSpace`, `length`, `minLength`, `maxLength`, `maxExclusive` (15 present
-each, 0 with a value).
+`memberNames` (98 occurrences, none with a value), `minOccurs` (56, none), and
+`fractionDigits`, `totalDigits`, `whiteSpace` (15 each, none).
 
-The facets that *are* populated — `minInclusive`, `maxInclusive`, `minExclusive`, `pattern` —
-are in ShapeChange's well-known set and need no configuration. Note there are only **six**
-populated facet values in the entire model, which is consistent with the six restriction facets
-in the normative schema.
+Some tags are in ShapeChange's well-known set and are exported whether or not the parameter
+names them, so this configuration cannot suppress them. That is how `unit` and the populated
+facets arrive — but it also means four empty facets (`length`, `minLength`, `maxLength`,
+`maxExclusive`: 15 occurrences each, **none with a value**) and `maxOccurs` (56 occurrences,
+one value) are in the committed model regardless. In total the model carries 1,711 tagged
+values, 1,448 of which have a value; the 263 empty ones occupy 27,814 bytes.
+
+Note there are only **six** populated facet values in the entire model — `minInclusive` ×2,
+`pattern` ×2, `maxInclusive` ×1, `minExclusive` ×1 — matching the six restriction facets in
+the normative schema exactly.
