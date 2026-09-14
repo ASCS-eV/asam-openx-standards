@@ -84,12 +84,15 @@ kind"*. Seven attributes are typed by these four classes, including
 `t_road_signals_signal.unit`, `t_road_type.country` and `t_road_type_speed.max`, so anything
 generated from the model cannot constrain those values the way the XSD does.
 
-This looks like an oversight in the OpenDRIVE model rather than an ASAM-wide convention,
-because **the sibling OpenSCENARIO XML model does it correctly**: it carries 48 `«union»`
-classes, each with one property per alternative, which is exactly the shape ShapeChange's
-`rule-owl-cls-union` consumes. OpenDRIVE carries none. Encoding these four the same way
-would fix it at the source, and is a request to ASAM rather than something a downstream
-configuration can repair.
+This is a request to ASAM rather than something a downstream configuration can repair. It is
+tempting to point at the sibling OpenSCENARIO XML model, which carries 48 `«union»` classes each
+with one property per alternative and does reach the ontology as `owl:unionOf` — but the two are
+**not the same XSD construct**, and copying that encoding here would not work: OpenDRIVE's unions
+are `xs:simpleType` unions of *datatypes* used as attribute types, OpenSCENARIO's are complex
+types with a choice of *elements*. The full argument, and the requested change stated in XSD
+terms, is in
+[`pipeline/asam-change-requests.md`](../../../pipeline/asam-change-requests.md#1-union-alternatives-are-encoded-as-supertypes),
+which is the authoritative list.
 
 **The root element has no content model.** `OpenDRIVE` appears in no association and is the
 type of no property. The XSD root element composes `header`, `road`, `controller`,
