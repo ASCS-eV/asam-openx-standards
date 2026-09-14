@@ -323,6 +323,44 @@ patch beyond what plain upstream ShapeChange already has. Its output goes to
 `.pipeline-work/xsd/`, never to `standards/<std>/generated/`: the XSD it produces is
 evidence, not a deliverable, and is not committed.
 
+### It runs in CI, and the number is the point
+
+This check is the answer to *"how far is the open pipeline from reproducing the normative
+artifacts?"*, so it runs on every pull request that can move it, on every push to `main`, and
+weekly — because the gap can also move without this repository changing, if ASAM re-releases a
+schema. See [`measure-gap.yml`](../.github/workflows/measure-gap.yml).
+
+Each run writes a table to the job summary, per standard:
+
+| Verdict | Meaning |
+|---|---|
+| `CONTRADICTS` | the generated schema **rejects documents the normative schema accepts** — unsound |
+| `EXTRA` | the generated schema accepts documents the normative schema rejects — unsound |
+| `MISSING` | present in the normative schema, absent from ours — incomplete |
+| `TYPE_MISMATCH` | same particle, different type — incomplete |
+
+`CONTRADICTS` and `EXTRA` are the ones that make generated artifacts *wrong* rather than merely
+partial, and the release plan gates on `CONTRADICTS` reaching zero.
+
+CI runs with `--strict-baseline`, which differs from a local run in one way: a baseline finding
+that no longer occurs **fails** the build instead of merely being reported. That sounds perverse
+— it makes an improvement fail — but a baseline nobody tightens stops describing the gap that
+exists, and then the recorded figure is fiction. Failing forces the improvement and the
+re-recorded baseline into the same change:
+
+```bash
+python scripts/check_xsd_structural_parity.py \
+    --standard asam-opendrive --shapechange ../ShapeChange \
+    --write-content-baseline
+```
+
+The workflow needs a JDK, Maven and a ShapeChange build, which is the dependency argument that
+keeps the *generation* stages out of CI. That argument does not apply here: regenerating
+artifacts must be byte-reproducible and therefore needs the exact locked JDK, whereas a
+structural comparison of two schemas does not, so a stock Temurin 21 is enough. The ShapeChange
+fork and commit are read out of `toolchain-lock.json` rather than hardcoded, so the workflow
+cannot drift from what actually generates the artifacts.
+
 ### What it checks, and what it found
 
 The comparison is a structural inventory — elements, attributes, complexTypes, simpleTypes,

@@ -93,6 +93,7 @@ These are not style preferences. Each one has cost real debugging time.
 | How was this model exported, and what does it *not* carry? | `standards/*/uml/README.md` ("Known encoding gaps") |
 | What produced the committed artifacts? | `standards/*/generated/provenance.json` |
 | What differs from ASAM's normative XSD, and is it accepted? | `pipeline/*-xsd-content-baseline.json` |
+| How far is the pipeline from the normative artifacts, right now? | the job summary of [`measure-gap.yml`](.github/workflows/measure-gap.yml) |
 | Which differences are ASAM's to fix, and what is the evidence? | [`pipeline/asam-change-requests.md`](pipeline/asam-change-requests.md) |
 | What are ASAM's original models, and how do I read them? | `standards/*/uml/source/README.md` |
 
