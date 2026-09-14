@@ -215,7 +215,8 @@ def compare(generated_dir: Path, official_dir: Path, prefix: str) -> tuple[bool,
 
 
 def compare_content_models(generated_dir: Path, official_dir: Path, spec: dict,
-                           baseline_path: Path, write_baseline: bool, limit: int) -> bool:
+                           baseline_path: Path, write_baseline: bool, limit: int,
+                           strict_baseline: bool = False) -> tuple[bool, dict[str, int]]:
     """The content-level half of the oracle: see ``xsd_content_model``.
 
     The counts above are blind to compositors and multiplicities, so they pass while the
@@ -229,6 +230,15 @@ def compare_content_models(generated_dir: Path, official_dir: Path, spec: dict,
     same change that resolved it. ``CONTRADICTS`` and ``EXTRA`` are expected to reach zero,
     at which point their baselines should be emptied and kept empty - they are unsound
     rather than merely incomplete.
+
+    With ``strict_baseline`` a resolved entry also fails the run. Reporting alone is enough
+    for a human reading the output, but not for CI: a baseline that is never tightened stops
+    measuring anything, because the gap it records is no longer the gap that exists. Making
+    an improvement fail until its baseline is updated is what keeps the recorded figure
+    honest, and it is the figure the release plan gates on.
+
+    Returns the pass/fail verdict and the per-verdict counts, so a caller can report the
+    size of the gap without re-deriving it from stdout.
     """
     print("\n" + "=" * 66)
     print("CONTENT-MODEL COMPARISON (particle set, compositor, multiplicity)")
@@ -239,10 +249,11 @@ def compare_content_models(generated_dir: Path, official_dir: Path, spec: dict,
             REPO_ROOT / spec["xsd_map_entries"] if "xsd_map_entries" in spec else None)
     except VacuousComparison as exc:
         print(f"\nFAIL: nothing was compared - {exc}")
-        return False
+        return False, {}
     print(f"complexTypes present in both schemas: {len(findings['shared_types'])}")
 
     current = {verdict: sorted(finding_key(f) for f in findings[verdict]) for verdict in VERDICTS}
+    counts = {verdict: len(current[verdict]) for verdict in VERDICTS}
     for verdict in VERDICTS:
         entries = findings[verdict]
         print(f"\n{verdict}: {len(entries)}")
@@ -256,12 +267,12 @@ def compare_content_models(generated_dir: Path, official_dir: Path, spec: dict,
         baseline_path.write_text(json.dumps(current, indent=1, sort_keys=True) + "\n")
         print(f"\nwrote baseline {baseline_path.relative_to(REPO_ROOT)} "
               f"({sum(len(v) for v in current.values())} findings)")
-        return True
+        return True, counts
 
     if not baseline_path.exists():
         print(f"\nFAIL: no baseline at {baseline_path.relative_to(REPO_ROOT)}. Create it with "
               "--write-content-baseline after reviewing the findings above.")
-        return False
+        return False, counts
 
     baseline = json.loads(baseline_path.read_text())
     ok = True
@@ -277,15 +288,22 @@ def compare_content_models(generated_dir: Path, official_dir: Path, spec: dict,
             if len(appeared) > limit:
                 print(f"    ... {len(appeared) - limit} more")
         if resolved:
-            print(f"\n{len(resolved)} baseline {verdict} finding(s) no longer occur - tighten "
-                  "the baseline in this change (--write-content-baseline):")
+            if strict_baseline:
+                ok = False
+                print(f"\nFAIL: {len(resolved)} baseline {verdict} finding(s) no longer occur. "
+                      "This is an improvement, but the baseline still records them, so the "
+                      "recorded gap is now wrong. Re-record it in this change with "
+                      "--write-content-baseline:")
+            else:
+                print(f"\n{len(resolved)} baseline {verdict} finding(s) no longer occur - tighten "
+                      "the baseline in this change (--write-content-baseline):")
             for entry in resolved[:limit]:
                 print(f"    {entry}")
             if len(resolved) > limit:
                 print(f"    ... {len(resolved) - limit} more")
     if ok:
         print("\nPASS: no content-model finding outside the recorded baseline.")
-    return ok
+    return ok, counts
 
 
 def main() -> int:
@@ -302,6 +320,14 @@ def main() -> int:
                              "baseline instead of checking against it")
     parser.add_argument("--limit", type=int, default=20,
                         help="findings printed per verdict (default: 20)")
+    parser.add_argument("--strict-baseline", action="store_true",
+                        help="also fail when a baseline finding no longer occurs, so that "
+                             "an improvement must re-record the baseline in the same change. "
+                             "Intended for CI: a baseline that is never tightened stops "
+                             "describing the gap that actually exists.")
+    parser.add_argument("--summary-json", type=Path,
+                        help="write the per-verdict finding counts here, for reporting the "
+                             "size of the gap without parsing stdout")
     args = parser.parse_args()
 
     if not args.shapechange.exists():
@@ -317,10 +343,29 @@ def main() -> int:
 
     official_dir = REPO_ROOT / spec["xsd_schema_dir"]
     enumerations_match, hierarchy_encoded = compare(generated_dir, official_dir, spec["xsd_prefix"])
-    content_ok = compare_content_models(
+    content_ok, counts = compare_content_models(
         generated_dir, official_dir, spec,
         REPO_ROOT / spec["xsd_content_baseline"],
-        args.write_content_baseline, args.limit)
+        args.write_content_baseline, args.limit, args.strict_baseline)
+
+    if args.summary_json and counts:
+        args.summary_json.parent.mkdir(parents=True, exist_ok=True)
+        args.summary_json.write_text(json.dumps({
+            "standard": args.standard,
+            "findings": counts,
+            "total": sum(counts.values()),
+            "enumerations_match": enumerations_match,
+            "hierarchy_encoded": hierarchy_encoded,
+            "within_baseline": content_ok,
+        }, indent=1, sort_keys=True) + "\n")
+    elif args.summary_json:
+        # counts is empty only when the comparison was vacuous - it loaded no schemas, so it
+        # found nothing because it looked at nothing. Writing a summary here would publish
+        # "total": 0 as if it were a measurement, which is the precise failure VacuousComparison
+        # exists to prevent. Leaving the file absent lets a reporting step tell "nothing was
+        # measured" apart from "measured, and the gap is zero".
+        print(f"\nnot writing {args.summary_json}: the comparison was vacuous, so there is no "
+              "measurement to report.")
 
     failed = False
     if not enumerations_match:

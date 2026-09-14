@@ -93,6 +93,7 @@ These are not style preferences. Each one has cost real debugging time.
 | How was this model exported, and what does it *not* carry? | `standards/*/uml/README.md` ("Known encoding gaps") |
 | What produced the committed artifacts? | `standards/*/generated/provenance.json` |
 | What differs from ASAM's normative XSD, and is it accepted? | `pipeline/*-xsd-content-baseline.json` |
+| How far is the pipeline from the normative artifacts, right now? | the job summary of [`measure-gap.yml`](.github/workflows/measure-gap.yml) |
 | Which differences are ASAM's to fix, and what is the evidence? | [`pipeline/asam-change-requests.md`](pipeline/asam-change-requests.md) |
 | What are ASAM's original models, and how do I read them? | `standards/*/uml/source/README.md` |
 
@@ -273,9 +274,13 @@ that upstream has not merged yet:
 | owl2shacl | the OWL→SHACL conversion *rules* (`owl2sh-closed.ttl`) | ✅ fully upstreamed; pinned at plain upstream |
 | diffable-rdf | RDFC-1.0 canonicalization, so regeneration is byte-stable | ASCS-eV-owned, consumed from PyPI |
 
-Running the pipeline needs **JDK 21 and Maven**. CI deliberately does *not* run it — the
-workflows only verify canonical form, lock/provenance consistency, and the committed
-models' checksums.
+Running the pipeline needs **JDK 21 and Maven**. CI does not *regenerate* artifacts — that
+must be byte-reproducible and so needs the exact locked JDK — but it does build ShapeChange
+to measure the gap against ASAM's normative schemas
+([`measure-gap.yml`](.github/workflows/measure-gap.yml)). The other workflows verify canonical
+form, lock/provenance consistency, the recorded serialization versions, the self-tests of the
+lock and content-model oracles, and the checksums of the committed models, ASAM's schemas and
+the EA projects.
 
 ## Ontology ↔ Standard Mapping
 

@@ -1,0 +1,189 @@
+name: Measure the gap to the normative artifacts
+
+# This repository exists to reproduce ASAM's normative artifacts from an open toolchain, and
+# check_xsd_structural_parity.py is what measures how far off we are. Until now nothing ran it:
+# verify-generated.yml listed it under `paths:` as a trigger and ran its *unit test*, never the
+# comparison itself. So the gap was measured only when somebody remembered to, the committed
+# baselines gated nothing automatically, and no PR could say whether it moved the number.
+#
+# That also made the release plan unenforceable. It gates on CONTRADICTS reaching zero, which
+# was a figure nobody computed on any branch.
+#
+# This workflow is heavier than the others here - it needs a JDK, Maven and a ShapeChange build,
+# which is the dependency argument that kept the generation stages out of CI. That argument is
+# right for regenerating artifacts, which must be byte-reproducible and therefore needs the exact
+# locked JDK. It is not right for this check: a structural comparison of two schemas does not
+# depend on the JDK patch level, so a stock Temurin 21 is sufficient here.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - "standards/*/uml/**"
+      - "standards/*/schema/**"
+      - "pipeline/*-xsd.config.xml"
+      - "pipeline/xsdmapentries-asam.xml"
+      - "pipeline/*-xsd-content-baseline.json"
+      - "pipeline/toolchain-lock.json"
+      - "scripts/check_xsd_structural_parity.py"
+      - "scripts/xsd_content_model.py"
+      # check_xsd_structural_parity.py imports REPO_ROOT, STANDARDS, build_shapechange,
+      # check_shapechange_log, run, shapechange_classpath and shapechange_log from here, and
+      # the guard job below reads STANDARDS out of it. Without this entry a change to any of
+      # them - including gaining an xsd_config, which is exactly what the guard exists to
+      # catch - would not run this workflow.
+      - "scripts/generate_semantic_artifacts.py"
+      - ".github/workflows/measure-gap.yml"
+  # The gap can move without anything in this repository changing - a new ShapeChange commit
+  # behind the pinned one, or a re-released ASAM schema. Weekly is often enough to notice.
+  schedule:
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parity:
+    name: ${{ matrix.standard }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [asam-opendrive, asam-openscenario-xml]
+    steps:
+      - uses: actions/checkout@v4
+
+      # The ShapeChange fork and commit are pinned in one place. Reading them here rather than
+      # hardcoding means this workflow cannot drift from what actually generates the artifacts.
+      - name: Resolve the pinned ShapeChange from the toolchain lock
+        id: lock
+        run: |
+          set -euo pipefail
+          fork=$(python -c "import json;print(json.load(open('pipeline/toolchain-lock.json'))['tools']['shapechange']['fork'])")
+          commit=$(python -c "import json;print(json.load(open('pipeline/toolchain-lock.json'))['tools']['shapechange']['commit'])")
+          echo "fork=$fork" >> "$GITHUB_OUTPUT"
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+          echo "Using $fork @ $commit"
+
+      - name: Check out the pinned ShapeChange
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.lock.outputs.fork }}
+          ref: ${{ steps.lock.outputs.commit }}
+          path: .shapechange
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Measure the gap
+        id: measure
+        run: |
+          set -euo pipefail
+          python scripts/check_xsd_structural_parity.py \
+              --standard "${{ matrix.standard }}" \
+              --shapechange .shapechange \
+              --strict-baseline \
+              --summary-json "gap-${{ matrix.standard }}.json"
+
+      # Written even when the step above fails, because a failure is exactly when the numbers
+      # are worth reading.
+      - name: Report the gap
+        if: always()
+        run: |
+          set -euo pipefail
+          f="gap-${{ matrix.standard }}.json"
+          [ -f "$f" ] || { echo "### ${{ matrix.standard }}: the check failed before it could measure anything" >> "$GITHUB_STEP_SUMMARY"; exit 0; }
+          python - "$f" >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json, sys
+          d = json.load(open(sys.argv[1]))
+          print(f"### {d['standard']}\n")
+          print("| Verdict | Findings | What it means |")
+          print("|---|---:|---|")
+          meaning = {
+              "CONTRADICTS": "the generated schema **rejects documents the normative schema accepts** - unsound",
+              "EXTRA":       "the generated schema accepts documents the normative schema rejects - unsound",
+              "MISSING":     "present in the normative schema, absent from ours - incomplete",
+              "TYPE_MISMATCH": "same particle, different type - incomplete",
+          }
+          for verdict, n in sorted(d["findings"].items(), key=lambda kv: -kv[1]):
+              print(f"| `{verdict}` | {n} | {meaning.get(verdict, '')} |")
+          print(f"| **total** | **{d['total']}** | |\n")
+          print(f"- enumeration values match the normative schema exactly: "
+                f"{'yes' if d['enumerations_match'] else '**no**'}")
+          print(f"- class hierarchy encoded wherever the normative schema encodes one: "
+                f"{'yes' if d['hierarchy_encoded'] else '**no**'}")
+          print(f"- within the recorded baseline: "
+                f"{'yes' if d['within_baseline'] else '**no**'}")
+          PY
+
+      - name: Keep the measurement
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gap-${{ matrix.standard }}
+          path: gap-${{ matrix.standard }}.json
+          if-no-files-found: ignore
+
+  # The matrix above is written by hand, so adding a standard to check_xsd_structural_parity.py
+  # without adding it here would leave it silently unmeasured - and an unmeasured standard looks
+  # exactly like one with no gap. Same guard as verify-generated.yml's matrix-covers-every-standard.
+  matrix-covers-every-checkable-standard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Every standard with an XSD configuration has a parity job
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import ast
+          import pathlib
+          import re
+          import sys
+
+          # Read STANDARDS out of the module that defines it, without importing, so this
+          # guard does not depend on the pipeline's own imports being installable here.
+          # check_xsd_structural_parity.py imports it from generate_semantic_artifacts.py.
+          #
+          # Only the keys are read, never the values: the dict contains expressions such as
+          # frozenset(...) that ast.literal_eval refuses, and which this guard does not need.
+          source = pathlib.Path("scripts/generate_semantic_artifacts.py").read_text(encoding="utf-8")
+          assignment = None
+          for node in ast.walk(ast.parse(source)):
+              if isinstance(node, ast.Assign) and any(
+                      getattr(t, "id", None) == "STANDARDS" for t in node.targets):
+                  assignment = node.value
+          if not isinstance(assignment, ast.Dict):
+              sys.exit("could not read STANDARDS from scripts/generate_semantic_artifacts.py")
+
+          checkable = set()
+          for key, value in zip(assignment.keys, assignment.values):
+              if not isinstance(key, ast.Constant) or not isinstance(value, ast.Dict):
+                  continue
+              if any(isinstance(k, ast.Constant) and k.value == "xsd_config" for k in value.keys):
+                  checkable.add(key.value)
+          if not checkable:
+              sys.exit("STANDARDS has no entry with an xsd_config - has the key been renamed?")
+
+          workflow = pathlib.Path(".github/workflows/measure-gap.yml").read_text(encoding="utf-8")
+          listed = set(re.search(r"standard:\s*\[([^\]]+)\]", workflow).group(1).replace(" ", "").split(","))
+
+          missing = checkable - listed
+          extra = listed - checkable
+          if missing:
+              sys.exit(f"::error::these standards are checkable but have no parity job: {sorted(missing)}")
+          if extra:
+              sys.exit(f"::error::the matrix lists standards that are not checkable: {sorted(extra)}")
+          print(f"ok: {len(checkable)} checkable standard(s), all in the matrix: {sorted(checkable)}")
+          PY
