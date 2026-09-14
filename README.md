@@ -110,6 +110,7 @@ asam-openx-standards/
 ├── AGENTS.md                  # Orientation for AI agents
 ├── pipeline/                  # Generation pipeline configuration
 │   ├── README.md              #   The operational runbook
+│   ├── SETUP.md               #   Machine setup and known failure modes
 │   ├── toolchain-lock.json    #   Exact tool commits + build environment
 │   ├── *-owl.config.xml       #   ShapeChange OWL target config
 │   ├── *-xsd.config.xml       #   ShapeChange XSD target config (verification)
@@ -169,8 +170,12 @@ When referencing in code or schemas:
 
 ## Regenerating the OWL and SHACL artifacts
 
-Needs JDK 21, Maven, and the three generator checkouts as **siblings** of this repository,
-each at the commit pinned in [`pipeline/toolchain-lock.json`](pipeline/toolchain-lock.json):
+Needs **Temurin JDK 21.0.12+8**, **Maven 3.9.9**, and the three generator checkouts as
+**siblings** of this repository, each at the commit pinned in
+[`pipeline/toolchain-lock.json`](pipeline/toolchain-lock.json).
+
+**Full machine setup, including the traps, is in
+[`pipeline/SETUP.md`](pipeline/SETUP.md).**
 
 ```bash
 pip install -r scripts/requirements.txt

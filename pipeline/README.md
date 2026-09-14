@@ -126,6 +126,10 @@ depend on where the checkout happens to sit.
 
 ## Running it
 
+**For first-time machine setup — exact JDK and Maven versions, portable install, the
+tool checkouts, and the failure modes that cost the most time — see
+[`pipeline/SETUP.md`](SETUP.md).** This section assumes that is already done.
+
 You need JDK 21, Maven, and the three tool checkouts as *siblings* of this repository (`../*`,
 never nested inside it) — this matches the layout `pipeline/toolchain-lock.json` and
 `scripts/generate_semantic_artifacts.py` assume:

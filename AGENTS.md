@@ -86,6 +86,7 @@ These are not style preferences. Each one has cost real debugging time.
 
 | Question | Authoritative file |
 |---|---|
+| How do I set up a machine to run this? | [`pipeline/SETUP.md`](pipeline/SETUP.md) |
 | How do I run the pipeline? | [`pipeline/README.md`](pipeline/README.md) |
 | Which tool commit is used, and what does it carry? | [`pipeline/toolchain-lock.json`](pipeline/toolchain-lock.json) |
 | Which OWL/XSD encoding rules, and why each one? | `pipeline/*-owl.config.xml`, `pipeline/*-xsd.config.xml` |
@@ -210,6 +211,7 @@ see_also:
 ```
 pipeline/                    # ← the generation pipeline's configuration
 ├── README.md                #   THE RUNBOOK — read this first
+├── SETUP.md                 #   machine setup: JDK/Maven versions, checkouts, known traps
 ├── toolchain-lock.json      #   exact tool commits, build env, content fingerprints
 ├── *-owl.config.xml         #   ShapeChange OWL target, per standard
 ├── *-xsd.config.xml         #   ShapeChange XSD target, per standard (verification only)
