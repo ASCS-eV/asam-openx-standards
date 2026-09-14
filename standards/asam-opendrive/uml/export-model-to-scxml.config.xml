@@ -53,10 +53,11 @@
          which state which properties are XML attributes and correspond exactly to the 468
          xs:attribute declarations in the normative schema. -->
     <parameter name="addStereotypes" value="*"/>
-    <!-- Carry the tagged values that hold model information, named explicitly rather than
-         with "*". Named because the model declares tags it never populates, and because
-         "*" also pulls in EA bookkeeping: measured, "*" produces an export 93,675 bytes
-         larger than this list, almost all of it value-less elements.
+    <!-- Carry the tagged values that hold model information. This parameter takes a list of
+         tag names; unlike addStereotypes and addTaggedValues it has no wildcard form, so a
+         named list is the only way to use it. The comparison worth recording is against
+         addTaggedValues="*", which does carry everything: measured, that produces an export
+         93,675 bytes larger than this list, almost all of it value-less elements.
 
          Carried by this parameter, with the number of occurrences that have a value:
            use                  365 of 444, required/optional - attribute requiredness

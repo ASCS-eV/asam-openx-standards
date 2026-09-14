@@ -216,8 +216,10 @@ Carried because the model populates them:
 | `unit` | 224 | physical units — well-known, carried without configuration |
 
 Left out of `representTaggedValues` because the model declares them and never fills them in —
-naming them would only add value-less elements. Measured, `representTaggedValues="*"` produces
-an export 93,675 bytes larger than the named list:
+naming them would only add value-less elements. Note that `representTaggedValues` takes a list
+of tag names and has **no wildcard form**; a named list is the only way to use it. The
+comparison worth recording is against `addTaggedValues="*"`, which does carry everything:
+measured, that produces an export 93,675 bytes larger than this list.
 
 `memberNames` (98 occurrences, none with a value), `minOccurs` (56, none), and
 `fractionDigits`, `totalDigits`, `whiteSpace` (15 each, none).

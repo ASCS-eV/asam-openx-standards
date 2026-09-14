@@ -22,16 +22,21 @@
   <XsdMapEntry type="userDataContent" xsdEncodingRules="*" xmlType="string" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="string"/>
 
   <!--
-    These four ASAM base/simple types carry no stereotype that ShapeChange's class-category
-    dispatch recognises - that dispatch relies on "basictype"/"enumeration" to pick an
-    encoding. Since the re-export set addStereotypes="*", three of them (t_grEqZero,
-    t_grZero, t_zeroOne) do now carry XSDsimpleType from ASAM's EA XML Schema profile and
-    t_bool carries enumeration, but XSDsimpleType is not a category stereotype, so the
-    dispatch still falls back to a plain object and emits an empty, content-less
-    complexType. These entries remain necessary. mapentries-asam.xml works
-    around the identical gap for the OWL target with matching raw-name entries;
-    mirrored here. Restriction facets (e.g. t_grEqZero's minInclusive=0) are not
-    representable via a map entry and are lost here exactly as they are on the OWL side.
+    Two different problems, one map entry each, mirroring how mapentries-asam.xml splits
+    them for the OWL target.
+
+    t_grEqZero, t_grZero and t_zeroOne carry no stereotype that ShapeChange's class-category
+    dispatch recognises - it keys on "basictype"/"enumeration" to pick an encoding. Since the
+    re-export set addStereotypes="*" they do now carry XSDsimpleType from ASAM's EA XML
+    Schema profile, but establishCategory() has no branch for it, so the dispatch still falls
+    back to a plain object and emits an empty, content-less complexType. Their restriction
+    facets (e.g. t_grEqZero's minInclusive=0) are not representable via a map entry and are
+    lost here exactly as they are on the OWL side.
+
+    t_bool is different: it IS categorised, as an enumeration over the literals true and
+    false. Its entry is not a workaround for a missing category but a deliberate choice to
+    collapse that two-literal enumeration into xs:boolean rather than emit it as an
+    enumerated type.
   -->
   <XsdMapEntry type="t_grEqZero" xsdEncodingRules="*" xmlType="double" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="double"/>
   <XsdMapEntry type="t_grZero" xsdEncodingRules="*" xmlType="double" xmlTypeType="simple" xmlTypeContent="simple" xmlPropertyType="double"/>

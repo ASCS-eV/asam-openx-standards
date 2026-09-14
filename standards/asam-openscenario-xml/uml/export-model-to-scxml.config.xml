@@ -64,8 +64,10 @@
          downstream currently has any basis for) and 171 "xor" on connectors, which are
          explicit exclusive-choice constraints between associations. -->
     <parameter name="addStereotypes" value="*"/>
-    <!-- Carry the tagged values that hold model information, named explicitly rather than
-         with "*". Measured, "*" produces an export 157,918 bytes larger than this list,
+    <!-- Carry the tagged values that hold model information. This parameter takes a list of
+         tag names and has no wildcard form, so a named list is the only way to use it. The
+         comparison worth recording is against addTaggedValues="*", which does carry
+         everything: measured, that produces an export 157,918 bytes larger than this list,
          almost all of it value-less elements.
 
          Carried by this parameter, with the number of occurrences that have a value:

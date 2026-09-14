@@ -508,13 +508,18 @@ alternatives; the choice belongs in this file, not in the script.
 
 ### `xsdmapentries-asam.xml` — type mapping
 
-The XSD-target counterpart of `mapentries-asam.xml`, mapping the same ASAM primitive and
-uncategorised base types to XSD built-ins, for the same reason: `t_grEqZero`, `t_grZero`,
-`t_zeroOne` and `t_bool` carry no stereotype that ShapeChange's category dispatch recognises,
-so it cannot classify them without a map entry and would render
-them as empty, content-less `complexType`s instead. Since the re-export set
-`addStereotypes="*"` the first three do carry `XSDsimpleType` from ASAM's EA XML Schema
-profile, but that is not a category stereotype, so the map entries remain necessary.
+The XSD-target counterpart of `mapentries-asam.xml`, and it splits the ASAM base types the same
+way, for two different reasons.
+
+`t_grEqZero`, `t_grZero` and `t_zeroOne` carry no stereotype that ShapeChange's category
+dispatch recognises, so it cannot classify them without a map entry and would render them as
+empty, content-less `complexType`s instead. Since the re-export set `addStereotypes="*"` they do
+carry `XSDsimpleType` from ASAM's EA XML Schema profile, but `establishCategory()` has no branch
+for it, so the map entries remain necessary.
+
+`t_bool` is a different case: it **is** categorised, as an `enumeration` over `true` and
+`false`. Its map entry is a deliberate choice to collapse that two-literal enumeration into
+`xs:boolean`, not a workaround for a missing category.
 
 ### `openscenario-owl.config.xml` and `openscenario-xsd.config.xml`
 
