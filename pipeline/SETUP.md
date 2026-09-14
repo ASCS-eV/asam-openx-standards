@@ -164,9 +164,15 @@ all (`sparna-git/shacl-play#347`). Do not replace it with `master-SNAPSHOT`.
 ### The ShapeChange build GPG-signs every artifact
 
 `maven-gpg-plugin` (`sign-artifacts`) is in ShapeChange's main build section, not behind a
-profile, so **every** `mvn install` signs. If your GPG key lives on a smartcard this adds roughly
+profile, so **every** `mvn install` signs. On a machine with no secret key — CI, a fresh
+checkout, a first-time reproduction of this pipeline — the build fails outright with
+`gpg: signing failed: No secret key`. If your GPG key lives on a smartcard it instead adds roughly
 20 seconds per signature and can appear to hang while waiting for the agent — which is invisible
 when the build runs in a non-interactive shell.
+
+**The pipeline handles this for you:** `build_shapechange()` passes `-Dgpg.skip=true`, so
+`generate_semantic_artifacts.py` and `check_xsd_structural_parity.py` both build cleanly with or
+without a key. Pass it yourself when invoking Maven directly.
 
 `-Dgpg.skip=true` skips it. This cannot affect `shapechange_runtime_fingerprint`: that is computed
 from `shapechange-core/target/classes` plus the resolved dependency jars, and `.asc` files are

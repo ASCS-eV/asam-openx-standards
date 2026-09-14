@@ -656,11 +656,19 @@ def build_shapechange(home: Path, mvn: str) -> Path:
     target and the SCXML reader both live in shapechange-core, and EA model readers are
     resolved by class name at runtime, so nothing needed here depends on EA.
 
+    ``-Dgpg.skip=true`` because ShapeChange configures maven-gpg-plugin outside any profile,
+    so every build tries to sign its artifacts. That fails outright on a machine with no
+    secret key - CI, a fresh checkout, anyone reproducing this pipeline for the first time -
+    with ``gpg: signing failed: No secret key``, and on a machine that has one it blocks on
+    the smartcard for tens of seconds per module. The signatures are irrelevant here: these
+    jars are consumed from the local repository and never published.
+
     Requires a ShapeChange in which the EA module is an optional Maven profile; without
     that, the reactor stops at shapechange-ea.
     """
     print("• building ShapeChange (-DskipEa)")
-    run([mvn, "-q", "-DskipEa", "install", "-DskipTests"], cwd=home, what="ShapeChange build")
+    run([mvn, "-q", "-DskipEa", "-Dgpg.skip=true", "install", "-DskipTests"],
+        cwd=home, what="ShapeChange build")
     return home / "shapechange-core" / "src" / "main" / "resources"
 
 
