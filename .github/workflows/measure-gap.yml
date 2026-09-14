@@ -28,6 +28,12 @@ on:
       - "pipeline/toolchain-lock.json"
       - "scripts/check_xsd_structural_parity.py"
       - "scripts/xsd_content_model.py"
+      # check_xsd_structural_parity.py imports REPO_ROOT, STANDARDS, build_shapechange,
+      # check_shapechange_log, run, shapechange_classpath and shapechange_log from here, and
+      # the guard job below reads STANDARDS out of it. Without this entry a change to any of
+      # them - including gaining an xsd_config, which is exactly what the guard exists to
+      # catch - would not run this workflow.
+      - "scripts/generate_semantic_artifacts.py"
       - ".github/workflows/measure-gap.yml"
   # The gap can move without anything in this repository changing - a new ShapeChange commit
   # behind the pinned one, or a re-released ASAM schema. Weekly is often enough to notice.

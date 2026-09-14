@@ -274,9 +274,11 @@ that upstream has not merged yet:
 | owl2shacl | the OWL→SHACL conversion *rules* (`owl2sh-closed.ttl`) | ✅ fully upstreamed; pinned at plain upstream |
 | diffable-rdf | RDFC-1.0 canonicalization, so regeneration is byte-stable | ASCS-eV-owned, consumed from PyPI |
 
-Running the pipeline needs **JDK 21 and Maven**. CI deliberately does *not* run it — the
-workflows only verify canonical form, lock/provenance consistency, and the committed
-models' checksums.
+Running the pipeline needs **JDK 21 and Maven**. CI does not *regenerate* artifacts — that
+must be byte-reproducible and so needs the exact locked JDK — but it does build ShapeChange
+to measure the gap against ASAM's normative schemas
+([`measure-gap.yml`](.github/workflows/measure-gap.yml)). The other workflows verify canonical
+form, lock/provenance consistency, and the committed models' and EA projects' checksums.
 
 ## Ontology ↔ Standard Mapping
 

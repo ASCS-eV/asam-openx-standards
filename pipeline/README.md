@@ -392,10 +392,10 @@ because ShapeChange emits each property exactly once either way. A whole class h
 therefore disappear without a single one of those counts moving, which is why that rule must not
 be added and why this row is asserted, if loosely.
 
-Note that no workflow runs this check: like the generation stages it needs a JDK, Maven and a
-ShapeChange build, which is the same dependency argument that keeps those out of this
-repository's cheap workflows. The assertion above therefore fires for whoever runs the script,
-not on a pull request — run it whenever the XSD encoding rule or a committed model changes.
+This assertion, like the rest of the check, now runs on every pull request that can move it —
+see [It runs in CI, and the number is the point](#it-runs-in-ci-and-the-number-is-the-point)
+above. Run it locally too whenever the XSD encoding rule or a committed model changes, so the
+result is known before the push.
 
 ### The content-model level
 
@@ -624,8 +624,10 @@ bugs.
   canonical form, recorded serialization versions, and the committed models against their zips
   and published checksums — without needing Maven or a JVM. Neither actually re-runs
   ShapeChange or shacl-play, so a change cannot assert that regenerating the OWL/SHACL from
-  scratch reproduces what is committed. `check_xsd_structural_parity.py` has no such blocker —
-  it needs a plain ShapeChange checkout and nothing else — so it could run in CI today.
+  scratch reproduces what is committed. `check_xsd_structural_parity.py` had no such blocker —
+  it needs a plain ShapeChange checkout and nothing else — and now runs in CI via
+  [`measure-gap.yml`](../.github/workflows/measure-gap.yml), so the gap to the normative
+  schemas is measured on every change. What remains missing here is the OWL/SHACL half.
 
   For the OWL/SHACL side the blocker has narrowed to one tool. owl2shacl and SHACL Play! are now
   pinned at plain upstream commits, which a workflow can clone directly; **ShapeChange is the last

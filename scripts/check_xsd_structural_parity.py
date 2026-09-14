@@ -348,7 +348,7 @@ def main() -> int:
         REPO_ROOT / spec["xsd_content_baseline"],
         args.write_content_baseline, args.limit, args.strict_baseline)
 
-    if args.summary_json:
+    if args.summary_json and counts:
         args.summary_json.parent.mkdir(parents=True, exist_ok=True)
         args.summary_json.write_text(json.dumps({
             "standard": args.standard,
@@ -358,6 +358,14 @@ def main() -> int:
             "hierarchy_encoded": hierarchy_encoded,
             "within_baseline": content_ok,
         }, indent=1, sort_keys=True) + "\n")
+    elif args.summary_json:
+        # counts is empty only when the comparison was vacuous - it loaded no schemas, so it
+        # found nothing because it looked at nothing. Writing a summary here would publish
+        # "total": 0 as if it were a measurement, which is the precise failure VacuousComparison
+        # exists to prevent. Leaving the file absent lets a reporting step tell "nothing was
+        # measured" apart from "measured, and the gap is zero".
+        print(f"\nnot writing {args.summary_json}: the comparison was vacuous, so there is no "
+              "measurement to report.")
 
     failed = False
     if not enumerations_match:
