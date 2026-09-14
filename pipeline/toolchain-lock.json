@@ -4,28 +4,14 @@
     "shapechange": {
       "fork": "ASCS-eV/ShapeChange",
       "branch": "feature/asam-pipeline",
-      "commit": "82f8bf986e21572771d5ae77a951a18752e855b2",
+      "commit": "f4ee27b5dfac3f58d6534fb31b943cbef0269d34",
       "upstream": "ShapeChange/ShapeChange",
       "upstream_branch": "next",
-      "upstream_base": "1a16d4af333627059d12d271f588e903e6ecb172",
+      "upstream_base": "7a44ce2099366ab27a37f2a07d6c2bcc19cf8289",
+      "_carried_comment": "One commit, for the one contribution still open upstream. PR 756 (owl:onDataRange for datatype qualified cardinality), 757 (optional EA module), 764 (ModelExport honours sortedOutput) and 766 (data property when the value type is an enumeration) have all merged, so they are gone from this list rather than being carried on top of an upstream that already has them - confirmed with `git cherry upstream/next`, which reports all three formerly-carried commits as already applied.",
       "carried_commits": [
         {
-          "commit": "a682aeffff23568f675f8c986fe3dfdaf6c3bd15",
-          "subject": "fix(modelexport): honour the sortedOutput parameter",
-          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/764"
-        },
-        {
-          "commit": "59ec6bce3e2ff863fc20ef5c4d3ed4aeb57d57ba",
-          "subject": "test: reorder the model export references the sortedOutput fix affects",
-          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/764"
-        },
-        {
-          "commit": "19efbe3ad91c394a531fce76a3e086c8202b4648",
-          "subject": "fix(owl): declare a data property when the value type is an enumeration",
-          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/766"
-        },
-        {
-          "commit": "82f8bf986e21572771d5ae77a951a18752e855b2",
+          "commit": "f4ee27b5dfac3f58d6534fb31b943cbef0269d34",
           "subject": "feat(owl): let a union's alternatives be its association ends only",
           "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/768"
         }
@@ -55,11 +41,11 @@
     "shacl_play": {
       "fork": "ASCS-eV/shacl-play",
       "branch": "feature/asam-pipeline",
-      "commit": "5fba8275b834099d93d5bf6a3875ea60e40695e9",
+      "commit": "f113f5a885f39f1e5a6d018912e362b99bd801fa",
       "upstream": "sparna-git/shacl-play",
       "upstream_branch": "master",
-      "upstream_base": "5fba8275b834099d93d5bf6a3875ea60e40695e9",
-      "_carried_comment": "None: the fork is pinned at plain upstream. Upstream merged every contribution it was carrying - PR 344 (supply the conversion rules explicitly), PR 345 (fail on an unreadable input), PR 346 (gather sh:ignoredProperties into an RDF list), PR 347 (gather every list-valued constraint, so sh:or/sh:and/sh:xone are well-formed lists) and, with PR 347, the xls2rdf version pin that makes this jar's content fingerprint reproducible at all. The locked commit is upstream's own follow-up 'fix merge bug', which restores the assignment in Owl2Shacl.convert that the PR 346/347 merge dropped; without it the list gathering is unreachable, so it is part of what makes PR 347 effective rather than an unrelated later change.",
+      "upstream_base": "f113f5a885f39f1e5a6d018912e362b99bd801fa",
+      "_carried_comment": "None: the fork is pinned at plain upstream. Upstream merged every contribution it was carrying - PR 344 (supply the conversion rules explicitly), PR 345 (fail on an unreadable input), PR 346 (gather sh:ignoredProperties into an RDF list), PR 347 (gather every list-valued constraint, so sh:or/sh:and/sh:xone are well-formed lists) and, with PR 347, the xls2rdf version pin that makes this jar's content fingerprint reproducible at all. Rebased from the earlier pin at 5fba8275 onto current upstream master, which advanced 28 commits across the 0.12.3 and 0.12.4 releases - hence the expected_jar name below.",
       "carried_commits": [],
       "build": {
         "tool": "maven",
@@ -75,7 +61,7 @@
           "-am",
           "-DskipTests"
         ],
-        "expected_jar": "shacl-play-app-0.12.2-onejar.jar",
+        "expected_jar": "shacl-play-app-0.12.4-onejar.jar",
         "fingerprint_algorithm": "sha256-of-sorted-zip-entry-content-hashes, excluding META-INF/maven/{groupId}/{artifactId}/pom.properties",
         "fingerprint_note": "the onejar's raw file SHA-256 is NOT reproducible across clean builds: the plugin embeds per-entry ZIP timestamps. Verified across three independent clean `mvn clean install` runs: three different raw file hashes, one stable content fingerprint. The content fingerprint is computed by opening the jar as a zip, taking every non-directory entry, SHA-256 of its decompressed bytes, sorted by entry name, concatenated as '{name}:{hash}\\n', then SHA-256 of the concatenation. Never lock or compare the raw file hash. Maven's generated `META-INF/maven/{groupId}/{artifactId}/pom.properties` descriptors are excluded, because they carry a build timestamp rather than code: this is a onejar, so it unpacks its dependencies, and `xls2rdf-lib` is resolved from JitPack, which builds on demand - the same pinned commit `ac18090cfd` therefore yields a different artifact each time it is rebuilt. Measured on two cached builds of that commit: 163 entries each, none missing on either side, exactly one differing - `pom.properties`, and within it only '#Thu Aug 06 04:58:39 UTC 2026' against '#Fri Jul 03 16:22:50 UTC 2026', with the same version=4.0.2 and every class byte-identical. Including it made the fingerprint report when a transitive dependency was last built instead of what this jar contains, so a clean checkout could not run at all. The exclusion is matched by location and is deliberately narrow - MANIFEST.MF and pom.xml are still covered; see scripts/test_zip_content_fingerprint.py."
       }
@@ -99,7 +85,7 @@
   },
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
-    "shapechange_runtime_fingerprint": "2e51b3650d18d00d9ee9fe7187bd26d0d6ca728769a10d55c0db4684251ea174",
-    "shacl_play_jar_fingerprint": "16a1afcb4e2872afc2a4ad189895a07387d415c9db9746a3d1d96b478e88565a"
+    "shapechange_runtime_fingerprint": "c256e617cfb9633afca57f14bc2b0e6d0fdb6a56f423bdd3d36141d3737d9097",
+    "shacl_play_jar_fingerprint": "79b9dc298694c14a348dc011648efb52ed4aa96407ef6e924d8170663f25abae"
   }
 }
