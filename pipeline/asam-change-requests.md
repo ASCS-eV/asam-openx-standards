@@ -27,35 +27,39 @@ export — this list has already had one request withdrawn after such a check.
 
 | # | Standard | Kind | Summary |
 |---|---|---|---|
-| [1](#1-union-alternatives-are-encoded-as-supertypes) | OpenDRIVE | Defect | Union alternatives encoded as supertypes, not properties |
+| [1](#1-union-alternatives-are-encoded-as-supertypes) | OpenDRIVE | Defect | Union member types attached as supertypes, and never all of them |
 | [2](#2-the-root-element-has-no-content-model) | OpenDRIVE | Defect | Root element has no content model |
 | [3](#3-xsdsimpletype-is-spelled-two-ways) | OpenDRIVE | Defect | `XSDSimpleType` vs `XSDsimpleType` casing |
-| [4](#4-membernames-is-declared-everywhere-and-never-populated) | Both | Defect | `memberNames` declared on 170 classes, always empty |
+| [4](#4-membernames-is-declared-everywhere-and-never-populated) | Both | Defect | `memberNames` declared on 170 classes, populated on none |
 | [5](#5-activatecontrolleractionobjectcontrollerref-is-an-association-where-the-schema-says-attribute) | OpenSCENARIO | Defect | Reference modelled as an association |
-| [6](#6-use-is-present-on-every-attribute-and-populated-on-none) | OpenSCENARIO | Defect | `use` present on 165 attributes, blank on all |
+| [6](#6-use-is-declared-throughout-openscenario-and-populated-nowhere) | OpenSCENARIO | Defect | `use` declared on 165 elements, populated on none |
 | [7](#7-the-two-standards-use-different-names-for-the-same-concepts) | Both | Harmonisation | Divergent tag and stereotype names |
 | [8](#8-do-all-seven-sub-packages-need-the-same-targetnamespace) | OpenDRIVE | Question | Seven packages share one `targetNamespace` |
-| [9](#9-does-the-model-carry-ocl-constraints) | Both | Question | No constraints reach the export |
+| [9](#9-does-openscenario-xml-intend-to-carry-no-constraints) | OpenSCENARIO | Question | No constraints, where OpenDRIVE has 24 |
+
+Two further requests have been **withdrawn** after they turned out to describe defects in our own
+pipeline rather than in ASAM's models — see [Withdrawn](#withdrawn). Read that section before
+adding anything here.
 
 ---
 
 ## 1. Union alternatives are encoded as supertypes
 
-**Source: the export.** All four OpenDRIVE union classes carry the `XSDunion` stereotype and
-**no properties at all**. Three of the four attach their alternatives as *supertypes*, which is
-the inverse of a union — a union is a choice among its members, a supertype is a generalisation
-of them.
+**Source: the export and the normative schema.** All four OpenDRIVE union classes carry the
+`XSDunion` stereotype and **no properties at all**. Three of the four attach some of their
+member types as *supertypes*, which is the inverse of a union — a union is a choice among its
+members, a supertype is a generalisation of them — and none attaches all of them.
 
-| Class | Supertypes in the model | Properties |
-|---|---|---:|
-| `e_unit` | *(none)* | **0** |
-| `t_maxSpeed` | `t_grEqZero` | **0** |
-| `e_countryCode` | `e_countryCode_iso3166alpha2`, `e_countryCode_iso3166alpha3_deprecated` | **0** |
-| `t_grEqZeroOrContactPoint` | `e_contactPoint`, `t_grZero` | **0** |
+| Class | Members in the schema | Attached as supertypes in the model | Properties |
+|---|---|---|---:|
+| `e_unit` | `e_unitDistance`, `e_unitSpeed`, `e_unitMass`, `e_unitSlope` | *(none)* | **0** |
+| `t_maxSpeed` | `t_grEqZero`, `e_maxSpeedString` | `t_grEqZero` only | **0** |
+| `e_countryCode` | `e_countryCode_iso3166alpha2`, `e_countryCode_iso3166alpha3_deprecated`, `e_countryCode_deprecated` | the first two only | **0** |
+| `t_grEqZeroOrContactPoint` | `t_grZero`, `e_contactPoint` | both | **0** |
 
-`e_unit` is empty in both directions: the normative schema declares it a union of
-`e_unitDistance`, `e_unitSpeed`, `e_unitMass` and `e_unitSlope`, and the model relates it to
-none of them.
+So no class states its full member list, and `e_unit` states nothing at all: the schema declares
+it a union of four types and the model relates it to none of them. `e_maxSpeedString` and
+`e_countryCode_deprecated` exist as classes in the model but are attached to nothing.
 
 ShapeChange reports the supertype encoding itself:
 
@@ -68,15 +72,23 @@ from the model can constrain those values the way the schema does. In the genera
 `odr:E_unit` is a bare class and `odr:E_countryCode` is asserted to be a subclass of two of its
 own alternatives.
 
-**The strongest argument is ASAM's own sibling standard.** OpenSCENARIO XML encodes the same
-concept correctly, 48 times: `«union»` classes with **zero supertypes** and one property per
-alternative — `Action`, `AnimationType` and `AppearanceAction` all have 4, 4 and 2 properties and
-no supertypes. That is exactly the shape ShapeChange's `rule-owl-cls-union` consumes, and it is
-why OpenSCENARIO produces 48 `owl:unionOf` axioms while OpenDRIVE produces none.
+**Requested change.** State the member list. In schema terms these are
+`<xs:simpleType><xs:union memberTypes="…"/></xs:simpleType>` — unions of *datatypes*, used as
+the types of XML **attributes** — so the fix is to relate each union class to all of its member
+types with a relationship that means "is one of", not "is a generalisation of". Either a UML
+union with one attribute per member type, or an EA-level union construct that survives export,
+would do; what matters is that the alternatives are members rather than supertypes.
 
-**Requested change.** Encode the four OpenDRIVE unions the way OpenSCENARIO already encodes
-its 48: apply `«union»`, remove the generalisations, and add one attribute per member type at
-multiplicity 1.
+**Note on the sibling standard.** OpenSCENARIO XML applies the UML standard `«union»` stereotype
+to 48 classes, each with zero supertypes and one property per alternative, and those do reach
+the ontology as `owl:unionOf`. It is tempting to cite that as the model to copy, and this
+document previously did — but the two are **not the same construct**: OpenSCENARIO's unions are
+`xsd:complexType`/`xsd:group` with an `xs:choice` of *elements*, whereas OpenDRIVE's are simple-type
+unions of *datatypes* used as attribute types. Re-encoding `e_unit` as a complex type would make
+it unusable as the type of `<xs:attribute name="unit">`. The OpenSCENARIO encoding is also not
+defect-free: `pipeline/openscenario-owl.config.xml` records seven classes where a required XML
+attribute becomes an alternative of the choice, which no instance can satisfy, and 9 of the 20
+accepted `CONTRADICTS` in `openscenario-xsd-content-baseline.json` are exactly that pattern.
 
 ## 2. The root element has no content model
 
@@ -92,7 +104,7 @@ in the UML.
 at the root — which means an artifact derived from the model has no document entry point. A
 consumer cannot express "this file is an OpenDRIVE file" in terms of the model.
 
-**Requested change.** Add the seven compositions with the multiplicities from
+**Requested change.** Add the eight compositions with the multiplicities from
 `OpenDRIVE_Core.xsd`.
 
 ## 3. `XSDSimpleType` is spelled two ways
@@ -140,19 +152,25 @@ model-derived artifact will require an object where the document carries a strin
 **Requested change.** Model it as an attribute of type `String`, matching the schema, or
 confirm that the association is intended and the schema is the thing to change.
 
-## 6. `use` is present on every attribute and populated on none
+## 6. `use` is declared throughout OpenSCENARIO and populated nowhere
 
-**Source: the `.qeax`.** OpenSCENARIO declares the tagged value `use` on **165 attributes and
-connectors** and leaves **all 165 blank**. OpenDRIVE declares it on 465 and populates **366**
-with `required` or `optional`.
+**Source: the `.qeax`.** OpenSCENARIO declares the tagged value `use` on **165 elements** — 133
+attributes and 32 connectors — and leaves **all 165 blank** (132 `NULL`, one empty string, 32
+`NULL`). OpenDRIVE declares it on 465 and populates **366**: 228 `required` and 138 `optional`.
 
-**Why it matters.** `use` is how the model states whether an XML attribute is required.
-OpenSCENARIO therefore cannot express requiredness at all, so nothing derived from it can
-distinguish a mandatory attribute from an optional one. As in request 1, the same organisation
-does this correctly in the sibling standard.
+**Why it matters.** It is dead metadata in one standard and load-bearing in the other, so a tool
+reading both must know to ignore it for one of them. Either it was intended to carry something
+here and does not, or it should be removed.
 
-**Requested change.** Populate `use` in OpenSCENARIO, or remove it and state that requiredness
-is carried only by the schema.
+**Not an argument for this request.** OpenSCENARIO does *not* lose the ability to express
+requiredness: it carries it in UML multiplicity instead, completely and correctly. Every one of
+the **443** attribute declarations inside a `complexType` in `OpenSCENARIO.xsd` was compared
+against the model's multiplicity for the same property, and **443 of 443 agree** — absent
+multiplicity corresponds to `use="required"`, `0..1` to optional. The generated SHACL reflects
+it: 588 `sh:minCount` constraints, with `AngleCondition.angleType` carrying `sh:minCount 1` and
+`AngleCondition.coordinateSystem` carrying none.
+
+**Requested change.** Populate `use`, or remove it.
 
 ## 7. The two standards use different names for the same concepts
 
@@ -161,16 +179,16 @@ models:
 
 | Concept | OpenDRIVE | OpenSCENARIO XML |
 |---|---|---|
-| Per-element version provenance | `introducedAtVersion` (242 values) | `withVersion` (41 values) |
-| Union | `XSDunion` stereotype (4) | `«union»`, UML standard (48) |
+| Per-element version provenance | `introducedAtVersion` — 242 declared, 242 populated | `withVersion` — 41 declared, **39** populated |
+| Union | `XSDunion` stereotype, 4 classes | `«union»`, UML standard, 48 classes |
 
 **Why it matters.** Every tool that consumes both standards needs per-standard special cases for
-no modelling reason. This repository maintains two export configurations that differ only in
-these names.
+no modelling reason. This repository's two export configurations differ in exactly these names,
+among other things.
 
-**Requested change.** Harmonise on one spelling of each. For unions the UML standard `«union»`
-is the better target, since it is what tooling already recognises — and it is what OpenSCENARIO
-already does.
+**Requested change.** Harmonise the version-provenance tag on one spelling. The union spelling
+is a harder question than it looks and is discussed in request 1 — the two standards' unions are
+different XSD constructs, so a common stereotype name would still not make them the same thing.
 
 ## 8. Do all seven sub-packages need the same `targetNamespace`?
 
@@ -187,23 +205,30 @@ instead — treating packages that share a target namespace as one schema.
 OpenSCENARIO is the opposite case: it declares no `targetNamespace` anywhere, so exactly one
 schema resolves and the run is clean.
 
-## 9. Does the model carry OCL constraints?
+## 9. Does OpenSCENARIO XML intend to carry no constraints?
 
-**A question, not a defect. Source: the export.** Neither export contains a single constraint —
-zero `<sc:constraints>` elements and zero `OclConstraint`s in both. ShapeChange's
-`checkingConstraints=disabled` only skips *analysis*, and `includeConstraintDescriptions` only
-affects `<description>` children, so absence here suggests absence in the model rather than an
-export setting.
+**A question, not a defect. Source: the `.qeax`.** OpenSCENARIO's constraint tables are empty —
+`t_objectconstraint`, `t_attributeconstraints`, `t_connectorconstraint` and `t_operationpres`
+all have zero rows.
 
-If that is intended, then SHACL derived from these models is structural-only by construction,
-and consumers should be told so. If it is not intended, the constraints are being lost somewhere
-before the export.
+OpenDRIVE, by contrast, carries **24 approved invariants on 11 classes**, expressing mutual
+exclusivity, conditional applicability and identifier uniqueness — the semantics that neither
+the schema's structure nor a UML multiplicity can state.
+
+Is the absence in OpenSCENARIO intended? If it is, SHACL derived from that standard is
+structural-only by construction and consumers should be told so. If it is not, the same class of
+constraint is presumably being enforced somewhere outside the model.
+
+*Note: an earlier version of this request asked ASAM whether either model carried constraints at
+all. That was our own configuration discarding OpenDRIVE's — see the withdrawn section below.*
 
 ---
 
 ## Withdrawn
 
-Kept for the record, because the reasoning matters more than the conclusion.
+Kept for the record, because the reasoning matters more than the conclusion. **Both withdrawn
+entries were our own defects mistaken for ASAM's**, which is why every active request above
+states the file it rests on and has been re-checked against the current export.
 
 ### `t_road_planView_geometry` requires all five geometry primitives — **withdrawn**
 
@@ -220,6 +245,28 @@ were affected.
 The export now carries `modelGroup`; honouring it in the OWL, SHACL and XSD targets is
 [#37](https://github.com/ASCS-eV/asam-openx-standards/issues/37).
 
+### Does the OpenDRIVE model carry constraints? — **withdrawn**
+
+This asked ASAM whether their model carried any constraints, reasoning that because none reach
+the export, none exist. **Both halves were wrong.**
+
+OpenDRIVE carries **24 approved `Invariant` constraints on 11 classes**, including 11
+type-conditional invariants on `t_road_objects_object` alone:
+
+```
+not(@radius or @width or @length)
+  or (@radius and not(@width or @length))
+  or (@width and @length and not(@radius))
+```
+
+Our export sets `checkingConstraints="disabled"`, and in ShapeChange that disables constraint
+**loading**, not checking — the accessor is named `constraintLoadingEnabled()`, and
+`ClassInfoEA.validateConstraintsCache()` returns before ever calling `GetConstraints()`. So the
+constraints could not have reached the export under any circumstances.
+
+Recovering them is [#44](https://github.com/ASCS-eV/asam-openx-standards/issues/44). What
+remains ASAM-facing is only the cross-standard question in request 9 above.
+
 **The lesson generalises:** a difference between our artifacts and ASAM's schema is evidence of
-a defect *somewhere*, and the export is the first place to look. Everything on the active list
-above has been re-checked against the current export for exactly this reason.
+a defect *somewhere*, and the export is the first place to look. Twice now the answer has been
+our own configuration.
