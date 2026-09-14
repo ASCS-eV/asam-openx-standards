@@ -92,8 +92,10 @@ it unusable as the type of `<xs:attribute name="unit">`. The OpenSCENARIO encodi
 defect-free: `pipeline/openscenario-owl.config.xml` records seven classes that carry XML
 attributes outside the choice, and in four of them — `Action`, `Color`, `Condition` and
 `ControllerDistributionEntry` — that attribute is `use="required"`, so the choice is
-unsatisfiable. Those four are the source of 9 of the 20 accepted `CONTRADICTS` in
-`openscenario-xsd-content-baseline.json`.
+unsatisfiable. Those four are the source of 6 of the 20 accepted `CONTRADICTS` in
+`openscenario-xsd-content-baseline.json`; three more come from `EntityAction`,
+`ParameterAction` and `VariableAction`, where the schema's required attribute is modelled as an
+association end instead — the pattern of [request 5](#5-activatecontrolleractionobjectcontrollerref-is-an-association-where-the-schema-says-attribute).
 
 ## 2. The root element has no content model
 
