@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T20:40:18+00:00",
+  "generated": "2026-09-14T21:12:52+00:00",
   "standard": "asam-openscenario-xml",
   "source_model": {
     "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
@@ -16,7 +16,7 @@
       "runtime_fingerprint": "c256e617cfb9633afca57f14bc2b0e6d0fdb6a56f423bdd3d36141d3737d9097"
     },
     "shacl_play": {
-      "commit": "31487ff74c58c7a45d67c62590d50ba6e23d1183",
+      "commit": "3523b30721ac293a0742123fcb6896a2f4e41864",
       "jar": "shacl-play-app-0.12.4-onejar.jar",
       "jar_fingerprint": "487be38d72a193b907a794df737c5e352acde1786f59d23dc04a8fef94b9e1a2"
     },
