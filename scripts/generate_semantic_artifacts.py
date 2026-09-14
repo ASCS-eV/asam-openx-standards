@@ -571,6 +571,25 @@ def validate_build_environment(lock: dict, mvn: str) -> None:
         )
 
 
+#: Entries excluded from :func:`zip_content_fingerprint`, because their content varies between
+#: builds of identical source and therefore says nothing about the code that will run.
+#:
+#: Maven writes ``META-INF/maven/{groupId}/{artifactId}/pom.properties`` into every jar it
+#: packages, with a generation timestamp as a comment. For a dependency resolved from JitPack
+#: that is not a local detail: JitPack **builds on demand**, so the same pinned commit yields a
+#: different artifact each time it is built, and ``shacl-play-app`` is a onejar that unpacks its
+#: dependencies. Measured on the two cached builds of the pinned ``xls2rdf-lib`` commit
+#: ``ac18090cfd``: 163 entries each, none missing on either side, and exactly one differing -
+#: ``pom.properties``, differing only in ``#Thu Aug 06 04:58:39 UTC 2026`` against
+#: ``#Fri Jul 03 16:22:50 UTC 2026``. Same ``version=4.0.2``, every class byte-identical.
+#:
+#: This is the same class of non-determinism as the per-entry ZIP timestamps that already rule
+#: out fingerprinting the raw jar file, one dependency deeper. The pattern is deliberately narrow
+#: - it matches only Maven's generated descriptor, so a real change to bundled metadata such as
+#: ``MANIFEST.MF`` or a ``pom.xml`` is still caught.
+_FINGERPRINT_IGNORED = re.compile(r"^META-INF/maven/[^/]+/[^/]+/pom\.properties$")
+
+
 def zip_content_fingerprint(jar: Path) -> str:
     """Content-based fingerprint of a jar: SHA-256 of every entry, sorted by name.
 
@@ -580,10 +599,18 @@ def zip_content_fingerprint(jar: Path) -> str:
     ZIP timestamps), while this content fingerprint - decompressed bytes of every
     non-directory entry, SHA-256 each, sort by entry name, concatenate as
     ``"{name}:{hash}\\n"``, SHA-256 the concatenation - was identical all three times.
+
+    Entries matching :data:`_FINGERPRINT_IGNORED` are skipped: they carry a build
+    timestamp rather than code, so including them would make the fingerprint report when
+    a transitive dependency was last built instead of what this jar contains.
     """
     lines = []
     with zipfile.ZipFile(jar) as archive:
-        names = sorted(info.filename for info in archive.infolist() if not info.is_dir())
+        names = sorted(
+            info.filename
+            for info in archive.infolist()
+            if not info.is_dir() and not _FINGERPRINT_IGNORED.match(info.filename)
+        )
         for name in names:
             digest = hashlib.sha256(archive.read(name)).hexdigest()
             lines.append(f"{name}:{digest}\n")

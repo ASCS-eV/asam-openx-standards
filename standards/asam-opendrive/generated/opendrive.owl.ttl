@@ -4566,13 +4566,13 @@ odr:T_junction_connection_virtual_default a owl:Class ;
     rdfs:label "t_junction_connection_virtual_default"@en ;
     rdfs:comment "Provides information about a single connection within a virtual junction."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_connection_type ;
-            owl:onProperty odr:T_junction_connection_virtual_default.type ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_junction_connection_virtual_default.connectingRoad ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_connection_type ;
+            owl:onProperty odr:T_junction_connection_virtual_default.type ],
         odr:T_junction_connection ;
     skos:definition "Provides information about a single connection within a virtual junction."@en .
 
@@ -4583,24 +4583,24 @@ odr:T_maxSpeed a owl:Class ;
 odr:T_physicalPosition a owl:Class ;
     rdfs:label "t_physicalPosition"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass odr:T_road_signals_signal_positionRoad ;
-            owl:onProperty odr:T_physicalPosition.positionRoad ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass odr:T_road_signals_signal_positionInertial ;
             owl:onProperty odr:T_physicalPosition.positionInertial ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass odr:T_road_signals_signal_positionRoad ;
+            owl:onProperty odr:T_physicalPosition.positionRoad ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 odr:T_polyline_geometry a owl:Class ;
     rdfs:label "t_polyline_geometry"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_skeleton_polyline_vertexRoad ;
-            owl:onProperty odr:T_polyline_geometry.vertexRoad ],
+            owl:onClass odr:T_road_objects_object_skeleton_polyline_vertexLocal ;
+            owl:onProperty odr:T_polyline_geometry.vertexLocal ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_skeleton_polyline_vertexLocal ;
-            owl:onProperty odr:T_polyline_geometry.vertexLocal ] .
+            owl:onClass odr:T_road_objects_object_skeleton_polyline_vertexRoad ;
+            owl:onProperty odr:T_polyline_geometry.vertexRoad ] .
 
 odr:T_road.lanes a owl:ObjectProperty ;
     rdfs:label "lanes"@en ;
@@ -4702,13 +4702,13 @@ odr:T_header_roadRegulation a owl:Class ;
     rdfs:label "t_header_roadRegulation"@en ;
     rdfs:comment "Defines the default regulations for different road types."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_signals_semantics ;
-            owl:onProperty odr:T_header_roadRegulation.semantics ],
-        [ a owl:Restriction ;
             owl:onDataRange odr:E_roadType ;
             owl:onProperty odr:T_header_roadRegulation.type ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_signals_semantics ;
+            owl:onProperty odr:T_header_roadRegulation.semantics ],
         odr:_OpenDriveElement ;
     skos:definition "Defines the default regulations for different road types."@en .
 
@@ -4746,16 +4746,16 @@ odr:T_outline_geometry a owl:Class ;
     rdfs:label "t_outline_geometry"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_outlines_outline_cornerRoad ;
-            owl:onProperty odr:T_outline_geometry.cornerRoad ],
+            owl:onClass odr:T_road_objects_object_outlines_outline_cornerLocal ;
+            owl:onProperty odr:T_outline_geometry.cornerLocal ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_objects_object_outlines_outline_curveLocal ;
             owl:onProperty odr:T_outline_geometry.curveLocal ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_outlines_outline_cornerLocal ;
-            owl:onProperty odr:T_outline_geometry.cornerLocal ] .
+            owl:onClass odr:T_road_objects_object_outlines_outline_cornerRoad ;
+            owl:onProperty odr:T_outline_geometry.cornerRoad ] .
 
 odr:T_road_elevationProfile a owl:Class ;
     rdfs:label "t_road_elevationProfile"@en ;
@@ -4789,13 +4789,13 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type a owl:Class ;
     rdfs:label "t_road_lanes_laneSection_lcr_lane_roadMark_type"@en ;
     rdfs:comment "Each type definition shall contain one or more line definitions with additional information about the lines that the road marking is composed of."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type.name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type.line ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type.name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type.width ;
@@ -4911,11 +4911,11 @@ odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip a owl:Class ;
     rdfs:label "t_road_lateralProfile_crossSectionSurface_surfaceStrip"@en ;
     rdfs:comment "Surface strips contains the strips."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip ;
             owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip.strip ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip ;
             owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip.strip ],
         odr:_OpenDriveElement ;
@@ -5026,11 +5026,11 @@ odr:T_road_signals_board_sign a owl:Class ;
     rdfs:comment "A <sign> element on a static board defined in the local coordinate system of the <signal> element. A <sign> element may have all attributes and child elements of a signal."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_board_sign.z ;
+            owl:onProperty odr:T_road_signals_board_sign.v ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_board_sign.v ;
+            owl:onProperty odr:T_road_signals_board_sign.z ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:T_road_signals_signal ;
     skos:definition "A <sign> element on a static board defined in the local coordinate system of the <signal> element. A <sign> element may have all attributes and child elements of a signal."@en .
@@ -5045,12 +5045,12 @@ odr:T_signals_semantics_supplementaryTime a owl:Class ;
     rdfs:label "t_signals_semantics_supplementaryTime"@en ;
     rdfs:comment "This signal semantic has no meaning on its own. It specifies the time or date a sign is valid."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_signals_semantics_supplementaryTime.value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange odr:E_signals_semantics_supplementaryTime ;
             owl:onProperty odr:T_signals_semantics_supplementaryTime.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_signals_semantics_supplementaryTime.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "This signal semantic has no meaning on its own. It specifies the time or date a sign is valid."@en .
@@ -5059,13 +5059,13 @@ odr:T_userData a owl:Class ;
     rdfs:label "t_userData"@en ;
     rdfs:comment "Describes any additional information or data that is needed by an application for a specific reason."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_userData.code ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_userData.value ] ;
+            owl:onProperty odr:T_userData.value ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_userData.code ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Describes any additional information or data that is needed by an application for a specific reason."@en .
 
 odr:E_accessRestrictionType a rdfs:Datatype ;
@@ -5107,10 +5107,6 @@ odr:T_controller a owl:Class ;
     rdfs:label "t_controller"@en ;
     rdfs:comment "Controllers provide a signal program for a traffic signal or a signal group. The mapping of traffic signals to a signal group is done in t_controller. Dynamic content like the signal program itself is specified outside of this standard (i.e. in OpenSCENARIO)."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_controller_control ;
-            owl:onProperty odr:T_controller.control ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:nonNegativeInteger ;
             owl:onProperty odr:T_controller.sequence ],
@@ -5118,6 +5114,10 @@ odr:T_controller a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_controller.name ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_controller_control ;
+            owl:onProperty odr:T_controller.control ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_controller.id ;
@@ -5183,21 +5183,21 @@ odr:T_junctionGroup a owl:Class ;
     rdfs:comment """Junction groups indicate for routing that the grouped junctions belong to the same node and are commonly seen as one big junction, for example roundabouts or highway interchanges.\r
 The <junctionGroup> element is split into a header element and a series of member elements."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junctionGroup.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_junctionGroup.name ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_junctionGroup_junctionReference ;
+            owl:onProperty odr:T_junctionGroup.junctionReference ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_junctionGroup_type ;
             owl:onProperty odr:T_junctionGroup.type ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_junctionGroup_junctionReference ;
-            owl:onProperty odr:T_junctionGroup.junctionReference ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_junctionGroup.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition """Junction groups indicate for routing that the grouped junctions belong to the same node and are commonly seen as one big junction, for example roundabouts or highway interchanges.\r
 The <junctionGroup> element is split into a header element and a series of member elements."""@en .
@@ -5210,16 +5210,16 @@ odr:T_junction_boundary_segment_lane a owl:Class ;
             owl:onProperty odr:T_junction_boundary_segment_lane.sEnd ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass odr:T_grEqZeroOrContactPoint ;
-            owl:onProperty odr:T_junction_boundary_segment_lane.sStart ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty odr:T_junction_boundary_segment_lane.boundaryLane ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_junction_segment_type ;
             owl:onProperty odr:T_junction_boundary_segment_lane.type ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:int ;
-            owl:onProperty odr:T_junction_boundary_segment_lane.boundaryLane ;
+            owl:onClass odr:T_grEqZeroOrContactPoint ;
+            owl:onProperty odr:T_junction_boundary_segment_lane.sStart ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:T_junction_boundary_segment ;
     skos:definition "A segment element with @type=\"lane\" goes along @boundaryLane for the given s range. It is the outmost edge of the lane  relative to the center of the junction."@en .
@@ -5228,10 +5228,6 @@ odr:T_junction_elevationGrid_elevation a owl:Class ;
     rdfs:label "t_junction_elevationGrid_elevation"@en ;
     rdfs:comment "Defines the z-values at the regular grid points along the junction reference line."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass odr:T_junction_grid_position_list ;
-            owl:onProperty odr:T_junction_elevationGrid_elevation.center ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_junction_grid_position_list ;
             owl:onProperty odr:T_junction_elevationGrid_elevation.left ],
@@ -5239,6 +5235,10 @@ odr:T_junction_elevationGrid_elevation a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_junction_grid_position_list ;
             owl:onProperty odr:T_junction_elevationGrid_elevation.right ],
+        [ a owl:Restriction ;
+            owl:onClass odr:T_junction_grid_position_list ;
+            owl:onProperty odr:T_junction_elevationGrid_elevation.center ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Defines the z-values at the regular grid points along the junction reference line."@en .
 
@@ -5263,13 +5263,13 @@ Each element is valid in direction of the increasing s coordinate until a new el
             owl:onDataRange odr:E_road_lanes_laneSection_lr_lane_access_rule ;
             owl:onProperty odr:T_road_lanes_laneSection_lr_lane_access.rule ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_accessRestrictionType ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_access.restriction ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lr_lane_access.sOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_accessRestrictionType ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_access.restriction ],
         odr:_OpenDriveElement ;
     skos:definition """Defines access restrictions for certain types of road users.\r
 Each element is valid in direction of the increasing s coordinate until a new element is defined. If multiple elements are defined, they shall be listed in ascending order."""@en .
@@ -5280,11 +5280,11 @@ odr:T_road_lanes_laneSection_lr_lane_height a owl:Class ;
 Lane height is used to implement small-scale elevation such as raising pedestrian walkways. Lane height is specified as offset from the road (including elevation, superelevation, shape, cross section surface) in h-direction."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_height.inner ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_height.sOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_height.sOffset ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_height.inner ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -5317,13 +5317,13 @@ odr:T_road_lateralProfile_crossSectionSurface a owl:Class ;
     rdfs:comment """A cross section surface defines the lateral profile by means of constant, linear, quadratic, and cubic polynomials in t-direction.\r
 A cross section surface is valid for the full length of the road."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface.surfaceStrips ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lateralProfile_crossSectionSurface_tOffset ;
             owl:onProperty odr:T_road_lateralProfile_crossSectionSurface.tOffset ],
+        [ a owl:Restriction ;
+            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_surfaceStrip ;
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface.surfaceStrips ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition """A cross section surface defines the lateral profile by means of constant, linear, quadratic, and cubic polynomials in t-direction.\r
 A cross section surface is valid for the full length of the road."""@en .
@@ -5374,13 +5374,13 @@ odr:T_road_railroad_switch_partner a owl:Class ;
     rdfs:label "t_road_railroad_switch_partner"@en ;
     rdfs:comment "Partner switches are two consistently set switches linked by a side track."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_railroad_switch_partner.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_railroad_switch_partner.name ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_railroad_switch_partner.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Partner switches are two consistently set switches linked by a side track."@en .
 
@@ -5396,13 +5396,13 @@ odr:T_road_signals_signal_dependency a owl:Class ;
     rdfs:label "t_road_signals_signal_dependency"@en ;
     rdfs:comment "Signal dependencies limit or extend the validity of one signal by an additional signal. For example, a speed limit sign of 60 km/h that is only valid for trucks, specified by a supplementary sign. One signal may have multiple dependencies."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_signals_signal_dependency.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_signals_signal_dependency.type ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_signals_signal_dependency.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Signal dependencies limit or extend the validity of one signal by an additional signal. For example, a speed limit sign of 60 km/h that is only valid for trucks, specified by a supplementary sign. One signal may have multiple dependencies."@en .
 
@@ -5440,16 +5440,16 @@ odr:T_signals_semantics_speed a owl:Class ;
     rdfs:label "t_signals_semantics_speed"@en ;
     rdfs:comment "Specifies speed regulations."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_signals_semantics_speed.value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange odr:E_unitSpeed ;
             owl:onProperty odr:T_signals_semantics_speed.unit ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_signals_semantics_speed ;
             owl:onProperty odr:T_signals_semantics_speed.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_signals_semantics_speed.value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Specifies speed regulations."@en .
@@ -5499,6 +5499,10 @@ odr:T_station a owl:Class ;
     rdfs:comment """Stations are places on the rail network where passengers enter and leave rail-bound vehicles at platforms.\r
 May refer to multiple tracks and is therefore defined on the same level as junctions."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_station.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_station_platform ;
             owl:onProperty odr:T_station.platform ],
@@ -5506,10 +5510,6 @@ May refer to multiple tracks and is therefore defined on the same level as junct
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_station_type ;
             owl:onProperty odr:T_station.type ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_station.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_station.name ;
@@ -5542,7 +5542,15 @@ odr:T_junction_boundary_segment_joint a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:int ;
+            owl:onProperty odr:T_junction_boundary_segment_joint.jointLaneStart ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:int ;
             owl:onProperty odr:T_junction_boundary_segment_joint.jointLaneEnd ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_junction_segment_type ;
+            owl:onProperty odr:T_junction_boundary_segment_joint.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -5551,14 +5559,6 @@ odr:T_junction_boundary_segment_joint a owl:Class ;
             owl:onClass odr:T_grEqZeroOrContactPoint ;
             owl:onProperty odr:T_junction_boundary_segment_joint.contactPoint ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange odr:E_junction_segment_type ;
-            owl:onProperty odr:T_junction_boundary_segment_joint.type ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:int ;
-            owl:onProperty odr:T_junction_boundary_segment_joint.jointLaneStart ],
         odr:T_junction_boundary_segment ;
     skos:definition "A segment element with @type=\"joint\" is perpendicular to the start or end of the given road."@en .
 
@@ -5566,16 +5566,16 @@ odr:T_junction_connection_virtual a owl:Class ;
     rdfs:label "t_junction_connection_virtual"@en ;
     rdfs:comment "Virtual connections indicate possible connections between two roads or one or more lanes of two roads. Virtual connections do not specify connecting roads."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass odr:T_junction_predecessorSuccessor ;
+            owl:onProperty odr:T_junction_connection_virtual.successor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange odr:E_connection_type ;
             owl:onProperty odr:T_junction_connection_virtual.type ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_junction_connection_virtual.connectingRoad ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass odr:T_junction_predecessorSuccessor ;
-            owl:onProperty odr:T_junction_connection_virtual.successor ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass odr:T_junction_predecessorSuccessor ;
@@ -5602,14 +5602,6 @@ odr:T_road_lanes_laneSection_lr_lane_material a owl:Class ;
     rdfs:label "t_road_lanes_laneSection_lr_lane_material"@en ;
     rdfs:comment "Stores information about the material of lanes. Each element is valid until a new element is defined. If multiple elements are defined, they must be listed in ascending order."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_material.roughness ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_material.surface ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lr_lane_material.sOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -5617,6 +5609,14 @@ odr:T_road_lanes_laneSection_lr_lane_material a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lr_lane_material.friction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_material.surface ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_material.roughness ],
         odr:_OpenDriveElement ;
     skos:definition "Stores information about the material of lanes. Each element is valid until a new element is defined. If multiple elements are defined, they must be listed in ascending order."@en .
 
@@ -5646,10 +5646,6 @@ odr:T_road_objects_object_material a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_material.friction ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_material.roughness ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -5659,6 +5655,10 @@ odr:T_road_objects_object_material a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_objects_object_material.surface ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_material.friction ],
         odr:_OpenDriveElement ;
     skos:definition "Describes the material properties of objects, for example, patches that are part of the road surface but deviate from the standard road material. Supersedes the material specified in the <road material> element and is valid only within the outline of the parent road object."@en .
 
@@ -5666,16 +5666,16 @@ odr:T_road_objects_object_surface_CRG a owl:Class ;
     rdfs:label "t_road_objects_object_surface_CRG"@en ;
     rdfs:comment "Elevation data described in {GLO_VAR_STA_ASAM_OpenCRG} are represented by the <CRG> element within the <surface> element."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_objects_object_surface_CRG.file ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty odr:T_road_objects_object_surface_CRG.hideRoadSurfaceCRG ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_surface_CRG.zScale ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_objects_object_surface_CRG.file ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Elevation data described in {GLO_VAR_STA_ASAM_OpenCRG} are represented by the <CRG> element within the <surface> element."@en .
@@ -5684,16 +5684,16 @@ odr:T_road_railroad_switch_mainTrack a owl:Class ;
     rdfs:label "t_road_railroad_switch_mainTrack"@en ;
     rdfs:comment "Main tracks form the primary course for rail bound traffic."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_railroad_switch_mainTrack.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange odr:E_elementDir ;
             owl:onProperty odr:T_road_railroad_switch_mainTrack.dir ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_railroad_switch_mainTrack.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_railroad_switch_mainTrack.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Main tracks form the primary course for rail bound traffic."@en .
@@ -5744,17 +5744,17 @@ odr:T_road_type a owl:Class ;
     rdfs:label "t_road_type"@en ;
     rdfs:comment "A road type element is valid for the entire cross section of a road. It is valid until a new road type element is provided or until the road ends."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:E_countryCode ;
-            owl:onProperty odr:T_road_type.country ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_type.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_type_speed ;
             owl:onProperty odr:T_road_type.speed ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_type.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:E_countryCode ;
+            owl:onProperty odr:T_road_type.country ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_roadType ;
             owl:onProperty odr:T_road_type.type ;
@@ -5784,13 +5784,13 @@ odr:T_station_platform a owl:Class ;
     rdfs:label "t_station_platform"@en ;
     rdfs:comment "Platforms are essential parts of stations for passengers to enter and leave rail-bound vehicles. One or more railroad tracks reference one platform."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_station_platform.name ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_station_platform_segment ;
             owl:onProperty odr:T_station_platform.segment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_station_platform.name ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_station_platform.id ;
@@ -5813,19 +5813,19 @@ odr:T_dataQuality_Error a owl:Class ;
     rdfs:comment "Describes the error range, given in [m], of measurement data that is integrated into the ASAM OpenDRIVE file."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_dataQuality_Error.zRelative ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_dataQuality_Error.xyRelative ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_dataQuality_Error.xyAbsolute ;
+            owl:onProperty odr:T_dataQuality_Error.zAbsolute ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_dataQuality_Error.zAbsolute ;
+            owl:onProperty odr:T_dataQuality_Error.zRelative ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_dataQuality_Error.xyAbsolute ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Describes the error range, given in [m], of measurement data that is integrated into the ASAM OpenDRIVE file."@en .
 
@@ -5843,11 +5843,11 @@ odr:T_header_Offset a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_header_Offset.hdg ;
+            owl:onProperty odr:T_header_Offset.z ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_header_Offset.z ;
+            owl:onProperty odr:T_header_Offset.hdg ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -5860,8 +5860,16 @@ odr:T_junction_connection_laneLink a owl:Class ;
     rdfs:label "t_junction_connection_laneLink"@en ;
     rdfs:comment "Provides information about the lanes that are linked between an incoming road and a connecting road. It is strongly recommended to provide this element. It is deprecated to omit the <laneLink> element."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_junction_connection_laneLink.overlapZone ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:integer ;
             owl:onProperty odr:T_junction_connection_laneLink.from ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty odr:T_junction_connection_laneLink.to ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -5871,14 +5879,6 @@ odr:T_junction_connection_laneLink a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_layerType ;
             owl:onProperty odr:T_junction_connection_laneLink.toLayer ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty odr:T_junction_connection_laneLink.to ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_junction_connection_laneLink.overlapZone ],
         odr:_OpenDriveElement ;
     skos:definition "Provides information about the lanes that are linked between an incoming road and a connecting road. It is strongly recommended to provide this element. It is deprecated to omit the <laneLink> element."@en .
 
@@ -5893,12 +5893,12 @@ odr:T_junction_roadSection a owl:Class ;
             owl:onProperty odr:T_junction_roadSection.sEnd ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_roadSection.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_junction_roadSection.sStart ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_junction_roadSection.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
@@ -5915,6 +5915,10 @@ odr:T_license a owl:Class ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_license.spdxid ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_license.text ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_license.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -5922,10 +5926,6 @@ odr:T_license a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_license.resource ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_license.text ],
         odr:_OpenDriveElement ;
     skos:definition "Licensing information about the OpenDRIVE file."@en .
 
@@ -5934,11 +5934,11 @@ odr:T_road_elevationProfile_elevation a owl:Class ;
     rdfs:comment "Defines an elevation element at a given position on the road reference line. Elements shall be defined in ascending order along the reference line. The s length does not change with the elevation."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_elevationProfile_elevation.s ;
+            owl:onProperty odr:T_road_elevationProfile_elevation.a ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_elevationProfile_elevation.a ;
+            owl:onProperty odr:T_road_elevationProfile_elevation.d ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -5946,11 +5946,11 @@ odr:T_road_elevationProfile_elevation a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_elevationProfile_elevation.c ;
+            owl:onProperty odr:T_road_elevationProfile_elevation.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_elevationProfile_elevation.d ;
+            owl:onProperty odr:T_road_elevationProfile_elevation.c ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Defines an elevation element at a given position on the road reference line. Elements shall be defined in ascending order along the reference line. The s length does not change with the elevation."@en .
@@ -5960,13 +5960,13 @@ odr:T_road_lanes a owl:Class ;
     rdfs:comment """Lanes are an essential part of all roads. Lanes are attached to the road reference line and are defined from inside to outside.\r
 Lanes contain a series of lane section elements that define the characteristics of the road cross sections with respect to the lanes along the road reference line."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_layerType ;
-            owl:onProperty odr:T_road_lanes.layer ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lanes_laneSection ;
             owl:onProperty odr:T_road_lanes.laneSection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_layerType ;
+            owl:onProperty odr:T_road_lanes.layer ],
         odr:_OpenDriveElement ;
     skos:definition """Lanes are an essential part of all roads. Lanes are attached to the road reference line and are defined from inside to outside.\r
 Lanes contain a series of lane section elements that define the characteristics of the road cross sections with respect to the lanes along the road reference line."""@en .
@@ -5976,15 +5976,11 @@ odr:T_road_lanes_laneOffset a owl:Class ;
     rdfs:comment "Lane offsets shift the center lane away from the road reference line."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneOffset.a ;
+            owl:onProperty odr:T_road_lanes_laneOffset.d ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneOffset.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneOffset.d ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -5993,6 +5989,10 @@ odr:T_road_lanes_laneOffset a owl:Class ;
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneOffset.c ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneOffset.a ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Lane offsets shift the center lane away from the road reference line."@en .
@@ -6012,15 +6012,7 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway a owl:Class ;
     rdfs:comment "Relocates the lateral reference position for the following (explicit) type definition and thus defines an offset. The sway offset is relative to the nominal reference position of the lane marking, meaning the lane border."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.c ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.d ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.ds ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.b ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6028,7 +6020,15 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.b ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.ds ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.d ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_sway.c ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Relocates the lateral reference position for the following (explicit) type definition and thus defines an offset. The sway offset is relative to the nominal reference position of the lane marking, meaning the lane border."@en .
@@ -6038,6 +6038,14 @@ odr:T_road_lateralProfile_superelevation a owl:Class ;
     rdfs:comment """Superelevation specifies the transverse slope along the road reference line. Superelevation is constant in each cross section and can vary in road reference line direction.\r
 Elements must be defined in ascending order along the reference line. The parameters of an element are valid until the next element starts or the road reference line ends. Per default, the superelevation of a road is zero."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lateralProfile_superelevation.b ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lateralProfile_superelevation.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lateralProfile_superelevation.a ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -6049,14 +6057,6 @@ Elements must be defined in ascending order along the reference line. The parame
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lateralProfile_superelevation.d ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lateralProfile_superelevation.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lateralProfile_superelevation.b ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition """Superelevation specifies the transverse slope along the road reference line. Superelevation is constant in each cross section and can vary in road reference line direction.\r
 Elements must be defined in ascending order along the reference line. The parameters of an element are valid until the next element starts or the road reference line ends. Per default, the superelevation of a road is zero."""@en .
@@ -6066,19 +6066,19 @@ odr:T_road_planView_geometry_poly3 a owl:Class ;
     rdfs:comment "A cubic polynom describing the road reference line."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_poly3.d ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_poly3.b ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_planView_geometry_poly3.a ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_planView_geometry_poly3.c ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry_poly3.d ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry_poly3.b ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "A cubic polynom describing the road reference line."@en .
@@ -6092,19 +6092,19 @@ odr:T_road_signals_displayArea a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_displayArea.z ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:int ;
-            owl:onProperty odr:T_road_signals_displayArea.index ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_displayArea.v ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_displayArea.z ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_displayArea.height ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:int ;
+            owl:onProperty odr:T_road_signals_displayArea.index ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "A display area is the recommended position of the signal to be visualized in the simulation. A display area is specified in the `<displayArea>` element. A `<displayArea>` element is defined in the local coordinate system of the `<signal>` element. The @index attribute can be used in ASAM OpenSCENARIO to reference the display area. In ASAM OpenSCENARIO a different local display area position may be specified."@en .
@@ -6113,16 +6113,16 @@ odr:T_road_signals_signalReference a owl:Class ;
     rdfs:label "t_road_signals_signalReference"@en ;
     rdfs:comment "Refers to the same, that is, identical signal from multiple roads. The referenced signals require a unique ID. The <signalReference> element consists of a main element and an optional lane validity element."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange odr:E_orientation ;
-            owl:onProperty odr:T_road_signals_signalReference.orientation ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_signals_signalReference.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_signalReference.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_orientation ;
+            owl:onProperty odr:T_road_signals_signalReference.orientation ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6136,11 +6136,11 @@ odr:T_road_signals_signal_road a owl:Class ;
     rdfs:comment "Used to provide information about signals along a road. Consists of a main element and an optional lane validity element. The element for a signal is <signal>."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_road.zOffset ;
+            owl:onProperty odr:T_road_signals_signal_road.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_road.s ;
+            owl:onProperty odr:T_road_signals_signal_road.zOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6154,20 +6154,20 @@ odr:T_station_platform_segment a owl:Class ;
     rdfs:comment """Segments are parts of platforms.\r
 Each <platform> element is valid on one or more track segments. The <segment> element must be specified."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_station_platform_segment.sEnd ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_station_platform_segment.roadId ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange odr:E_station_platform_segment_side ;
-            owl:onProperty odr:T_station_platform_segment.side ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_station_platform_segment.sStart ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_station_platform_segment.sStart ;
+            owl:onProperty odr:T_station_platform_segment.sEnd ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_station_platform_segment_side ;
+            owl:onProperty odr:T_station_platform_segment.side ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition """Segments are parts of platforms.\r
@@ -6179,23 +6179,23 @@ odr:T_dataQuality_RawData a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_dataQuality_RawData.postProcessingComment ],
+            owl:onProperty odr:T_dataQuality_RawData.sourceComment ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_dataQuality_RawData_Source ;
             owl:onProperty odr:T_dataQuality_RawData.source ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_dataQuality_RawData.date ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_dataQuality_RawData_PostProcessing ;
             owl:onProperty odr:T_dataQuality_RawData.postProcessing ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_dataQuality_RawData.date ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_dataQuality_RawData.sourceComment ] ;
+            owl:onProperty odr:T_dataQuality_RawData.postProcessingComment ] ;
     skos:definition "Describes some basic metadata containing information about the raw data."@en .
 
 odr:T_junction_crossPath_laneLink a owl:Class ;
@@ -6203,11 +6203,11 @@ odr:T_junction_crossPath_laneLink a owl:Class ;
     rdfs:comment "Define the links between the lanes of the <crossPath> to the lanes of other roads."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:integer ;
-            owl:onProperty odr:T_junction_crossPath_laneLink.from ;
+            owl:onProperty odr:T_junction_crossPath_laneLink.to ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:integer ;
-            owl:onProperty odr:T_junction_crossPath_laneLink.to ;
+            owl:onProperty odr:T_junction_crossPath_laneLink.from ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6220,6 +6220,18 @@ odr:T_junction_crossing a owl:Class ;
     rdfs:label "t_junction_crossing"@en ;
     rdfs:comment "Crossings are junctions without connecting roads. They define sections where crossing traffic can appear. Traffic does not change roads at crossings, for example, at railway crossings."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_junction_roadSection ;
+            owl:onProperty odr:T_junction_crossing.roadSection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects ;
+            owl:onProperty odr:T_junction_crossing.objects ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_junction_type ;
+            owl:onProperty odr:T_junction_crossing.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_planView ;
             owl:onProperty odr:T_junction_crossing.planView ],
@@ -6227,18 +6239,6 @@ odr:T_junction_crossing a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_surface ;
             owl:onProperty odr:T_junction_crossing.surface ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects ;
-            owl:onProperty odr:T_junction_crossing.objects ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_junction_roadSection ;
-            owl:onProperty odr:T_junction_crossing.roadSection ],
-        [ a owl:Restriction ;
-            owl:onDataRange odr:E_junction_type ;
-            owl:onProperty odr:T_junction_crossing.type ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:T_junction ;
     skos:definition "Crossings are junctions without connecting roads. They define sections where crossing traffic can appear. Traffic does not change roads at crossings, for example, at railway crossings."@en .
 
@@ -6246,21 +6246,21 @@ odr:T_junction_direct a owl:Class ;
     rdfs:label "t_junction_direct"@en ;
     rdfs:comment "Direct junctions are intended to model entries and exits where drivable lanes may overlap to split or merge, but traffic does not cross."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange odr:E_junction_type ;
-            owl:onProperty odr:T_junction_direct.type ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_planView ;
             owl:onProperty odr:T_junction_direct.planView ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects ;
-            owl:onProperty odr:T_junction_direct.objects ],
+            owl:onDataRange odr:E_junction_type ;
+            owl:onProperty odr:T_junction_direct.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_junction_connection_direct ;
             owl:onProperty odr:T_junction_direct.connection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects ;
+            owl:onProperty odr:T_junction_direct.objects ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_surface ;
@@ -6286,21 +6286,21 @@ odr:T_road_lanes_laneSection_center_lane a owl:Class ;
     rdfs:label "t_road_lanes_laneSection_center_lane"@en ;
     rdfs:comment "Center lane element with ID zero. Has no width attribute. Mainly used for road markings."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_lanes_laneSection_lcr_lane_link ;
+            owl:onProperty odr:T_road_lanes_laneSection_center_lane.link ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:integer ;
             owl:onProperty odr:T_road_lanes_laneSection_center_lane.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_lanes_laneSection_center_lane.level ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_lanes_laneSection_lcr_lane_link ;
-            owl:onProperty odr:T_road_lanes_laneSection_center_lane.link ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_laneType ;
-            owl:onProperty odr:T_road_lanes_laneSection_center_lane.type ] ;
+            owl:onProperty odr:T_road_lanes_laneSection_center_lane.type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_lanes_laneSection_center_lane.level ] ;
     skos:definition "Center lane element with ID zero. Has no width attribute. Mainly used for road markings."@en .
 
 odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line a owl:Class ;
@@ -6308,23 +6308,23 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line a owl:Class ;
     rdfs:comment "Specifies a single line in an explicit road marking definition."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.tOffset ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.sOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_roadMarkRule ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.rule ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.length ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.width ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.sOffset ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.tOffset ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit_line.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Specifies a single line in an explicit road marking definition."@en .
@@ -6336,15 +6336,15 @@ Especially when road data is derived from automatic measurements, this type of d
 Lane width and lane border elements are mutually exclusive within the same lane group. If both width and lane border elements are present for a lane section in the ASAM OpenDRIVE file, the application shall use the information from the <width> elements."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_border.a ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lr_lane_border.b ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_border.c ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_border.sOffset ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_border.a ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6352,7 +6352,7 @@ Lane width and lane border elements are mutually exclusive within the same lane 
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_border.sOffset ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_border.c ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition """Lane borders set the width of lanes. Lane borders describe the outer limits of lanes, independent of the parameters of their inner borders. In this case, inner lanes are defined as lanes which have the same sign for their ID as the lane currently defined, but with a smaller absolute value for their ID.\r
@@ -6365,15 +6365,7 @@ odr:T_road_lanes_laneSection_lr_lane_width a owl:Class ;
 Lane width and lane border elements are mutually exclusive within the same lane group. If both width and lane border elements are present for a lane section in the ASAM OpenDRIVE file, the application must use the information from the <width> elements."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.c ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.a ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.sOffset ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.b ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6381,7 +6373,15 @@ Lane width and lane border elements are mutually exclusive within the same lane 
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.b ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.sOffset ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.a ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane_width.c ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition """Lane widths widen or narrow lanes along the t-coordinate within lane sections.\r
@@ -6391,6 +6391,14 @@ odr:T_road_lateralProfile_shape a owl:Class ;
     rdfs:label "t_road_lateralProfile_shape"@en ;
     rdfs:comment "Defined as the road section’s surface relative to the reference plane. There may be several shape definitions at one s-position that have different t-values, thereby describing the curvy shape of the road."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lateralProfile_shape.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lateralProfile_shape.c ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lateralProfile_shape.b ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -6404,14 +6412,6 @@ odr:T_road_lateralProfile_shape a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lateralProfile_shape.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lateralProfile_shape.c ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lateralProfile_shape.a ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
@@ -6421,25 +6421,25 @@ odr:T_road_objects_bridge a owl:Class ;
     rdfs:label "t_road_objects_bridge"@en ;
     rdfs:comment "Bridges are modeled as objects in ASAM OpenDRIVE. The road with the bridge object leads over a bridge. Bridges are valid for a road’s complete cross section unless a lane validity record with further restrictions is provided as child element."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange odr:E_bridgeType ;
-            owl:onProperty odr:T_road_objects_bridge.type ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_objects_bridge.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_bridge.s ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_objects_bridge.name ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_bridgeType ;
+            owl:onProperty odr:T_road_objects_bridge.type ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_bridge.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_objects_bridge.name ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_bridge.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Bridges are modeled as objects in ASAM OpenDRIVE. The road with the bridge object leads over a bridge. Bridges are valid for a road’s complete cross section unless a lane validity record with further restrictions is provided as child element."@en .
 
@@ -6447,21 +6447,21 @@ odr:T_road_objects_object_borders_border a owl:Class ;
     rdfs:label "t_road_objects_object_borders_border"@en ;
     rdfs:comment "Specifies a border along certain outline points."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_objects_object_borders_border.useCompleteOutline ],
+        [ a owl:Restriction ;
             owl:onDataRange odr:E_borderType ;
             owl:onProperty odr:T_road_objects_object_borders_border.type ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty odr:T_road_objects_object_borders_border.outlineId ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_borders_border.width ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_objects_object_borders_border.useCompleteOutline ],
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty odr:T_road_objects_object_borders_border.outlineId ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Specifies a border along certain outline points."@en .
 
@@ -6470,11 +6470,11 @@ odr:T_road_objects_object_outlines_outline_cornerLocal a owl:Class ;
     rdfs:comment "Defines a corner point on the object’s outline relative to the object's origin in local u/v-coordinates."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerLocal.z ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerLocal.u ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerLocal.u ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerLocal.z ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6496,11 +6496,7 @@ odr:T_road_objects_object_outlines_outline_cornerRoad a owl:Class ;
     rdfs:comment "Defines a corner point on the object’s outline in road coordinates."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerRoad.height ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerRoad.dz ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerRoad.t ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6508,7 +6504,11 @@ odr:T_road_objects_object_outlines_outline_cornerRoad a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerRoad.t ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerRoad.height ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_cornerRoad.dz ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -6521,8 +6521,8 @@ odr:T_road_railroad_switch a owl:Class ;
     rdfs:label "t_road_railroad_switch"@en ;
     rdfs:comment "Switches change the tracks for rail-bound vehicles. Switches guide the vehicles into two directions only."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange odr:E_road_railroad_switch_position ;
-            owl:onProperty odr:T_road_railroad_switch.position ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_railroad_switch.name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass odr:T_road_railroad_switch_mainTrack ;
@@ -6533,12 +6533,12 @@ odr:T_road_railroad_switch a owl:Class ;
             owl:onProperty odr:T_road_railroad_switch.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass odr:T_road_railroad_switch_sideTrack ;
-            owl:onProperty odr:T_road_railroad_switch.sideTrack ;
+            owl:onDataRange odr:E_road_railroad_switch_position ;
+            owl:onProperty odr:T_road_railroad_switch.position ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_railroad_switch.name ;
+            owl:onClass odr:T_road_railroad_switch_sideTrack ;
+            owl:onProperty odr:T_road_railroad_switch.sideTrack ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -6554,11 +6554,7 @@ Variable message boards are switched off if they are not specified in ASAM OpenS
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_vmsBoard.displayWidth ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_vmsBoard.v ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty odr:T_road_signals_vmsBoard.displayHeight ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_road_signals_displayType ;
             owl:onProperty odr:T_road_signals_vmsBoard.displayType ;
@@ -6570,7 +6566,11 @@ Variable message boards are switched off if they are not specified in ASAM OpenS
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_vmsBoard.displayHeight ],
+            owl:onProperty odr:T_road_signals_vmsBoard.displayWidth ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_vmsBoard.v ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:T_road_signals_board ;
     skos:definition """Variable message boards can change their values during the simulation in ASAM OpenSCENARIO.\r
 Variable message boards are switched off if they are not specified in ASAM OpenSCENARIO."""@en .
@@ -6593,6 +6593,10 @@ odr:T_junction_connection a owl:Class ;
     rdfs:label "t_junction_connection"@en ;
     rdfs:comment "Provides information about a single connection within a junction."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_junction_connection.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_junction_connection.incomingRoad ],
@@ -6600,10 +6604,6 @@ odr:T_junction_connection a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_contactPoint ;
             owl:onProperty odr:T_junction_connection.contactPoint ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_connection.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Provides information about a single connection within a junction."@en .
 
@@ -6612,16 +6612,16 @@ odr:T_junction_controller a owl:Class ;
     rdfs:comment "Lists the controllers that should be grouped in a sychronization group (limited to that particular junction)."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_controller.type ],
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty odr:T_junction_controller.sequence ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_junction_controller.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty odr:T_junction_controller.sequence ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_junction_controller.type ],
         odr:_OpenDriveElement ;
     skos:definition "Lists the controllers that should be grouped in a sychronization group (limited to that particular junction)."@en .
 
@@ -6638,7 +6638,7 @@ odr:T_junction_crossPath a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_crossPath.id ;
+            owl:onProperty odr:T_junction_crossPath.roadAtStart ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
@@ -6650,7 +6650,7 @@ odr:T_junction_crossPath a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_crossPath.roadAtStart ;
+            owl:onProperty odr:T_junction_crossPath.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Cross paths are intended for pedestrian crossings and are junctions elements where traffic of a lane can cross other lanes and continue on a different lane of the same or a different road. The cross path itself is a separate road."@en .
 
@@ -6659,11 +6659,11 @@ odr:T_junction_predecessorSuccessor a owl:Class ;
     rdfs:comment "Provides detailed information about the predecessor / successor road of a virtual connection. Currently, only the @elementType “road” is allowed."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_predecessorSuccessor.elementType ;
+            owl:onProperty odr:T_junction_predecessorSuccessor.elementId ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_predecessorSuccessor.elementId ;
+            owl:onProperty odr:T_junction_predecessorSuccessor.elementType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6682,17 +6682,21 @@ odr:T_road_lanes_laneSection a owl:Class ;
 The distance between two succeeding lane sections shall not be zero.\r
 For easier navigation through an ASAM OpenDRIVE road description, the lanes within a lane section are grouped into left, center, and right lanes. Each lane section shall contain one <center> element and at least one <right> or <left> element."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_lanes_laneSection.singleSide ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass odr:T_road_lanes_laneSection_center ;
             owl:onProperty odr:T_road_lanes_laneSection.center ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_lanes_laneSection_right ;
+            owl:onProperty odr:T_road_lanes_laneSection.right ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_lanes_laneSection.singleSide ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lanes_laneSection_left ;
@@ -6701,10 +6705,6 @@ For easier navigation through an ASAM OpenDRIVE road description, the lanes with
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection.length ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_lanes_laneSection_right ;
-            owl:onProperty odr:T_road_lanes_laneSection.right ],
         odr:_OpenDriveElement ;
     skos:definition """A lane section splits a road into multiple parts whenever the number of lanes or their function changes.\r
 The distance between two succeeding lane sections shall not be zero.\r
@@ -6720,23 +6720,23 @@ odr:T_road_objects_objectReference a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_objectReference.validLength ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_objectReference.t ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty odr:T_road_objects_objectReference.zOffset ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_objects_objectReference.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_objectReference.zOffset ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_objectReference.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_objectReference.t ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_objectReference.validLength ],
         odr:_OpenDriveElement ;
     skos:definition "An object reference refers to one identical object from multiple roads. The referenced objects require a unique ID. The <objectReference> element consists of a main element and an optional lane validity element."@en .
 
@@ -6744,29 +6744,29 @@ odr:T_road_objects_object_skeleton_polyline_vertexLocal a owl:Class ;
     rdfs:label "t_road_objects_object_skeleton_polyline_vertexLocal"@en ;
     rdfs:comment "Defines a vertex point on the object polyline relative to the object's origin in local u/v-coordinates. The origin and the orientation of the object are given by the @s, @t, @zOffset and @hdg attributes of the element. <vertexLocal> can use either radius or length/width within one <polyline> element."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.radius ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.intersectionPoint ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.u ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:positiveInteger ;
+            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.z ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.radius ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.v ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:positiveInteger ;
-            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.id ] ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.intersectionPoint ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexLocal.z ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Defines a vertex point on the object polyline relative to the object's origin in local u/v-coordinates. The origin and the orientation of the object are given by the @s, @t, @zOffset and @hdg attributes of the element. <vertexLocal> can use either radius or length/width within one <polyline> element."@en .
 
 odr:T_road_objects_object_skeleton_polyline_vertexRoad a owl:Class ;
@@ -6781,12 +6781,8 @@ odr:T_road_objects_object_skeleton_polyline_vertexRoad a owl:Class ;
             owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.intersectionPoint ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.dz ;
+            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.t ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -6794,8 +6790,12 @@ odr:T_road_objects_object_skeleton_polyline_vertexRoad a owl:Class ;
             owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.radius ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.t ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.dz ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_objects_object_skeleton_polyline_vertexRoad.intersectionPoint ] ;
     skos:definition "Defines a point on the object’s polyline in road coordinates. <vertexRoad> can use either radius or length/width within one <polyline> element."@en .
 
 odr:T_road_signals_signal_positionInertial a owl:Class ;
@@ -6803,15 +6803,7 @@ odr:T_road_signals_signal_positionInertial a owl:Class ;
     rdfs:comment "Describes the reference point of the physical position in inertial coordinates in cases where it deviates from the logical position. Defines the inertial position."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionInertial.x ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionInertial.pitch ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionInertial.z ;
+            owl:onProperty odr:T_road_signals_signal_positionInertial.hdg ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -6822,8 +6814,16 @@ odr:T_road_signals_signal_positionInertial a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_signal_positionInertial.roll ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionInertial.hdg ;
+            owl:onProperty odr:T_road_signals_signal_positionInertial.pitch ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_signal_positionInertial.z ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_signal_positionInertial.x ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Describes the reference point of the physical position in inertial coordinates in cases where it deviates from the logical position. Defines the inertial position."@en .
@@ -6833,20 +6833,8 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line a owl:Class ;
     rdfs:comment "A road marking may consist of one or more elements. Multiple elements are usually positioned side-by-side. A line definition is valid for a given length of the lane and will be repeated automatically."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.tOffset ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.space ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.sOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_roadMarkColor ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.color ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_roadMarkRule ;
@@ -6856,9 +6844,21 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line a owl:Class ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.tOffset ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.width ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_roadMarkColor ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.color ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark_type_line.space ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "A road marking may consist of one or more elements. Multiple elements are usually positioned side-by-side. A line definition is valid for a given length of the lane and will be repeated automatically."@en .
 
@@ -6878,13 +6878,13 @@ odr:T_road_link_predecessorSuccessor a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_link_predecessorSuccessor.elementS ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_elementDir ;
-            owl:onProperty odr:T_road_link_predecessorSuccessor.elementDir ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_link_predecessorSuccessor.elementId ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_elementDir ;
+            owl:onProperty odr:T_road_link_predecessorSuccessor.elementDir ],
         odr:_OpenDriveElement ;
     skos:definition "Successors and predecessors can be junctions or roads. For each, different attribute sets shall be used."@en .
 
@@ -6893,32 +6893,32 @@ odr:T_road_objects_tunnel a owl:Class ;
     rdfs:comment """Tunnels are modeled as objects in ASAM OpenDRIVE. The road with the tunnel object defines the part of the road that is the tunnel or the underpass.\r
 Tunnels are valid for the complete cross section of a road unless a lane validity element with further restrictions is provided as child element"""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_tunnel.daylight ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_objects_tunnel.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_tunnel.lighting ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_objects_tunnel.name ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_tunnel.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_objects_tunnel.id ;
+            owl:onProperty odr:T_road_objects_tunnel.name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_tunnel.daylight ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_tunnel.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_tunnelType ;
             owl:onProperty odr:T_road_objects_tunnel.type ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_tunnel.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition """Tunnels are modeled as objects in ASAM OpenDRIVE. The road with the tunnel object defines the part of the road that is the tunnel or the underpass.\r
@@ -6928,33 +6928,33 @@ odr:T_road_signals_signal_positionRoad a owl:Class ;
     rdfs:label "t_road_signals_signal_positionRoad"@en ;
     rdfs:comment "Describes the reference point of the physical position road coordinates in cases where it deviates from the logical position. Defines the position on the road."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionRoad.roll ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionRoad.hOffset ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionRoad.t ;
+            owl:onProperty odr:T_road_signals_signal_positionRoad.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_signal_positionRoad.pitch ],
         [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_signal_positionRoad.zOffset ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_signals_signal_positionRoad.roadId ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionRoad.zOffset ;
+            owl:onProperty odr:T_road_signals_signal_positionRoad.t ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal_positionRoad.s ;
+            owl:onProperty odr:T_road_signals_signal_positionRoad.hOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_signal_positionRoad.roll ],
         odr:_OpenDriveElement ;
     skos:definition "Describes the reference point of the physical position road coordinates in cases where it deviates from the logical position. Defines the position on the road."@en .
 
@@ -6971,24 +6971,24 @@ odr:T_junction_common a owl:Class ;
     rdfs:comment "Common junctions are the default type of junction in ASAM OpenDRIVE and specify areas where drivable lanes may overlap and traffic may cross."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_junction_elevationGrid ;
-            owl:onProperty odr:T_junction_common.elevationGrid ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_junction_type ;
-            owl:onProperty odr:T_junction_common.type ],
+            owl:onClass odr:T_road_planView ;
+            owl:onProperty odr:T_junction_common.planView ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_objects ;
             owl:onProperty odr:T_junction_common.objects ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_planView ;
-            owl:onProperty odr:T_junction_common.planView ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_junction_boundary ;
             owl:onProperty odr:T_junction_common.boundary ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_junction_type ;
+            owl:onProperty odr:T_junction_common.type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_junction_elevationGrid ;
+            owl:onProperty odr:T_junction_common.elevationGrid ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_surface ;
@@ -7000,33 +7000,33 @@ odr:T_road_lateralProfile_crossSectionSurface_strip a owl:Class ;
     rdfs:label "t_road_lateralProfile_crossSectionSurface_strip"@en ;
     rdfs:comment "A strip defines the lateral profile in t- and s-direction."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_width ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.width ],
+            owl:onDataRange xsd:int ;
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_cubic ;
             owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.cubic ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_constant ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.constant ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:int ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_strip_mode ;
             owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.mode ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_linear ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.linear ],
+            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_width ;
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.width ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_quadratic ;
             owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.quadratic ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_constant ;
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.constant ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_lateralProfile_crossSectionSurface_strip_linear ;
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_strip.linear ],
         odr:_OpenDriveElement ;
     skos:definition "A strip defines the lateral profile in t- and s-direction."@en .
 
@@ -7034,10 +7034,6 @@ odr:T_road_objects_object_laneValidity a owl:Class ;
     rdfs:label "t_road_objects_object_laneValidity"@en ;
     rdfs:comment "Lane validities restrict signals and objects to specific lanes."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_layerType ;
-            owl:onProperty odr:T_road_objects_object_laneValidity.layer ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:integer ;
             owl:onProperty odr:T_road_objects_object_laneValidity.fromLane ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -7045,6 +7041,10 @@ odr:T_road_objects_object_laneValidity a owl:Class ;
             owl:onDataRange xsd:integer ;
             owl:onProperty odr:T_road_objects_object_laneValidity.toLane ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_layerType ;
+            owl:onProperty odr:T_road_objects_object_laneValidity.layer ],
         odr:_OpenDriveElement ;
     skos:definition "Lane validities restrict signals and objects to specific lanes."@en .
 
@@ -7055,28 +7055,28 @@ An element shall be followed by two or more <cornerRoad> elements, by two or mor
 ASAM OpenDRIVE 1.4 outline definitions (without <outlines> parent element) shall still be supported."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_laneType ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline.laneType ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_outlineFillType ;
             owl:onProperty odr:T_road_objects_object_outlines_outline.fillType ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_markings ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline.markings ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty odr:T_road_objects_object_outlines_outline.outer ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline.id ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty odr:T_road_objects_object_outlines_outline.closed ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_laneType ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline.laneType ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects_object_markings ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline.markings ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline.id ],
         odr:_OpenDriveElement ;
     skos:definition """Defines a series of corner points, including the height of the object relative to the road reference line. For areas, the points should be listed in counter-clockwise order. The inner area of the described outline may be filled with a filling type, such as grass, concrete, asphalt, or pavement.\r
 An element shall be followed by two or more <cornerRoad> elements, by two or more <cornerLocal> elements, or by one or more <curveLocal> elements.\r
@@ -7094,13 +7094,13 @@ odr:T_junction a owl:Class ;
             owl:onClass odr:T_road_planView ;
             owl:onProperty odr:T_junction.planView ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction.name ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_junction.id ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_junction.name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_objects ;
@@ -7113,26 +7113,6 @@ odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3 a owl:Class ;
     rdfs:comment "A parametric cubic curve describing the curve."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.cV ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.dV ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.cU ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.dU ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange odr:E_paramPoly3_pRange ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.pRange ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.aV ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
@@ -7141,11 +7121,31 @@ odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3 a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.cU ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.dV ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.aU ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.cV ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_paramPoly3_pRange ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.pRange ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.bV ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3.dU ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "A parametric cubic curve describing the curve."@en .
@@ -7155,27 +7155,11 @@ odr:T_road_planView_geometry_paramPoly3 a owl:Class ;
     rdfs:comment "A parametric cubic curve describing the road reference line."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_paramPoly3.bU ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_planView_geometry_paramPoly3.dU ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_paramPoly3.bV ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_paramPoly3.cU ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_paramPoly3.dV ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_paramPoly3.aU ;
+            owl:onProperty odr:T_road_planView_geometry_paramPoly3.aV ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange odr:E_paramPoly3_pRange ;
@@ -7183,11 +7167,27 @@ odr:T_road_planView_geometry_paramPoly3 a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry_paramPoly3.aV ;
+            owl:onProperty odr:T_road_planView_geometry_paramPoly3.dV ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry_paramPoly3.bU ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_planView_geometry_paramPoly3.cV ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry_paramPoly3.aU ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry_paramPoly3.cU ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry_paramPoly3.bV ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "A parametric cubic curve describing the road reference line."@en .
@@ -7200,33 +7200,33 @@ odr:T_junction_virtual a owl:Class ;
             owl:onProperty odr:T_junction_virtual.sEnd ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_junction_virtual.mainRoad ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_junction_virtual.sStart ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects ;
-            owl:onProperty odr:T_junction_virtual.objects ],
-        [ a owl:Restriction ;
-            owl:onDataRange odr:E_orientation ;
-            owl:onProperty odr:T_junction_virtual.orientation ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_planView ;
             owl:onProperty odr:T_junction_virtual.planView ],
         [ a owl:Restriction ;
-            owl:onDataRange odr:E_junction_type ;
-            owl:onProperty odr:T_junction_virtual.type ;
+            owl:onDataRange odr:E_orientation ;
+            owl:onProperty odr:T_junction_virtual.orientation ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects ;
+            owl:onProperty odr:T_junction_virtual.objects ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_junction_virtual.mainRoad ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_surface ;
             owl:onProperty odr:T_junction_virtual.surface ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_junction_type ;
+            owl:onProperty odr:T_junction_virtual.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:T_junction ;
     skos:definition "Virtual junctions manage connections within an uninterrupted road, for example, entries and exits to parking lots, and pedestrian crossings."@en .
 
@@ -7236,11 +7236,19 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.height ],
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.width ],
         [ a owl:Restriction ;
-            owl:onDataRange odr:E_roadMarkType ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.type ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.explicit ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.sOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_roadMarkType ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_roadMarkWeight ;
@@ -7248,11 +7256,15 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.width ],
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.height ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_roadMarkType ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_roadMarkType ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.type ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.material ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_road_lanes_laneSection_lcr_lane_roadMark_laneChange ;
@@ -7261,18 +7273,6 @@ odr:T_road_lanes_laneSection_lcr_lane_roadMark a owl:Class ;
             owl:onDataRange odr:E_roadMarkColor ;
             owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.color ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_lanes_laneSection_lcr_lane_roadMark_explicit ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.explicit ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.material ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lanes_laneSection_lcr_lane_roadMark.sOffset ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Defines the style of the line at the outer border of a lane. The style of the center line that separates left and right lanes is determined by the road mark element for the center lane."@en .
 
@@ -7280,24 +7280,16 @@ odr:T_road_objects_object_markings_marking a owl:Class ;
     rdfs:label "t_road_objects_object_markings_marking"@en ;
     rdfs:comment "Specifies a marking that is either attached to one side of the object bounding volume or referencing outline points."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_markings_marking.spaceLength ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_roadMarkWeight ;
             owl:onProperty odr:T_road_objects_object_markings_marking.weight ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_markings_marking.lineLength ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_markings_marking.zOffset ],
-        [ a owl:Restriction ;
             owl:onDataRange odr:E_roadMarkColor ;
             owl:onProperty odr:T_road_objects_object_markings_marking.color ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_markings_marking.spaceLength ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -7305,7 +7297,7 @@ odr:T_road_objects_object_markings_marking a owl:Class ;
             owl:onProperty odr:T_road_objects_object_markings_marking.width ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_markings_marking.startOffset ;
+            owl:onProperty odr:T_road_objects_object_markings_marking.lineLength ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -7315,6 +7307,14 @@ odr:T_road_objects_object_markings_marking a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_markings_marking.stopOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_markings_marking.startOffset ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_markings_marking.zOffset ],
         odr:_OpenDriveElement ;
     skos:definition "Specifies a marking that is either attached to one side of the object bounding volume or referencing outline points."@en .
 
@@ -7327,13 +7327,29 @@ Can be one of <line>, <arc>, or <paramPoly3>"""@en ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.length ],
         [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.u ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.id ],
+        [ a owl:Restriction ;
             owl:onClass odr:T_road_objects_object_outlines_outline_curveLocal_arc ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.arc ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.z ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.height ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.hdg ],
         [ a owl:Restriction ;
             owl:onClass odr:T_road_objects_object_outlines_outline_curveLocal_paramPoly3 ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.paramPoly3 ;
@@ -7343,25 +7359,9 @@ Can be one of <line>, <arc>, or <paramPoly3>"""@en ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.v ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.id ],
-        [ a owl:Restriction ;
             owl:onClass odr:T_road_objects_object_outlines_outline_curveLocal_line ;
             owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.line ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.u ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.z ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_outlines_outline_curveLocal.hdg ],
         odr:_OpenDriveElement ;
     skos:definition """Used to describe complex forms of objects.\r
 Can be one of <line>, <arc>, or <paramPoly3>"""@en .
@@ -7369,34 +7369,6 @@ Can be one of <line>, <arc>, or <paramPoly3>"""@en .
 odr:T_road_planView_geometry a owl:Class ;
     rdfs:label "t_road_planView_geometry"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry.hdg ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass odr:T_road_planView_geometry_spiral ;
-            owl:onProperty odr:T_road_planView_geometry.spiral ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry.x ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_planView_geometry.y ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass odr:T_road_planView_geometry_paramPoly3 ;
-            owl:onProperty odr:T_road_planView_geometry.paramPoly3 ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass odr:T_road_planView_geometry_arc ;
-            owl:onProperty odr:T_road_planView_geometry.arc ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass odr:T_road_planView_geometry_line ;
-            owl:onProperty odr:T_road_planView_geometry.line ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_planView_geometry.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -7406,7 +7378,35 @@ odr:T_road_planView_geometry a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry.hdg ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass odr:T_road_planView_geometry_arc ;
+            owl:onProperty odr:T_road_planView_geometry.arc ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass odr:T_road_planView_geometry_spiral ;
+            owl:onProperty odr:T_road_planView_geometry.spiral ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry.y ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_planView_geometry.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass odr:T_road_planView_geometry_line ;
+            owl:onProperty odr:T_road_planView_geometry.line ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_planView_geometry.x ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass odr:T_road_planView_geometry_paramPoly3 ;
+            owl:onProperty odr:T_road_planView_geometry.paramPoly3 ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement .
 
@@ -7431,60 +7431,60 @@ odr:T_header a owl:Class ;
     rdfs:comment "Contains general information about the ASAM OpenDRIVE file"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:integer ;
-            owl:onProperty odr:T_header.revMajor ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:integer ;
             owl:onProperty odr:T_header.revMinor ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_license ;
-            owl:onProperty odr:T_header.license ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_header.vendor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_header.south ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_header.east ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_header.version ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_header_GeoReference ;
-            owl:onProperty odr:T_header.geoReference ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_header.name ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_header.west ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_header.north ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_header_Offset ;
-            owl:onProperty odr:T_header.offset ],
+            owl:onClass odr:T_header_defaultRegulations ;
+            owl:onProperty odr:T_header.defaultRegulations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_license ;
+            owl:onProperty odr:T_header.license ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_header.west ],
+            owl:onProperty odr:T_header.south ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_header.date ],
         [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty odr:T_header.revMajor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_header_defaultRegulations ;
-            owl:onProperty odr:T_header.defaultRegulations ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_header.version ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_header.name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_header.vendor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_header_GeoReference ;
+            owl:onProperty odr:T_header.geoReference ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_header_Offset ;
+            owl:onProperty odr:T_header.offset ],
         odr:_OpenDriveElement ;
     skos:definition "Contains general information about the ASAM OpenDRIVE file"@en .
 
@@ -7492,41 +7492,9 @@ odr:T_road_surface_CRG a owl:Class ;
     rdfs:label "t_road_surface_CRG"@en ;
     rdfs:comment "Links road surface data defined according to ASAM OpenCRG format."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange odr:E_road_surface_CRG_mode ;
-            owl:onProperty odr:T_road_surface_CRG.mode ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange odr:E_direction ;
-            owl:onProperty odr:T_road_surface_CRG.orientation ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_surface_CRG.sOffset ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_surface_CRG.sEnd ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_surface_CRG.zOffset ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_surface_CRG.yOffset ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_surface_CRG.sStart ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_surface_CRG.file ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_surface_CRG.hOffset ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -7537,12 +7505,44 @@ odr:T_road_surface_CRG a owl:Class ;
             owl:onProperty odr:T_road_surface_CRG.tOffset ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_road_surface_CRG_purpose ;
-            owl:onProperty odr:T_road_surface_CRG.purpose ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_surface_CRG.hOffset ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_road_surface_CRG_mode ;
+            owl:onProperty odr:T_road_surface_CRG.mode ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_surface_CRG.sStart ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_direction ;
+            owl:onProperty odr:T_road_surface_CRG.orientation ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_surface_CRG.sEnd ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_surface_CRG.zScale ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_surface_CRG.sOffset ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_surface_CRG.zOffset ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_surface_CRG.yOffset ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_road_surface_CRG_purpose ;
+            owl:onProperty odr:T_road_surface_CRG.purpose ],
         odr:_OpenDriveElement ;
     skos:definition "Links road surface data defined according to ASAM OpenCRG format."@en .
 
@@ -7552,21 +7552,41 @@ odr:T_road a owl:Class ;
 A road shall have at least the center lane. Vehicles may drive in both directions of the road reference line. The standard driving direction is defined by the value which is assigned to the @rule attribute (RHT=right-hand traffic, LHT=left-han traffic).\r
 ASAM OpenDRIVE roads may be roads in the real road network or artificial road network created for application use. Each road is described by one or more <road> elements. One <road> element may cover a long stretch of a road, shorter stretches between junctions, or even several roads. A new <road> element should only start if the properties of the road cannot be described within the previous <road> element or if a junction is required.d"""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road.junction ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_link ;
-            owl:onProperty odr:T_road.link ],
+            owl:onClass odr:T_road_railroad ;
+            owl:onProperty odr:T_road.railroad ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_lanes ;
+            owl:onProperty odr:T_road.lanes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_signals ;
+            owl:onProperty odr:T_road.signals ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_trafficRule ;
+            owl:onProperty odr:T_road.rule ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_elevationProfile ;
+            owl:onProperty odr:T_road.elevationProfile ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lanes ;
             owl:onProperty odr:T_road.lanes ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_elevationProfile ;
-            owl:onProperty odr:T_road.elevationProfile ],
+            owl:onClass odr:T_road_link ;
+            owl:onProperty odr:T_road.link ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_railroad ;
-            owl:onProperty odr:T_road.railroad ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road.name ],
         [ a owl:Restriction ;
             owl:onClass odr:T_road_planView ;
             owl:onProperty odr:T_road.planView ;
@@ -7577,40 +7597,20 @@ ASAM OpenDRIVE roads may be roads in the real road network or artificial road ne
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_surface ;
-            owl:onProperty odr:T_road.surface ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road.name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_lanes ;
-            owl:onProperty odr:T_road.lanes ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_trafficRule ;
-            owl:onProperty odr:T_road.rule ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects ;
-            owl:onProperty odr:T_road.objects ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road.junction ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_signals ;
-            owl:onProperty odr:T_road.signals ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lateralProfile ;
             owl:onProperty odr:T_road.lateralProfile ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road.length ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects ;
+            owl:onProperty odr:T_road.objects ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_surface ;
+            owl:onProperty odr:T_road.surface ],
         odr:_OpenDriveElement ;
     skos:definition """Roads are the core elements for any road network in ASAM OpenDRIVE. Each road runs along one road reference line.\r
 A road shall have at least the center lane. Vehicles may drive in both directions of the road reference line. The standard driving direction is defined by the value which is assigned to the @rule attribute (RHT=right-hand traffic, LHT=left-han traffic).\r
@@ -7622,23 +7622,15 @@ odr:T_road_lanes_laneSection_lr_lane a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.roadWorks ],
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.dynamicLaneDirection ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_laneAdvisory ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.advisory ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.dynamicLaneType ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_lanes_laneSection_lcr_lane_link ;
             owl:onProperty odr:T_road_lanes_laneSection_lr_lane.link ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.dynamicLaneDirection ],
-        [ a owl:Restriction ;
-            owl:onDataRange odr:E_laneType ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.type ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange odr:E_lane_direction ;
@@ -7646,11 +7638,19 @@ odr:T_road_lanes_laneSection_lr_lane a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.dynamicLaneType ],
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.roadWorks ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:E_laneAdvisory ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.advisory ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty odr:T_road_lanes_laneSection_lr_lane.level ],
+        [ a owl:Restriction ;
+            owl:onDataRange odr:E_laneType ;
+            owl:onProperty odr:T_road_lanes_laneSection_lr_lane.type ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         odr:_OpenDriveElement ;
     skos:definition "Lane elements are included in left/center/right elements. Lane elements should represent the lanes from left to right, that is, with descending ID."@en .
 
@@ -7667,7 +7667,7 @@ The first <coefficients> element shall start at the beginning of the road refere
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_coefficients.d ],
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_coefficients.b ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_coefficients.s ;
@@ -7679,11 +7679,11 @@ The first <coefficients> element shall start at the beginning of the road refere
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_coefficients.c ],
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_coefficients.d ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_coefficients.b ],
+            owl:onProperty odr:T_road_lateralProfile_crossSectionSurface_coefficients.c ],
         odr:_OpenDriveElement ;
     skos:definition """Defines the coefficients of a cubic polynomial in s-direction.\r
 The first <coefficients> element shall start at the beginning of the road reference line with @s="0"."""@en .
@@ -7692,8 +7692,20 @@ odr:T_road_objects_object_repeat a owl:Class ;
     rdfs:label "t_road_objects_object_repeat"@en ;
     rdfs:comment "To avoid lengthy XML code, objects of the same type may be repeated. Attributes of the repeated object shall overrule the attributes from the original object. If attributes are omitted in the repeated objects, the attributes from the original object apply."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_repeat.heightEnd ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_repeat.tEnd ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_repeat.zOffsetStart ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_repeat.s ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
@@ -7701,32 +7713,8 @@ odr:T_road_objects_object_repeat a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_objects_object_repeat.detachFromReferenceLine ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.distance ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.lengthStart ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.heightEnd ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_repeat.radiusStart ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.bT ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.cT ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -7742,23 +7730,31 @@ odr:T_road_objects_object_repeat a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.widthEnd ],
+            owl:onProperty odr:T_road_objects_object_repeat.bT ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.zOffsetStart ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty odr:T_road_objects_object_repeat.heightStart ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_repeat.tStart ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.s ;
+            owl:onProperty odr:T_road_objects_object_repeat.lengthStart ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_objects_object_repeat.detachFromReferenceLine ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_repeat.distance ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object_repeat.heightStart ],
+            owl:onProperty odr:T_road_objects_object_repeat.cT ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_repeat.length ;
@@ -7767,6 +7763,10 @@ odr:T_road_objects_object_repeat a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object_repeat.radiusEnd ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object_repeat.widthEnd ],
         odr:_OpenDriveElement ;
     skos:definition "To avoid lengthy XML code, objects of the same type may be repeated. Attributes of the repeated object shall overrule the attributes from the original object. If attributes are omitted in the repeated objects, the attributes from the original object apply."@en .
 
@@ -7780,33 +7780,17 @@ odr:T_road_signals_signal a owl:Class ;
     rdfs:label "t_road_signals_signal"@en ;
     rdfs:comment "A signal along the road or on a static board."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal.width ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_signals_signal.subtype ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_signals_signal.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_signals_signal.invalidated ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal.hOffset ],
-        [ a owl:Restriction ;
             owl:onDataRange odr:E_orientation ;
             owl:onProperty odr:T_road_signals_signal.orientation ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_signals_signal.type ;
+            owl:onProperty odr:T_road_signals_signal.subtype ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:E_countryCode ;
+            owl:onProperty odr:T_road_signals_signal.country ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
@@ -7820,17 +7804,17 @@ odr:T_road_signals_signal a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_signal.pitch ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_signals_signal.roll ],
+            owl:onDataRange odr:T_yesNo ;
+            owl:onProperty odr:T_road_signals_signal.dynamic ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:E_unit ;
-            owl:onProperty odr:T_road_signals_signal.unit ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_signals_signal.invalidated ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:E_countryCode ;
-            owl:onProperty odr:T_road_signals_signal.country ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_signals_signal.text ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
@@ -7838,23 +7822,39 @@ odr:T_road_signals_signal a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_signal.hOffset ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_signal.height ],
         [ a owl:Restriction ;
-            owl:onDataRange odr:T_yesNo ;
-            owl:onProperty odr:T_road_signals_signal.dynamic ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_signals_signal.type ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:E_unit ;
+            owl:onProperty odr:T_road_signals_signal.unit ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_signals_signal.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_signals_signal.countryRevision ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_signal.roll ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_signals_signal.length ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_signals_signal.text ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_signals_signal.countryRevision ],
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_signals_signal.width ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
@@ -7870,60 +7870,56 @@ There are two ways to describe the bounding volume of objects.\r
 	- For a circular object: definition of the radius and height."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_outlines_outline ;
-            owl:onProperty odr:T_road_objects_object.outline ],
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_objects_object.subtype ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object.roll ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object.height ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_surface ;
-            owl:onProperty odr:T_road_objects_object.surface ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty odr:T_road_objects_object.temporary ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object.hdg ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects_object_borders ;
+            owl:onProperty odr:T_road_objects_object.borders ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty odr:T_road_objects_object.perpToRoad ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object.t ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty odr:T_road_objects_object.s ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty odr:T_road_objects_object.id ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object.width ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_parkingSpace ;
-            owl:onProperty odr:T_road_objects_object.parkingSpace ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object.t ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty odr:T_road_objects_object.temporary ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_borders ;
-            owl:onProperty odr:T_road_objects_object.borders ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:T_yesNo ;
-            owl:onProperty odr:T_road_objects_object.dynamic ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object.validLength ],
+            owl:onDataRange odr:E_orientation ;
+            owl:onProperty odr:T_road_objects_object.orientation ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object.zOffset ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass odr:T_road_objects_object_outlines ;
-            owl:onProperty odr:T_road_objects_object.outlines ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_objects_object_skeleton ;
@@ -7931,51 +7927,55 @@ There are two ways to describe the bounding volume of objects.\r
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object.radius ],
+            owl:onProperty odr:T_road_objects_object.pitch ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange odr:T_yesNo ;
+            owl:onProperty odr:T_road_objects_object.dynamic ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object.pitch ],
+            owl:onProperty odr:T_road_objects_object.radius ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects_object_outlines ;
+            owl:onProperty odr:T_road_objects_object.outlines ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects_object_surface ;
+            owl:onProperty odr:T_road_objects_object.surface ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty odr:T_road_objects_object.name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_orientation ;
-            owl:onProperty odr:T_road_objects_object.orientation ],
+            owl:onDataRange odr:E_objectType ;
+            owl:onProperty odr:T_road_objects_object.type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object.roll ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_objects_object.subtype ],
+            owl:onProperty odr:T_road_objects_object.validLength ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty odr:T_road_objects_object.invalidated ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects_object_parkingSpace ;
+            owl:onProperty odr:T_road_objects_object.parkingSpace ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass odr:T_road_objects_object_outlines_outline ;
+            owl:onProperty odr:T_road_objects_object.outline ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty odr:T_road_objects_object.length ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty odr:T_road_objects_object.id ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty odr:T_road_objects_object.s ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass odr:T_road_objects_object_markings ;
             owl:onProperty odr:T_road_objects_object.markings ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange odr:E_objectType ;
-            owl:onProperty odr:T_road_objects_object.type ],
         odr:_OpenDriveElement ;
     skos:definition """Objects influence a road by expanding, delimiting, or supplementing its course. Objects are elements that form the environment, for example, buildings, guard rails, poles, and trees. Objects are not mandatory to guide driver and traffic models, unlike signals.\r
 There are two ways to describe the bounding volume of objects.\r

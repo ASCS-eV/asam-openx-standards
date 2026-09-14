@@ -6,10 +6,17 @@
 # canonicalizing exists to remove, and it would arrive looking like a semantic change.
 # provenance.json records the resolved versions so such a diff can be attributed.
 #
-# diffable-rdf 0.0.2 is the minimum that is safe here: 0.0.1 could silently drop or duplicate
-# RDF collections whose tails are shared, which OWL ontologies produce routinely through
-# owl:unionOf and owl:oneOf and which SHACL sh:in inherits. 0.0.2 verifies that its output
-# round-trips before returning it, so the pipeline no longer needs to re-check that itself.
-diffable-rdf==0.0.2
+# diffable-rdf 0.4.0. The floor is not 0.0.2 any more: that release wrote integers in Turtle's
+# numeric short form, which renders the *value* and so merges terms RDF 1.1 keeps distinct -
+# "01" and "1" are one value but two terms. 3,045 sh:minCount/sh:maxCount values across the two
+# SHACL artifacts were written that way, and their correctness rested on none of them colliding.
+# 0.4.0 writes the exact lexical form, verifies every rendering round-trips before returning it,
+# labels blank nodes so an edit in one part of a graph no longer renumbers another, and is ~79x
+# faster on these artifacts (953s -> 12s).
+#
+# rdflib and pyoxigraph are NOT bumped alongside it: diffable-rdf 0.4.0 declares floors
+# (rdflib>=6.3.2, pyoxigraph>=0.5.4) and its own uv.lock resolves to exactly 7.6.0 and 0.5.9,
+# so these pins already are the combination it is tested against.
+diffable-rdf==0.4.0
 rdflib==7.6.0
 pyoxigraph==0.5.9

@@ -22,6 +22,7 @@ on:
       - "scripts/check_canonical.py"
       - "scripts/check_toolchain_lock.py"
       - "scripts/test_check_toolchain_lock.py"
+      - "scripts/test_zip_content_fingerprint.py"
       - "scripts/generate_semantic_artifacts.py"
       - "scripts/requirements.txt"
       - "pipeline/toolchain-lock.json"
@@ -49,6 +50,12 @@ jobs:
       # it should accept, misattributes its own defect to the lock.
       - name: The lock consistency check behaves as specified
         run: python scripts/test_check_toolchain_lock.py
+      # The fingerprint is what the lock compares a live build against, so an exclusion that
+      # is too wide silently stops detecting a real change, and one that is too narrow stops
+      # the pipeline for a build timestamp. Both failure modes are cheap to test and
+      # expensive to discover during a regeneration.
+      - name: The jar content fingerprint behaves as specified
+        run: python scripts/test_zip_content_fingerprint.py
       - name: pipeline/toolchain-lock.json matches every committed provenance.json
         run: python scripts/check_toolchain_lock.py
 
