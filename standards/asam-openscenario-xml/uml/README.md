@@ -19,9 +19,11 @@ Redistributed under the ASAM Unrestricted Distribution Clause; see the repositor
 | Standard | ASAM OpenSCENARIO® XML |
 | Version | **V1.4.0** — matches the normative schema in [`../schema/`](../schema/) |
 | Origin | [`source/OpenSCENARIO.qeax`](source/README.md) (Enterprise Architect project, committed) |
-| Exported by | ShapeChange built from source at commit [`1a16d4af3336`](https://github.com/ShapeChange/ShapeChange/commit/1a16d4af333627059d12d271f588e903e6ecb172) (`next` branch, 2026-07-30), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true` |
+| Exported by | ShapeChange built from source at commit [`f4ee27b5`](https://github.com/ASCS-eV/ShapeChange/commit/f4ee27b5) (`ASCS-eV/ShapeChange`, branch `feature/asam-pipeline` = upstream `next` `7a44ce20` plus one carried commit that touches only the OWL target), `ModelExport` target, `inputModelType=EA7`, `zipOutput=true` |
 | Producer header | `scxmlProducer="ShapeChange"`, `scxmlProducerVersion="4.1.0-SNAPSHOT"` |
 | Classes | 343 |
+| Stereotypes | 1,582 — the EA XML Schema profile, carried via `addStereotypes` |
+| Tagged values | 1,073 — a curated set, carried via `representTaggedValues` |
 
 ### Why a commit, not a numbered ShapeChange release
 
@@ -87,36 +89,42 @@ same information differently. Neither direction indicates drift:
 | `openscenario.scxml.zip` | The `ModelExport` artifact exactly as ShapeChange wrote it (`zipOutput=true`), directly consumable as a ShapeChange `inputFile`. |
 | `export-model-to-scxml.config.xml` | The ShapeChange `ModelExport` configuration that produced both files **from EA**. |
 
-### `.scxml` and `.scxml.zip` are the same model, in different line endings
+### `.scxml` and `.scxml.zip` hold identical bytes
 
-The zip's `ModelExport.xml` entry is byte-identical to `openscenario.scxml` **after
-converting CRLF to LF** — the export ran on Windows, and the committed `.scxml` is
-normalised to LF for the repository. The two therefore have different checksums by
-design, and comparing them byte-for-byte will report a difference that is not one:
+The zip's `openscenario.xml` entry is **byte-identical** to `openscenario.scxml`. Earlier
+exports differed by line endings — the export ran on Windows and produced CRLF, which had to be
+normalised before committing — but the exporter now writes LF on every platform, so the two
+agree without conversion:
 
-| Artifact | Bytes | CRLF line endings | SHA-256 (truncated) |
+| Artifact | Bytes | CR bytes | SHA-256 (truncated) |
 |---|---:|---:|---|
-| `openscenario.scxml` | 1,925,508 | 0 | `2fcea5c4a5fc91e8…` |
-| `ModelExport.xml` inside the zip | 1,962,833 | 37,325 | `39339125d258399e…` |
-| `openscenario.scxml.zip` | 118,375 | — | `2b6aa53090a3cf4b…` |
+| `openscenario.scxml` | 2,358,883 | 0 | `5a0831d306b7bc91…` |
+| `openscenario.xml` inside the zip | 2,358,883 | 0 | `5a0831d306b7bc91…` |
+| `openscenario.scxml.zip` | 129,272 | — | `bee4ab9514366fd4…` |
 
-The 37,325-byte difference is exactly one `\r` per line. Use `openscenario.scxml` unless
-a tool requires the zip.
+Use `openscenario.scxml` unless a tool requires the zip. The zip entry is named for the
+standard rather than the exporter because the configuration sets `outputFilename`; it used to
+be `ModelExport.xml`, which said nothing about what it contained.
 
 ### Why the export is diff-friendly
 
-Not because of a sort parameter. ShapeChange's `sortedSchemaOutput` orders the *schemas* it
-processes, not the classes within one; class order is `sortedOutput`, and `ModelExport` ignores
-that parameter — verified against this model, as both an input and a target parameter, with the
-output unchanged either way. Element order therefore follows the source model, and no package
-in this export is alphabetical.
+Two properties, both of which the exporter now provides by default.
 
-What makes the file reviewable is that `ModelExport` is **deterministic**: the committed
-`.scxml` is a fixed point of the exporter. Re-running `ModelExport` over it, using the
-committed `export-model-to-scxml.config.xml` with only `inputModelType` switched from `EA7` to
-`SCXML`, reproduces the committed bytes exactly. Element order is a function of the model, not
-of the run, so re-exporting an unchanged model yields an unchanged file and any diff here
-reflects a real change in the Enterprise Architect project.
+**Element order is a function of the model's names, not of Enterprise Architect's ids.**
+Packages and classes are emitted in name order. This matters because EA's internal element ids
+shift whenever the project is edited, and an id-ordered file would reshuffle for reasons that
+have nothing to do with the model. A diff against an export made before ShapeChange `7a44ce20`
+therefore shows a wholesale reordering that carries no meaning.
+
+The `sortedOutput` parameter is deliberately **not** set: it was verified byte-for-byte inert
+against this model, because the order it requests is the order already produced.
+
+**`ModelExport` is deterministic.** The committed `.scxml` is a fixed point of the exporter:
+re-running `ModelExport` over it, using the committed `export-model-to-scxml.config.xml` with
+only `inputModelType` switched from `EA7` to `SCXML`, reproduces the committed bytes. Any diff
+here therefore reflects a real change in the Enterprise Architect project or in the exporter,
+and the project itself is now committed under [`source/`](source/README.md) so the two can be
+told apart.
 
 ## Using the model without EA (the normal case)
 
@@ -187,18 +195,42 @@ java -Djava.library.path="C:/Program Files/Sparx Systems/EA/Java API" \
      -x "$inputFile$" "C:/path/to/OpenSCENARIO.qeax"
 ```
 
-This writes `scxml-out/INPUT/ModelExport.zip`; unzip to obtain the SCXML, and normalise its
-line endings to LF before committing. The configuration needs no editing: it runs as
-committed, and carries no absolute paths.
+This writes `scxml-out/INPUT/openscenario.zip`; unzip to obtain the SCXML. The exporter writes
+LF on every platform, so no line-ending normalisation is needed before committing. The
+configuration needs no editing: it runs as committed, and carries no absolute paths.
 
-Two things to settle at the next re-export, deliberately left alone here because changing
-them would mean the committed artifacts were no longer what this configuration produces:
+### What the export carries, and what it deliberately does not
 
-- **`outputFilename`.** Unset, so `ModelExport` uses its default and the zip entry is called
-  `ModelExport.xml` rather than something that identifies the standard. Setting it changes
-  the zip's contents, so it belongs with a real re-export.
-- **`representTaggedValues`.** Unset, so only tagged values ShapeChange already knows are
-  carried; this export contains just `targetNamespace` and `xmlns`. Whether ASAM annotates
-  the Enterprise Architect model further — deprecation, version-added — cannot be
-  determined from the export itself. Run the export once with and once without the
-  parameter and diff, then either set it or record that there was nothing to carry.
+The configuration sets `addStereotypes="*"` and a named `representTaggedValues` list. Without
+them the export drops 1,495 of 1,582 stereotypes and every tagged value bar two.
+
+Carried because the model populates them:
+
+| | Count with a value | What it is |
+|---|---:|---|
+| `XSDelement` / `XSDattribute` (stereotypes) | 419 / 448 | the element-vs-attribute distinction, which nothing downstream previously had any basis for |
+| `xor` (stereotype, on connectors) | 171 | explicit exclusive-choice constraints between associations |
+| `union` (stereotype) | 48 | already well-known; encoded as `owl:unionOf` |
+| `position` | 450 | element order within a content model |
+| `modelGroup` | 295 | XSD content-model kind: `sequence`, `all`, `choice` |
+| `mixed` | 282 | mixed content |
+| `withVersion` | 39 | this standard's spelling of OpenDRIVE's `introducedAtVersion` |
+
+Left out because the model declares them but leaves them empty:
+
+`use` (165 present, **0** with a value), `memberNames` (72 present, 0), and `form`, `fixed`,
+`default` (106 present each, 0).
+
+That `use` is empty here is worth noting on its own: OpenDRIVE populates 365 of its 444 with
+`required` / `optional`, so this standard cannot express attribute requiredness at all. Along
+with the `XSDunion` / `«union»` divergence, it is one of the cross-standard inconsistencies
+raised with ASAM in
+[#6](https://github.com/ASCS-eV/asam-openx-standards/issues/6).
+
+### Exclusive choice is carried but not yet honoured
+
+The model marks **55 classes `modelGroup = choice`** and 56 `all`, and applies 171 `xor`
+stereotypes to connectors. The export now carries all of this, but the OWL, SHACL and XSD
+targets still generate a sequence requiring **all** members, so a generated artifact rejects
+documents the normative schema accepts. Tracked in
+[#37](https://github.com/ASCS-eV/asam-openx-standards/issues/37).

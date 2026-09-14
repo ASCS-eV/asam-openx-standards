@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-14T11:05:32+00:00",
+  "generated": "2026-09-14T15:14:59+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
-    "sha256": "02648f53ab50e34a882e7c49fea1cb160d29d2b478065024338713ad25d5b21d"
+    "sha256": "be10c8d8c25bb8e88c1ebc6e0c32ada6f1b4d45a7490245e1c146222a18d081c"
   },
   "configuration": {
     "path": "pipeline/opendrive-owl.config.xml",
