@@ -37,6 +37,7 @@ turned out to describe defects in our own pipeline.
 | [7](#7-the-two-standards-use-different-names-for-the-same-concepts) | Both | Harmonisation | Divergent tag and stereotype names |
 | [8](#8-do-all-seven-sub-packages-need-the-same-targetnamespace) | OpenDRIVE | Question | Seven packages share one `targetNamespace` |
 | [9](#9-does-openscenario-xml-intend-to-carry-no-constraints) | OpenSCENARIO | Question | No constraints, where OpenDRIVE has 24 |
+| [10](#10-seven-union-classes-carry-a-property-outside-the-choice) | OpenSCENARIO | Defect | 7 `«union»` classes mix a property with the choice; 4 are unsatisfiable |
 
 Two further requests have been **withdrawn** after they turned out to describe defects in our own
 pipeline rather than in ASAM's models — see [Withdrawn](#withdrawn). Read that section before
@@ -228,6 +229,54 @@ constraint is presumably being enforced somewhere outside the model.
 
 *Note: an earlier version of this request asked ASAM whether either model carried constraints at
 all. That was our own configuration discarding OpenDRIVE's — see the withdrawn section below.*
+
+## 10. Seven `«union»` classes carry a property outside the choice
+
+**Source: the export and the normative schema.** Seven of the model's 48 `«union»` classes own a
+plain attribute alongside their choice of alternatives. Re-derived from the committed export
+rather than taken from an earlier count:
+
+| Class | Property outside the choice | `use` in the schema |
+|---|---|---|
+| `Action` | `name` | **required** |
+| `Color` | `colorType` | **required** |
+| `Condition` | `conditionEdge`, `delay`, `name` | **required** |
+| `ControllerDistributionEntry` | `weight` | **required** |
+| `AssignControllerAction` | `activateAnimation`, `activateLateral`, `activateLighting`, `activateLongitudinal` | optional |
+| `ObjectController` | `name` | optional |
+| `TrafficAction` | `trafficName` | optional |
+
+**Why it matters.** ISO 19150-2 reads a union as "every property of the class is an alternative",
+so a derived ontology encodes each member as asserting cardinality 0 on all the others. For the
+four classes whose extra property is `use="required"`, that makes the disjunction **unsatisfiable**
+— no instance can both carry the required attribute and choose an alternative, because every
+alternative forbids it. The remaining three are satisfiable but still misshapen.
+
+**This is not a tooling gap, and we verified that rather than assuming it.** We proposed a
+ShapeChange rule that would treat only a union's association ends as its alternatives
+([ShapeChange#768](https://github.com/ShapeChange/ShapeChange/pull/768)). It was declined, and
+correctly: it would change what `«union»` means for every ISO 19109 model, including the other 41
+unions in this same standard, which use the stereotype exactly as ISO intends.
+
+Testing the maintainer's suggested alternatives on his own regression fixture:
+
+| Approach | Result |
+|---|---|
+| Keep `«union»`, tag the association ends `SC_UNION_SET`, enable `rule-owl-cls-unionSets` | **Fails** — the class-creation gate forces every `«union»` class down the "all properties are one alternative set" path regardless of tags |
+| Reclassify `«union»` → `«dataType»`, tag the associations `SC_UNION_SET`, `rule-owl-cls-unionSets` | **Works** — output byte-identical to the reference |
+
+So there is no configuration-only fix while the class remains `«union»`, and stock ShapeChange
+already handles the corrected model.
+
+**Requested change.** Reclassify the seven classes from `«union»` to `«dataType»`, and express
+their alternatives either as a nested `«union»` sub-type or as properties tagged `SC_UNION_SET`.
+Both are standard ISO 19109 modelling; neither needs a tool change.
+
+**What we do meanwhile.** Nothing. The rule is not carried, the fork is pinned at plain upstream,
+and the generated OWL encodes these seven unions exactly as the model describes them —
+unsatisfiable disjunctions included. Working around an ASAM modelling defect locally would hide
+it, and this register exists so it is visible instead. Tracked in
+[#47](https://github.com/ASCS-eV/asam-openx-standards/issues/47).
 
 ---
 

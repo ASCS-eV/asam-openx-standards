@@ -4,18 +4,12 @@
     "shapechange": {
       "fork": "ASCS-eV/ShapeChange",
       "branch": "feature/asam-pipeline",
-      "commit": "f4ee27b5dfac3f58d6534fb31b943cbef0269d34",
+      "commit": "62c30807194aebbf61ddf119d6003f046939a4b6",
       "upstream": "ShapeChange/ShapeChange",
       "upstream_branch": "next",
-      "upstream_base": "7a44ce2099366ab27a37f2a07d6c2bcc19cf8289",
-      "_carried_comment": "One commit, for the one contribution still open upstream. PR 756 (owl:onDataRange for datatype qualified cardinality), 757 (optional EA module), 764 (ModelExport honours sortedOutput) and 766 (data property when the value type is an enumeration) have all merged, so they are gone from this list rather than being carried on top of an upstream that already has them - confirmed with `git cherry upstream/next`, which reports all three formerly-carried commits as already applied.",
-      "carried_commits": [
-        {
-          "commit": "f4ee27b5dfac3f58d6534fb31b943cbef0269d34",
-          "subject": "feat(owl): let a union's alternatives be its association ends only",
-          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/768"
-        }
-      ],
+      "upstream_base": "62c30807194aebbf61ddf119d6003f046939a4b6",
+      "_carried_comment": "None: the fork is pinned at plain upstream. PR 756 (owl:onDataRange for datatype qualified cardinality), 757 (optional EA module), 764 (ModelExport honours sortedOutput) and 766 (data property when the value type is an enumeration) all merged. PR 768 (rule-owl-cls-unionAlternativesFromAssociations) was declined, and correctly so: it would have changed what the «union» stereotype means for every ISO 19109 model, where all of a union's properties are its alternatives. The defect it addressed is real but belongs in ASAM's model - see issue 47 and request 10 in pipeline/asam-change-requests.md - so it is no longer carried and the generated OWL encodes those seven unions as the model describes them.",
+      "carried_commits": [],
       "build": {
         "tool": "maven",
         "goal": "install",
@@ -41,18 +35,12 @@
     "shacl_play": {
       "fork": "ASCS-eV/shacl-play",
       "branch": "feature/asam-pipeline",
-      "commit": "b60583bf59a288b68e58ff02f7c8d1fa206794ee",
+      "commit": "7af6d7aefde32e2e5b5646cac99122b42b15371f",
       "upstream": "sparna-git/shacl-play",
       "upstream_branch": "master",
-      "upstream_base": "f113f5a885f39f1e5a6d018912e362b99bd801fa",
-      "_carried_comment": "One commit, carried while sparna-git/shacl-play#361 is open. Everything this fork previously carried was merged upstream - PR 344 (supply the conversion rules explicitly), PR 345 (fail on an unreadable input), PR 346 (gather sh:ignoredProperties into an RDF list), PR 347 (gather every list-valued constraint, so sh:or/sh:and/sh:xone are well-formed lists) and, with PR 347, the xls2rdf version pin that makes this jar's content fingerprint reproducible at all. PR 361 fixes a defect in PR 347's own gathering step: it took its members in Model.listStatements order, and a blank node hashes on its label while Jena labels blank nodes with a fresh random UUID, so the same node hashes differently in every process and the same ontology converted to a different graph on every run. Drop this carried commit and move the pin back to upstream once 361 merges.",
-      "carried_commits": [
-        {
-          "commit": "b60583bf59a288b68e58ff02f7c8d1fa206794ee",
-          "subject": "fix(owl2shacl): gather list-valued constraints in a deterministic order",
-          "upstream_pr": "https://github.com/sparna-git/shacl-play/pull/361"
-        }
-      ],
+      "upstream_base": "7af6d7aefde32e2e5b5646cac99122b42b15371f",
+      "_carried_comment": "None: the fork is pinned at plain upstream. Upstream merged every contribution it was carrying - PR 344 (supply the conversion rules explicitly), PR 345 (fail on an unreadable input), PR 346 (gather sh:ignoredProperties into an RDF list), PR 347 (gather every list-valued constraint, so sh:or/sh:and/sh:xone are well-formed lists), the xls2rdf version pin that makes this jar's content fingerprint reproducible at all, and PR 361 (gather those lists in a deterministic order, fixing a defect in PR 347's own gathering step that made this pipeline's SHACL output differ on every run).",
+      "carried_commits": [],
       "build": {
         "tool": "maven",
         "goals": [
@@ -117,7 +105,7 @@
   },
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
-    "shapechange_runtime_fingerprint": "c256e617cfb9633afca57f14bc2b0e6d0fdb6a56f423bdd3d36141d3737d9097",
+    "shapechange_runtime_fingerprint": "9cb9bbd8f5b30a92c891d659422ccb6c3cf8934c7902e41c37f83d42cfd1e4ba",
     "shacl_play_jar_fingerprint": "487be38d72a193b907a794df737c5e352acde1786f59d23dc04a8fef94b9e1a2"
   }
 }

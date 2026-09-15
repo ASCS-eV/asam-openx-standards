@@ -86,17 +86,38 @@
           -->
           <rule name="rule-owl-cls-union"/>
           <!--
+            NOT enabled: rule-owl-cls-unionAlternativesFromAssociations.
+
             ASAM stereotypes a class «union» when its element children form an xs:choice,
-            even when the class also carries required XML attributes. Without this rule
-            those attributes become alternatives of the choice, which no instance can
-            satisfy: the union asserts cardinality 0 on the attribute in every other
-            member while its own multiplicity requires it always. Seven of the 48 unions
-            in this model are affected (Action, Condition, AssignControllerAction, Color,
-            ControllerDistributionEntry, ObjectController, TrafficAction). The rule keeps
-            the alternatives - the association ends - and lets each excluded attribute get
-            its own cardinality restriction instead.
+            even when the class also carries XML attributes outside that choice. Seven of
+            the 48 unions in this model do so, and in four of them - Action (name), Color
+            (colorType), Condition (conditionEdge, delay, name) and
+            ControllerDistributionEntry (weight) - the attribute is use="required", so
+            rule-owl-cls-union folds it in as another alternative and the disjunction
+            becomes unsatisfiable: the union asserts cardinality 0 on that attribute in
+            every other member while its own multiplicity requires it always. The other
+            three - AssignControllerAction, ObjectController, TrafficAction - carry only
+            optional attributes, so their disjunction is satisfiable but still misshapen.
+
+            We proposed a rule for this upstream (ShapeChange/ShapeChange#768) and it was
+            declined, correctly: treating only a «union» class's association ends as its
+            alternatives changes what «union» means for every ISO 19109 model, and the
+            ISO 19150-2 reading is that all of a union's properties are alternatives -
+            which is how the other 41 unions in this model are built.
+
+            The maintainer's position is that the fix belongs in the model: a class like
+            Action should be «dataType» rather than «union», with its alternatives either
+            nested in a «union» sub-type or tagged SC_UNION_SET on the flat class, at
+            which point stock rule-owl-cls-unionSets encodes it correctly. We verified
+            that empirically - see issue #47 - including that no configuration-only trick
+            fixes it while the class remains «union».
+
+            So this is an ASAM modelling defect, raised as request 10 in
+            pipeline/asam-change-requests.md, and it is deliberately NOT worked around
+            here. The generated OWL therefore encodes those seven unions the way the
+            model describes them, unsatisfiable disjunctions included, and the gap to the
+            normative schema is wider by exactly that amount until ASAM changes the model.
           -->
-          <rule name="rule-owl-cls-unionAlternativesFromAssociations"/>
           <rule name="rule-owl-prop-general"/>
           <rule name="rule-owl-prop-localScopeAll"/>
           <rule name="rule-owl-prop-range-global"/>
