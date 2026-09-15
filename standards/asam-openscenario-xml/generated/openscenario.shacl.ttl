@@ -66,36 +66,58 @@ osc:Action a rdfs:Class,
     sh:ignoredProperties [ rdf:first rdf:type ;
             rdf:rest () ] ;
     sh:or [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                            sh:maxCount "0"^^xsd:integer ;
-                            sh:path osc:Action.privateAction ],
+                            sh:maxCount "1"^^xsd:integer ;
+                            sh:minCount "1"^^xsd:integer ;
+                            sh:path osc:Action.userDefinedAction ],
                         [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:Action.globalAction ],
                         [ a sh:PropertyShape ;
-                            sh:maxCount "1"^^xsd:integer ;
-                            sh:minCount "1"^^xsd:integer ;
-                            sh:path osc:Action.userDefinedAction ] ] ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:Action.privateAction ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:Action.name ] ] ;
             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                                    sh:maxCount "0"^^xsd:integer ;
-                                    sh:path osc:Action.userDefinedAction ],
-                                [ a sh:PropertyShape ;
                                     sh:maxCount "1"^^xsd:integer ;
                                     sh:minCount "1"^^xsd:integer ;
                                     sh:path osc:Action.privateAction ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
-                                    sh:path osc:Action.globalAction ] ] ;
+                                    sh:path osc:Action.userDefinedAction ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:Action.globalAction ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:Action.name ] ] ;
                     rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Action.globalAction ],
+                                        [ a sh:PropertyShape ;
                                             sh:maxCount "0"^^xsd:integer ;
                                             sh:path osc:Action.privateAction ],
                                         [ a sh:PropertyShape ;
-                                            sh:maxCount "0"^^xsd:integer ;
-                                            sh:path osc:Action.userDefinedAction ],
-                                        [ a sh:PropertyShape ;
                                             sh:maxCount "1"^^xsd:integer ;
                                             sh:minCount "1"^^xsd:integer ;
-                                            sh:path osc:Action.globalAction ] ] ;
-                            rdf:rest () ] ] ] ;
+                                            sh:path osc:Action.name ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Action.userDefinedAction ] ] ;
+                            rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:Action.privateAction ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "1"^^xsd:integer ;
+                                                    sh:minCount "1"^^xsd:integer ;
+                                                    sh:path osc:Action.globalAction ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:Action.userDefinedAction ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:Action.name ] ] ;
+                                    rdf:rest () ] ] ] ] ;
     sh:property osc:Action-Action.globalAction,
         osc:Action-Action.name,
         osc:Action-Action.privateAction,
@@ -256,32 +278,152 @@ osc:AssignControllerAction a rdfs:Class,
             rdf:rest () ] ;
     sh:or [ rdf:first [ sh:property [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
-                            sh:path osc:AssignControllerAction.catalogReference ],
+                            sh:path osc:AssignControllerAction.activateLateral ],
                         [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:AssignControllerAction.controller ],
                         [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:AssignControllerAction.activateAnimation ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:AssignControllerAction.catalogReference ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:AssignControllerAction.activateLongitudinal ],
+                        [ a sh:PropertyShape ;
                             sh:maxCount "1"^^xsd:integer ;
-                            sh:path osc:AssignControllerAction.objectController ] ] ;
+                            sh:path osc:AssignControllerAction.objectController ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:AssignControllerAction.activateLighting ] ] ;
             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                                    sh:maxCount "1"^^xsd:integer ;
-                                    sh:path osc:AssignControllerAction.controller ],
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:AssignControllerAction.catalogReference ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:AssignControllerAction.activateAnimation ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
                                     sh:path osc:AssignControllerAction.objectController ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
-                                    sh:path osc:AssignControllerAction.catalogReference ] ] ;
+                                    sh:path osc:AssignControllerAction.activateLateral ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:AssignControllerAction.activateLongitudinal ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:AssignControllerAction.activateLighting ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "1"^^xsd:integer ;
+                                    sh:path osc:AssignControllerAction.controller ] ] ;
                     rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                                            sh:maxCount "1"^^xsd:integer ;
-                                            sh:path osc:AssignControllerAction.catalogReference ],
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:AssignControllerAction.activateLongitudinal ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:AssignControllerAction.activateLateral ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:AssignControllerAction.activateAnimation ],
                                         [ a sh:PropertyShape ;
                                             sh:maxCount "0"^^xsd:integer ;
                                             sh:path osc:AssignControllerAction.controller ],
                                         [ a sh:PropertyShape ;
                                             sh:maxCount "0"^^xsd:integer ;
-                                            sh:path osc:AssignControllerAction.objectController ] ] ;
-                            rdf:rest () ] ] ] ;
+                                            sh:path osc:AssignControllerAction.objectController ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:AssignControllerAction.activateLighting ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "1"^^xsd:integer ;
+                                            sh:path osc:AssignControllerAction.catalogReference ] ] ;
+                            rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:AssignControllerAction.activateLighting ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "1"^^xsd:integer ;
+                                                    sh:path osc:AssignControllerAction.activateLongitudinal ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:AssignControllerAction.objectController ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:AssignControllerAction.catalogReference ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:AssignControllerAction.controller ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:AssignControllerAction.activateAnimation ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:AssignControllerAction.activateLateral ] ] ;
+                                    rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:AssignControllerAction.controller ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:AssignControllerAction.catalogReference ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:AssignControllerAction.activateLongitudinal ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:AssignControllerAction.activateLateral ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "1"^^xsd:integer ;
+                                                            sh:path osc:AssignControllerAction.activateLighting ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:AssignControllerAction.activateAnimation ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:AssignControllerAction.objectController ] ] ;
+                                            rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:AssignControllerAction.activateLighting ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:AssignControllerAction.objectController ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:AssignControllerAction.activateLongitudinal ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "1"^^xsd:integer ;
+                                                                    sh:path osc:AssignControllerAction.activateLateral ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:AssignControllerAction.activateAnimation ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:AssignControllerAction.controller ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:AssignControllerAction.catalogReference ] ] ;
+                                                    rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                                            sh:maxCount "0"^^xsd:integer ;
+                                                                            sh:path osc:AssignControllerAction.objectController ],
+                                                                        [ a sh:PropertyShape ;
+                                                                            sh:maxCount "0"^^xsd:integer ;
+                                                                            sh:path osc:AssignControllerAction.activateLighting ],
+                                                                        [ a sh:PropertyShape ;
+                                                                            sh:maxCount "1"^^xsd:integer ;
+                                                                            sh:path osc:AssignControllerAction.activateAnimation ],
+                                                                        [ a sh:PropertyShape ;
+                                                                            sh:maxCount "0"^^xsd:integer ;
+                                                                            sh:path osc:AssignControllerAction.activateLongitudinal ],
+                                                                        [ a sh:PropertyShape ;
+                                                                            sh:maxCount "0"^^xsd:integer ;
+                                                                            sh:path osc:AssignControllerAction.activateLateral ],
+                                                                        [ a sh:PropertyShape ;
+                                                                            sh:maxCount "0"^^xsd:integer ;
+                                                                            sh:path osc:AssignControllerAction.controller ],
+                                                                        [ a sh:PropertyShape ;
+                                                                            sh:maxCount "0"^^xsd:integer ;
+                                                                            sh:path osc:AssignControllerAction.catalogReference ] ] ;
+                                                            rdf:rest () ] ] ] ] ] ] ] ;
     sh:property osc:AssignControllerAction-AssignControllerAction.activateAnimation,
         osc:AssignControllerAction-AssignControllerAction.activateLateral,
         osc:AssignControllerAction-AssignControllerAction.activateLighting,
@@ -746,20 +888,36 @@ osc:Color a rdfs:Class,
     sh:ignoredProperties [ rdf:first rdf:type ;
             rdf:rest () ] ;
     sh:or [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                            sh:maxCount "1"^^xsd:integer ;
-                            sh:minCount "1"^^xsd:integer ;
+                            sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:Color.colorRgb ],
                         [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
-                            sh:path osc:Color.colorCmyk ] ] ;
+                            sh:path osc:Color.colorCmyk ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "1"^^xsd:integer ;
+                            sh:minCount "1"^^xsd:integer ;
+                            sh:path osc:Color.colorType ] ] ;
             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                                    sh:maxCount "1"^^xsd:integer ;
-                                    sh:minCount "1"^^xsd:integer ;
-                                    sh:path osc:Color.colorCmyk ],
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:Color.colorType ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:Color.colorCmyk ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "1"^^xsd:integer ;
+                                    sh:minCount "1"^^xsd:integer ;
                                     sh:path osc:Color.colorRgb ] ] ;
-                    rdf:rest () ] ] ;
+                    rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Color.colorType ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "1"^^xsd:integer ;
+                                            sh:minCount "1"^^xsd:integer ;
+                                            sh:path osc:Color.colorCmyk ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Color.colorRgb ] ] ;
+                            rdf:rest () ] ] ] ;
     sh:property osc:Color-Color.colorCmyk,
         osc:Color-Color.colorRgb,
         osc:Color-Color.colorType .
@@ -815,17 +973,83 @@ osc:Condition a rdfs:Class,
                             sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:Condition.byEntityCondition ],
                         [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:Condition.delay ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:Condition.conditionEdge ],
+                        [ a sh:PropertyShape ;
                             sh:maxCount "1"^^xsd:integer ;
                             sh:minCount "1"^^xsd:integer ;
+                            sh:path osc:Condition.name ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:Condition.byValueCondition ] ] ;
             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
-                                    sh:path osc:Condition.byValueCondition ],
+                                    sh:path osc:Condition.conditionEdge ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "1"^^xsd:integer ;
                                     sh:minCount "1"^^xsd:integer ;
-                                    sh:path osc:Condition.byEntityCondition ] ] ;
-                    rdf:rest () ] ] ;
+                                    sh:path osc:Condition.delay ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:Condition.byEntityCondition ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:Condition.name ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:Condition.byValueCondition ] ] ;
+                    rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Condition.byValueCondition ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Condition.byEntityCondition ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Condition.delay ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:Condition.name ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "1"^^xsd:integer ;
+                                            sh:minCount "1"^^xsd:integer ;
+                                            sh:path osc:Condition.conditionEdge ] ] ;
+                            rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:Condition.byEntityCondition ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "1"^^xsd:integer ;
+                                                    sh:minCount "1"^^xsd:integer ;
+                                                    sh:path osc:Condition.byValueCondition ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:Condition.conditionEdge ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:Condition.delay ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:Condition.name ] ] ;
+                                    rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:Condition.byValueCondition ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:Condition.name ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:Condition.delay ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "1"^^xsd:integer ;
+                                                            sh:minCount "1"^^xsd:integer ;
+                                                            sh:path osc:Condition.byEntityCondition ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:Condition.conditionEdge ] ] ;
+                                            rdf:rest () ] ] ] ] ] ;
     sh:property osc:Condition-Condition.byEntityCondition,
         osc:Condition-Condition.byValueCondition,
         osc:Condition-Condition.conditionEdge,
@@ -896,18 +1120,34 @@ osc:ControllerDistributionEntry a rdfs:Class,
     sh:or [ rdf:first [ sh:property [ a sh:PropertyShape ;
                             sh:maxCount "1"^^xsd:integer ;
                             sh:minCount "1"^^xsd:integer ;
-                            sh:path osc:ControllerDistributionEntry.controller ],
+                            sh:path osc:ControllerDistributionEntry.weight ],
                         [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
-                            sh:path osc:ControllerDistributionEntry.catalogReference ] ] ;
+                            sh:path osc:ControllerDistributionEntry.catalogReference ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:ControllerDistributionEntry.controller ] ] ;
             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                                    sh:maxCount "0"^^xsd:integer ;
-                                    sh:path osc:ControllerDistributionEntry.controller ],
-                                [ a sh:PropertyShape ;
                                     sh:maxCount "1"^^xsd:integer ;
                                     sh:minCount "1"^^xsd:integer ;
-                                    sh:path osc:ControllerDistributionEntry.catalogReference ] ] ;
-                    rdf:rest () ] ] ;
+                                    sh:path osc:ControllerDistributionEntry.controller ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:ControllerDistributionEntry.catalogReference ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:ControllerDistributionEntry.weight ] ] ;
+                    rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:ControllerDistributionEntry.controller ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:ControllerDistributionEntry.weight ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "1"^^xsd:integer ;
+                                            sh:minCount "1"^^xsd:integer ;
+                                            sh:path osc:ControllerDistributionEntry.catalogReference ] ] ;
+                            rdf:rest () ] ] ] ;
     sh:property osc:ControllerDistributionEntry-ControllerDistributionEntry.catalogReference,
         osc:ControllerDistributionEntry-ControllerDistributionEntry.controller,
         osc:ControllerDistributionEntry-ControllerDistributionEntry.weight .
@@ -2894,20 +3134,35 @@ osc:ObjectController a rdfs:Class,
     sh:ignoredProperties [ rdf:first rdf:type ;
             rdf:rest () ] ;
     sh:or [ rdf:first [ sh:property [ a sh:PropertyShape ;
-                            sh:maxCount "1"^^xsd:integer ;
-                            sh:minCount "1"^^xsd:integer ;
-                            sh:path osc:ObjectController.controller ],
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:ObjectController.catalogReference ],
                         [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
-                            sh:path osc:ObjectController.catalogReference ] ] ;
+                            sh:path osc:ObjectController.controller ],
+                        [ a sh:PropertyShape ;
+                            sh:maxCount "1"^^xsd:integer ;
+                            sh:path osc:ObjectController.name ] ] ;
             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
-                                    sh:path osc:ObjectController.controller ],
+                                    sh:path osc:ObjectController.name ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:ObjectController.catalogReference ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "1"^^xsd:integer ;
                                     sh:minCount "1"^^xsd:integer ;
-                                    sh:path osc:ObjectController.catalogReference ] ] ;
-                    rdf:rest () ] ] ;
+                                    sh:path osc:ObjectController.controller ] ] ;
+                    rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:ObjectController.name ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "1"^^xsd:integer ;
+                                            sh:minCount "1"^^xsd:integer ;
+                                            sh:path osc:ObjectController.catalogReference ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:ObjectController.controller ] ] ;
+                            rdf:rest () ] ] ] ;
     sh:property osc:ObjectController-ObjectController.catalogReference,
         osc:ObjectController-ObjectController.controller,
         osc:ObjectController-ObjectController.name .
@@ -4907,11 +5162,15 @@ osc:TrafficAction a rdfs:Class,
     sh:ignoredProperties [ rdf:first rdf:type ;
             rdf:rest () ] ;
     sh:or [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                            sh:maxCount "1"^^xsd:integer ;
+                            sh:minCount "1"^^xsd:integer ;
+                            sh:path osc:TrafficAction.trafficSwarmAction ],
+                        [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:TrafficAction.trafficAreaAction ],
                         [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
-                            sh:path osc:TrafficAction.trafficSinkAction ],
+                            sh:path osc:TrafficAction.trafficName ],
                         [ a sh:PropertyShape ;
                             sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:TrafficAction.trafficStopAction ],
@@ -4919,18 +5178,20 @@ osc:TrafficAction a rdfs:Class,
                             sh:maxCount "0"^^xsd:integer ;
                             sh:path osc:TrafficAction.trafficSourceAction ],
                         [ a sh:PropertyShape ;
-                            sh:maxCount "1"^^xsd:integer ;
-                            sh:minCount "1"^^xsd:integer ;
-                            sh:path osc:TrafficAction.trafficSwarmAction ] ] ;
+                            sh:maxCount "0"^^xsd:integer ;
+                            sh:path osc:TrafficAction.trafficSinkAction ] ] ;
             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
                                     sh:path osc:TrafficAction.trafficSinkAction ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
-                                    sh:path osc:TrafficAction.trafficSourceAction ],
+                                    sh:path osc:TrafficAction.trafficName ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "0"^^xsd:integer ;
                                     sh:path osc:TrafficAction.trafficSwarmAction ],
+                                [ a sh:PropertyShape ;
+                                    sh:maxCount "0"^^xsd:integer ;
+                                    sh:path osc:TrafficAction.trafficSourceAction ],
                                 [ a sh:PropertyShape ;
                                     sh:maxCount "1"^^xsd:integer ;
                                     sh:minCount "1"^^xsd:integer ;
@@ -4940,20 +5201,23 @@ osc:TrafficAction a rdfs:Class,
                                     sh:path osc:TrafficAction.trafficAreaAction ] ] ;
                     rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
                                             sh:maxCount "0"^^xsd:integer ;
-                                            sh:path osc:TrafficAction.trafficAreaAction ],
-                                        [ a sh:PropertyShape ;
-                                            sh:maxCount "1"^^xsd:integer ;
-                                            sh:minCount "1"^^xsd:integer ;
-                                            sh:path osc:TrafficAction.trafficSourceAction ],
+                                            sh:path osc:TrafficAction.trafficSwarmAction ],
                                         [ a sh:PropertyShape ;
                                             sh:maxCount "0"^^xsd:integer ;
-                                            sh:path osc:TrafficAction.trafficSwarmAction ],
+                                            sh:path osc:TrafficAction.trafficAreaAction ],
                                         [ a sh:PropertyShape ;
                                             sh:maxCount "0"^^xsd:integer ;
                                             sh:path osc:TrafficAction.trafficStopAction ],
                                         [ a sh:PropertyShape ;
                                             sh:maxCount "0"^^xsd:integer ;
-                                            sh:path osc:TrafficAction.trafficSinkAction ] ] ;
+                                            sh:path osc:TrafficAction.trafficSinkAction ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "0"^^xsd:integer ;
+                                            sh:path osc:TrafficAction.trafficName ],
+                                        [ a sh:PropertyShape ;
+                                            sh:maxCount "1"^^xsd:integer ;
+                                            sh:minCount "1"^^xsd:integer ;
+                                            sh:path osc:TrafficAction.trafficSourceAction ] ] ;
                             rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
                                                     sh:maxCount "0"^^xsd:integer ;
                                                     sh:path osc:TrafficAction.trafficSwarmAction ],
@@ -4962,17 +5226,26 @@ osc:TrafficAction a rdfs:Class,
                                                     sh:path osc:TrafficAction.trafficStopAction ],
                                                 [ a sh:PropertyShape ;
                                                     sh:maxCount "0"^^xsd:integer ;
-                                                    sh:path osc:TrafficAction.trafficAreaAction ],
-                                                [ a sh:PropertyShape ;
-                                                    sh:maxCount "0"^^xsd:integer ;
-                                                    sh:path osc:TrafficAction.trafficSourceAction ],
+                                                    sh:path osc:TrafficAction.trafficName ],
                                                 [ a sh:PropertyShape ;
                                                     sh:maxCount "1"^^xsd:integer ;
                                                     sh:minCount "1"^^xsd:integer ;
-                                                    sh:path osc:TrafficAction.trafficSinkAction ] ] ;
+                                                    sh:path osc:TrafficAction.trafficSinkAction ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:TrafficAction.trafficAreaAction ],
+                                                [ a sh:PropertyShape ;
+                                                    sh:maxCount "0"^^xsd:integer ;
+                                                    sh:path osc:TrafficAction.trafficSourceAction ] ] ;
                                     rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
                                                             sh:maxCount "0"^^xsd:integer ;
                                                             sh:path osc:TrafficAction.trafficSourceAction ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "0"^^xsd:integer ;
+                                                            sh:path osc:TrafficAction.trafficSinkAction ],
+                                                        [ a sh:PropertyShape ;
+                                                            sh:maxCount "1"^^xsd:integer ;
+                                                            sh:path osc:TrafficAction.trafficName ],
                                                         [ a sh:PropertyShape ;
                                                             sh:maxCount "0"^^xsd:integer ;
                                                             sh:path osc:TrafficAction.trafficSwarmAction ],
@@ -4981,12 +5254,27 @@ osc:TrafficAction a rdfs:Class,
                                                             sh:path osc:TrafficAction.trafficStopAction ],
                                                         [ a sh:PropertyShape ;
                                                             sh:maxCount "0"^^xsd:integer ;
-                                                            sh:path osc:TrafficAction.trafficSinkAction ],
-                                                        [ a sh:PropertyShape ;
-                                                            sh:maxCount "1"^^xsd:integer ;
-                                                            sh:minCount "1"^^xsd:integer ;
                                                             sh:path osc:TrafficAction.trafficAreaAction ] ] ;
-                                            rdf:rest () ] ] ] ] ] ;
+                                            rdf:rest [ rdf:first [ sh:property [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:TrafficAction.trafficSwarmAction ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:TrafficAction.trafficStopAction ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:TrafficAction.trafficName ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:TrafficAction.trafficSourceAction ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "0"^^xsd:integer ;
+                                                                    sh:path osc:TrafficAction.trafficSinkAction ],
+                                                                [ a sh:PropertyShape ;
+                                                                    sh:maxCount "1"^^xsd:integer ;
+                                                                    sh:minCount "1"^^xsd:integer ;
+                                                                    sh:path osc:TrafficAction.trafficAreaAction ] ] ;
+                                                    rdf:rest () ] ] ] ] ] ] ;
     sh:property osc:TrafficAction-TrafficAction.trafficAreaAction,
         osc:TrafficAction-TrafficAction.trafficName,
         osc:TrafficAction-TrafficAction.trafficSinkAction,
@@ -5697,8 +5985,6 @@ osc:Action-Action.globalAction a sh:PropertyShape ;
 
 osc:Action-Action.name a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:maxCount "1"^^xsd:integer ;
-    sh:minCount "1"^^xsd:integer ;
     sh:path osc:Action.name .
 
 osc:Action-Action.privateAction a sh:PropertyShape ;
@@ -5842,22 +6128,18 @@ osc:AppearanceAction-AppearanceAction.lightStateAction a sh:PropertyShape ;
 
 osc:AssignControllerAction-AssignControllerAction.activateAnimation a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
-    sh:maxCount "1"^^xsd:integer ;
     sh:path osc:AssignControllerAction.activateAnimation .
 
 osc:AssignControllerAction-AssignControllerAction.activateLateral a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
-    sh:maxCount "1"^^xsd:integer ;
     sh:path osc:AssignControllerAction.activateLateral .
 
 osc:AssignControllerAction-AssignControllerAction.activateLighting a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
-    sh:maxCount "1"^^xsd:integer ;
     sh:path osc:AssignControllerAction.activateLighting .
 
 osc:AssignControllerAction-AssignControllerAction.activateLongitudinal a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
-    sh:maxCount "1"^^xsd:integer ;
     sh:path osc:AssignControllerAction.activateLongitudinal .
 
 osc:AssignControllerAction-AssignControllerAction.catalogReference a sh:PropertyShape ;
@@ -6291,8 +6573,6 @@ osc:Color-Color.colorType a sh:PropertyShape ;
                                                                             rdf:rest [ rdf:first "grey" ;
                                                                                     rdf:rest [ rdf:first "white" ;
                                                                                             rdf:rest () ] ] ] ] ] ] ] ] ] ] ] ;
-    sh:maxCount "1"^^xsd:integer ;
-    sh:minCount "1"^^xsd:integer ;
     sh:path osc:Color.colorType .
 
 osc:ColorCmyk-ColorCmyk.cyan a sh:PropertyShape ;
@@ -6359,20 +6639,14 @@ osc:Condition-Condition.conditionEdge a sh:PropertyShape ;
                     rdf:rest [ rdf:first "rising" ;
                             rdf:rest [ rdf:first "risingOrFalling" ;
                                     rdf:rest () ] ] ] ] ;
-    sh:maxCount "1"^^xsd:integer ;
-    sh:minCount "1"^^xsd:integer ;
     sh:path osc:Condition.conditionEdge .
 
 osc:Condition-Condition.delay a sh:PropertyShape ;
     sh:datatype xsd:double ;
-    sh:maxCount "1"^^xsd:integer ;
-    sh:minCount "1"^^xsd:integer ;
     sh:path osc:Condition.delay .
 
 osc:Condition-Condition.name a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:maxCount "1"^^xsd:integer ;
-    sh:minCount "1"^^xsd:integer ;
     sh:path osc:Condition.name .
 
 osc:ConditionGroup-ConditionGroup.conditions a sh:PropertyShape ;
@@ -6468,8 +6742,6 @@ osc:ControllerDistributionEntry-ControllerDistributionEntry.controller a sh:Prop
 
 osc:ControllerDistributionEntry-ControllerDistributionEntry.weight a sh:PropertyShape ;
     sh:datatype xsd:double ;
-    sh:maxCount "1"^^xsd:integer ;
-    sh:minCount "1"^^xsd:integer ;
     sh:path osc:ControllerDistributionEntry.weight .
 
 osc:CustomCommandAction-CustomCommandAction.content a sh:PropertyShape ;
@@ -7629,7 +7901,6 @@ osc:ObjectController-ObjectController.controller a sh:PropertyShape ;
 
 osc:ObjectController-ObjectController.name a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:maxCount "1"^^xsd:integer ;
     sh:path osc:ObjectController.name .
 
 osc:OffroadCondition-OffroadCondition.duration a sh:PropertyShape ;
@@ -9350,7 +9621,6 @@ osc:TrafficAction-TrafficAction.trafficAreaAction a sh:PropertyShape ;
 
 osc:TrafficAction-TrafficAction.trafficName a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:maxCount "1"^^xsd:integer ;
     sh:path osc:TrafficAction.trafficName .
 
 osc:TrafficAction-TrafficAction.trafficSinkAction a sh:PropertyShape ;

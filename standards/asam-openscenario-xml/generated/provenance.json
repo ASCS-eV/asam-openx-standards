@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T21:26:00+00:00",
+  "generated": "2026-09-15T07:10:56+00:00",
   "standard": "asam-openscenario-xml",
   "source_model": {
     "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
@@ -7,16 +7,16 @@
   },
   "configuration": {
     "path": "pipeline/openscenario-owl.config.xml",
-    "sha256": "61f88288e23ca2a4bddb4be75a7aef51bd068f5c391f38386d5d770449be421a"
+    "sha256": "0a78bf5c61a1c8d5aa5bad331d7ad942cf817a9792744e45010e5be3b6b9c5d2"
   },
   "tools": {
     "shapechange": {
-      "commit": "f4ee27b5dfac3f58d6534fb31b943cbef0269d34",
+      "commit": "62c30807194aebbf61ddf119d6003f046939a4b6",
       "profile": "-DskipEa",
-      "runtime_fingerprint": "c256e617cfb9633afca57f14bc2b0e6d0fdb6a56f423bdd3d36141d3737d9097"
+      "runtime_fingerprint": "9cb9bbd8f5b30a92c891d659422ccb6c3cf8934c7902e41c37f83d42cfd1e4ba"
     },
     "shacl_play": {
-      "commit": "b60583bf59a288b68e58ff02f7c8d1fa206794ee",
+      "commit": "7af6d7aefde32e2e5b5646cac99122b42b15371f",
       "jar": "shacl-play-app-0.12.4-onejar.jar",
       "jar_fingerprint": "487be38d72a193b907a794df737c5e352acde1786f59d23dc04a8fef94b9e1a2"
     },
@@ -36,7 +36,7 @@
     "maven_version": "3.9.9"
   },
   "outputs": {
-    "openscenario.owl.ttl": "6531f02322847abfe891d228bd9978fdb367ca330ed50cb728d2b491aa1a1ebf",
-    "openscenario.shacl.ttl": "68334ebfa2f785480b0010611dfe70f88ab7d9b7d953a03f6170551fcb34d27e"
+    "openscenario.owl.ttl": "156b615625baf4039b110c796270a9caf0eadfc22867e6bf327f646ae8c7f3cc",
+    "openscenario.shacl.ttl": "140bd1993a04d9f821f22fa3e6de98ecf9d3427b69ef569383b6b09dcaeb963c"
   }
 }
