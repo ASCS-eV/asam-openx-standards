@@ -41,3 +41,8 @@ standards/*/schema/**   -text
 # identifies them, so a pointer file is detectable. CI must check out with `lfs: true` or
 # the checksum job hashes pointers and passes without checking anything.
 *.qeax     filter=lfs diff=lfs merge=lfs -text
+# The schema generator ASAM keeps inside its OpenSCENARIO project (t_script), extracted
+# byte for byte so that its port in scripts/ can be reviewed against it. It is stored with
+# CRLF, as EA holds it; check_xsd_transformation.py fails unless its bytes equal the
+# script in the committed .qeax.
+standards/*/uml/source/*.js   -text

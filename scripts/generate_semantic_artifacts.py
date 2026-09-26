@@ -89,6 +89,16 @@ STANDARDS = {
         # divergence. Same file the target itself is configured with.
         "xsd_map_entries": "pipeline/xsdmapentries-asam.xml",
         "xsd_content_baseline": "pipeline/opendrive-xsd-content-baseline.json",
+        # Used by scripts/check_model_equivalence.py only: ASAM's EA project the model above
+        # was exported from, and the accepted differences between the two.
+        "ea_project": "standards/asam-opendrive/uml/source/ASAM_OpenDRIVE.qeax",
+        "model_equivalence_baseline": "pipeline/opendrive-model-equivalence-baseline.json",
+        # Used by scripts/check_xsd_transformation.py only: the module that derives the
+        # normative schema from the model, and the accepted differences from it.
+        "xsd_transformation": "odr_xsd_transformation",
+        "xsd_transformation_baseline": "pipeline/opendrive-xsd-transformation-baseline.json",
+        # Used by scripts/check_shacl_equivalence.py only.
+        "shacl_equivalence_baseline": "pipeline/opendrive-shacl-equivalence-baseline.json",
         # The XSD target does not apply the OWL packaging rule, so its run is clean.
         "tolerated_errors": {"owl": ("single-ontology-per-schema",)},
         "union_defects": frozenset({"e_countryCode", "t_grEqZeroOrContactPoint"}),
@@ -102,6 +112,16 @@ STANDARDS = {
         "xsd_prefix": "OpenSCENARIO",
         "xsd_map_entries": "pipeline/xsdmapentries-asam.xml",
         "xsd_content_baseline": "pipeline/openscenario-xsd-content-baseline.json",
+        "ea_project": "standards/asam-openscenario-xml/uml/source/OpenSCENARIO.qeax",
+        "model_equivalence_baseline": "pipeline/openscenario-model-equivalence-baseline.json",
+        "xsd_transformation": "osc_xsd_transformation",
+        "xsd_transformation_baseline": "pipeline/openscenario-xsd-transformation-baseline.json",
+        "shacl_equivalence_baseline": "pipeline/openscenario-shacl-equivalence-baseline.json",
+        # ASAM's own generator, extracted from the project's t_script: the port above must
+        # reproduce the normative schema byte for byte, and this file must be that script.
+        "xsd_transformation_script": "standards/asam-openscenario-xml/uml/source/"
+                                     "osc-2-xsd-transformation.js",
+        "xsd_transformation_script_name": "OSC 2 XSD Transformation",
         # The OWL stage tolerates nothing, and needs to tolerate nothing. Unlike OpenDRIVE,
         # the OpenSCENARIO model carries no targetNamespace tagged values at all, so the schema
         # package is named once in the configuration and ShapeChange resolves exactly one

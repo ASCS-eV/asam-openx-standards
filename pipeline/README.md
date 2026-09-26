@@ -15,9 +15,16 @@ standards/<std>/generated/<std>.shacl.ttl SHACL shapes
 
 Run it with [`scripts/generate_semantic_artifacts.py`](../scripts/generate_semantic_artifacts.py).
 
-A second script, [`scripts/check_xsd_structural_parity.py`](../scripts/check_xsd_structural_parity.py),
-does not produce an artifact at all: it checks the same model against ASAM's independently
-published XSD. See [Checking it](#checking-it-the-xsd-structural-parity-check) below.
+Three scripts produce no artifact at all:
+
+- [`scripts/check_model_equivalence.py`](../scripts/check_model_equivalence.py) proves the SCXML
+  is ASAM's EA project;
+- [`scripts/check_xsd_transformation.py`](../scripts/check_xsd_transformation.py) derives the
+  normative XSD from the model;
+- [`scripts/check_xsd_structural_parity.py`](../scripts/check_xsd_structural_parity.py) checks
+  what ShapeChange generates from the model against the published XSD.
+
+See the "Checking it" sections below.
 
 ## The rule that shapes everything here
 
@@ -299,6 +306,356 @@ What is still **not** carried into the SHACL is the numeric facets: `t_grEqZero`
 `minInclusive=0` and its siblings are mapped to plain `xsd:double`, deliberately, because
 `mapentries-asam.xml` maps types and not facets. A consumer needing those bounds must still
 read them from the normative XSD in `standards/<std>/schema/`.
+
+## Checking it: equivalence with ASAM's EA project
+
+Everything above starts from `standards/<std>/uml/<std>.scxml`. That file comes from ASAM's
+Enterprise Architect project, `standards/<std>/uml/source/*.qeax`, through the one step that
+needs an EA licence, and the XSD parity check below compares what the pipeline *generates*,
+not what it *reads*. [`scripts/check_model_equivalence.py`](../scripts/check_model_equivalence.py)
+closes that gap. It decides, fact by fact, whether each committed SCXML is the model in the EA
+project, and names every way it is not. The only exceptions are the normalizations and the
+out-of-scope content it declares.
+
+It needs neither EA nor ShapeChange. A `.qeax` is an SQLite database, so both sides are read
+with the Python standard library:
+
+- **The EA side is read with UML semantics, not ShapeChange's.** Where EA records a fact in
+  two places, both are read. For example, a connector's stereotype is in
+  `t_connector.Stereotype` *or* in `t_xref`, and ShapeChange consults only `t_xref`. A
+  classifier owned by another classifier is part of the model, although ShapeChange never
+  visits it. Reading the model the exporter's way would only prove that the exporter agrees
+  with itself.
+- **The SCXML side is read the way ShapeChange's own SCXML reader reads it, and totally**,
+  but not through that reader, which re-normalizes stereotypes and tags on the way in:
+  - a table of what each SCXML element may contain decides that every element and attribute
+    of the file is either compared or reported;
+  - a repeated single-valued child is reported, and the last one wins, as in ShapeChange;
+  - a list item under a non-canonical tag is reported, and still read as an item;
+  - an association end ShapeChange's reader would drop from its class is reported.
+
+Elements are joined by identifier, which ShapeChange carries over from EA:
+
+| Element | SCXML id | From EA |
+|---|---|---|
+| package | `P<n>` | `t_package.Package_ID` |
+| classifier | `<n>` | `t_object.Object_ID` |
+| attribute | `<class>_<n>` | `t_attribute.ID` |
+| association | `as<n>` | `t_connector.Connector_ID` |
+| association end | `S…` / `T…` | the source or target end of that connector |
+
+A difference is `MISSING` (the model states it, the SCXML does not carry it), `EXTRA` (the
+SCXML states something the model does not) or `DIFFERENT` (both state it, with contradicting
+values). Each difference also names the rule that found it.
+
+Three kinds of difference are declared rather than reported. The module docstring of
+[`scripts/model_equivalence.py`](../scripts/model_equivalence.py) is the complete list, with the
+ShapeChange source line behind each entry. The main ones:
+
+- **Values ShapeChange derives** where the model is blank. The check computes the value the
+  export must then hold and reports anything else:
+  - association names `<source>_<target>`;
+  - role names `role_S…` / `role_T…`;
+  - the `enumeration` stereotype on EA enumerations;
+  - composition on attributes;
+  - navigability of an end EA leaves `Unspecified`;
+  - `definition` as the trimmed documentation.
+- **Notation that carries no information:**
+  - UML's default multiplicity 1;
+  - EA's plain-text rendering of rich-text notes. Hyperlink targets, which that rendering
+    drops, *are* reported;
+  - the case of ShapeChange's well-known stereotypes;
+  - a tagged value declared with no value. These are still counted per tag, so a statement
+    such as "declared 106 times, never given a value" is measured, not asserted.
+- **What is not UML model content:** diagrams and their `Boundary`/`Text`/`Note` elements,
+  `NoteLink` connectors, EA's documents and profile definitions, and EA's bookkeeping
+  columns. Every such table is counted and printed as out of scope, and every such column is
+  named in the module docstring. The counts are reported rather than gated, because the
+  `.qeax` bytes are already pinned by the checksum `verify-models.yml` enforces.
+
+### What it found
+
+| Verdict | Rule | OpenDRIVE | OpenSCENARIO |
+|---|---|---:|---:|
+| `DIFFERENT` | `end-navigability` | 1 | 1 |
+| `MISSING` | `association` | 8 | – |
+| `MISSING` | `association-stereotype` | – | 3 |
+| `MISSING` | `association-tag` | – | 127 |
+| `MISSING` | `attribute-documentation-link` | 1 | 2 |
+| `MISSING` | `attribute-tag` | 121 | 125 |
+| `MISSING` | `attribute-unrepresentable` | 18 | – |
+| `MISSING` | `attribute-visibility` | 29 | 420 |
+| `MISSING` | `classifier-kind` | – | 5 |
+| `MISSING` | `classifier-tag` | 34 | 44 |
+| `MISSING` | `constraint` | 25 | – |
+| `MISSING` | `element-type` | – | 11 |
+| `MISSING` | `generalization-by-name` | 25 | – |
+| `MISSING` | `generalization-stereotype` | 2 | – |
+| `MISSING` | `nested-classifier` | 1 | – |
+| `MISSING` | `package-documentation-link` | – | 1 |
+| `MISSING` | `package-tag` | 22 | – |
+| `MISSING` | `realization` | – | 25 |
+| | **total** | **287** | **764** |
+
+Every package, classifier name, attribute type, multiplicity, initial value, documentation
+text, role tag and attribute order that the SCXML *does* carry matches the EA project. What
+differs is information the export does not carry:
+
+- **A classifier owned by a classifier is not exported.** OpenDRIVE's root content model
+  belongs to `t_OpenDRIVE` (`t_object` 11), owned by the class `OpenDRIVE`. ShapeChange's EA
+  reader loads only the elements of a package, so the classifier and its 8 associations to
+  `header`, `road`, `controller`, `junction`, `junctionGroup`, `station`, `g_additionalData` and
+  `vmsGroup` are absent.
+- **A connector stereotype held only in `t_connector.Stereotype` is not exported.**
+  OpenSCENARIO marks three associations `«transient»` ("not mapped to the schema") there:
+  `CatalogReference.ref` and the two `phaseRef`. EA's `Connector.StereotypeEx`, which
+  ShapeChange reads, does not return them. `CatalogReference.ref` is consequently required by
+  the SHACL, which then rejects every conforming document containing a `<CatalogReference>`.
+- **The SCXML has no place for:** realizations (OpenSCENARIO 25, all to its `«transient»`
+  interfaces), generalization stereotypes (OpenDRIVE 2 `XSDextension`), classifier kind
+  (`Interface`), visibility, the `isID` custom property (OpenDRIVE 18), and elements other than
+  classes, interfaces, data types and enumerations (OpenSCENARIO 7 `PrimitiveType`,
+  2 `Object`, 2 `Association` elements).
+- **Generalizations EA records by name are not read.** `t_object.GenLinks` holds
+  `Parent=<name>;` for 22 OpenDRIVE classifiers:
+  - the union members the export has no other trace of: all four of `e_unit`,
+    `e_maxSpeedString` of `t_maxSpeed`, and `e_countryCode_deprecated` of `e_countryCode`;
+  - the restriction bases of the XSD simple types.
+- **Constraints are not loaded:** `checkingConstraints=disabled` drops OpenDRIVE's
+  24 invariants and 1 attribute constraint.
+- **Valued tags outside `representTaggedValues` are dropped.** Examples: OpenDRIVE's XSD
+  identity constraints `key`/`keyref`/`refer`/`selector`, and OpenSCENARIO's
+  `xsdElementName`/`xsdType`/`anonymousRole`. The export configuration's own comment lists
+  only the tags that are declared without a value.
+- **Navigability EA states is contradicted in 2 ends:**
+  - OpenDRIVE `t_road_link → g_additionalData` is navigable but unnamed, and ShapeChange never
+    makes an unnamed end navigable.
+  - OpenSCENARIO `ControllerAction → ActivateControllerAction` is explicitly non-navigable on a
+    connector whose direction is `Unspecified`.
+
+#### Gating, and why by baseline
+
+Each standard records its accepted differences in
+`pipeline/<artifact>-model-equivalence-baseline.json`, grouped by verdict:
+
+- A difference outside the baseline fails the run.
+- With `--strict-baseline`, as CI runs it, so does a baseline entry that no longer occurs.
+
+The baseline is a list of known export defects, keyed by rule, not a tolerance. The target
+for every rule is zero. Reaching it for the losses above means an export-configuration change
+or a ShapeChange contribution, followed by one EA re-export.
+
+#### Testing the oracle
+
+[`scripts/test_model_equivalence.py`](../scripts/test_model_equivalence.py) builds a minimal EA
+project (an SQLite database with EA's column names) and the SCXML ShapeChange writes for it.
+
+- **Faithful pairs must produce zero findings.** There is the base pair, plus one faithful
+  pair for each value ShapeChange derives rather than copies. These keep the declared derived
+  values honest.
+- **Every other case changes one model fact and states the complete list of findings it
+  produces.** Where the case needs it, the case also changes the export's rendering of that
+  fact. A case passes only on exactly that list.
+- **Every rule has at least one such case.** `RULES` in `model_equivalence.py` lists them, and
+  the run fails if one has none. Among the cases are all the losses the committed exports
+  have.
+- **The reader's totality is tested too.** The following are findings:
+  - a repeated id or child element;
+  - a list item under a non-canonical tag;
+  - a role property no association end uses;
+  - an end ShapeChange's reader would drop from its class;
+  - an end whose id, association or owner is not the one its connector implies;
+  - a descriptor or element the check does not compare;
+  - a value that is not an `xs:boolean`;
+  - a missing `sequenceNumber`.
+- **The guards are tested too:**
+  - an export with no classes, and two models that share no id, raise `VacuousComparison`;
+  - a Git LFS pointer in place of the `.qeax` is rejected with the fix named.
+
+Both steps run in the `model-equivalence` job of
+[`verify-models.yml`](../.github/workflows/verify-models.yml), which checks out Git LFS.
+
+## Checking it: the normative XSD, derived from the model
+
+The equivalence check above proves that the SCXML is ASAM's model. It does not say that the
+model is a model *of the normative schema*. ASAM states that it is: "The XSD schemas are derived
+from the UML model" (OpenDRIVE V1.9.0, clause 1). [`scripts/check_xsd_transformation.py`](../scripts/check_xsd_transformation.py)
+tests that claim. It derives each XSD from ASAM's EA project, and again from the committed
+SCXML, and compares both results with the published schema in `standards/<std>/schema/`.
+
+```bash
+python scripts/check_xsd_transformation.py --strict-baseline
+```
+
+Like the equivalence check, it needs neither EA nor ShapeChange.
+[`scripts/ea_api.py`](../scripts/ea_api.py) offers the part of EA's object model that a schema
+generator walks: `Package.Elements`, `Element.Attributes`, `Element.Connectors`,
+`TaggedValues`, `Stereotype` and `StereotypeEx`. It does so over the `.qeax`, in the order EA's
+own API returns each collection, and over the SCXML, stating what it assumes where the export
+has no counterpart. `Name` compares as EA's schema declares the column, `COLLATE NOCASE`, so
+`Controller` sorts before `ControlPoint`.
+
+### OpenSCENARIO: ASAM's own generator, byte for byte
+
+The OpenSCENARIO project contains the JScript ASAM generates its schema with, in `t_script`,
+named "OSC 2 XSD Transformation". It is extracted byte for byte to
+[`standards/asam-openscenario-xml/uml/source/osc-2-xsd-transformation.js`](../standards/asam-openscenario-xml/uml/source/osc-2-xsd-transformation.js),
+and the check fails unless that file is still the project's script.
+[`scripts/osc_xsd_transformation.py`](../scripts/osc_xsd_transformation.py) ports it function by
+function, including the behaviour the V1.4.0 model never reaches. Run on the EA project, the
+port writes a file **byte-identical to `OpenSCENARIO.xsd`**, and the check asserts that on every
+run. The published schema is therefore exactly what ASAM's model and ASAM's generator produce,
+with no manual step between them.
+
+Run on the SCXML, the same port shows what the export is missing: 127 differences, every one of
+them an export loss.
+
+| From the SCXML | Count | Cause |
+|---|---:|---|
+| a name reference without its `xsdType` | 32 | connector tag outside `representTaggedValues` |
+| a complex type that differs | 81 | the connector tags `xsdElementName` and `xsdType`, and the three `«transient»` connectors whose stereotype is only in `t_connector.Stereotype` |
+| a component not generated | 13 | the 5 wrapper types and the root element name are class tags outside `representTaggedValues`; the 7 `Boolean`…`UnsignedShort` unions come from EA `PrimitiveType` elements, which the export skips |
+| a component generated in excess | 1 | the root element, unnamed without its `elementName` tag |
+
+### OpenDRIVE: EA's XML Schema profile
+
+The OpenDRIVE project contains no generator. It applies Enterprise Architect's *UML profile for
+XML Schema*:
+
+- classes stereotyped `XSDschema`, `XSDcomplexType`, `XSDsimpleType`, `XSDunion`, `XSDgroup`,
+  `XSDchoice`, `XSDany` and `XSDtopLevelElement`;
+- attributes stereotyped `XSDattribute`;
+- the profile's tagged values;
+- ASAM's own tagged values for what XSD 1.1 adds: identity constraints (`key`, `keyref`,
+  `refer`, `selector`, `targetElement`) and type alternatives (`XSDAlternative_*`), with the
+  assertions as EA invariants.
+
+[`scripts/odr_xsd_transformation.py`](../scripts/odr_xsd_transformation.py) derives the seven
+documents from those constructs. It has one rule per construct and names no class; its module
+docstring states each rule. [`scripts/xsd_equivalence.py`](../scripts/xsd_equivalence.py)
+compares the result with the published files, component by component, and distinguishes:
+
+- `component`: the declared content differs;
+- `particle-order`: a sequence has the same particles in another order;
+- `alternative-order`: an element has the same type alternatives in another order;
+- `documentation`: the text differs;
+- `schema`: an attribute of `xs:schema` differs.
+
+It does not compare what XML Schema gives no meaning: attribute order, the order of choice
+alternatives and of facets, comments, and the lexical form of the file.
+
+From the EA project, **every other declaration matches**: every type, element, attribute, use,
+default, fixed value, facet, union, list, group, wildcard, key, keyref, assertion and type
+alternative. So does all the documentation, in 724 `xs:documentation` elements. 50 differences
+remain:
+
+| Rule | Count | What the normative schema has that the model does not say |
+|---|---:|---|
+| `particle-order` | 33 | The element order of 33 sequences. The model records order only in 20 sparse `position` tags, some of which contradict the schema: in `t_road_signals_staticBoard`, `sign` is `position` 5 and `g_additionalData` 6, and the schema puts `g_additionalData` first. |
+| `component` | 2 | Content the schema comments out "to comply with the sequence order of earlier OpenDRIVE versions": `_OpenDriveElement`'s `g_additionalData`, and `t_junction`'s `priority`, `controller`, `surface` and `g_additionalData`. Every subtype declares these itself, so the UML model has each of them twice. |
+| `alternative-order` | 1 | The order of `junction`'s type alternatives. The model numbers them `crossing` 1, `direct` 2, `virtual` 3, `common` 4, and the schema lists `virtual`, `direct`, `crossing`, `common`. The tests are mutually exclusive, so the language is the same. |
+| `schema` | 14 | Each package's `targetNamespace` tag, which no published document declares, and `vc:minVersion="1.1"`, which the XSD 1.1 constructs need and the model does not state. |
+
+The derivation also exposes three places where model and schema agree, and **both are
+wrong**:
+
+- **The model contradicts itself on attribute use.** An `XSDattribute`'s `use` is its tag, and
+  `optional` when the tag is unset. Its UML multiplicity is not read, and it disagrees with the
+  schema for 80 attributes: 76 are `1..1` but optional, and 4 are `0..1` but required. Anything
+  that reads the model as UML, as the OWL target does, sees the opposite.
+- **Four classes can never be valid.** `t_header_defaultRegulations`,
+  `t_header_roadRegulation`, `t_header_signalRegulation` and `t_signalGroup_vmsGroup` each
+  have an unnamed `1..1` association to the abstract `_OpenDriveElement`. So each requires a
+  child `<_OpenDriveElement>`, which no document can supply without `xsi:type`.
+- **8 attributes are `xs:string` in the schema.** Their type names a class, such as
+  `t_grEqZero`, but the attribute's classifier reference in EA is missing, so nothing resolves
+  it.
+
+From the SCXML, 127 differences show what the export is missing:
+
+- the `schemaLocation`, `elementFormDefault`, facet, `derivation`, identity-constraint and
+  `XSDAlternative_*` tags;
+- the invariants;
+- the `GenLinks` restriction bases and union members;
+- the nested root class `t_OpenDRIVE`.
+
+#### Gating, and why by baseline
+
+`pipeline/<artifact>-xsd-transformation-baseline.json` records the accepted differences, per
+source. A difference outside it fails the run; with `--strict-baseline` so does an entry that no
+longer occurs.
+
+- For the EA project, the baseline lists every difference between ASAM's model and ASAM's
+  schema. OpenSCENARIO's is empty, and the check also demands byte identity.
+- For the SCXML, the baseline lists what the export loses of what the schema depends on. Its
+  target is the EA project's own list.
+
+#### Testing the oracle
+
+[`scripts/test_xsd_transformation.py`](../scripts/test_xsd_transformation.py) builds small models
+in memory and tests each rule of both derivations. That covers every behaviour of ASAM's script
+that the real model never reaches, including the ones the code does not seem to intend: a
+finite upper bound other than 1 writes `maxOccurs` with the lower bound's value, and `*` on a
+compositor becomes `unbound`.
+
+It tests the comparison in both directions: a difference that carries meaning is reported,
+under the right rule, and one that does not is not. It also loads a small `.qeax` and a small
+SCXML through both of `ea_api.py`'s loaders, to test EA's collection order, the
+`Stereotype`/`StereotypeEx` split, and the facade's stated assumptions.
+
+Both steps run in the `xsd-transformation` job of
+[`verify-models.yml`](../.github/workflows/verify-models.yml).
+
+## Checking it: the SHACL against the model's schema
+
+[`scripts/check_shacl_equivalence.py`](../scripts/check_shacl_equivalence.py) compares the
+generated SHACL with what the model means in schema terms. It uses the derivation above, which
+records the UML property each declaration stands for. For each class it computes what a
+node may carry:
+
+- each property, with its least and greatest number of values and its value type;
+- each choice, a set of alternatives that exclude each other.
+
+Inheritance, group references, nested compositors and XML list wrappers are resolved on the way.
+It then reads the same from the node shapes: `sh:property`, `sh:closed` with
+`sh:ignoredProperties`, and the `sh:or` the OWL union encoding produces.
+[`scripts/shacl_equivalence.py`](../scripts/shacl_equivalence.py) states the reading of both
+sides; `pipeline/<artifact>-shacl-equivalence-baseline.json` records the accepted findings.
+
+Against the committed release shapes it finds 1,032 differences for OpenDRIVE and 187 for
+OpenSCENARIO:
+
+- OpenDRIVE's closed shapes reject the additional data every element may carry, because the
+  model's links to `g_additionalData` are unnamed, so no UML reader sees them;
+- choices are encoded as conjunctions;
+- attribute use disagrees with multiplicity;
+- simple-type unions and lists are classes;
+- OpenSCENARIO's unions fold properties outside the choice into it.
+
+The candidate models below address these. An experimental run of the pipeline on the OpenDRIVE
+candidate, with the flattening and union-set rules it is written for, leaves 24.
+
+## Candidate models
+
+A change to the modelling is published as a candidate for a future version, never in the release
+model (AGENTS.md, rule 7): `standards/<std>/candidates/<version>/`. `changes.json` lists the
+changes, each with its reason, its effect on the normative schema and its operations.
+[`scripts/candidate_model.py`](../scripts/candidate_model.py) applies them to the release SCXML,
+writing it as ShapeChange writes a model, and renders `CHANGELOG.md`; CI checks both are up to
+date. The same operations applied to a copy of ASAM's EA project let a candidate be checked like
+the release:
+
+| | OpenDRIVE 1.10 candidate | OpenSCENARIO XML 1.5 candidate |
+|---|---|---|
+| Changes | 10 (425 operations) | 4 (84 operations) |
+| Project copy vs candidate SCXML (`model_equivalence`) | no difference the release lacks | no difference the release lacks |
+| Schema derived from the candidate | the schema-invariant changes alone derive all 7 normative documents with **zero** differences; the two corrections change exactly 8 types | ASAM's generator writes `OpenSCENARIO.xsd` **byte for byte** |
+
+The corrections are:
+
+- ODR-8: 4 types required a child of the abstract `_OpenDriveElement`, so no valid file could
+  contain them;
+- ODR-9: 8 attributes were `xs:string` because their classifier link was broken.
 
 ## Checking it: the XSD structural parity check
 
