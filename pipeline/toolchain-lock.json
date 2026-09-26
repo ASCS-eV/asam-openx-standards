@@ -105,7 +105,14 @@
   },
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
-    "shapechange_runtime_fingerprint": "9cb9bbd8f5b30a92c891d659422ccb6c3cf8934c7902e41c37f83d42cfd1e4ba",
-    "shacl_play_jar_fingerprint": "487be38d72a193b907a794df737c5e352acde1786f59d23dc04a8fef94b9e1a2"
+    "shapechange_runtime_fingerprint": "ae58d87fb128fa50a617422b6ebbdfd21fd40597f1ae1de726ec79e7cd039c90",
+    "shacl_play_jar_fingerprint": "487be38d72a193b907a794df737c5e352acde1786f59d23dc04a8fef94b9e1a2",
+    "_snapshot_comment": "ShapeChange's pom declares de.interactive_instruments:ldproxy-cfg:4.9.0-SNAPSHOT, which Maven resolves to whatever build the ii-maven snapshot repository serves at build time; that repository keeps only the latest build. The runtime fingerprint covers the jar, so it changes whenever a new snapshot is published, although the OWL output does not: regenerating both standards against build 20260925.085606-38 reproduced every committed OWL and SHACL file byte for byte. The resolved build is recorded below so that a moved snapshot is reported as the cause; the lasting fix is a released ldproxy-cfg version in ShapeChange's pom.",
+    "snapshot_dependencies": {
+      "de.interactive_instruments:ldproxy-cfg:4.9.0-SNAPSHOT": {
+        "resolved": "4.9.0-20260925.085606-38",
+        "sha256": "acf661ef810523bda476b9cf32e8588c6fee5c139480bb5480e258039e1cda69"
+      }
+    }
   }
 }

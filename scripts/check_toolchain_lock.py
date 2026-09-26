@@ -119,6 +119,14 @@ def check_lock_schema(lock: dict) -> list[str]:
                     f"build_inputs.{field} is not a {_FINGERPRINT_LENGTH}-hex-digit "
                     f"fingerprint: {value!r}"
                 )
+        for coordinates, pin in build_inputs.get("snapshot_dependencies", {}).items():
+            if not coordinates.endswith("-SNAPSHOT") or coordinates.count(":") != 2:
+                problems.append(f"build_inputs.snapshot_dependencies key {coordinates!r} is not "
+                                "group:artifact:version-SNAPSHOT")
+            if not isinstance(pin, dict) or not pin.get("resolved") or not _is_hex(
+                    pin.get("sha256", ""), _FINGERPRINT_LENGTH):
+                problems.append(f"build_inputs.snapshot_dependencies[{coordinates!r}] needs a "
+                                "resolved build and a 64-hex-digit sha256")
 
     build_environment = lock.get("build_environment")
     if build_environment is None:

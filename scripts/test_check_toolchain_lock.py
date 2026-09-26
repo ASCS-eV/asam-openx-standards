@@ -19,6 +19,7 @@ Run:  python scripts/test_check_toolchain_lock.py
 
 from __future__ import annotations
 
+import copy
 import json
 import sys
 from pathlib import Path
@@ -141,6 +142,11 @@ check(any("carried_commits is missing" in problem for problem in problems_for(en
 print("\nthe committed lock satisfies the check")
 
 committed = json.loads(Path(LOCK_PATH).read_text())
+bad_pin = copy.deepcopy(committed)
+bad_pin["build_inputs"]["snapshot_dependencies"] = {"a:b:1.0-SNAPSHOT": {"resolved": "x",
+                                                                        "sha256": "nothex"}}
+check(any("snapshot_dependencies" in p for p in check_lock_schema(bad_pin)),
+      "a SNAPSHOT pin without a content hash is rejected")
 check(check_lock_schema(committed) == [],
       "pipeline/toolchain-lock.json is internally consistent")
 

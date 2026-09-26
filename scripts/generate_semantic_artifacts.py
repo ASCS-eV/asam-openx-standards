@@ -668,6 +668,56 @@ def shapechange_runtime_fingerprint(shapechange_home: Path, mvn: str, work: Path
     return hashlib.sha256("".join(lines).encode("utf-8")).hexdigest()
 
 
+def snapshot_dependencies(classpath_file: Path) -> dict[str, dict[str, str]]:
+    """Every SNAPSHOT jar on the classpath: ``group:artifact:version`` -> resolved build, hash.
+
+    A SNAPSHOT is not a version but a moving pointer: Maven resolves it to whatever build the
+    repository serves at the time, so the same ShapeChange commit can be built against different
+    bytes on different days. The lock records the build each one resolved to, so that a moved
+    snapshot is named as the cause instead of surfacing as an unexplained fingerprint change.
+    """
+    found: dict[str, dict[str, str]] = {}
+    for entry in classpath_file.read_text().split(os.pathsep):
+        jar = Path(entry)
+        if not entry or "-SNAPSHOT" not in jar.name or not jar.is_file():
+            continue
+        parts = jar.parts
+        repository = len(parts) - 1 - parts[::-1].index("repository")
+        version, artifact = parts[-2], parts[-3]
+        group = ".".join(parts[repository + 1:-3])
+        resolved = version
+        for metadata in sorted(jar.parent.glob("maven-metadata-*.xml")):
+            root = ElementTree.parse(metadata).getroot()
+            for snapshot in root.iter("snapshotVersion"):
+                if snapshot.findtext("extension") == "jar" and not snapshot.findtext("classifier"):
+                    resolved = snapshot.findtext("value") or resolved
+        found[f"{group}:{artifact}:{version}"] = {"resolved": resolved, "sha256": sha256(jar)}
+    return found
+
+
+def check_snapshot_dependencies(found: dict, lock: dict) -> None:
+    locked = lock["build_inputs"].get("snapshot_dependencies", {})
+    for coordinates, actual in sorted(found.items()):
+        expected = locked.get(coordinates)
+        if expected is None:
+            raise SystemExit(
+                f"ShapeChange's classpath holds {coordinates}, a SNAPSHOT the lock does not "
+                "record. A SNAPSHOT resolves to whatever build its repository serves today; record "
+                "the resolved build in build_inputs.snapshot_dependencies, from two independent "
+                "clean builds, before trusting a fingerprint that includes it.")
+        if expected != {"resolved": actual["resolved"], "sha256": actual["sha256"]}:
+            raise SystemExit(
+                f"{coordinates} resolved to {actual['resolved']} (sha256 {actual['sha256']}), "
+                f"but the lock records {expected.get('resolved')} "
+                f"(sha256 {expected.get('sha256')}). "
+                "The snapshot moved in its repository since the lock was recorded, so the runtime "
+                "fingerprint cannot match. Install the locked build into the local repository, or "
+                "re-record the lock from two independent clean builds.")
+    for coordinates in sorted(set(locked) - set(found)):
+        raise SystemExit(f"the lock records {coordinates}, which is not on ShapeChange's "
+                         "classpath any more; remove it from build_inputs.snapshot_dependencies")
+
+
 def build_shapechange(home: Path, mvn: str) -> Path:
     """Build ShapeChange without Enterprise Architect and return its resource directory.
 
@@ -918,6 +968,8 @@ def main() -> int:
     resources = build_shapechange(shapechange_root, args.mvn)
     classpath = shapechange_classpath(shapechange_root, args.mvn, work)
     shapechange_fingerprint = shapechange_runtime_fingerprint(shapechange_root, args.mvn, work)
+    check_snapshot_dependencies(
+        snapshot_dependencies(work / "shapechange-fingerprint-classpath.txt"), lock)
     expected_sc_fingerprint = lock["build_inputs"]["shapechange_runtime_fingerprint"]
     if shapechange_fingerprint != expected_sc_fingerprint:
         raise SystemExit(

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T07:10:56+00:00",
+  "generated": "2026-09-26T06:26:24+00:00",
   "standard": "asam-openscenario-xml",
   "source_model": {
     "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
@@ -13,7 +13,7 @@
     "shapechange": {
       "commit": "62c30807194aebbf61ddf119d6003f046939a4b6",
       "profile": "-DskipEa",
-      "runtime_fingerprint": "9cb9bbd8f5b30a92c891d659422ccb6c3cf8934c7902e41c37f83d42cfd1e4ba"
+      "runtime_fingerprint": "ae58d87fb128fa50a617422b6ebbdfd21fd40597f1ae1de726ec79e7cd039c90"
     },
     "shacl_play": {
       "commit": "7af6d7aefde32e2e5b5646cac99122b42b15371f",
