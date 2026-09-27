@@ -696,6 +696,15 @@ def snapshot_dependencies(classpath_file: Path) -> dict[str, dict[str, str]]:
 
 
 def check_snapshot_dependencies(found: dict, lock: dict) -> None:
+    """Refuse a SNAPSHOT whose jar content differs from the build the lock records.
+
+    The sha256 decides. The snapshot repository republishes byte-identical jars under a new
+    build number - ldproxy-cfg 4.9.0-20260926.073424-39 has the sha256 of the locked
+    4.9.0-20260925.085606-38 - and such a jar leaves the runtime fingerprint unchanged, so
+    only its build number is reported. Comparing the build number as well would stop the
+    pipeline whenever the repository republishes, and would leave re-recording the lock,
+    for no change in content, as the only way on.
+    """
     locked = lock["build_inputs"].get("snapshot_dependencies", {})
     for coordinates, actual in sorted(found.items()):
         expected = locked.get(coordinates)
@@ -705,14 +714,19 @@ def check_snapshot_dependencies(found: dict, lock: dict) -> None:
                 "record. A SNAPSHOT resolves to whatever build its repository serves today; record "
                 "the resolved build in build_inputs.snapshot_dependencies, from two independent "
                 "clean builds, before trusting a fingerprint that includes it.")
-        if expected != {"resolved": actual["resolved"], "sha256": actual["sha256"]}:
-            raise SystemExit(
-                f"{coordinates} resolved to {actual['resolved']} (sha256 {actual['sha256']}), "
-                f"but the lock records {expected.get('resolved')} "
-                f"(sha256 {expected.get('sha256')}). "
-                "The snapshot moved in its repository since the lock was recorded, so the runtime "
-                "fingerprint cannot match. Install the locked build into the local repository, or "
-                "re-record the lock from two independent clean builds.")
+        if expected.get("sha256") == actual["sha256"]:
+            if expected.get("resolved") != actual["resolved"]:
+                print(f"  {coordinates} resolved to {actual['resolved']}, a republication of the "
+                      f"locked {expected.get('resolved')} with the same content "
+                      f"(sha256 {actual['sha256']})")
+            continue
+        raise SystemExit(
+            f"{coordinates} resolved to {actual['resolved']} (sha256 {actual['sha256']}), "
+            f"but the lock records {expected.get('resolved')} "
+            f"(sha256 {expected.get('sha256')}). "
+            "The snapshot's content changed in its repository since the lock was recorded, so "
+            "the runtime fingerprint cannot match. Install the locked build into the local "
+            "repository, or re-record the lock from two independent clean builds.")
     for coordinates in sorted(set(locked) - set(found)):
         raise SystemExit(f"the lock records {coordinates}, which is not on ShapeChange's "
                          "classpath any more; remove it from build_inputs.snapshot_dependencies")
