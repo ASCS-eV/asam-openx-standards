@@ -285,7 +285,7 @@ entry deliberately replaces with an RDF datatype.
 |---|---:|---:|
 | Classes in the model | 238 | 343 |
 | → named `owl:Class` | 178 | 304 |
-| → `rdfs:Datatype` with `owl:oneOf` | 55 | 39 |
+| → `rdfs:Datatype` defined as an enumeration of literals | 55 | 39 |
 | → replaced by an RDF datatype via `mapentries-asam.xml` | 5 | 0 |
 | **unaccounted for** | **0** | **0** |
 | Enumeration literals in the OWL | 290 | 251 |
@@ -870,8 +870,16 @@ Two rules deserve naming, because getting them wrong fails quietly:
 - `rule-owl-prop-multiplicityAsQualifiedCardinalityRestriction` turns a UML multiplicity
   into a cardinality restriction. It needs a ShapeChange that emits `owl:onDataRange`, not
   `owl:onClass`, when the restricted value type is a datatype.
-- `rule-owl-cls-iso191502Enumeration` encodes each enumeration as an `rdfs:Datatype` with
-  `owl:oneOf` over its literals. The alternative, `rule-owl-cls-enumerationAsCodelist`, is
+- `rule-owl-cls-iso191502Enumeration` encodes each enumeration as an `rdfs:Datatype` whose
+  value space is its literals. With `iso191502EnumerationAsDatatypeDefinition` ([#800]) it writes
+  that as the OWL 2 datatype definition `DatatypeDefinition( DT DataOneOf( ... ) )` (OWL 2
+  Structural Specification, Sec. 9.4): the named datatype is `owl:equivalentClass` to an
+  anonymous `rdfs:Datatype` carrying the `owl:oneOf` list (Mapping to RDF Graphs, Sec. 2.1,
+  Table 1). OWL 2 DL requires such a definition for every datatype that is neither
+  `rdfs:Literal` nor in the OWL 2 datatype map (Sec. 11.2). Without the parameter, `owl:oneOf`
+  sits on the named datatype, and the OWL API's OWL 2 DL profile check reads each enumeration
+  as an empty enumeration of individuals: 55 and 39 `EmptyOneOfAxiom` violations, 0 with it.
+  The alternative, `rule-owl-cls-enumerationAsCodelist`, is
   deliberately **not** used: it makes an enumeration fall through to the code list
   encoding, which only applies when `rule-owl-cls-codelist-191502` or `-external` is also
   present. With neither, every enumeration reaches the default branch and is dropped — see
@@ -977,7 +985,8 @@ bugs.
 - **Numeric facets in the SHACL.** `t_grEqZero`'s `minInclusive=0` and its siblings are mapped
   to plain `xsd:double`: `mapentries-asam.xml` maps types, not facets, so the shapes constrain
   those attributes' datatype but not their range. Enumerated value sets are covered: the
-  `owl:oneOf` → `sh:in` rule applies, and the counts are in the coverage table above.
+  `owl:oneOf` → `sh:in` rule applies, also to an enumeration written as a datatype definition
+  ([#10]), and the counts are in the coverage table above.
 - **Reference semantics.** 34 `*Ref` properties in OpenSCENARIO are non-composition
   associations to a class, while ASAM's XSD declares them `type="String"` — references by name.
   The OWL encodes them as containment. This is a modelling question for ASAM, filed as a change

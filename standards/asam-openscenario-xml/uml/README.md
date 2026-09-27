@@ -149,7 +149,7 @@ Any other ShapeChange configuration can read the model the same way: point `inpu
 ### What the generated artifacts cover
 
 Every one of the model's 343 classes reaches the ontology — 304 as `owl:Class`, 39 as an
-`rdfs:Datatype` with `owl:oneOf` — and that is asserted on every run, not assumed. The 48
+`rdfs:Datatype` defined as an enumeration of its literals — and that is asserted on every run, not assumed. The 48
 `<<union>>` classes are encoded as OWL disjunctions, and the ShapeChange log is free of errors
 and warnings, so the pipeline tolerates none for this standard. See the coverage table in
 [`pipeline/README.md`](../../../pipeline/README.md).

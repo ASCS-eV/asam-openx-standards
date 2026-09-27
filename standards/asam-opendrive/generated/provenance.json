@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T09:19:46+00:00",
+  "generated": "2026-09-27T09:26:49+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
@@ -7,7 +7,7 @@
   },
   "configuration": {
     "path": "pipeline/opendrive-owl.config.xml",
-    "sha256": "58a71fb314623b4c18d2165617be3fc47c6dbf85d76654e5058dfc15ba1d05c5"
+    "sha256": "175fc8594f91dd45896950a1c46e16828e0f0c3bf6e9dfd69889460080ab6ea2"
   },
   "tools": {
     "shapechange": {
@@ -36,7 +36,7 @@
     "maven_version": "3.9.9"
   },
   "outputs": {
-    "opendrive.owl.ttl": "a7a4e69f06dcb4eea1dfc7bb677151f6e13eb573ec24dc52f49e5f9abaa9c4f1",
+    "opendrive.owl.ttl": "d81ea51ef38f1efaf77a8d81b9143b5f290565d938ef3595751f0d799ee3035d",
     "opendrive.shacl.ttl": "f4bd1d1c0e64a58b1952f4e9aa7ab7c32d697d53cb0f82c32892d8f1d90c58ae"
   }
 }

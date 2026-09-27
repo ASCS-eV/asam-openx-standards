@@ -4416,7 +4416,8 @@ osc:AssignRouteAction.route a owl:ObjectProperty ;
 osc:AutomaticGearType a rdfs:Datatype ;
     rdfs:label "AutomaticGearType"@en ;
     rdfs:comment "Types for automatic gear description."@en ;
-    owl:oneOf ( "n" "p" "r" "d" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "n" "p" "r" "d" ) ] ;
     skos:definition "Types for automatic gear description."@en .
 
 osc:BrakeInput.brakeForce a owl:ObjectProperty ;
@@ -4437,7 +4438,8 @@ osc:CatalogElement a owl:Class ;
 osc:CloudState a rdfs:Datatype ;
     rdfs:label "CloudState"@en ;
     rdfs:comment "Definition of cloud states."@en ;
-    owl:oneOf ( "cloudy" "free" "overcast" "rainy" "skyOff" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "cloudy" "free" "overcast" "rainy" "skyOff" ) ] ;
     skos:definition "Definition of cloud states."@en .
 
 osc:CollisionCondition.byType a owl:ObjectProperty ;
@@ -4453,7 +4455,8 @@ osc:CollisionCondition.entityRef a owl:ObjectProperty ;
 osc:ColorType a rdfs:Datatype ;
     rdfs:label "ColorType"@en ;
     rdfs:comment "Semantic value of a color."@en ;
-    owl:oneOf ( "other" "red" "yellow" "green" "blue" "violet" "orange" "brown" "black" "grey" "white" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "other" "red" "yellow" "green" "blue" "violet" "orange" "brown" "black" "grey" "white" ) ] ;
     skos:definition "Semantic value of a color."@en .
 
 osc:ComponentAnimation.userDefinedComponent a owl:ObjectProperty ;
@@ -4469,7 +4472,8 @@ osc:ComponentAnimation.vehicleComponent a owl:ObjectProperty ;
 osc:ConditionEdge a rdfs:Datatype ;
     rdfs:label "ConditionEdge"@en ;
     rdfs:comment "Edge types that can be used for conditions."@en ;
-    owl:oneOf ( "falling" "none" "rising" "risingOrFalling" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "falling" "none" "rising" "risingOrFalling" ) ] ;
     skos:definition "Edge types that can be used for conditions."@en .
 
 osc:ConditionGroup a owl:Class ;
@@ -4484,7 +4488,8 @@ osc:ConditionGroup a owl:Class ;
 osc:ControllerType a rdfs:Datatype ;
     rdfs:label "ControllerType"@en ;
     rdfs:comment "Type of operational domains for a Controller"@en ;
-    owl:oneOf ( "lateral" "longitudinal" "lighting" "animation" "movement" "appearance" "all" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "lateral" "longitudinal" "lighting" "animation" "movement" "appearance" "all" ) ] ;
     skos:definition "Type of operational domains for a Controller"@en .
 
 osc:CustomContent a owl:Class ;
@@ -4529,7 +4534,8 @@ osc:DistributionDefinition.stochastic a owl:ObjectProperty ;
 osc:DynamicsDimension a rdfs:Datatype ;
     rdfs:label "DynamicsDimension"@en ;
     rdfs:comment "Defines how a target value will be acquired (with a constant rate, in a defined distance, within a defined time)."@en ;
-    owl:oneOf ( "distance" "rate" "time" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "distance" "rate" "time" ) ] ;
     skos:definition "Defines how a target value will be acquired (with a constant rate, in a defined distance, within a defined time)."@en .
 
 osc:EnvironmentAction.catalogReference a owl:ObjectProperty ;
@@ -4555,7 +4561,8 @@ osc:FinalSpeed.relativeSpeedToMaster a owl:ObjectProperty ;
 osc:FractionalCloudCover a rdfs:Datatype ;
     rdfs:label "FractionalCloudCover"@en ;
     rdfs:comment "Definition of cloud states using the fractional cloud cover in oktas."@en ;
-    owl:oneOf ( "zeroOktas" "oneOktas" "twoOktas" "threeOktas" "fourOktas" "fiveOktas" "sixOktas" "sevenOktas" "eightOktas" "nineOktas" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "zeroOktas" "oneOktas" "twoOktas" "threeOktas" "fourOktas" "fiveOktas" "sixOktas" "sevenOktas" "eightOktas" "nineOktas" ) ] ;
     skos:definition "Definition of cloud states using the fractional cloud cover in oktas."@en .
 
 osc:Gear.automaticGear a owl:ObjectProperty ;
@@ -4609,13 +4616,15 @@ osc:LaneOffsetTarget.relativeTargetLaneOffset a owl:ObjectProperty ;
 osc:LateralDisplacement a rdfs:Datatype ;
     rdfs:label "LateralDisplacement"@en ;
     rdfs:comment "A displacement relative to an entity along a lateral axis (e.g. the y axis of the entity coordinate system)"@en ;
-    owl:oneOf ( "any" "leftToReferencedEntity" "rightToReferencedEntity" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "any" "leftToReferencedEntity" "rightToReferencedEntity" ) ] ;
     skos:definition "A displacement relative to an entity along a lateral axis (e.g. the y axis of the entity coordinate system)"@en .
 
 osc:LightMode a rdfs:Datatype ;
     rdfs:label "LightMode"@en ;
     rdfs:comment "Definition of the light mode."@en ;
-    owl:oneOf ( "on" "off" "flashing" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "on" "off" "flashing" ) ] ;
     skos:definition "Definition of the light mode."@en .
 
 osc:LightType.userDefinedLight a owl:ObjectProperty ;
@@ -4631,13 +4640,15 @@ osc:LightType.vehicleLight a owl:ObjectProperty ;
 osc:LongitudinalDisplacement a rdfs:Datatype ;
     rdfs:label "LongitudinalDisplacement"@en ;
     rdfs:comment "A displacement relative to an entity along a longitudinal axis (e.g. the x axis of the entity coordinate system)"@en ;
-    owl:oneOf ( "any" "trailingReferencedEntity" "leadingReferencedEntity" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "any" "trailingReferencedEntity" "leadingReferencedEntity" ) ] ;
     skos:definition "A displacement relative to an entity along a longitudinal axis (e.g. the x axis of the entity coordinate system)"@en .
 
 osc:MiscObjectCategory a rdfs:Datatype ;
     rdfs:label "MiscObjectCategory"@en ;
     rdfs:comment "Categories for entity objects which are not pedestrians or vehicles."@en ;
-    owl:oneOf ( "barrier" "building" "crosswalk" "gantry" "none" "obstacle" "parkingSpace" "patch" "pole" "railing" "roadMark" "soundBarrier" "streetLamp" "trafficIsland" "tree" "vegetation" "wind" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "barrier" "building" "crosswalk" "gantry" "none" "obstacle" "parkingSpace" "patch" "pole" "railing" "roadMark" "soundBarrier" "streetLamp" "trafficIsland" "tree" "vegetation" "wind" ) ] ;
     skos:definition "Categories for entity objects which are not pedestrians or vehicles."@en .
 
 osc:ModifyRule.addValue a owl:ObjectProperty ;
@@ -4672,7 +4683,8 @@ osc:PedestrianCategory a rdfs:Datatype ;
     rdfs:label "PedestrianCategory"@en ;
     rdfs:comment """Categories for entity objects of type pedestrian.\r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en ;
-    owl:oneOf ( "animal" "pedestrian" "wheelchair" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "animal" "pedestrian" "wheelchair" ) ] ;
     skos:definition """Categories for entity objects of type pedestrian.\r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en .
 
@@ -4688,25 +4700,29 @@ osc:PedestrianGesture a owl:Class ;
 osc:PedestrianGestureType a rdfs:Datatype ;
     rdfs:label "PedestrianGestureType"@en ;
     rdfs:comment "Definition of a pedestrian's gesture."@en ;
-    owl:oneOf ( "phoneCallRightHand" "phoneCallLeftHand" "phoneTextRightHand" "phoneTextLeftHand" "wavingRightArm" "wavingLeftArm" "umbrellaRightHand" "umbrellaLeftHand" "crossArms" "coffeeRightHand" "coffeeLeftHand" "sandwichRightHand" "sandwichLeftHand" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "phoneCallRightHand" "phoneCallLeftHand" "phoneTextRightHand" "phoneTextLeftHand" "wavingRightArm" "wavingLeftArm" "umbrellaRightHand" "umbrellaLeftHand" "crossArms" "coffeeRightHand" "coffeeLeftHand" "sandwichRightHand" "sandwichLeftHand" ) ] ;
     skos:definition "Definition of a pedestrian's gesture."@en .
 
 osc:PedestrianMotionType a rdfs:Datatype ;
     rdfs:label "PedestrianMotionType"@en ;
     rdfs:comment "Definition of a pedestrian's motion."@en ;
-    owl:oneOf ( "standing" "sitting" "lying" "squatting" "walking" "running" "reeling" "crawling" "cycling" "jumping" "ducking" "bendingDown" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "standing" "sitting" "lying" "squatting" "walking" "running" "reeling" "crawling" "cycling" "jumping" "ducking" "bendingDown" ) ] ;
     skos:definition "Definition of a pedestrian's motion."@en .
 
 osc:PrecipitationType a rdfs:Datatype ;
     rdfs:label "PrecipitationType"@en ;
     rdfs:comment "Types of precipitation."@en ;
-    owl:oneOf ( "dry" "rain" "snow" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "dry" "rain" "snow" ) ] ;
     skos:definition "Types of precipitation."@en .
 
 osc:Priority a rdfs:Datatype ;
     rdfs:label "Priority"@en ;
     rdfs:comment "Rules that govern interaction between events that belong to the same maneuver."@en ;
-    owl:oneOf ( "overwrite" "override" "parallel" "skip" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "overwrite" "override" "parallel" "skip" ) ] ;
     skos:definition "Rules that govern interaction between events that belong to the same maneuver."@en .
 
 osc:RandomRouteAction a owl:Class ;
@@ -4727,7 +4743,8 @@ osc:RouteRef.route a owl:ObjectProperty ;
 osc:RouteStrategy a rdfs:Datatype ;
     rdfs:label "RouteStrategy"@en ;
     rdfs:comment "Strategy for path selection between waypoints in a route."@en ;
-    owl:oneOf ( "fastest" "leastIntersections" "random" "shortest" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "fastest" "leastIntersections" "random" "shortest" ) ] ;
     skos:definition "Strategy for path selection between waypoints in a route."@en .
 
 osc:SelectedEntities.byType a owl:ObjectProperty ;
@@ -4768,13 +4785,15 @@ osc:StoryboardElement a owl:Class ;
 osc:StoryboardElementState a rdfs:Datatype ;
     rdfs:label "StoryboardElementState"@en ;
     rdfs:comment "The states and the transitions that can be used to define a StoryboardElementStateCondition."@en ;
-    owl:oneOf ( "completeState" "endTransition" "runningState" "skipTransition" "standbyState" "startTransition" "stopTransition" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "completeState" "endTransition" "runningState" "skipTransition" "standbyState" "startTransition" "stopTransition" ) ] ;
     skos:definition "The states and the transitions that can be used to define a StoryboardElementStateCondition."@en .
 
 osc:StoryboardElementType a rdfs:Datatype ;
     rdfs:label "StoryboardElementType"@en ;
     rdfs:comment "Types of storyboard elements in a scenario."@en ;
-    owl:oneOf ( "act" "action" "event" "maneuver" "maneuverGroup" "story" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "act" "action" "event" "maneuver" "maneuverGroup" "story" ) ] ;
     skos:definition "Types of storyboard elements in a scenario."@en .
 
 osc:TimeReference.none a owl:ObjectProperty ;
@@ -4811,7 +4830,8 @@ osc:TrafficSignalSemantics a rdfs:Datatype ;
     rdfs:label "TrafficSignalSemantics"@en ;
     rdfs:comment """Semantic states of a traffic light, i.e. the meaning of the traffic light state and the rules imposed on traffic obeying the signal in that state.\r
 'Traffic' in the enum literals always refers to the obeying traffic. The description of each literal also contains the expected behavior for the obeying traffic. An example of a real life situation is provided as well."""@en ;
-    owl:oneOf ( "attention_go" "attention_stop" "caution" "fallback" "go" "stop" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "attention_go" "attention_stop" "caution" "fallback" "go" "stop" ) ] ;
     skos:definition """Semantic states of a traffic light, i.e. the meaning of the traffic light state and the rules imposed on traffic obeying the signal in that state.\r
 'Traffic' in the enum literals always refers to the obeying traffic. The description of each literal also contains the expected behavior for the obeying traffic. An example of a real life situation is provided as well."""@en .
 
@@ -4833,7 +4853,8 @@ osc:TrajectoryRef.trajectory a owl:ObjectProperty ;
 osc:TriggeringEntitiesRule a rdfs:Datatype ;
     rdfs:label "TriggeringEntitiesRule"@en ;
     rdfs:comment "Rules which determine how triggering entities are used to verify a given condition."@en ;
-    owl:oneOf ( "all" "any" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "all" "any" ) ] ;
     skos:definition "Rules which determine how triggering entities are used to verify a given condition."@en .
 
 osc:ValueConstraintGroup a owl:Class ;
@@ -4860,19 +4881,22 @@ osc:VariableModifyRule.multiplyByValue a owl:ObjectProperty ;
 osc:VehicleComponentType a rdfs:Datatype ;
     rdfs:label "VehicleComponentType"@en ;
     rdfs:comment "Definition of vehicle component types."@en ;
-    owl:oneOf ( "hood" "trunk" "doorFrontRight" "doorFrontLeft" "doorRearRight" "doorRearLeft" "windowFrontRight" "windowFrontLeft" "windowRearRight" "windowRearLeft" "sideMirrors" "sideMirrorRight" "sideMirrorLeft" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "hood" "trunk" "doorFrontRight" "doorFrontLeft" "doorRearRight" "doorRearLeft" "windowFrontRight" "windowFrontLeft" "windowRearRight" "windowRearLeft" "sideMirrors" "sideMirrorRight" "sideMirrorLeft" ) ] ;
     skos:definition "Definition of vehicle component types."@en .
 
 osc:VehicleLightType a rdfs:Datatype ;
     rdfs:label "VehicleLightType"@en ;
     rdfs:comment "Definition of vehicle light types."@en ;
-    owl:oneOf ( "daytimeRunningLights" "lowBeam" "highBeam" "fogLights" "fogLightsFront" "fogLightsRear" "brakeLights" "warningLights" "indicatorLeft" "indicatorRight" "reversingLights" "licensePlateIllumination" "specialPurposeLights" "tailLights" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "daytimeRunningLights" "lowBeam" "highBeam" "fogLights" "fogLightsFront" "fogLightsRear" "brakeLights" "warningLights" "indicatorLeft" "indicatorRight" "reversingLights" "licensePlateIllumination" "specialPurposeLights" "tailLights" ) ] ;
     skos:definition "Definition of vehicle light types."@en .
 
 osc:Wetness a rdfs:Datatype ;
     rdfs:label "Wetness"@en ;
     rdfs:comment "Definition of the wetness of the road."@en ;
-    owl:oneOf ( "dry" "moist" "wetWithPuddles" "lowFlooded" "highFlooded" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "dry" "moist" "wetWithPuddles" "lowFlooded" "highFlooded" ) ] ;
     skos:definition "Definition of the wetness of the road."@en .
 
 osc:AbsoluteTargetLaneOffset a owl:Class ;
@@ -5810,7 +5834,8 @@ osc:Actors a owl:Class ;
 osc:AngleType a rdfs:Datatype ;
     rdfs:label "AngleType"@en ;
     rdfs:comment "Angular coordinate."@en ;
-    owl:oneOf ( "heading" "pitch" "roll" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "heading" "pitch" "roll" ) ] ;
     skos:definition "Angular coordinate."@en .
 
 osc:AnimationFile a owl:Class ;
@@ -6024,7 +6049,8 @@ osc:DomeImage a owl:Class ;
 osc:DynamicsShape a rdfs:Datatype ;
     rdfs:label "DynamicsShape"@en ;
     rdfs:comment "Function type used to represent the change of a given variable over time or distance."@en ;
-    owl:oneOf ( "cubic" "linear" "sinusoidal" "step" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "cubic" "linear" "sinusoidal" "step" ) ] ;
     skos:definition "Function type used to represent the change of a given variable over time or distance."@en .
 
 osc:Entities a owl:Class ;
@@ -6220,13 +6246,15 @@ osc:ModifyRule a owl:Class ;
 osc:ObjectType a rdfs:Datatype ;
     rdfs:label "ObjectType"@en ;
     rdfs:comment "Types of entity objects available in a scenario."@en ;
-    owl:oneOf ( "miscellaneous" "pedestrian" "vehicle" "external" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "miscellaneous" "pedestrian" "vehicle" "external" ) ] ;
     skos:definition "Types of entity objects available in a scenario."@en .
 
 osc:ParameterType a rdfs:Datatype ;
     rdfs:label "ParameterType"@en ;
     rdfs:comment "Allowed data types for parameters defined in a parameter declaration. The types mentioned here match the corresponding datatypes the W3C XML Schema defines."@en ;
-    owl:oneOf ( "boolean" "dateTime" "double" "integer" "string" "unsignedInt" "unsignedShort" "int" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "boolean" "dateTime" "double" "integer" "string" "unsignedInt" "unsignedShort" "int" ) ] ;
     skos:definition "Allowed data types for parameters defined in a parameter declaration. The types mentioned here match the corresponding datatypes the W3C XML Schema defines."@en .
 
 osc:ParameterValueDistribution a owl:Class ;
@@ -6310,7 +6338,8 @@ osc:ReachPositionCondition a owl:Class ;
 osc:ReferenceContext a rdfs:Datatype ;
     rdfs:label "ReferenceContext"@en ;
     rdfs:comment "Definition of the nature for a given signal, or variable, in terms of absolute or relative."@en ;
-    owl:oneOf ( "absolute" "relative" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "absolute" "relative" ) ] ;
     skos:definition "Definition of the nature for a given signal, or variable, in terms of absolute or relative."@en .
 
 osc:RelativeTargetLaneOffset a owl:Class ;
@@ -6480,7 +6509,8 @@ osc:SpeedProfileEntry a owl:Class ;
 osc:SpeedTargetValueType a rdfs:Datatype ;
     rdfs:label "SpeedTargetValueType"@en ;
     rdfs:comment "Type definition that relates a speed value relative to another one."@en ;
-    owl:oneOf ( "delta" "factor" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "delta" "factor" ) ] ;
     skos:definition "Type definition that relates a speed value relative to another one."@en .
 
 osc:StochasticDistribution a owl:Class ;
@@ -6742,7 +6772,8 @@ osc:VehicleCategory a rdfs:Datatype ;
     rdfs:comment """Categories for entity objects of type vehicle.\r
 It is recommended to use the most specific literal that fits whenever possible (e.g. 'heavyTruck' instead of 'car'). \r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en ;
-    owl:oneOf ( "aircraft" "bicycle" "bus" "car" "heavyTruck" "landVehicle" "micromobilityDevice" "motorbike" "motorcycle" "other" "semitractor" "semitrailer" "standupScooter" "trailer" "train" "tram" "truck" "van" "watercraft" "wheelchair" "workMachine" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "aircraft" "bicycle" "bus" "car" "heavyTruck" "landVehicle" "micromobilityDevice" "motorbike" "motorcycle" "other" "semitractor" "semitrailer" "standupScooter" "trailer" "train" "tram" "truck" "van" "watercraft" "wheelchair" "workMachine" ) ] ;
     skos:definition """Categories for entity objects of type vehicle.\r
 It is recommended to use the most specific literal that fits whenever possible (e.g. 'heavyTruck' instead of 'car'). \r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en .
@@ -8091,13 +8122,15 @@ osc:ColorCmyk a owl:Class ;
 osc:DirectionalDimension a rdfs:Datatype ;
     rdfs:label "DirectionalDimension"@en ;
     rdfs:comment "Defines the directions in the entity coordinate system."@en ;
-    owl:oneOf ( "longitudinal" "lateral" "vertical" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "longitudinal" "lateral" "vertical" ) ] ;
     skos:definition "Defines the directions in the entity coordinate system."@en .
 
 osc:FollowingMode a rdfs:Datatype ;
     rdfs:label "FollowingMode"@en ;
     rdfs:comment "Type of control actuation when following a lateral or longitudinal trajectory, shape or profile."@en ;
-    owl:oneOf ( "follow" "position" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "follow" "position" ) ] ;
     skos:definition "Type of control actuation when following a lateral or longitudinal trajectory, shape or profile."@en .
 
 osc:License a owl:Class ;
@@ -8259,7 +8292,8 @@ osc:Role a rdfs:Datatype ;
     rdfs:label "Role"@en ;
     rdfs:comment """Roles for entity objects of type Vehicle or Pedestrian. The default role, if not specified, is None.\r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en ;
-    owl:oneOf ( "none" "agriculture" "ambulance" "civil" "construction" "dangerousGoodsTransport" "fire" "fireBrigade" "freightTransport" "garbageCollection" "military" "other" "police" "publicTransport" "roadAssistance" "roadsideAssistance" "specialTransport" "trafficControl" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "none" "agriculture" "ambulance" "civil" "construction" "dangerousGoodsTransport" "fire" "fireBrigade" "freightTransport" "garbageCollection" "military" "other" "police" "publicTransport" "roadAssistance" "roadsideAssistance" "specialTransport" "trafficControl" ) ] ;
     skos:definition """Roles for entity objects of type Vehicle or Pedestrian. The default role, if not specified, is None.\r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en .
 
@@ -9053,7 +9087,8 @@ osc:FollowTrajectoryAction a owl:Class ;
 osc:LaneLayerType a rdfs:Datatype ;
     rdfs:label "LaneLayerType"@en ;
     rdfs:comment "Types of layers for lanes."@en ;
-    owl:oneOf ( "permanent" "temporary" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "permanent" "temporary" ) ] ;
     skos:definition "Types of layers for lanes."@en .
 
 osc:LanePosition a owl:Class ;
@@ -9163,7 +9198,8 @@ osc:RelativeClearanceCondition a owl:Class ;
 osc:RelativeDistanceType a rdfs:Datatype ;
     rdfs:label "RelativeDistanceType"@en ;
     rdfs:comment "Definition of the coordinate system dimension(s) to be used for calculating distances."@en ;
-    owl:oneOf ( "lateral" "longitudinal" "cartesianDistance" "euclidianDistance" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "lateral" "longitudinal" "cartesianDistance" "euclidianDistance" ) ] ;
     skos:definition "Definition of the coordinate system dimension(s) to be used for calculating distances."@en .
 
 osc:RelativeLanePosition a owl:Class ;
@@ -9236,7 +9272,8 @@ The relative lane coordinates (dLane, ds/dsLane, and offset) should be specified
 osc:RoutingAlgorithm a rdfs:Datatype ;
     rdfs:label "RoutingAlgorithm"@en ;
     rdfs:comment "Algorithm for path selection/calculation between two positions across roads. To be used for distance calculations in road/lane coordinates during runtime."@en ;
-    owl:oneOf ( "assignedRoute" "fastest" "leastIntersections" "shortest" "undefined" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "assignedRoute" "fastest" "leastIntersections" "shortest" "undefined" ) ] ;
     skos:definition "Algorithm for path selection/calculation between two positions across roads. To be used for distance calculations in road/lane coordinates during runtime."@en .
 
 osc:SynchronizeAction a owl:Class ;
@@ -11245,7 +11282,8 @@ osc:PrivateAction a owl:Class ;
 osc:CoordinateSystem a rdfs:Datatype ;
     rdfs:label "CoordinateSystem"@en ;
     rdfs:comment "Definition of the coordinate system to be used for calculations. If used in a condition, then the coordinate system relates to the triggering entity. If used in an action, the coordinate system relates to the actor."@en ;
-    owl:oneOf ( "entity" "lane" "road" "trajectory" "world" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "entity" "lane" "road" "trajectory" "world" ) ] ;
     skos:definition "Definition of the coordinate system to be used for calculations. If used in a condition, then the coordinate system relates to the triggering entity. If used in an action, the coordinate system relates to the actor."@en .
 
 osc:EntityCondition.accelerationCondition a owl:ObjectProperty ;
@@ -12035,7 +12073,8 @@ osc:CatalogReference a owl:Class ;
 osc:Rule a rdfs:Datatype ;
     rdfs:label "Rule"@en ;
     rdfs:comment "Rules (operators) used to compare quantitative variables or signals."@en ;
-    owl:oneOf ( "equalTo" "greaterThan" "lessThan" "greaterOrEqual" "lessOrEqual" "notEqualTo" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "equalTo" "greaterThan" "lessThan" "greaterOrEqual" "lessOrEqual" "notEqualTo" ) ] ;
     skos:definition "Rules (operators) used to compare quantitative variables or signals."@en .
 
 osc:Entity a owl:Class ;

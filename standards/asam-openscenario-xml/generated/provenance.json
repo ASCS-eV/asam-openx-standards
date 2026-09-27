@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T09:21:20+00:00",
+  "generated": "2026-09-27T09:28:21+00:00",
   "standard": "asam-openscenario-xml",
   "source_model": {
     "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
@@ -7,7 +7,7 @@
   },
   "configuration": {
     "path": "pipeline/openscenario-owl.config.xml",
-    "sha256": "0a78bf5c61a1c8d5aa5bad331d7ad942cf817a9792744e45010e5be3b6b9c5d2"
+    "sha256": "9e9304bfeeabaf82d4a288daf3a461691bf55b137e533e9b7f3b0d2e0110319a"
   },
   "tools": {
     "shapechange": {
@@ -36,7 +36,7 @@
     "maven_version": "3.9.9"
   },
   "outputs": {
-    "openscenario.owl.ttl": "156b615625baf4039b110c796270a9caf0eadfc22867e6bf327f646ae8c7f3cc",
+    "openscenario.owl.ttl": "9535c05fb9d63e5bac9c78f47d51c214406adbf4081980f474d19f3dd71d5d18",
     "openscenario.shacl.ttl": "140bd1993a04d9f821f22fa3e6de98ecf9d3427b69ef569383b6b09dcaeb963c"
   }
 }
