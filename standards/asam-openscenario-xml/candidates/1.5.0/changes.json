@@ -1,0 +1,570 @@
+{
+ "name": "OpenSCENARIO XML 1.5 candidate",
+ "based_on": {
+  "version": "ASAM OpenSCENARIO XML V1.4.0",
+  "model": "standards/asam-openscenario-xml/uml/openscenario.scxml",
+  "project": "standards/asam-openscenario-xml/uml/source/OpenSCENARIO.qeax"
+ },
+ "summary": "The OpenSCENARIO XML V1.4.0 model with the changes below, which make the model say, in terms a UML reader understands, what ASAM's generator makes of it in the normative schema. None of them changes that schema: the port of ASAM's own generator writes it byte for byte from this candidate as from the release.",
+ "changes": [
+  {
+   "id": "OSC-1",
+   "title": "A union that also carries other properties is a complex type with a union set",
+   "why": "These classes are \u00abunion\u00bbs whose content is a choice, and they also carry attributes or name references outside the choice, which the schema makes required or optional in their own right. ISO 19103 reads every property of a \u00abunion\u00bb as an alternative, so a UML reader, and the OWL encoding of a union, folds those properties into the choice: for `Action`, `Color`, `Condition` and `ControllerDistributionEntry` the result is unsatisfiable. Following the ShapeChange maintainer's recommendation, the classes lose \u00abunion\u00bb and state the choice with ShapeChange's `SC_UNION_SET` tag on the ends of its alternatives; the other properties keep their own multiplicity.",
+   "schema": "unchanged: ASAM's generator writes a complex type from `XSDcomplexType` and its choice from `modelGroup`, and reads neither \u00abunion\u00bb nor `SC_UNION_SET`",
+   "operations": [
+    {
+     "op": "set-stereotypes",
+     "class": 10,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 229,
+     "name": "SC_UNION_SET",
+     "value": "Action"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 231,
+     "name": "SC_UNION_SET",
+     "value": "Action"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 230,
+     "name": "SC_UNION_SET",
+     "value": "Action"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 165,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 222,
+     "name": "SC_UNION_SET",
+     "value": "AssignControllerAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 221,
+     "name": "SC_UNION_SET",
+     "value": "AssignControllerAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 465,
+     "name": "SC_UNION_SET",
+     "value": "AssignControllerAction"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 325,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 328,
+     "name": "SC_UNION_SET",
+     "value": "Color"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 352,
+     "name": "SC_UNION_SET",
+     "value": "Color"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 194,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 204,
+     "name": "SC_UNION_SET",
+     "value": "Condition"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 426,
+     "name": "SC_UNION_SET",
+     "value": "Condition"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 200,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 169,
+     "name": "SC_UNION_SET",
+     "value": "ControllerDistributionEntry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 182,
+     "name": "SC_UNION_SET",
+     "value": "ControllerDistributionEntry"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 210,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 223,
+     "name": "SC_UNION_SET",
+     "value": "EntityAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 160,
+     "name": "SC_UNION_SET",
+     "value": "EntityAction"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 20,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 184,
+     "name": "SC_UNION_SET",
+     "value": "ObjectController"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 170,
+     "name": "SC_UNION_SET",
+     "value": "ObjectController"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 121,
+     "stereotypes": [
+      "XSDcomplexType",
+      "deprecated"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 377,
+     "name": "SC_UNION_SET",
+     "value": "ParameterAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 379,
+     "name": "SC_UNION_SET",
+     "value": "ParameterAction"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 71,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 263,
+     "name": "SC_UNION_SET",
+     "value": "TrafficAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 262,
+     "name": "SC_UNION_SET",
+     "value": "TrafficAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 264,
+     "name": "SC_UNION_SET",
+     "value": "TrafficAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 446,
+     "name": "SC_UNION_SET",
+     "value": "TrafficAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 302,
+     "name": "SC_UNION_SET",
+     "value": "TrafficAction"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 275,
+     "stereotypes": [
+      "XSDcomplexType"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 308,
+     "name": "SC_UNION_SET",
+     "value": "VariableAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 306,
+     "name": "SC_UNION_SET",
+     "value": "VariableAction"
+    }
+   ]
+  },
+  {
+   "id": "OSC-2",
+   "title": "The alternatives of every other choice are stated as a union set",
+   "why": "These classes and groups have `modelGroup` `choice` without being \u00abunion\u00bbs, so a document gives exactly one of their elements, while a UML reader sees independent properties. The OWL target and the SHACL then require every alternative at once, which rejects every conforming document that uses one. `SC_UNION_SET` on the ends of the alternatives states the choice.",
+   "schema": "unchanged: ASAM's generator does not read `SC_UNION_SET`",
+   "operations": [
+    {
+     "op": "set-end-tag",
+     "connector": 220,
+     "name": "SC_UNION_SET",
+     "value": "ControllerAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 168,
+     "name": "SC_UNION_SET",
+     "value": "ControllerAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 248,
+     "name": "SC_UNION_SET",
+     "value": "ControllerAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 343,
+     "name": "SC_UNION_SET",
+     "value": "TrafficArea"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 342,
+     "name": "SC_UNION_SET",
+     "value": "TrafficArea"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 450,
+     "name": "SC_UNION_SET",
+     "value": "Trailer"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 451,
+     "name": "SC_UNION_SET",
+     "value": "Trailer"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 453,
+     "name": "SC_UNION_SET",
+     "value": "TrailerAction"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 454,
+     "name": "SC_UNION_SET",
+     "value": "TrailerAction"
+    }
+   ]
+  },
+  {
+   "id": "OSC-4",
+   "title": "A group of alternatives is a group, with a union set",
+   "why": "These classes are `XSDgroup`s, whose particles the schema includes in place in each element that references them, and also \u00abunion\u00bbs, because their content is a choice. The two readings conflict for a UML reader: a \u00abunion\u00bb is a type of its own, so its alternatives become a separate node below the element instead of the element's own children. The classes keep `XSDgroup` and state the choice with `SC_UNION_SET`, so the pipeline includes their alternatives in place, as the schema does, and keeps them mutually exclusive.",
+   "schema": "unchanged: ASAM's generator writes a group from `XSDgroup` and its choice from `modelGroup`",
+   "operations": [
+    {
+     "op": "set-stereotypes",
+     "class": 302,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 323,
+     "name": "SC_UNION_SET",
+     "value": "BrakeInput"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 324,
+     "name": "SC_UNION_SET",
+     "value": "BrakeInput"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 227,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 304,
+     "name": "SC_UNION_SET",
+     "value": "DeterministicParameterDistribution"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 305,
+     "name": "SC_UNION_SET",
+     "value": "DeterministicParameterDistribution"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 224,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 268,
+     "name": "SC_UNION_SET",
+     "value": "DeterministicSingleParameterDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 269,
+     "name": "SC_UNION_SET",
+     "value": "DeterministicSingleParameterDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 267,
+     "name": "SC_UNION_SET",
+     "value": "DeterministicSingleParameterDistributionType"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 229,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 287,
+     "name": "SC_UNION_SET",
+     "value": "DistributionDefinition"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 442,
+     "name": "SC_UNION_SET",
+     "value": "DistributionDefinition"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 212,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 183,
+     "name": "SC_UNION_SET",
+     "value": "EntityObject"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 139,
+     "name": "SC_UNION_SET",
+     "value": "EntityObject"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 141,
+     "name": "SC_UNION_SET",
+     "value": "EntityObject"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 140,
+     "name": "SC_UNION_SET",
+     "value": "EntityObject"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 361,
+     "name": "SC_UNION_SET",
+     "value": "EntityObject"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 271,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 297,
+     "name": "SC_UNION_SET",
+     "value": "Gear"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 255,
+     "name": "SC_UNION_SET",
+     "value": "Gear"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 23,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 89,
+     "name": "SC_UNION_SET",
+     "value": "OpenScenarioCategory"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 200,
+     "name": "SC_UNION_SET",
+     "value": "OpenScenarioCategory"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 285,
+     "name": "SC_UNION_SET",
+     "value": "OpenScenarioCategory"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 219,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 296,
+     "name": "SC_UNION_SET",
+     "value": "SteadyState"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 298,
+     "name": "SC_UNION_SET",
+     "value": "SteadyState"
+    },
+    {
+     "op": "set-stereotypes",
+     "class": 188,
+     "stereotypes": [
+      "XSDgroup"
+     ]
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 273,
+     "name": "SC_UNION_SET",
+     "value": "StochasticDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 276,
+     "name": "SC_UNION_SET",
+     "value": "StochasticDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 360,
+     "name": "SC_UNION_SET",
+     "value": "StochasticDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 274,
+     "name": "SC_UNION_SET",
+     "value": "StochasticDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 277,
+     "name": "SC_UNION_SET",
+     "value": "StochasticDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 275,
+     "name": "SC_UNION_SET",
+     "value": "StochasticDistributionType"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 362,
+     "name": "SC_UNION_SET",
+     "value": "StochasticDistributionType"
+    }
+   ]
+  },
+  {
+   "id": "OSC-3",
+   "title": "\u00abtransient\u00bb is applied where every reader of the model finds it",
+   "why": "These three associations are \u00abtransient\u00bb, not mapped to the schema, and ASAM's generator leaves them out of it. EA records the stereotype only in the connector's own column, not in its list of applied stereotypes, which is what EA's API reports and what the export reads; so the export and everything built on it treat the associations as ordinary, and the SHACL requires `CatalogReference.ref`, rejecting every document with a `<CatalogReference>`. The stereotype is applied properly.",
+   "schema": "unchanged: ASAM's generator reads the column",
+   "operations": [
+    {
+     "op": "set-stereotypes",
+     "connector": 67,
+     "stereotypes": [
+      "transient"
+     ]
+    },
+    {
+     "op": "set-stereotypes",
+     "connector": 68,
+     "stereotypes": [
+      "transient"
+     ]
+    },
+    {
+     "op": "set-stereotypes",
+     "connector": 189,
+     "stereotypes": [
+      "transient"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -2,9 +2,17 @@ name: Verify redistributed models
 
 # The UML READMEs make three checkable claims about the committed models: that each
 # .scxml is the zip's ModelExport.xml with CRLF converted to LF, that both files have the
-# published SHA-256, and that the .scxml is stored with LF endings. Nothing enforced them
-# before, so a checkout on a CRLF platform could re-commit a file that no longer matches
-# its own documentation.
+# published SHA-256, and that the .scxml is stored with LF endings. A checkout on a CRLF
+# platform could otherwise re-commit a file that no longer matches its own documentation.
+#
+# A fourth claim is the one everything else rests on: that each .scxml is the same model as
+# the ASAM Enterprise Architect project it was exported from. The model-equivalence job
+# proves it fact by fact, against the .qeax read as the SQLite database it is.
+#
+# The fifth is that the model is a model of the normative schema at all. The
+# xsd-transformation job derives each XSD from the EA project and from the SCXML - for
+# OpenSCENARIO with ASAM's own generator, which the project contains - and compares the result
+# with the published schema.
 
 on:
   push:
@@ -15,6 +23,25 @@ on:
       - "standards/*/schema/**"
       - ".gitattributes"
       - ".github/workflows/verify-models.yml"
+      - "scripts/model_equivalence.py"
+      - "scripts/check_model_equivalence.py"
+      - "scripts/test_model_equivalence.py"
+      - "scripts/generate_semantic_artifacts.py"
+      - "pipeline/*-model-equivalence-baseline.json"
+      - "scripts/ea_api.py"
+      - "scripts/osc_xsd_transformation.py"
+      - "scripts/odr_xsd_transformation.py"
+      - "scripts/xsd_equivalence.py"
+      - "scripts/check_xsd_transformation.py"
+      - "scripts/test_xsd_transformation.py"
+      - "pipeline/*-xsd-transformation-baseline.json"
+      - "scripts/shacl_equivalence.py"
+      - "scripts/check_shacl_equivalence.py"
+      - "scripts/test_shacl_equivalence.py"
+      - "scripts/candidate_model.py"
+      - "pipeline/*-shacl-equivalence-baseline.json"
+      - "standards/*/candidates/**"
+      - "standards/*/generated/**"
 
 jobs:
   scxml-matches-zip:
@@ -142,3 +169,53 @@ jobs:
           done
           [ "$found" -gt 0 ] || { echo "::error::no EA projects found to check"; exit 1; }
           echo "checked $found EA project(s)"
+
+  # The export from the EA project to SCXML is the only step that needs an Enterprise
+  # Architect licence, so its output is committed and everything downstream trusts it. This
+  # re-reads both files - the .qeax with sqlite3, the .scxml with xml.etree, no EA and no
+  # ShapeChange - and fails on any difference outside the recorded baseline, or on a baseline
+  # entry that no longer occurs. See pipeline/README.md, "Checking it: equivalence with ASAM's
+  # EA project".
+  model-equivalence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Without LFS the .qeax is a ~130-byte pointer. The check refuses it rather than
+          # comparing nothing, but it cannot compare anything either.
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # The comparison is the proof the rest of the pipeline builds on, so it is tested on its
+      # own first: a faithful export must yield no finding, and every loss the committed
+      # exports actually have must be detected.
+      - name: The model-equivalence comparison behaves as specified
+        run: python scripts/test_model_equivalence.py
+      - name: Each SCXML model is its EA project, except for the recorded differences
+        run: python scripts/check_model_equivalence.py --strict-baseline
+
+  xsd-transformation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: The XSD derivation and comparison behave as specified
+        run: python scripts/test_xsd_transformation.py
+      # Fails unless ASAM's OpenSCENARIO generator, ported, reproduces the published schema
+      # byte for byte from the EA project, and unless every other difference - OpenDRIVE's
+      # from its project, both standards' from their SCXML - is in the baseline.
+      - name: Each normative XSD is what its model derives, except for the recorded differences
+        run: python scripts/check_xsd_transformation.py --strict-baseline
+      - name: Each candidate model and changelog is its release plus its changes.json
+        run: python scripts/candidate_model.py
+      - name: Install the pinned serialization stack
+        run: pip install -r scripts/requirements.txt
+      - name: The SHACL comparison behaves as specified
+        run: python scripts/test_shacl_equivalence.py
+      - name: The committed SHACL constrains what the model's schema does, except the recorded
+        run: python scripts/check_shacl_equivalence.py --strict-baseline

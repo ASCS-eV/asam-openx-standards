@@ -42,6 +42,16 @@
       <targetParameter name="defaultEncodingRule" value="asam-owl"/>
       <targetParameter name="ontologyNameCode" value="opendrive"/>
       <targetParameter name="URIbase" value="http://code.asam.net/simulation/standard"/>
+      <!--
+        Writes each enumeration as an OWL 2 datatype definition, DatatypeDefinition( DT
+        DataOneOf( ... ) ) (OWL 2 Structural Specification, Sec. 9.4): the named rdfs:Datatype
+        is owl:equivalentClass to an anonymous rdfs:Datatype carrying the owl:oneOf list
+        (Mapping to RDF Graphs, Sec. 2.1, Table 1). OWL 2 DL requires such a definition for
+        every datatype that is neither rdfs:Literal nor in the OWL 2 datatype map (Sec. 11.2).
+        Without it, owl:oneOf sits on the named datatype, which OWL 2 tools read as an empty
+        enumeration of individuals.
+      -->
+      <targetParameter name="iso191502EnumerationAsDatatypeDefinition" value="true"/>
       <rules>
         <EncodingRule name="asam-owl">
           <rule name="rule-owl-pkg-singleOntologyPerSchema"/>
@@ -52,8 +62,9 @@
           <rule name="rule-owl-cls-encode-datatypes"/>
           <rule name="rule-owl-cls-encode-basictypes"/>
           <!--
-            Encodes each UML enumeration as an rdfs:Datatype with owl:oneOf over its
-            literals. rule-owl-cls-enumerationAsCodelist is the alternative and is NOT
+            Encodes each UML enumeration as an rdfs:Datatype whose value space is its
+            literals, written as a datatype definition (see
+            iso191502EnumerationAsDatatypeDefinition above). rule-owl-cls-enumerationAsCodelist is the alternative and is NOT
             used: it makes the enumeration fall through to the code list encoding, which
             only applies when rule-owl-cls-codelist-191502 or -external is also present.
             Without one of those the class reaches the default branch and is silently

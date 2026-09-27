@@ -149,7 +149,7 @@ Any other ShapeChange configuration can read the model the same way: point `inpu
 ### What the generated artifacts cover
 
 Every one of the model's 343 classes reaches the ontology — 304 as `owl:Class`, 39 as an
-`rdfs:Datatype` with `owl:oneOf` — and that is asserted on every run, not assumed. The 48
+`rdfs:Datatype` defined as an enumeration of its literals — and that is asserted on every run, not assumed. The 48
 `<<union>>` classes are encoded as OWL disjunctions, and the ShapeChange log is free of errors
 and warnings, so the pipeline tolerates none for this standard. See the coverage table in
 [`pipeline/README.md`](../../../pipeline/README.md).
@@ -226,6 +226,53 @@ That `use` is empty here is worth noting on its own: OpenDRIVE populates 365 of 
 with the `XSDunion` / `«union»` divergence, it is one of the cross-standard inconsistencies
 raised with ASAM in
 [#6](https://github.com/ASCS-eV/asam-openx-standards/issues/6).
+
+### Equivalence with the EA project
+
+[`scripts/check_model_equivalence.py`](../../../scripts/check_model_equivalence.py) compares
+this file with [`source/OpenSCENARIO.qeax`](source/README.md), read as the SQLite database it
+is, and runs in CI. Every name, type, multiplicity, initial value, documentation text and
+attribute order the export carries matches the model. The model's other content does not
+reach the export:
+
+| Rule | Count | What is not carried |
+|---|---:|---|
+| `association-stereotype` | 3 | `«transient»` on `CatalogReference.ref` and the two `phaseRef`. EA stores these three only in `t_connector.Stereotype`, which ShapeChange does not read; the SHACL consequently requires `CatalogReference.ref` |
+| `realization` | 25 | every realization of the `«transient»` interfaces `CatalogElement`, `Entity`, `StoryboardElement` and `MotionControlAction`; the SCXML has no realizations |
+| `classifier-kind` | 5 | that `CatalogElement`, `Entity`, `StoryboardElement`, `MotionControlAction` and `SpawnedObject` are interfaces |
+| `element-type` | 11 | the 7 `PrimitiveType` elements (with their notes), 2 `Object` and 2 `Association` elements |
+| `association-tag`, `attribute-tag`, `classifier-tag` | 127, 125, 44 | valued tags outside `representTaggedValues`: `xsdElementName`, `xsdType`, `wrapperMin`/`wrapperMax`, `anonymousRole`, `comment`, `min`/`max` and others |
+| `attribute-visibility` | 420 | `Private` visibility; the SCXML has none |
+| `end-navigability` | 1 | `ControllerAction → ActivateControllerAction`, explicitly non-navigable on a connector whose direction is `Unspecified` |
+| `attribute-documentation-link`, `package-documentation-link` | 2, 1 | hyperlink targets in notes |
+
+The accepted list is
+[`pipeline/openscenario-model-equivalence-baseline.json`](../../../pipeline/openscenario-model-equivalence-baseline.json).
+The table above, "Left out because the model declares them but leaves them empty", is correct
+for the tags it names: the check counts `use` 133 + 32, `form`/`fixed`/`default` 106 each and
+`memberNames` 72, all without a value. The valued tags the allow-list drops are the ones
+listed here.
+
+### The normative schema, derived from the model
+
+The project contains ASAM's own schema generator; see [`source/README.md`](source/README.md).
+[`scripts/check_xsd_transformation.py`](../../../scripts/check_xsd_transformation.py) runs its
+port on the project and obtains `OpenSCENARIO.xsd` **byte for byte**, so the published schema is
+exactly what this model and ASAM's generator produce.
+
+The same port run on this SCXML differs from the schema in 127 places, all of them export
+losses:
+
+- the connector tags `xsdType` (32 name references) and `xsdElementName`;
+- the class tags `xsdWrapperType`, `xsdWrapperElementName` and `elementName`;
+- the three `«transient»` connectors above;
+- the 7 `PrimitiveType` elements behind `Boolean`, `DateTime`, `Double`, `Int`, `String`,
+  `UnsignedInt` and `UnsignedShort`.
+
+The accepted list is
+[`pipeline/openscenario-xsd-transformation-baseline.json`](../../../pipeline/openscenario-xsd-transformation-baseline.json),
+and [the runbook](../../../pipeline/README.md#checking-it-the-normative-xsd-derived-from-the-model)
+explains both runs.
 
 ### Exclusive choice is carried but not yet honoured
 

@@ -64,11 +64,16 @@ Useful tables:
 
 | Table | Holds |
 |---|---|
-| `t_object` | classes and packages (`Stereotype` here holds **only one** stereotype — prefer `t_xref`) |
-| `t_xref` where `Name='Stereotypes'` | the authoritative, multi-valued stereotype listing |
+| `t_object` | classes and packages (`Stereotype` here holds **only one** stereotype); `ParentID` names the classifier that owns a nested one |
+| `t_xref` where `Name='Stereotypes'` | the multi-valued stereotype listing, keyed by `Client = ea_guid` |
 | `t_attribute`, `t_attributetag` | properties and their tagged values |
 | `t_connector`, `t_connectortag` | associations and their tagged values |
 | `t_objectproperties` | class-level tagged values |
+| `t_objectconstraint`, `t_attributeconstraints` | the 24 invariants and 1 attribute constraint |
+
+A stereotype can be recorded in `t_xref`, in the element's own `Stereotype` column, or in
+both, so the model's stereotypes are the union of the two.
+`scripts/check_model_equivalence.py` reads the model that way and compares it with the export.
 
 Two examples of why this matters. The model marks 468 attributes `XSDattribute`, exactly
 matching the 468 `xs:attribute` declarations in the normative schema; and

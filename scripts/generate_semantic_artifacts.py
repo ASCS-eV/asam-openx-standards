@@ -89,6 +89,16 @@ STANDARDS = {
         # divergence. Same file the target itself is configured with.
         "xsd_map_entries": "pipeline/xsdmapentries-asam.xml",
         "xsd_content_baseline": "pipeline/opendrive-xsd-content-baseline.json",
+        # Used by scripts/check_model_equivalence.py only: ASAM's EA project the model above
+        # was exported from, and the accepted differences between the two.
+        "ea_project": "standards/asam-opendrive/uml/source/ASAM_OpenDRIVE.qeax",
+        "model_equivalence_baseline": "pipeline/opendrive-model-equivalence-baseline.json",
+        # Used by scripts/check_xsd_transformation.py only: the module that derives the
+        # normative schema from the model, and the accepted differences from it.
+        "xsd_transformation": "odr_xsd_transformation",
+        "xsd_transformation_baseline": "pipeline/opendrive-xsd-transformation-baseline.json",
+        # Used by scripts/check_shacl_equivalence.py only.
+        "shacl_equivalence_baseline": "pipeline/opendrive-shacl-equivalence-baseline.json",
         # The XSD target does not apply the OWL packaging rule, so its run is clean.
         "tolerated_errors": {"owl": ("single-ontology-per-schema",)},
         "union_defects": frozenset({"e_countryCode", "t_grEqZeroOrContactPoint"}),
@@ -102,6 +112,16 @@ STANDARDS = {
         "xsd_prefix": "OpenSCENARIO",
         "xsd_map_entries": "pipeline/xsdmapentries-asam.xml",
         "xsd_content_baseline": "pipeline/openscenario-xsd-content-baseline.json",
+        "ea_project": "standards/asam-openscenario-xml/uml/source/OpenSCENARIO.qeax",
+        "model_equivalence_baseline": "pipeline/openscenario-model-equivalence-baseline.json",
+        "xsd_transformation": "osc_xsd_transformation",
+        "xsd_transformation_baseline": "pipeline/openscenario-xsd-transformation-baseline.json",
+        "shacl_equivalence_baseline": "pipeline/openscenario-shacl-equivalence-baseline.json",
+        # ASAM's own generator, extracted from the project's t_script: the port above must
+        # reproduce the normative schema byte for byte, and this file must be that script.
+        "xsd_transformation_script": "standards/asam-openscenario-xml/uml/source/"
+                                     "osc-2-xsd-transformation.js",
+        "xsd_transformation_script_name": "OSC 2 XSD Transformation",
         # The OWL stage tolerates nothing, and needs to tolerate nothing. Unlike OpenDRIVE,
         # the OpenSCENARIO model carries no targetNamespace tagged values at all, so the schema
         # package is named once in the configuration and ShapeChange resolves exactly one
@@ -648,6 +668,70 @@ def shapechange_runtime_fingerprint(shapechange_home: Path, mvn: str, work: Path
     return hashlib.sha256("".join(lines).encode("utf-8")).hexdigest()
 
 
+def snapshot_dependencies(classpath_file: Path) -> dict[str, dict[str, str]]:
+    """Every SNAPSHOT jar on the classpath: ``group:artifact:version`` -> resolved build, hash.
+
+    A SNAPSHOT is not a version but a moving pointer: Maven resolves it to whatever build the
+    repository serves at the time, so the same ShapeChange commit can be built against different
+    bytes on different days. The lock records the build each one resolved to, so that a moved
+    snapshot is named as the cause instead of surfacing as an unexplained fingerprint change.
+    """
+    found: dict[str, dict[str, str]] = {}
+    for entry in classpath_file.read_text().split(os.pathsep):
+        jar = Path(entry)
+        if not entry or "-SNAPSHOT" not in jar.name or not jar.is_file():
+            continue
+        parts = jar.parts
+        repository = len(parts) - 1 - parts[::-1].index("repository")
+        version, artifact = parts[-2], parts[-3]
+        group = ".".join(parts[repository + 1:-3])
+        resolved = version
+        for metadata in sorted(jar.parent.glob("maven-metadata-*.xml")):
+            root = ElementTree.parse(metadata).getroot()
+            for snapshot in root.iter("snapshotVersion"):
+                if snapshot.findtext("extension") == "jar" and not snapshot.findtext("classifier"):
+                    resolved = snapshot.findtext("value") or resolved
+        found[f"{group}:{artifact}:{version}"] = {"resolved": resolved, "sha256": sha256(jar)}
+    return found
+
+
+def check_snapshot_dependencies(found: dict, lock: dict) -> None:
+    """Refuse a SNAPSHOT whose jar content differs from the build the lock records.
+
+    The sha256 decides. The snapshot repository republishes byte-identical jars under a new
+    build number - ldproxy-cfg 4.9.0-20260926.073424-39 has the sha256 of the locked
+    4.9.0-20260925.085606-38 - and such a jar leaves the runtime fingerprint unchanged, so
+    only its build number is reported. Comparing the build number as well would stop the
+    pipeline whenever the repository republishes, and would leave re-recording the lock,
+    for no change in content, as the only way on.
+    """
+    locked = lock["build_inputs"].get("snapshot_dependencies", {})
+    for coordinates, actual in sorted(found.items()):
+        expected = locked.get(coordinates)
+        if expected is None:
+            raise SystemExit(
+                f"ShapeChange's classpath holds {coordinates}, a SNAPSHOT the lock does not "
+                "record. A SNAPSHOT resolves to whatever build its repository serves today; record "
+                "the resolved build in build_inputs.snapshot_dependencies, from two independent "
+                "clean builds, before trusting a fingerprint that includes it.")
+        if expected.get("sha256") == actual["sha256"]:
+            if expected.get("resolved") != actual["resolved"]:
+                print(f"  {coordinates} resolved to {actual['resolved']}, a republication of the "
+                      f"locked {expected.get('resolved')} with the same content "
+                      f"(sha256 {actual['sha256']})")
+            continue
+        raise SystemExit(
+            f"{coordinates} resolved to {actual['resolved']} (sha256 {actual['sha256']}), "
+            f"but the lock records {expected.get('resolved')} "
+            f"(sha256 {expected.get('sha256')}). "
+            "The snapshot's content changed in its repository since the lock was recorded, so "
+            "the runtime fingerprint cannot match. Install the locked build into the local "
+            "repository, or re-record the lock from two independent clean builds.")
+    for coordinates in sorted(set(locked) - set(found)):
+        raise SystemExit(f"the lock records {coordinates}, which is not on ShapeChange's "
+                         "classpath any more; remove it from build_inputs.snapshot_dependencies")
+
+
 def build_shapechange(home: Path, mvn: str) -> Path:
     """Build ShapeChange without Enterprise Architect and return its resource directory.
 
@@ -898,6 +982,8 @@ def main() -> int:
     resources = build_shapechange(shapechange_root, args.mvn)
     classpath = shapechange_classpath(shapechange_root, args.mvn, work)
     shapechange_fingerprint = shapechange_runtime_fingerprint(shapechange_root, args.mvn, work)
+    check_snapshot_dependencies(
+        snapshot_dependencies(work / "shapechange-fingerprint-classpath.txt"), lock)
     expected_sc_fingerprint = lock["build_inputs"]["shapechange_runtime_fingerprint"]
     if shapechange_fingerprint != expected_sc_fingerprint:
         raise SystemExit(

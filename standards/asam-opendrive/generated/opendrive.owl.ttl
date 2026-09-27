@@ -10,19 +10,23 @@
 
 odr:E_countryCode_deprecated a rdfs:Datatype ;
     rdfs:label "e_countryCode_deprecated"@en ;
-    owl:oneOf ( "OpenDRIVE" "Austria" "Brazil" "China" "France" "Germany" "Italy" "Switzerland" "USA" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "OpenDRIVE" "Austria" "Brazil" "China" "France" "Germany" "Italy" "Switzerland" "USA" ) ] .
 
 odr:E_maxSpeedString a rdfs:Datatype ;
     rdfs:label "e_maxSpeedString"@en ;
-    owl:oneOf ( "no limit" "undefined" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "no limit" "undefined" ) ] .
 
 odr:E_unitMass a rdfs:Datatype ;
     rdfs:label "e_unitMass"@en ;
-    owl:oneOf ( "kg" "t" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "kg" "t" ) ] .
 
 odr:E_unitSlope a rdfs:Datatype ;
     rdfs:label "e_unitSlope"@en ;
-    owl:oneOf ( "%" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "%" ) ] .
 
 odr:G_additionalData.include a owl:ObjectProperty ;
     rdfs:label "include"@en ;
@@ -4382,145 +4386,179 @@ odr:T_userData.value a owl:DatatypeProperty ;
 
 odr:E_borderType a rdfs:Datatype ;
     rdfs:label "e_borderType"@en ;
-    owl:oneOf ( "concrete" "curb" "paint" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "concrete" "curb" "paint" ) ] .
 
 odr:E_bridgeType a rdfs:Datatype ;
     rdfs:label "e_bridgeType"@en ;
-    owl:oneOf ( "concrete" "steel" "brick" "wood" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "concrete" "steel" "brick" "wood" ) ] .
 
 odr:E_dataQuality_RawData_PostProcessing a rdfs:Datatype ;
     rdfs:label "e_dataQuality_RawData_PostProcessing"@en ;
-    owl:oneOf ( "raw" "cleaned" "processed" "fused" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "raw" "cleaned" "processed" "fused" ) ] .
 
 odr:E_dataQuality_RawData_Source a rdfs:Datatype ;
     rdfs:label "e_dataQuality_RawData_Source"@en ;
-    owl:oneOf ( "sensor" "cadaster" "custom" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "sensor" "cadaster" "custom" ) ] .
 
 odr:E_direction a rdfs:Datatype ;
     rdfs:label "e_direction"@en ;
-    owl:oneOf ( "same" "opposite" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "same" "opposite" ) ] .
 
 odr:E_junctionGroup_type a rdfs:Datatype ;
     rdfs:label "e_junctionGroup_type"@en ;
-    owl:oneOf ( "roundabout" "unknown" "complexJunction" "highwayInterchange" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "roundabout" "unknown" "complexJunction" "highwayInterchange" ) ] .
 
 odr:E_laneAdvisory a rdfs:Datatype ;
     rdfs:label "e_laneAdvisory"@en ;
-    owl:oneOf ( "both" "inner" "none" "outer" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "both" "inner" "none" "outer" ) ] .
 
 odr:E_lane_direction a rdfs:Datatype ;
     rdfs:label "e_lane_direction"@en ;
-    owl:oneOf ( "both" "reversed" "standard" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "both" "reversed" "standard" ) ] .
 
 odr:E_objectType a rdfs:Datatype ;
     rdfs:label "e_objectType"@en ;
-    owl:oneOf ( "none" "obstacle" "car" "pole" "tree" "vegetation" "barrier" "building" "parkingSpace" "patch" "railing" "trafficIsland" "crosswalk" "streetLamp" "gantry" "soundBarrier" "van" "bus" "trailer" "bike" "motorbike" "tram" "train" "pedestrian" "wind" "roadMark" "roadSurface" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "none" "obstacle" "car" "pole" "tree" "vegetation" "barrier" "building" "parkingSpace" "patch" "railing" "trafficIsland" "crosswalk" "streetLamp" "gantry" "soundBarrier" "van" "bus" "trailer" "bike" "motorbike" "tram" "train" "pedestrian" "wind" "roadMark" "roadSurface" ) ] .
 
 odr:E_outlineFillType a rdfs:Datatype ;
     rdfs:label "e_outlineFillType"@en ;
-    owl:oneOf ( "grass" "concrete" "cobble" "asphalt" "pavement" "gravel" "soil" "paint" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "grass" "concrete" "cobble" "asphalt" "pavement" "gravel" "soil" "paint" ) ] .
 
 odr:E_personCategory a rdfs:Datatype ;
     rdfs:label "e_personCategory"@en ;
-    owl:oneOf ( "pedestrian" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "pedestrian" ) ] .
 
 odr:E_road_lanes_laneSection_lcr_lane_roadMark_laneChange a rdfs:Datatype ;
     rdfs:label "e_road_lanes_laneSection_lcr_lane_roadMark_laneChange"@en ;
-    owl:oneOf ( "increase" "decrease" "both" "none" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "increase" "decrease" "both" "none" ) ] .
 
 odr:E_road_lanes_laneSection_lr_lane_access_rule a rdfs:Datatype ;
     rdfs:label "e_road_lanes_laneSection_lr_lane_access_rule"@en ;
-    owl:oneOf ( "allow" "deny" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "allow" "deny" ) ] .
 
 odr:E_road_link_elementType a rdfs:Datatype ;
     rdfs:label "e_road_link_elementType"@en ;
-    owl:oneOf ( "road" "junction" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "road" "junction" ) ] .
 
 odr:E_road_objects_object_parkingSpace_access a rdfs:Datatype ;
     rdfs:label "e_road_objects_object_parkingSpace_access"@en ;
-    owl:oneOf ( "all" "car" "women" "handicapped" "bus" "truck" "electric" "residents" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "all" "car" "women" "handicapped" "bus" "truck" "electric" "residents" ) ] .
 
 odr:E_road_railroad_switch_position a rdfs:Datatype ;
     rdfs:label "e_road_railroad_switch_position"@en ;
-    owl:oneOf ( "dynamic" "straight" "turn" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "dynamic" "straight" "turn" ) ] .
 
 odr:E_road_signals_displayType a rdfs:Datatype ;
     rdfs:label "e_road_signals_displayType"@en ;
-    owl:oneOf ( "LED" "monochromGraphic" "rotatingPrismHorizontal" "rotatingPrismVertical" "simpleMatrix" "other" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "LED" "monochromGraphic" "rotatingPrismHorizontal" "rotatingPrismVertical" "simpleMatrix" "other" ) ] .
 
 odr:E_road_signals_signal_reference_elementType a rdfs:Datatype ;
     rdfs:label "e_road_signals_signal_reference_elementType"@en ;
-    owl:oneOf ( "object" "signal" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "object" "signal" ) ] .
 
 odr:E_road_surface_CRG_mode a rdfs:Datatype ;
     rdfs:label "e_road_surface_CRG_mode"@en ;
-    owl:oneOf ( "attached" "attached0" "genuine" "global" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "attached" "attached0" "genuine" "global" ) ] .
 
 odr:E_road_surface_CRG_purpose a rdfs:Datatype ;
     rdfs:label "e_road_surface_CRG_purpose"@en ;
-    owl:oneOf ( "elevation" "friction" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "elevation" "friction" ) ] .
 
 odr:E_sideType a rdfs:Datatype ;
     rdfs:label "e_sideType"@en ;
-    owl:oneOf ( "left" "right" "front" "rear" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "left" "right" "front" "rear" ) ] .
 
 odr:E_signals_semantics_lane a rdfs:Datatype ;
     rdfs:label "e_signals_semantics_lane"@en ;
-    owl:oneOf ( "noOvertakeCars" "noOvertakeCarsEnd" "noOvertakeTrucks" "noOvertakeTrucksEnd" "priorityOverOncoming" "roundabout" "yieldForOncoming" "other" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "noOvertakeCars" "noOvertakeCarsEnd" "noOvertakeTrucks" "noOvertakeTrucksEnd" "priorityOverOncoming" "roundabout" "yieldForOncoming" "other" ) ] .
 
 odr:E_signals_semantics_priority a rdfs:Datatype ;
     rdfs:label "e_signals_semantics_priority"@en ;
-    owl:oneOf ( "4way" "keepClearLine" "noParkingLine" "noTurnOnRed" "priorityRoad" "priorityRoadEnd" "priorityToTheRightRule" "stop" "stopLine" "turnOnRedAllowed" "trafficLight" "waitingLine" "yield" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "4way" "keepClearLine" "noParkingLine" "noTurnOnRed" "priorityRoad" "priorityRoadEnd" "priorityToTheRightRule" "stop" "stopLine" "turnOnRedAllowed" "trafficLight" "waitingLine" "yield" ) ] .
 
 odr:E_signals_semantics_speed a rdfs:Datatype ;
     rdfs:label "e_signals_semantics_speed"@en ;
-    owl:oneOf ( "maximum" "maximumEnd" "minimum" "minimumEnd" "recommended" "recommendedEnd" "zone" "zoneEnd" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "maximum" "maximumEnd" "minimum" "minimumEnd" "recommended" "recommendedEnd" "zone" "zoneEnd" ) ] .
 
 odr:E_signals_semantics_supplementaryDistance a rdfs:Datatype ;
     rdfs:label "e_signals_semantics_supplementaryDistance"@en ;
-    owl:oneOf ( "for" "in" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "for" "in" ) ] .
 
 odr:E_signals_semantics_supplementaryEnvironment a rdfs:Datatype ;
     rdfs:label "e_signals_semantics_supplementaryEnvironment"@en ;
-    owl:oneOf ( "fog" "rain" "snow" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "fog" "rain" "snow" ) ] .
 
 odr:E_signals_semantics_supplementaryTime a rdfs:Datatype ;
     rdfs:label "e_signals_semantics_supplementaryTime"@en ;
-    owl:oneOf ( "day" "time" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "day" "time" ) ] .
 
 odr:E_station_platform_segment_side a rdfs:Datatype ;
     rdfs:label "e_station_platform_segment_side"@en ;
-    owl:oneOf ( "left" "right" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "left" "right" ) ] .
 
 odr:E_station_type a rdfs:Datatype ;
     rdfs:label "e_station_type"@en ;
-    owl:oneOf ( "small" "medium" "large" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "small" "medium" "large" ) ] .
 
 odr:E_strip_mode a rdfs:Datatype ;
     rdfs:label "e_strip_mode"@en ;
-    owl:oneOf ( "independent" "relative" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "independent" "relative" ) ] .
 
 odr:E_trafficRule a rdfs:Datatype ;
     rdfs:label "e_trafficRule"@en ;
-    owl:oneOf ( "RHT" "LHT" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "RHT" "LHT" ) ] .
 
 odr:E_tunnelType a rdfs:Datatype ;
     rdfs:label "e_tunnelType"@en ;
-    owl:oneOf ( "standard" "underpass" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "standard" "underpass" ) ] .
 
 odr:E_unit a owl:Class ;
     rdfs:label "e_unit"@en .
 
 odr:E_unitDistance a rdfs:Datatype ;
     rdfs:label "e_unitDistance"@en ;
-    owl:oneOf ( "m" "km" "ft" "mile" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "m" "km" "ft" "mile" ) ] .
 
 odr:E_vehicleCategory a rdfs:Datatype ;
     rdfs:label "e_vehicleCategory"@en ;
     rdfs:comment """Categories for entity objects of type vehicle. \r
 It is recommended to use the most specific literal that fits whenever possible (e.g. 'heavyTruck' instead of 'car'). \r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en ;
-    owl:oneOf ( "bicycle" "car" "semiTrailer" "trailer" "train" "tram" "van" "bus" "heavyTruck" "microMobilityDevice" "motorcycle" "other" "landVehicle" "semiTractor" "standupScooter" "workMachine" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "bicycle" "car" "semiTrailer" "trailer" "train" "tram" "van" "bus" "heavyTruck" "microMobilityDevice" "motorcycle" "other" "landVehicle" "semiTractor" "standupScooter" "workMachine" ) ] ;
     skos:definition """Categories for entity objects of type vehicle. \r
 It is recommended to use the most specific literal that fits whenever possible (e.g. 'heavyTruck' instead of 'car'). \r
 The enum literals have been harmonized between ASAM OpenX standards. The latest details about the harmonization can be found under https://publications.pages.asam.net/standards/ASAM_TrafficParticipants_Specification/ASAM_TrafficParticipants_Specification/latest/specification/index.html."""@en .
@@ -4684,7 +4722,8 @@ odr:T_signals_semantics_supplementaryEnvironment a owl:Class ;
 odr:E_roadMarkType a rdfs:Datatype ;
     rdfs:label "e_roadMarkType"@en ;
     rdfs:comment "The known keywords for the simplified road marking type information are:"@en ;
-    owl:oneOf ( "none" "solid" "broken" "solid solid" "solid broken" "broken solid" "broken broken" "botts dots" "grass" "curb" "custom" "edge" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "none" "solid" "broken" "solid solid" "solid broken" "broken solid" "broken broken" "botts dots" "grass" "curb" "custom" "edge" ) ] ;
     skos:definition "The known keywords for the simplified road marking type information are:"@en .
 
 odr:G_additionalData a owl:Class ;
@@ -5070,11 +5109,13 @@ odr:T_userData a owl:Class ;
 
 odr:E_accessRestrictionType a rdfs:Datatype ;
     rdfs:label "e_accessRestrictionType"@en ;
-    owl:oneOf ( "simulator" "autonomousTraffic" "pedestrian" "passengerCar" "bus" "delivery" "emergency" "taxi" "throughTraffic" "truck" "bicycle" "motorcycle" "none" "trucks" "HOV" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "simulator" "autonomousTraffic" "pedestrian" "passengerCar" "bus" "delivery" "emergency" "taxi" "throughTraffic" "truck" "bicycle" "motorcycle" "none" "trucks" "HOV" ) ] .
 
 odr:E_connection_type a rdfs:Datatype ;
     rdfs:label "e_connection_type"@en ;
-    owl:oneOf ( "default" "virtual" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "default" "virtual" ) ] .
 
 odr:E_countryCode a owl:Class ;
     rdfs:label "e_countryCode"@en ;
@@ -5083,24 +5124,29 @@ odr:E_countryCode a owl:Class ;
 
 odr:E_junction_segment_type a rdfs:Datatype ;
     rdfs:label "e_junction_segment_type"@en ;
-    owl:oneOf ( "joint" "lane" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "joint" "lane" ) ] .
 
 odr:E_paramPoly3_pRange a rdfs:Datatype ;
     rdfs:label "e_paramPoly3_pRange"@en ;
-    owl:oneOf ( "arcLength" "normalized" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "arcLength" "normalized" ) ] .
 
 odr:E_roadMarkRule a rdfs:Datatype ;
     rdfs:label "e_roadMarkRule"@en ;
-    owl:oneOf ( "no passing" "caution" "none" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "no passing" "caution" "none" ) ] .
 
 odr:E_roadMarkWeight a rdfs:Datatype ;
     rdfs:label "e_roadMarkWeight"@en ;
-    owl:oneOf ( "standard" "bold" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "standard" "bold" ) ] .
 
 odr:E_roadType a rdfs:Datatype ;
     rdfs:label "e_roadType"@en ;
     rdfs:comment "The known keywords for the road type information are:"@en ;
-    owl:oneOf ( "unknown" "rural" "motorway" "town" "lowSpeed" "pedestrian" "bicycle" "townExpressway" "townCollector" "townArterial" "townPrivate" "townLocal" "townPlayStreet" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "unknown" "rural" "motorway" "town" "lowSpeed" "pedestrian" "bicycle" "townExpressway" "townCollector" "townArterial" "townPrivate" "townLocal" "townPlayStreet" ) ] ;
     skos:definition "The known keywords for the road type information are:"@en .
 
 odr:T_controller a owl:Class ;
@@ -5520,11 +5566,13 @@ May refer to multiple tracks and is therefore defined on the same level as junct
 
 odr:T_yesNo a rdfs:Datatype ;
     rdfs:label "t_yesNo"@en ;
-    owl:oneOf ( "yes" "no" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "yes" "no" ) ] .
 
 odr:E_contactPoint a rdfs:Datatype ;
     rdfs:label "e_contactPoint"@en ;
-    owl:oneOf ( "start" "end" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "start" "end" ) ] .
 
 odr:T_junction_boundary_segment a owl:Class ;
     rdfs:label "t_junction_boundary_segment"@en ;
@@ -5801,12 +5849,14 @@ odr:T_station_platform a owl:Class ;
 odr:E_laneType a rdfs:Datatype ;
     rdfs:label "e_laneType"@en ;
     rdfs:comment "The lane type is defined per lane. A lane type defines the main purpose of a lane and its corresponding traffic rules."@en ;
-    owl:oneOf ( "shoulder" "border" "driving" "stop" "none" "restricted" "parking" "median" "biking" "shared" "sidewalk" "curb" "exit" "entry" "onRamp" "offRamp" "connectingRamp" "bidirectional" "special1" "special2" "special3" "roadWorks" "tram" "rail" "bus" "taxi" "HOV" "mwyEntry" "mwyExit" "walking" "slipLane" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "shoulder" "border" "driving" "stop" "none" "restricted" "parking" "median" "biking" "shared" "sidewalk" "curb" "exit" "entry" "onRamp" "offRamp" "connectingRamp" "bidirectional" "special1" "special2" "special3" "roadWorks" "tram" "rail" "bus" "taxi" "HOV" "mwyEntry" "mwyExit" "walking" "slipLane" ) ] ;
     skos:definition "The lane type is defined per lane. A lane type defines the main purpose of a lane and its corresponding traffic rules."@en .
 
 odr:E_unitSpeed a rdfs:Datatype ;
     rdfs:label "e_unitSpeed"@en ;
-    owl:oneOf ( "m/s" "mph" "km/h" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "m/s" "mph" "km/h" ) ] .
 
 odr:T_dataQuality_Error a owl:Class ;
     rdfs:label "t_dataQuality_Error"@en ;
@@ -6577,16 +6627,19 @@ Variable message boards are switched off if they are not specified in ASAM OpenS
 
 odr:E_elementDir a rdfs:Datatype ;
     rdfs:label "e_elementDir"@en ;
-    owl:oneOf ( "+" "-" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "+" "-" ) ] .
 
 odr:E_junction_type a rdfs:Datatype ;
     rdfs:label "e_junction_type"@en ;
-    owl:oneOf ( "default" "virtual" "direct" "crossing" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "default" "virtual" "direct" "crossing" ) ] .
 
 odr:E_roadMarkColor a rdfs:Datatype ;
     rdfs:label "e_roadMarkColor"@en ;
     rdfs:comment "The known keywords for the road marking color information are:"@en ;
-    owl:oneOf ( "standard" "blue" "green" "red" "white" "yellow" "black" "orange" "violet" ) ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "standard" "blue" "green" "red" "white" "yellow" "black" "orange" "violet" ) ] ;
     skos:definition "The known keywords for the road marking color information are:"@en .
 
 odr:T_junction_connection a owl:Class ;
@@ -6960,11 +7013,13 @@ odr:T_road_signals_signal_positionRoad a owl:Class ;
 
 odr:E_layerType a rdfs:Datatype ;
     rdfs:label "e_layerType"@en ;
-    owl:oneOf ( "temporary" "permanent" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "temporary" "permanent" ) ] .
 
 odr:E_orientation a rdfs:Datatype ;
     rdfs:label "e_orientation"@en ;
-    owl:oneOf ( "+" "-" "none" ) .
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "+" "-" "none" ) ] .
 
 odr:T_junction_common a owl:Class ;
     rdfs:label "t_junction_common"@en ;
