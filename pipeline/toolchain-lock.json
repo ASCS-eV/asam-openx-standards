@@ -4,12 +4,28 @@
     "shapechange": {
       "fork": "ASCS-eV/ShapeChange",
       "branch": "feature/asam-pipeline",
-      "commit": "62c30807194aebbf61ddf119d6003f046939a4b6",
+      "commit": "385404f2eaec61b564fcf31186ed44a1040685f8",
       "upstream": "ShapeChange/ShapeChange",
       "upstream_branch": "next",
-      "upstream_base": "62c30807194aebbf61ddf119d6003f046939a4b6",
-      "_carried_comment": "None: the fork is pinned at plain upstream. PR 756 (owl:onDataRange for datatype qualified cardinality), 757 (optional EA module), 764 (ModelExport honours sortedOutput) and 766 (data property when the value type is an enumeration) all merged. PR 768 (rule-owl-cls-unionAlternativesFromAssociations) was declined, and correctly so: it would have changed what the «union» stereotype means for every ISO 19109 model, where all of a union's properties are its alternatives. The defect it addressed is real but belongs in ASAM's model - see issue 47 and request 10 in pipeline/asam-change-requests.md - so it is no longer carried and the generated OWL encodes those seven unions as the model describes them.",
-      "carried_commits": [],
+      "upstream_base": "d939c7544dde0bf7f8af956301ed9dab742d824e",
+      "_carried_comment": "Three commits, one per contribution still open upstream, applied in this order on upstream next. The first is the PR commit itself; the other two are cherry-picked with -x, so each names the PR commit it came from. PR 798: the Flattener keeps a union excluded by flattenUnionTypesExcludeRegex, which the OpenSCENARIO XML candidate's group inlining needs. PR 799: junit 3.8.1 is kept off the test classpath, so the fork's tests run under mvn test; it does not change the runtime. PR 800: the target parameter iso191502EnumerationAsDatatypeDefinition, which the OWL configs leave off for now, so the OWL is unchanged. PR 756 (owl:onDataRange for datatype qualified cardinality), 757 (optional EA module), 764 (ModelExport honours sortedOutput) and 766 (data property when the value type is an enumeration) merged earlier. PR 768 (rule-owl-cls-unionAlternativesFromAssociations) was declined, and correctly so: it would have changed what the «union» stereotype means for every ISO 19109 model, where all of a union's properties are its alternatives. The defect it addressed is real but belongs in ASAM's model - see issue 47 and request 10 in pipeline/asam-change-requests.md - so it is not carried and the generated OWL encodes those seven unions as the model describes them.",
+      "carried_commits": [
+        {
+          "commit": "de29b1fc71337bad24e230c19b9f61f38f25007e",
+          "subject": "fix(flattener): keep unions excluded by flattenUnionTypesExcludeRegex",
+          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/798"
+        },
+        {
+          "commit": "434958b0ffbdcdc72f69f488c595212c19475b1e",
+          "subject": "build: keep junit 3.8.1 off the test classpath so the tests run",
+          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/799"
+        },
+        {
+          "commit": "385404f2eaec61b564fcf31186ed44a1040685f8",
+          "subject": "feat(owl): encode ISO 19150-2 enumerations as OWL 2 datatype definitions",
+          "upstream_pr": "https://github.com/ShapeChange/ShapeChange/pull/800"
+        }
+      ],
       "build": {
         "tool": "maven",
         "goal": "install",
@@ -24,12 +40,18 @@
     "owl2shacl": {
       "fork": "ASCS-eV/owl2shacl",
       "branch": "feature/asam-pipeline",
-      "commit": "ab57749f9a95f82257a1b58f8c5210a279536bd9",
+      "commit": "b0237dbcf06c750f15d9cfb1a14215a21d153bf8",
       "upstream": "sparna-git/owl2shacl",
       "upstream_branch": "main",
       "upstream_base": "ab57749f9a95f82257a1b58f8c5210a279536bd9",
-      "_carried_comment": "None: the fork is pinned at plain upstream. Upstream merged every contribution it was carrying - PR 7 (owl:onDataRange simple cardinality rules), PR 8 (structural datatype ranges, owl:oneOf to sh:in) and PR 9 (owl:unionOf of class expressions to sh:or), the last as commit d5e17f9. The locked commit is upstream/main's own merge commit for PR 8.",
-      "carried_commits": [],
+      "_carried_comment": "One commit, the PR commit itself, for the contribution still open upstream: PR 10, which maps an enumeration written as an OWL 2 datatype definition to sh:in, as it maps owl:oneOf on the datatype itself. Upstream merged every earlier contribution - PR 7 (owl:onDataRange simple cardinality rules), PR 8 (structural datatype ranges, owl:oneOf to sh:in) and PR 9 (owl:unionOf of class expressions to sh:or), the last as commit d5e17f9. The upstream_base is upstream/main's own merge commit for PR 8.",
+      "carried_commits": [
+        {
+          "commit": "b0237dbcf06c750f15d9cfb1a14215a21d153bf8",
+          "subject": "fix: map an enumeration written as an OWL 2 datatype definition to sh:in",
+          "upstream_pr": "https://github.com/sparna-git/owl2shacl/pull/10"
+        }
+      ],
       "rules_file": "owl2sh-closed.ttl"
     },
     "shacl_play": {
@@ -105,7 +127,7 @@
   },
   "build_inputs": {
     "_comment": "Content-based fingerprints, verified identical across two independent clean `mvn clean install` rebuilds of the locked commits above, using the exact algorithm implemented in scripts/generate_semantic_artifacts.py (shapechange_runtime_fingerprint, zip_content_fingerprint). Update only after reproducing a new value across two independent clean builds in the environment recorded in build_environment. These values are environment-specific by nature: the same source compiled by JDK 21.0.11 and by 21.0.12 produces different fingerprints, which is what build_environment exists to pin. A value that will not reproduce is a defect to diagnose, not a number to overwrite - a fingerprint is only worth recording once every input it covers is itself pinned.",
-    "shapechange_runtime_fingerprint": "ae58d87fb128fa50a617422b6ebbdfd21fd40597f1ae1de726ec79e7cd039c90",
+    "shapechange_runtime_fingerprint": "b8d106b5741a7be1075ffb32e4f98ad6e9c1685e1b33bb507650fdde31f092f7",
     "shacl_play_jar_fingerprint": "487be38d72a193b907a794df737c5e352acde1786f59d23dc04a8fef94b9e1a2",
     "_snapshot_comment": "ShapeChange's pom declares de.interactive_instruments:ldproxy-cfg:4.9.0-SNAPSHOT, which Maven resolves to whatever build the ii-maven snapshot repository serves at build time; that repository keeps only the latest build. The runtime fingerprint covers the jar, so it changes whenever a new snapshot is published, although the OWL output does not: regenerating both standards against build 20260925.085606-38 reproduced every committed OWL and SHACL file byte for byte. The resolved build and the sha256 of its jar are recorded below, and the sha256 decides: the repository republishes byte-identical jars under new build numbers (20260926.073424-39 has the sha256 of the recorded build), which pass with a notice, while a jar with other content is refused and reported as the cause. This stays necessary as long as ShapeChange's pom names a SNAPSHOT.",
     "snapshot_dependencies": {

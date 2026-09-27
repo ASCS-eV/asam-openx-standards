@@ -34,25 +34,36 @@ generated artifact is wrong, exactly one of three things is wrong — the **mode
 **configuration**, or the **tool** — and the fix belongs there.
 
 Every fix the pipeline depends on was written as a self-contained upstream contribution rather
-than a local patch, so a tool is only forked for as long as its contributions are unmerged. Two of
-the three are now plain upstream:
+than a local patch, so a tool is only forked for as long as its contributions are unmerged. SHACL
+Play! is plain upstream; owl2shacl and ShapeChange carry contributions that are still open
+upstream, as commits on the `feature/asam-pipeline` branch of their `ASCS-eV` forks:
 
-- **owl2shacl** — ✅ **upstream.** `owl:onDataRange` cardinality rules as the data-property
-  counterpart of `owl:onClass` ([#7]), datatype ranges decided structurally and `owl:oneOf` mapped
-  to `sh:in` ([#8]), and `owl:unionOf` of class expressions translated to `sh:or` ([#9]).
+- **owl2shacl** — ⏳ carries an enumeration written as an OWL 2 datatype definition mapped to
+  `sh:in` ([#10]). Upstream already has the `owl:onDataRange` cardinality rules as the
+  data-property counterpart of `owl:onClass` ([#7]), datatype ranges decided structurally and
+  `owl:oneOf` mapped to `sh:in` ([#8]), and `owl:unionOf` of class expressions translated to
+  `sh:or` ([#9]).
 - **SHACL Play!** — ✅ **upstream.** Conversion rules supplied explicitly via `--rules` ([#344]),
   failing on an input that cannot be read instead of producing an empty result ([#345]),
   `sh:ignoredProperties` gathered into an RDF list so closed shapes are honoured outside the web
   UI ([#346]), and every *other* list-valued constraint gathered too, so the `sh:or` above is a
   well-formed SHACL list rather than repeated bare values ([#347]).
-- **ShapeChange** — ⏳ still forked, consumed from `feature/asam-pipeline` on the `ASCS-eV` fork:
-  `ModelExport` honouring the `sortedOutput` parameter ([#764]), the OWL target declaring a data
-  property when a property's value type is an enumeration ([#766]), and a `«union»`'s alternatives
-  being its association ends so an attribute of the union keeps its own cardinality ([#768]).
+- **ShapeChange** — ⏳ carries three contributions:
+  - the Flattener keeping a union excluded by `flattenUnionTypesExcludeRegex` ([#798]);
+  - junit 3.8.1 kept off the test classpath, so the fork's tests run under `mvn test` ([#799]);
+  - the target parameter `iso191502EnumerationAsDatatypeDefinition`, which encodes an
+    enumeration as an OWL 2 datatype definition ([#800]).
+
+  Upstream already has `ModelExport` honouring the `sortedOutput` parameter ([#764]) and the OWL
+  target declaring a data property when a property's value type is an enumeration ([#766]). A
+  `«union»`'s alternatives being its association ends ([#768]) was declined: the defect it
+  addressed belongs in ASAM's model (request 10 in
+  [`asam-change-requests.md`](asam-change-requests.md)).
 
 [#7]: https://github.com/sparna-git/owl2shacl/pull/7
 [#8]: https://github.com/sparna-git/owl2shacl/pull/8
 [#9]: https://github.com/sparna-git/owl2shacl/pull/9
+[#10]: https://github.com/sparna-git/owl2shacl/pull/10
 [#344]: https://github.com/sparna-git/shacl-play/pull/344
 [#345]: https://github.com/sparna-git/shacl-play/pull/345
 [#346]: https://github.com/sparna-git/shacl-play/pull/346
@@ -60,10 +71,13 @@ the three are now plain upstream:
 [#764]: https://github.com/ShapeChange/ShapeChange/pull/764
 [#766]: https://github.com/ShapeChange/ShapeChange/pull/766
 [#768]: https://github.com/ShapeChange/ShapeChange/pull/768
+[#798]: https://github.com/ShapeChange/ShapeChange/pull/798
+[#799]: https://github.com/ShapeChange/ShapeChange/pull/799
+[#800]: https://github.com/ShapeChange/ShapeChange/pull/800
 
 A tool that carries nothing is still pinned to an exact commit — being upstream is not the same as
-being unpinned, and the two `ASCS-eV` forks remain the checkouts the pipeline reads, now sitting at
-plain upstream. [`pipeline/toolchain-lock.json`](toolchain-lock.json) records that exact commit for
+being unpinned, and the `ASCS-eV` forks remain the checkouts the pipeline reads, whether they carry
+commits or sit at plain upstream. [`pipeline/toolchain-lock.json`](toolchain-lock.json) records that exact commit for
 each tool and, for anything still carried, the upstream contribution it implements. Moving a tool to
 a released upstream commit is a lock update, described under
 [The toolchain lock](#the-toolchain-lock) — never a silent branch drift.
@@ -986,11 +1000,11 @@ bugs.
   [`measure-gap.yml`](../.github/workflows/measure-gap.yml), so the gap to the normative
   schemas is measured on every change. What remains missing here is the OWL/SHACL half.
 
-  For the OWL/SHACL side the blocker has narrowed to one tool. owl2shacl and SHACL Play! are now
-  pinned at plain upstream commits, which a workflow can clone directly; **ShapeChange is the last
-  fork dependency**, and it is what still stops a workflow from building the toolchain from
-  released sources. Once [#764], [#766] and [#768] land, every stage runs from upstream and this
-  becomes a question of CI cost — a JDK, Maven and two tool builds — rather than of access.
+  For the OWL/SHACL side access is no longer the blocker. Every tool is pinned to a public commit
+  that a workflow can clone, as `measure-gap.yml` already does for ShapeChange: SHACL Play! at
+  plain upstream, owl2shacl and ShapeChange at their `ASCS-eV` feature branches. What is left is
+  CI cost — a JDK, Maven and two tool builds — and, for running from upstream sources only, the
+  open contributions [#10], [#798], [#799] and [#800].
 - **The remaining ASAM standards.** OpenDRIVE and OpenSCENARIO XML both run end to end.
   `standards/` holds directories for OpenCRG, OpenLABEL, OpenMATERIAL 3D, OpenODD,
   OpenSCENARIO DSL, OSI, traffic participants and ISO 345xx; none of those has a committed UML

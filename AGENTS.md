@@ -289,9 +289,9 @@ that upstream has not merged yet:
 
 | Tool | Role | Fork status |
 |---|---|---|
-| ShapeChange | UML → OWL, and UML → XSD for verification | forked; carries the unmerged OWL union fix |
+| ShapeChange | UML → OWL, and UML → XSD for verification | forked; carries ShapeChange#798, #799 and #800, open upstream |
 | SHACL Play! | OWL → SHACL | ✅ fully upstreamed; pinned at plain upstream |
-| owl2shacl | the OWL→SHACL conversion *rules* (`owl2sh-closed.ttl`) | ✅ fully upstreamed; pinned at plain upstream |
+| owl2shacl | the OWL→SHACL conversion *rules* (`owl2sh-closed.ttl`) | forked; carries owl2shacl#10, open upstream |
 | diffable-rdf | RDFC-1.0 canonicalization, so regeneration is byte-stable | ASCS-eV-owned, consumed from PyPI |
 
 Running the pipeline needs **JDK 21 and Maven**. CI does not *regenerate* artifacts — that
