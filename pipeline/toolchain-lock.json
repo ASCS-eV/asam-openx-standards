@@ -68,27 +68,33 @@
     "pyoxigraph": "0.5.9"
   },
   "upstream_contributions": {
-    "_comment": "Forks this organisation maintains whose work the pipeline does NOT build from source, recorded here so the contributions stay trackable from the lock itself rather than only from GitHub. `tools` above is the opposite case: a fork is listed there because the pipeline needs what it carries and therefore builds it. A fork listed *here* is deliberately not built - the pipeline installs released wheels, and a fork commit is not something a third party can `pip install`, which is exactly the reproducibility contract `serialization` exists to keep. The entries are still pinned by commit so the claim 'this is what we are carrying' is checkable. When upstream merges one of these and cuts a release, bump the matching `serialization` entry and regenerate both standards in the same change.",
+    "_comment": "Forks this organisation maintains whose work the pipeline does NOT build from source, recorded here so the contributions stay trackable from the lock itself rather than only from GitHub. `tools` above is the opposite case: a fork is listed there because the pipeline needs what it carries and therefore builds it. A fork listed *here* is deliberately not built - the pipeline installs released wheels, and a fork commit is not something a third party can `pip install`, which is exactly the reproducibility contract `serialization` exists to keep. The entries are still pinned by commit so the claim 'this is what we are carrying' is checkable. `tag` names a signed tag on the fork at that commit, which keeps it reachable after the branch is rebased and force-pushed. When upstream merges one of these and cuts a release, bump the matching `serialization` entry and regenerate both standards in the same change.",
     "rdflib": {
       "fork": "ASCS-eV/rdflib",
       "branch": "feat/envited-x-pipeline",
-      "commit": "342175bf34132b8e26a2db150b250cefd8fc020e",
+      "tag": "envited-x/2026.10.14",
+      "commit": "b3021e5ba34eba38a7dbadfe7b08e474e3b83763",
       "upstream": "RDFLib/rdflib",
       "upstream_branch": "main",
-      "upstream_base": "a090f3f98f7c7c1ba21ec84a9acb001e88313caa",
+      "upstream_base": "9099a782e5ed38ee11a41aaad2c1071a3b89437a",
       "consumed": false,
       "consumed_as": "serialization.rdflib, as the released PyPI wheel",
       "_why_not_consumed": "rdflib performs the final serialization of every generated artifact, so building it from a fork would make the output bytes depend on a commit nobody else can install. The merged PR 3504 is the precedent for how these arrive instead: it shipped in a release, and the pin moved to that release. diffable-rdf works around the defects in the meantime rather than requiring a patched rdflib - confirmed at its v0.4.0 tag, which declares only floors (rdflib>=6.3.2, pyoxigraph>=0.5.4) and has no git dependency.",
       "carried_commits": [
         {
-          "commit": "81fe1fbe839e46929182251833ab1f42d5c4a266",
+          "commit": "c565778affb165a21062f60b6b2122538d365612",
           "subject": "fix: JSON-LD collection syntax can silently duplicate shared RDF lists",
           "upstream_pr": "https://github.com/RDFLib/rdflib/pull/3543"
         },
         {
-          "commit": "342175bf34132b8e26a2db150b250cefd8fc020e",
+          "commit": "31caa09d7eae2b7056bb421ff95ae7908007c40b",
           "subject": "feat: deterministic N-Triples serialization via an opt-in canon parameter",
           "upstream_pr": "https://github.com/RDFLib/rdflib/pull/3546"
+        },
+        {
+          "commit": "b3021e5ba34eba38a7dbadfe7b08e474e3b83763",
+          "subject": "fix: SPARQL IN/NOT IN must use value equality, not term equality",
+          "upstream_pr": "https://github.com/RDFLib/rdflib/pull/3564"
         }
       ]
     }
