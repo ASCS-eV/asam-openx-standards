@@ -72,16 +72,43 @@ Useful tables:
 
 | Table | Holds |
 |---|---|
-| `t_object` | classes and packages (`Stereotype` here holds **only one** stereotype — prefer `t_xref`) |
-| `t_xref` where `Name='Stereotypes'` | the authoritative, multi-valued stereotype listing |
+| `t_object` | classes and packages (`Stereotype` here holds **only one** stereotype) |
+| `t_xref` where `Name='Stereotypes'` | the multi-valued stereotype listing, keyed by `Client = ea_guid` |
 | `t_attribute`, `t_attributetag` | properties and their tagged values |
 | `t_connector`, `t_connectortag` | associations and their tagged values |
 | `t_objectproperties` | class-level tagged values |
 
+A stereotype can be recorded in `t_xref`, in the element's own `Stereotype` column, or in
+both, so the model's stereotypes are the **union** of the two. Neither place alone is
+complete: 107 attributes and 3 connectors of this model carry their stereotype only in the
+column. For example, connector 189, `CatalogReference → CatalogElement`, is `«transient»`
+only in `t_connector.Stereotype`. `scripts/check_model_equivalence.py` reads the model this
+way.
+
 This model is where the cross-standard comparisons in the issue tracker come from. It
 carries 48 `«union»` classes using the UML standard stereotype — which OpenDRIVE does not,
 using `XSDunion` instead — as well as 171 `xor` stereotypes on connectors and 55 classes
-tagged `modelGroup = choice`, none of which reach the current export.
+tagged `modelGroup = choice`. The export carries all three, and the generated OWL and SHACL
+honour none of them.
+
+## ASAM's schema generator is in this file
+
+The project holds the script ASAM generates the normative schema with: `t_script` entry 2, a
+JScript named "OSC 2 XSD Transformation" (20,868 characters). It walks EA's object model and
+writes `OpenSCENARIO.xsd` line by line. It is extracted byte for byte, with the CRLF line ends
+EA stores, to [`osc-2-xsd-transformation.js`](osc-2-xsd-transformation.js):
+
+| File | Bytes | SHA-256 |
+|---|---:|---|
+| `osc-2-xsd-transformation.js` | 20,868 | `bfe0c079329ea0d899398d09d13f918b8c133833228430f17f8744a18f8d6c95` |
+
+The file is a copy, kept so that its port can be reviewed against it.
+[`scripts/check_xsd_transformation.py`](../../../../scripts/check_xsd_transformation.py) fails
+unless it is still the script in the committed `.qeax`, and unless its port,
+[`scripts/osc_xsd_transformation.py`](../../../../scripts/osc_xsd_transformation.py), run on
+this project, reproduces [`../../schema/OpenSCENARIO.xsd`](../../schema/OpenSCENARIO.xsd) byte
+for byte. The project's other script, "ExportDiagrams", exports diagram images and plays no
+part in the schema.
 
 ## Regenerating the export
 

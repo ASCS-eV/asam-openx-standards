@@ -23,6 +23,7 @@ on:
       - "scripts/check_toolchain_lock.py"
       - "scripts/test_check_toolchain_lock.py"
       - "scripts/test_zip_content_fingerprint.py"
+      - "scripts/test_snapshot_dependencies.py"
       - "scripts/generate_semantic_artifacts.py"
       - "scripts/requirements.txt"
       - "pipeline/toolchain-lock.json"
@@ -56,6 +57,11 @@ jobs:
       # expensive to discover during a regeneration.
       - name: The jar content fingerprint behaves as specified
         run: python scripts/test_zip_content_fingerprint.py
+      # The SNAPSHOT pin decides by content: a republication with the same bytes has to pass,
+      # or the pipeline stops whenever the snapshot repository republishes, and a jar with
+      # different bytes has to fail, or the fingerprint check is fed an unpinned input.
+      - name: The SNAPSHOT dependency pin behaves as specified
+        run: python scripts/test_snapshot_dependencies.py
       - name: pipeline/toolchain-lock.json matches every committed provenance.json
         run: python scripts/check_toolchain_lock.py
 

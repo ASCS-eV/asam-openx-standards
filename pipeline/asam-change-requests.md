@@ -272,8 +272,8 @@ already handles the corrected model.
 their alternatives either as a nested `«union»` sub-type or as properties tagged `SC_UNION_SET`.
 Both are standard ISO 19109 modelling; neither needs a tool change.
 
-**What we do meanwhile.** Nothing. The rule is not carried, the fork is pinned at plain upstream,
-and the generated OWL encodes these seven unions exactly as the model describes them —
+**What we do meanwhile.** Nothing. The rule is not carried by the ShapeChange fork, and the
+generated OWL encodes these seven unions exactly as the model describes them —
 unsatisfiable disjunctions included. Working around an ASAM modelling defect locally would hide
 it, and this register exists so it is visible instead. Tracked in
 [#47](https://github.com/ASCS-eV/asam-openx-standards/issues/47).

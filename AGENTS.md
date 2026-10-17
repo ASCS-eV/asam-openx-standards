@@ -82,6 +82,15 @@ These are not style preferences. Each one has cost real debugging time.
    and the standards-based reason. Where the *standard itself* looks wrong, open an issue so
    it can be reported to ASAM — do not silently work around it.
 
+7. **The released model is ASAM's model; a changed model is a named candidate.** The SCXML
+   for a released version (OpenSCENARIO XML 1.4.0, OpenDRIVE 1.9.0) must stay the export of
+   ASAM's EA project that `check_model_equivalence.py` compares it with. An entry leaves that
+   check's baseline only when the export becomes more faithful, and joins it only when the
+   check learns to see a difference that was already there. A change to the *modelling* is
+   published separately as an explicitly named candidate (e.g. "OpenSCENARIO XML 1.5
+   candidate") with a changelog that lists every model difference from the release it is
+   based on.
+
 ## Where things are decided
 
 | Question | Authoritative file |
@@ -96,6 +105,8 @@ These are not style preferences. Each one has cost real debugging time.
 | How far is the pipeline from the normative artifacts, right now? | the job summary of [`measure-gap.yml`](.github/workflows/measure-gap.yml) |
 | Which differences are ASAM's to fix, and what is the evidence? | [`pipeline/asam-change-requests.md`](pipeline/asam-change-requests.md) |
 | What are ASAM's original models, and how do I read them? | `standards/*/uml/source/README.md` |
+| Is the committed SCXML the same model as ASAM's EA project, and where does it differ? | `pipeline/*-model-equivalence-baseline.json`, produced by `scripts/check_model_equivalence.py` |
+| Does the model produce the normative XSD, and where does it not? | `pipeline/*-xsd-transformation-baseline.json`, produced by `scripts/check_xsd_transformation.py` |
 
 ## Quick Reference: Concept → File → Section
 
@@ -220,10 +231,19 @@ pipeline/                    # ← the generation pipeline's configuration
 ├── *-xsd.config.xml         #   ShapeChange XSD target, per standard (verification only)
 ├── mapentries-asam.xml      #   ASAM primitive type -> XSD datatype (OWL stage)
 ├── xsdmapentries-asam.xml   #   the same, for the XSD stage
-└── *-xsd-content-baseline.json  # accepted deviations from ASAM's normative XSD
+├── *-xsd-content-baseline.json  # accepted deviations from ASAM's normative XSD
+├── *-model-equivalence-baseline.json  # differences between the SCXML and ASAM's EA project
+└── *-xsd-transformation-baseline.json # differences between the model-derived and the normative XSD
 
 scripts/
 ├── generate_semantic_artifacts.py  # runs both stages; builds the tools from the lock
+├── check_model_equivalence.py      # the SCXML vs ASAM's EA model, fact by fact, gated by baseline
+├── model_equivalence.py            # the model-equivalence oracle (sqlite3 + xml.etree)
+├── check_xsd_transformation.py     # derives the normative XSD from the model, gated by baseline
+├── ea_api.py                       # EA's object model over a .qeax or an SCXML
+├── osc_xsd_transformation.py       # port of ASAM's OpenSCENARIO schema generator (t_script)
+├── odr_xsd_transformation.py       # OpenDRIVE schema from EA's XML Schema profile
+├── xsd_equivalence.py              # semantic comparison of two schemas, per component
 ├── check_xsd_structural_parity.py  # regenerates XSD, compares to ASAM's normative one
 ├── xsd_content_model.py            # the content-model comparison oracle
 ├── check_toolchain_lock.py         # static: lock <-> provenance consistency (runs in CI)
@@ -269,9 +289,9 @@ that upstream has not merged yet:
 
 | Tool | Role | Fork status |
 |---|---|---|
-| ShapeChange | UML → OWL, and UML → XSD for verification | forked; carries the unmerged OWL union fix |
+| ShapeChange | UML → OWL, and UML → XSD for verification | forked; carries ShapeChange#798, #799 and #800, open upstream |
 | SHACL Play! | OWL → SHACL | ✅ fully upstreamed; pinned at plain upstream |
-| owl2shacl | the OWL→SHACL conversion *rules* (`owl2sh-closed.ttl`) | ✅ fully upstreamed; pinned at plain upstream |
+| owl2shacl | the OWL→SHACL conversion *rules* (`owl2sh-closed.ttl`) | forked; carries owl2shacl#10, open upstream |
 | diffable-rdf | RDFC-1.0 canonicalization, so regeneration is byte-stable | ASCS-eV-owned, consumed from PyPI |
 
 Running the pipeline needs **JDK 21 and Maven**. CI does not *regenerate* artifacts — that

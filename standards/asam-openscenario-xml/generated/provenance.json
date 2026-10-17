@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T07:10:56+00:00",
+  "generated": "2026-09-27T09:28:21+00:00",
   "standard": "asam-openscenario-xml",
   "source_model": {
     "path": "standards/asam-openscenario-xml/uml/openscenario.scxml",
@@ -7,13 +7,13 @@
   },
   "configuration": {
     "path": "pipeline/openscenario-owl.config.xml",
-    "sha256": "0a78bf5c61a1c8d5aa5bad331d7ad942cf817a9792744e45010e5be3b6b9c5d2"
+    "sha256": "9e9304bfeeabaf82d4a288daf3a461691bf55b137e533e9b7f3b0d2e0110319a"
   },
   "tools": {
     "shapechange": {
-      "commit": "62c30807194aebbf61ddf119d6003f046939a4b6",
+      "commit": "385404f2eaec61b564fcf31186ed44a1040685f8",
       "profile": "-DskipEa",
-      "runtime_fingerprint": "9cb9bbd8f5b30a92c891d659422ccb6c3cf8934c7902e41c37f83d42cfd1e4ba"
+      "runtime_fingerprint": "b8d106b5741a7be1075ffb32e4f98ad6e9c1685e1b33bb507650fdde31f092f7"
     },
     "shacl_play": {
       "commit": "7af6d7aefde32e2e5b5646cac99122b42b15371f",
@@ -22,8 +22,8 @@
     },
     "owl2shacl_rules": {
       "name": "owl2sh-closed.ttl",
-      "sha256": "c486b2fe73c27a5a310b7135b317b1df3902eb6f16796da01c4f57fda783a758",
-      "commit": "ab57749f9a95f82257a1b58f8c5210a279536bd9"
+      "sha256": "3fc08b4f4b745f2afe912bda4adfd9230be278b0935d24772fe134de7a04b279",
+      "commit": "b0237dbcf06c750f15d9cfb1a14215a21d153bf8"
     },
     "serialization": {
       "diffable-rdf": "0.4.0",
@@ -36,7 +36,7 @@
     "maven_version": "3.9.9"
   },
   "outputs": {
-    "openscenario.owl.ttl": "156b615625baf4039b110c796270a9caf0eadfc22867e6bf327f646ae8c7f3cc",
+    "openscenario.owl.ttl": "9535c05fb9d63e5bac9c78f47d51c214406adbf4081980f474d19f3dd71d5d18",
     "openscenario.shacl.ttl": "140bd1993a04d9f821f22fa3e6de98ecf9d3427b69ef569383b6b09dcaeb963c"
   }
 }

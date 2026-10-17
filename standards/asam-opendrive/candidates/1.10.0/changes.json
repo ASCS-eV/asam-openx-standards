@@ -1,0 +1,2466 @@
+{
+ "name": "OpenDRIVE 1.10 candidate",
+ "based_on": {
+  "version": "ASAM OpenDRIVE V1.9.0",
+  "model": "standards/asam-opendrive/uml/opendrive.scxml",
+  "project": "standards/asam-opendrive/uml/source/ASAM_OpenDRIVE.qeax"
+ },
+ "summary": "The OpenDRIVE V1.9.0 model with the changes below. Each makes the model say, in terms a UML reader understands, what the normative schema says, or corrects a defect the model and the schema share. Changes marked *unchanged* leave the normative schema exactly as it is; the others change it, and say how.",
+ "changes": [
+  {
+   "id": "ODR-1",
+   "title": "An attribute's multiplicity says what its use says",
+   "why": "The schema makes an XSDattribute required exactly when its `use` tag is `required`, and optional otherwise; the attribute's UML multiplicity plays no part. For these attributes the two disagree, so a UML reader of the model, such as the OWL target, requires what the schema makes optional, or the reverse. The multiplicity is set to what `use` says.",
+   "schema": "unchanged: the derivation reads `use`, not the multiplicity",
+   "operations": [
+    {
+     "op": "set-multiplicity",
+     "attribute": 18,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 19,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 31,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 60,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 64,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 70,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 71,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 72,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 73,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 106,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 109,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 126,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 128,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 130,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 131,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 132,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 133,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 134,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 135,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 136,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 144,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 145,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 146,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 163,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 164,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 183,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 192,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 198,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 199,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 218,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 219,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 228,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 234,
+     "lower": "1",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 235,
+     "lower": "1",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 244,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 245,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 246,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 282,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 290,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 291,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 316,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 317,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 378,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 398,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 408,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 420,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 432,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 434,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 435,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 436,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 481,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 619,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 620,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 622,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 623,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 636,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 637,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 642,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 646,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 647,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 648,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 649,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 650,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 651,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 660,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 661,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 662,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 663,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 667,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 668,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 669,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 670,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 671,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 672,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 673,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 675,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 676,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 677,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 678,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 679,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 706,
+     "lower": "0",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 777,
+     "lower": "1",
+     "upper": "1"
+    },
+    {
+     "op": "set-multiplicity",
+     "attribute": 778,
+     "lower": "1",
+     "upper": "1"
+    }
+   ]
+  },
+  {
+   "id": "ODR-2",
+   "title": "A base class does not also hold what its subtypes declare",
+   "why": "The schema comments these particles out of `_OpenDriveElement` and `t_junction` \"to comply with the sequence order of earlier OpenDRIVE versions\": every subtype declares them itself, in its own place. The model draws them on the base class as well, so a UML reader sees each of them twice on every subtype. They are removed from the base class, which is what the schema implements.",
+   "schema": "unchanged: the normative schema already leaves them out",
+   "operations": [
+    {
+     "op": "remove-connector",
+     "connector": 6
+    },
+    {
+     "op": "remove-connector",
+     "connector": 86
+    },
+    {
+     "op": "remove-connector",
+     "connector": 87
+    },
+    {
+     "op": "remove-connector",
+     "connector": 88
+    },
+    {
+     "op": "remove-connector",
+     "connector": 243
+    },
+    {
+     "op": "remove-connector",
+     "connector": 354
+    },
+    {
+     "op": "remove-connector",
+     "connector": 355
+    }
+   ]
+  },
+  {
+   "id": "ODR-3",
+   "title": "An element is one association",
+   "why": "`t_junction_virtual` draws its `connection` element three times, once to its declared type and once to each of the two types its `xs:alternative`s select. UML gives a class one property per name, so a reader sees three conflicting `connection` properties. The alternatives are already stated by their `XSDAlternative_*` tags; the association to the declared type is kept.",
+   "schema": "unchanged: the derivation declares one element per role",
+   "operations": [
+    {
+     "op": "remove-connector",
+     "connector": 255
+    },
+    {
+     "op": "remove-connector",
+     "connector": 538
+    }
+   ]
+  },
+  {
+   "id": "ODR-4",
+   "title": "The junction's type alternatives are numbered in the schema's order",
+   "why": "`XSDAlternative_nr` orders an element's type alternatives, and the first whose test holds assigns the type. The model numbers `junction`'s crossing 1, direct 2 and virtual 3; the schema lists virtual, direct, crossing. The tests are mutually exclusive, so the language is the same, but the model should say what the schema does.",
+   "schema": "unchanged",
+   "operations": [
+    {
+     "op": "set-tag",
+     "class": 181,
+     "name": "XSDAlternative_nr",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "class": 186,
+     "name": "XSDAlternative_nr",
+     "value": "3"
+    }
+   ]
+  },
+  {
+   "id": "ODR-5",
+   "title": "The schema's element order is recorded in the model",
+   "why": "A sequence fixes the order of its elements in a document, and the schema gives these content models an order the model does not state: only 20 associations carry a `position` tag, and some of those contradict the schema. Each association of these classes gets the `position` of its element in the normative schema.",
+   "schema": "unchanged: it is the normative order, now stated",
+   "operations": [
+    {
+     "op": "set-tag",
+     "connector": 184,
+     "name": "position",
+     "value": "1",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 183,
+     "name": "position",
+     "value": "2",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 186,
+     "name": "position",
+     "value": "3",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 187,
+     "name": "position",
+     "value": "4",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 188,
+     "name": "position",
+     "value": "5",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 189,
+     "name": "position",
+     "value": "6",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 1,
+     "name": "position",
+     "value": "7",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 401,
+     "name": "position",
+     "value": "8",
+     "export": false
+    },
+    {
+     "op": "set-tag",
+     "connector": 75,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 79,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 316,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 10,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 405,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 413,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 492,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 420,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 414,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 491,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 421,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 329,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 356,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 335,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 338,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 256,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 340,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 371,
+     "name": "position",
+     "value": "7"
+    },
+    {
+     "op": "set-tag",
+     "connector": 365,
+     "name": "position",
+     "value": "8"
+    },
+    {
+     "op": "set-tag",
+     "connector": 364,
+     "name": "position",
+     "value": "9"
+    },
+    {
+     "op": "set-tag",
+     "connector": 332,
+     "name": "position",
+     "value": "10"
+    },
+    {
+     "op": "set-tag",
+     "connector": 125,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 24,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 126,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 91,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 306,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 307,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 278,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 280,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 362,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 373,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 277,
+     "name": "position",
+     "value": "7"
+    },
+    {
+     "op": "set-tag",
+     "connector": 330,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 336,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 337,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 279,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 361,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 372,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 333,
+     "name": "position",
+     "value": "7"
+    },
+    {
+     "op": "set-tag",
+     "connector": 274,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 317,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 334,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 339,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 131,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 309,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 370,
+     "name": "position",
+     "value": "7"
+    },
+    {
+     "op": "set-tag",
+     "connector": 331,
+     "name": "position",
+     "value": "8"
+    },
+    {
+     "op": "set-tag",
+     "connector": 160,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 95,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 135,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 134,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 133,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 161,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 165,
+     "name": "position",
+     "value": "7"
+    },
+    {
+     "op": "set-tag",
+     "connector": 166,
+     "name": "position",
+     "value": "8"
+    },
+    {
+     "op": "set-tag",
+     "connector": 67,
+     "name": "position",
+     "value": "9"
+    },
+    {
+     "op": "set-tag",
+     "connector": 167,
+     "name": "position",
+     "value": "10"
+    },
+    {
+     "op": "set-tag",
+     "connector": 30,
+     "name": "position",
+     "value": "11"
+    },
+    {
+     "op": "set-tag",
+     "connector": 128,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 70,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 142,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 143,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 72,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 116,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 115,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 117,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 77,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 139,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 78,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 110,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 111,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 23,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 105,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 136,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 103,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 228,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 181,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 25,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 141,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 106,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 109,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 107,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 180,
+     "name": "position",
+     "value": "7"
+    },
+    {
+     "op": "set-tag",
+     "connector": 140,
+     "name": "position",
+     "value": "8"
+    },
+    {
+     "op": "set-tag",
+     "connector": 12,
+     "name": "position",
+     "value": "9"
+    },
+    {
+     "op": "set-tag",
+     "connector": 368,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 263,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 396,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 395,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 493,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 388,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 389,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 391,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 392,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 390,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 470,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 121,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 122,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 7,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 150,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 171,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 173,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 172,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 231,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 113,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 118,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 123,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 124,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 410,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 146,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 147,
+     "name": "position",
+     "value": "7"
+    },
+    {
+     "op": "set-tag",
+     "connector": 148,
+     "name": "position",
+     "value": "8"
+    },
+    {
+     "op": "set-tag",
+     "connector": 232,
+     "name": "position",
+     "value": "9"
+    },
+    {
+     "op": "set-tag",
+     "connector": 253,
+     "name": "position",
+     "value": "10"
+    },
+    {
+     "op": "set-tag",
+     "connector": 387,
+     "name": "position",
+     "value": "11"
+    },
+    {
+     "op": "set-tag",
+     "connector": 283,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 244,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 129,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 65,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 157,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 156,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 236,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 114,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 155,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 158,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 43,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 237,
+     "name": "position",
+     "value": "5"
+    },
+    {
+     "op": "set-tag",
+     "connector": 404,
+     "name": "position",
+     "value": "6"
+    },
+    {
+     "op": "set-tag",
+     "connector": 381,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 342,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 127,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 64,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 446,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 513,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 512,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 509,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 459,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 505,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 504,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 503,
+     "name": "position",
+     "value": "4"
+    },
+    {
+     "op": "set-tag",
+     "connector": 460,
+     "name": "position",
+     "value": "1"
+    },
+    {
+     "op": "set-tag",
+     "connector": 508,
+     "name": "position",
+     "value": "2"
+    },
+    {
+     "op": "set-tag",
+     "connector": 507,
+     "name": "position",
+     "value": "3"
+    },
+    {
+     "op": "set-tag",
+     "connector": 506,
+     "name": "position",
+     "value": "4"
+    }
+   ]
+  },
+  {
+   "id": "ODR-6",
+   "title": "The content an element includes from a group or a choice is named",
+   "why": "An association to an `XSDgroup` or an `XSDchoice` class has no role in the model: the schema includes the target's particles in place, and a group reference needs no name. A UML reader, however, treats an unnamed end as no property at all, so the additional data of every element, and the choices `LaneGeometry`, `t_outline_geometry`, `t_polyline_geometry` and `t_physicalPosition`, are not part of the model it reads. Naming the end makes them part of it; the pipeline then includes the target's properties in place, as the schema does.",
+   "schema": "unchanged: a group reference and a nested compositor carry no role",
+   "operations": [
+    {
+     "op": "set-role",
+     "connector": 315,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 1,
+     "role": "additionalData",
+     "export": false
+    },
+    {
+     "op": "set-role",
+     "connector": 10,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 96,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 30,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 332,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 7,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 292,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 64,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 293,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 65,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 69,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 298,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 299,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 300,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 301,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 302,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 376,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 70,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 296,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 71,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 294,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 295,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 72,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 284,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 259,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 77,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 220,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 78,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 227,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 12,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 25,
+     "role": "laneGeometry"
+    },
+    {
+     "op": "set-role",
+     "connector": 23,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 265,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 266,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 267,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 228,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 268,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 229,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 269,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 230,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 270,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 261,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 245,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 119,
+     "role": "t_outline_geometry"
+    },
+    {
+     "op": "set-role",
+     "connector": 246,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 285,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 286,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 271,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 272,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 282,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 247,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 248,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 249,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 250,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 233,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 235,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 312,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 238,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 239,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 297,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 240,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 241,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 24,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 257,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 254,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 36,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 84,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 251,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 258,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 290,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 252,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 291,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 262,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 263,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 260,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 264,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 231,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 232,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 234,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 236,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 43,
+     "role": "t_physicalPosition"
+    },
+    {
+     "op": "set-role",
+     "connector": 237,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 304,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 311,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 313,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 287,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 288,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 289,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 242,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 303,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 273,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 281,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 283,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 333,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 276,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 380,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 379,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 381,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 382,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 331,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 277,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 466,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 465,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 493,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 494,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 495,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 470,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 374,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 378,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 468,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 386,
+     "role": "t_polyline_geometry"
+    },
+    {
+     "op": "set-role",
+     "connector": 467,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 377,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 487,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 488,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 469,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 464,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 418,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 471,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 472,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 474,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 476,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 473,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 475,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 491,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 419,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 444,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 453,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 446,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 458,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 459,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 460,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 461,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 462,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 463,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 454,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 455,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 457,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 492,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 456,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 445,
+     "role": "additionalData"
+    },
+    {
+     "op": "set-role",
+     "connector": 375,
+     "role": "additionalData"
+    }
+   ]
+  },
+  {
+   "id": "ODR-7",
+   "title": "The alternatives of a choice are stated as one union set",
+   "why": "A class whose `modelGroup` is `choice`, and every `XSDchoice` class, makes its elements mutually exclusive: a document gives exactly one of them. A UML reader sees independent properties instead, and the OWL target and the SHACL require every one of them at once, which rejects every conforming document. ShapeChange's `SC_UNION_SET` tag states, on the association ends, which properties exclude each other; the value names the choice. The additional data that `t_road_planView_geometry`'s choice also offers as an alternative is left out of the set; see the change request.",
+   "schema": "unchanged: the derivation does not read `SC_UNION_SET`",
+   "operations": [
+    {
+     "op": "set-end-tag",
+     "connector": 97,
+     "name": "SC_UNION_SET",
+     "value": "t_road_planView_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 98,
+     "name": "SC_UNION_SET",
+     "value": "t_road_planView_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 99,
+     "name": "SC_UNION_SET",
+     "value": "t_road_planView_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 100,
+     "name": "SC_UNION_SET",
+     "value": "t_road_planView_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 130,
+     "name": "SC_UNION_SET",
+     "value": "t_road_planView_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 61,
+     "name": "SC_UNION_SET",
+     "value": "LaneGeometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 68,
+     "name": "SC_UNION_SET",
+     "value": "LaneGeometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 144,
+     "name": "SC_UNION_SET",
+     "value": "t_outline_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 145,
+     "name": "SC_UNION_SET",
+     "value": "t_outline_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 524,
+     "name": "SC_UNION_SET",
+     "value": "t_outline_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 175,
+     "name": "SC_UNION_SET",
+     "value": "t_physicalPosition"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 176,
+     "name": "SC_UNION_SET",
+     "value": "t_physicalPosition"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 384,
+     "name": "SC_UNION_SET",
+     "value": "t_polyline_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 385,
+     "name": "SC_UNION_SET",
+     "value": "t_polyline_geometry"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 530,
+     "name": "SC_UNION_SET",
+     "value": "t_road_objects_object_outlines_outline_curveLocal"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 531,
+     "name": "SC_UNION_SET",
+     "value": "t_road_objects_object_outlines_outline_curveLocal"
+    },
+    {
+     "op": "set-end-tag",
+     "connector": 533,
+     "name": "SC_UNION_SET",
+     "value": "t_road_objects_object_outlines_outline_curveLocal"
+    }
+   ]
+  },
+  {
+   "id": "ODR-8",
+   "title": "No element requires a child of the abstract base type",
+   "why": "`t_header_defaultRegulations`, `t_header_roadRegulation`, `t_header_signalRegulation` and `t_signalGroup_vmsGroup` each have an unnamed 1..1 association to `_OpenDriveElement`, the abstract base of every OpenDRIVE type. The schema therefore requires a child element `<_OpenDriveElement>`, which no document can supply without `xsi:type`, so none of these four elements can occur in a valid file. The associations are removed.",
+   "schema": "changed: the four types no longer require an `_OpenDriveElement` child",
+   "operations": [
+    {
+     "op": "remove-connector",
+     "connector": 415
+    },
+    {
+     "op": "remove-connector",
+     "connector": 412
+    },
+    {
+     "op": "remove-connector",
+     "connector": 414
+    },
+    {
+     "op": "remove-connector",
+     "connector": 413
+    }
+   ]
+  },
+  {
+   "id": "ODR-9",
+   "title": "An attribute's type refers to the class it names",
+   "why": "These attributes name a class of the model as their type, but EA holds only the name: the classifier reference is missing, so nothing resolves it and the schema types them `xs:string`. The reference is set to the class of that name.",
+   "schema": "changed: the attributes are typed by their class instead of `xs:string`",
+   "operations": [
+    {
+     "op": "set-classifier",
+     "attribute": 749,
+     "classifier": 269
+    },
+    {
+     "op": "set-classifier",
+     "attribute": 282,
+     "classifier": 2
+    },
+    {
+     "op": "set-classifier",
+     "attribute": 228,
+     "classifier": 2
+    },
+    {
+     "op": "set-classifier",
+     "attribute": 399,
+     "classifier": 195
+    },
+    {
+     "op": "set-classifier",
+     "attribute": 378,
+     "classifier": 195
+    },
+    {
+     "op": "set-classifier",
+     "attribute": 379,
+     "classifier": 195
+    },
+    {
+     "op": "set-classifier",
+     "attribute": 316,
+     "classifier": 2
+    },
+    {
+     "op": "set-classifier",
+     "attribute": 317,
+     "classifier": 2
+    }
+   ]
+  },
+  {
+   "id": "ODR-10",
+   "title": "The model declares no target namespace, as the schema does not",
+   "why": "Every schema package carries `targetNamespace` `http://code.asam.net/simulation/standard/opendrive_schema`, but no normative document declares a target namespace, so OpenDRIVE elements are in no namespace. The seven packages sharing one namespace is also what makes the OWL target report 227 classes outside their schema. The tag is removed; the pipeline names the schema package in its configuration, as it does for OpenSCENARIO.",
+   "schema": "unchanged: the normative schema has no target namespace",
+   "operations": [
+    {
+     "op": "remove-tag",
+     "package": 6,
+     "name": "targetNamespace"
+    },
+    {
+     "op": "remove-tag",
+     "package": 9,
+     "name": "targetNamespace"
+    },
+    {
+     "op": "remove-tag",
+     "package": 7,
+     "name": "targetNamespace"
+    },
+    {
+     "op": "remove-tag",
+     "package": 5,
+     "name": "targetNamespace"
+    },
+    {
+     "op": "remove-tag",
+     "package": 8,
+     "name": "targetNamespace"
+    },
+    {
+     "op": "remove-tag",
+     "package": 10,
+     "name": "targetNamespace"
+    },
+    {
+     "op": "remove-tag",
+     "package": 4,
+     "name": "targetNamespace"
+    }
+   ]
+  }
+ ]
+}

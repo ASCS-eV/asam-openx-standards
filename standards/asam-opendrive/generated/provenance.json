@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T07:07:56+00:00",
+  "generated": "2026-09-27T09:26:49+00:00",
   "standard": "asam-opendrive",
   "source_model": {
     "path": "standards/asam-opendrive/uml/opendrive.scxml",
@@ -7,13 +7,13 @@
   },
   "configuration": {
     "path": "pipeline/opendrive-owl.config.xml",
-    "sha256": "58a71fb314623b4c18d2165617be3fc47c6dbf85d76654e5058dfc15ba1d05c5"
+    "sha256": "175fc8594f91dd45896950a1c46e16828e0f0c3bf6e9dfd69889460080ab6ea2"
   },
   "tools": {
     "shapechange": {
-      "commit": "62c30807194aebbf61ddf119d6003f046939a4b6",
+      "commit": "385404f2eaec61b564fcf31186ed44a1040685f8",
       "profile": "-DskipEa",
-      "runtime_fingerprint": "9cb9bbd8f5b30a92c891d659422ccb6c3cf8934c7902e41c37f83d42cfd1e4ba"
+      "runtime_fingerprint": "b8d106b5741a7be1075ffb32e4f98ad6e9c1685e1b33bb507650fdde31f092f7"
     },
     "shacl_play": {
       "commit": "7af6d7aefde32e2e5b5646cac99122b42b15371f",
@@ -22,8 +22,8 @@
     },
     "owl2shacl_rules": {
       "name": "owl2sh-closed.ttl",
-      "sha256": "c486b2fe73c27a5a310b7135b317b1df3902eb6f16796da01c4f57fda783a758",
-      "commit": "ab57749f9a95f82257a1b58f8c5210a279536bd9"
+      "sha256": "3fc08b4f4b745f2afe912bda4adfd9230be278b0935d24772fe134de7a04b279",
+      "commit": "b0237dbcf06c750f15d9cfb1a14215a21d153bf8"
     },
     "serialization": {
       "diffable-rdf": "0.4.0",
@@ -36,7 +36,7 @@
     "maven_version": "3.9.9"
   },
   "outputs": {
-    "opendrive.owl.ttl": "a7a4e69f06dcb4eea1dfc7bb677151f6e13eb573ec24dc52f49e5f9abaa9c4f1",
+    "opendrive.owl.ttl": "d81ea51ef38f1efaf77a8d81b9143b5f290565d938ef3595751f0d799ee3035d",
     "opendrive.shacl.ttl": "f4bd1d1c0e64a58b1952f4e9aa7ab7c32d697d53cb0f82c32892d8f1d90c58ae"
   }
 }

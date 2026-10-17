@@ -61,22 +61,31 @@ UML-level constructs that XML Schema expresses differently, not model/schema dri
 
 ### Known encoding gaps
 
-Things the XSD expresses and the generated artifacts do not yet reflect. The first two
-originate in the Enterprise Architect model, so the export reproduces them faithfully and no
-ShapeChange configuration repairs them. The third is different in kind and was previously
-misfiled here: the model **does** express it and the export now carries it, but nothing
-downstream consumes it yet.
+Things the XSD expresses and the generated artifacts do not yet reflect:
 
-**XSD union types carry no union semantics.** The schema declares four unions. The export now
-carries their `XSDunion` stereotype, but the member types — where they appear at all — appear
-as *supertypes*, which is the inverse of a union:
+- The first two are in the model, but the export does not carry them.
+- The third is in the model and the export carries it, but nothing downstream consumes it
+  yet.
 
-| XSD union | Members in the XSD | In the model |
-|---|---|---|
-| `e_unit` | `e_unitDistance`, `e_unitSpeed`, `e_unitMass`, `e_unitSlope` | empty class, no members |
-| `t_maxSpeed` | `t_grEqZero`, `e_maxSpeedString` | one supertype; `e_maxSpeedString` absent |
-| `e_countryCode` | 3 member types | two supertypes; `e_countryCode_deprecated` absent |
-| `t_grEqZeroOrContactPoint` | `t_grZero`, `e_contactPoint` | two supertypes |
+[Equivalence with the EA project](#equivalence-with-the-ea-project) lists every difference
+between the model and this export.
+
+**XSD union types carry no union semantics.** The schema declares four unions. The export
+carries their `XSDunion` stereotype, and each member type is in the model as a *parent* of the
+union: some as a generalization connector, the rest by name in `t_object.GenLinks`
+(`Parent=<name>;`). The export carries only the connectors, and as *supertypes*, which is the
+inverse of a union. It does not read `GenLinks` at all:
+
+| XSD union | Members in the XSD | Generalization connectors | Also in `GenLinks` | In the export |
+|---|---|---|---|---|
+| `e_unit` | `e_unitDistance`, `e_unitSpeed`, `e_unitMass`, `e_unitSlope` | none | all four | no members |
+| `t_maxSpeed` | `t_grEqZero`, `e_maxSpeedString` | `t_grEqZero` | `e_maxSpeedString` | one supertype |
+| `e_countryCode` | 3 member types | two | `e_countryCode_deprecated` | two supertypes |
+| `t_grEqZeroOrContactPoint` | `t_grZero`, `e_contactPoint` | both | none | two supertypes |
+
+`GenLinks` also records the restriction base of the XSD simple types, such as `Parent=double`
+for `t_grEqZero`, and `Parent=string` for 13 enumerations and 2 simple types. The export drops
+these as well.
 
 ShapeChange reports this itself when the model is processed — *"is modelled as a feature
 type, object type, data type, mixin, or union, but has more than one supertype of the same
@@ -84,7 +93,8 @@ kind"*. Seven attributes are typed by these four classes, including
 `t_road_signals_signal.unit`, `t_road_type.country` and `t_road_type_speed.max`, so anything
 generated from the model cannot constrain those values the way the XSD does.
 
-This is a request to ASAM rather than something a downstream configuration can repair. It is
+The member lists are therefore complete in the model once `GenLinks` is read. What remains for
+ASAM is the direction in which the members are drawn, parent rather than member. It is
 tempting to point at the sibling OpenSCENARIO XML model, which carries 48 `«union»` classes each
 with one property per alternative and does reach the ontology as `owl:unionOf` — but the two are
 **not the same XSD construct**, and copying that encoding here would not work: OpenDRIVE's unions
@@ -94,10 +104,15 @@ terms, is in
 [`pipeline/asam-change-requests.md`](../../../pipeline/asam-change-requests.md#1-union-alternatives-are-encoded-as-supertypes),
 which is the authoritative list.
 
-**The root element has no content model.** `OpenDRIVE` appears in no association and is the
-type of no property. The XSD root element composes `header`, `road`, `controller`,
-`junction`, `junctionGroup`, `station`, `g_additionalData` and `vmsGroup`; none of that
-composition exists in the UML, so a model-derived artifact has no document entry point.
+**The root element's content model is not exported.** The XSD root element composes
+`header`, `road`, `controller`, `junction`, `junctionGroup`, `station`, `g_additionalData` and
+`vmsGroup`. In the model, that composition belongs to the classifier `t_OpenDRIVE`
+(`t_object` 11). It is owned by the class `OpenDRIVE` (`ParentID` 10), not by a package.
+
+ShapeChange's EA reader loads only the elements of a package. So `t_OpenDRIVE` and its eight
+associations (connectors 1, 183, 184, 186–189 and 401) are absent from `opendrive.scxml`, and
+`OpenDRIVE` itself appears in no association. A model-derived artifact therefore has no
+document entry point.
 
 **Exclusive choice is carried but not yet honoured.** The model marks four classes
 `modelGroup = choice`, including `t_road_planView_geometry`, whose XSD content model is an
@@ -107,6 +122,56 @@ rejects documents the normative schema accepts. This was previously recorded —
 issue tracker — as an ASAM modelling defect; it is not. The information is in ASAM's model and
 was being discarded by the export. Tracked in
 [#37](https://github.com/ASCS-eV/asam-openx-standards/issues/37).
+
+### Equivalence with the EA project
+
+[`scripts/check_model_equivalence.py`](../../../scripts/check_model_equivalence.py) compares
+this file with [`source/ASAM_OpenDRIVE.qeax`](source/README.md), read as the SQLite database
+it is, and runs in CI. Every name, type, multiplicity, initial value, documentation text and
+attribute order the export carries matches the model. The model's other content does not
+reach the export:
+
+| Rule | Count | What is not carried |
+|---|---:|---|
+| `nested-classifier`, `association` | 1, 8 | `t_OpenDRIVE` and its associations, see above |
+| `constraint` | 25 | 24 approved invariants and 1 attribute constraint; `checkingConstraints=disabled` |
+| `attribute-tag`, `classifier-tag`, `package-tag` | 121, 34, 22 | valued tags outside `representTaggedValues`, including the XSD identity constraints `key`, `keyref`, `refer` and `selector`, the `XSDAlternative_*` tags, and the package tags `elementFormDefault`, `defaultNamespace` and `schemaLocation` |
+| `attribute-unrepresentable` | 18 | `isID = 1`, a UML custom property the SCXML has no place for |
+| `attribute-visibility` | 29 | `Private` visibility; the SCXML has none |
+| `generalization-stereotype` | 2 | `XSDextension` on the two lane specializations |
+| `generalization-by-name` | 25 | the `GenLinks` parents of 22 classifiers: 6 union members and 19 restriction bases, see above |
+| `end-navigability` | 1 | `t_road_link → g_additionalData`, navigable but unnamed |
+| `attribute-documentation-link` | 1 | a hyperlink target in a note |
+
+The accepted list is
+[`pipeline/opendrive-model-equivalence-baseline.json`](../../../pipeline/opendrive-model-equivalence-baseline.json).
+The tags `minOccurs` and `maxOccurs` are each declared on 55 classes without a value; one more
+class, `t_physicalPosition`, gives `minOccurs` the value `0`, which is counted under
+`classifier-tag`.
+
+### The normative schema, derived from the model
+
+The project contains no schema generator. It applies Enterprise Architect's UML profile for XML
+Schema, and [`scripts/odr_xsd_transformation.py`](../../../scripts/odr_xsd_transformation.py)
+derives the seven schema documents from it. Compared with the published files, every
+declaration matches, and so does all the documentation, except in four respects. In these the
+schema says what the model does not:
+
+- the element order of 33 sequences, which the model's sparse `position` tags do not record;
+- content the schema comments out in `_OpenDriveElement` and `t_junction`, which every subtype
+  redeclares;
+- the order of `junction`'s type alternatives;
+- the absent `targetNamespace` and the XSD 1.1 `vc:minVersion`.
+
+The derivation also shows where model and schema agree and are both wrong:
+
+- 80 `XSDattribute`s whose UML multiplicity contradicts their `use`;
+- 4 classes with a required child `<_OpenDriveElement>` of abstract type;
+- 8 attributes typed `xs:string` because their classifier reference is missing.
+
+[The runbook](../../../pipeline/README.md#checking-it-the-normative-xsd-derived-from-the-model)
+gives the rules and the findings. The accepted list is
+[`pipeline/opendrive-xsd-transformation-baseline.json`](../../../pipeline/opendrive-xsd-transformation-baseline.json).
 
 ## Files
 
